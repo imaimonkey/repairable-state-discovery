@@ -1,0 +1,41 @@
+paths:
+  outputs_root: /home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs
+  generated_configs_root: /home/kimhj/repairable-state-discovery/results/generated_configs
+  protocol_report_name: protocol_gsm8k_seed_repeats_report.json
+
+profiles_path: /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/model_profiles.yaml
+
+dataset:
+  name: gsm8k
+  path: openai/gsm8k
+  config_name: main
+  split: test
+  limit: 200
+  start_index: 0
+  sample_seed: 11
+
+protocol:
+  run_diffusion_main: true
+  run_ar_compare: false
+
+  diffusion_runs:
+    - run_name: gsm8k_seed29_llada8b_fast
+      model_profile: llada_8b_fast
+      config_template: /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/gsm8k_diffusion_final.yaml
+      overrides:
+        dataset:
+          sample_seed: 29
+        generation:
+          base_seed: 29
+        predictor:
+          random_state: 29
+    - run_name: gsm8k_seed41_llada8b_fast
+      model_profile: llada_8b_fast
+      config_template: /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/gsm8k_diffusion_final.yaml
+      overrides:
+        dataset:
+          sample_seed: 41
+        generation:
+          base_seed: 41
+        predictor:
+          random_state: 41

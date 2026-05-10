@@ -209,6 +209,25 @@ PROTOCOL_PATH=repairable_diffusion/configs/final/protocol_math500_submission_rob
   sbatch scripts/run_protocol_repairability_final.sh
 ```
 
+### Paper-Complete Suite
+
+This is the top-level submission pipeline. It skips protocol reports that are already complete, submits only missing generation jobs, then builds the paper-complete aggregate, extended strategy/ablation analysis, cost proxy, and qualitative examples.
+
+```bash
+cd /home/kimhj/repairable-state-discovery
+bash scripts/submit_paper_complete_suite.sh
+```
+
+The suite covers:
+
+- MATH-500 final
+- GSM8K final
+- MATH-500 robustness variants
+- MATH-500 LLaDA seed repeats
+- GSM8K LLaDA seed repeats
+- MATH-500 Dream-v0-Instruct-7B backbone
+- GSM8K Dream-v0-Instruct-7B backbone
+
 ### Build Aggregate Reports
 
 ```bash
@@ -234,6 +253,12 @@ python -m repairable_diffusion.src.analysis.extended_repair_analysis \
 Aggregate outputs:
 
 ```text
+results/paper_complete_reports/
+  aggregate_report.json
+  diffusion_summary.csv
+  ar_summary.csv
+  tables/
+
 results/final_reports/
   aggregate_report.json
   diffusion_summary.csv

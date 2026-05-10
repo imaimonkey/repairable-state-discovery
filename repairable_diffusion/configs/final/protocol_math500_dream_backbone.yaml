@@ -1,0 +1,23 @@
+paths:
+  outputs_root: /home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs
+  generated_configs_root: /home/kimhj/repairable-state-discovery/results/generated_configs
+  protocol_report_name: protocol_math500_dream_backbone_report.json
+
+profiles_path: /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/model_profiles.yaml
+
+dataset:
+  name: math500
+  path: HuggingFaceH4/MATH-500
+  split: test
+  limit: 200
+  start_index: 0
+  sample_seed: 11
+
+protocol:
+  run_diffusion_main: true
+  run_ar_compare: false
+
+  diffusion_runs:
+    - run_name: math500_dream_v0_instruct_7b_final
+      model_profile: dream_v0_instruct_7b
+      config_template: /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/math500_diffusion_final.yaml

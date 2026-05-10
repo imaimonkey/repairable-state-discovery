@@ -23,13 +23,24 @@ The extended analysis shows that confidence is a weak but important baseline. En
 
 ## Remaining Generation Experiments
 
-These require new model runs and cannot be produced by aggregation alone.
+These require new model runs and cannot be produced by aggregation alone. They are now represented by final protocol configs and are submitted by `scripts/submit_paper_complete_suite.sh`.
 
 | Component | Purpose |
 | --- | --- |
 | Additional seed repeats | Replace bootstrap-only uncertainty with true run-to-run uncertainty. |
 | Additional diffusion backbone | Test whether repairable-state localization generalizes beyond LLaDA. |
-| Additional reasoning dataset | Test dataset-level generalization beyond MATH-500 and GSM8K. |
+
+## Paper-Complete Protocols
+
+| Protocol | Runs |
+| --- | --- |
+| `protocol_math500_final.yaml` | MATH-500 LLaDA final + AR references |
+| `protocol_gsm8k_final.yaml` | GSM8K LLaDA final + AR references |
+| `protocol_math500_submission_robustness.yaml` | MATH-500 seed/stride/branch robustness |
+| `protocol_math500_seed_repeats.yaml` | MATH-500 LLaDA seed 41 and 53 |
+| `protocol_gsm8k_seed_repeats.yaml` | GSM8K LLaDA seed 29 and 41 |
+| `protocol_math500_dream_backbone.yaml` | MATH-500 Dream-v0-Instruct-7B |
+| `protocol_gsm8k_dream_backbone.yaml` | GSM8K Dream-v0-Instruct-7B |
 
 ## Submission-Ready Table Set
 
