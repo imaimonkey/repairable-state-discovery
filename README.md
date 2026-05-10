@@ -1,176 +1,177 @@
 # repairable-state-discovery
 
-Diffusion reasoning trajectory의 실패 경로를 통째로 버리지 않고, 어느 중간 refinement state를 다시 고치면 정답으로 복구되는지를 측정하는 `repairable-state localization and evaluation protocol` 프로젝트입니다.
+This repository studies **state-level repairability in diffusion language-model reasoning trajectories**.
 
-이 레포의 중심 주장은 `새로운 범용 self-correction method`라기보다, `diffusion reasoning trajectory 내부의 repairability를 측정하고 localize하는 평가 프로토콜`에 가깝습니다.
+The central question is not whether diffusion models already outperform strong autoregressive baselines. The question is more specific:
 
-## 한 줄 요약
+> When a diffusion reasoning trajectory ends in a wrong answer, did it pass through an intermediate state from which the reasoning could still be recovered?
 
-- 실패한 diffusion trajectory에도 `repairable intermediate state`가 존재하는가?
-- 그 repairability는 특정 checkpoint에 `localize`되는가?
-- oracle 없이도 lightweight predictor가 좋은 repair step을 `근사`할 수 있는가?
-- 이 현상은 `MATH-500`, `GSM8K`, robustness 변형에서도 반복되는가?
+We operationalize this question as a protocol for collecting diffusion reasoning trajectories, probing intermediate checkpoints with local repair, localizing recoverable states, and evaluating whether a lightweight predictor can select useful repair points without oracle access.
 
-## 연구 가설
+## Claim
 
-이 프로젝트는 아래 가설을 검증합니다.
+Failed diffusion reasoning trajectories can contain **repairable intermediate states**. These states are not uniformly distributed across denoising/refinement steps; they concentrate around dataset-dependent checkpoints and can be partially identified by a lightweight selector.
 
-1. 최종적으로 오답인 diffusion trajectory 안에도, 다시 시작하면 정답으로 복구될 수 있는 중간 state가 존재한다.
-2. repairability는 모든 step에 균등하지 않고 특정 checkpoint 근처에 집중된다.
-3. oracle로 모든 step을 직접 repair해보지 않아도, state feature만으로 좋은 repair step을 예측할 수 있다.
-4. 위 성질은 한 데이터셋의 우연이 아니라 여러 데이터셋과 설정 변형에서 반복 관찰된다.
+This project should be framed as a **measurement and localization protocol**, not as a general-purpose self-correction method. Local repair is used primarily as an operational probe for measuring recoverability of intermediate states.
 
-## 연구 포지셔닝
+## Contributions
 
-- 이 레포의 포지셔닝은 `new self-correction method`보다 `repairable-state localization and evaluation protocol for diffusion reasoning trajectories`에 가깝습니다.
-- local repair는 그 자체를 강한 방법론적 novelty로 주장하기보다, checkpoint별 local repairability를 측정하기 위한 `operational probe`로 사용합니다.
-- oracle은 실패 trajectory의 각 checkpoint에서 실제 복구 가능성을 측정하고, predictor는 그 분포를 근사해 oracle 없이 step selector를 학습합니다.
-- 핵심 보고 지표는 `repairable failed rate`, `repair gain curve`, `negative repair`, `predictor-oracle gap`, `expected newly solved`입니다.
+1. We define state-level repairability for diffusion reasoning trajectories.
+2. We introduce an oracle repair protocol that probes failed trajectories at intermediate checkpoints.
+3. We compare practical step selectors: random, confidence-based, predictor-based, and oracle selection.
+4. We report repair gain together with negative repair, exposing a gain-safety tradeoff.
+5. We provide MATH-500, GSM8K, and robustness runs with aggregate reports and paper-ready tables.
 
-## 현재 상태
+## Protocol Overview
 
-현재 저장소 스냅샷 기준으로 실험 상태는 아래와 같습니다.
+For each reasoning problem, the protocol performs:
 
-- `protocol_gsm8k_final.yaml`: 완료
-- `protocol_math500_submission_robustness.yaml`: 완료
-- `protocol_math500_final.yaml`: 완료
-- final/submission aggregate report 생성 완료
+1. **Trajectory collection**  
+   Generate multiple diffusion reasoning trajectories and record intermediate refinement states.
 
-주의할 점은 `run_protocol.py --families ...` 같은 부분 재실행이 기존 protocol report를 덮어써 diffusion row를 잃을 수 있었다는 점입니다. 현재 코드는 부분 실행 시 기존 report와 병합하도록 수정되어 있으며, `results/final_reports`와 `results/submission_reports`는 이 수정 후 재생성된 상태입니다.
+2. **Failure filtering**  
+   Identify trajectories whose final answer is incorrect.
 
-## 현재 결과 스냅샷
+3. **Checkpoint probing**  
+   For each failed trajectory, restart from selected intermediate states and apply a local repair operator.
 
-아래 숫자는 현재 저장된 artifact만 기준으로 정리한 요약입니다.
+4. **Oracle localization**  
+   Measure which checkpoint, if any, can recover the trajectory into a correct final answer.
 
-### Diffusion Main
+5. **Predictor selection**  
+   Train a lightweight predictor over state-level features to choose repair checkpoints without oracle repair trials.
 
-| Protocol / run | Dataset | pass@1 | pass@k | predictor repaired pass@k | predictor neg repair | repairable failed rate | peak step |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `gsm8k_final_llada8b_fast` | GSM8K | 0.4900 | 0.7100 | 0.8336 | 0.1788 | 0.6716 | 8 |
-| `math500_final_llada8b_fast` | MATH-500 | 0.2300 | 0.3450 | 0.4578 | 0.2050 | 0.3309 | 16 |
-| `math500_submit_llada8b_fast_seed29` | MATH-500 robustness | 0.2300 | 0.3350 | 0.4426 | 0.2125 | 0.3341 | 16 |
-| `math500_submit_llada8b_fast_stride16` | MATH-500 robustness | 0.2300 | 0.3450 | 0.4759 | 0.2725 | 0.2516 | 16 |
-| `math500_submit_llada8b_fast_branch2` | MATH-500 robustness | 0.2300 | 0.3450 | 0.4403 | 0.2275 | 0.2557 | 16 |
+6. **Aggregate evaluation**  
+   Report base pass@k, repaired pass@k, newly solved items, repairable failed rate, predictor-oracle gap, and negative repair.
 
-### AR Compare
+## Metrics
 
-| Run | Dataset | pass@1 | pass@k |
+| Metric | Meaning |
+| --- | --- |
+| `item_pass_at_1` | Fraction of items solved by the first trajectory/sample. |
+| `item_pass_at_k` | Fraction of items solved by any of the sampled trajectories. |
+| `expected_repaired_item_pass_at_k` | Expected item-level pass@k after applying selected repair. |
+| `predictor_gain_over_base_pass_at_k` | Repaired pass@k minus base pass@k. |
+| `repairable_failed_rate` | Fraction of failed trajectories with at least one repairable checkpoint. |
+| `peak_step_index` | Checkpoint with highest mean correction rate. |
+| `oracle_minus_predictor_expected_pass_at_k` | Remaining gap between oracle selection and predictor selection. |
+| `negative_repair_rate` | Fraction of originally successful trajectories harmed by the repair policy. |
+
+## Experimental Setup
+
+### Diffusion Model
+
+- Main diffusion model: `GSAI-ML/LLaDA-8B-Instruct`
+- Backend: local LLaDA/RFBA integration
+- Repair operator: anchored remask with multi-branch restart probing
+- Predictor: logistic-regression step scorer over trajectory/state features
+
+### Datasets
+
+- `MATH-500`
+- `GSM8K`
+
+Current final protocols use a 200-item evaluation slice with 8 trajectories per item.
+
+### Baselines
+
+Autoregressive baselines are included as reference points, not as the primary object of analysis.
+
+- `Qwen/Qwen2.5-7B-Instruct`
+- `meta-llama/Meta-Llama-3.1-8B-Instruct`
+
+## Main Results
+
+### Diffusion Repairability Summary
+
+| dataset | model | pass@1 | pass@k | pred repaired pass@k | pred gain | oracle-pred gap | peak step | repairable failed rate | neg repair |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| math500 | llada_8b_fast | 0.2300 | 0.3450 | 0.4578 | 0.1128 | 0.0890 | 16 | 0.3309 | 0.2050 |
+| gsm8k | llada_8b_fast | 0.4900 | 0.7100 | 0.8336 | 0.1236 | 0.0404 | 8 | 0.6716 | 0.1787 |
+
+### MATH-500 Robustness Variants
+
+| variant | base pass@k | pred repaired pass@k | pred gain | oracle-pred gap | peak step | neg repair |
+| --- | --- | --- | --- | --- | --- | --- |
+| seed29 | 0.3350 | 0.4426 | 0.1076 | 0.1101 | 16 | 0.2125 |
+| stride16 | 0.3450 | 0.4759 | 0.1309 | 0.0210 | 16 | 0.2725 |
+| branch2 | 0.3450 | 0.4403 | 0.0953 | 0.0989 | 16 | 0.2275 |
+
+### Autoregressive Reference
+
+| dataset | model | pass@1 | pass@k |
 | --- | --- | --- | --- |
-| `math500_final_ar_qwen25_7b` | MATH-500 | 0.4450 | 0.5650 |
-| `math500_final_ar_llama31_8b` | MATH-500 | 0.3900 | 0.6100 |
-| `gsm8k_final_ar_qwen25_7b` | GSM8K | 0.8350 | 0.9550 |
-| `gsm8k_final_ar_llama31_8b` | GSM8K | 0.7750 | 0.9350 |
+| math500 | qwen2_5_7b_instruct | 0.4450 | 0.5650 |
+| math500 | llama_3_1_8b_instruct | 0.3900 | 0.6100 |
+| gsm8k | qwen2_5_7b_instruct | 0.8350 | 0.9550 |
+| gsm8k | llama_3_1_8b_instruct | 0.7750 | 0.9350 |
 
-### 현재 결과 해석
+## Interpretation
 
-- `GSM8K final`은 가설을 가장 강하게 지지합니다.
-  실패 trajectory의 상당수가 repairable했고, predictor도 oracle에 비교적 가깝게 따라갑니다.
-- `MATH500 final`도 predictor repair gain과 step-16 localize 양상을 보입니다.
-- `MATH500 robustness`는 seed/stride/branching을 바꿔도 repair gain이 유지된다는 점에서 좋지만, negative repair와 predictor-oracle gap이 여전히 큽니다.
+The current evidence supports the repairability framing:
 
-## 지금 바로 논문 집필에 들어가도 되는가
+- Predictor-selected repair improves diffusion pass@k by roughly 9.5 to 13.1 points across the completed runs.
+- Repairability is localized: GSM8K peaks at step 8, while MATH-500 variants consistently peak around step 16.
+- GSM8K has a larger repairable failed rate, suggesting more recoverable failed trajectories under the current probe.
+- MATH-500 remains harder and shows a larger predictor-oracle gap in several settings.
 
-`초안 작성`은 지금 바로 시작해도 됩니다.
+The results should not be interpreted as a claim that the diffusion system is stronger than AR baselines. AR models remain stronger in raw pass@k. The contribution is the state-level measurement protocol and the observation that failed diffusion trajectories often contain recoverable intermediate states.
 
-- 연구 문제 정의
-- protocol framing
-- GSM8K final
-- MATH500 final diffusion-only result
-- MATH500 robustness
-- oracle / predictor / negative repair 서사
+## Paper Readiness
 
-위 재료만으로도 Introduction, Method, 초기 Results 섹션 초안은 충분히 쓸 수 있습니다.
+The repository contains enough evidence for a draft focused on protocol, measurement, and localization. Before a submission-quality version, the following additions are the highest priority:
 
-다만 `최종 제출용 완성본` 단계로 보기에는 아직 이르며, 아래가 남아 있습니다.
+1. Add seed repeats or bootstrap confidence intervals.
+2. Add predictor feature ablations.
+3. Add negative-repair mitigation experiments, such as abstention or thresholded repair.
+4. Add cost-normalized comparisons against extra random sampling.
+5. Add qualitative examples of successful repair, failed repair, and negative repair.
+6. Add one more diffusion backbone or one more reasoning dataset if compute allows.
 
-1. seed 반복과 bootstrap confidence interval 추가
-2. predictor feature ablation 추가
-3. negative repair 완화 실험
-4. cost-normalized comparison 추가
-5. 추가 diffusion backbone / dataset 일반화
+See [docs/paper_readiness_checklist.md](docs/paper_readiness_checklist.md) for the working checklist.
 
-## 논문 완성도를 높이기 위해 더 필요한 것
-
-탑티어 메인트랙 수준으로 끌어올리려면 아래를 우선순위로 권장합니다.
-
-### 필수
-
-1. seed 반복과 confidence interval 추가
-2. predictor feature ablation 추가
-3. negative repair를 줄이는 selection/abstention ablation 추가
-4. cost-normalized comparison 추가
-5. qualitative case study 추가
-
-### 매우 권장
-
-1. diffusion backbone 1개 이상 추가
-2. dataset 1~2개 추가
-3. negative repair를 줄이는 repair rule ablation
-4. 성공/실패 사례의 질적 분석
-
-### 프레이밍상 주의
-
-- `새로운 self-correction method`로 프레이밍하면 방어가 어렵습니다.
-- `state-level repairability protocol`과 `measurement framework`로 프레이밍하는 편이 훨씬 강합니다.
-- method novelty보다 `what is measurable`, `how to localize it`, `how to compare selectors`, `how to quantify safety via negative repair`에 초점을 두는 편이 좋습니다.
-
-## 레포 구조
+## Repository Layout
 
 ```text
 repairable-state-discovery/
 ├── README.md
-├── requirements.txt
-├── pyproject.toml
-├── scripts/
-│   ├── run_phase1_oracle.sh
-│   ├── run_protocol_phase1.sh
-│   ├── run_protocol_repairability_pilot.sh
-│   ├── run_protocol_repairability_stage2.sh
-│   ├── run_protocol_repairability_final.sh
-│   ├── build_final_report.sh
-│   ├── build_submission_report.sh
-│   ├── submit_final_suite.sh
-│   └── submit_submission_ready_suite.sh
+├── docs/
+│   ├── final_paper_outline.md
+│   └── paper_readiness_checklist.md
+├── repairable_diffusion/
+│   ├── configs/
+│   │   ├── model_profiles.yaml
+│   │   └── final/
+│   │       ├── protocol_math500_final.yaml
+│   │       ├── protocol_gsm8k_final.yaml
+│   │       └── protocol_math500_submission_robustness.yaml
+│   └── src/
+│       ├── run_pipeline.py
+│       ├── run_protocol.py
+│       ├── run_ar_baseline.py
+│       ├── analysis/
+│       ├── backends/
+│       ├── collect/
+│       ├── data/
+│       ├── repair/
+│       └── utils/
 ├── results/
-│   └── generated_configs/
-└── repairable_diffusion/
-    ├── configs/
-    │   ├── default.yaml
-    │   ├── model_profiles.yaml
-    │   ├── protocol_phase1.yaml
-    │   ├── protocol_repairability_pilot.yaml
-    │   ├── protocol_repairability_stage2.yaml
-    │   └── final/
-    │       ├── math500_diffusion_final.yaml
-    │       ├── gsm8k_diffusion_final.yaml
-    │       ├── protocol_math500_final.yaml
-    │       ├── protocol_gsm8k_final.yaml
-    │       └── protocol_math500_submission_robustness.yaml
-    ├── outputs/
-    │   └── runs/
-    └── src/
-        ├── run_pipeline.py
-        ├── run_ar_baseline.py
-        ├── run_protocol.py
-        ├── backends/
-        ├── collect/
-        ├── repair/
-        ├── analysis/
-        ├── data/
-        └── utils/
+│   ├── generated_configs/
+│   ├── final_reports/
+│   └── submission_reports/
+├── scripts/
+└── tests/
 ```
 
-## 의존 관계
+Heavy run-level artifacts are excluded from git:
 
-이 프로젝트는 diffusion backend 구현을 새로 복제하지 않고, 별도 `rfba` 저장소의 LLaDA 구현을 재사용합니다.
+- `.hf_home/`
+- `repairable_diffusion/outputs/`
+- logs, pickle files, JSONL trajectory dumps, and Python caches
 
-기본적으로 아래 환경 변수를 설정하는 것을 권장합니다.
+The repository tracks source code, configs, protocol reports, and aggregate summary tables.
 
-```bash
-export RFBA_ROOT=/absolute/path/to/rfba
-```
-
-## 설치
+## Installation
 
 ```bash
 cd repairable-state-discovery
@@ -179,27 +180,25 @@ source .venv/bin/activate
 uv pip install -r requirements.txt
 ```
 
-## 빠른 실행
-
-### Dry run
+The diffusion backend reuses an external RFBA/LLaDA implementation. Set:
 
 ```bash
-cd repairable-state-discovery
+export RFBA_ROOT=/absolute/path/to/rfba
+```
+
+## Running Protocols
+
+### Dry Run
+
+```bash
 python -m repairable_diffusion.src.run_protocol \
   --protocol repairable_diffusion/configs/final/protocol_math500_final.yaml \
   --dry-run
-python -m repairable_diffusion.src.run_protocol \
-  --protocol repairable_diffusion/configs/final/protocol_gsm8k_final.yaml \
-  --dry-run
-python -m repairable_diffusion.src.run_protocol \
-  --protocol repairable_diffusion/configs/final/protocol_math500_submission_robustness.yaml \
-  --dry-run
 ```
 
-### Final protocols
+### Final Protocols
 
 ```bash
-cd repairable-state-discovery
 PROTOCOL_PATH=repairable_diffusion/configs/final/protocol_math500_final.yaml \
   sbatch scripts/run_protocol_repairability_final.sh
 
@@ -210,89 +209,14 @@ PROTOCOL_PATH=repairable_diffusion/configs/final/protocol_math500_submission_rob
   sbatch scripts/run_protocol_repairability_final.sh
 ```
 
-### Submission-ready suite
+### Build Aggregate Reports
 
 ```bash
-cd repairable-state-discovery
-bash scripts/submit_submission_ready_suite.sh
-```
-
-## 집계 리포트 생성
-
-### Final aggregate report
-
-아래 스크립트는 `protocol_math500_final_report.json`과 `protocol_gsm8k_final_report.json`이 모두 있어야 동작합니다.
-
-```bash
-cd repairable-state-discovery
 bash scripts/build_final_report.sh
-```
-
-### Submission aggregate report
-
-아래 스크립트는 `protocol_math500_final_report.json`, `protocol_gsm8k_final_report.json`, `protocol_math500_submission_robustness_report.json`이 모두 있어야 동작합니다.
-
-```bash
-cd repairable-state-discovery
 bash scripts/build_submission_report.sh
 ```
 
-현재 저장소 스냅샷에서는 세 protocol report가 모두 생성되어 있으므로 바로 실행할 수 있습니다.
-
-## 재실행 / 복구 방식
-
-- `run_pipeline.py`는 이미 있는 `trajectories.pkl`, `oracle_repair.json`, `repair_predictor.json`, `repair_selection_eval.json`을 자동 재사용합니다.
-- `run_protocol.py`는 run directory 안에 `report.json`이 있으면 diffusion run을 다시 collect하지 않습니다.
-- `run_ar_baseline.py`는 item 단위 progress를 `ar_baseline.progress.pkl`에 저장하고, 재실행 시 이어서 진행합니다.
-- AR baseline이 완주되면 `run_protocol.py`가 자동으로 `protocol_math500_final_report.json`까지 다시 생성합니다.
-
-### 권장 복구 명령
-
-기존 diffusion artifact를 재사용하면서 `MATH500 final`의 AR compare만 다시 돌리려면:
-
-```bash
-cd repairable-state-discovery
-PROTOCOL_PATH=repairable_diffusion/configs/final/protocol_math500_final.yaml \
-PROTOCOL_FAMILIES=ar \
-  sbatch scripts/run_protocol_repairability_final.sh
-```
-
-특정 AR baseline 하나만 따로 다시 돌리려면:
-
-```bash
-cd repairable-state-discovery
-PROTOCOL_PATH=repairable_diffusion/configs/final/protocol_math500_final.yaml \
-PROTOCOL_FAMILIES=ar \
-PROTOCOL_RUN_NAMES=math500_final_ar_qwen25_7b \
-  sbatch scripts/run_protocol_repairability_final.sh
-```
-
-## 산출물
-
-### Run-level artifact
-
-```text
-repairable_diffusion/outputs/runs/<run_name>/
-  config.snapshot.json
-  trajectories.pkl
-  trajectories.light.jsonl
-  trajectory_summary.json
-  oracle_repair.json
-  repair_predictor.json
-  repair_selection_eval.json
-  report.json
-```
-
-### Protocol-level artifact
-
-```text
-results/generated_configs/
-  protocol_gsm8k_final_report.json
-  protocol_math500_final_report.json
-  protocol_math500_submission_robustness_report.json
-```
-
-### Aggregate artifact
+Aggregate outputs:
 
 ```text
 results/final_reports/
@@ -300,33 +224,34 @@ results/final_reports/
   diffusion_summary.csv
   ar_summary.csv
   tables/
-    diffusion_markdown.md
-    ar_markdown.md
-    diffusion_latex.tex
-    ar_latex.tex
 
 results/submission_reports/
   aggregate_report.json
   diffusion_summary.csv
   ar_summary.csv
   tables/
-    diffusion_markdown.md
-    ar_markdown.md
-    diffusion_latex.tex
-    ar_latex.tex
 ```
 
-## 구현 포인트
+## Reuse And Partial Runs
 
-- submission-ready diffusion main은 `GSAI-ML/LLaDA-8B-Instruct` 기반 `repairable-state localization and evaluation`을 수행합니다.
-- AR baseline은 `transformers` causal LM backend를 사용합니다.
-- final stable suite는 `MATH-500`, `GSM8K`, `MATH-500 robustness` 세 프로토콜로 구성됩니다.
-- repair operation은 `anchored remask + multi-branch restart probe`입니다.
-- predictor는 logistic regression 기반 multi-signal step scorer입니다.
-- summary metric은 sample accuracy 외에 `item pass@1`, `item pass@k`, `expected newly solved`, `negative repair rate`, `peak repair step`, `repairable failed rate`, `predictor-oracle gap`까지 저장합니다.
+The pipeline is designed to reuse existing artifacts:
 
-## 알려진 한계
+- `run_pipeline.py` reuses trajectory, oracle, predictor, and selection-eval artifacts when available.
+- `run_protocol.py` reuses run-level `report.json` files.
+- AR baselines write progress files and can resume interrupted runs.
+- Partial protocol reruns merge with existing protocol reports instead of dropping unrelated rows.
 
-- 현재 로컬 `.venv`는 저장소 안에 포함되어 있지 않습니다.
-- 테스트는 매우 제한적이며, protocol/aggregation/reporting 경로에 대한 회귀 테스트가 없습니다.
-- run-level heavy artifacts는 GitHub에 올리지 않습니다. `repairable_diffusion/outputs/`와 `.hf_home/`은 `.gitignore`에 포함되어 있으며, repo에는 source/config/report summary만 versioning합니다.
+Example partial rerun:
+
+```bash
+PROTOCOL_PATH=repairable_diffusion/configs/final/protocol_math500_final.yaml \
+PROTOCOL_FAMILIES=ar \
+  sbatch scripts/run_protocol_repairability_final.sh
+```
+
+## Known Limitations
+
+- Current results use a limited evaluation slice and need confidence intervals.
+- The main diffusion evidence currently centers on LLaDA; broader backbone coverage is needed.
+- Negative repair remains nontrivial and should be treated as a central safety metric.
+- Tests are currently limited and should be expanded around protocol aggregation and reporting.
