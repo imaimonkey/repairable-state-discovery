@@ -1,0 +1,42 @@
+{
+  "dry_run": true,
+  "runs": [
+    {
+      "run_name": "math500_final_ar_qwen25_7b",
+      "family": "ar",
+      "dataset_name": "math500",
+      "model_profile": "qwen2_5_7b_instruct",
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_final_ar_qwen25_7b",
+      "config_path": "/home/kimhj/repairable-state-discovery/results/generated_configs/math500_final_ar_qwen25_7b.yaml",
+      "config_json_path": "/home/kimhj/repairable-state-discovery/results/generated_configs/math500_final_ar_qwen25_7b.json"
+    },
+    {
+      "run_name": "math500_final_ar_llama31_8b",
+      "family": "ar",
+      "dataset_name": "math500",
+      "model_profile": "llama_3_1_8b_instruct",
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_final_ar_llama31_8b",
+      "config_path": "/home/kimhj/repairable-state-discovery/results/generated_configs/math500_final_ar_llama31_8b.yaml",
+      "config_json_path": "/home/kimhj/repairable-state-discovery/results/generated_configs/math500_final_ar_llama31_8b.json"
+    }
+  ],
+  "summary": {
+    "diffusion_table": [],
+    "ar_table": [
+      {
+        "run_name": "math500_final_ar_qwen25_7b",
+        "dataset_name": "math500",
+        "model_profile": "qwen2_5_7b_instruct",
+        "pass_at_1": null,
+        "pass_at_k": null
+      },
+      {
+        "run_name": "math500_final_ar_llama31_8b",
+        "dataset_name": "math500",
+        "model_profile": "llama_3_1_8b_instruct",
+        "pass_at_1": null,
+        "pass_at_k": null
+      }
+    ]
+  }
+}

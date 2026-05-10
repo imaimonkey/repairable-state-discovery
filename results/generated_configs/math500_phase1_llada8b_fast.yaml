@@ -1,0 +1,65 @@
+paths:
+  outputs_root: /home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs
+  run_name: math500_phase1_llada8b_fast
+backend:
+  type: rfba_llada
+  rfba_root: /home/kimhj/rfba
+  model_path: GSAI-ML/LLaDA-8B-Instruct
+  torch_dtype: bfloat16
+  device: cuda
+  trust_remote_code: true
+  fast: true
+dataset:
+  name: math500
+  path: HuggingFaceH4/MATH-500
+  split: test
+  limit: 200
+  start_index: 0
+  sample_seed: 11
+generation:
+  trajectories_per_item: 8
+  base_seed: 11
+  steps: 256
+  gen_length: 256
+  block_length: 128
+  temperature: 0.0
+  cfg_scale: 0.0
+  remasking: low_confidence
+  mask_id: 126336
+  checkpoint_stride: 8
+  min_oracle_step: 16
+repair:
+  enabled: true
+  anchor_confidence_threshold: 0.8
+  remask_fraction: 0.2
+  min_remask_positions: 4
+  branch_temperatures:
+  - 0.0
+  - 0.2
+  - 0.5
+  - 0.8
+  branch_remask_fractions:
+  - 0.15
+  - 0.2
+  - 0.25
+  - 0.3
+  branch_seed_stride: 1000
+predictor:
+  enabled: true
+  top_k_label: 1
+  test_size: 0.2
+  random_state: 7
+  max_iter: 1000
+evaluation:
+  enabled: true
+  selectors:
+  - random
+  - confidence
+  - predictor
+  - oracle
+  measure_negative_repair: false
+  max_success_trajectories_for_negative_repair: 0
+study:
+  family: diffusion
+  model_profile: llada_8b_fast
+  role: main

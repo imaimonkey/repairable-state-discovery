@@ -1,0 +1,68 @@
+{
+  "dry_run": true,
+  "runs": [
+    {
+      "run_name": "gsm8k_final_llada8b_fast",
+      "family": "diffusion",
+      "dataset_name": "gsm8k",
+      "model_profile": "llada_8b_fast",
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_llada8b_fast",
+      "config_path": "/home/kimhj/repairable-state-discovery/results/generated_configs/gsm8k_final_llada8b_fast.yaml",
+      "config_json_path": "/home/kimhj/repairable-state-discovery/results/generated_configs/gsm8k_final_llada8b_fast.json"
+    },
+    {
+      "run_name": "gsm8k_final_ar_qwen25_7b",
+      "family": "ar",
+      "dataset_name": "gsm8k",
+      "model_profile": "qwen2_5_7b_instruct",
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_ar_qwen25_7b",
+      "config_path": "/home/kimhj/repairable-state-discovery/results/generated_configs/gsm8k_final_ar_qwen25_7b.yaml",
+      "config_json_path": "/home/kimhj/repairable-state-discovery/results/generated_configs/gsm8k_final_ar_qwen25_7b.json"
+    },
+    {
+      "run_name": "gsm8k_final_ar_llama31_8b",
+      "family": "ar",
+      "dataset_name": "gsm8k",
+      "model_profile": "llama_3_1_8b_instruct",
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_ar_llama31_8b",
+      "config_path": "/home/kimhj/repairable-state-discovery/results/generated_configs/gsm8k_final_ar_llama31_8b.yaml",
+      "config_json_path": "/home/kimhj/repairable-state-discovery/results/generated_configs/gsm8k_final_ar_llama31_8b.json"
+    }
+  ],
+  "summary": {
+    "diffusion_table": [
+      {
+        "run_name": "gsm8k_final_llada8b_fast",
+        "dataset_name": "gsm8k",
+        "model_profile": "llada_8b_fast",
+        "sample_accuracy": null,
+        "item_pass_at_1": null,
+        "item_pass_at_k": null,
+        "predictor_expected_pass_at_k": null,
+        "predictor_expected_newly_solved": null,
+        "predictor_negative_repair_rate": null,
+        "predictor_gain_over_base_pass_at_k": null,
+        "oracle_expected_pass_at_k": null,
+        "oracle_expected_newly_solved": null,
+        "peak_step_index": null,
+        "repairable_failed_rate": null
+      }
+    ],
+    "ar_table": [
+      {
+        "run_name": "gsm8k_final_ar_qwen25_7b",
+        "dataset_name": "gsm8k",
+        "model_profile": "qwen2_5_7b_instruct",
+        "pass_at_1": null,
+        "pass_at_k": null
+      },
+      {
+        "run_name": "gsm8k_final_ar_llama31_8b",
+        "dataset_name": "gsm8k",
+        "model_profile": "llama_3_1_8b_instruct",
+        "pass_at_1": null,
+        "pass_at_k": null
+      }
+    ]
+  }
+}

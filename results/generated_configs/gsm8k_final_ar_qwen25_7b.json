@@ -1,0 +1,32 @@
+{
+  "paths": {
+    "outputs_root": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs",
+    "run_name": "gsm8k_final_ar_qwen25_7b"
+  },
+  "dataset": {
+    "name": "gsm8k",
+    "path": "openai/gsm8k",
+    "config_name": "main",
+    "split": "test",
+    "limit": 200,
+    "start_index": 0,
+    "sample_seed": 11
+  },
+  "backend": {
+    "type": "transformers_causal",
+    "model_path": "Qwen/Qwen2.5-7B-Instruct",
+    "torch_dtype": "bfloat16",
+    "device_map": "auto",
+    "trust_remote_code": true,
+    "max_new_tokens": 512,
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "samples_per_item": 8
+  },
+  "base_seed": 11,
+  "study": {
+    "family": "ar",
+    "model_profile": "qwen2_5_7b_instruct",
+    "role": "compare"
+  }
+}

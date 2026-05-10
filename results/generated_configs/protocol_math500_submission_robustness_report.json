@@ -1,0 +1,303 @@
+{
+  "dry_run": false,
+  "runs": [
+    {
+      "run_name": "math500_submit_llada8b_fast_seed29",
+      "family": "diffusion",
+      "dataset_name": "math500",
+      "model_profile": "llada_8b_fast",
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_submit_llada8b_fast_seed29",
+      "report_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_submit_llada8b_fast_seed29/report.json",
+      "selection_eval_rows": 4,
+      "sample_accuracy": 0.221875,
+      "item_pass_at_1": 0.23,
+      "item_pass_at_k": 0.335,
+      "predictor_selector": {
+        "selector": "predictor",
+        "failed_trajectory_correction_rate": 0.10963855421686747,
+        "base_item_pass_at_1": 0.23,
+        "base_item_pass_at_k": 0.335,
+        "expected_repaired_item_pass_at_k": 0.442586669921875,
+        "expected_newly_solved_items": 21.517333984375,
+        "upper_bound_newly_solved_items": 39.0,
+        "negative_repair_rate": 0.2125,
+        "num_selected_trajectories": 1245,
+        "num_selected_success_trajectories": 200,
+        "repair_branch_count": 4
+      },
+      "oracle_selector": {
+        "selector": "oracle",
+        "failed_trajectory_correction_rate": 0.19959839357429718,
+        "base_item_pass_at_1": 0.23,
+        "base_item_pass_at_k": 0.335,
+        "expected_repaired_item_pass_at_k": 0.5526974487304688,
+        "expected_newly_solved_items": 43.53948974609375,
+        "upper_bound_newly_solved_items": 63.0,
+        "negative_repair_rate": 0.0,
+        "num_selected_trajectories": 1245,
+        "num_selected_success_trajectories": 200,
+        "repair_branch_count": 4
+      },
+      "repairability_summary": {
+        "repairable_failed_trajectories": 416,
+        "repairable_failed_rate": 0.334136546184739,
+        "peak_step_index": 16,
+        "peak_mean_correction_rate": 0.13132530120481928,
+        "earliest_positive_step": 8,
+        "latest_positive_step": 64,
+        "best_step_histogram": [
+          {
+            "step_index": 8,
+            "count": 153
+          },
+          {
+            "step_index": 16,
+            "count": 136
+          },
+          {
+            "step_index": 24,
+            "count": 62
+          },
+          {
+            "step_index": 32,
+            "count": 38
+          },
+          {
+            "step_index": 40,
+            "count": 18
+          },
+          {
+            "step_index": 48,
+            "count": 5
+          },
+          {
+            "step_index": 56,
+            "count": 2
+          },
+          {
+            "step_index": 64,
+            "count": 2
+          }
+        ]
+      },
+      "selector_deltas": {
+        "predictor_gain_over_base_pass_at_k": 0.10758666992187499,
+        "oracle_minus_predictor_expected_pass_at_k": 0.11011077880859377,
+        "oracle_minus_predictor_expected_newly_solved": 22.02215576171875,
+        "predictor_minus_confidence_expected_pass_at_k": 0.039747314453125016,
+        "predictor_minus_random_expected_pass_at_k": 0.018211669921875007
+      }
+    },
+    {
+      "run_name": "math500_submit_llada8b_fast_stride16",
+      "family": "diffusion",
+      "dataset_name": "math500",
+      "model_profile": "llada_8b_fast",
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_submit_llada8b_fast_stride16",
+      "report_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_submit_llada8b_fast_stride16/report.json",
+      "selection_eval_rows": 4,
+      "sample_accuracy": 0.2275,
+      "item_pass_at_1": 0.23,
+      "item_pass_at_k": 0.345,
+      "predictor_selector": {
+        "selector": "predictor",
+        "failed_trajectory_correction_rate": 0.1328883495145631,
+        "base_item_pass_at_1": 0.23,
+        "base_item_pass_at_k": 0.345,
+        "expected_repaired_item_pass_at_k": 0.4758885955810547,
+        "expected_newly_solved_items": 26.177719116210938,
+        "upper_bound_newly_solved_items": 46.0,
+        "negative_repair_rate": 0.2725,
+        "num_selected_trajectories": 1236,
+        "num_selected_success_trajectories": 200,
+        "repair_branch_count": 4
+      },
+      "oracle_selector": {
+        "selector": "oracle",
+        "failed_trajectory_correction_rate": 0.15129449838187703,
+        "base_item_pass_at_1": 0.23,
+        "base_item_pass_at_k": 0.345,
+        "expected_repaired_item_pass_at_k": 0.4968779754638672,
+        "expected_newly_solved_items": 30.375595092773438,
+        "upper_bound_newly_solved_items": 50.0,
+        "negative_repair_rate": 0.00375,
+        "num_selected_trajectories": 1236,
+        "num_selected_success_trajectories": 200,
+        "repair_branch_count": 4
+      },
+      "repairability_summary": {
+        "repairable_failed_trajectories": 311,
+        "repairable_failed_rate": 0.25161812297734626,
+        "peak_step_index": 16,
+        "peak_mean_correction_rate": 0.1328883495145631,
+        "earliest_positive_step": 16,
+        "latest_positive_step": 64,
+        "best_step_histogram": [
+          {
+            "step_index": 16,
+            "count": 255
+          },
+          {
+            "step_index": 32,
+            "count": 51
+          },
+          {
+            "step_index": 48,
+            "count": 4
+          },
+          {
+            "step_index": 64,
+            "count": 1
+          }
+        ]
+      },
+      "selector_deltas": {
+        "predictor_gain_over_base_pass_at_k": 0.1308885955810547,
+        "oracle_minus_predictor_expected_pass_at_k": 0.02098937988281252,
+        "oracle_minus_predictor_expected_newly_solved": 4.1978759765625,
+        "predictor_minus_confidence_expected_pass_at_k": 0.0639354705810547,
+        "predictor_minus_random_expected_pass_at_k": 0.05688468933105467
+      }
+    },
+    {
+      "run_name": "math500_submit_llada8b_fast_branch2",
+      "family": "diffusion",
+      "dataset_name": "math500",
+      "model_profile": "llada_8b_fast",
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_submit_llada8b_fast_branch2",
+      "report_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_submit_llada8b_fast_branch2/report.json",
+      "selection_eval_rows": 4,
+      "sample_accuracy": 0.2275,
+      "item_pass_at_1": 0.23,
+      "item_pass_at_k": 0.345,
+      "predictor_selector": {
+        "selector": "predictor",
+        "failed_trajectory_correction_rate": 0.1063915857605178,
+        "base_item_pass_at_1": 0.23,
+        "base_item_pass_at_k": 0.345,
+        "expected_repaired_item_pass_at_k": 0.4403125,
+        "expected_newly_solved_items": 19.0625,
+        "upper_bound_newly_solved_items": 25.0,
+        "negative_repair_rate": 0.2275,
+        "num_selected_trajectories": 1236,
+        "num_selected_success_trajectories": 200,
+        "repair_branch_count": 2
+      },
+      "oracle_selector": {
+        "selector": "oracle",
+        "failed_trajectory_correction_rate": 0.1913430420711974,
+        "base_item_pass_at_1": 0.23,
+        "base_item_pass_at_k": 0.345,
+        "expected_repaired_item_pass_at_k": 0.53919921875,
+        "expected_newly_solved_items": 38.83984375,
+        "upper_bound_newly_solved_items": 48.0,
+        "negative_repair_rate": 0.0,
+        "num_selected_trajectories": 1236,
+        "num_selected_success_trajectories": 200,
+        "repair_branch_count": 2
+      },
+      "repairability_summary": {
+        "repairable_failed_trajectories": 316,
+        "repairable_failed_rate": 0.255663430420712,
+        "peak_step_index": 16,
+        "peak_mean_correction_rate": 0.13309061488673138,
+        "earliest_positive_step": 8,
+        "latest_positive_step": 64,
+        "best_step_histogram": [
+          {
+            "step_index": 8,
+            "count": 145
+          },
+          {
+            "step_index": 16,
+            "count": 102
+          },
+          {
+            "step_index": 24,
+            "count": 38
+          },
+          {
+            "step_index": 32,
+            "count": 21
+          },
+          {
+            "step_index": 40,
+            "count": 6
+          },
+          {
+            "step_index": 48,
+            "count": 2
+          },
+          {
+            "step_index": 56,
+            "count": 1
+          },
+          {
+            "step_index": 64,
+            "count": 1
+          }
+        ]
+      },
+      "selector_deltas": {
+        "predictor_gain_over_base_pass_at_k": 0.09531250000000002,
+        "oracle_minus_predictor_expected_pass_at_k": 0.09888671874999999,
+        "oracle_minus_predictor_expected_newly_solved": 19.77734375,
+        "predictor_minus_confidence_expected_pass_at_k": 0.03156249999999999,
+        "predictor_minus_random_expected_pass_at_k": 0.021562499999999984
+      }
+    }
+  ],
+  "summary": {
+    "diffusion_table": [
+      {
+        "run_name": "math500_submit_llada8b_fast_seed29",
+        "dataset_name": "math500",
+        "model_profile": "llada_8b_fast",
+        "sample_accuracy": 0.221875,
+        "item_pass_at_1": 0.23,
+        "item_pass_at_k": 0.335,
+        "predictor_expected_pass_at_k": 0.442586669921875,
+        "predictor_expected_newly_solved": 21.517333984375,
+        "predictor_negative_repair_rate": 0.2125,
+        "predictor_gain_over_base_pass_at_k": 0.10758666992187499,
+        "oracle_expected_pass_at_k": 0.5526974487304688,
+        "oracle_expected_newly_solved": 43.53948974609375,
+        "peak_step_index": 16,
+        "repairable_failed_rate": 0.334136546184739
+      },
+      {
+        "run_name": "math500_submit_llada8b_fast_stride16",
+        "dataset_name": "math500",
+        "model_profile": "llada_8b_fast",
+        "sample_accuracy": 0.2275,
+        "item_pass_at_1": 0.23,
+        "item_pass_at_k": 0.345,
+        "predictor_expected_pass_at_k": 0.4758885955810547,
+        "predictor_expected_newly_solved": 26.177719116210938,
+        "predictor_negative_repair_rate": 0.2725,
+        "predictor_gain_over_base_pass_at_k": 0.1308885955810547,
+        "oracle_expected_pass_at_k": 0.4968779754638672,
+        "oracle_expected_newly_solved": 30.375595092773438,
+        "peak_step_index": 16,
+        "repairable_failed_rate": 0.25161812297734626
+      },
+      {
+        "run_name": "math500_submit_llada8b_fast_branch2",
+        "dataset_name": "math500",
+        "model_profile": "llada_8b_fast",
+        "sample_accuracy": 0.2275,
+        "item_pass_at_1": 0.23,
+        "item_pass_at_k": 0.345,
+        "predictor_expected_pass_at_k": 0.4403125,
+        "predictor_expected_newly_solved": 19.0625,
+        "predictor_negative_repair_rate": 0.2275,
+        "predictor_gain_over_base_pass_at_k": 0.09531250000000002,
+        "oracle_expected_pass_at_k": 0.53919921875,
+        "oracle_expected_newly_solved": 38.83984375,
+        "peak_step_index": 16,
+        "repairable_failed_rate": 0.255663430420712
+      }
+    ],
+    "ar_table": []
+  }
+}

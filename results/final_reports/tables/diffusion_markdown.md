@@ -1,0 +1,4 @@
+| dataset | model | pass@1 | pass@k | pred repaired pass@k | pred gain | oracle-pred gap | peak step | repairable failed rate | neg repair |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| math500 | llada_8b_fast | 0.2300 | 0.3450 | 0.4578 | 0.1128 | 0.0890 | 16 | 0.3309 | 0.2050 |
+| gsm8k | llada_8b_fast | 0.4900 | 0.7100 | 0.8336 | 0.1236 | 0.0404 | 8 | 0.6716 | 0.1787 |

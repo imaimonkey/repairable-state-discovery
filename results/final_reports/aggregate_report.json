@@ -1,0 +1,96 @@
+{
+  "protocol_reports": [
+    "/home/kimhj/repairable-state-discovery/results/generated_configs/protocol_math500_final_report.json",
+    "/home/kimhj/repairable-state-discovery/results/generated_configs/protocol_gsm8k_final_report.json"
+  ],
+  "diffusion_rows": [
+    {
+      "protocol_report": "/home/kimhj/repairable-state-discovery/results/generated_configs/protocol_math500_final_report.json",
+      "dataset_name": "math500",
+      "run_name": "math500_final_llada8b_fast",
+      "model_profile": "llada_8b_fast",
+      "sample_accuracy": 0.2275,
+      "item_pass_at_1": 0.23,
+      "item_pass_at_k": 0.345,
+      "predictor_expected_pass_at_k": 0.45782928466796874,
+      "predictor_expected_newly_solved_items": 22.56585693359375,
+      "predictor_negative_repair_rate": 0.205,
+      "oracle_expected_pass_at_k": 0.5468363952636719,
+      "oracle_expected_newly_solved_items": 40.367279052734375,
+      "peak_step_index": 16,
+      "peak_mean_correction_rate": 0.13066343042071196,
+      "repairable_failed_rate": 0.3309061488673139,
+      "predictor_gain_over_base_pass_at_k": 0.11282928466796877,
+      "oracle_minus_predictor_expected_pass_at_k": 0.08900711059570315,
+      "predictor_minus_random_expected_pass_at_k": 0.031774597167968766,
+      "predictor_minus_confidence_expected_pass_at_k": 0.04990081787109374,
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_final_llada8b_fast",
+      "report_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_final_llada8b_fast/report.json"
+    },
+    {
+      "protocol_report": "/home/kimhj/repairable-state-discovery/results/generated_configs/protocol_gsm8k_final_report.json",
+      "dataset_name": "gsm8k",
+      "run_name": "gsm8k_final_llada8b_fast",
+      "model_profile": "llada_8b_fast",
+      "sample_accuracy": 0.491875,
+      "item_pass_at_1": 0.49,
+      "item_pass_at_k": 0.71,
+      "predictor_expected_pass_at_k": 0.8336279296875,
+      "predictor_expected_newly_solved_items": 24.7255859375,
+      "predictor_negative_repair_rate": 0.17875,
+      "oracle_expected_pass_at_k": 0.8740249633789062,
+      "oracle_expected_newly_solved_items": 32.80499267578125,
+      "peak_step_index": 8,
+      "peak_mean_correction_rate": 0.4311193111931119,
+      "repairable_failed_rate": 0.6715867158671587,
+      "predictor_gain_over_base_pass_at_k": 0.12362792968750003,
+      "oracle_minus_predictor_expected_pass_at_k": 0.04039703369140624,
+      "predictor_minus_random_expected_pass_at_k": 0.011381835937499973,
+      "predictor_minus_confidence_expected_pass_at_k": 0.026755371093750036,
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_llada8b_fast",
+      "report_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_llada8b_fast/report.json"
+    }
+  ],
+  "ar_rows": [
+    {
+      "protocol_report": "/home/kimhj/repairable-state-discovery/results/generated_configs/protocol_math500_final_report.json",
+      "dataset_name": "math500",
+      "run_name": "math500_final_ar_qwen25_7b",
+      "model_profile": "qwen2_5_7b_instruct",
+      "pass_at_1": 0.445,
+      "pass_at_k": 0.565,
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_final_ar_qwen25_7b",
+      "summary_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_final_ar_qwen25_7b/ar_baseline_summary.json"
+    },
+    {
+      "protocol_report": "/home/kimhj/repairable-state-discovery/results/generated_configs/protocol_math500_final_report.json",
+      "dataset_name": "math500",
+      "run_name": "math500_final_ar_llama31_8b",
+      "model_profile": "llama_3_1_8b_instruct",
+      "pass_at_1": 0.39,
+      "pass_at_k": 0.61,
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_final_ar_llama31_8b",
+      "summary_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_final_ar_llama31_8b/ar_baseline_summary.json"
+    },
+    {
+      "protocol_report": "/home/kimhj/repairable-state-discovery/results/generated_configs/protocol_gsm8k_final_report.json",
+      "dataset_name": "gsm8k",
+      "run_name": "gsm8k_final_ar_qwen25_7b",
+      "model_profile": "qwen2_5_7b_instruct",
+      "pass_at_1": 0.835,
+      "pass_at_k": 0.955,
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_ar_qwen25_7b",
+      "summary_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_ar_qwen25_7b/ar_baseline_summary.json"
+    },
+    {
+      "protocol_report": "/home/kimhj/repairable-state-discovery/results/generated_configs/protocol_gsm8k_final_report.json",
+      "dataset_name": "gsm8k",
+      "run_name": "gsm8k_final_ar_llama31_8b",
+      "model_profile": "llama_3_1_8b_instruct",
+      "pass_at_1": 0.775,
+      "pass_at_k": 0.935,
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_ar_llama31_8b",
+      "summary_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_ar_llama31_8b/ar_baseline_summary.json"
+    }
+  ]
+}

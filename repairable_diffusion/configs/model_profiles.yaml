@@ -1,0 +1,74 @@
+models:
+  llada_8b:
+    family: diffusion
+    backend:
+      type: rfba_llada
+      rfba_root: /home/kimhj/rfba
+      model_path: GSAI-ML/LLaDA-8B-Instruct
+      torch_dtype: bfloat16
+      device: cuda
+      trust_remote_code: true
+      fast: false
+
+  llada_8b_fast:
+    family: diffusion
+    backend:
+      type: rfba_llada
+      rfba_root: /home/kimhj/rfba
+      model_path: GSAI-ML/LLaDA-8B-Instruct
+      torch_dtype: bfloat16
+      device: cuda
+      trust_remote_code: true
+      fast: true
+
+  dream_v0_instruct_7b:
+    family: diffusion
+    backend:
+      type: dream
+      playground_root: /home/kimhj/difffusion-sampling-exp-benchmark-playground
+      model_path: Dream-org/Dream-v0-Instruct-7B
+      torch_dtype: bfloat16
+      device: cuda
+      trust_remote_code: true
+      top_p: 0.95
+      top_k:
+
+  dream_v0_base_7b:
+    family: diffusion
+    backend:
+      type: dream
+      playground_root: /home/kimhj/difffusion-sampling-exp-benchmark-playground
+      model_path: Dream-org/Dream-v0-Base-7B
+      torch_dtype: bfloat16
+      device: cuda
+      trust_remote_code: true
+      top_p: 0.95
+      top_k:
+
+  qwen2_5_7b_instruct:
+    family: ar
+    backend:
+      type: transformers_causal
+      model_path: Qwen/Qwen2.5-7B-Instruct
+      torch_dtype: bfloat16
+      device_map: auto
+      trust_remote_code: true
+      max_new_tokens: 512
+      temperature: 0.6
+      top_p: 0.95
+      samples_per_item: 8
+      sample_batch_size: 2
+
+  llama_3_1_8b_instruct:
+    family: ar
+    backend:
+      type: transformers_causal
+      model_path: meta-llama/Meta-Llama-3.1-8B-Instruct
+      torch_dtype: bfloat16
+      device_map: auto
+      trust_remote_code: true
+      max_new_tokens: 512
+      temperature: 0.6
+      top_p: 0.95
+      samples_per_item: 8
+      sample_batch_size: 2
