@@ -9,23 +9,27 @@ The current artifacts support the claim that failed diffusion reasoning trajecto
 ## Submission Blockers
 
 1. Add uncertainty estimates.
-   - Run seed repeats or bootstrap item-level confidence intervals.
+   - Bootstrap item-level confidence intervals are available in `results/extended_analysis/`.
+   - True seed repeats remain a separate generation experiment.
    - Report CI for base pass@k, predictor repaired pass@k, oracle repaired pass@k, and negative repair.
 
 2. Add predictor ablations.
+   - Feature ablations are available in `results/extended_analysis/`.
    - Compare all features against confidence-only, trajectory-position-only, and leave-one-feature-out variants.
    - Report predictor-oracle gap and negative repair for each ablation.
 
 3. Add negative-repair mitigation.
-   - Evaluate abstention thresholds.
-   - Evaluate repair only when predictor confidence clears a calibrated threshold.
+   - Predictor threshold/abstention analysis is available in `results/extended_analysis/`.
+   - Stronger mitigation may require new selector calibration or repair policy changes.
    - Report gain versus negative repair rather than gain alone.
 
 4. Add cost-normalized comparisons.
+   - A repair branch evaluation proxy is available in `results/extended_analysis/`.
    - Report base samples per item, repair branches, and total generation calls.
    - Compare predictor repair against random extra samples under a matched budget.
 
 5. Add qualitative examples.
+   - Initial examples are available in `results/extended_analysis/qualitative_examples.*`.
    - Include examples where an early state repairs successfully.
    - Include examples where late states fail.
    - Include examples where repair causes negative repair.

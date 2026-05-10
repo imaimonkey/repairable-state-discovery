@@ -128,7 +128,7 @@ The repository contains enough evidence for a draft focused on protocol, measure
 5. Add qualitative examples of successful repair, failed repair, and negative repair.
 6. Add one more diffusion backbone or one more reasoning dataset if compute allows.
 
-See [docs/paper_readiness_checklist.md](docs/paper_readiness_checklist.md) for the working checklist.
+See [docs/final_experiment_matrix.md](docs/final_experiment_matrix.md) and [docs/paper_readiness_checklist.md](docs/paper_readiness_checklist.md) for the completed extended analyses and remaining generation experiments.
 
 ## Repository Layout
 
@@ -214,6 +214,21 @@ PROTOCOL_PATH=repairable_diffusion/configs/final/protocol_math500_submission_rob
 ```bash
 bash scripts/build_final_report.sh
 bash scripts/build_submission_report.sh
+```
+
+### Build Extended Analysis
+
+The extended analysis computes item-level bootstrap intervals, additional repair strategies, predictor threshold policies, feature ablations, cost proxies, and qualitative examples from existing run artifacts.
+
+```bash
+python -m repairable_diffusion.src.analysis.extended_repair_analysis \
+  --run-dir repairable_diffusion/outputs/runs/math500_final_llada8b_fast \
+  --run-dir repairable_diffusion/outputs/runs/gsm8k_final_llada8b_fast \
+  --run-dir repairable_diffusion/outputs/runs/math500_submit_llada8b_fast_seed29 \
+  --run-dir repairable_diffusion/outputs/runs/math500_submit_llada8b_fast_stride16 \
+  --run-dir repairable_diffusion/outputs/runs/math500_submit_llada8b_fast_branch2 \
+  --output-dir results/extended_analysis \
+  --bootstrap 1000
 ```
 
 Aggregate outputs:

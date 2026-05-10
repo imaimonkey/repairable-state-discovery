@@ -1,0 +1,82 @@
+{
+  "examples": [
+    {
+      "run_name": "math500_final_llada8b_fast",
+      "type": "successful_repair",
+      "item_id": 1,
+      "trajectory_id": 0,
+      "step_index": 8,
+      "rate": 0.25,
+      "question": "Define\n\\[p = \\sum_{k = 1}^\\infty \\frac{1}{k^2} \\quad \\text{and} \\quad q = \\sum_{k = 1}^\\infty \\frac{1}{k^3}.\\]Find a way to write\n\\[\\sum_{j = 1}^\\infty \\sum_{k = 1}^\\infty \\frac{1}{(j + k)^3}\\]in terms of $p$ and $q.$",
+      "base_answer": null,
+      "gold_answer": "p - q",
+      "repair_answer": "p - q",
+      "repair_correct": true
+    },
+    {
+      "run_name": "math500_final_llada8b_fast",
+      "type": "unrepaired_failure",
+      "item_id": 1,
+      "trajectory_id": 3,
+      "step_index": 8,
+      "rate": 0.0,
+      "question": "Define\n\\[p = \\sum_{k = 1}^\\infty \\frac{1}{k^2} \\quad \\text{and} \\quad q = \\sum_{k = 1}^\\infty \\frac{1}{k^3}.\\]Find a way to write\n\\[\\sum_{j = 1}^\\infty \\sum_{k = 1}^\\infty \\frac{1}{(j + k)^3}\\]in terms of $p$ and $q.$",
+      "base_answer": "2q",
+      "gold_answer": "p - q",
+      "repair_answer": "q",
+      "repair_correct": false
+    },
+    {
+      "run_name": "math500_final_llada8b_fast",
+      "type": "negative_repair",
+      "item_id": 0,
+      "trajectory_id": 0,
+      "step_index": 24,
+      "rate": 0.25,
+      "question": "Convert the point $(0,3)$ in rectangular coordinates to polar coordinates.  Enter your answer in the form $(r,\\theta),$ where $r > 0$ and $0 \\le \\theta < 2 \\pi.$",
+      "base_answer": "(3, \\frac{\\pi}{2})",
+      "gold_answer": "\\left( 3, \\frac{\\pi}{2} \\right)",
+      "repair_answer": "(3, \\fracfrac{\\pi}{2})",
+      "repair_correct": false
+    },
+    {
+      "run_name": "gsm8k_final_llada8b_fast",
+      "type": "successful_repair",
+      "item_id": 3,
+      "trajectory_id": 0,
+      "step_index": 8,
+      "rate": 1.0,
+      "question": "James decides to run 3 sprints 3 times a week.  He runs 60 meters each sprint.  How many total meters does he run a week?",
+      "base_answer": null,
+      "gold_answer": "540",
+      "repair_answer": "540",
+      "repair_correct": true
+    },
+    {
+      "run_name": "gsm8k_final_llada8b_fast",
+      "type": "unrepaired_failure",
+      "item_id": 2,
+      "trajectory_id": 0,
+      "step_index": 8,
+      "rate": 0.0,
+      "question": "Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  How much profit did he make?",
+      "base_answer": "65,000",
+      "gold_answer": "70000",
+      "repair_answer": "120000",
+      "repair_correct": false
+    },
+    {
+      "run_name": "gsm8k_final_llada8b_fast",
+      "type": "negative_repair",
+      "item_id": 0,
+      "trajectory_id": 2,
+      "step_index": 8,
+      "rate": 0.25,
+      "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+      "base_answer": "18",
+      "gold_answer": "18",
+      "repair_answer": "14",
+      "repair_correct": false
+    }
+  ]
+}
