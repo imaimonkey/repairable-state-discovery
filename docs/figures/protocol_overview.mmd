@@ -1,0 +1,18 @@
+flowchart LR
+    A[Reasoning item] --> B[Collect diffusion trajectories]
+    B --> C[Checkpoint intermediate states]
+    C --> D{Final answer correct?}
+    D -->|No| E[Oracle repair probe]
+    D -->|Yes| F[Negative-repair probe]
+    E --> G[Correction-rate curve]
+    E --> H[Top-k repairable checkpoint labels]
+    C --> I[State features]
+    I --> J[Repairability predictor]
+    H --> J
+    J --> K[Selected repair checkpoint]
+    K --> L[Expected repaired pass@k]
+    F --> M[Negative repair rate]
+    G --> N[Gain curves and best-step histograms]
+    L --> O[Aggregate tables]
+    M --> O
+    N --> O

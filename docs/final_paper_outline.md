@@ -8,7 +8,7 @@
 
 ## Core Claim
 
-This paper does not primarily propose a new self-correction method. Its main contribution is a protocol for measuring whether failed diffusion reasoning trajectories contain recoverable intermediate states, where those states occur, and how well a lightweight predictor can select them without oracle intervention.
+The main contribution is a protocol for measuring whether failed diffusion reasoning trajectories contain recoverable intermediate states, where those states occur, and how well a lightweight predictor can select them without oracle intervention.
 
 ## Recommended Contribution List
 
@@ -53,7 +53,7 @@ This paper does not primarily propose a new self-correction method. Its main con
 - GSM8K final
 - MATH500 final diffusion result
 - MATH500 robustness variants
-- AR baseline as reference, not primary object of analysis
+- Autoregressive reference rows for raw answer quality
 
 ### 6. Analysis
 
@@ -88,21 +88,9 @@ This paper does not primarily propose a new self-correction method. Its main con
 
 ### Still missing for submission-quality final version
 
-- Full `protocol_math500_final` completion
-- Aggregate final/submission tables
-- Multi-seed confidence intervals
-- Stronger ablations
-- At least one additional backbone or dataset if possible
-
-## How to Use AR Baselines
-
-- Present AR baselines as a standard performance reference.
-- Explicitly say they are not the primary object of analysis.
-- Use them to contextualize practical headroom, not to define the main novelty.
-
-Suggested phrasing:
-
-`We include AR baselines as a standard performance reference. Our central question is not whether diffusion currently outperforms strong AR models, but whether failed diffusion trajectories contain measurable and localizable repairable states.`
+- Completion of benchmark-complete full-split jobs
+- Full aggregate and extended benchmark tables
+- Final figure rendering from full reports
 
 ## Tables To Include
 
@@ -146,13 +134,12 @@ Suggested phrasing:
 ## Immediate Writing Plan
 
 1. Write Introduction, Related Work, and Method now.
-2. Draft Results with currently available GSM8K and robustness outputs.
-3. Use the regenerated final aggregate for MATH500/GSM8K comparison.
-4. Add confidence intervals, ablations, and qualitative examples before submission.
+2. Use `docs/predictor_method.md` for the predictor subsection.
+3. Draft Results with current slice outputs as placeholders.
+4. Replace placeholder tables with `results/benchmark_complete_reports/` and `results/benchmark_extended_analysis/` after full jobs finish.
 
 ## Immediate Experiment Plan
 
-1. Add seed-repeat runs and bootstrap confidence intervals.
-2. Add predictor feature ablations.
-3. Add negative-repair mitigation ablations.
-4. Add at least one more diffusion backbone or dataset if resources allow.
+1. Submit `scripts/submit_benchmark_complete_suite.sh`.
+2. Monitor all protocol jobs through successful completion on `devbox`.
+3. Use the benchmark-complete aggregate and extended analysis as the final table source.

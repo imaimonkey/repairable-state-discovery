@@ -181,6 +181,27 @@ def _base_item_maps(trajectory_payload: dict[str, Any]) -> tuple[list[int], dict
     return item_ids, pass1, passk
 
 
+def _sample_accuracy(trajectory_payload: dict[str, Any]) -> float:
+    meta = trajectory_payload.get("meta", {})
+    if meta.get("sample_accuracy") is not None:
+        return float(meta["sample_accuracy"])
+    records = trajectory_payload.get("records", [])
+    return float(np.mean([float(record["correct"]) for record in records])) if records else 0.0
+
+
+def _extra_sampling_pass_at_k_approx(base_pass_at_k: float, sample_accuracy: float, extra_samples_per_item: float) -> float:
+    """Approximate matched-budget extra-sampling pass@k from observed sample accuracy.
+
+    This is a cost-normalized proxy, not a replacement for separately decoded
+    extra-sample runs. It estimates the probability that currently unsolved
+    items would be solved by the same expected number of additional samples.
+    """
+    p = min(1.0, max(0.0, sample_accuracy))
+    extra = max(0.0, extra_samples_per_item)
+    extra_hit = 1.0 - ((1.0 - p) ** extra)
+    return min(1.0, base_pass_at_k + (1.0 - base_pass_at_k) * extra_hit)
+
+
 def _score_value(
     strategy: str,
     step: Step,
@@ -311,11 +332,22 @@ def evaluate_strategy(
     repaired_pass_at_k = float(np.mean([repaired_item_values[item_id] for item_id in item_ids])) if item_ids else 0.0
     ci = _bootstrap_item_ci(repaired_item_values, base_values, rng, n_bootstrap)
     branch_count = int(oracle_payload.get("meta", {}).get("branch_count", 0))
+    estimated_repair_branch_evals = branch_count * (selected_failed + selected_success)
+    num_items = len(item_ids)
+    base_trajectories_per_item = int(trajectory_payload.get("meta", {}).get("trajectories_per_item", 0))
+    repair_cost_per_item = estimated_repair_branch_evals / max(1, num_items)
+    matched_extra_pass_at_k = _extra_sampling_pass_at_k_approx(
+        base_pass_at_k=base_pass_at_k,
+        sample_accuracy=_sample_accuracy(trajectory_payload),
+        extra_samples_per_item=repair_cost_per_item,
+    )
 
     return {
         "run_name": run_name,
         "strategy": strategy if threshold is None else f"{strategy}@{threshold:.2f}",
         "threshold": threshold,
+        "num_items": num_items,
+        "base_trajectories_per_item": base_trajectories_per_item,
         "base_pass_at_1": base_pass_at_1,
         "base_pass_at_k": base_pass_at_k,
         "repaired_pass_at_k": repaired_pass_at_k,
@@ -332,7 +364,16 @@ def evaluate_strategy(
         "selected_failed_trajectories": selected_failed,
         "selected_success_trajectories": selected_success,
         "repair_branch_count": branch_count,
-        "estimated_repair_branch_evals": branch_count * (selected_failed + selected_success),
+        "estimated_repair_branch_evals": estimated_repair_branch_evals,
+        "repair_cost_per_item": repair_cost_per_item,
+        "matched_extra_samples_per_item": repair_cost_per_item,
+        "extra_sampling_pass_at_k_approx": matched_extra_pass_at_k,
+        "gain_over_extra_sampling_approx": repaired_pass_at_k - matched_extra_pass_at_k,
+        "repair_gain_per_1k_branch_evals": (
+            1000.0 * (repaired_pass_at_k - base_pass_at_k) / estimated_repair_branch_evals
+            if estimated_repair_branch_evals > 0
+            else None
+        ),
     }
 
 
@@ -358,6 +399,8 @@ def _markdown_table(rows: list[dict[str, Any]]) -> str:
         "gain_ci",
         "neg",
         "branches",
+        "extra_approx",
+        "vs_extra",
     ]
     lines = [
         "| " + " | ".join(headers) + " |",
@@ -377,6 +420,8 @@ def _markdown_table(rows: list[dict[str, Any]]) -> str:
                     gain_ci,
                     "-" if row["negative_repair_rate"] is None else f"{row['negative_repair_rate']:.4f}",
                     str(row["estimated_repair_branch_evals"]),
+                    f"{row['extra_sampling_pass_at_k_approx']:.4f}",
+                    f"{row['gain_over_extra_sampling_approx']:.4f}",
                 ]
             )
             + " |"

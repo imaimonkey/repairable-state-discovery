@@ -15,6 +15,7 @@ These analyses use completed run artifacts and do not require additional GPU dec
 | Predictor threshold/abstention policies | done | `results/extended_analysis/extended_repair_analysis.*` |
 | Predictor feature ablations | done | `results/extended_analysis/extended_repair_analysis.*` |
 | Cost proxy by repair branch evaluations | done | `results/extended_analysis/extended_repair_analysis.*` |
+| Cost-normalized extra-sampling approximation | done | `results/extended_analysis/extended_repair_analysis.*` |
 | Qualitative examples | done | `results/extended_analysis/qualitative_examples.*` |
 
 ## Interpretation Updates
@@ -23,7 +24,7 @@ The extended analysis shows that confidence is a weak but important baseline. En
 
 ## Remaining Generation Experiments
 
-These require new model runs and cannot be produced by aggregation alone. They are now represented by final protocol configs and are submitted by `scripts/submit_paper_complete_suite.sh`.
+These require new model runs and cannot be produced by aggregation alone. The fast 200-item versions are submitted by `scripts/submit_paper_complete_suite.sh`; the full benchmark versions are submitted by `scripts/submit_benchmark_complete_suite.sh`.
 
 | Component | Purpose |
 | --- | --- |
@@ -41,6 +42,34 @@ These require new model runs and cannot be produced by aggregation alone. They a
 | `protocol_gsm8k_seed_repeats.yaml` | GSM8K LLaDA seed 29 and 41 |
 | `protocol_math500_dream_backbone.yaml` | MATH-500 Dream-v0-Instruct-7B |
 | `protocol_gsm8k_dream_backbone.yaml` | GSM8K Dream-v0-Instruct-7B |
+
+## Benchmark-Complete Protocols
+
+These protocols are the final full-split execution path. They use run names distinct from the 200-item runs, omit dataset `limit`, and set `max_success_trajectories_for_negative_repair: 0` so negative repair is evaluated over all successful trajectories.
+
+| Protocol | Runs |
+| --- | --- |
+| `protocol_math500_full.yaml` | MATH-500 full LLaDA final + AR references |
+| `protocol_gsm8k_full.yaml` | GSM8K full LLaDA final + AR references |
+| `protocol_math500_full_robustness.yaml` | MATH-500 full seed29, stride16, branch2 |
+| `protocol_math500_full_seed_repeats.yaml` | MATH-500 full LLaDA seed 41 and 53 |
+| `protocol_gsm8k_full_seed_repeats.yaml` | GSM8K full LLaDA seed 29 and 41 |
+| `protocol_math500_full_dream_backbone.yaml` | MATH-500 full Dream-v0-Instruct-7B |
+| `protocol_gsm8k_full_dream_backbone.yaml` | GSM8K full Dream-v0-Instruct-7B |
+
+The submitter is:
+
+```bash
+cd /home/kimhj/repairable-state-discovery
+bash scripts/submit_benchmark_complete_suite.sh
+```
+
+Expected final outputs:
+
+| Output | Contents |
+| --- | --- |
+| `results/benchmark_complete_reports/` | Full aggregate report, CSV summaries, rendered tables, figure-data CSVs |
+| `results/benchmark_extended_analysis/` | Bootstrap CIs, strategy baselines, threshold/abstention, ablations, cost-normalized extra-sampling approximation, qualitative examples |
 
 ## Submission-Ready Table Set
 

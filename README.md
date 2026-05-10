@@ -2,7 +2,7 @@
 
 This repository studies **state-level repairability in diffusion language-model reasoning trajectories**.
 
-The central question is not whether diffusion models already outperform strong autoregressive baselines. The question is more specific:
+The central question is:
 
 > When a diffusion reasoning trajectory ends in a wrong answer, did it pass through an intermediate state from which the reasoning could still be recovered?
 
@@ -12,7 +12,7 @@ We operationalize this question as a protocol for collecting diffusion reasoning
 
 Failed diffusion reasoning trajectories can contain **repairable intermediate states**. These states are not uniformly distributed across denoising/refinement steps; they concentrate around dataset-dependent checkpoints and can be partially identified by a lightweight selector.
 
-This project should be framed as a **measurement and localization protocol**, not as a general-purpose self-correction method. Local repair is used primarily as an operational probe for measuring recoverability of intermediate states.
+This project should be framed as a **measurement and localization protocol**. Local repair is used primarily as an operational probe for measuring recoverability of intermediate states.
 
 ## Contributions
 
@@ -71,7 +71,7 @@ For each reasoning problem, the protocol performs:
 - `MATH-500`
 - `GSM8K`
 
-Current final protocols use a 200-item evaluation slice with 8 trajectories per item.
+The completed numeric artifacts in this repository were produced on a 200-item evaluation slice with 8 trajectories per item. The benchmark-complete suite below removes the dataset `limit` and writes separate full-split reports so full runs do not mix with slice results.
 
 ### Baselines
 
@@ -115,20 +115,22 @@ The current evidence supports the repairability framing:
 - GSM8K has a larger repairable failed rate, suggesting more recoverable failed trajectories under the current probe.
 - MATH-500 remains harder and shows a larger predictor-oracle gap in several settings.
 
-The results should not be interpreted as a claim that the diffusion system is stronger than AR baselines. AR models remain stronger in raw pass@k. The contribution is the state-level measurement protocol and the observation that failed diffusion trajectories often contain recoverable intermediate states.
+Autoregressive rows are reference measurements for raw answer quality. The paper argument is the state-level measurement protocol and the observation that failed diffusion trajectories often contain recoverable intermediate states.
 
 ## Paper Readiness
 
-The repository contains enough evidence for a draft focused on protocol, measurement, and localization. Before a submission-quality version, the following additions are the highest priority:
+The repository contains enough evidence for a draft focused on protocol, measurement, and localization. The 200-item artifacts now support analysis development; the benchmark-complete suite is the final execution path for submission-quality tables.
 
-1. Add seed repeats or bootstrap confidence intervals.
-2. Add predictor feature ablations.
-3. Add negative-repair mitigation experiments, such as abstention or thresholded repair.
-4. Add cost-normalized comparisons against extra random sampling.
-5. Add qualitative examples of successful repair, failed repair, and negative repair.
-6. Add one more diffusion backbone or one more reasoning dataset if compute allows.
+The final table set is configured to include:
 
-See [docs/final_experiment_matrix.md](docs/final_experiment_matrix.md) and [docs/paper_readiness_checklist.md](docs/paper_readiness_checklist.md) for the completed extended analyses and remaining generation experiments.
+1. Seed repeats plus bootstrap confidence intervals.
+2. Predictor feature ablations.
+3. Threshold/abstention analysis for negative-repair mitigation.
+4. Cost-normalized comparisons against extra-sampling approximations.
+5. Qualitative examples of successful repair, failed repair, and negative repair.
+6. Additional diffusion-backbone coverage through Dream-v0-Instruct-7B and dataset coverage through GSM8K.
+
+See [docs/final_experiment_matrix.md](docs/final_experiment_matrix.md), [docs/paper_readiness_checklist.md](docs/paper_readiness_checklist.md), [docs/final_output_audit.md](docs/final_output_audit.md), and [docs/predictor_method.md](docs/predictor_method.md) for the completed extended analyses, benchmark-complete generation plan, and predictor method details.
 
 ## Repository Layout
 
@@ -211,7 +213,7 @@ PROTOCOL_PATH=repairable_diffusion/configs/final/protocol_math500_submission_rob
 
 ### Paper-Complete Suite
 
-This is the top-level submission pipeline. It skips protocol reports that are already complete, submits only missing generation jobs, then builds the paper-complete aggregate, extended strategy/ablation analysis, cost proxy, and qualitative examples.
+This is the fast paper-analysis pipeline over the existing 200-item protocol family. It skips protocol reports that are already complete, submits only missing generation jobs, then builds the paper-complete aggregate, extended strategy/ablation analysis, cost proxy, and qualitative examples.
 
 ```bash
 cd /home/kimhj/repairable-state-discovery
@@ -227,6 +229,27 @@ The suite covers:
 - GSM8K LLaDA seed repeats
 - MATH-500 Dream-v0-Instruct-7B backbone
 - GSM8K Dream-v0-Instruct-7B backbone
+
+### Benchmark-Complete Suite
+
+This is the final full-split execution pipeline. It uses separate run names and report names, omits dataset `limit`, evaluates negative repair over all successful trajectories, runs full seed repeats/backbone/robustness protocols, then builds full aggregate tables, bootstrap intervals, strategy baselines, threshold/abstention analysis, feature ablations, cost-normalized extra-sampling approximations, and qualitative examples.
+
+The submitter is duplicate-aware: it skips completed protocol reports and reuses pending/running Slurm jobs with the same benchmark job names instead of submitting another copy.
+
+```bash
+cd /home/kimhj/repairable-state-discovery
+bash scripts/submit_benchmark_complete_suite.sh
+```
+
+The suite covers:
+
+- MATH-500 full LLaDA final + AR references
+- GSM8K full LLaDA final + AR references
+- MATH-500 full robustness variants: seed29, stride16, branch2
+- MATH-500 full LLaDA seed repeats: seed41, seed53
+- GSM8K full LLaDA seed repeats: seed29, seed41
+- MATH-500 full Dream-v0-Instruct-7B backbone
+- GSM8K full Dream-v0-Instruct-7B backbone
 
 ### Build Aggregate Reports
 
@@ -258,6 +281,20 @@ results/paper_complete_reports/
   diffusion_summary.csv
   ar_summary.csv
   tables/
+
+results/benchmark_complete_reports/
+  aggregate_report.json
+  diffusion_summary.csv
+  ar_summary.csv
+  tables/
+  figure_data/
+
+results/benchmark_extended_analysis/
+  extended_repair_analysis.json
+  extended_repair_analysis.csv
+  extended_repair_analysis.md
+  qualitative_examples.json
+  qualitative_examples.md
 
 results/final_reports/
   aggregate_report.json
@@ -291,7 +328,7 @@ PROTOCOL_FAMILIES=ar \
 
 ## Known Limitations
 
-- Current results use a limited evaluation slice and need confidence intervals.
-- The main diffusion evidence currently centers on LLaDA; broader backbone coverage is needed.
+- Current committed numeric results use a limited evaluation slice; the benchmark-complete jobs must finish before full-split submission tables are available.
+- The 200-item reports are kept as diagnostic artifacts and should not be mixed with benchmark-complete tables.
 - Negative repair remains nontrivial and should be treated as a central safety metric.
 - Tests are currently limited and should be expanded around protocol aggregation and reporting.
