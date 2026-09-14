@@ -191,9 +191,9 @@ if [[ -f "$ROOT_DIR/scripts/export_analysis_handoff.py" ]]; then
   "$PYTHON_BIN" "$ROOT_DIR/scripts/export_analysis_handoff.py" \
     --repo-root "$ROOT_DIR" \
     --repo-name repairable-state-discovery \
-    --candidate-root repairable_diffusion/outputs/runs \
-    --candidate-root results/generated_configs \
+    --run-dir "$PROTOCOL_REPORT_PATH" \
     --analysis-source "$PROTOCOL_REPORT_PATH" \
+    --metrics-source "$PROTOCOL_REPORT_PATH" \
     --exit-code "$run_rc" || echo "warning: failed to export repairability analysis handoff" >&2
 fi
 
