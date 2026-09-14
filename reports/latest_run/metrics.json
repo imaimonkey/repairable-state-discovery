@@ -1,3 +1,44 @@
 {
-  "evaluation_protocol": "crossfit_selector_with_net_damage_accounting"
+  "schema": "repairable-state-discovery-claim-metrics-v1",
+  "status": "completed",
+  "evaluation_protocol": "crossfit_selector_with_net_damage_accounting",
+  "dataset": "MATH-500",
+  "dataset_items": 500,
+  "trajectories": 4000,
+  "trajectories_per_item": 8,
+  "base_item_pass_at_1": 0.198,
+  "base_item_pass_at_k": 0.308,
+  "probe_completeness": {
+    "failed_probe_complete": true,
+    "success_probe_complete": true,
+    "failed_trajectories": 3173,
+    "successful_trajectories": 827,
+    "missing_probe_rows": 0,
+    "extra_probe_rows": 0
+  },
+  "predictor_selector": {
+    "net_expected_item_pass_at_k": 0.3975289611816406,
+    "net_gain_over_base_pass_at_k": 0.08952896118164061,
+    "recovery_only_expected_item_pass_at_k": 0.41837387084960936,
+    "expected_newly_solved_items": 55.18693542480469,
+    "expected_lost_solved_items": 10.422454833984375,
+    "negative_repair_rate": 0.23458282950423218,
+    "failed_trajectory_correction_rate": 0.10250551528521903,
+    "roc_auc": 0.9778923552038923
+  },
+  "controls": {
+    "random_net_expected_item_pass_at_k": 0.3660732421875,
+    "random_net_gain_over_base_pass_at_k": 0.058073242187499985,
+    "confidence_net_expected_item_pass_at_k": 0.3509825439453125,
+    "confidence_net_gain_over_base_pass_at_k": 0.04298254394531248,
+    "oracle_net_expected_item_pass_at_k": 0.502960205078125,
+    "oracle_net_gain_over_base_pass_at_k": 0.194960205078125
+  },
+  "repairability": {
+    "repairable_failed_trajectories": 975,
+    "repairable_failed_rate": 0.30728017648912703,
+    "peak_step_index": 8,
+    "peak_mean_correction_rate": 0.10250551528521903
+  },
+  "claim_boundary": "Headline repair metrics are net-aware: gains account for both newly solved items and damage to originally solved items. Predictor scoring is item-grouped cross-fit/OOF; recovery-only repaired pass@k must not replace the net metric."
 }
