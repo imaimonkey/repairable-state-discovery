@@ -169,7 +169,11 @@ class DreamBackend:
             confidence_full = torch.full(x.shape, float("-inf"), device=x.device, dtype=torch.float32)
             candidate_tokens = torch.full(x.shape, mask_token_id, device=x.device, dtype=torch.long)
             if confidence.numel() > 0:
-                confidence_full[mask_index] = confidence
+                # Dream inference returns bfloat16 confidence values while the
+                # bookkeeping tensor is intentionally float32.  Indexed
+                # assignment requires an exact dtype match on the supported
+                # torch version, so cast only this bookkeeping value.
+                confidence_full[mask_index] = confidence.to(confidence_full.dtype)
                 candidate_tokens[mask_index] = x0
 
             selected_mask = torch.zeros_like(mask_index, dtype=torch.bool)
@@ -348,7 +352,9 @@ class DreamBackend:
             confidence_full = torch.full(x.shape, float("-inf"), device=x.device, dtype=torch.float32)
             candidate_tokens = torch.full(x.shape, mask_token_id, device=x.device, dtype=torch.long)
             if confidence.numel() > 0:
-                confidence_full[mask_index] = confidence
+                # Keep the confidence bookkeeping tensor in float32 even when
+                # Dream returns bfloat16 probabilities from the model.
+                confidence_full[mask_index] = confidence.to(confidence_full.dtype)
                 candidate_tokens[mask_index] = x0
 
             selected_mask = torch.zeros_like(mask_index, dtype=torch.bool)
