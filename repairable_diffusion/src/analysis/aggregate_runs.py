@@ -5,7 +5,7 @@ import csv
 from pathlib import Path
 from typing import Any
 
-from repairable_diffusion.src.utils.io import ensure_dir, load_yaml, save_json
+from repairable_diffusion.src.utils.io import ensure_dir, save_json
 
 
 def _read_json(path: str | Path) -> dict[str, Any]:
@@ -23,6 +23,13 @@ def _collect_protocol_reports(paths: list[str]) -> list[dict[str, Any]]:
     return rows
 
 
+def _claim_grade_policy_pass(selector: dict[str, Any]) -> float | None:
+    if not bool(selector.get("net_metric_complete", False)):
+        return None
+    value = selector.get("net_expected_item_pass_at_k")
+    return None if value is None else float(value)
+
+
 def _diffusion_rows(protocol_reports: list[dict[str, Any]]) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for protocol in protocol_reports:
@@ -33,6 +40,8 @@ def _diffusion_rows(protocol_reports: list[dict[str, Any]]) -> list[dict[str, An
             oracle = row.get("oracle_selector", {})
             repairability = row.get("repairability_summary", {})
             selector_deltas = row.get("selector_deltas", {})
+            predictor_net = _claim_grade_policy_pass(predictor)
+            oracle_net = _claim_grade_policy_pass(oracle)
             rows.append(
                 {
                     "protocol_report": protocol["path"],
@@ -42,18 +51,55 @@ def _diffusion_rows(protocol_reports: list[dict[str, Any]]) -> list[dict[str, An
                     "sample_accuracy": row.get("sample_accuracy"),
                     "item_pass_at_1": row.get("item_pass_at_1"),
                     "item_pass_at_k": row.get("item_pass_at_k"),
-                    "predictor_expected_pass_at_k": predictor.get("expected_repaired_item_pass_at_k"),
-                    "predictor_expected_newly_solved_items": predictor.get("expected_newly_solved_items"),
-                    "predictor_negative_repair_rate": predictor.get("negative_repair_rate"),
-                    "oracle_expected_pass_at_k": oracle.get("expected_repaired_item_pass_at_k"),
-                    "oracle_expected_newly_solved_items": oracle.get("expected_newly_solved_items"),
+                    "predictor_expected_pass_at_k": predictor_net,
+                    "predictor_net_expected_pass_at_k": predictor_net,
+                    "predictor_recovery_only_expected_pass_at_k": predictor.get(
+                        "expected_repaired_item_pass_at_k"
+                    ),
+                    "predictor_net_metric_complete": predictor.get(
+                        "net_metric_complete", False
+                    ),
+                    "predictor_expected_newly_solved_items": predictor.get(
+                        "expected_newly_solved_items"
+                    ),
+                    "predictor_expected_lost_solved_items": predictor.get(
+                        "expected_lost_solved_items"
+                    ),
+                    "predictor_negative_repair_rate": predictor.get(
+                        "negative_repair_rate"
+                    ),
+                    "oracle_expected_pass_at_k": oracle_net,
+                    "oracle_net_expected_pass_at_k": oracle_net,
+                    "oracle_recovery_only_expected_pass_at_k": oracle.get(
+                        "expected_repaired_item_pass_at_k"
+                    ),
+                    "oracle_net_metric_complete": oracle.get("net_metric_complete", False),
+                    "oracle_expected_newly_solved_items": oracle.get(
+                        "expected_newly_solved_items"
+                    ),
+                    "oracle_expected_lost_solved_items": oracle.get(
+                        "expected_lost_solved_items"
+                    ),
                     "peak_step_index": repairability.get("peak_step_index"),
-                    "peak_mean_correction_rate": repairability.get("peak_mean_correction_rate"),
+                    "peak_mean_correction_rate": repairability.get(
+                        "peak_mean_correction_rate"
+                    ),
                     "repairable_failed_rate": repairability.get("repairable_failed_rate"),
-                    "predictor_gain_over_base_pass_at_k": selector_deltas.get("predictor_gain_over_base_pass_at_k"),
-                    "oracle_minus_predictor_expected_pass_at_k": selector_deltas.get("oracle_minus_predictor_expected_pass_at_k"),
-                    "predictor_minus_random_expected_pass_at_k": selector_deltas.get("predictor_minus_random_expected_pass_at_k"),
-                    "predictor_minus_confidence_expected_pass_at_k": selector_deltas.get("predictor_minus_confidence_expected_pass_at_k"),
+                    "predictor_gain_over_base_pass_at_k": selector_deltas.get(
+                        "predictor_gain_over_base_pass_at_k"
+                    ),
+                    "predictor_recovery_only_gain_over_base_pass_at_k": selector_deltas.get(
+                        "predictor_recovery_only_gain_over_base_pass_at_k"
+                    ),
+                    "oracle_minus_predictor_expected_pass_at_k": selector_deltas.get(
+                        "oracle_minus_predictor_expected_pass_at_k"
+                    ),
+                    "predictor_minus_random_expected_pass_at_k": selector_deltas.get(
+                        "predictor_minus_random_expected_pass_at_k"
+                    ),
+                    "predictor_minus_confidence_expected_pass_at_k": selector_deltas.get(
+                        "predictor_minus_confidence_expected_pass_at_k"
+                    ),
                     "run_dir": row.get("run_dir"),
                     "report_path": row.get("report_path"),
                 }
@@ -114,7 +160,12 @@ def aggregate(protocol_report_paths: list[str], output_dir: str | Path) -> dict[
 
 def parse_args() -> argparse.Namespace:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--protocol-report", action="append", required=True, dest="protocol_reports")
+    ap.add_argument(
+        "--protocol-report",
+        action="append",
+        required=True,
+        dest="protocol_reports",
+    )
     ap.add_argument("--output-dir", required=True)
     return ap.parse_args()
 
