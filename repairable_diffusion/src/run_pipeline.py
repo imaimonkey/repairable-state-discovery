@@ -28,7 +28,11 @@ def build_repairability_summary(oracle_payload: dict[str, Any] | None) -> dict[s
         for row in failed_results
         if row.get("oracle_best_step") is not None and float(row.get("oracle_best_gain", 0.0)) > 0.0
     ]
-    best_step_counts = Counter(int(row["oracle_best_step"]) for row in repairable_results if row.get("oracle_best_step") is not None)
+    best_step_counts = Counter(
+        int(row["oracle_best_step"])
+        for row in repairable_results
+        if row.get("oracle_best_step") is not None
+    )
     best_step_histogram = [
         {"step_index": step_index, "count": count}
         for step_index, count in sorted(best_step_counts.items())
@@ -43,6 +47,13 @@ def build_repairability_summary(oracle_payload: dict[str, Any] | None) -> dict[s
         "latest_positive_step": positive_gain_rows[-1]["step_index"] if positive_gain_rows else None,
         "best_step_histogram": best_step_histogram,
     }
+
+
+def _net_policy_pass(row: dict[str, Any] | None) -> float | None:
+    if not row or not bool(row.get("net_metric_complete", False)):
+        return None
+    value = row.get("net_expected_item_pass_at_k")
+    return None if value is None else float(value)
 
 
 def build_selector_deltas(evaluation_payload: dict[str, Any] | None) -> dict[str, Any]:
@@ -61,24 +72,49 @@ def build_selector_deltas(evaluation_payload: dict[str, Any] | None) -> dict[str
     if not predictor:
         return {}
 
-    out = {}
-    out["predictor_gain_over_base_pass_at_k"] = (
-        float(predictor["expected_repaired_item_pass_at_k"]) - float(predictor["base_item_pass_at_k"])
-    )
+    base = float(predictor["base_item_pass_at_k"])
+    predictor_recovery_only = float(predictor["expected_repaired_item_pass_at_k"])
+    predictor_net = _net_policy_pass(predictor)
+
+    out: dict[str, Any] = {
+        "metric_policy": "net_when_full_success_probe_coverage_else_unavailable",
+        "predictor_recovery_only_gain_over_base_pass_at_k": predictor_recovery_only - base,
+        "predictor_net_metric_complete": bool(predictor.get("net_metric_complete", False)),
+        "predictor_net_gain_over_base_pass_at_k": (
+            None if predictor_net is None else predictor_net - base
+        ),
+        "predictor_gain_over_base_pass_at_k": (
+            None if predictor_net is None else predictor_net - base
+        ),
+    }
+
     if oracle:
+        oracle_net = _net_policy_pass(oracle)
         out["oracle_minus_predictor_expected_pass_at_k"] = (
-            float(oracle["expected_repaired_item_pass_at_k"]) - float(predictor["expected_repaired_item_pass_at_k"])
+            None
+            if predictor_net is None or oracle_net is None
+            else oracle_net - predictor_net
+        )
+        out["oracle_minus_predictor_recovery_only_pass_at_k"] = (
+            float(oracle["expected_repaired_item_pass_at_k"]) - predictor_recovery_only
         )
         out["oracle_minus_predictor_expected_newly_solved"] = (
-            float(oracle["expected_newly_solved_items"]) - float(predictor["expected_newly_solved_items"])
+            float(oracle["expected_newly_solved_items"])
+            - float(predictor["expected_newly_solved_items"])
         )
     if confidence:
+        confidence_net = _net_policy_pass(confidence)
         out["predictor_minus_confidence_expected_pass_at_k"] = (
-            float(predictor["expected_repaired_item_pass_at_k"]) - float(confidence["expected_repaired_item_pass_at_k"])
+            None
+            if predictor_net is None or confidence_net is None
+            else predictor_net - confidence_net
         )
     if random_row:
+        random_net = _net_policy_pass(random_row)
         out["predictor_minus_random_expected_pass_at_k"] = (
-            float(predictor["expected_repaired_item_pass_at_k"]) - float(random_row["expected_repaired_item_pass_at_k"])
+            None
+            if predictor_net is None or random_net is None
+            else predictor_net - random_net
         )
     return out
 
@@ -105,6 +141,9 @@ def build_report(
         "oracle_meta": oracle_payload.get("meta", {}) if oracle_payload else {},
         "predictor_metrics": predictor_payload.get("metrics", {}) if predictor_payload else {},
         "selection_eval": evaluation_payload.get("selectors", []) if evaluation_payload else [],
+        "selection_eval_protocol": (
+            evaluation_payload.get("evaluation_protocol") if evaluation_payload else None
+        ),
         "selector_deltas": build_selector_deltas(evaluation_payload),
         "artifacts": {
             "trajectories": "trajectories.pkl",
