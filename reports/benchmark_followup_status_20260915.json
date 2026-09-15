@@ -1,0 +1,20 @@
+{
+  "schema": "repairable-benchmark-followup-status-v1",
+  "snapshot_date": "2026-09-15",
+  "implementation_git_sha": "d1929a70552a5652953378db7dc5859d01a7a714",
+  "branch": "idea/unbiased-repair-eval",
+  "preexisting_claim_result_commit": "511254488600d293fc802592179761ed652e5d3e",
+  "protocol": "repairable_diffusion/configs/final/protocol_math500_full_dream_backbone.yaml",
+  "job_id": "47521",
+  "aggregate_job_id": "47522",
+  "job_state": "FAILED",
+  "job_exit_code": "1:0",
+  "aggregate_state": "CANCELLED_DEPENDENCY_NEVER_SATISFIED",
+  "failure_class": "cuda_out_of_memory",
+  "failure_error": "torch.cuda.OutOfMemoryError: Tried to allocate 426.00 MiB",
+  "failure_stage": "collect_trajectories",
+  "report_path": null,
+  "partial_run_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_full_dream_v0_instruct_7b",
+  "archived_partial_run_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/math500_full_dream_v0_instruct_7b.failed-47503",
+  "additional_probe_generation": false
+}

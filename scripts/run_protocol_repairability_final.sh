@@ -62,15 +62,12 @@ load_hf_token_from_file() {
 detect_required_backends() {
   "$PYTHON_BIN" - "$PROTOCOL_PATH_ABS" "$PROTOCOL_FAMILIES" "$PROTOCOL_RUN_NAMES" <<'PY'
 import sys
-
 import yaml
-
 
 def parse_csv(spec):
     if not spec:
         return set()
     return {part.strip() for part in spec.split(",") if part.strip()}
-
 
 def allowed(spec, family, allowed_families, allowed_run_names):
     if allowed_families and family not in allowed_families:
@@ -79,35 +76,28 @@ def allowed(spec, family, allowed_families, allowed_run_names):
         return False
     return True
 
-
 protocol_path, families_spec, run_names_spec = sys.argv[1:4]
 with open(protocol_path, "r", encoding="utf-8") as fh:
     protocol_cfg = yaml.safe_load(fh)
 with open(protocol_cfg["profiles_path"], "r", encoding="utf-8") as fh:
     profiles = yaml.safe_load(fh).get("models", {})
-
 allowed_families = parse_csv(families_spec)
 allowed_run_names = parse_csv(run_names_spec)
 required = set()
-
 if bool(protocol_cfg["protocol"].get("run_diffusion_main", True)):
     for spec in protocol_cfg["protocol"].get("diffusion_runs", []):
         if not allowed(spec, "diffusion", allowed_families, allowed_run_names):
             continue
-        backend = profiles.get(spec["model_profile"], {}).get("backend", {})
-        backend_type = str(backend.get("type", "")).strip()
+        backend_type = str(profiles.get(spec["model_profile"], {}).get("backend", {}).get("type", "")).strip()
         if backend_type:
             required.add(backend_type)
-
 if bool(protocol_cfg["protocol"].get("run_ar_compare", True)):
     for spec in protocol_cfg["protocol"].get("ar_runs", []):
         if not allowed(spec, "ar", allowed_families, allowed_run_names):
             continue
-        backend = profiles.get(spec["model_profile"], {}).get("backend", {})
-        backend_type = str(backend.get("type", "")).strip()
+        backend_type = str(profiles.get(spec["model_profile"], {}).get("backend", {}).get("type", "")).strip()
         if backend_type:
             required.add(backend_type)
-
 for backend_type in sorted(required):
     print(backend_type)
 PY
@@ -119,19 +109,15 @@ ROOT_DIR="$(find_repo_root "$ROOT_CANDIDATE")" || {
   exit 1
 }
 cd "$ROOT_DIR"
-
 mkdir -p "$ROOT_DIR/logs" "$ROOT_DIR/results" "$ROOT_DIR/repairable_diffusion/outputs/runs"
 
 if [[ -f .venv/bin/activate ]]; then
-  # shellcheck disable=SC1091
   source .venv/bin/activate
 elif [[ -f /home/kimhj/provenance-decompositon/.venv/bin/activate ]]; then
-  # shellcheck disable=SC1091
   source /home/kimhj/provenance-decompositon/.venv/bin/activate
 fi
 
 load_hf_token_from_file
-
 PYTHON_BIN="$(command -v python || command -v python3 || true)"
 if [[ -z "$PYTHON_BIN" ]]; then
   echo "python not found on PATH"
@@ -143,7 +129,6 @@ PROTOCOL_FAMILIES="${PROTOCOL_FAMILIES:-}"
 PROTOCOL_RUN_NAMES="${PROTOCOL_RUN_NAMES:-}"
 HF_HOME="${HF_HOME:-$ROOT_DIR/.hf_home}"
 HF_HUB_CACHE="${HF_HUB_CACHE:-$HF_HOME/hub}"
-
 PROTOCOL_PATH_ABS="$(abs_path "$PROTOCOL_PATH")"
 if [[ ! -f "$PROTOCOL_PATH_ABS" ]]; then
   echo "Protocol file not found: $PROTOCOL_PATH_ABS"
@@ -153,16 +138,31 @@ mkdir -p "$HF_HOME" "$HF_HUB_CACHE"
 export HF_HOME HF_HUB_CACHE
 
 REQUIRED_BACKENDS="$(detect_required_backends | tr '\n' ' ')"
-
 if [[ "$REQUIRED_BACKENDS" == *"rfba_llada"* ]] && [[ ! -d /home/kimhj/rfba ]]; then
   echo "Required backend root missing: /home/kimhj/rfba"
   exit 1
 fi
-
 if [[ "$REQUIRED_BACKENDS" == *"dream"* ]] && [[ ! -d /home/kimhj/difffusion-sampling-exp-benchmark-playground/Dream ]]; then
   echo "Required Dream backend root missing: /home/kimhj/difffusion-sampling-exp-benchmark-playground/Dream"
   exit 1
 fi
+
+export HANDOFF_SOURCE_GIT_SHA="$(git -C "$ROOT_DIR" rev-parse HEAD 2>/dev/null || true)"
+if [[ -n "$(git -C "$ROOT_DIR" status --porcelain 2>/dev/null || true)" ]]; then
+  export HANDOFF_SOURCE_GIT_DIRTY=1
+else
+  export HANDOFF_SOURCE_GIT_DIRTY=0
+fi
+
+PROTOCOL_REPORT_PATH="$($PYTHON_BIN - "$PROTOCOL_PATH_ABS" <<'PY'
+import pathlib, sys, yaml
+p=pathlib.Path(sys.argv[1]).resolve()
+cfg=yaml.safe_load(p.read_text())
+root=pathlib.Path(cfg['paths']['generated_configs_root'])
+name=cfg['paths'].get('protocol_report_name','protocol_report.json')
+print((root/name).resolve())
+PY
+)"
 
 echo "=========================================="
 echo "Repairability Final Protocol"
@@ -172,25 +172,29 @@ echo "Run names:     ${PROTOCOL_RUN_NAMES:-<all>}"
 echo "Backends:      ${REQUIRED_BACKENDS:-<none>}"
 echo "HF_HOME:       $HF_HOME"
 echo "HF_HUB_CACHE:  $HF_HUB_CACHE"
-if has_hf_token; then
-  echo "HF token:      present"
-else
-  echo "HF token:      missing"
-fi
+if has_hf_token; then echo "HF token:      present"; else echo "HF token:      missing"; fi
 echo "Job ID:        ${SLURM_JOB_ID:-local}"
 echo "Host:          $(hostname)"
 echo "=========================================="
 
-CMD=(
-  "$PYTHON_BIN" -m repairable_diffusion.src.run_protocol
-  --protocol "$PROTOCOL_PATH_ABS"
-)
+CMD=("$PYTHON_BIN" -m repairable_diffusion.src.run_protocol --protocol "$PROTOCOL_PATH_ABS")
+if [[ -n "$PROTOCOL_FAMILIES" ]]; then CMD+=(--families "$PROTOCOL_FAMILIES"); fi
+if [[ -n "$PROTOCOL_RUN_NAMES" ]]; then CMD+=(--run-names "$PROTOCOL_RUN_NAMES"); fi
+export HANDOFF_COMMAND="${CMD[*]}"
 
-if [[ -n "$PROTOCOL_FAMILIES" ]]; then
-  CMD+=(--families "$PROTOCOL_FAMILIES")
-fi
-if [[ -n "$PROTOCOL_RUN_NAMES" ]]; then
-  CMD+=(--run-names "$PROTOCOL_RUN_NAMES")
-fi
-
+set +e
 "${CMD[@]}"
+run_rc=$?
+set -e
+
+if [[ -f "$ROOT_DIR/scripts/export_analysis_handoff.py" ]]; then
+  "$PYTHON_BIN" "$ROOT_DIR/scripts/export_analysis_handoff.py" \
+    --repo-root "$ROOT_DIR" \
+    --repo-name repairable-state-discovery \
+    --run-dir "$PROTOCOL_REPORT_PATH" \
+    --analysis-source "$PROTOCOL_REPORT_PATH" \
+    --metrics-source "$PROTOCOL_REPORT_PATH" \
+    --exit-code "$run_rc" || echo "warning: failed to export repairability analysis handoff" >&2
+fi
+
+exit "$run_rc"

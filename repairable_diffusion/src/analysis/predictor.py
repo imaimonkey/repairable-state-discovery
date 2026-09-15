@@ -8,7 +8,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, roc_auc_score
-from sklearn.model_selection import GroupShuffleSplit
+from sklearn.model_selection import GroupKFold
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
@@ -49,6 +49,186 @@ def _build_disagreement(records: list[dict[str, Any]]) -> dict[tuple[int, int], 
         top = counts.most_common(1)[0][1] if counts else 0
         out[key] = 1.0 - (top / max(1, len(answers)))
     return out
+
+
+def _make_model(*, feature_count: int, max_iter: int, random_state: int) -> Pipeline:
+    return Pipeline(
+        steps=[
+            (
+                "preprocess",
+                ColumnTransformer(
+                    transformers=[
+                        (
+                            "numeric",
+                            Pipeline(
+                                steps=[
+                                    ("imputer", SimpleImputer(strategy="median")),
+                                    ("scaler", StandardScaler()),
+                                ]
+                            ),
+                            list(range(feature_count)),
+                        )
+                    ]
+                ),
+            ),
+            (
+                "clf",
+                LogisticRegression(
+                    max_iter=max_iter,
+                    random_state=random_state,
+                ),
+            ),
+        ]
+    )
+
+
+def fit_crossfit_predictor_scores(
+    train_rows: list[dict[str, Any]],
+    inference_rows: list[dict[str, Any]],
+    feature_keys: list[str],
+    *,
+    requested_folds: int,
+    random_state: int,
+    max_iter: int,
+) -> tuple[list[dict[str, Any]], dict[str, Any], Pipeline]:
+    """Fit item-grouped cross-fit models and return leakage-free inference scores.
+
+    Every item that contributes supervision is scored only by the fold model that
+    excluded that item.  Items that never contribute a supervised failed-state row
+    are scored by the final model trained on all supervised items; these items are
+    still genuinely unseen by that final fit.  The final all-data model is saved for
+    deployment only and is not used to score supervised training items.
+    """
+
+    if not train_rows:
+        raise ValueError("cross-fit predictor requires at least one supervised row")
+
+    groups = np.asarray([int(row["item_id"]) for row in train_rows])
+    unique_groups = np.unique(groups)
+    if len(unique_groups) < 2:
+        raise ValueError("cross-fit predictor requires at least two supervised item groups")
+
+    n_splits = min(max(2, int(requested_folds)), len(unique_groups))
+    X = np.asarray([[row[key] for key in feature_keys] for row in train_rows], dtype=np.float32)
+    y = np.asarray([int(row["label"]) for row in train_rows], dtype=np.int64)
+    X_infer = np.asarray(
+        [[row[key] for key in feature_keys] for row in inference_rows],
+        dtype=np.float32,
+    )
+
+    oof_proba = np.full(len(train_rows), np.nan, dtype=np.float64)
+    inference_scores: dict[tuple[int, int, int], tuple[float, str, int | None]] = {}
+    fold_summaries: list[dict[str, Any]] = []
+    splitter = GroupKFold(n_splits=n_splits)
+
+    for fold_index, (train_idx, test_idx) in enumerate(splitter.split(X, y, groups=groups)):
+        model = _make_model(
+            feature_count=len(feature_keys),
+            max_iter=max_iter,
+            random_state=random_state + fold_index,
+        )
+        model.fit(X[train_idx], y[train_idx])
+        fold_test_proba = model.predict_proba(X[test_idx])[:, 1]
+        oof_proba[test_idx] = fold_test_proba
+
+        heldout_items = {int(item_id) for item_id in groups[test_idx]}
+        infer_idx = [
+            index
+            for index, row in enumerate(inference_rows)
+            if int(row["item_id"]) in heldout_items
+        ]
+        if infer_idx:
+            fold_infer_proba = model.predict_proba(X_infer[infer_idx])[:, 1]
+            for row_index, score in zip(infer_idx, fold_infer_proba, strict=True):
+                row = inference_rows[row_index]
+                key = (
+                    int(row["item_id"]),
+                    int(row["trajectory_id"]),
+                    int(row["step_index"]),
+                )
+                inference_scores[key] = (float(score), "crossfit_oof", fold_index)
+
+        fold_summaries.append(
+            {
+                "fold": fold_index,
+                "train_items": len({int(item_id) for item_id in groups[train_idx]}),
+                "test_items": len(heldout_items),
+                "train_rows": int(len(train_idx)),
+                "test_rows": int(len(test_idx)),
+            }
+        )
+
+    if np.isnan(oof_proba).any():
+        raise RuntimeError("cross-fit predictor left supervised rows without OOF scores")
+
+    final_model = _make_model(
+        feature_count=len(feature_keys),
+        max_iter=max_iter,
+        random_state=random_state,
+    )
+    final_model.fit(X, y)
+
+    missing_infer_idx = []
+    for index, row in enumerate(inference_rows):
+        key = (
+            int(row["item_id"]),
+            int(row["trajectory_id"]),
+            int(row["step_index"]),
+        )
+        if key not in inference_scores:
+            missing_infer_idx.append(index)
+    if missing_infer_idx:
+        final_proba = final_model.predict_proba(X_infer[missing_infer_idx])[:, 1]
+        supervised_items = {int(item_id) for item_id in groups}
+        for row_index, score in zip(missing_infer_idx, final_proba, strict=True):
+            row = inference_rows[row_index]
+            item_id = int(row["item_id"])
+            if item_id in supervised_items:
+                raise RuntimeError(
+                    "supervised item reached full-fit inference path; cross-fit coverage is incomplete"
+                )
+            key = (item_id, int(row["trajectory_id"]), int(row["step_index"]))
+            inference_scores[key] = (float(score), "full_fit_unseen_item", None)
+
+    pred_label = (oof_proba >= 0.5).astype(np.int64)
+    metrics = {
+        "evaluation_protocol": "item_grouped_crossfit_oof",
+        "crossfit_folds": n_splits,
+        "supervised_items": int(len(unique_groups)),
+        "train_rows": int(len(train_rows)),
+        "test_rows": int(len(train_rows)),
+        "positive_rate_train": float(y.mean()) if len(y) else 0.0,
+        "positive_rate_test": float(y.mean()) if len(y) else 0.0,
+        "accuracy": float(accuracy_score(y, pred_label)) if len(y) else 0.0,
+        "roc_auc": float(roc_auc_score(y, oof_proba)) if len(np.unique(y)) > 1 else None,
+        "folds": fold_summaries,
+    }
+
+    score_rows = []
+    score_source_counts: Counter[str] = Counter()
+    for row in inference_rows:
+        key = (
+            int(row["item_id"]),
+            int(row["trajectory_id"]),
+            int(row["step_index"]),
+        )
+        score, source, fold_index = inference_scores[key]
+        score_source_counts[source] += 1
+        score_rows.append(
+            {
+                "item_id": row["item_id"],
+                "trajectory_id": row["trajectory_id"],
+                "step_index": row["step_index"],
+                "score": score,
+                "score_source": source,
+                "crossfit_fold": fold_index,
+                "base_correct": row.get("base_correct"),
+                "correction_rate": row.get("correction_rate"),
+                "label": row.get("label"),
+            }
+        )
+    metrics["score_source_counts"] = dict(score_source_counts)
+    return score_rows, metrics, final_model
 
 
 def train_repair_predictor(
@@ -96,95 +276,55 @@ def train_repair_predictor(
                 "masked_entropy_max": step["masked_entropy_max"],
                 "answer_disagreement": disagreement[(record["item_id"], step["step_index"])],
                 "candidate_change_rate": 0.0 if prev_answer is None else float(candidate != prev_answer),
+                "base_correct": bool(record["correct"]),
             }
             prev_answer = candidate
+            oracle_step = oracle_lookup.get(
+                (record["item_id"], record["trajectory_id"], step["step_index"])
+            )
+            if oracle_step is not None:
+                row["correction_rate"] = oracle_step["correction_rate"]
+                row["label"] = int(
+                    step["step_index"]
+                    in top_steps[(record["item_id"], record["trajectory_id"])]
+                )
             inference_rows.append(dict(row))
-            if not record["correct"]:
-                oracle_step = oracle_lookup.get((record["item_id"], record["trajectory_id"], step["step_index"]))
-                if oracle_step is None:
-                    continue
-                train_row = dict(row)
-                train_row["correction_rate"] = oracle_step["correction_rate"]
-                train_row["label"] = int(step["step_index"] in top_steps[(record["item_id"], record["trajectory_id"])])
-                rows.append(train_row)
+            if not record["correct"] and oracle_step is not None:
+                rows.append(dict(row))
 
     if not rows:
         payload = {"enabled": False, "reason": "no training rows"}
         save_json(run_dir / "repair_predictor.json", payload)
         return payload
 
-    groups = np.asarray([row["item_id"] for row in rows])
-    X = np.asarray([[row[key] for key in FEATURE_KEYS] for row in rows], dtype=np.float32)
-    y = np.asarray([row["label"] for row in rows], dtype=np.int64)
+    unique_items = {int(row["item_id"]) for row in rows}
+    if len(unique_items) < 2:
+        payload = {
+            "enabled": False,
+            "reason": "insufficient item groups for leakage-free cross-fit evaluation",
+        }
+        save_json(run_dir / "repair_predictor.json", payload)
+        return payload
 
-    splitter = GroupShuffleSplit(
-        n_splits=1,
-        test_size=float(cfg["predictor"].get("test_size", 0.2)),
+    score_rows, metrics, final_model = fit_crossfit_predictor_scores(
+        rows,
+        inference_rows,
+        list(FEATURE_KEYS),
+        requested_folds=int(cfg["predictor"].get("crossfit_folds", 5)),
         random_state=int(cfg["predictor"].get("random_state", 7)),
+        max_iter=int(cfg["predictor"].get("max_iter", 1000)),
     )
-    train_idx, test_idx = next(splitter.split(X, y, groups=groups))
-
-    model = Pipeline(
-        steps=[
-            (
-                "preprocess",
-                ColumnTransformer(
-                    transformers=[
-                        (
-                            "numeric",
-                            Pipeline(
-                                steps=[
-                                    ("imputer", SimpleImputer(strategy="median")),
-                                    ("scaler", StandardScaler()),
-                                ]
-                            ),
-                            list(range(len(FEATURE_KEYS))),
-                        )
-                    ]
-                ),
-            ),
-            (
-                "clf",
-                LogisticRegression(
-                    max_iter=int(cfg["predictor"].get("max_iter", 1000)),
-                    random_state=int(cfg["predictor"].get("random_state", 7)),
-                ),
-            ),
-        ]
-    )
-    model.fit(X[train_idx], y[train_idx])
-    pred_proba = model.predict_proba(X[test_idx])[:, 1]
-    pred_label = (pred_proba >= 0.5).astype(np.int64)
-
-    metrics = {
-        "train_rows": int(len(train_idx)),
-        "test_rows": int(len(test_idx)),
-        "positive_rate_train": float(y[train_idx].mean()) if len(train_idx) else 0.0,
-        "positive_rate_test": float(y[test_idx].mean()) if len(test_idx) else 0.0,
-        "accuracy": float(accuracy_score(y[test_idx], pred_label)) if len(test_idx) else 0.0,
-        "roc_auc": float(roc_auc_score(y[test_idx], pred_proba)) if len(np.unique(y[test_idx])) > 1 else None,
-    }
-
-    score_rows = []
-    for row in inference_rows:
-        score = float(model.predict_proba(np.asarray([[row[key] for key in FEATURE_KEYS]], dtype=np.float32))[0, 1])
-        score_rows.append(
-            {
-                "item_id": row["item_id"],
-                "trajectory_id": row["trajectory_id"],
-                "step_index": row["step_index"],
-                "score": score,
-                "correction_rate": row.get("correction_rate"),
-                "label": row.get("label"),
-            }
-        )
 
     payload = {
         "enabled": True,
         "feature_keys": FEATURE_KEYS,
         "metrics": metrics,
         "scores": score_rows,
+        "deployment_model_note": (
+            "repair_predictor.pkl is fit on all supervised items for deployment only; "
+            "reported selector scores for supervised items are cross-fit OOF scores"
+        ),
     }
-    save_pickle(run_dir / "repair_predictor.pkl", model)
+    save_pickle(run_dir / "repair_predictor.pkl", final_model)
     save_json(run_dir / "repair_predictor.json", payload)
     return payload

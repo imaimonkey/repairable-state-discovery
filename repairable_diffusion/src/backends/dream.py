@@ -20,6 +20,95 @@ from repairable_diffusion.src.utils.math_eval import (
 from repairable_diffusion.src.utils.seed import seed_everything
 
 
+def _chunked_logsumexp(logits: torch.Tensor, *, chunk_size: int = 4096) -> torch.Tensor:
+    """Float32 log-sum-exp over vocabulary without materializing full FP32 logits.
+
+    Dream logits are normally bfloat16 on GPU.  The previous diagnostic path
+    converted the complete ``[..., vocab]`` tensor to float32 before softmax,
+    temporarily doubling the largest activation-sized tensor.  This streaming
+    reduction preserves float32 accumulation while bounding the temporary
+    allocation by ``chunk_size`` vocabulary columns.
+    """
+    if logits.ndim < 1 or logits.shape[-1] <= 0:
+        raise ValueError("logits must have a non-empty vocabulary dimension")
+    if chunk_size <= 0:
+        raise ValueError("chunk_size must be positive")
+
+    vocab = int(logits.shape[-1])
+    flat = logits.reshape(-1, vocab)
+    running_max = None
+    running_sum = None
+    for start in range(0, vocab, chunk_size):
+        chunk = flat[:, start : start + chunk_size].to(torch.float32)
+        chunk_max = chunk.max(dim=-1).values
+        if running_max is None:
+            running_max = chunk_max
+            running_sum = torch.exp(chunk - running_max.unsqueeze(-1)).sum(dim=-1)
+        else:
+            new_max = torch.maximum(running_max, chunk_max)
+            running_sum = (
+                running_sum * torch.exp(running_max - new_max)
+                + torch.exp(chunk - new_max.unsqueeze(-1)).sum(dim=-1)
+            )
+            running_max = new_max
+    assert running_max is not None and running_sum is not None
+    result = running_max + torch.log(running_sum.clamp_min(torch.finfo(torch.float32).tiny))
+    return result.reshape(logits.shape[:-1])
+
+
+def _chunked_token_probabilities(
+    logits: torch.Tensor,
+    token_ids: torch.Tensor,
+    *,
+    chunk_size: int = 4096,
+) -> torch.Tensor:
+    """Probability of one selected token per row with bounded temporary memory."""
+    if tuple(logits.shape[:-1]) != tuple(token_ids.shape):
+        raise ValueError("token_ids shape must match logits without the vocabulary dimension")
+    chosen_logits = logits.gather(-1, token_ids.unsqueeze(-1)).squeeze(-1).to(torch.float32)
+    log_norm = _chunked_logsumexp(logits, chunk_size=chunk_size)
+    return torch.exp(chosen_logits - log_norm).clamp_(0.0, 1.0)
+
+
+def _chunked_entropy_from_logits(logits: torch.Tensor, *, chunk_size: int = 4096) -> torch.Tensor:
+    """Categorical entropy over vocabulary using a streaming softmax reduction."""
+    if logits.ndim < 1 or logits.shape[-1] <= 0:
+        raise ValueError("logits must have a non-empty vocabulary dimension")
+    if chunk_size <= 0:
+        raise ValueError("chunk_size must be positive")
+
+    vocab = int(logits.shape[-1])
+    flat = logits.reshape(-1, vocab)
+    running_max = None
+    running_sum = None
+    running_weighted_logits = None
+    for start in range(0, vocab, chunk_size):
+        chunk = flat[:, start : start + chunk_size].to(torch.float32)
+        chunk_max = chunk.max(dim=-1).values
+        if running_max is None:
+            running_max = chunk_max
+            weights = torch.exp(chunk - running_max.unsqueeze(-1))
+            running_sum = weights.sum(dim=-1)
+            running_weighted_logits = (weights * chunk).sum(dim=-1)
+        else:
+            new_max = torch.maximum(running_max, chunk_max)
+            old_scale = torch.exp(running_max - new_max)
+            weights = torch.exp(chunk - new_max.unsqueeze(-1))
+            running_sum = running_sum * old_scale + weights.sum(dim=-1)
+            running_weighted_logits = (
+                running_weighted_logits * old_scale + (weights * chunk).sum(dim=-1)
+            )
+            running_max = new_max
+    assert running_max is not None
+    assert running_sum is not None
+    assert running_weighted_logits is not None
+    safe_sum = running_sum.clamp_min(torch.finfo(torch.float32).tiny)
+    log_norm = running_max + torch.log(safe_sum)
+    expected_logit = running_weighted_logits / safe_sum
+    entropy = (log_norm - expected_logit).clamp_min_(0.0)
+    return entropy.reshape(logits.shape[:-1])
+
+
 def _ensure_dream_on_path(playground_root: str | Path) -> Path:
     root = Path(os.environ.get("DIFFUSION_PLAYGROUND_ROOT", str(playground_root))).expanduser().resolve()
     dream_dir = root / "Dream"
@@ -85,9 +174,28 @@ class DreamBackend:
     def _candidate_from_tokens(self, token_ids: torch.Tensor, prompt_len: int) -> str | None:
         return extract_boxed_answer(self._decode_text(token_ids, prompt_len))
 
-    def _confidence_of_current_tokens(self, logits: torch.Tensor, x: torch.Tensor) -> torch.Tensor:
-        probs = F.softmax(logits.to(torch.float32), dim=-1)
-        return probs.gather(-1, x.unsqueeze(-1)).squeeze(-1)
+    def _stats_vocab_chunk_size(self) -> int:
+        return max(1, int(self.cfg.get("stats_vocab_chunk_size", 4096)))
+
+    def _confidence_of_current_tokens(
+        self,
+        logits: torch.Tensor,
+        x: torch.Tensor,
+        active_mask: torch.Tensor,
+    ) -> torch.Tensor:
+        """Return float32 token probabilities only where diagnostics actually need them."""
+        if active_mask.shape != x.shape:
+            raise ValueError("active_mask must match token-id shape")
+        result = torch.full(x.shape, float("nan"), device=x.device, dtype=torch.float32)
+        if bool(active_mask.any().item()):
+            selected_logits = logits[active_mask]
+            selected_ids = x[active_mask]
+            result[active_mask] = _chunked_token_probabilities(
+                selected_logits,
+                selected_ids,
+                chunk_size=self._stats_vocab_chunk_size(),
+            )
+        return result
 
     @staticmethod
     def _optional_int(value: Any) -> int | None:
@@ -118,6 +226,7 @@ class DreamBackend:
             return token_id
         return self._optional_int(getattr(self.tokenizer, "eos_token_id", None))
 
+    @torch.inference_mode()
     def generate_trajectory(self, item: dict[str, Any], trajectory_id: int, generation_cfg: dict[str, Any]) -> dict[str, Any]:
         question = item["question"]
         gold = item["answer"]
@@ -165,11 +274,16 @@ class DreamBackend:
             else:
                 confidence = torch.tensor([], device=x.device, dtype=torch.float32)
                 x0 = torch.tensor([], device=x.device, dtype=torch.long)
+            del mask_logits
 
             confidence_full = torch.full(x.shape, float("-inf"), device=x.device, dtype=torch.float32)
             candidate_tokens = torch.full(x.shape, mask_token_id, device=x.device, dtype=torch.long)
             if confidence.numel() > 0:
-                confidence_full[mask_index] = confidence
+                # Dream inference returns bfloat16 confidence values while the
+                # bookkeeping tensor is intentionally float32.  Indexed
+                # assignment requires an exact dtype match on the supported
+                # torch version, so cast only this bookkeeping value.
+                confidence_full[mask_index] = confidence.to(confidence_full.dtype)
                 candidate_tokens[mask_index] = x0
 
             selected_mask = torch.zeros_like(mask_index, dtype=torch.bool)
@@ -201,10 +315,11 @@ class DreamBackend:
                     first_conf[need_record] = confidence_full[need_record].to(dtype=first_conf.dtype)
 
             current_unmasked_mask = x != mask_token_id
-            current_token_probs = self._confidence_of_current_tokens(logits, x)
+            diagnostic_positions = current_unmasked_mask & ~is_prompt_mask
+            current_token_probs = self._confidence_of_current_tokens(logits, x, diagnostic_positions)
             remask_mask = torch.zeros_like(current_unmasked_mask, dtype=torch.bool)
             for b in range(x.shape[0]):
-                cur_unm_pos = torch.where(current_unmasked_mask[b] & ~is_prompt_mask[b])[0]
+                cur_unm_pos = torch.where(diagnostic_positions[b])[0]
                 cur_unm_count = cur_unm_pos.numel()
                 if cur_unm_count <= 1:
                     continue
@@ -223,11 +338,15 @@ class DreamBackend:
                 None if bool(gen_mask[pos].item()) else float(conf_values[pos]) for pos in range(gen_length)
             ]
 
-            masked_probs = F.softmax(logits[0, prompt_len:][gen_mask].to(torch.float32), dim=-1) if bool(gen_mask.any().item()) else None
-            if masked_probs is not None and masked_probs.numel() > 0:
-                entropy = -(masked_probs * torch.log(masked_probs.clamp(min=1e-12))).sum(dim=-1)
+            if bool(gen_mask.any().item()):
+                masked_logits = logits[0, prompt_len:][gen_mask]
+                entropy = _chunked_entropy_from_logits(
+                    masked_logits,
+                    chunk_size=self._stats_vocab_chunk_size(),
+                )
                 masked_entropy_mean = float(entropy.mean().item())
                 masked_entropy_max = float(entropy.max().item())
+                del masked_logits, entropy
             else:
                 masked_entropy_mean = 0.0
                 masked_entropy_max = 0.0
@@ -259,6 +378,7 @@ class DreamBackend:
                 ).__dict__
             rows.append(row)
             step_id += 1
+            del logits, current_token_probs
 
         final_text = self._decode_text(x, prompt_len)
         final_answer = extract_boxed_answer(final_text)
@@ -289,6 +409,7 @@ class DreamBackend:
         rng.shuffle(chosen)
         return sorted(chosen[:target])
 
+    @torch.inference_mode()
     def repair_from_snapshot(
         self,
         item: dict[str, Any],
@@ -313,7 +434,6 @@ class DreamBackend:
         x = torch.tensor(snapshot.full_token_ids, dtype=torch.long, device=device).unsqueeze(0)
         prompt_len = snapshot.prompt_len
         total_steps = int(generation_cfg["steps"])
-        gen_length = int(generation_cfg["gen_length"])
         first_conf = torch.full(x.shape, float("nan"), device=device, dtype=torch.float32)
         for idx, conf in enumerate(snapshot.token_confidences):
             if conf is not None:
@@ -344,11 +464,14 @@ class DreamBackend:
             else:
                 confidence = torch.tensor([], device=x.device, dtype=torch.float32)
                 x0 = torch.tensor([], device=x.device, dtype=torch.long)
+            del mask_logits
 
             confidence_full = torch.full(x.shape, float("-inf"), device=x.device, dtype=torch.float32)
             candidate_tokens = torch.full(x.shape, mask_token_id, device=x.device, dtype=torch.long)
             if confidence.numel() > 0:
-                confidence_full[mask_index] = confidence
+                # Keep the confidence bookkeeping tensor in float32 even when
+                # Dream returns bfloat16 probabilities from the model.
+                confidence_full[mask_index] = confidence.to(confidence_full.dtype)
                 candidate_tokens[mask_index] = x0
 
             selected_mask = torch.zeros_like(mask_index, dtype=torch.bool)
@@ -376,10 +499,11 @@ class DreamBackend:
                     first_conf[need_record] = confidence_full[need_record]
 
             current_unmasked_mask = x != mask_token_id
-            current_token_probs = self._confidence_of_current_tokens(logits, x)
+            diagnostic_positions = current_unmasked_mask & ~is_prompt_mask
+            current_token_probs = self._confidence_of_current_tokens(logits, x, diagnostic_positions)
             remask_mask = torch.zeros_like(current_unmasked_mask, dtype=torch.bool)
             for b in range(x.shape[0]):
-                cur_unm_pos = torch.where(current_unmasked_mask[b] & ~is_prompt_mask[b])[0]
+                cur_unm_pos = torch.where(diagnostic_positions[b])[0]
                 cur_unm_count = cur_unm_pos.numel()
                 if cur_unm_count <= 1:
                     continue
@@ -392,6 +516,7 @@ class DreamBackend:
                 x[remask_mask] = mask_token_id
                 first_conf[remask_mask] = float("nan")
             step_id += 1
+            del logits, current_token_probs
 
         final_text = self._decode_text(x, prompt_len)
         final_answer = extract_boxed_answer(final_text)

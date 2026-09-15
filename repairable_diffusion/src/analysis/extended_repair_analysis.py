@@ -4,18 +4,14 @@ import argparse
 import csv
 from collections import defaultdict
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 import numpy as np
-from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, roc_auc_score
-from sklearn.model_selection import GroupShuffleSplit
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
 
-from repairable_diffusion.src.analysis.predictor import FEATURE_KEYS
+from repairable_diffusion.src.analysis.predictor import (
+    FEATURE_KEYS,
+    fit_crossfit_predictor_scores,
+)
 from repairable_diffusion.src.utils.io import ensure_dir, load_json, load_pickle, save_json
 
 
@@ -25,24 +21,32 @@ Result = dict[str, Any]
 
 def _predictor_scores(payload: dict[str, Any]) -> dict[tuple[int, int, int], float]:
     return {
-        (row["item_id"], row["trajectory_id"], row["step_index"]): float(row["score"])
+        (int(row["item_id"]), int(row["trajectory_id"]), int(row["step_index"])): float(
+            row["score"]
+        )
         for row in payload.get("scores", [])
     }
 
 
-def _oracle_step_lookup(oracle_payload: dict[str, Any]) -> dict[tuple[int, int, int], dict[str, Any]]:
+def _oracle_step_lookup(
+    oracle_payload: dict[str, Any],
+) -> dict[tuple[int, int, int], dict[str, Any]]:
     return {
-        (result["item_id"], result["trajectory_id"], step["step_index"]): step
+        (int(result["item_id"]), int(result["trajectory_id"]), int(step["step_index"])): step
         for result in oracle_payload.get("results", [])
         for step in result.get("step_results", [])
     }
 
 
-def _answer_disagreement(trajectory_payload: dict[str, Any]) -> dict[tuple[int, int], float]:
+def _answer_disagreement(
+    trajectory_payload: dict[str, Any],
+) -> dict[tuple[int, int], float]:
     buckets: dict[tuple[int, int], list[str]] = defaultdict(list)
     for record in trajectory_payload["records"]:
         for step in record.get("steps", []):
-            buckets[(record["item_id"], step["step_index"])].append(step.get("answer_candidate") or "")
+            buckets[(int(record["item_id"]), int(step["step_index"]))].append(
+                step.get("answer_candidate") or ""
+            )
     out = {}
     for key, answers in buckets.items():
         counts: dict[str, int] = defaultdict(int)
@@ -62,11 +66,15 @@ def _feature_rows(
     by_traj: dict[tuple[int, int], list[dict[str, Any]]] = defaultdict(list)
     for result in oracle_payload.get("results", []):
         for step in result.get("step_results", []):
-            by_traj[(result["item_id"], result["trajectory_id"])].append(step)
+            by_traj[(int(result["item_id"]), int(result["trajectory_id"]))].append(step)
     top_steps = {
         traj_id: {
-            step["step_index"]
-            for step in sorted(steps, key=lambda row: row["correction_rate"], reverse=True)[:1]
+            int(step["step_index"])
+            for step in sorted(
+                steps,
+                key=lambda row: float(row["correction_rate"]),
+                reverse=True,
+            )[:1]
         }
         for traj_id, steps in by_traj.items()
     }
@@ -80,29 +88,40 @@ def _feature_rows(
                 continue
             candidate = step.get("answer_candidate") or ""
             row = {
-                "item_id": record["item_id"],
-                "trajectory_id": record["trajectory_id"],
-                "step_index": step["step_index"],
-                "step_norm": step["step_index"] / max(1, step["total_steps"]),
+                "item_id": int(record["item_id"]),
+                "trajectory_id": int(record["trajectory_id"]),
+                "step_index": int(step["step_index"]),
+                "step_norm": int(step["step_index"]) / max(1, int(step["total_steps"])),
                 "masked_ratio": step["masked_ratio"],
                 "commitment_ratio": step["commitment_ratio"],
                 "state_token_conf_mean": step["state_token_conf_mean"],
                 "state_token_conf_min": step["state_token_conf_min"],
                 "masked_entropy_mean": step["masked_entropy_mean"],
                 "masked_entropy_max": step["masked_entropy_max"],
-                "answer_disagreement": disagreement[(record["item_id"], step["step_index"])],
-                "candidate_change_rate": 0.0 if prev_answer is None else float(candidate != prev_answer),
+                "answer_disagreement": disagreement[
+                    (int(record["item_id"]), int(step["step_index"]))
+                ],
+                "candidate_change_rate": (
+                    0.0 if prev_answer is None else float(candidate != prev_answer)
+                ),
+                "base_correct": bool(record["correct"]),
             }
             prev_answer = candidate
+            oracle_step = oracle_lookup.get(
+                (
+                    int(record["item_id"]),
+                    int(record["trajectory_id"]),
+                    int(step["step_index"]),
+                )
+            )
+            if oracle_step is not None:
+                row["label"] = int(
+                    int(step["step_index"])
+                    in top_steps[(int(record["item_id"]), int(record["trajectory_id"]))]
+                )
             inference_rows.append(dict(row))
-            if record["correct"]:
-                continue
-            oracle_step = oracle_lookup.get((record["item_id"], record["trajectory_id"], step["step_index"]))
-            if oracle_step is None:
-                continue
-            train_row = dict(row)
-            train_row["label"] = int(step["step_index"] in top_steps[(record["item_id"], record["trajectory_id"])])
-            train_rows.append(train_row)
+            if not record["correct"] and oracle_step is not None:
+                train_rows.append(dict(row))
     return train_rows, inference_rows
 
 
@@ -113,63 +132,55 @@ def _train_ablation_scores(
     *,
     random_state: int,
 ) -> tuple[dict[tuple[int, int, int], float], dict[str, Any]]:
-    groups = np.asarray([row["item_id"] for row in train_rows])
-    X = np.asarray([[row[key] for key in feature_keys] for row in train_rows], dtype=np.float32)
-    y = np.asarray([row["label"] for row in train_rows], dtype=np.int64)
-    splitter = GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=random_state)
-    train_idx, test_idx = next(splitter.split(X, y, groups=groups))
-    model = Pipeline(
-        steps=[
-            (
-                "preprocess",
-                ColumnTransformer(
-                    transformers=[
-                        (
-                            "numeric",
-                            Pipeline(
-                                steps=[
-                                    ("imputer", SimpleImputer(strategy="median")),
-                                    ("scaler", StandardScaler()),
-                                ]
-                            ),
-                            list(range(len(feature_keys))),
-                        )
-                    ]
-                ),
-            ),
-            ("clf", LogisticRegression(max_iter=1000, random_state=random_state)),
-        ]
+    score_rows, metrics, _ = fit_crossfit_predictor_scores(
+        train_rows,
+        inference_rows,
+        feature_keys,
+        requested_folds=5,
+        random_state=random_state,
+        max_iter=1000,
     )
-    model.fit(X[train_idx], y[train_idx])
-    pred_proba = model.predict_proba(X[test_idx])[:, 1]
-    pred_label = (pred_proba >= 0.5).astype(np.int64)
-    metrics = {
-        "feature_keys": feature_keys,
-        "test_accuracy": float(accuracy_score(y[test_idx], pred_label)) if len(test_idx) else None,
-        "test_roc_auc": float(roc_auc_score(y[test_idx], pred_proba)) if len(np.unique(y[test_idx])) > 1 else None,
-    }
-    X_infer = np.asarray([[row[key] for key in feature_keys] for row in inference_rows], dtype=np.float32)
-    pred_infer = model.predict_proba(X_infer)[:, 1]
     scores = {
-        (row["item_id"], row["trajectory_id"], row["step_index"]): float(score)
-        for row, score in zip(inference_rows, pred_infer, strict=True)
+        (int(row["item_id"]), int(row["trajectory_id"]), int(row["step_index"])): float(
+            row["score"]
+        )
+        for row in score_rows
     }
-    return scores, metrics
+    return scores, {
+        "feature_keys": feature_keys,
+        "test_accuracy": metrics["accuracy"],
+        "test_roc_auc": metrics["roc_auc"],
+        "evaluation_protocol": metrics["evaluation_protocol"],
+        "crossfit_folds": metrics["crossfit_folds"],
+    }
 
 
 def _ablation_specs() -> dict[str, list[str]]:
     return {
         "abl_all": list(FEATURE_KEYS),
         "abl_confidence_only": ["state_token_conf_mean", "state_token_conf_min"],
-        "abl_mask_only": ["masked_ratio", "masked_entropy_mean", "masked_entropy_max"],
+        "abl_mask_only": [
+            "masked_ratio",
+            "masked_entropy_mean",
+            "masked_entropy_max",
+        ],
         "abl_step_only": ["step_norm"],
-        "abl_no_confidence": [key for key in FEATURE_KEYS if not key.startswith("state_token_conf")],
-        "abl_no_mask": [key for key in FEATURE_KEYS if key not in {"masked_ratio", "masked_entropy_mean", "masked_entropy_max"}],
+        "abl_no_confidence": [
+            key for key in FEATURE_KEYS if not key.startswith("state_token_conf")
+        ],
+        "abl_no_mask": [
+            key
+            for key in FEATURE_KEYS
+            if key
+            not in {"masked_ratio", "masked_entropy_mean", "masked_entropy_max"}
+        ],
         "abl_no_step": [key for key in FEATURE_KEYS if key != "step_norm"],
     }
 
 
-def _base_item_maps(trajectory_payload: dict[str, Any]) -> tuple[list[int], dict[int, bool], dict[int, bool]]:
+def _base_item_maps(
+    trajectory_payload: dict[str, Any],
+) -> tuple[list[int], dict[int, bool], dict[int, bool]]:
     pass1: dict[int, bool] = defaultdict(bool)
     passk: dict[int, bool] = defaultdict(bool)
     for record in trajectory_payload["records"]:
@@ -186,16 +197,20 @@ def _sample_accuracy(trajectory_payload: dict[str, Any]) -> float:
     if meta.get("sample_accuracy") is not None:
         return float(meta["sample_accuracy"])
     records = trajectory_payload.get("records", [])
-    return float(np.mean([float(record["correct"]) for record in records])) if records else 0.0
+    return (
+        float(np.mean([float(record["correct"]) for record in records]))
+        if records
+        else 0.0
+    )
 
 
-def _extra_sampling_pass_at_k_approx(base_pass_at_k: float, sample_accuracy: float, extra_samples_per_item: float) -> float:
-    """Approximate matched-budget extra-sampling pass@k from observed sample accuracy.
+def _extra_sampling_pass_at_k_approx(
+    base_pass_at_k: float,
+    sample_accuracy: float,
+    extra_samples_per_item: float,
+) -> float:
+    """Approximate matched-budget extra-sampling pass@k from observed sample accuracy."""
 
-    This is a cost-normalized proxy, not a replacement for separately decoded
-    extra-sample runs. It estimates the probability that currently unsolved
-    items would be solved by the same expected number of additional samples.
-    """
     p = min(1.0, max(0.0, sample_accuracy))
     extra = max(0.0, extra_samples_per_item)
     extra_hit = 1.0 - ((1.0 - p) ** extra)
@@ -208,7 +223,11 @@ def _score_value(
     result: Result,
     predictor: dict[tuple[int, int, int], float],
 ) -> float:
-    key = (int(result["item_id"]), int(result["trajectory_id"]), int(step["step_index"]))
+    key = (
+        int(result["item_id"]),
+        int(result["trajectory_id"]),
+        int(step["step_index"]),
+    )
     if strategy == "predictor":
         return predictor.get(key, -1.0)
     if strategy == "confidence_low":
@@ -237,8 +256,15 @@ def _select_step(
         return None
     if strategy == "oracle":
         key = "degradation_rate" if success else "correction_rate"
-        return min(steps, key=lambda row: float(row[key])) if success else max(steps, key=lambda row: float(row[key]))
-    picked = max(steps, key=lambda row: _score_value(strategy, row, result, predictor))
+        return (
+            min(steps, key=lambda row: float(row[key]))
+            if success
+            else max(steps, key=lambda row: float(row[key]))
+        )
+    picked = max(
+        steps,
+        key=lambda row: _score_value(strategy, row, result, predictor),
+    )
     if threshold is not None:
         score = _score_value(strategy, picked, result, predictor)
         if score < threshold:
@@ -282,6 +308,20 @@ def _bootstrap_item_ci(
     }
 
 
+def _net_item_values(
+    trajectory_payload: dict[str, Any],
+    trajectory_success_prob: dict[tuple[int, int], float],
+) -> dict[int, float]:
+    by_item: dict[int, list[float]] = defaultdict(list)
+    for record in trajectory_payload["records"]:
+        key = (int(record["item_id"]), int(record["trajectory_id"]))
+        by_item[int(record["item_id"])].append(trajectory_success_prob[key])
+    return {
+        item_id: 1.0 - float(np.prod([1.0 - probability for probability in probabilities]))
+        for item_id, probabilities in by_item.items()
+    }
+
+
 def evaluate_strategy(
     *,
     strategy: str,
@@ -295,46 +335,102 @@ def evaluate_strategy(
 ) -> dict[str, Any]:
     item_ids, pass1, passk = _base_item_maps(trajectory_payload)
     base_values = {item_id: float(passk[item_id]) for item_id in item_ids}
+    original_correct = {
+        (int(record["item_id"]), int(record["trajectory_id"])): bool(record["correct"])
+        for record in trajectory_payload["records"]
+    }
+    trajectory_success_prob = {
+        key: 1.0 if correct else 0.0 for key, correct in original_correct.items()
+    }
+    original_failed_keys = {key for key, correct in original_correct.items() if not correct}
+    original_success_keys = {key for key, correct in original_correct.items() if correct}
+    failed_results = {
+        (int(row["item_id"]), int(row["trajectory_id"])): row
+        for row in oracle_payload.get("results", [])
+    }
+    success_results = {
+        (int(row["item_id"]), int(row["trajectory_id"])): row
+        for row in oracle_payload.get("success_results", [])
+    }
+    failed_probe_complete = set(failed_results) == original_failed_keys
+    success_probe_complete = set(success_results) == original_success_keys
+    net_metric_complete = failed_probe_complete and success_probe_complete
+
     repair_probs_by_item: dict[int, list[float]] = defaultdict(list)
     selected_failed = 0
-
-    for result in oracle_payload.get("results", []):
+    for key, result in failed_results.items():
         picked = _select_step(strategy, result, predictor, threshold=threshold, success=False)
         if picked is None:
             continue
         selected_failed += 1
+        correction_rate = float(picked["correction_rate"])
+        trajectory_success_prob[key] = correction_rate
         item_id = int(result["item_id"])
         if not passk[item_id]:
-            repair_probs_by_item[item_id].append(float(picked["correction_rate"]))
+            repair_probs_by_item[item_id].append(correction_rate)
 
-    repaired_item_values: dict[int, float] = {}
+    recovery_only_item_values: dict[int, float] = {}
     upper_bound_newly_solved = 0
     for item_id in item_ids:
         if passk[item_id]:
-            repaired_item_values[item_id] = 1.0
+            recovery_only_item_values[item_id] = 1.0
             continue
         probs = repair_probs_by_item.get(item_id, [])
-        repaired_item_values[item_id] = 1.0 - float(np.prod([1.0 - p for p in probs])) if probs else 0.0
+        recovery_only_item_values[item_id] = (
+            1.0 - float(np.prod([1.0 - p for p in probs])) if probs else 0.0
+        )
         upper_bound_newly_solved += int(any(p > 0.0 for p in probs))
 
     selected_success = 0
     degradation_values = []
-    for result in oracle_payload.get("success_results", []):
+    for key, result in success_results.items():
         picked = _select_step(strategy, result, predictor, threshold=threshold, success=True)
         if picked is None:
             degradation_values.append(0.0)
             continue
         selected_success += 1
-        degradation_values.append(float(picked["degradation_rate"]))
+        degradation_rate = float(picked["degradation_rate"])
+        degradation_values.append(degradation_rate)
+        trajectory_success_prob[key] = 1.0 - degradation_rate
 
-    base_pass_at_1 = float(np.mean([float(pass1[item_id]) for item_id in item_ids])) if item_ids else 0.0
-    base_pass_at_k = float(np.mean([base_values[item_id] for item_id in item_ids])) if item_ids else 0.0
-    repaired_pass_at_k = float(np.mean([repaired_item_values[item_id] for item_id in item_ids])) if item_ids else 0.0
-    ci = _bootstrap_item_ci(repaired_item_values, base_values, rng, n_bootstrap)
+    base_pass_at_1 = (
+        float(np.mean([float(pass1[item_id]) for item_id in item_ids])) if item_ids else 0.0
+    )
+    base_pass_at_k = (
+        float(np.mean([base_values[item_id] for item_id in item_ids])) if item_ids else 0.0
+    )
+    recovery_only_pass_at_k = (
+        float(np.mean([recovery_only_item_values[item_id] for item_id in item_ids]))
+        if item_ids
+        else 0.0
+    )
+    recovery_ci = _bootstrap_item_ci(
+        recovery_only_item_values,
+        base_values,
+        rng,
+        n_bootstrap,
+    )
+
+    net_values = None
+    net_pass_at_k = None
+    net_gain = None
+    net_ci = None
+    expected_lost_solved_items = None
+    if net_metric_complete:
+        net_values = _net_item_values(trajectory_payload, trajectory_success_prob)
+        net_pass_at_k = float(np.mean([net_values[item_id] for item_id in item_ids]))
+        net_gain = net_pass_at_k - base_pass_at_k
+        net_ci = _bootstrap_item_ci(net_values, base_values, rng, n_bootstrap)
+        expected_lost_solved_items = sum(
+            1.0 - net_values[item_id] for item_id in item_ids if passk[item_id]
+        )
+
     branch_count = int(oracle_payload.get("meta", {}).get("branch_count", 0))
     estimated_repair_branch_evals = branch_count * (selected_failed + selected_success)
     num_items = len(item_ids)
-    base_trajectories_per_item = int(trajectory_payload.get("meta", {}).get("trajectories_per_item", 0))
+    base_trajectories_per_item = int(
+        trajectory_payload.get("meta", {}).get("trajectories_per_item", 0)
+    )
     repair_cost_per_item = estimated_repair_branch_evals / max(1, num_items)
     matched_extra_pass_at_k = _extra_sampling_pass_at_k_approx(
         base_pass_at_k=base_pass_at_k,
@@ -350,17 +446,45 @@ def evaluate_strategy(
         "base_trajectories_per_item": base_trajectories_per_item,
         "base_pass_at_1": base_pass_at_1,
         "base_pass_at_k": base_pass_at_k,
-        "repaired_pass_at_k": repaired_pass_at_k,
-        "gain": repaired_pass_at_k - base_pass_at_k,
-        "repaired_pass_at_k_ci_low": ci["repaired_pass_at_k"]["ci_low"],
-        "repaired_pass_at_k_ci_high": ci["repaired_pass_at_k"]["ci_high"],
-        "gain_ci_low": ci["gain"]["ci_low"],
-        "gain_ci_high": ci["gain"]["ci_high"],
-        "expected_newly_solved_items": sum(
-            repaired_item_values[item_id] for item_id in item_ids if not passk[item_id]
+        "recovery_only_pass_at_k": recovery_only_pass_at_k,
+        "recovery_only_gain": recovery_only_pass_at_k - base_pass_at_k,
+        "recovery_only_pass_at_k_ci_low": recovery_ci["repaired_pass_at_k"]["ci_low"],
+        "recovery_only_pass_at_k_ci_high": recovery_ci["repaired_pass_at_k"]["ci_high"],
+        "recovery_only_gain_ci_low": recovery_ci["gain"]["ci_low"],
+        "recovery_only_gain_ci_high": recovery_ci["gain"]["ci_high"],
+        "net_metric_complete": net_metric_complete,
+        "failed_probe_complete": failed_probe_complete,
+        "success_probe_complete": success_probe_complete,
+        "net_pass_at_k": net_pass_at_k,
+        "net_gain": net_gain,
+        "net_pass_at_k_ci_low": (
+            None if net_ci is None else net_ci["repaired_pass_at_k"]["ci_low"]
         ),
+        "net_pass_at_k_ci_high": (
+            None if net_ci is None else net_ci["repaired_pass_at_k"]["ci_high"]
+        ),
+        "net_gain_ci_low": None if net_ci is None else net_ci["gain"]["ci_low"],
+        "net_gain_ci_high": None if net_ci is None else net_ci["gain"]["ci_high"],
+        "repaired_pass_at_k": net_pass_at_k,
+        "gain": net_gain,
+        "repaired_pass_at_k_ci_low": (
+            None if net_ci is None else net_ci["repaired_pass_at_k"]["ci_low"]
+        ),
+        "repaired_pass_at_k_ci_high": (
+            None if net_ci is None else net_ci["repaired_pass_at_k"]["ci_high"]
+        ),
+        "gain_ci_low": None if net_ci is None else net_ci["gain"]["ci_low"],
+        "gain_ci_high": None if net_ci is None else net_ci["gain"]["ci_high"],
+        "expected_newly_solved_items": sum(
+            recovery_only_item_values[item_id]
+            for item_id in item_ids
+            if not passk[item_id]
+        ),
+        "expected_lost_solved_items": expected_lost_solved_items,
         "upper_bound_newly_solved_items": upper_bound_newly_solved,
-        "negative_repair_rate": float(np.mean(degradation_values)) if degradation_values else None,
+        "negative_repair_rate": (
+            float(np.mean(degradation_values)) if degradation_values else None
+        ),
         "selected_failed_trajectories": selected_failed,
         "selected_success_trajectories": selected_success,
         "repair_branch_count": branch_count,
@@ -368,11 +492,13 @@ def evaluate_strategy(
         "repair_cost_per_item": repair_cost_per_item,
         "matched_extra_samples_per_item": repair_cost_per_item,
         "extra_sampling_pass_at_k_approx": matched_extra_pass_at_k,
-        "gain_over_extra_sampling_approx": repaired_pass_at_k - matched_extra_pass_at_k,
+        "gain_over_extra_sampling_approx": (
+            None if net_pass_at_k is None else net_pass_at_k - matched_extra_pass_at_k
+        ),
         "repair_gain_per_1k_branch_evals": (
-            1000.0 * (repaired_pass_at_k - base_pass_at_k) / estimated_repair_branch_evals
-            if estimated_repair_branch_evals > 0
-            else None
+            None
+            if net_gain is None or estimated_repair_branch_evals <= 0
+            else 1000.0 * net_gain / estimated_repair_branch_evals
         ),
     }
 
@@ -389,14 +515,19 @@ def _write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         writer.writerows(rows)
 
 
+def _fmt(value: Any, digits: int = 4) -> str:
+    return "-" if value is None else f"{float(value):.{digits}f}"
+
+
 def _markdown_table(rows: list[dict[str, Any]]) -> str:
     headers = [
         "run",
         "strategy",
         "base",
-        "repaired",
-        "gain",
-        "gain_ci",
+        "recovery_only",
+        "net",
+        "net_gain",
+        "net_gain_ci",
         "neg",
         "branches",
         "extra_approx",
@@ -407,21 +538,26 @@ def _markdown_table(rows: list[dict[str, Any]]) -> str:
         "| " + " | ".join(["---"] * len(headers)) + " |",
     ]
     for row in rows:
-        gain_ci = f"[{row['gain_ci_low']:.4f}, {row['gain_ci_high']:.4f}]"
+        net_gain_ci = (
+            "-"
+            if row["net_gain_ci_low"] is None
+            else f"[{row['net_gain_ci_low']:.4f}, {row['net_gain_ci_high']:.4f}]"
+        )
         lines.append(
             "| "
             + " | ".join(
                 [
                     str(row["run_name"]),
                     str(row["strategy"]),
-                    f"{row['base_pass_at_k']:.4f}",
-                    f"{row['repaired_pass_at_k']:.4f}",
-                    f"{row['gain']:.4f}",
-                    gain_ci,
-                    "-" if row["negative_repair_rate"] is None else f"{row['negative_repair_rate']:.4f}",
+                    _fmt(row["base_pass_at_k"]),
+                    _fmt(row["recovery_only_pass_at_k"]),
+                    _fmt(row["net_pass_at_k"]),
+                    _fmt(row["net_gain"]),
+                    net_gain_ci,
+                    _fmt(row["negative_repair_rate"]),
                     str(row["estimated_repair_branch_evals"]),
-                    f"{row['extra_sampling_pass_at_k_approx']:.4f}",
-                    f"{row['gain_over_extra_sampling_approx']:.4f}",
+                    _fmt(row["extra_sampling_pass_at_k_approx"]),
+                    _fmt(row["gain_over_extra_sampling_approx"]),
                 ]
             )
             + " |"
@@ -462,7 +598,12 @@ def analyze_run(run_dir: Path, *, n_bootstrap: int, seed: int) -> list[dict[str,
     ]
     train_rows, inference_rows = _feature_rows(trajectory_payload, oracle_payload)
     for name, feature_keys in _ablation_specs().items():
-        scores, metrics = _train_ablation_scores(train_rows, inference_rows, feature_keys, random_state=seed)
+        scores, metrics = _train_ablation_scores(
+            train_rows,
+            inference_rows,
+            feature_keys,
+            random_state=seed,
+        )
         row = evaluate_strategy(
             strategy="predictor",
             run_name=run_dir.name,
@@ -476,6 +617,8 @@ def analyze_run(run_dir: Path, *, n_bootstrap: int, seed: int) -> list[dict[str,
         row["strategy"] = name
         row["ablation_test_accuracy"] = metrics["test_accuracy"]
         row["ablation_test_roc_auc"] = metrics["test_roc_auc"]
+        row["ablation_evaluation_protocol"] = metrics["evaluation_protocol"]
+        row["ablation_crossfit_folds"] = metrics["crossfit_folds"]
         row["ablation_feature_keys"] = ",".join(feature_keys)
         rows.append(row)
     return rows
@@ -499,7 +642,10 @@ def main() -> None:
     out_dir = ensure_dir(args.output_dir)
     save_json(out_dir / "extended_repair_analysis.json", {"rows": rows})
     _write_csv(out_dir / "extended_repair_analysis.csv", rows)
-    (out_dir / "extended_repair_analysis.md").write_text(_markdown_table(rows), encoding="utf-8")
+    (out_dir / "extended_repair_analysis.md").write_text(
+        _markdown_table(rows),
+        encoding="utf-8",
+    )
     print(f"[extended] runs: {len(args.run_dir)}")
     print(f"[extended] rows: {len(rows)}")
     print(f"[extended] output: {out_dir}")

@@ -1,0 +1,24 @@
+name: eval-ci
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'idea/**'
+
+jobs:
+  unbiased-eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install evaluation test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest numpy==1.26.4 scikit-learn==1.5.2 PyYAML==6.0.2
+      - name: Run leakage and net-policy regression tests
+        run: PYTHONPATH=. pytest -q tests/test_unbiased_repair_eval.py
