@@ -1,0 +1,33 @@
+name: dream-memory-ci
+
+on:
+  pull_request:
+    paths:
+      - 'repairable_diffusion/src/backends/dream.py'
+      - 'tests/test_dream_memory_math.py'
+      - '.github/workflows/dream-memory-ci.yml'
+  push:
+    branches:
+      - main
+      - 'idea/**'
+    paths:
+      - 'repairable_diffusion/src/backends/dream.py'
+      - 'tests/test_dream_memory_math.py'
+      - '.github/workflows/dream-memory-ci.yml'
+
+jobs:
+  dream-memory-math:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install CPU test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest numpy transformers
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu torch
+      - name: Verify chunked Dream diagnostics against dense softmax
+        run: PYTHONPATH=. pytest -q tests/test_dream_memory_math.py
