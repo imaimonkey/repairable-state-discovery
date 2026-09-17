@@ -18,6 +18,7 @@ REQUIRED_DESIGN_FILES = [
     ROOT / "AGENTS.md",
     ROOT / "docs/v2_scientific_contract.md",
     ROOT / "docs/CODEX_V2_FINAL_EXECUTION.md",
+    ROOT / "docs/CODEX_EXECUTE_NOW.md",
     ROOT / "repairable_diffusion/configs/v2/measurement_contract.yaml",
     ROOT / "repairable_diffusion/src/v2/contracts.py",
     ROOT / "repairable_diffusion/src/v2/metrics.py",
@@ -33,6 +34,7 @@ REQUIRED_EXECUTION_FILES = [
     ROOT / "scripts/run_v2_suite.sh",
     ROOT / "scripts/validate_v2_backends.py",
     ROOT / "scripts/submit_v2_suite.py",
+    ROOT / "scripts/seal_v2_runs.py",
     ROOT / "scripts/aggregate_v2_results.py",
 ]
 
@@ -115,6 +117,30 @@ def _require_report(errors: list[str], run_name: str, current_sha: str) -> None:
         return
     if payload.get("git_sha") != current_sha:
         errors.append(f"run report git SHA mismatch for {run_name}")
+    if payload.get("v1_artifacts_substituted") is not False:
+        errors.append(f"run report does not reject V1 substitution: {run_name}")
+
+
+def _require_provenance(errors: list[str], run_name: str, current_sha: str, required_fields: list[str]) -> None:
+    path = OUTPUT_ROOT / run_name / "scientific_provenance.json"
+    if not path.is_file():
+        errors.append(f"missing scientific provenance: {run_name}")
+        return
+    try:
+        payload = _json(path)
+    except Exception as exc:
+        errors.append(f"invalid scientific provenance {run_name}: {exc}")
+        return
+    if payload.get("status") != "SEALED":
+        errors.append(f"scientific provenance is not SEALED: {run_name}")
+    provenance = payload.get("required_provenance") or {}
+    if provenance.get("git_sha") != current_sha:
+        errors.append(f"scientific provenance git SHA mismatch: {run_name}")
+    missing = [field for field in required_fields if provenance.get(field) in (None, "")]
+    if missing:
+        errors.append(f"scientific provenance missing fields for {run_name}: {missing}")
+    if payload.get("v1_artifacts_substituted") is not False:
+        errors.append(f"scientific provenance does not reject V1 substitution: {run_name}")
 
 
 def main() -> None:
@@ -125,6 +151,7 @@ def main() -> None:
 
     current_sha = _git_sha()
     errors: list[str] = []
+    cfg = None
     try:
         cfg = load_yaml(Path(args.contract))
         validate_contract_dict(cfg)
@@ -139,6 +166,7 @@ def main() -> None:
         for name in sorted(REQUIRED_TEST_NAMES - present_tests):
             errors.append(f"missing scientific readiness test: {name}")
 
+    required_fields = list((cfg or {}).get("provenance", {}).get("required_fields", []))
     if args.mode in {"full", "final"}:
         _require_stamp(
             errors,
@@ -154,10 +182,12 @@ def main() -> None:
         )
         for run_name in PILOT_RUNS:
             _require_report(errors, run_name, current_sha)
+            _require_provenance(errors, run_name, current_sha, required_fields)
 
     if args.mode == "final":
         for run_name in TIER_A_RUNS:
             _require_report(errors, run_name, current_sha)
+            _require_provenance(errors, run_name, current_sha, required_fields)
         errors.extend(f"missing final artifact: {path}" for path in _missing(FINAL_ARTIFACTS))
         manifest_path = RESULT_ROOT / "final_execution_manifest.json"
         if manifest_path.is_file():
