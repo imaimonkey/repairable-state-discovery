@@ -87,6 +87,24 @@ separate from workspace synchronization: code/config transfer happens before
 submission, while run-artifact transfer happens only after the producing job
 finishes successfully.
 
+If only the collector has passwordless SSH access to the producer nodes, use
+the pull variant as an `afterok` CPU job on the collector:
+
+```bash
+sbatch --dependency=afterok:PRODUCER_JOB \
+  --nodelist=ubuntu --mem=4G \
+  scripts/pull_run_artifacts.sh \
+  10.0.12.121 \
+  /home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/RUN_NAME \
+  /data/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs \
+  RUN_NAME \
+  report.json,trajectories.pkl,oracle_repair.json,repair_predictor.json
+```
+
+For AR runs, pass `ar_baseline_summary.json` as the final argument. Protocol
+aggregation must depend on the pull job IDs, not only on the producer IDs; the
+`.sync_complete` marker is written only after all required files are local.
+
 ## Monitoring while Codex is offline
 
 The dependency graph continues in Slurm after the submitting shell or Codex
