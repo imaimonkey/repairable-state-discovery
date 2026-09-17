@@ -205,9 +205,23 @@ if [[ "$REQUIRED_BACKENDS" == *"rfba_llada"* ]]; then
   export RFBA_ROOT
 fi
 
-if [[ "$REQUIRED_BACKENDS" == *"dream"* ]] && [[ ! -d /home/kimhj/difffusion-sampling-exp-benchmark-playground/Dream ]]; then
-  echo "Required Dream backend root missing: /home/kimhj/difffusion-sampling-exp-benchmark-playground/Dream"
-  exit 1
+if [[ "$REQUIRED_BACKENDS" == *"dream"* ]]; then
+  if [[ -z "${DIFFUSION_PLAYGROUND_ROOT:-}" ]]; then
+    for candidate in \
+      "${HOME:-}/difffusion-sampling-exp-benchmark-playground" \
+      /data/kimhj/difffusion-sampling-exp-benchmark-playground \
+      /home/kimhj/difffusion-sampling-exp-benchmark-playground; do
+      if [[ -d "$candidate/Dream" ]]; then
+        DIFFUSION_PLAYGROUND_ROOT="$candidate"
+        break
+      fi
+    done
+  fi
+  if [[ -z "${DIFFUSION_PLAYGROUND_ROOT:-}" || ! -d "$DIFFUSION_PLAYGROUND_ROOT/Dream" ]]; then
+    echo "Required Dream backend root missing; set DIFFUSION_PLAYGROUND_ROOT to a directory containing Dream" >&2
+    exit 1
+  fi
+  export DIFFUSION_PLAYGROUND_ROOT
 fi
 
 echo "=========================================="
@@ -218,6 +232,7 @@ echo "Run names:     ${PROTOCOL_RUN_NAMES:-<all>}"
 echo "Backends:      ${REQUIRED_BACKENDS:-<none>}"
 echo "HF_HOME:       $HF_HOME"
 echo "RFBA_ROOT:     ${RFBA_ROOT:-<not-needed>}"
+echo "DREAM_ROOT:    ${DIFFUSION_PLAYGROUND_ROOT:-<not-needed>}"
 echo "HF_HUB_CACHE:  $HF_HUB_CACHE"
 if has_hf_token; then
   echo "HF token:      present"
