@@ -4,7 +4,9 @@
 #SBATCH --error=/home/kimhj/repairable-state-discovery/logs/protocol_final_%j.err
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=64G
+# 60G is accepted by the 1-GPU memory policy on server2/server4 and remains
+# sufficient for the 7B/8B full-paper backends; server3 H200 jobs also fit.
+#SBATCH --mem=60G
 #SBATCH --time=30-00:00:00
 
 set -euo pipefail
@@ -112,7 +114,10 @@ for backend_type in sorted(required):
 PY
 }
 
-ROOT_CANDIDATE="${SLURM_SUBMIT_DIR:-$SCRIPT_DIR}"
+# A Slurm submission may originate on a different login node whose absolute
+# path is not mounted on the allocated compute node.  Prefer an explicit
+# node-local root, then fall back to the submit directory/script location.
+ROOT_CANDIDATE="${REPAIRABLE_ROOT:-${SLURM_SUBMIT_DIR:-$SCRIPT_DIR}}"
 ROOT_DIR="$(find_repo_root "$ROOT_CANDIDATE")" || {
   echo "Could not locate repo root from '$ROOT_CANDIDATE'."
   exit 1
@@ -132,11 +137,18 @@ fi
 load_hf_token_from_file
 
 if [[ -z "${PYTHON_BIN:-}" ]]; then
-  if [[ -x "$ROOT_DIR/.venv/bin/python" ]]; then
-    PYTHON_BIN="$ROOT_DIR/.venv/bin/python"
-  elif [[ -x /home/kimhj/llada8b_basic/.venv/bin/python ]]; then
-    PYTHON_BIN=/home/kimhj/llada8b_basic/.venv/bin/python
-  else
+  for candidate in \
+    "$ROOT_DIR/.venv/bin/python" \
+    "${HOME:-}/llada8b_basic/.venv/bin/python" \
+    "${HOME:-}/repo-reconcile/llada8b_basic/.venv/bin/python" \
+    /data/kimhj/repo-reconcile/llada8b_basic/.venv/bin/python \
+    /home/kimhj/llada8b_basic/.venv/bin/python; do
+    if [[ -x "$candidate" ]]; then
+      PYTHON_BIN="$candidate"
+      break
+    fi
+  done
+  if [[ -z "${PYTHON_BIN:-}" ]]; then
     PYTHON_BIN="$(command -v python || command -v python3 || true)"
   fi
 fi
@@ -149,11 +161,16 @@ PROTOCOL_PATH="${PROTOCOL_PATH:-repairable_diffusion/configs/final/protocol_math
 PROTOCOL_FAMILIES="${PROTOCOL_FAMILIES:-}"
 PROTOCOL_RUN_NAMES="${PROTOCOL_RUN_NAMES:-}"
 if [[ -z "${HF_HOME:-}" ]]; then
-  if [[ -d /data/kimhj/.cache/huggingface ]]; then
-    HF_HOME=/data/kimhj/.cache/huggingface
-  else
-    HF_HOME="$ROOT_DIR/.hf_home"
-  fi
+  for candidate in \
+    "${HOME:-}/.cache/huggingface" \
+    /data/kimhj/.cache/huggingface \
+    /home/kimhj/.cache/huggingface; do
+    if [[ -d "$candidate" ]]; then
+      HF_HOME="$candidate"
+      break
+    fi
+  done
+  HF_HOME="${HF_HOME:-$ROOT_DIR/.hf_home}"
 fi
 HF_HUB_CACHE="${HF_HUB_CACHE:-$HF_HOME/hub}"
 
@@ -170,6 +187,9 @@ REQUIRED_BACKENDS="$(detect_required_backends | tr '\n' ' ')"
 if [[ "$REQUIRED_BACKENDS" == *"rfba_llada"* ]]; then
   if [[ -z "${RFBA_ROOT:-}" ]]; then
     for candidate in \
+      "${HOME:-}/rfba" \
+      "${HOME:-}/repo-reconcile/rfba" \
+      /data/kimhj/rfba \
       /home/kimhj/rfba \
       /home/kimhj/Rethinking-Fixed-Block-Assumptions-in-Diffusion-Language-Model-Decoding; do
       if [[ -d "$candidate/decoding/llada" ]]; then
