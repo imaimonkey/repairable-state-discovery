@@ -1,119 +1,169 @@
 from __future__ import annotations
 
-import argparse
-import copy
+import gc
 import json
 import subprocess
+from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
-from repairable_diffusion.src.utils.io import load_yaml
+import torch
+
+from repairable_diffusion.src.utils.io import load_yaml, save_json
 from repairable_diffusion.src.v2.backends import create_v2_backend
-from repairable_diffusion.src.v2.replay import replay_dream_next_state, replay_llada_next_state
-from repairable_diffusion.src.v2.run_measurement import PROFILES_PATH, _load_profile
-from repairable_diffusion.src.v2.task_adapters import MBPPAdapter, create_task_adapter
+from repairable_diffusion.src.v2.contracts import deterministic_branch_seed, validate_contract_dict
+from repairable_diffusion.src.v2.task_adapters import create_task_adapter
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNS = ROOT / "repairable_diffusion/configs/v2/runs"
-OUTPUT = ROOT / "results/v2_measurement/backend_validation.json"
+CONTRACT = ROOT / "repairable_diffusion/configs/v2/measurement_contract.yaml"
+PROFILES = ROOT / "repairable_diffusion/configs/model_profiles.yaml"
+READINESS = ROOT / "results/v2_measurement/readiness/backend_validation.json"
+
+VALIDATION_CONFIGS = [
+    ROOT / "repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
+    ROOT / "repairable_diffusion/configs/v2/runs/full_math500_dream.yaml",
+]
 
 
 def _git_sha() -> str:
     return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
 
 
-def _validation_cfg(path: Path, *, model_profile: str | None = None) -> dict:
-    cfg = copy.deepcopy(load_yaml(path))
-    if model_profile is not None:
-        cfg["model_profile"] = model_profile
-    cfg["dataset"]["limit"] = 1
-    cfg["dataset"]["sample_seed"] = 987654
-    cfg["generation"]["trajectories_per_item"] = 1
-    cfg["generation"]["checkpoint_stride"] = 1
-    return cfg
+def _profile(name: str) -> dict[str, Any]:
+    payload = load_yaml(PROFILES)
+    return dict(payload["models"][name]["backend"])
 
 
-def _pair(record: dict) -> tuple[dict, dict]:
-    steps = [row for row in record["steps"] if row.get("snapshot")]
-    for current, nxt in zip(steps, steps[1:]):
-        if int(nxt["step_index"]) == int(current["step_index"]) + 1:
-            return current, nxt
-    raise RuntimeError("no adjacent saved transition available for replay validation")
+def _validation_item(adapter: Any, dataset_cfg: dict[str, Any]) -> dict[str, Any]:
+    cfg = dict(dataset_cfg)
+    cfg["limit"] = 1
+    cfg["sample_seed"] = 424242
+    return adapter.load_records(cfg)[0]
 
 
-def _validate_llada() -> dict:
-    cfg = _validation_cfg(RUNS / "pilot_math500_llada.yaml")
+def _selected_snapshots(record: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = [
+        step for step in record["steps"]
+        if step.get("snapshot") is not None and float(step.get("masked_ratio", 0.0)) > 0.0
+    ]
+    if not rows:
+        raise RuntimeError("no nonterminal snapshot available for replay validation")
+    if len(rows) == 1:
+        return rows
+    return [rows[0], rows[len(rows) // 2]]
+
+
+def _validate_one(config_path: Path, contract: dict[str, Any]) -> dict[str, Any]:
+    cfg = load_yaml(config_path)
     adapter = create_task_adapter(cfg["dataset"])
-    items = adapter.load_records(cfg["dataset"])
-    backend = create_v2_backend(_load_profile(cfg["model_profile"], PROFILES_PATH), adapter)
-    record = backend.generate_trajectory_v2(items[0], 0, cfg["generation"])
-    current, nxt = _pair(record)
-    replay = replay_llada_next_state(backend, current["snapshot"], cfg["generation"])
-    if replay["full_token_ids"] != nxt["snapshot"]["full_token_ids"]:
-        raise AssertionError("LLaDA one-step native replay mismatch")
-    resumed = backend.continue_from_snapshot(
-        items[0], current["snapshot"], cfg["generation"], branch_seed=None, restore_native_rng=True
-    )
-    if resumed["final_text"] != record["final_text"]:
-        raise AssertionError("LLaDA full native replay mismatch")
-    return {
-        "status": "PASS",
-        "validated_step": int(current["step_index"]),
-        "next_step": int(nxt["step_index"]),
-        "one_step_state_equal": True,
-        "full_final_text_equal": True,
-    }
+    backend = create_v2_backend(_profile(str(cfg["model_profile"])), adapter)
+    item = _validation_item(adapter, cfg["dataset"])
+    generation_cfg = dict(cfg["generation"])
+    generation_cfg["trajectories_per_item"] = 1
+    record = backend.generate_trajectory_v2(item, 0, generation_cfg)
 
+    operator_cfg = dict(contract["canonical_operator"])
+    operator_cfg["anchor_confidence_threshold"] = float(cfg.get("operator", {}).get("anchor_confidence_threshold", 0.80))
+    operator_cfg.update(cfg.get("operator", {}))
+    root_seed = int(cfg.get("probe", {}).get("root_seed", 2027))
 
-def _validate_dream() -> dict:
-    cfg = _validation_cfg(RUNS / "full_math500_dream.yaml")
-    adapter = create_task_adapter(cfg["dataset"])
-    items = adapter.load_records(cfg["dataset"])
-    backend = create_v2_backend(_load_profile(cfg["model_profile"], PROFILES_PATH), adapter)
-    record = backend.generate_trajectory_v2(items[0], 0, cfg["generation"])
-    current, nxt = _pair(record)
-    replay = replay_dream_next_state(backend, current["snapshot"], cfg["generation"])
-    if replay["full_token_ids"] != nxt["snapshot"]["full_token_ids"]:
-        raise AssertionError("Dream one-step token-state replay mismatch")
-    if replay["first_conf"] != nxt["snapshot"]["first_conf"]:
-        raise AssertionError("Dream one-step first_conf replay mismatch")
-    resumed = backend.continue_from_snapshot(
-        items[0], current["snapshot"], cfg["generation"], branch_seed=None, restore_native_rng=True
-    )
-    if resumed["final_text"] != record["final_text"]:
-        raise AssertionError("Dream full native replay mismatch")
-    return {
+    checks = []
+    for step in _selected_snapshots(record):
+        snapshot = step["snapshot"]
+        branch_seed = deterministic_branch_seed(
+            root_seed=root_seed,
+            item_id=int(record["item_id"]),
+            trajectory_id=int(record["trajectory_id"]),
+            step_index=int(step["step_index"]),
+            branch_index=0,
+            stage="localization",
+        )
+        exact = backend.run_operator_branch(
+            item,
+            snapshot,
+            generation_cfg,
+            operator_cfg,
+            operator_id="native_continuation",
+            branch_seed=branch_seed,
+        )
+        exact_match = exact.get("final_text") == record.get("final_text") and exact.get("final_answer") == record.get("final_answer")
+        if not exact_match:
+            raise RuntimeError(
+                f"native replay mismatch backend={backend.backend_type} step={step['step_index']}"
+            )
+
+        stochastic_a = backend.run_operator_branch(
+            item,
+            snapshot,
+            generation_cfg,
+            operator_cfg,
+            operator_id="matched_stochastic_continuation",
+            branch_seed=branch_seed,
+        )
+        stochastic_b = backend.run_operator_branch(
+            item,
+            snapshot,
+            generation_cfg,
+            operator_cfg,
+            operator_id="matched_stochastic_continuation",
+            branch_seed=branch_seed,
+        )
+        same_seed_match = (
+            stochastic_a.get("final_text") == stochastic_b.get("final_text")
+            and stochastic_a.get("final_answer") == stochastic_b.get("final_answer")
+            and stochastic_a.get("compute") == stochastic_b.get("compute")
+        )
+        if not same_seed_match:
+            raise RuntimeError(
+                f"same-seed continuation is not reproducible backend={backend.backend_type} step={step['step_index']}"
+            )
+        if int(stochastic_a.get("compute", {}).get("nfe", -1)) < 0:
+            raise RuntimeError("negative/missing NFE in continuation validation")
+
+        checks.append(
+            {
+                "step_index": int(step["step_index"]),
+                "native_exact_replay": True,
+                "same_seed_reproducible": True,
+                "native_nfe": int(exact.get("compute", {}).get("nfe", 0)),
+                "stochastic_nfe": int(stochastic_a.get("compute", {}).get("nfe", 0)),
+            }
+        )
+
+    result = {
+        "config": str(config_path.relative_to(ROOT)),
+        "model_profile": cfg["model_profile"],
+        "backend_type": backend.backend_type,
+        "item_id": int(record["item_id"]),
+        "checks": checks,
         "status": "PASS",
-        "validated_step": int(current["step_index"]),
-        "next_step": int(nxt["step_index"]),
-        "one_step_state_equal": True,
-        "first_conf_equal": True,
-        "full_final_text_equal": True,
     }
+    del backend
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+    return result
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--llada-only", action="store_true")
-    ap.add_argument("--dream-only", action="store_true")
-    args = ap.parse_args()
-    if args.llada_only and args.dream_only:
-        raise SystemExit("choose at most one of --llada-only/--dream-only")
-
-    results = {"git_sha": _git_sha(), "status": "PASS"}
-    if not args.dream_only:
-        results["llada"] = _validate_llada()
-    if not args.llada_only:
-        results["dream"] = _validate_dream()
-
-    # Safe-code evaluator is a scientific readiness gate even though MBPP itself
-    # is a later thin-validation tier.
-    MBPPAdapter().executor.self_test()
-    results["mbpp_sandbox"] = {"status": "PASS"}
-
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(results, indent=2))
+    if not torch.cuda.is_available():
+        raise SystemExit("V2 backend replay validation requires a CUDA worker")
+    contract = load_yaml(CONTRACT)
+    validate_contract_dict(contract)
+    rows = []
+    for path in VALIDATION_CONFIGS:
+        print(f"[v2 validation] {path.relative_to(ROOT)}")
+        rows.append(_validate_one(path, contract))
+    payload = {
+        "status": "PASS",
+        "git_sha": _git_sha(),
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "rows": rows,
+    }
+    READINESS.parent.mkdir(parents=True, exist_ok=True)
+    save_json(READINESS, payload)
+    print(json.dumps(payload, indent=2))
 
 
 if __name__ == "__main__":

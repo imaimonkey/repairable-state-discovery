@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import argparse
+import json
+import subprocess
 from pathlib import Path
 
 from repairable_diffusion.src.utils.io import load_yaml
@@ -9,9 +11,13 @@ from repairable_diffusion.src.v2.contracts import validate_contract_dict
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONTRACT = ROOT / "repairable_diffusion/configs/v2/measurement_contract.yaml"
+RESULT_ROOT = ROOT / "results/v2_measurement"
+OUTPUT_ROOT = ROOT / "repairable_diffusion/outputs/v2_measurement"
 
 REQUIRED_DESIGN_FILES = [
+    ROOT / "AGENTS.md",
     ROOT / "docs/v2_scientific_contract.md",
+    ROOT / "docs/CODEX_V2_FINAL_EXECUTION.md",
     ROOT / "repairable_diffusion/configs/v2/measurement_contract.yaml",
     ROOT / "repairable_diffusion/src/v2/contracts.py",
     ROOT / "repairable_diffusion/src/v2/metrics.py",
@@ -19,13 +25,15 @@ REQUIRED_DESIGN_FILES = [
     ROOT / "repairable_diffusion/src/v2/provenance.py",
 ]
 
-# Execution readiness is intentionally stricter than design readiness. The V2
-# design is frozen before the scientific backend refactor is declared runnable.
 REQUIRED_EXECUTION_FILES = [
     ROOT / "repairable_diffusion/src/v2/task_adapters.py",
     ROOT / "repairable_diffusion/src/v2/backends.py",
+    ROOT / "repairable_diffusion/src/v2/replay.py",
     ROOT / "repairable_diffusion/src/v2/run_measurement.py",
     ROOT / "scripts/run_v2_suite.sh",
+    ROOT / "scripts/validate_v2_backends.py",
+    ROOT / "scripts/submit_v2_suite.py",
+    ROOT / "scripts/aggregate_v2_results.py",
 ]
 
 REQUIRED_TEST_NAMES = {
@@ -40,6 +48,23 @@ REQUIRED_TEST_NAMES = {
     "test_task_adapter_evaluator",
     "test_operator_nfe_accounting",
 }
+
+PILOT_RUNS = ["v2_pilot_math500_llada", "v2_pilot_gsm8k_llada"]
+TIER_A_RUNS = ["v2_math500_llada", "v2_gsm8k_llada"]
+FINAL_ARTIFACTS = [
+    RESULT_ROOT / "aggregate_report.json",
+    RESULT_ROOT / "table1_existence.csv",
+    RESULT_ROOT / "table2_mechanisms.csv",
+    RESULT_ROOT / "table3_localization.csv",
+    RESULT_ROOT / "figure_data/recoverability_landscape.csv",
+    RESULT_ROOT / "figure_data/repairability_survival.csv",
+    RESULT_ROOT / "figure_data/recovery_harm_compute.csv",
+    RESULT_ROOT / "final_execution_manifest.json",
+]
+
+
+def _git_sha() -> str:
+    return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
 
 
 def _missing(paths: list[Path]) -> list[str]:
@@ -59,44 +84,104 @@ def _execution_test_names() -> set[str]:
     return names
 
 
+def _json(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _require_stamp(errors: list[str], path: Path, *, name: str, current_sha: str) -> None:
+    if not path.is_file():
+        errors.append(f"missing {name}: {path.relative_to(ROOT)}")
+        return
+    try:
+        payload = _json(path)
+    except Exception as exc:
+        errors.append(f"invalid {name}: {exc}")
+        return
+    if payload.get("status") != "PASS":
+        errors.append(f"{name} is not PASS")
+    if payload.get("git_sha") != current_sha:
+        errors.append(f"{name} git SHA mismatch: {payload.get('git_sha')} != {current_sha}")
+
+
+def _require_report(errors: list[str], run_name: str, current_sha: str) -> None:
+    path = OUTPUT_ROOT / run_name / "report.json"
+    if not path.is_file():
+        errors.append(f"missing run report: {run_name}")
+        return
+    try:
+        payload = _json(path)
+    except Exception as exc:
+        errors.append(f"invalid report {run_name}: {exc}")
+        return
+    if payload.get("git_sha") != current_sha:
+        errors.append(f"run report git SHA mismatch for {run_name}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--contract", default=str(DEFAULT_CONTRACT))
-    ap.add_argument("--mode", choices=["design", "execution"], default="design")
+    ap.add_argument("--mode", choices=["design", "execution", "full", "final"], default="design")
     args = ap.parse_args()
 
-    contract_path = Path(args.contract)
+    current_sha = _git_sha()
     errors: list[str] = []
     try:
-        cfg = load_yaml(contract_path)
+        cfg = load_yaml(Path(args.contract))
         validate_contract_dict(cfg)
-    except Exception as exc:  # deliberate audit boundary
+    except Exception as exc:
         errors.append(f"contract invalid: {exc}")
 
-    missing_design = _missing(REQUIRED_DESIGN_FILES)
-    errors.extend(f"missing design file: {path}" for path in missing_design)
+    errors.extend(f"missing design file: {path}" for path in _missing(REQUIRED_DESIGN_FILES))
 
-    if args.mode == "execution":
-        missing_execution = _missing(REQUIRED_EXECUTION_FILES)
-        errors.extend(f"missing execution file: {path}" for path in missing_execution)
+    if args.mode in {"execution", "full", "final"}:
+        errors.extend(f"missing execution file: {path}" for path in _missing(REQUIRED_EXECUTION_FILES))
         present_tests = _execution_test_names()
         for name in sorted(REQUIRED_TEST_NAMES - present_tests):
             errors.append(f"missing scientific readiness test: {name}")
 
+    if args.mode in {"full", "final"}:
+        _require_stamp(
+            errors,
+            RESULT_ROOT / "readiness/unit_preflight.json",
+            name="unit preflight stamp",
+            current_sha=current_sha,
+        )
+        _require_stamp(
+            errors,
+            RESULT_ROOT / "readiness/backend_validation.json",
+            name="backend validation stamp",
+            current_sha=current_sha,
+        )
+        for run_name in PILOT_RUNS:
+            _require_report(errors, run_name, current_sha)
+
+    if args.mode == "final":
+        for run_name in TIER_A_RUNS:
+            _require_report(errors, run_name, current_sha)
+        errors.extend(f"missing final artifact: {path}" for path in _missing(FINAL_ARTIFACTS))
+        manifest_path = RESULT_ROOT / "final_execution_manifest.json"
+        if manifest_path.is_file():
+            manifest = _json(manifest_path)
+            if manifest.get("git_sha") != current_sha:
+                errors.append("final_execution_manifest git SHA mismatch")
+            if manifest.get("v1_results_substituted") is not False:
+                errors.append("final manifest does not explicitly forbid V1 substitution")
+
     print(f"mode: {args.mode}")
-    print(f"contract: {contract_path}")
+    print(f"git_sha: {current_sha}")
     if errors:
         print("\nNOT READY")
         for error in errors:
             print(f"- {error}")
         raise SystemExit(1)
 
-    if args.mode == "design":
-        print("\nDESIGN READY")
-        print("V2 scientific contract is frozen; this does not imply execution readiness.")
-    else:
-        print("\nEXECUTION STRUCTURE READY")
-        print("Run the scientific test suite before submitting full-scale GPU jobs.")
+    labels = {
+        "design": "DESIGN READY",
+        "execution": "EXECUTION STRUCTURE READY",
+        "full": "FULL SUBMISSION READY",
+        "final": "FINAL V2 ARTIFACTS READY",
+    }
+    print(f"\n{labels[args.mode]}")
 
 
 if __name__ == "__main__":
