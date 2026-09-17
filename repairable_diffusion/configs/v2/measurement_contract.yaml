@@ -1,0 +1,156 @@
+version: v2_counterfactual_recoverability
+status: frozen_design
+artifact_namespace: v2_measurement
+
+claim_boundary:
+  primary: >-
+    Final failure is an endpoint observation, not a complete description of a diffusion reasoning trajectory.
+    Ultimately failed trajectories can contain intermediate states with measurable counterfactual recovery potential.
+    This potential may differ from transient answer correctness, varies across refinement, and is partly conditioned
+    on the continuation or intervention used to probe it.
+  prohibit_without_v2_evidence:
+    - universal intrinsic point of irrecoverability
+    - causal reasoning recovery
+    - predictor superiority
+    - compute efficiency superiority
+
+research_questions:
+  - id: RQ1
+    name: existence
+    text: Do ultimately failed DLM trajectories contain intermediate states with counterfactual recovery potential beyond transient answer correctness?
+  - id: RQ2
+    name: source
+    text: Is recovery already available under native continuation, or is it created or amplified by intervention?
+  - id: RQ3
+    name: localization
+    text: Can recovery potential be localized from observable pre-intervention state signals without oracle probe outcomes at inference time?
+  - id: RQ4
+    name: generality
+    text: How stable is recoverability across task domains, diffusion backbones, repair operators, decoder phases, and random seeds?
+
+measurement:
+  transient_correctness: o_t
+  native_recoverability: q_C
+  intervention_recoverability: q_R
+  intervention_lift: delta_R
+  last_repairable: T_last
+  confirmation_threshold: 0.25
+  threshold_sensitivity: [0.125, 0.25, 0.5]
+
+branches:
+  localization_count: 4
+  confirmation_count: 8
+  require_disjoint_seed_sets: true
+  replicate_semantics: stochastic_seed_only
+
+canonical_operator:
+  id: low_confidence_remask_v2
+  position_policy: low_confidence
+  remask_fraction: 0.25
+  min_remask_positions: 4
+  continuation_temperature: match_base
+  schedule_mode: phase_faithful
+
+operator_controls:
+  required:
+    - native_continuation
+    - matched_stochastic_continuation
+    - random_position_remask
+    - low_confidence_remask_v2
+    - fresh_sampling_compute_control
+    - core
+  optional:
+    - decocal
+
+selectors:
+  simple:
+    - random_checkpoint
+    - earliest_eligible
+    - normalized_quarter
+    - normalized_midpoint
+    - normalized_three_quarter
+    - confidence_low
+    - entropy_high
+    - mask_ratio
+  learned:
+    target: state_value
+    preferred_targets: [q_R, delta_R]
+    folds: 5
+    group_key: item_id
+    require_oof_for_headline: true
+    separate_multi_trajectory_features: true
+  oracle:
+    independent_confirmation: true
+
+compute:
+  record_nfe: true
+  record_forward_calls: true
+  actual_fresh_sampling_required: true
+  analytic_extra_sampling_proxy_main_result: false
+
+matrix:
+  tier_a_deep_anchor:
+    backbone: llada_8b_fast
+    datasets: [math500, gsm8k]
+    full_checkpoint_operator_selector_analysis: true
+  tier_b_mechanism:
+    backbone: llada_8b_fast
+    datasets: [math500, gsm8k]
+    paired_state_controls: true
+  tier_c_cross_domain:
+    backbone: llada_8b_fast
+    datasets: [bbh_predeclared_structured, mbpp]
+    thin_validation: true
+  tier_d_backbone:
+    backbone: dream_v0_instruct_7b
+    datasets: [math500, gsm8k]
+    thin_validation: true
+
+readiness_gates:
+  - snapshot_fidelity
+  - fixed_operator_replicates
+  - true_branch_seeding
+  - independent_localization_confirmation
+  - grouped_oof_scores
+  - actual_compute_accounting
+  - prospective_policy_accounting
+  - task_evaluator_validity
+  - artifact_fingerprint_invalidation
+  - scientific_tests_pass
+
+provenance:
+  required_fields:
+    - git_sha
+    - config_sha256
+    - model_id
+    - model_revision
+    - dataset_id
+    - dataset_revision
+    - dataset_split
+    - subset_hash
+    - task_adapter_version
+    - trajectory_bank_hash
+    - decoder_state_schema_version
+    - operator_id
+    - operator_version
+    - localization_seed_hash
+    - confirmation_seed_hash
+    - evaluator_id
+    - evaluator_version
+
+paper:
+  main_tables:
+    - existence_and_generalization
+    - mechanism_and_controls
+    - localization_and_policy
+  main_figures:
+    - counterfactual_protocol
+    - recoverability_landscape_and_survival
+    - recovery_harm_compute_frontier
+  appendix_only_by_default:
+    - autoregressive_reference
+    - seed_robustness
+    - stride_robustness
+    - branch_count_robustness
+    - predictor_feature_ablations
+    - operator_hyperparameter_sensitivity
