@@ -12,6 +12,7 @@ import torch
 from repairable_diffusion.src.utils.io import load_yaml, save_json
 from repairable_diffusion.src.v2.backends import create_v2_backend
 from repairable_diffusion.src.v2.contracts import deterministic_branch_seed, validate_contract_dict
+from repairable_diffusion.src.v2.replay import replay_dream_next_state, replay_llada_next_state
 from repairable_diffusion.src.v2.task_adapters import create_task_adapter
 
 
@@ -42,16 +43,52 @@ def _validation_item(adapter: Any, dataset_cfg: dict[str, Any]) -> dict[str, Any
     return adapter.load_records(cfg)[0]
 
 
-def _selected_snapshots(record: dict[str, Any]) -> list[dict[str, Any]]:
-    rows = [
-        step for step in record["steps"]
-        if step.get("snapshot") is not None and float(step.get("masked_ratio", 0.0)) > 0.0
-    ]
-    if not rows:
-        raise RuntimeError("no nonterminal snapshot available for replay validation")
-    if len(rows) == 1:
-        return rows
-    return [rows[0], rows[len(rows) // 2]]
+def _selected_transition_pairs(record: dict[str, Any]) -> list[tuple[dict[str, Any], dict[str, Any]]]:
+    steps = record["steps"]
+    pairs: list[tuple[dict[str, Any], dict[str, Any]]] = []
+    for idx in range(len(steps) - 1):
+        current = steps[idx]
+        nxt = steps[idx + 1]
+        if current.get("snapshot") is None or nxt.get("snapshot") is None:
+            continue
+        if float(current.get("masked_ratio", 0.0)) <= 0.0:
+            continue
+        pairs.append((current, nxt))
+    if not pairs:
+        raise RuntimeError("no nonterminal adjacent snapshot pair available for transition replay validation")
+    if len(pairs) == 1:
+        return pairs
+    # Validate an early and a mid/late transition so block/phase state is exercised.
+    selected = [pairs[0], pairs[len(pairs) // 2]]
+    if selected[0][0]["step_index"] == selected[1][0]["step_index"]:
+        return [selected[0]]
+    return selected
+
+
+def _assert_next_state_replay(backend: Any, current: dict[str, Any], nxt: dict[str, Any], generation_cfg: dict[str, Any]) -> None:
+    snapshot = current["snapshot"]
+    expected = nxt["snapshot"]
+    if backend.backend_type == "rfba_llada_v2":
+        replayed = replay_llada_next_state(backend, snapshot, generation_cfg)
+        if replayed["full_token_ids"] != expected["full_token_ids"]:
+            raise RuntimeError(
+                f"LLaDA next-state replay mismatch step={current['step_index']}->{nxt['step_index']}"
+            )
+        if int(replayed["block_index"]) != int(expected["block_index"]):
+            raise RuntimeError("LLaDA replay block_index mismatch")
+        if int(replayed["step_in_block"]) != int(expected["step_in_block"]):
+            raise RuntimeError("LLaDA replay step_in_block mismatch")
+        return
+    if backend.backend_type == "dream_v2":
+        replayed = replay_dream_next_state(backend, snapshot, generation_cfg)
+        if replayed["full_token_ids"] != expected["full_token_ids"]:
+            raise RuntimeError(
+                f"Dream next-state replay mismatch step={current['step_index']}->{nxt['step_index']}"
+            )
+        if replayed["first_conf"] != expected["first_conf"]:
+            raise RuntimeError("Dream replay first_conf state mismatch")
+        return
+    raise RuntimeError(f"unsupported backend in transition replay validator: {backend.backend_type}")
 
 
 def _validate_one(config_path: Path, contract: dict[str, Any]) -> dict[str, Any]:
@@ -61,16 +98,23 @@ def _validate_one(config_path: Path, contract: dict[str, Any]) -> dict[str, Any]
     item = _validation_item(adapter, cfg["dataset"])
     generation_cfg = dict(cfg["generation"])
     generation_cfg["trajectories_per_item"] = 1
+    # Validation only: save every native state so x_t -> x_{t+1} can be
+    # compared directly. This does not alter any scientific full-run config.
+    generation_cfg["checkpoint_stride"] = 1
     record = backend.generate_trajectory_v2(item, 0, generation_cfg)
 
     operator_cfg = dict(contract["canonical_operator"])
-    operator_cfg["anchor_confidence_threshold"] = float(cfg.get("operator", {}).get("anchor_confidence_threshold", 0.80))
+    operator_cfg["anchor_confidence_threshold"] = float(
+        cfg.get("operator", {}).get("anchor_confidence_threshold", 0.80)
+    )
     operator_cfg.update(cfg.get("operator", {}))
     root_seed = int(cfg.get("probe", {}).get("root_seed", 2027))
 
     checks = []
-    for step in _selected_snapshots(record):
+    for step, next_step in _selected_transition_pairs(record):
         snapshot = step["snapshot"]
+        _assert_next_state_replay(backend, step, next_step, generation_cfg)
+
         branch_seed = deterministic_branch_seed(
             root_seed=root_seed,
             item_id=int(record["item_id"]),
@@ -87,10 +131,13 @@ def _validate_one(config_path: Path, contract: dict[str, Any]) -> dict[str, Any]
             operator_id="native_continuation",
             branch_seed=branch_seed,
         )
-        exact_match = exact.get("final_text") == record.get("final_text") and exact.get("final_answer") == record.get("final_answer")
+        exact_match = (
+            exact.get("final_text") == record.get("final_text")
+            and exact.get("final_answer") == record.get("final_answer")
+        )
         if not exact_match:
             raise RuntimeError(
-                f"native replay mismatch backend={backend.backend_type} step={step['step_index']}"
+                f"native final replay mismatch backend={backend.backend_type} step={step['step_index']}"
             )
 
         stochastic_a = backend.run_operator_branch(
@@ -124,7 +171,9 @@ def _validate_one(config_path: Path, contract: dict[str, Any]) -> dict[str, Any]
         checks.append(
             {
                 "step_index": int(step["step_index"]),
-                "native_exact_replay": True,
+                "next_step_index": int(next_step["step_index"]),
+                "next_state_exact_replay": True,
+                "native_final_exact_replay": True,
                 "same_seed_reproducible": True,
                 "native_nfe": int(exact.get("compute", {}).get("nfe", 0)),
                 "stochastic_nfe": int(stochastic_a.get("compute", {}).get("nfe", 0)),
