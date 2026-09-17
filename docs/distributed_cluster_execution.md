@@ -46,13 +46,20 @@ Do not aggregate a distributed protocol until every run directory is visible
 at the aggregation root. A safe pattern is:
 
 1. run each GPU job in its node-local workspace;
-2. submit an `afterok` `rsync -a` job for that run to the artifact collector;
+2. submit an `afterok` `scripts/sync_run_artifacts.sh` job for that run to the
+   artifact collector;
 3. make the protocol aggregate depend on the synchronization jobs;
 4. make the benchmark aggregate and paper finalize depend on all protocol
    aggregates.
 
 GitHub status files can record completion and checksums, but GitHub should not
-   be used as the transport for large trajectory artifacts.
+be used as the transport for large trajectory artifacts.
+
+The sync wrapper uses resumable `rsync --partial --append-verify` and writes a
+`.sync_complete` marker only after the required artifacts are present. The
+aggregate job should require that marker, so an interrupted transfer cannot be
+mistaken for a completed run. For an AR run, set
+`SYNC_REQUIRED_FILES=ar_baseline_summary.json`.
 
 ## Monitoring while Codex is offline
 
