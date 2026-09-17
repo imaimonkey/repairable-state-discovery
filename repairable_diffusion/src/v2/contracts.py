@@ -6,7 +6,7 @@ from typing import Any, Iterable
 
 
 CONTRACT_VERSION = "v2_counterfactual_recoverability"
-DECODER_STATE_SCHEMA_VERSION = "v2.0"
+DECODER_STATE_SCHEMA_VERSION = "v2.2"
 
 
 @dataclass(frozen=True)
@@ -73,7 +73,6 @@ def deterministic_branch_seed(
         f"{step_index}|{branch_index}|{stage}"
     ).encode("utf-8")
     digest = sha256(payload).digest()
-    # Keep the result inside the signed 31-bit range accepted by all RNGs we use.
     return int.from_bytes(digest[:8], "big") % (2**31 - 1)
 
 
