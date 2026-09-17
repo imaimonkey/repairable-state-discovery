@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import os
 from pathlib import Path
 from typing import Any
 
@@ -13,6 +14,47 @@ from repairable_diffusion.src.utils.io import ensure_dir, load_json, load_yaml, 
 def _load_profiles(path: str | Path) -> dict[str, Any]:
     payload = load_yaml(path)
     return payload.get("models", {})
+
+
+def _resolve_node_path(value: str | Path, *, root: Path, protocol_dir: Path) -> str:
+    """Resolve paths authored on the canonical server for a node-local run.
+
+    The checked-in final YAMLs historically use `/home/kimhj/repairable-state-
+    discovery` as their root. Independent Slurm nodes have different mounts,
+    so rewrite that known prefix to REPAIRABLE_ROOT while leaving model/cache
+    paths and unrelated absolute paths untouched.
+    """
+    raw = os.path.expandvars(os.path.expanduser(str(value)))
+    path = Path(raw)
+    legacy_root = Path("/home/kimhj/repairable-state-discovery")
+    if path == legacy_root or legacy_root in path.parents:
+        return str(root / path.relative_to(legacy_root))
+    if not path.is_absolute():
+        return str((protocol_dir / path).resolve())
+    return str(path)
+
+
+def _normalize_protocol_paths(protocol_cfg: dict[str, Any], protocol_path: Path) -> dict[str, Any]:
+    cfg = copy.deepcopy(protocol_cfg)
+    root_text = os.environ.get("REPAIRABLE_ROOT")
+    root = Path(root_text).expanduser() if root_text else protocol_path.parents[3]
+    protocol_dir = protocol_path.parent
+
+    if "profiles_path" in cfg:
+        cfg["profiles_path"] = _resolve_node_path(
+            cfg["profiles_path"], root=root, protocol_dir=protocol_dir
+        )
+    paths = cfg.get("paths", {})
+    for key in ("outputs_root", "generated_configs_root"):
+        if key in paths:
+            paths[key] = _resolve_node_path(paths[key], root=root, protocol_dir=protocol_dir)
+    for section in ("diffusion_runs", "ar_runs"):
+        for spec in cfg.get("protocol", {}).get(section, []) or []:
+            if "config_template" in spec:
+                spec["config_template"] = _resolve_node_path(
+                    spec["config_template"], root=root, protocol_dir=protocol_dir
+                )
+    return cfg
 
 
 def _deep_update(base: dict[str, Any], updates: dict[str, Any]) -> dict[str, Any]:
@@ -351,7 +393,8 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    protocol_cfg = load_yaml(args.protocol)
+    protocol_path = Path(args.protocol).expanduser().resolve()
+    protocol_cfg = _normalize_protocol_paths(load_yaml(protocol_path), protocol_path)
     report = run_protocol(
         protocol_cfg,
         allowed_families=_parse_csv(args.families),
