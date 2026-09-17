@@ -62,7 +62,9 @@ load_hf_token_from_file() {
 
 detect_required_backends() {
   "$PYTHON_BIN" - "$PROTOCOL_PATH_ABS" "$PROTOCOL_FAMILIES" "$PROTOCOL_RUN_NAMES" <<'PY'
+import os
 import sys
+from pathlib import Path
 
 import yaml
 
@@ -84,7 +86,14 @@ def allowed(spec, family, allowed_families, allowed_run_names):
 protocol_path, families_spec, run_names_spec = sys.argv[1:4]
 with open(protocol_path, "r", encoding="utf-8") as fh:
     protocol_cfg = yaml.safe_load(fh)
-with open(protocol_cfg["profiles_path"], "r", encoding="utf-8") as fh:
+
+legacy_root = Path("/home/kimhj/repairable-state-discovery")
+root_text = os.environ.get("REPAIRABLE_ROOT")
+root = Path(root_text).expanduser() if root_text else Path(protocol_path).resolve().parents[3]
+profiles_path = Path(os.path.expandvars(os.path.expanduser(protocol_cfg["profiles_path"])))
+if profiles_path == legacy_root or legacy_root in profiles_path.parents:
+    profiles_path = root / profiles_path.relative_to(legacy_root)
+with open(profiles_path, "r", encoding="utf-8") as fh:
     profiles = yaml.safe_load(fh).get("models", {})
 
 allowed_families = parse_csv(families_spec)
