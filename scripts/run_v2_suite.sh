@@ -12,6 +12,7 @@ run_cfg() {
   local cfg="$1"
   echo "[v2] running $cfg"
   "$PYTHON_BIN" -m repairable_diffusion.src.v2.run_measurement --config "$cfg"
+  "$PYTHON_BIN" scripts/seal_v2_runs.py --config "$cfg"
 }
 
 write_preflight_stamp() {
@@ -70,6 +71,7 @@ case "${1:-}" in
     ;;
 
   aggregate)
+    "$PYTHON_BIN" scripts/seal_v2_runs.py --all-completed
     "$PYTHON_BIN" scripts/aggregate_v2_results.py
     ;;
 
