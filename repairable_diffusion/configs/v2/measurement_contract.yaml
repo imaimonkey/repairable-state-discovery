@@ -1,5 +1,5 @@
 version: v2_counterfactual_recoverability
-status: frozen_design
+status: frozen_execution_design
 artifact_namespace: v2_measurement
 
 claim_boundary:
@@ -36,6 +36,7 @@ measurement:
   last_repairable: T_last
   confirmation_threshold: 0.25
   threshold_sensitivity: [0.125, 0.25, 0.5]
+  monotonicity_assumed: false
 
 branches:
   localization_count: 4
@@ -50,6 +51,7 @@ canonical_operator:
   min_remask_positions: 4
   continuation_temperature: match_base
   schedule_mode: phase_faithful
+  anchor_confidence_threshold: 0.80
 
 operator_controls:
   required:
@@ -61,6 +63,9 @@ operator_controls:
     - core
   optional:
     - decocal
+  core_label: CoRe-snapshot
+  core_source_repository: UCF-CRCV/CoRe
+  core_source_revision: 524e01e11a8751afb67b81a2c930f938faf9a70e
 
 selectors:
   simple:
@@ -86,7 +91,38 @@ compute:
   record_nfe: true
   record_forward_calls: true
   actual_fresh_sampling_required: true
+  fresh_sampling_match: aggregate_nfe_deterministic_allocation
   analytic_extra_sampling_proxy_main_result: false
+
+probe:
+  root_seed: 2027
+  policy_trajectory_ids: [0]
+  retrospective_failed_per_item: 1
+  retrospective_success_per_item: 1
+  mechanism_subset_items: 128
+  mechanism_subset_seed: 271828
+  temporal_subset_items: 128
+  temporal_subset_seed: 314159
+  fresh_control_seed: 161803
+  outcome_selected_probe_set_allowed_only_for_retrospective_measurement: true
+  prospective_policy_outcome_selection_forbidden: true
+
+base_generation:
+  trajectories_per_item: 8
+  steps: 64
+  gen_length: 256
+  block_length: 128
+  temperature: 0.6
+  cfg_scale: 0.0
+  remasking: low_confidence
+  mask_id: 126336
+  checkpoint_stride: 8
+
+pilot:
+  purpose: correctness_and_resource_feasibility_only
+  dataset_limit: 24
+  sample_seed: 424242
+  result_contingent_tuning_forbidden: true
 
 matrix:
   tier_a_deep_anchor:
@@ -97,14 +133,39 @@ matrix:
     backbone: llada_8b_fast
     datasets: [math500, gsm8k]
     paired_state_controls: true
+    paired_item_subset_size: 128
   tier_c_cross_domain:
     backbone: llada_8b_fast
-    datasets: [bbh_predeclared_structured, mbpp]
+    datasets:
+      - bbh_logical_deduction_three_objects
+      - bbh_logical_deduction_five_objects
+      - bbh_logical_deduction_seven_objects
+      - mbpp_sanitized
     thin_validation: true
   tier_d_backbone:
     backbone: dream_v0_instruct_7b
     datasets: [math500, gsm8k]
     thin_validation: true
+
+frozen_datasets:
+  math500:
+    path: HuggingFaceH4/MATH-500
+    split: test
+  gsm8k:
+    path: openai/gsm8k
+    config_name: main
+    split: test
+  bbh:
+    path: maveriq/bigbenchhard
+    split: train
+    tasks:
+      - logical_deduction_three_objects
+      - logical_deduction_five_objects
+      - logical_deduction_seven_objects
+  mbpp:
+    path: google-research-datasets/mbpp
+    config_name: sanitized
+    split: test
 
 readiness_gates:
   - snapshot_fidelity
