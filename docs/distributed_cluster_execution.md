@@ -40,6 +40,26 @@ The launcher also discovers these values from `$HOME` and known local
 locations when they are not explicitly exported. The exact commit, hostname,
 CUDA assignment, HF cache, and RFBA root are written to each run log.
 
+When the nodes do not share a filesystem, synchronize the lightweight
+workspace before submitting there:
+
+```bash
+# First make sure the destination account accepts this user's SSH public key.
+bash scripts/preflight_rsync_nodes.sh 10.0.12.121 10.0.12.163
+
+# Copy code/configs/scripts, excluding model caches, logs, trajectories, and
+# generated full-paper reports. The destination receives .experiment_commit.
+bash scripts/rsync_node_workspace.sh 10.0.12.121 /home/kimhj
+bash scripts/rsync_node_workspace.sh 10.0.12.163 /data/kimhj
+```
+
+The workspace script is resumable and does not delete destination files by
+default. For a disposable destination clone only, `RSYNC_DELETE=1` enables
+`--delete-delay`; do not use that option against a shared or manually managed
+directory. After synchronization, submit from the destination workspace with
+that node's local Python/HF/RFBA paths. The current server2/server4 setup is
+not yet ready for this step until SSH public-key authentication is enabled.
+
 ## Artifact synchronization
 
 Do not aggregate a distributed protocol until every run directory is visible
@@ -60,6 +80,12 @@ The sync wrapper uses resumable `rsync --partial --append-verify` and writes a
 aggregate job should require that marker, so an interrupted transfer cannot be
 mistaken for a completed run. For an AR run, set
 `SYNC_REQUIRED_FILES=ar_baseline_summary.json`.
+
+For a distributed run, invoke `scripts/sync_run_artifacts.sh` from the node
+that produced the run and point it at the aggregation node. It is deliberately
+separate from workspace synchronization: code/config transfer happens before
+submission, while run-artifact transfer happens only after the producing job
+finishes successfully.
 
 ## Monitoring while Codex is offline
 
