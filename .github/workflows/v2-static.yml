@@ -1,0 +1,25 @@
+name: V2 static readiness
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  static-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Python syntax
+        run: python -m compileall -q repairable_diffusion/src/v2 scripts tests
+      - name: Shell syntax
+        run: bash -n scripts/run_v2_suite.sh
+      - name: Guardrail files
+        run: |
+          test -s AGENTS.md
+          test -s docs/v2_scientific_contract.md
+          test -s docs/CODEX_V2_FINAL_EXECUTION.md
+          test -s repairable_diffusion/configs/v2/measurement_contract.yaml
