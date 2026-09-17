@@ -1,0 +1,37 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.78in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,hyperref,xcolor}
+\usepackage{array}
+\graphicspath{{figures/}}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newcommand{\generatedtable}[1]{\IfFileExists{tables/#1}{\input{tables/#1}}{\begin{center}\textit{Generated table pending full-split finalization.}\end{center}}}
+\newcommand{\resultfigure}[2]{\IfFileExists{figures/#1.pdf}{\includegraphics[width=#2]{figures/#1.pdf}}{\fbox{\parbox[c][1.25in][c]{#2}{\centering Figure pending full-split finalization.}}}}
+\IfFileExists{generated/facts.tex}{\input{generated/facts.tex}}{\input{generated/facts_placeholder.tex}}
+
+\title{Repairable States in Diffusion Reasoning Trajectories}
+\author{Anonymous Authors}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Diffusion language models expose intermediate refinement states, but a failed final trajectory does not reveal whether an earlier state remained recoverable. We study this question as a measurement problem. We collect multi-trajectory diffusion reasoning traces, snapshot intermediate states, restart from snapshots with a local repair probe, and quantify both oracle recoverability and non-oracle selection. The evaluation treats repair gain, negative repair, selector comparisons, uncertainty, and repair cost as a joint object. The full-split results in this manuscript are generated from the canonical benchmark manifest; the paper deliberately avoids interpreting autoregressive references as a raw diffusion-versus-autoregressive claim.
+\end{abstract}
+
+\input{sections/01_introduction.tex}
+\input{sections/02_related_work.tex}
+\input{sections/03_method.tex}
+\input{sections/04_experiments.tex}
+\input{sections/05_results.tex}
+\input{sections/06_analysis.tex}
+\input{sections/07_limitations.tex}
+\input{sections/08_conclusion.tex}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\appendix
+\input{sections/09_reproducibility.tex}
+\end{document}

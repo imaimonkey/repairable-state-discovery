@@ -141,5 +141,5 @@ The main contribution is a protocol for measuring whether failed diffusion reaso
 ## Immediate Experiment Plan
 
 1. Submit `scripts/submit_benchmark_complete_suite.sh`.
-2. Monitor all protocol jobs through successful completion on `devbox`.
+2. Monitor all run-level protocol jobs through successful completion on the configured Slurm node (the current checkout uses `ubuntu`).
 3. Use the benchmark-complete aggregate and extended analysis as the final table source.

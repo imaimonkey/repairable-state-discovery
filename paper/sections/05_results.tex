@@ -1,0 +1,16 @@
+\section{Main Results}
+
+The canonical main-run results are shown in Table~\ref{tab:main-diffusion}; the table is generated from the benchmark-complete aggregate rather than manually transcribed. On MATH-500, base pass@$k$ is \mathBasePassK and predictor-selected repair gives \mathPredPassK (gain \mathPredGain), with oracle--predictor gap \mathOracleGap. On GSM8K, the corresponding values are \gsmBasePassK, \gsmPredPassK, \gsmPredGain, and \gsmOracleGap. These quantities describe the measured probe on the named full splits; they do not support a general DLM-versus-AR claim.
+
+\generatedtable{main_diffusion.tex}
+
+Autoregressive references are reported separately in Table~\ref{tab:ar-reference}. Their purpose is to contextualize answer quality, not to define the central contribution.
+
+\generatedtable{ar_reference.tex}
+
+\begin{figure}[t]
+\centering
+\resultfigure{protocol_overview}{0.98\linewidth}
+\caption{Protocol overview: trajectories are checkpointed, locally repaired, and evaluated under oracle and state-only selectors.}
+\label{fig:protocol}
+\end{figure}

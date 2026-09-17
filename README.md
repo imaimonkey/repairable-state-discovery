@@ -238,6 +238,11 @@ The submitter is duplicate-aware: it skips completed protocol reports and reuses
 
 ```bash
 cd /home/kimhj/repairable-state-discovery
+PROTOCOL_NODE=ubuntu \\
+AGGREGATE_NODE=ubuntu \\
+MAX_PARALLEL_GPUS=4 \\
+HF_HOME=/data/kimhj/.cache/huggingface \\
+RFBA_ROOT=/home/kimhj/Rethinking-Fixed-Block-Assumptions-in-Diffusion-Language-Model-Decoding \\
 bash scripts/submit_benchmark_complete_suite.sh
 ```
 
@@ -250,6 +255,8 @@ The suite covers:
 - GSM8K full LLaDA seed repeats: seed29, seed41
 - MATH-500 full Dream-v0-Instruct-7B backbone
 - GSM8K full Dream-v0-Instruct-7B backbone
+
+The benchmark submitter schedules each of the 15 independent diffusion/AR runs as a one-GPU Slurm job, then creates one CPU-only report job per protocol and one final CPU analysis job. `MAX_PARALLEL_GPUS` is a requested concurrency/validation target; the active Slurm QoS can impose a lower effective cap.
 
 ### Build Aggregate Reports
 

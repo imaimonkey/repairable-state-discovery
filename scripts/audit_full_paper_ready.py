@@ -36,6 +36,29 @@ EXPECTED_TABLES = [
     ROOT / "results/benchmark_complete_reports/tables/ar_latex.tex",
 ]
 
+EXPECTED_PAPER_TABLES = [
+    ROOT / "paper/tables/main_diffusion.tex",
+    ROOT / "paper/tables/ar_reference.tex",
+    ROOT / "paper/tables/robustness_seed.tex",
+    ROOT / "paper/tables/selector_comparison.tex",
+    ROOT / "paper/tables/predictor_ablation.tex",
+    ROOT / "paper/tables/cost_normalized.tex",
+    ROOT / "paper/tables/backbone_dataset.tex",
+]
+
+EXPECTED_PAPER_SOURCE = [
+    ROOT / "paper/main.tex",
+    ROOT / "paper/references.bib",
+]
+
+EXPECTED_PAPER_FIGURES = [
+    ROOT / "paper/figures/protocol_overview.pdf",
+    ROOT / "paper/figures/repair_gain_curves.pdf",
+    ROOT / "paper/figures/best_step_histogram.pdf",
+    ROOT / "paper/figures/predictor_oracle.pdf",
+    ROOT / "paper/figures/gain_negative_repair.pdf",
+]
+
 REQUIRED_STRATEGIES = {
     "confidence_low",
     "entropy_high",
@@ -151,7 +174,7 @@ def final_output_errors() -> tuple[list[str], dict[str, Any]]:
             if missing:
                 errors.append(f"{run_name}: missing extended strategies {sorted(missing)}")
 
-    for path in EXPECTED_TABLES + EXPECTED_FIGURE_DATA + [QUAL_JSON, QUAL_MD]:
+    for path in EXPECTED_TABLES + EXPECTED_PAPER_SOURCE + EXPECTED_PAPER_TABLES + EXPECTED_PAPER_FIGURES + EXPECTED_FIGURE_DATA + [QUAL_JSON, QUAL_MD]:
         if not path.is_file() or path.stat().st_size == 0:
             errors.append(f"missing/empty final artifact: {path.relative_to(ROOT)}")
 

@@ -1,0 +1,10 @@
+\section{Related Work}
+
+\paragraph{Diffusion language models.}
+Masked diffusion language modeling provides an alternative to autoregressive factorization by predicting masked tokens while progressively refining a sequence. LLaDA studies large language diffusion models trained from scratch and establishes the backbone used for the main experiments in this work \cite{llada}. Dream 7B extends the family with an instruction-tuned diffusion model and flexible iterative denoising, which we use as a second backbone for transfer analysis \cite{dream}. Our focus is not backbone ranking: the backbone is the substrate on which intermediate-state recoverability is measured.
+
+\paragraph{Reasoning benchmarks and references.}
+We evaluate on MATH-500 and GSM8K, two mathematical reasoning settings with different problem formats \cite{math,gsm8k}. Autoregressive rows from Qwen2.5 and Llama 3.1 serve as answer-quality references. They are not treated as the primary comparison target because the scientific question here concerns the internal refinement trajectory of diffusion decoding.
+
+\paragraph{Intermediate-state intervention.}
+The protocol is related to work that uses intermediate generations, remasking, reranking, or test-time computation to improve language-model outputs. The distinction is operational: rather than assuming that an intervention is useful, we probe each checkpoint and measure whether it can recover a failed trajectory, how often the same intervention damages successful trajectories, and how much of the oracle signal can be selected from state-only features. The contribution is therefore a controlled measurement framework and its empirical analysis, not a universal self-correction claim.

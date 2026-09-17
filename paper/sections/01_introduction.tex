@@ -1,0 +1,21 @@
+\section{Introduction}
+
+Diffusion language models generate by iteratively refining a partially masked sequence. This decoding process exposes states that are absent from a conventional left-to-right trajectory: a model can commit some tokens, revise local uncertainty, and change its answer candidate before the final sequence is emitted. These states suggest a question that is distinct from asking whether the final model is accurate:
+
+\begin{quote}
+When a diffusion reasoning trajectory is finally wrong, did it pass through an intermediate state from which the answer could still be recovered?
+\end{quote}
+
+We call this property \emph{state-level repairability}. The question is difficult to answer from final outputs alone. A useful measurement must distinguish a state that is merely plausible from one that supports recovery under a specified intervention, and it must account for the possibility that intervening in an already-correct trajectory causes harm.
+
+We introduce a protocol that records intermediate checkpoints, restarts from each eligible checkpoint with a bounded anchored-remasking probe, and measures branch-level correction. An oracle selector identifies the most repairable checkpoint after observing probe outcomes. A lightweight predictor then attempts to select a checkpoint using only state signals such as step position, mask ratio, confidence, entropy, and answer disagreement. The resulting analysis is intentionally framed as localization and measurement, rather than as a claim that diffusion models outperform autoregressive models.
+
+The full-paper evaluation is organized around four questions: (i) how often failed trajectories contain recoverable states, (ii) where those states occur, (iii) whether simple state signals or a learned selector can approach the oracle, and (iv) how gain changes under negative repair, cost, seeds, datasets, and diffusion backbones. All final quantitative tables and figures are generated from the full-split benchmark reports; historical 200-item artifacts are retained only as development evidence.
+
+Our contributions are:
+\begin{enumerate}
+    \item We formalize state-level repairability as recoverability of an incorrect diffusion trajectory from an intermediate snapshot under an explicit local repair probe.
+    \item We provide an oracle intervention protocol that localizes recoverable states and reports their timing and branch-level correction rates.
+    \item We evaluate non-oracle selectors, grouped predictor ablations, and thresholded abstention policies using item-level bootstrap intervals.
+    \item We analyze repair gain jointly with negative repair, branch cost, matched extra-sampling \emph{approximations}, repeated seeds, dataset transfer, and a second diffusion backbone.
+\end{enumerate}

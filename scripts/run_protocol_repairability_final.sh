@@ -5,8 +5,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
-#SBATCH --time=9999:00:00
-#SBATCH --nodelist=devbox
+#SBATCH --time=30-00:00:00
 
 set -euo pipefail
 
@@ -132,7 +131,15 @@ fi
 
 load_hf_token_from_file
 
-PYTHON_BIN="$(command -v python || command -v python3 || true)"
+if [[ -z "${PYTHON_BIN:-}" ]]; then
+  if [[ -x "$ROOT_DIR/.venv/bin/python" ]]; then
+    PYTHON_BIN="$ROOT_DIR/.venv/bin/python"
+  elif [[ -x /home/kimhj/llada8b_basic/.venv/bin/python ]]; then
+    PYTHON_BIN=/home/kimhj/llada8b_basic/.venv/bin/python
+  else
+    PYTHON_BIN="$(command -v python || command -v python3 || true)"
+  fi
+fi
 if [[ -z "$PYTHON_BIN" ]]; then
   echo "python not found on PATH"
   exit 1
@@ -141,7 +148,13 @@ fi
 PROTOCOL_PATH="${PROTOCOL_PATH:-repairable_diffusion/configs/final/protocol_math500_final.yaml}"
 PROTOCOL_FAMILIES="${PROTOCOL_FAMILIES:-}"
 PROTOCOL_RUN_NAMES="${PROTOCOL_RUN_NAMES:-}"
-HF_HOME="${HF_HOME:-$ROOT_DIR/.hf_home}"
+if [[ -z "${HF_HOME:-}" ]]; then
+  if [[ -d /data/kimhj/.cache/huggingface ]]; then
+    HF_HOME=/data/kimhj/.cache/huggingface
+  else
+    HF_HOME="$ROOT_DIR/.hf_home"
+  fi
+fi
 HF_HUB_CACHE="${HF_HUB_CACHE:-$HF_HOME/hub}"
 
 PROTOCOL_PATH_ABS="$(abs_path "$PROTOCOL_PATH")"
@@ -154,9 +167,22 @@ export HF_HOME HF_HUB_CACHE
 
 REQUIRED_BACKENDS="$(detect_required_backends | tr '\n' ' ')"
 
-if [[ "$REQUIRED_BACKENDS" == *"rfba_llada"* ]] && [[ ! -d /home/kimhj/rfba ]]; then
-  echo "Required backend root missing: /home/kimhj/rfba"
-  exit 1
+if [[ "$REQUIRED_BACKENDS" == *"rfba_llada"* ]]; then
+  if [[ -z "${RFBA_ROOT:-}" ]]; then
+    for candidate in \
+      /home/kimhj/rfba \
+      /home/kimhj/Rethinking-Fixed-Block-Assumptions-in-Diffusion-Language-Model-Decoding; do
+      if [[ -d "$candidate/decoding/llada" ]]; then
+        RFBA_ROOT="$candidate"
+        break
+      fi
+    done
+  fi
+  if [[ -z "${RFBA_ROOT:-}" || ! -d "$RFBA_ROOT/decoding/llada" ]]; then
+    echo "Required LLaDA backend root missing; set RFBA_ROOT to a directory containing decoding/llada" >&2
+    exit 1
+  fi
+  export RFBA_ROOT
 fi
 
 if [[ "$REQUIRED_BACKENDS" == *"dream"* ]] && [[ ! -d /home/kimhj/difffusion-sampling-exp-benchmark-playground/Dream ]]; then
@@ -171,6 +197,7 @@ echo "Families:      ${PROTOCOL_FAMILIES:-<all>}"
 echo "Run names:     ${PROTOCOL_RUN_NAMES:-<all>}"
 echo "Backends:      ${REQUIRED_BACKENDS:-<none>}"
 echo "HF_HOME:       $HF_HOME"
+echo "RFBA_ROOT:     ${RFBA_ROOT:-<not-needed>}"
 echo "HF_HUB_CACHE:  $HF_HUB_CACHE"
 if has_hf_token; then
   echo "HF token:      present"
@@ -179,6 +206,8 @@ else
 fi
 echo "Job ID:        ${SLURM_JOB_ID:-local}"
 echo "Host:          $(hostname)"
+echo "CUDA_VISIBLE_DEVICES: ${CUDA_VISIBLE_DEVICES:-<scheduler-default>}"
+echo "SLURM_JOB_GPUS:       ${SLURM_JOB_GPUS:-<unset>}"
 echo "=========================================="
 
 CMD=(
@@ -191,6 +220,9 @@ if [[ -n "$PROTOCOL_FAMILIES" ]]; then
 fi
 if [[ -n "$PROTOCOL_RUN_NAMES" ]]; then
   CMD+=(--run-names "$PROTOCOL_RUN_NAMES")
+fi
+if [[ "${PROTOCOL_WRITE_REPORT:-true}" != "true" ]]; then
+  CMD+=(--no-protocol-report)
 fi
 
 "${CMD[@]}"

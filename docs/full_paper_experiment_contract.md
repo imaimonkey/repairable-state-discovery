@@ -64,13 +64,16 @@ The matched extra-sampling result is an approximation derived from observed samp
 ```bash
 cd /home/kimhj/repairable-state-discovery
 bash scripts/full_paper_pipeline.sh preflight
+PROTOCOL_NODE=<actual-slurm-node> \\
+AGGREGATE_NODE=<actual-slurm-node> \\
+MAX_PARALLEL_GPUS=4 \\
 bash scripts/full_paper_pipeline.sh submit
 bash scripts/full_paper_pipeline.sh status
 # after all required protocol jobs finish successfully:
 bash scripts/full_paper_pipeline.sh finalize
 ```
 
-`submit` is duplicate-aware through `submit_benchmark_complete_suite.sh`: completed reports are skipped and pending/running jobs are reused.
+`submit` is duplicate-aware through `submit_benchmark_complete_suite.sh`: completed run artifacts and protocol reports are skipped, pending/running jobs are reused, and each independent run requests one GPU. Protocol reports are materialized by CPU-only aggregation jobs after their run-level dependencies complete. Slurm's node/QoS policy may cap concurrency below the requested node GPU count; the launcher records the actual assigned node and GPU in each log.
 
 `finalize` rebuilds the aggregate and extended analysis, then runs a strict audit and writes `results/full_paper_manifest.json`.
 

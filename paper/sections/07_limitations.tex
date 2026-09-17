@@ -1,0 +1,9 @@
+\section{Limitations}
+
+First, repairability is defined relative to a particular anchored-remasking probe, branch budget, checkpoint schedule, and answer extractor. A state may be repairable under a different intervention even when this probe fails, and probe success is not a causal explanation of the original model's reasoning.
+
+Second, the study covers two mathematical datasets and two diffusion backbones. Dataset- and backbone-dependent localization should therefore be treated as an empirical finding within the evaluated matrix, not as a universal diffusion-language-model property.
+
+Third, the predictor is trained from oracle probe outcomes. Although its inference features exclude branch outcomes and its split is grouped by item, the predictor is not a fully deployment-independent selector. The predictor--oracle gap and negative-repair rate remain central limitations.
+
+Finally, the matched extra-sampling comparison is an approximation based on observed sample accuracy and branch cost. It should not be read as evidence from a separately decoded extra-sampling control. The manuscript preserves this distinction in the tables, figure captions, and reproducibility appendix.

@@ -207,6 +207,8 @@ def run_protocol(
     allowed_families: set[str] | None = None,
     allowed_run_names: set[str] | None = None,
     dry_run: bool = False,
+    reuse_only: bool = False,
+    write_report: bool = True,
 ) -> dict[str, Any]:
     allowed_families = allowed_families or set()
     allowed_run_names = allowed_run_names or set()
@@ -246,7 +248,14 @@ def run_protocol(
                 )
                 continue
             report_path = run_dir / "report.json"
-            report = load_json(report_path) if report_path.exists() else run_pipeline(cfg, run_dir)
+            if report_path.exists():
+                report = load_json(report_path)
+            elif reuse_only:
+                raise FileNotFoundError(
+                    f"missing completed diffusion run artifact for {spec['run_name']}: {report_path}"
+                )
+            else:
+                report = run_pipeline(cfg, run_dir)
             outputs.append(
                 _diffusion_output_from_report(
                     run_name=spec["run_name"],
@@ -287,7 +296,14 @@ def run_protocol(
                 )
                 continue
             summary_path = run_dir / "ar_baseline_summary.json"
-            payload = {"meta": load_json(summary_path)} if summary_path.exists() else run_ar_baseline(cfg, run_dir)
+            if summary_path.exists():
+                payload = {"meta": load_json(summary_path)}
+            elif reuse_only:
+                raise FileNotFoundError(
+                    f"missing completed AR run artifact for {spec['run_name']}: {summary_path}"
+                )
+            else:
+                payload = {"meta": run_ar_baseline(cfg, run_dir)}
             outputs.append(
                 _ar_output_from_payload(
                     run_name=spec["run_name"],
@@ -309,7 +325,8 @@ def run_protocol(
         "runs": outputs,
         "summary": _summarize_protocol_runs(outputs),
     }
-    save_json(report_path, report)
+    if write_report:
+        save_json(report_path, report)
     return report
 
 
@@ -319,6 +336,16 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--families", default="", help="Comma-separated subset of families: diffusion,ar")
     ap.add_argument("--run-names", default="", help="Comma-separated subset of protocol run_name values")
     ap.add_argument("--dry-run", action="store_true", help="Generate configs and a dry-run manifest without executing runs")
+    ap.add_argument(
+        "--reuse-only",
+        action="store_true",
+        help="Build the protocol report only from completed run-level artifacts; never execute a missing run",
+    )
+    ap.add_argument(
+        "--no-protocol-report",
+        action="store_true",
+        help="Execute selected run(s) without writing the shared protocol report",
+    )
     return ap.parse_args()
 
 
@@ -330,6 +357,8 @@ def main() -> None:
         allowed_families=_parse_csv(args.families),
         allowed_run_names=_parse_csv(args.run_names),
         dry_run=bool(args.dry_run),
+        reuse_only=bool(args.reuse_only),
+        write_report=not bool(args.no_protocol_report),
     )
     mode = "dry-run" if args.dry_run else "done"
     print(f"[protocol] {mode}: {args.protocol}")

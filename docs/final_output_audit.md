@@ -27,7 +27,8 @@ This audit records the final-paper elements that were previously identified and 
 
 ```bash
 cd /home/kimhj/repairable-state-discovery
-bash scripts/submit_benchmark_complete_suite.sh
+PROTOCOL_NODE=<actual-slurm-node> AGGREGATE_NODE=<actual-slurm-node> \\
+MAX_PARALLEL_GPUS=4 bash scripts/submit_benchmark_complete_suite.sh
 ```
 
 The submitter skips a protocol when its full report already exists with the expected run counts. If the report is missing but a matching Slurm job is already pending or running, it reuses that job id for the aggregate dependency instead of submitting another copy. The aggregate job depends on all missing or in-flight protocol jobs and writes the benchmark-complete reports after successful completion.
@@ -48,4 +49,4 @@ Final aggregate target: 11 diffusion rows and 4 AR reference rows.
 
 ## Remaining Condition
 
-The repository now has the final execution configuration. The final numeric state exists only after the benchmark-complete Slurm jobs finish successfully on `devbox`.
+The repository now has the final execution configuration. The final numeric state exists only after the benchmark-complete run-level Slurm jobs finish successfully on the configured `PROTOCOL_NODE` (the current server3 checkout uses `ubuntu`).

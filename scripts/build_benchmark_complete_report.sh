@@ -19,7 +19,15 @@ elif [[ -f /home/kimhj/provenance-decompositon/.venv/bin/activate ]]; then
   source /home/kimhj/provenance-decompositon/.venv/bin/activate
 fi
 
-PYTHON_BIN="$(command -v python || command -v python3 || true)"
+if [[ -z "${PYTHON_BIN:-}" ]]; then
+  if [[ -x "$ROOT_DIR/.venv/bin/python" ]]; then
+    PYTHON_BIN="$ROOT_DIR/.venv/bin/python"
+  elif [[ -x /home/kimhj/llada8b_basic/.venv/bin/python ]]; then
+    PYTHON_BIN=/home/kimhj/llada8b_basic/.venv/bin/python
+  else
+    PYTHON_BIN="$(command -v python || command -v python3 || true)"
+  fi
+fi
 if [[ -z "$PYTHON_BIN" ]]; then
   echo "python not found on PATH" >&2
   exit 1
@@ -94,6 +102,16 @@ done
   "${extended_args[@]}" \
   --output-dir "$EXTENDED_DIR" \
   --max-per-type 3
+
+"$PYTHON_BIN" scripts/render_paper_artifacts.py \
+  --aggregate-report "$OUTPUT_DIR/aggregate_report.json" \
+  --extended-analysis "$EXTENDED_DIR/extended_repair_analysis.json" \
+  --output-dir "$ROOT_DIR/paper"
+
+"$PYTHON_BIN" scripts/render_full_paper_figures.py \
+  --aggregate-report "$OUTPUT_DIR/aggregate_report.json" \
+  --figure-data "$OUTPUT_DIR/figure_data" \
+  --output-dir "$ROOT_DIR/paper/figures"
 
 echo "[benchmark-complete] protocol reports: ${#required_reports[@]}"
 echo "[benchmark-complete] diffusion run dirs: ${#run_dirs[@]}"

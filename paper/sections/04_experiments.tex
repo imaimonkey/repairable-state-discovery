@@ -1,0 +1,16 @@
+\section{Experimental Setup}
+
+\paragraph{Models.}
+The primary diffusion backbone is LLaDA-8B-Instruct with the fast RFBA-compatible implementation. Dream-v0-Instruct-7B is evaluated as a second diffusion backbone. Qwen2.5-7B-Instruct and Llama-3.1-8B-Instruct are autoregressive references.
+
+\paragraph{Datasets and split.}
+We use the test split of MATH-500 and the main test split of GSM8K. The canonical full protocols intentionally omit a dataset limit. Each diffusion run uses eight trajectories per item, 64 refinement steps, generation length 256, block length 128, checkpoint stride 8 unless the robustness protocol changes it, and four repair branches unless the branch-count ablation changes it.
+
+\paragraph{Full-paper matrix.}
+The matrix contains seven protocols: two main protocols with one diffusion and two autoregressive runs each; three MATH/GSM seed-repeat or configuration protocols; and two Dream backbone protocols. This yields 11 diffusion rows and four autoregressive rows. Full diffusion protocols evaluate negative repair over all successful trajectories by setting `max_success_trajectories_for_negative_repair` to zero.
+
+\paragraph{Uncertainty and analysis.}
+We use item-level bootstrap resampling for repaired pass@$k$ and gain intervals. Repeated-seed runs are reported separately from configuration robustness. The extended analysis includes simple selectors, predictor thresholds, seven feature ablations, cost normalization, qualitative examples, and generated figure data.
+
+\paragraph{Reproducibility boundary.}
+The canonical source map is `results/full_paper_manifest.json`. Reports under `results/final_reports`, `results/submission_reports`, and `results/extended_analysis` are historical development artifacts and are not substituted for full-split evidence.

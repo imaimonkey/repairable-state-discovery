@@ -1,0 +1,19 @@
+\section{State-Level Repairability Protocol}
+
+\subsection{Trajectory collection}
+For item $i$, the diffusion decoder produces $K$ trajectories. At refinement step $t$, the state contains the prompt, the current token sequence, token confidences, masked-token entropy, and a provisional answer candidate. We save a checkpoint every $s$ steps. Let $y_i$ be the reference answer and let $a_{i,k}$ be the extracted answer of trajectory $k$. A trajectory is failed when $a_{i,k}$ does not match $y_i$ under the benchmark evaluator.
+
+\subsection{Repair probe and oracle localization}
+Given a failed snapshot $x_{i,k,t}$, the probe selects low-confidence committed positions, remasks a fixed fraction subject to a minimum count, and resumes the same diffusion decoder until completion. We run $B$ branches with fixed temperatures, remasking fractions, and deterministic seed derivations. The correction rate is
+\[
+ r(i,k,t) = \frac{1}{B}\sum_{b=1}^{B} \mathbb{1}[\operatorname{Eval}(\operatorname{Repair}(x_{i,k,t};b))=y_i].
+\]
+The oracle selects $\arg\max_t r(i,k,t)$ on failed trajectories. On originally successful trajectories, the analogous intervention measures degradation and defines negative repair. These outcomes quantify recoverability under the probe; they do not establish that the probe is the only or causal mechanism of recovery.
+
+\subsection{Non-oracle selection}
+The predictor is a logistic regression trained to imitate the top oracle checkpoints. Its feature vector includes normalized step position, masked and committed ratios, token-confidence statistics, masked-token entropy, answer disagreement, and candidate-change rate. Training and evaluation are grouped by item, so checkpoints from the same item do not cross the split. At inference, the predictor scores eligible checkpoints and selects the highest score. Threshold variants repair only when the maximum score exceeds 0.50, 0.70, or 0.90.
+
+We compare against confidence-low, entropy-high, mask-ratio-high, early-step, and middle-step selectors. This comparison is essential: if a simple refinement-state prior matches the predictor, the appropriate interpretation is structured localization rather than predictor superiority.
+
+\subsection{Metrics}
+For each policy we report base item pass@$k$, repaired pass@$k$, gain, bootstrap confidence intervals, negative repair, the predictor--oracle gap, selected failed and successful trajectories, repair branch evaluations, cost per item, and gain per 1,000 branch evaluations. The matched extra-sampling number is computed from observed sample accuracy and expected repair branch cost. It is a proxy for a matched budget, not a separately decoded baseline.

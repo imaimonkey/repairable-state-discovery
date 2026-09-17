@@ -5,7 +5,15 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 cd "$ROOT_DIR"
 
-PYTHON_BIN="$(command -v python || command -v python3 || true)"
+if [[ -z "${PYTHON_BIN:-}" ]]; then
+  if [[ -x "$ROOT_DIR/.venv/bin/python" ]]; then
+    PYTHON_BIN="$ROOT_DIR/.venv/bin/python"
+  elif [[ -x /home/kimhj/llada8b_basic/.venv/bin/python ]]; then
+    PYTHON_BIN=/home/kimhj/llada8b_basic/.venv/bin/python
+  else
+    PYTHON_BIN="$(command -v python || command -v python3 || true)"
+  fi
+fi
 if [[ -z "$PYTHON_BIN" ]]; then
   echo "python not found on PATH" >&2
   exit 1
