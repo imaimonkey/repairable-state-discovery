@@ -1,0 +1,44 @@
+run_name: v2_bbh_logical7_llada
+output_root: repairable_diffusion/outputs/v2_measurement
+model_profile: llada_8b_fast
+
+dataset:
+  name: bbh
+  path: maveriq/bigbenchhard
+  config_name: logical_deduction_seven_objects
+  split: train
+
+generation:
+  trajectories_per_item: 8
+  base_seed: 2027
+  steps: 64
+  gen_length: 256
+  block_length: 128
+  temperature: 0.6
+  cfg_scale: 0.0
+  remasking: low_confidence
+  mask_id: 126336
+  checkpoint_stride: 8
+
+operator:
+  anchor_confidence_threshold: 0.80
+  remask_fraction: 0.25
+  min_remask_positions: 4
+
+probe:
+  root_seed: 2027
+  policy_trajectory_ids: [0]
+  mechanism_subset_items: 0
+  mechanism_subset_seed: 271828
+  temporal_subset_items: 0
+  temporal_subset_seed: 314159
+  fresh_control_seed: 161803
+  mechanism_controls_enabled: false
+  temporal_confirmation_enabled: false
+
+selector:
+  target: q_repair_loc
+  primary: oof_state_value
+
+compute_control:
+  enabled: false
