@@ -7,6 +7,7 @@ from typing import Any
 import numpy as np
 import torch
 import torch.nn.functional as F
+from transformers import AutoModel, AutoTokenizer
 
 from repairable_diffusion.src.backends.dream import DreamBackend
 from repairable_diffusion.src.backends.rfba_llada import RFBALLADABackend, add_gumbel_noise, get_num_transfer_tokens
@@ -562,8 +563,36 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
     backend_type = "dream_v2"
 
     def __init__(self, cfg: dict[str, Any], adapter: TaskAdapter):
-        DreamBackend.__init__(self, cfg)
+        # V2 intentionally does not import the mutable local Dream playground
+        # implementation.  Load the exact Hugging Face remote-code revision
+        # recorded in the frozen profile so model and sampler provenance agree.
+        self.cfg = dict(cfg)
+        self.model = None
+        self.tokenizer = None
+        self.root = None
         self.__init_v2__(adapter)
+
+    def load(self) -> None:
+        if self.model is not None:
+            return
+        model_path = str(self.cfg["model_path"])
+        revision = str(self.cfg.get("revision") or DREAM_NATIVE_SOURCE_REVISION)
+        torch_dtype = getattr(torch, self.cfg.get("torch_dtype", "bfloat16"))
+        trust_remote_code = bool(self.cfg.get("trust_remote_code", True))
+        self.model = AutoModel.from_pretrained(
+            model_path,
+            revision=revision,
+            torch_dtype=torch_dtype,
+            trust_remote_code=trust_remote_code,
+        )
+        if self.cfg.get("device", "cuda") == "cuda" and torch.cuda.is_available():
+            self.model = self.model.cuda()
+        self.model.eval()
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            model_path,
+            revision=revision,
+            trust_remote_code=trust_remote_code,
+        )
 
     def _forward(self, x: torch.Tensor, counter: ComputeCounter) -> torch.Tensor:
         counter.add_forward()
