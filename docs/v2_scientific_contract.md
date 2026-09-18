@@ -125,9 +125,11 @@ Required rows:
 
 Dream-v0-Instruct-7B on MATH-500 and GSM8K.
 
+Dream uses its pinned **official native sampler semantics** rather than the LLaDA blockwise sampler: model/source revision `2f177908857f6f96dbe7b696ad5eac5123535bbd`, native `alg=origin`, `alg_temp=None`, `eps=1e-3`, and the fixed paper budget `steps=64`, `gen_length=256`. The official final diffusion transition transfers all remaining mask tokens; post-hoc extra decoding steps are forbidden. Dream's native sampler gate is independent of the primary LLaDA gate and cannot block Tier A execution.
+
 Required rows:
 - base
-- native continuation
+- matched stochastic/native-continuation controls as defined by the V2 measurement contract
 - canonical repair
 - selected repair
 - oracle diagnostic
