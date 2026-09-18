@@ -46,7 +46,7 @@ case "${1:-}" in
     write_preflight_stamp
     ;;
 
-  pilot)
+  pilot|pilot-primary)
     # Frozen correctness/resource pilots. Their scientific settings must not be
     # changed in response to the observed effect direction.
     run_cfg repairable_diffusion/configs/v2/runs/pilot_math500_llada.yaml
@@ -77,15 +77,21 @@ case "${1:-}" in
 
   *)
     cat <<'EOF'
-Usage: bash scripts/run_v2_suite.sh {preflight|pilot|full-local|aggregate}
+Usage: bash scripts/run_v2_suite.sh {preflight|pilot|pilot-primary|full-local|aggregate}
 
-Mandatory order:
+Primary LLaDA order:
   bash scripts/run_v2_suite.sh preflight
-  python scripts/validate_v2_backends.py
-  bash scripts/run_v2_suite.sh pilot
-  python scripts/audit_v2_design.py --mode full
-  python scripts/submit_v2_suite.py --tier full --dry-run
-  python scripts/submit_v2_suite.py --tier full
+  python scripts/validate_v2_backends.py --backend llada
+  bash scripts/run_v2_suite.sh pilot-primary
+  python scripts/audit_v2_design.py --mode primary
+  python scripts/submit_v2_suite.py --tier primary --dry-run
+  python scripts/submit_v2_suite.py --tier primary
+
+Independent Dream gate:
+  python scripts/validate_v2_backends.py --backend dream
+  python scripts/audit_v2_design.py --mode dream
+  python scripts/submit_v2_suite.py --tier dream --dry-run
+  python scripts/submit_v2_suite.py --tier dream
 EOF
     exit 2
     ;;
