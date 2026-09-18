@@ -32,6 +32,11 @@ models:
       trust_remote_code: true
       top_p: 0.95
       top_k:
+      alg: origin
+      alg_temp:
+      eps: 0.001
+      sampler_source_repository: Dream-org/Dream-v0-Instruct-7B
+      sampler_source_revision: 2f177908857f6f96dbe7b696ad5eac5123535bbd
 
   dream_v0_base_7b:
     family: diffusion
@@ -44,6 +49,11 @@ models:
       trust_remote_code: true
       top_p: 0.95
       top_k:
+      alg: origin
+      alg_temp:
+      eps: 0.001
+      sampler_source_repository: Dream-org/Dream-v0-Instruct-7B
+      sampler_source_revision: 2f177908857f6f96dbe7b696ad5eac5123535bbd
 
   qwen2_5_7b_instruct:
     family: ar
