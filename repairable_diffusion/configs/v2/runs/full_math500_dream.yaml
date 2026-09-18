@@ -15,8 +15,11 @@ generation:
   block_length: 128
   temperature: 0.6
   cfg_scale: 0.0
-  remasking: low_confidence
+  remasking: native_dream
   mask_id: 151666
+  dream_alg: origin
+  dream_alg_temp:
+  dream_eps: 0.001
   checkpoint_stride: 8
 
 operator:
