@@ -14,9 +14,11 @@ from repairable_diffusion.src.utils.seed import seed_everything
 from repairable_diffusion.src.v2.task_adapters import TaskAdapter
 
 
-V2_BACKEND_VERSION = "v2.2"
+V2_BACKEND_VERSION = "v2.3"
 CORE_SOURCE_REPOSITORY = "UCF-CRCV/CoRe"
 CORE_SOURCE_REVISION = "524e01e11a8751afb67b81a2c930f938faf9a70e"
+DREAM_NATIVE_SOURCE_REPOSITORY = "Dream-org/Dream-v0-Instruct-7B"
+DREAM_NATIVE_SOURCE_REVISION = "2f177908857f6f96dbe7b696ad5eac5123535bbd"
 
 
 def _rng_snapshot() -> dict[str, Any]:
@@ -550,6 +552,13 @@ class V2LLADABackend(V2BackendMixin, RFBALLADABackend):
 
 
 class V2DreamBackend(V2BackendMixin, DreamBackend):
+    """Snapshot-compatible implementation of Dream's official native sampler.
+
+    This mirrors DreamGenerationMixin._sample from the pinned official Dream
+    remote-code revision. Decoding follows the native diffusion timestep
+    schedule and never adds post-hoc decoding steps.
+    """
+
     backend_type = "dream_v2"
 
     def __init__(self, cfg: dict[str, Any], adapter: TaskAdapter):
@@ -562,97 +571,198 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
         return torch.cat([logits[:, :1], logits[:, :-1]], dim=1)
 
     @staticmethod
-    def _first_conf_to_list(first_conf: torch.Tensor) -> list[float | None]:
-        values = first_conf[0].detach().cpu().tolist()
-        return [None if math.isnan(float(v)) else float(v) for v in values]
+    def _top_p_logits(logits: torch.Tensor, top_p: float | None) -> torch.Tensor:
+        if top_p is None or top_p >= 1:
+            return logits
+        sorted_logits, sorted_indices = torch.sort(logits, descending=True)
+        cumulative_probs = torch.cumsum(F.softmax(sorted_logits, dim=-1), dim=-1)
+        sorted_indices_to_remove = cumulative_probs > float(top_p)
+        sorted_indices_to_remove[..., 1:] = sorted_indices_to_remove[..., :-1].clone()
+        sorted_indices_to_remove[..., 0] = False
+        mask = torch.zeros_like(logits, dtype=torch.bool, device=logits.device)
+        mask = mask.scatter_(-1, sorted_indices, sorted_indices_to_remove)
+        return logits.masked_fill(mask, torch.finfo(logits.dtype).min)
 
     @staticmethod
-    def _first_conf_from_list(values: list[float | None], device: torch.device) -> torch.Tensor:
-        return torch.tensor(
-            [[float("nan") if v is None else float(v) for v in values]], dtype=torch.float32, device=device
-        )
+    def _top_k_logits(logits: torch.Tensor, top_k: int | None) -> torch.Tensor:
+        if top_k is None:
+            return logits
+        k = min(int(top_k), int(logits.size(-1)))
+        if k <= 0:
+            return logits
+        cutoff = torch.topk(logits, k)[0][..., -1, None]
+        return logits.masked_fill(logits < cutoff, torch.finfo(logits.dtype).min)
 
-    def _dream_step(
+    def _sample_dream_tokens(
+        self,
+        logits: torch.Tensor,
+        *,
+        temperature: float,
+        top_p: float | None,
+        top_k: int | None,
+        margin_confidence: bool = False,
+        neg_entropy: bool = False,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        """Mirror official Dream generation_utils.sample_tokens."""
+        if temperature > 0:
+            logits = logits / float(temperature)
+        logits = self._top_p_logits(logits, top_p)
+        logits = self._top_k_logits(logits, top_k)
+        probs = torch.softmax(logits, dim=-1)
+        if temperature > 0:
+            try:
+                x0 = torch.distributions.Categorical(probs=probs).sample()
+                confidence = torch.gather(probs, -1, x0.unsqueeze(-1)).squeeze(-1)
+            except Exception:
+                confidence, x0 = probs.max(dim=-1)
+        else:
+            confidence, x0 = probs.max(dim=-1)
+        if margin_confidence:
+            sorted_probs, _ = torch.sort(probs, dim=-1, descending=True)
+            confidence = sorted_probs[..., 0] - sorted_probs[..., 1]
+        if neg_entropy:
+            confidence = torch.sum(probs * torch.log(probs + 1e-10), dim=-1)
+        return confidence, x0
+
+    def _native_params(self, generation_cfg: dict[str, Any]) -> dict[str, Any]:
+        alg = str(generation_cfg.get("dream_alg", self.cfg.get("alg", "origin")))
+        alg_temp = generation_cfg.get("dream_alg_temp", self.cfg.get("alg_temp"))
+        eps = float(generation_cfg.get("dream_eps", self.cfg.get("eps", 1e-3)))
+        top_p = generation_cfg.get("top_p", self.cfg.get("top_p", 0.95))
+        top_k = generation_cfg.get("top_k", self.cfg.get("top_k"))
+        if alg not in {"origin", "maskgit_plus", "topk_margin", "entropy"}:
+            raise ValueError(f"unsupported official Dream algorithm: {alg}")
+        if alg_temp not in (None, 0, 0.0):
+            raise NotImplementedError("V2 Dream supports official alg_temp=None/0 only")
+        if not 0.0 < eps < 1.0:
+            raise ValueError("Dream eps must lie in (0, 1)")
+        return {
+            "alg": alg,
+            "alg_temp": alg_temp,
+            "eps": eps,
+            "top_p": None if top_p is None else float(top_p),
+            "top_k": None if top_k is None else int(top_k),
+        }
+
+    @staticmethod
+    def _native_transfer_count(
+        num_mask_tokens: int,
+        *,
+        step_id: int,
+        total_steps: int,
+        eps: float,
+        device: torch.device,
+    ) -> int:
+        if step_id < 0 or step_id >= total_steps:
+            raise ValueError("Dream step_id outside fixed diffusion schedule")
+        if step_id == total_steps - 1:
+            return int(num_mask_tokens)
+        timesteps = torch.linspace(1, eps, total_steps + 1, device=device)
+        t = timesteps[step_id]
+        s = timesteps[step_id + 1]
+        return int(int(num_mask_tokens) * float((1 - s / t).item()))
+
+    def _dream_native_step(
         self,
         x: torch.Tensor,
-        first_conf: torch.Tensor,
-        is_prompt_mask: torch.Tensor,
         *,
+        prompt_len: int,
         step_id: int,
         total_steps: int,
         generation_cfg: dict[str, Any],
         counter: ComputeCounter,
-    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, list[int], list[float]]:
+    ) -> tuple[torch.Tensor, torch.Tensor, list[int], list[float]]:
+        """Execute exactly one transition from Dream's official _sample loop."""
+        if x.shape[0] != 1:
+            raise NotImplementedError("V2 Dream snapshot instrumentation requires batch size 1")
         mask_token_id = self._mask_token_id(generation_cfg)
-        pad_token_id = self._pad_token_id()
         temperature = float(generation_cfg["temperature"])
-        top_p = float(self.cfg.get("top_p", 0.95))
-        top_k = self.cfg.get("top_k")
-        eos_penalty = float(self.cfg.get("eos_penalty", 0.0))
+        params = self._native_params(generation_cfg)
+        alg = params["alg"]
+        top_p = params["top_p"]
+        top_k = params["top_k"]
+
         mask_index = x == mask_token_id
         with torch.no_grad():
             logits = self._forward(x, counter)
         mask_logits = logits[mask_index]
-        if mask_logits.numel() > 0:
-            mask_logits = mask_logits.clone()
-            if pad_token_id is not None and pad_token_id < mask_logits.shape[-1]:
-                t = 1.0 - (step_id / max(1, total_steps))
-                mask_logits[:, pad_token_id] += eos_penalty * math.log(max(1e-6, 1 - t + 1e-3))
-            _, x0, zero_temp_confidence = self.sample_tokens(
-                mask_logits, temperature=temperature, top_p=top_p, top_k=top_k
-            )
-            confidence = zero_temp_confidence
+        if mask_logits.numel() == 0:
+            return x, logits, [], []
+
+        mask_abs = torch.where(mask_index[0])[0]
+        if alg == "origin":
+            timesteps = torch.linspace(1, params["eps"], total_steps + 1, device=x.device)
+            t = timesteps[step_id]
+            s = timesteps[step_id + 1]
+            p_transfer = (1 - s / t) if step_id < total_steps - 1 else torch.tensor(1.0, device=x.device)
+            x0 = torch.full_like(x[mask_index], mask_token_id, dtype=torch.long, device=x.device)
+            transfer = torch.rand(x0.shape, device=x.device) < p_transfer
+            selected_abs = mask_abs[transfer]
+            if bool(transfer.any().item()):
+                selected_conf, sampled = self._sample_dream_tokens(
+                    mask_logits[transfer],
+                    temperature=temperature,
+                    top_p=top_p,
+                    top_k=top_k,
+                )
+                x0[transfer] = sampled
+            else:
+                selected_conf = torch.empty(0, device=x.device, dtype=torch.float32)
+            x = x.clone()
+            x[mask_index] = x0
         else:
-            confidence = torch.tensor([], device=x.device, dtype=torch.float32)
-            x0 = torch.tensor([], device=x.device, dtype=torch.long)
+            selected_conf_all, x0 = self._sample_dream_tokens(
+                mask_logits,
+                temperature=temperature,
+                top_p=top_p,
+                top_k=top_k,
+                margin_confidence=(alg == "topk_margin"),
+                neg_entropy=(alg == "entropy"),
+            )
+            number_transfer_tokens = self._native_transfer_count(
+                int(mask_index.sum().item() // x.shape[0]),
+                step_id=step_id,
+                total_steps=total_steps,
+                eps=float(params["eps"]),
+                device=x.device,
+            )
+            if number_transfer_tokens <= 0:
+                selected_abs = torch.empty(0, device=x.device, dtype=torch.long)
+                selected_conf = torch.empty(0, device=x.device, dtype=torch.float32)
+            else:
+                full_confidence = torch.full(x.shape, -torch.inf, device=x.device, dtype=logits.dtype)
+                full_confidence[mask_index] = selected_conf_all.to(dtype=logits.dtype)
+                _, transfer_index = torch.topk(full_confidence, number_transfer_tokens, dim=-1)
+                x_candidates = torch.full_like(x, mask_token_id, dtype=torch.long, device=x.device)
+                x_candidates[mask_index] = x0
+                row_indices = torch.arange(x.size(0), device=x.device).unsqueeze(1).expand_as(transfer_index)
+                x = x.clone()
+                x[row_indices, transfer_index] = x_candidates[row_indices, transfer_index]
+                selected_abs = transfer_index[0]
+                selected_conf = full_confidence[0, selected_abs].to(torch.float32)
 
-        confidence_full = torch.full(x.shape, float("-inf"), device=x.device, dtype=torch.float32)
-        candidate_tokens = torch.full(x.shape, mask_token_id, device=x.device, dtype=torch.long)
-        if confidence.numel() > 0:
-            confidence_full[mask_index] = confidence.to(dtype=confidence_full.dtype)
-            candidate_tokens[mask_index] = x0
-        selected_mask = torch.zeros_like(mask_index, dtype=torch.bool)
-        new_positions: list[int] = []
-        new_conf: list[float] = []
-        prompt_len = int(is_prompt_mask.sum().item())
-        for b in range(x.shape[0]):
-            mask_pos = torch.where(mask_index[b] & ~is_prompt_mask[b])[0]
-            prev_first = first_conf[b][~torch.isnan(first_conf[b])]
-            threshold = float(prev_first.mean().item()) if prev_first.numel() > 0 else 1.0
-            if mask_pos.numel() == 0:
-                continue
-            confidences_b = confidence_full[b, mask_pos]
-            sel_indices = mask_pos[confidences_b > threshold]
-            if sel_indices.numel() < 2:
-                k = min(2, int(mask_pos.numel()))
-                _, topk_idx = torch.topk(confidences_b, k=k)
-                sel_indices = mask_pos[topk_idx]
-            selected_mask[b, sel_indices] = True
-            new_positions.extend((sel_indices - prompt_len).detach().cpu().tolist())
-            new_conf.extend(confidence_full[b, sel_indices].detach().cpu().tolist())
+        generated = selected_abs[selected_abs >= prompt_len] - prompt_len
+        return (
+            x,
+            logits,
+            [int(v) for v in generated.detach().cpu().tolist()],
+            [float(v) for v in selected_conf.detach().cpu().tolist()],
+        )
 
-        newly_unmasked = selected_mask & mask_index
-        new_unmask_counts = newly_unmasked.sum(dim=1)
-        if newly_unmasked.any():
-            x[newly_unmasked] = candidate_tokens[newly_unmasked]
-            need_record = torch.isnan(first_conf) & newly_unmasked
-            first_conf[need_record] = confidence_full[need_record].to(dtype=first_conf.dtype)
-
-        current_unmasked = x != mask_token_id
-        current_token_probs = self._confidence_of_current_tokens(logits, x)
-        remask_mask = torch.zeros_like(current_unmasked, dtype=torch.bool)
-        for b in range(x.shape[0]):
-            positions = torch.where(current_unmasked[b] & ~is_prompt_mask[b])[0]
-            count = int(positions.numel())
-            if count <= 1:
-                continue
-            num_remask = int(max(1, min(count - 1, math.ceil(int(new_unmask_counts[b].item()) / 8))))
-            cur_conf = current_token_probs[b, positions]
-            _, smallest_idx = torch.topk(-cur_conf, k=num_remask)
-            remask_mask[b, positions[smallest_idx]] = True
-        if remask_mask.any():
-            x[remask_mask] = mask_token_id
-        return x, first_conf, logits, new_positions, new_conf
+    def _assert_snapshot_sampler(self, snapshot: dict[str, Any], generation_cfg: dict[str, Any]) -> None:
+        state = dict(snapshot.get("backend_state") or {})
+        current = self._native_params(generation_cfg)
+        expected = {
+            "dream_alg": current["alg"],
+            "dream_alg_temp": current["alg_temp"],
+            "dream_eps": current["eps"],
+            "sampler_source_revision": DREAM_NATIVE_SOURCE_REVISION,
+        }
+        for key, value in expected.items():
+            if key in state and state[key] != value:
+                raise RuntimeError(
+                    f"Dream snapshot sampler mismatch for {key}: saved={state[key]!r} current={value!r}"
+                )
 
     def generate_trajectory_v2(
         self, item: dict[str, Any], trajectory_id: int, generation_cfg: dict[str, Any]
@@ -664,18 +774,21 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
         gen_length = int(generation_cfg["gen_length"])
         checkpoint_stride = int(generation_cfg["checkpoint_stride"])
         mask_id = self._mask_token_id(generation_cfg)
+        params = self._native_params(generation_cfg)
+
         x = F.pad(prompt_ids, (0, gen_length), value=mask_id)
         prompt_len = int(prompt_ids.shape[1])
-        is_prompt_mask = torch.zeros_like(x, dtype=torch.bool)
-        is_prompt_mask[:, :prompt_len] = True
-        first_conf = torch.full(x.shape, float("nan"), device=x.device, dtype=torch.float32)
         counter = ComputeCounter()
         rows: list[dict[str, Any]] = []
 
-        step_id = 0
-        while bool((x == mask_id).any().item()) and step_id < steps:
-            x, first_conf, logits, new_positions, new_conf = self._dream_step(
-                x, first_conf, is_prompt_mask, step_id=step_id, total_steps=steps, generation_cfg=generation_cfg, counter=counter
+        for step_id in range(steps):
+            x, logits, new_positions, new_conf = self._dream_native_step(
+                x,
+                prompt_len=prompt_len,
+                step_id=step_id,
+                total_steps=steps,
+                generation_cfg=generation_cfg,
+                counter=counter,
             )
             gen_mask = x[0, prompt_len:] == mask_id
             current_probs = self._confidence_of_current_tokens(logits, x)[0, prompt_len:].detach().cpu().tolist()
@@ -688,6 +801,7 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
                 entropy_mean, entropy_max = float(entropy.mean().item()), float(entropy.max().item())
             else:
                 entropy_mean = entropy_max = 0.0
+
             provisional = self._adapter_prediction(x, prompt_len)
             row: dict[str, Any] = {
                 "step_index": step_id + 1,
@@ -697,6 +811,8 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
                 "step_in_block": None,
                 "masked_ratio": float(gen_mask.float().mean().item()),
                 "commitment_ratio": float((~gen_mask).float().mean().item()),
+                "new_positions": new_positions,
+                "new_token_conf_mean": float(np.mean(new_conf)) if new_conf else 0.0,
                 "state_token_conf_mean": float(np.mean([v for v in token_confidences if v is not None])) if any(v is not None for v in token_confidences) else 0.0,
                 "state_token_conf_min": float(np.min([v for v in token_confidences if v is not None])) if any(v is not None for v in token_confidences) else 0.0,
                 "masked_entropy_mean": entropy_mean,
@@ -705,7 +821,7 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
                 "observed_correct": self._adapter_correct(provisional, item) if provisional is not None else False,
                 "snapshot": None,
             }
-            if (step_id + 1) % checkpoint_stride == 0 or not bool((x == mask_id).any().item()) or step_id + 1 == steps:
+            if (step_id + 1) % checkpoint_stride == 0 or step_id + 1 == steps:
                 row["snapshot"] = V2Snapshot(
                     backend_type=self.backend_type,
                     schema_version=V2_BACKEND_VERSION,
@@ -719,15 +835,23 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
                     block_index=None,
                     step_in_block=None,
                     active_plan=None,
-                    first_conf=self._first_conf_to_list(first_conf),
+                    first_conf=None,
                     rng_state=_rng_snapshot(),
-                    backend_state={},
+                    backend_state={
+                        "dream_alg": params["alg"],
+                        "dream_alg_temp": params["alg_temp"],
+                        "dream_eps": params["eps"],
+                        "sampler_source_repository": DREAM_NATIVE_SOURCE_REPOSITORY,
+                        "sampler_source_revision": DREAM_NATIVE_SOURCE_REVISION,
+                    },
                 ).to_dict()
             rows.append(row)
-            step_id += 1
 
-        if bool((x[:, prompt_len:] == mask_id).any().item()):
-            raise RuntimeError("V2 Dream base generation exhausted fixed step budget with masks remaining")
+        remaining = int((x[:, prompt_len:] == mask_id).sum().item())
+        if remaining:
+            raise RuntimeError(
+                f"official Dream fixed schedule ended with {remaining} masks; native sampler fidelity is broken"
+            )
         final_text = self.tokenizer.decode(x[0, prompt_len:], skip_special_tokens=True)
         prediction = self.adapter.extract_prediction(final_text)
         return {
@@ -744,9 +868,21 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
             "steps": rows,
             "compute": counter.to_dict(),
             "backend_version": V2_BACKEND_VERSION,
+            "backend_reference": {
+                "sampler_source_repository": DREAM_NATIVE_SOURCE_REPOSITORY,
+                "sampler_source_revision": DREAM_NATIVE_SOURCE_REVISION,
+                "dream_alg": params["alg"],
+                "dream_alg_temp": params["alg_temp"],
+                "dream_eps": params["eps"],
+            },
         }
 
-    def canonical_remask_positions(self, snapshot: dict[str, Any], operator_cfg: dict[str, Any], generation_cfg: dict[str, Any]) -> list[int]:
+    def canonical_remask_positions(
+        self,
+        snapshot: dict[str, Any],
+        operator_cfg: dict[str, Any],
+        generation_cfg: dict[str, Any],
+    ) -> list[int]:
         confs = list(snapshot["token_confidences"])
         eligible = [(idx, float(conf)) for idx, conf in enumerate(confs) if conf is not None]
         if not eligible:
@@ -754,7 +890,10 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
         anchor = float(operator_cfg.get("anchor_confidence_threshold", 0.80))
         low = [row for row in eligible if row[1] < anchor] or eligible
         low.sort(key=lambda row: row[1])
-        target = max(int(math.ceil(len(low) * float(operator_cfg["remask_fraction"]))), int(operator_cfg["min_remask_positions"]))
+        target = max(
+            int(math.ceil(len(low) * float(operator_cfg["remask_fraction"]))),
+            int(operator_cfg["min_remask_positions"]),
+        )
         target = min(target, len(low))
         return sorted(idx for idx, _ in low[:target])
 
@@ -770,10 +909,11 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
     ) -> InterventionResult:
         if operator_id == "core":
             raise ValueError("CoRe-snapshot is a Tier-B LLaDA-only control in the frozen contract")
+        self._assert_snapshot_sampler(snapshot, generation_cfg)
         snap = dict(snapshot)
         snap["full_token_ids"] = list(snapshot["full_token_ids"])
         snap["token_confidences"] = list(snapshot["token_confidences"])
-        snap["first_conf"] = list(snapshot.get("first_conf") or [])
+        snap["backend_state"] = dict(snapshot.get("backend_state") or {})
         targeted = self.canonical_remask_positions(snap, operator_cfg, generation_cfg)
         if operator_id == "low_confidence_remask_v2":
             positions = targeted
@@ -784,20 +924,34 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
                 positions = []
             else:
                 rng = np.random.default_rng(int(branch_seed))
-                positions = sorted(int(x) for x in rng.choice(eligible, size=min(count, len(eligible)), replace=False).tolist())
+                positions = sorted(
+                    int(x)
+                    for x in rng.choice(eligible, size=min(count, len(eligible)), replace=False).tolist()
+                )
         else:
             raise ValueError(f"unsupported Dream intervention: {operator_id}")
+
         if not positions:
-            return InterventionResult(snap, operator_id, False, [], {"reason": "no_eligible_positions"}, {"nfe": 0, "forward_calls": 0})
+            return InterventionResult(
+                snap,
+                operator_id,
+                False,
+                [],
+                {"reason": "no_eligible_positions"},
+                {"nfe": 0, "forward_calls": 0},
+            )
         prompt_len = int(snap["prompt_len"])
         mask_id = self._mask_token_id(generation_cfg)
         for rel in positions:
             snap["full_token_ids"][prompt_len + rel] = mask_id
             snap["token_confidences"][rel] = None
-            if snap["first_conf"]:
-                snap["first_conf"][prompt_len + rel] = None
         return InterventionResult(
-            snap, operator_id, True, positions, {"paired_target_count": len(targeted)}, {"nfe": 0, "forward_calls": 0}
+            snap,
+            operator_id,
+            True,
+            positions,
+            {"paired_target_count": len(targeted)},
+            {"nfe": 0, "forward_calls": 0},
         )
 
     def continue_from_snapshot(
@@ -810,31 +964,35 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
         restore_native_rng: bool = False,
     ) -> dict[str, Any]:
         self.load()
+        self._assert_snapshot_sampler(snapshot, generation_cfg)
         if restore_native_rng:
             _restore_rng(snapshot["rng_state"])
         elif branch_seed is not None:
             seed_everything(int(branch_seed))
         else:
             raise ValueError("continuation requires branch_seed or restore_native_rng=True")
+
         device = next(self.model.parameters()).device
         x = torch.tensor(snapshot["full_token_ids"], dtype=torch.long, device=device).unsqueeze(0)
         prompt_len = int(snapshot["prompt_len"])
-        first_conf = self._first_conf_from_list(list(snapshot["first_conf"]), device)
-        is_prompt_mask = torch.zeros_like(x, dtype=torch.bool)
-        is_prompt_mask[:, :prompt_len] = True
         total_steps = int(generation_cfg["steps"])
         mask_id = self._mask_token_id(generation_cfg)
         counter = ComputeCounter()
-        step_id = int(snapshot["step_index"])
-        while bool((x == mask_id).any().item()) and step_id < total_steps:
-            x, first_conf, _, _, _ = self._dream_step(
-                x, first_conf, is_prompt_mask, step_id=step_id, total_steps=total_steps, generation_cfg=generation_cfg, counter=counter
+
+        for step_id in range(int(snapshot["step_index"]), total_steps):
+            x, _, _, _ = self._dream_native_step(
+                x,
+                prompt_len=prompt_len,
+                step_id=step_id,
+                total_steps=total_steps,
+                generation_cfg=generation_cfg,
+                counter=counter,
             )
-            step_id += 1
+
         remaining = int((x[:, prompt_len:] == mask_id).sum().item())
         if remaining:
             raise RuntimeError(
-                f"V2 Dream continuation exhausted fixed schedule with {remaining} masks; refusing extra steps"
+                f"V2 Dream native continuation exhausted fixed schedule with {remaining} masks"
             )
         final_text = self.tokenizer.decode(x[0, prompt_len:], skip_special_tokens=True)
         prediction = self.adapter.extract_prediction(final_text)
@@ -857,11 +1015,25 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
         paired_modified_count: int | None = None,
     ) -> dict[str, Any]:
         if operator_id == "native_continuation":
-            result = self.continue_from_snapshot(item, snapshot, generation_cfg, branch_seed=None, restore_native_rng=True)
-            return {**result, "operator_id": operator_id, "modified_positions": [], "intervention_compute": {"nfe": 0, "forward_calls": 0}}
+            result = self.continue_from_snapshot(
+                item, snapshot, generation_cfg, branch_seed=None, restore_native_rng=True
+            )
+            return {
+                **result,
+                "operator_id": operator_id,
+                "modified_positions": [],
+                "intervention_compute": {"nfe": 0, "forward_calls": 0},
+            }
         if operator_id == "matched_stochastic_continuation":
-            result = self.continue_from_snapshot(item, snapshot, generation_cfg, branch_seed=branch_seed, restore_native_rng=False)
-            return {**result, "operator_id": operator_id, "modified_positions": [], "intervention_compute": {"nfe": 0, "forward_calls": 0}}
+            result = self.continue_from_snapshot(
+                item, snapshot, generation_cfg, branch_seed=branch_seed, restore_native_rng=False
+            )
+            return {
+                **result,
+                "operator_id": operator_id,
+                "modified_positions": [],
+                "intervention_compute": {"nfe": 0, "forward_calls": 0},
+            }
         intervention = self.intervene_snapshot(
             snapshot,
             operator_id=operator_id,
@@ -881,7 +1053,13 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
                 "compute": intervention.compute,
                 "intervention_compute": intervention.compute,
             }
-        result = self.continue_from_snapshot(item, intervention.snapshot, generation_cfg, branch_seed=branch_seed, restore_native_rng=False)
+        result = self.continue_from_snapshot(
+            item,
+            intervention.snapshot,
+            generation_cfg,
+            branch_seed=branch_seed,
+            restore_native_rng=False,
+        )
         return {
             **result,
             "operator_id": operator_id,
