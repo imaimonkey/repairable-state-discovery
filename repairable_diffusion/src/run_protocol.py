@@ -345,7 +345,7 @@ def run_protocol(
                     f"missing completed AR run artifact for {spec['run_name']}: {summary_path}"
                 )
             else:
-                payload = {"meta": run_ar_baseline(cfg, run_dir)}
+                payload = run_ar_baseline(cfg, run_dir)
             outputs.append(
                 _ar_output_from_payload(
                     run_name=spec["run_name"],
