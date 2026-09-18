@@ -590,7 +590,8 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
         top_k = self.cfg.get("top_k")
         eos_penalty = float(self.cfg.get("eos_penalty", 0.0))
         mask_index = x == mask_token_id
-        logits = self._forward(x, counter)
+        with torch.no_grad():
+            logits = self._forward(x, counter)
         mask_logits = logits[mask_index]
         if mask_logits.numel() > 0:
             mask_logits = mask_logits.clone()
@@ -608,7 +609,7 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
         confidence_full = torch.full(x.shape, float("-inf"), device=x.device, dtype=torch.float32)
         candidate_tokens = torch.full(x.shape, mask_token_id, device=x.device, dtype=torch.long)
         if confidence.numel() > 0:
-            confidence_full[mask_index] = confidence
+            confidence_full[mask_index] = confidence.to(dtype=confidence_full.dtype)
             candidate_tokens[mask_index] = x0
         selected_mask = torch.zeros_like(mask_index, dtype=torch.bool)
         new_positions: list[int] = []
