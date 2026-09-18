@@ -17,16 +17,21 @@ RESULT_ROOT = ROOT / "results/v2_measurement"
 JOB_MANIFEST = RESULT_ROOT / "job_manifest.json"
 LOG_ROOT = ROOT / "logs/v2_measurement"
 
-FULL_CONFIGS = [
+PRIMARY_CONFIGS = [
     "repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
     "repairable_diffusion/configs/v2/runs/full_gsm8k_llada.yaml",
+]
+DREAM_CONFIGS = [
     "repairable_diffusion/configs/v2/runs/full_math500_dream.yaml",
     "repairable_diffusion/configs/v2/runs/full_gsm8k_dream.yaml",
+]
+BREADTH_CONFIGS = [
     "repairable_diffusion/configs/v2/runs/full_bbh_logical3_llada.yaml",
     "repairable_diffusion/configs/v2/runs/full_bbh_logical5_llada.yaml",
     "repairable_diffusion/configs/v2/runs/full_bbh_logical7_llada.yaml",
     "repairable_diffusion/configs/v2/runs/full_mbpp_llada.yaml",
 ]
+FULL_CONFIGS = PRIMARY_CONFIGS + DREAM_CONFIGS + BREADTH_CONFIGS
 PILOT_CONFIGS = [
     "repairable_diffusion/configs/v2/runs/pilot_math500_llada.yaml",
     "repairable_diffusion/configs/v2/runs/pilot_gsm8k_llada.yaml",
@@ -113,9 +118,10 @@ def _sbatch_command(config_rel: str) -> list[str]:
     return args
 
 
-def _preflight_for_full() -> None:
+def _preflight_for_tier(tier: str) -> None:
+    mode = {"primary": "primary", "dream": "dream", "breadth": "primary", "full": "full"}[tier]
     subprocess.run(
-        [os.environ.get("PYTHON_BIN", "python"), "scripts/audit_v2_design.py", "--mode", "full"],
+        [os.environ.get("PYTHON_BIN", "python"), "scripts/audit_v2_design.py", "--mode", mode],
         cwd=ROOT,
         check=True,
     )
@@ -197,7 +203,7 @@ def status() -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tier", choices=["pilot", "full"], default="full")
+    ap.add_argument("--tier", choices=["pilot", "primary", "dream", "breadth", "full"], default="primary")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--status", action="store_true")
@@ -205,11 +211,16 @@ def main() -> None:
     if args.status:
         status()
         return
-    if args.tier == "full":
-        _preflight_for_full()
-        configs = FULL_CONFIGS
-    else:
+    if args.tier == "pilot":
         configs = PILOT_CONFIGS
+    else:
+        _preflight_for_tier(args.tier)
+        configs = {
+            "primary": PRIMARY_CONFIGS,
+            "dream": DREAM_CONFIGS,
+            "breadth": BREADTH_CONFIGS,
+            "full": FULL_CONFIGS,
+        }[args.tier]
     submit(configs, dry_run=args.dry_run, resume=args.resume)
 
 
