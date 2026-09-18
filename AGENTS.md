@@ -2,7 +2,7 @@
 
 This repository contains two scientific generations. **V1 is historical/exploratory and frozen. V2 is the final-paper path.**
 
-All coding agents (including Codex) must obey this file before making changes or launching jobs.
+All execution agents (including Codex) must obey this file before launching jobs. **Codex is execution-only for this project: it must not edit, commit, or push repository code. Code changes are made by the research owner through the designated coding assistant before handoff.**
 
 ## 1. Source-of-truth order
 
@@ -118,23 +118,42 @@ A change to one of these requires explicit human approval and a new contract ver
 
 ## 8. Mandatory gate order
 
-Before any full job submission:
+Before primary LLaDA submission:
 
 ```bash
 bash scripts/run_v2_suite.sh preflight
-python scripts/validate_v2_backends.py
-bash scripts/run_v2_suite.sh pilot
-python scripts/audit_v2_design.py --mode full
+python scripts/validate_v2_backends.py --backend llada
+bash scripts/run_v2_suite.sh pilot-primary
+python scripts/audit_v2_design.py --mode primary
 ```
 
-If any command fails, stop. Fix implementation/infrastructure only. Do not weaken tests or readiness gates.
+The Dream transfer gate is independent and must not block Tier A:
+
+```bash
+python scripts/validate_v2_backends.py --backend dream
+python scripts/audit_v2_design.py --mode dream
+```
+
+If any command fails, stop the affected tier and report it. Codex does not fix repository code.
 
 ## 9. Job execution
 
-After all gates pass:
+After the primary gate passes:
 
 ```bash
-python scripts/submit_v2_suite.py --tier full
+python scripts/submit_v2_suite.py --tier primary
+```
+
+After the independent Dream gate passes:
+
+```bash
+python scripts/submit_v2_suite.py --tier dream
+```
+
+LLaDA breadth can be submitted after the primary gate:
+
+```bash
+python scripts/submit_v2_suite.py --tier breadth
 ```
 
 or, on a single machine with enough time:
@@ -145,31 +164,21 @@ bash scripts/run_v2_suite.sh full-local
 
 Use `--dry-run` before Slurm submission when adapting cluster flags. Changing Slurm partition/time/memory is allowed; changing scientific config is not.
 
-## 10. What Codex may change during execution
+## 10. Codex execution-only boundary
 
-Allowed without asking:
+Codex may **execute** without asking:
 
-- path portability;
-- environment activation;
-- Slurm resource requests;
-- resume/retry logic that preserves fingerprints;
-- logging and monitoring;
-- deterministic bug fixes required to match the frozen contract;
-- model/cache path resolution;
-- OOM batch-size changes that do not change single-example decoding semantics.
+- environment activation and environment-variable setup;
+- Slurm resource requests and node selection;
+- copying/synchronizing the exact committed SHA to execution nodes;
+- submitting, monitoring, resuming, and collecting jobs without changing scientific fingerprints;
+- logging the exact failure and infrastructure context.
 
-Requires explicit human approval:
+Codex must **not** modify repository code, YAMLs, tests, contracts, or documentation; must not commit; and must not push. This includes deterministic bug fixes and path-portability code changes.
 
-- research questions;
-- benchmark/task set;
-- operator definitions/hyperparameters;
-- branch counts;
-- checkpoint schedule;
-- evaluator semantics;
-- primary metrics;
-- headline selector set;
-- data subset selection.
+If execution exposes a code bug, path-portability issue that requires a code edit, replay mismatch, evaluator problem, or scientific-gate failure, Codex must stop the affected tier and report the exact traceback/log/state. The research owner will patch and push the repository, after which Codex restarts the relevant gates from the new SHA.
 
+Infrastructure choices that do not modify tracked files (environment variables, Slurm flags, cache locations, node-local clean clones) remain allowed.
 ## 11. Stop conditions
 
 Stop and report instead of improvising if:
