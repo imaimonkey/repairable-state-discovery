@@ -12,7 +12,7 @@ All execution agents (including Codex) must obey this file before launching jobs
 4. `scripts/audit_v2_design.py`
 5. V2 run configs under `repairable_diffusion/configs/v2/`
 
-If code conflicts with the contract, **fix the code**. Do not silently edit the contract to make a failing implementation pass.
+If code conflicts with the contract, **Codex must stop and report the conflict**. Repository code changes are made by the research owner/designated coding assistant, never by Codex. Do not silently edit the contract to make a failing implementation pass.
 
 ## 2. Non-negotiable research boundary
 
@@ -183,7 +183,7 @@ Infrastructure choices that do not modify tracked files (environment variables, 
 
 Stop and report instead of improvising if:
 
-- exact native replay fails for either LLaDA or Dream;
+- exact native replay fails for the currently affected backend tier;
 - same-seed continuation is not reproducible;
 - a required model/dataset cannot be loaded with the frozen revision;
 - MBPP restricted evaluation cannot be executed safely on the cluster;
