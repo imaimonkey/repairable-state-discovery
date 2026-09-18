@@ -83,16 +83,17 @@ Pilots exist only to establish semantic correctness and resource feasibility. Th
 
 Run exactly the pilot configs committed under `repairable_diffusion/configs/v2/runs/`.
 
-A pilot PASS requires:
+The frozen pilot configs are LLaDA-only and gate the primary Tier A path. A pilot PASS requires:
 
 - no stale-artifact fingerprint mismatch;
 - branch-seed reproducibility/independence tests pass;
 - LLaDA native replay test passes;
-- Dream native replay test passes;
 - localization/confirmation seed sets are disjoint;
 - every operator row records NFE/forward calls;
 - MBPP sandbox self-test passes before any MBPP model output execution;
 - reports can be reloaded and aggregated without manual editing.
+
+Dream has a separate GPU replay gate through `scripts/validate_v2_backends.py --backend dream`; there is no Dream pilot dependency on the primary LLaDA path.
 
 Do not inspect effect direction as a reason to edit configs.
 
@@ -136,10 +137,12 @@ Monitor with:
 python scripts/submit_v2_suite.py --status
 ```
 
-Resume failed/incomplete jobs only with the same run config and fingerprint:
+Resume failed/incomplete jobs only with the same run config and fingerprint, and only within the affected already-cleared tier:
 
 ```bash
-python scripts/submit_v2_suite.py --tier full --resume
+python scripts/submit_v2_suite.py --tier primary --resume
+python scripts/submit_v2_suite.py --tier dream --resume
+python scripts/submit_v2_suite.py --tier breadth --resume
 ```
 
 After completion:
@@ -155,7 +158,7 @@ python scripts/audit_v2_design.py --mode final
 
 For LLaDA snapshots preserve enough state to reproduce the native transition semantics from the next step: current token sequence, active block, within-block progress, transfer schedule/remaining plan, generation parameters, and RNG state for exact replay.
 
-For Dream snapshots preserve current sequence, step progress, `first_conf`/first-unmask history state, native remasking state needed by future transitions, generation parameters, and RNG state.
+For Dream snapshots preserve the current sequence, diffusion step index, fixed total steps, native sampler identity/parameters (`alg`, `alg_temp`, `eps`), generation parameters, pinned model/source revision, and RNG state. V2.3 follows the official Dream native sampler; the legacy custom `first_conf` state is not part of Dream's native replay semantics.
 
 The exact replay test compares transition state/next-step behavior, not merely final answer equality.
 
