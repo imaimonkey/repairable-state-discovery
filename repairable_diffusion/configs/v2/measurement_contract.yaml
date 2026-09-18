@@ -114,9 +114,18 @@ base_generation:
   block_length: 128
   temperature: 0.6
   cfg_scale: 0.0
-  remasking: low_confidence
-  mask_id: 126336
   checkpoint_stride: 8
+  llada:
+    remasking: low_confidence
+    mask_id: 126336
+  dream:
+    native_alg: origin
+    alg_temp:
+    eps: 0.001
+    mask_id: 151666
+    model_revision: 2f177908857f6f96dbe7b696ad5eac5123535bbd
+    sampler_source_revision: 2f177908857f6f96dbe7b696ad5eac5123535bbd
+    extra_posthoc_steps_forbidden: true
 
 pilot:
   purpose: correctness_and_resource_feasibility_only
