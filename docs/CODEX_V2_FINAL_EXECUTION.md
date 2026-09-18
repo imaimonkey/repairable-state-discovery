@@ -1,6 +1,6 @@
 # Codex V2 Final Execution Playbook
 
-This is the final execution handoff for the V2 paper experiments. Read `AGENTS.md` first. The scientific design is frozen; Codex is expected to implement, validate, launch, monitor, resume, and aggregate the frozen experiment, not redesign it.
+This is the final execution handoff for the V2 paper experiments. Read `AGENTS.md` first. The scientific design is frozen; Codex is expected to validate, launch, monitor, resume, collect, and aggregate the frozen experiment. **Codex must not edit, commit, or push repository code.**
 
 ## 0. Mission
 
@@ -20,12 +20,12 @@ When implementation and contract disagree, fix implementation. Do not loosen gat
 
 Codex may:
 
-- fix deterministic implementation bugs;
-- make paths/environment/Slurm resources portable;
-- add resume/monitoring/logging;
-- reduce runtime batch size without changing per-example decoding semantics;
-- replace unavailable filesystem locations with equivalent environment variables;
-- retry failed jobs with the same scientific fingerprint.
+- configure paths/environment/Slurm resources through untracked environment variables and command-line flags;
+- use clean node-local checkouts of the exact committed SHA;
+- monitor, collect, and retry failed jobs with the same scientific fingerprint;
+- report deterministic implementation bugs with exact logs.
+
+Codex may not edit tracked code/config/tests/docs, commit, or push. Any repository change is returned to the research owner for implementation and a new SHA.
 
 Codex must not, without explicit human approval:
 
@@ -107,17 +107,28 @@ git status --short
 git rev-parse HEAD
 
 bash scripts/run_v2_suite.sh preflight
-python scripts/validate_v2_backends.py
-bash scripts/run_v2_suite.sh pilot
-python scripts/audit_v2_design.py --mode full
+python scripts/validate_v2_backends.py --backend llada
+bash scripts/run_v2_suite.sh pilot-primary
+python scripts/audit_v2_design.py --mode primary
 ```
 
 Only after all four succeed:
 
 ```bash
-python scripts/submit_v2_suite.py --tier full --dry-run
-python scripts/submit_v2_suite.py --tier full
+python scripts/submit_v2_suite.py --tier primary --dry-run
+python scripts/submit_v2_suite.py --tier primary
 ```
+
+The Dream transfer gate is independent:
+
+```bash
+python scripts/validate_v2_backends.py --backend dream
+python scripts/audit_v2_design.py --mode dream
+python scripts/submit_v2_suite.py --tier dream --dry-run
+python scripts/submit_v2_suite.py --tier dream
+```
+
+LLaDA breadth may be submitted after the primary gate with `--tier breadth`.
 
 Monitor with:
 
@@ -198,9 +209,9 @@ For a failed job:
 
 1. capture log and job id;
 2. classify as infrastructure, deterministic code bug, OOM, unavailable asset, or scientific-gate failure;
-3. fix only infrastructure/code/runtime issues that preserve the fingerprinted scientific contract;
-4. rerun the exact same scientific config;
-5. record the deviation in `final_execution_manifest.json`.
+3. if no repository edit is required, correct only environment/Slurm/runtime setup and rerun the exact same scientific config;
+4. if a repository edit is required, stop the affected tier and report the exact blocker for owner-side patching;
+5. record infrastructure-only deviations in `final_execution_manifest.json`.
 
 Stop and ask for human approval if the only fix requires changing a frozen scientific parameter.
 
