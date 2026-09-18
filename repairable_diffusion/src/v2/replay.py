@@ -81,25 +81,22 @@ def replay_dream_next_state(
     snapshot: dict[str, Any],
     generation_cfg: dict[str, Any],
 ) -> dict[str, Any]:
-    """Replay exactly one native Dream transition, including first-unmask state."""
+    """Replay exactly one transition from the pinned official Dream sampler."""
 
     backend.load()
+    backend._assert_snapshot_sampler(snapshot, generation_cfg)
     _restore_rng(snapshot["rng_state"])
     device = next(backend.model.parameters()).device
     x = torch.tensor(snapshot["full_token_ids"], dtype=torch.long, device=device).unsqueeze(0)
     prompt_len = int(snapshot["prompt_len"])
-    first_conf = backend._first_conf_from_list(list(snapshot["first_conf"]), device)
-    is_prompt_mask = torch.zeros_like(x, dtype=torch.bool)
-    is_prompt_mask[:, :prompt_len] = True
     step_id = int(snapshot["step_index"])
     total_steps = int(generation_cfg["steps"])
     if step_id >= total_steps:
         raise ValueError("snapshot has no next transition")
     counter = ComputeCounter()
-    x, first_conf, _, _, _ = backend._dream_step(
+    x, _, _, _ = backend._dream_native_step(
         x,
-        first_conf,
-        is_prompt_mask,
+        prompt_len=prompt_len,
         step_id=step_id,
         total_steps=total_steps,
         generation_cfg=generation_cfg,
@@ -107,7 +104,8 @@ def replay_dream_next_state(
     )
     return {
         "full_token_ids": x[0].detach().cpu().tolist(),
-        "first_conf": backend._first_conf_to_list(first_conf),
         "step_index": step_id + 1,
+        "backend_state": dict(snapshot.get("backend_state") or {}),
         "compute": counter.to_dict(),
     }
+
