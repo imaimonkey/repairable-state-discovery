@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from repairable_diffusion.src.utils.io import load_yaml, save_json
-from repairable_diffusion.src.v2.backends import V2_BACKEND_VERSION
+from repairable_diffusion.src.v2.backends import DREAM_NATIVE_SOURCE_REPOSITORY, DREAM_NATIVE_SOURCE_REVISION, V2_BACKEND_VERSION
 from repairable_diffusion.src.v2.contracts import DECODER_STATE_SCHEMA_VERSION, assert_disjoint
 from repairable_diffusion.src.v2.provenance import config_sha256, scientific_fingerprint, sha256_file
 
@@ -124,6 +124,7 @@ def seal(config_path: Path) -> dict[str, Any]:
         "core_label": CONTRACT["operator_controls"].get("core_label"),
         "core_source_revision": CONTRACT["operator_controls"].get("core_source_revision"),
         "v1_artifacts_substituted": False,
+        "dream_native_sampler_reference": ({"repository": DREAM_NATIVE_SOURCE_REPOSITORY, "revision": DREAM_NATIVE_SOURCE_REVISION, "algorithm": "origin"} if str(cfg.get("model_profile", "")).startswith("dream_") else None),
     }
     save_json(run_dir / "scientific_provenance.json", payload)
     return payload
