@@ -6,7 +6,7 @@ from typing import Any, Iterable
 
 
 CONTRACT_VERSION = "v2_counterfactual_recoverability"
-DECODER_STATE_SCHEMA_VERSION = "v2.2"
+DECODER_STATE_SCHEMA_VERSION = "v2.3"
 
 
 @dataclass(frozen=True)
