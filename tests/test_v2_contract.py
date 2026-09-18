@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from repairable_diffusion.src.v2.backends import ComputeCounter, V2Snapshot, _restore_rng, _rng_snapshot
+from repairable_diffusion.src.v2.backends import ComputeCounter, V2DreamBackend, V2Snapshot, _restore_rng, _rng_snapshot
 from repairable_diffusion.src.v2.contracts import deterministic_branch_seed, validate_contract_dict
 from repairable_diffusion.src.v2.metrics import last_repairable_step, paired_branch_item_pass_at_k, summarize_state
 from repairable_diffusion.src.v2.oof import crossfit_binary_scores, crossfit_value_scores
@@ -69,7 +69,7 @@ class V2ContractTests(unittest.TestCase):
         state = _rng_snapshot()
         snapshot = V2Snapshot(
             backend_type="unit",
-            schema_version="v2.2",
+            schema_version="v2.3",
             step_index=8,
             total_steps=64,
             prompt_len=2,
@@ -86,6 +86,14 @@ class V2ContractTests(unittest.TestCase):
         )
         self.assertEqual(snapshot.rng_state, state)
         _restore_rng(snapshot.rng_state)
+
+    def test_dream_native_final_step_transfers_all_masks(self) -> None:
+        import torch
+
+        count = V2DreamBackend._native_transfer_count(
+            37, step_id=63, total_steps=64, eps=1e-3, device=torch.device("cpu")
+        )
+        self.assertEqual(count, 37)
 
     def test_zero_repair_no_positive_label(self) -> None:
         rows = []
