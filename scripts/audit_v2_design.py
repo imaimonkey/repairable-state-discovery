@@ -146,7 +146,7 @@ def _require_provenance(errors: list[str], run_name: str, current_sha: str, requ
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--contract", default=str(DEFAULT_CONTRACT))
-    ap.add_argument("--mode", choices=["design", "execution", "full", "final"], default="design")
+    ap.add_argument("--mode", choices=["design", "execution", "primary", "dream", "full", "final"], default="design")
     args = ap.parse_args()
 
     current_sha = _git_sha()
@@ -160,29 +160,39 @@ def main() -> None:
 
     errors.extend(f"missing design file: {path}" for path in _missing(REQUIRED_DESIGN_FILES))
 
-    if args.mode in {"execution", "full", "final"}:
+    if args.mode in {"execution", "primary", "dream", "full", "final"}:
         errors.extend(f"missing execution file: {path}" for path in _missing(REQUIRED_EXECUTION_FILES))
         present_tests = _execution_test_names()
         for name in sorted(REQUIRED_TEST_NAMES - present_tests):
             errors.append(f"missing scientific readiness test: {name}")
 
     required_fields = list((cfg or {}).get("provenance", {}).get("required_fields", []))
-    if args.mode in {"full", "final"}:
+    if args.mode in {"primary", "dream", "full", "final"}:
         _require_stamp(
             errors,
             RESULT_ROOT / "readiness/unit_preflight.json",
             name="unit preflight stamp",
             current_sha=current_sha,
         )
+
+    if args.mode in {"primary", "full", "final"}:
         _require_stamp(
             errors,
-            RESULT_ROOT / "readiness/backend_validation.json",
-            name="backend validation stamp",
+            RESULT_ROOT / "readiness/backend_validation_llada.json",
+            name="LLaDA backend validation stamp",
             current_sha=current_sha,
         )
         for run_name in PILOT_RUNS:
             _require_report(errors, run_name, current_sha)
             _require_provenance(errors, run_name, current_sha, required_fields)
+
+    if args.mode in {"dream", "full"}:
+        _require_stamp(
+            errors,
+            RESULT_ROOT / "readiness/backend_validation_dream.json",
+            name="Dream backend validation stamp",
+            current_sha=current_sha,
+        )
 
     if args.mode == "final":
         for run_name in TIER_A_RUNS:
@@ -208,7 +218,9 @@ def main() -> None:
     labels = {
         "design": "DESIGN READY",
         "execution": "EXECUTION STRUCTURE READY",
-        "full": "FULL SUBMISSION READY",
+        "primary": "PRIMARY LLADA SUBMISSION READY",
+        "dream": "DREAM TRANSFER SUBMISSION READY",
+        "full": "FULL MATRIX SUBMISSION READY",
         "final": "FINAL V2 ARTIFACTS READY",
     }
     print(f"\n{labels[args.mode]}")
