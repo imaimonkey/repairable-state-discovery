@@ -58,18 +58,23 @@ class DreamBackend:
             return
         torch_dtype = getattr(torch, self.cfg.get("torch_dtype", "bfloat16"))
         model_path = self.cfg["model_path"]
-        self.model = self.model_cls.from_pretrained(
-            model_path,
-            torch_dtype=torch_dtype,
-            trust_remote_code=bool(self.cfg.get("trust_remote_code", True)),
-        )
+        revision = self.cfg.get("revision")
+        model_kwargs = {
+            "torch_dtype": torch_dtype,
+            "trust_remote_code": bool(self.cfg.get("trust_remote_code", True)),
+        }
+        if revision:
+            model_kwargs["revision"] = str(revision)
+        self.model = self.model_cls.from_pretrained(model_path, **model_kwargs)
         if self.cfg.get("device", "cuda") == "cuda" and torch.cuda.is_available():
             self.model = self.model.cuda()
         self.model.eval()
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            model_path,
-            trust_remote_code=bool(self.cfg.get("trust_remote_code", True)),
-        )
+        tokenizer_kwargs = {
+            "trust_remote_code": bool(self.cfg.get("trust_remote_code", True)),
+        }
+        if revision:
+            tokenizer_kwargs["revision"] = str(revision)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_path, **tokenizer_kwargs)
 
     def _prompt_ids(self, question: str) -> tuple[str, str, torch.Tensor]:
         self.load()
