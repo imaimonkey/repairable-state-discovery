@@ -14,7 +14,7 @@ The exact source-of-truth order is:
 4. this file
 5. V2 run configs
 
-When implementation and contract disagree, fix implementation. Do not loosen gates or change the contract to make code pass.
+When implementation and contract disagree, Codex must stop the affected tier and report the mismatch. The research owner/designated coding assistant fixes implementation and pushes a new SHA. Codex must not loosen gates or change the contract to make code pass.
 
 ## 1. Allowed scope
 
