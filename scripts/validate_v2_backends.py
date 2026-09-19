@@ -108,6 +108,34 @@ def _validate_one(config_path: Path, contract: dict[str, Any]) -> dict[str, Any]
     operator_cfg.update(cfg.get("operator", {}))
     root_seed = int(cfg.get("probe", {}).get("root_seed", 2027))
 
+    terminal_intervention_check = None
+    if backend.backend_type == "dream_v2":
+        final_step = record["steps"][-1]
+        final_snapshot = final_step.get("snapshot")
+        if final_snapshot is None:
+            raise RuntimeError("Dream terminal snapshot missing from validation trajectory")
+        terminal_seed = deterministic_branch_seed(
+            root_seed=root_seed,
+            item_id=int(record["item_id"]),
+            trajectory_id=int(record["trajectory_id"]),
+            step_index=int(final_step["step_index"]),
+            branch_index=0,
+            stage="localization",
+        )
+        terminal = backend.run_operator_branch(
+            item,
+            final_snapshot,
+            generation_cfg,
+            operator_cfg,
+            operator_id="low_confidence_remask_v2",
+            branch_seed=terminal_seed,
+        )
+        if terminal.get("applicable", True):
+            raise RuntimeError("Dream terminal snapshot incorrectly accepts a repair intervention")
+        if terminal.get("metadata", {}).get("reason") != "no_remaining_native_schedule":
+            raise RuntimeError("Dream terminal intervention did not report exhausted native schedule")
+        terminal_intervention_check = True
+
     checks = []
     for step, next_step in _selected_transition_pairs(record):
         snapshot = step["snapshot"]
@@ -184,6 +212,7 @@ def _validate_one(config_path: Path, contract: dict[str, Any]) -> dict[str, Any]
         "backend_type": backend.backend_type,
         "item_id": int(record["item_id"]),
         "checks": checks,
+        "terminal_intervention_inapplicable": terminal_intervention_check,
         "status": "PASS",
     }
     del backend
