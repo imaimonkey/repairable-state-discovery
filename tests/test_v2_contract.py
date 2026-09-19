@@ -95,6 +95,37 @@ class V2ContractTests(unittest.TestCase):
         )
         self.assertEqual(count, 37)
 
+    def test_dream_terminal_snapshot_has_no_repair_intervention(self) -> None:
+        backend = V2DreamBackend({}, Math500Adapter())
+        snapshot = {
+            "step_index": 64,
+            "total_steps": 64,
+            "prompt_len": 2,
+            "full_token_ids": [1, 2, 3, 4],
+            "token_confidences": [0.2, 0.9],
+            "backend_state": {},
+        }
+        generation_cfg = {"steps": 64}
+        operator_cfg = {
+            "anchor_confidence_threshold": 0.80,
+            "remask_fraction": 0.25,
+            "min_remask_positions": 4,
+        }
+        self.assertEqual(
+            backend.canonical_remask_positions(snapshot, operator_cfg, generation_cfg),
+            [],
+        )
+        result = backend.intervene_snapshot(
+            snapshot,
+            operator_id="low_confidence_remask_v2",
+            operator_cfg=operator_cfg,
+            generation_cfg=generation_cfg,
+            branch_seed=7,
+        )
+        self.assertFalse(result.applicable)
+        self.assertEqual(result.modified_positions, [])
+        self.assertEqual(result.metadata.get("reason"), "no_remaining_native_schedule")
+
     def test_zero_repair_no_positive_label(self) -> None:
         rows = []
         for item in range(6):
