@@ -912,6 +912,12 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
         operator_cfg: dict[str, Any],
         generation_cfg: dict[str, Any],
     ) -> list[int]:
+        # Dream interventions must stay within the frozen native diffusion
+        # schedule.  A terminal snapshot has no remaining native transition,
+        # so remasking there would create masks that cannot be consumed
+        # without adding a forbidden post-hoc decoding step.
+        if int(snapshot["step_index"]) >= int(generation_cfg["steps"]):
+            return []
         confs = list(snapshot["token_confidences"])
         eligible = [(idx, float(conf)) for idx, conf in enumerate(confs) if conf is not None]
         if not eligible:
@@ -939,6 +945,15 @@ class V2DreamBackend(V2BackendMixin, DreamBackend):
         if operator_id == "core":
             raise ValueError("CoRe-snapshot is a Tier-B LLaDA-only control in the frozen contract")
         self._assert_snapshot_sampler(snapshot, generation_cfg)
+        if int(snapshot["step_index"]) >= int(generation_cfg["steps"]):
+            return InterventionResult(
+                dict(snapshot),
+                operator_id,
+                False,
+                [],
+                {"reason": "no_remaining_native_schedule"},
+                {"nfe": 0, "forward_calls": 0},
+            )
         snap = dict(snapshot)
         snap["full_token_ids"] = list(snapshot["full_token_ids"])
         snap["token_confidences"] = list(snapshot["token_confidences"])
