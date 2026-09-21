@@ -1,0 +1,192 @@
+{
+  "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+  "status": "historical_collection_manifest",
+  "current_status_file": "results/v2_measurement/current_job_status.json",
+  "base_v2_runs_at_collection": [
+    {
+      "run_name": "v2_math500_llada",
+      "job_id": "50668",
+      "node": "devbox",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec"
+    },
+    {
+      "run_name": "v2_gsm8k_llada",
+      "job_id": "50669",
+      "node": "devbox",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec"
+    },
+    {
+      "run_name": "v2_bbh_logical3_llada",
+      "job_id": "50738",
+      "node": "devbox",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec"
+    },
+    {
+      "run_name": "v2_bbh_logical5_llada",
+      "job_id": "50752",
+      "node": "server2",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec"
+    },
+    {
+      "run_name": "v2_bbh_logical7_llada",
+      "job_id": "50753",
+      "node": "server2",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec"
+    },
+    {
+      "run_name": "v2_mbpp",
+      "job_id": "50754",
+      "node": "server2",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec"
+    }
+  ],
+  "dream_hotfix_runs_at_collection": [
+    {
+      "run_name": "v2_math500_dream",
+      "job_id": "50923",
+      "node": "server4",
+      "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "workdir": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d"
+    },
+    {
+      "run_name": "v2_gsm8k_dream",
+      "job_id": "50924",
+      "node": "server4",
+      "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "workdir": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d"
+    }
+  ],
+  "dream_hotfix": {
+    "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+    "base_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+    "reason": "Dream terminal native-schedule intervention eligibility hotfix",
+    "checkout": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d",
+    "gates": {
+      "preflight": "PASS",
+      "backend_validation": "PASS",
+      "design_audit": "PASS"
+    }
+  },
+  "unified_server_worktrees": [
+    {
+      "server_node": "devbox",
+      "role": "server1",
+      "path": "/home/kimhj/repairable-state-discovery-v2-unified-8b1361d",
+      "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "status": "clean",
+      "purpose": "future executions; active base-SHA jobs remain on the original worktree"
+    },
+    {
+      "server_node": "server2",
+      "role": "server2",
+      "path": "/home/kimhj/repairable-state-discovery-v2-unified-8b1361d",
+      "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "status": "clean",
+      "purpose": "future executions; active base-SHA jobs remain on the original worktree"
+    },
+    {
+      "server_node": "ubuntu",
+      "role": "server3",
+      "path": "/data/kimhj/repairable-state-discovery-v2-unified-8b1361d",
+      "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "status": "clean",
+      "purpose": "future executions; prior partial artifact remains excluded"
+    },
+    {
+      "server_node": "server4",
+      "role": "server4",
+      "path": "/data/kimhj/repairable-state-discovery-v2-unified-8b1361d",
+      "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "status": "clean",
+      "purpose": "future executions; active Dream hotfix jobs use the dedicated Dream worktree"
+    }
+  ],
+  "active_worktrees_preserved": true,
+  "failed_v2_runs": [
+    {
+      "run_name": "v2_math500_dream",
+      "job_id": "50837",
+      "node": "server4",
+      "workdir": "/data/kimhj/repairable-state-discovery-v2-exec",
+      "state": "FAILED",
+      "exit_code": "1:0",
+      "error": "V2 Dream native continuation exhausted fixed schedule with 2 masks",
+      "log": "/data/kimhj/repairable-state-discovery-v2-exec/logs/v2_measurement/v2-dream-math-s4-50837.err"
+    },
+    {
+      "run_name": "v2_math500_dream",
+      "job_id": "50920",
+      "node": "server4",
+      "workdir": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d",
+      "state": "FAILED",
+      "exit_code": "2:0",
+      "error": "Slurm wrapper ran under /bin/sh; set -o pipefail was rejected before the Python command",
+      "log": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/logs/v2_measurement/v2_math500_dream-50920.err"
+    },
+    {
+      "run_name": "v2_gsm8k_dream",
+      "job_id": "50921",
+      "node": "server4",
+      "workdir": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d",
+      "state": "FAILED",
+      "exit_code": "2:0",
+      "error": "Slurm wrapper ran under /bin/sh; set -o pipefail was rejected before the Python command",
+      "log": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/logs/v2_measurement/v2_gsm8k_dream-50921.err"
+    }
+  ],
+  "stopped_v2_runs": [
+    {
+      "run_name": "v2_gsm8k_dream",
+      "job_id": "50838",
+      "node": "server4",
+      "workdir": "/data/kimhj/repairable-state-discovery-v2-exec",
+      "state": "CANCELLED",
+      "reason": "Stopped before completion because it used base SHA 0dd161c; rerun only from the Dream terminal-schedule hotfix SHA",
+      "log": "/data/kimhj/repairable-state-discovery-v2-exec/logs/v2_measurement/v2-dream-gsm-s4-50838.err"
+    }
+  ],
+  "excluded_artifacts": [
+    {
+      "node": "server4",
+      "source_job_id": "50837",
+      "run_name": "v2_math500_dream",
+      "path": "/data/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_math500_dream",
+      "status": "failed_partial",
+      "reason": "Partial trajectory bank after failed Dream continuation; no report.json or scientific_provenance.json; do not aggregate"
+    },
+    {
+      "node": "server4",
+      "source_job_id": "50920",
+      "run_name": "v2_math500_dream",
+      "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_math500_dream",
+      "status": "failed_wrapper_before_run",
+      "reason": "No scientific run started; shell wrapper failed before Python execution; do not aggregate"
+    },
+    {
+      "node": "server4",
+      "source_job_id": "50921",
+      "run_name": "v2_gsm8k_dream",
+      "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream",
+      "status": "failed_wrapper_before_run",
+      "reason": "No scientific run started; shell wrapper failed before Python execution; do not aggregate"
+    },
+    {
+      "node": "server4",
+      "source_job_id": "50838",
+      "run_name": "v2_gsm8k_dream",
+      "path": "/data/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream",
+      "status": "cancelled_old_sha",
+      "reason": "Old-SHA run cancelled before completion; do not merge with the corrected Dream rerun"
+    },
+    {
+      "node": "ubuntu",
+      "source_job_id": "50202",
+      "run_name": "v2_gsm8k_dream",
+      "path": "/data/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream",
+      "status": "trajectory_bank_ready",
+      "reason": "partial artifact without report.json; do not merge with server4 job 50838"
+    }
+  ],
+  "excluded_legacy_jobs": ["49007", "49256", "49257"],
+  "collection_rule": "Collect only completed runs whose report.json and scientific_provenance.json match the per-run git_sha recorded here; keep base-SHA LLaDA and Dream-hotfix runs as separate generations; do not aggregate failed_v2_runs, stopped_v2_runs, excluded artifacts, or legacy jobs."
+}

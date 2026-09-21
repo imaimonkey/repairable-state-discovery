@@ -1,0 +1,161 @@
+{
+  "status": "live_slurm_snapshot",
+  "captured_at": "2026-09-21T13:50:08+09:00",
+  "repository": {
+    "path": "/data/kimhj/repairable-state-discovery-v2-exec",
+    "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+    "origin_main": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e"
+  },
+  "v2_matrix_summary": {
+    "total": 8,
+    "running": 6,
+    "completed": 1,
+    "failed": 1,
+    "aggregate_ready": false
+  },
+  "v2_matrix": [
+    {
+      "job_id": "50668",
+      "run_name": "v2_math500_llada",
+      "experiment": "LLaDA x MATH-500",
+      "state": "RUNNING",
+      "runtime": "1-22:42:00",
+      "time_limit": "30-00:00:00",
+      "node": "devbox",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec",
+      "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "output_dir": "repairable_diffusion/outputs/v2_measurement/v2_math500_llada",
+      "stage": "trajectory_bank_generation",
+      "artifacts": ["run_manifest.json", "trajectories.pkl"]
+    },
+    {
+      "job_id": "50669",
+      "run_name": "v2_gsm8k_llada",
+      "experiment": "LLaDA x GSM8K",
+      "state": "RUNNING",
+      "runtime": "1-22:42:00",
+      "time_limit": "30-00:00:00",
+      "node": "devbox",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec",
+      "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "output_dir": "repairable_diffusion/outputs/v2_measurement/v2_gsm8k_llada",
+      "stage": "trajectory_bank_generation",
+      "artifacts": ["run_manifest.json", "trajectories.pkl"]
+    },
+    {
+      "job_id": "50738",
+      "run_name": "v2_bbh_logical3_llada",
+      "experiment": "LLaDA x BBH logical3",
+      "state": "RUNNING",
+      "runtime": "1-22:22:38",
+      "time_limit": "30-00:00:00",
+      "node": "devbox",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec",
+      "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "output_dir": "repairable_diffusion/outputs/v2_measurement/v2_bbh_logical3_llada",
+      "stage": "state_value_processing",
+      "artifacts": ["run_manifest.json", "trajectories.pkl", "probe_complete.json", "probe_branches.jsonl", "state_values.jsonl"]
+    },
+    {
+      "job_id": "50752",
+      "run_name": "v2_bbh_logical5_llada",
+      "experiment": "LLaDA x BBH logical5",
+      "state": "FAILED",
+      "runtime": "1-09:56:11",
+      "time_limit": "30-00:00:00",
+      "node": "server2",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec",
+      "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "output_dir": "repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada",
+      "stage": "failed_during_continuation",
+      "failure": "V2 LLaDA continuation exhausted fixed schedule with 100 masks; refusing extra post-hoc steps",
+      "aggregate": "exclude"
+    },
+    {
+      "job_id": "50753",
+      "run_name": "v2_bbh_logical7_llada",
+      "experiment": "LLaDA x BBH logical7",
+      "state": "RUNNING",
+      "runtime": "1-22:18:59",
+      "time_limit": "30-00:00:00",
+      "node": "server2",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec",
+      "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "output_dir": "repairable_diffusion/outputs/v2_measurement/v2_bbh_logical7_llada",
+      "stage": "state_value_processing",
+      "artifacts": ["run_manifest.json", "trajectories.pkl", "probe_complete.json", "probe_branches.jsonl", "state_values.jsonl"]
+    },
+    {
+      "job_id": "50754",
+      "run_name": "v2_mbpp",
+      "experiment": "LLaDA x MBPP",
+      "state": "RUNNING",
+      "runtime": "1-22:18:58",
+      "time_limit": "30-00:00:00",
+      "node": "server2",
+      "workdir": "/home/kimhj/repairable-state-discovery-v2-exec",
+      "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "output_dir": "repairable_diffusion/outputs/v2_measurement/v2_mbpp_llada",
+      "stage": "state_value_processing",
+      "artifacts": ["run_manifest.json", "trajectories.pkl", "probe_complete.json", "probe_branches.jsonl", "state_values.jsonl"]
+    },
+    {
+      "job_id": "50923",
+      "run_name": "v2_math500_dream",
+      "experiment": "Dream x MATH-500",
+      "state": "COMPLETED",
+      "runtime": "1-05:48:51",
+      "time_limit": "30-00:00:00",
+      "node": "server4",
+      "workdir": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d",
+      "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "base_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "output_dir": "repairable_diffusion/outputs/v2_measurement/v2_math500_dream",
+      "stage": "measurement_complete",
+      "artifacts": ["run_manifest.json", "trajectories.pkl", "probe_complete.json", "probe_branches.jsonl", "state_values.jsonl", "selector_confirmation.csv", "fresh_sampling.jsonl", "existence.csv", "report.json"],
+      "provenance_sealing": "pending",
+      "aggregate": "eligible_after_provenance_sealing"
+    },
+    {
+      "job_id": "50924",
+      "run_name": "v2_gsm8k_dream",
+      "experiment": "Dream x GSM8K",
+      "state": "RUNNING",
+      "runtime": "1-18:24:31",
+      "time_limit": "30-00:00:00",
+      "node": "server4",
+      "workdir": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d",
+      "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "base_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "output_dir": "repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream",
+      "stage": "state_value_processing",
+      "artifacts": ["run_manifest.json", "trajectories.pkl", "probe_complete.json", "probe_branches.jsonl", "state_values.jsonl"]
+    }
+  ],
+  "legacy_jobs": [
+    {
+      "job_id": "49007",
+      "state": "COMPLETED",
+      "node": "devbox",
+      "aggregate": "exclude_legacy"
+    },
+    {
+      "job_id": "49256",
+      "state": "RUNNING",
+      "node": "server2",
+      "aggregate": "exclude_legacy"
+    },
+    {
+      "job_id": "49257",
+      "state": "PENDING",
+      "reason": "Dependency",
+      "aggregate": "exclude_legacy"
+    }
+  ],
+  "collection_rule": "Aggregate only completed V2 runs with report.json and matching per-run provenance; keep base-SHA LLaDA and Dream-hotfix runs as separate generations; exclude failed, partial, cancelled, and legacy jobs.",
+  "source_commands": [
+    "squeue -h -u kimhj -o '%.12i %.34j %.10T %.16M %.16l %.12N %Z'",
+    "sacct -n -X -u kimhj --starttime 2026-09-17T00:00:00"
+  ],
+  "active_outputs_modified": false
+}
