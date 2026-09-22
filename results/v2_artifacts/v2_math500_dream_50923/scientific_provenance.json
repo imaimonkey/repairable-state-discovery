@@ -1,0 +1,50 @@
+{
+  "status": "SEALED",
+  "run_name": "v2_math500_dream",
+  "required_provenance": {
+    "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+    "config_sha256": "63d397d92a75defedaf476d6090dad15e2d2d7b0fcf56bc339d27dfaf6deb577",
+    "model_id": "Dream-org/Dream-v0-Instruct-7B",
+    "model_revision": "2f177908857f6f96dbe7b696ad5eac5123535bbd",
+    "dataset_id": "HuggingFaceH4/MATH-500",
+    "dataset_revision": "default",
+    "dataset_split": "test",
+    "subset_hash": "09109f1984951590b44809c7fe4023bb246bc5094c82607d524f93f8666a177c",
+    "task_adapter_version": "v2.1",
+    "trajectory_bank_hash": "48fa6e5b5a33ecfab51bf281110a40c17d6e86b5bdc8bbf91a2d739c716dc5e4",
+    "decoder_state_schema_version": "v2.3",
+    "operator_id": "probe_bank_multi_operator",
+    "operator_version": "v2.3",
+    "localization_seed_hash": "f87f9fa7cace1730e6067f406324cae8b5a877aa6076f55b9a5b20225fd904eb",
+    "confirmation_seed_hash": "5c0287fca512ea1bbf30f3b3162c0a7a226a88b2d6cddbe0c7b4fd9d8ebae786",
+    "evaluator_id": "math500_symbolic_equivalence",
+    "evaluator_version": "v2.1"
+  },
+  "scientific_fingerprint": "53add4744716f3c5d0b941deee82a7773ca9bc46988082cfc7790c3d9ebdb7b7",
+  "operators": [
+    "low_confidence_remask_v2",
+    "matched_stochastic_continuation",
+    "native_continuation"
+  ],
+  "localization_seed_count": 22304,
+  "confirmation_seed_count": 28344,
+  "item_count": 500,
+  "artifacts": {
+    "report.json": "ce382ac4e1f883ad0ee960e660c6453c3c426ee84a0657e5a61fc9a9631c9d2a",
+    "run_manifest.json": "2b55ca1c5c1b8119651a470308ddcfe2b2984e9c6e2b8c963637b557494b597f",
+    "probe_branches.jsonl": "aea7b2e08a8c50edb495120ed9c6a75fd495b568a384b754de2967f579ef22ae",
+    "trajectories.pkl": "48fa6e5b5a33ecfab51bf281110a40c17d6e86b5bdc8bbf91a2d739c716dc5e4",
+    "state_values.jsonl": "6f48658ea2b553fa828395bbf8fe2eb9453c2b5dc82f836ea3f677e324e150cc",
+    "selector_confirmation.csv": "4b5559e38009e9e8e5eb1e220b6f12c87a44dda978742f1c62112ccc792719d0",
+    "existence.csv": "b63ca9a91c0af4eda7d4d57e7d723576b2414e6fdaa53d6a4f572506e191b3af",
+    "fresh_sampling.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "core_label": "CoRe-snapshot",
+  "core_source_revision": "524e01e11a8751afb67b81a2c930f938faf9a70e",
+  "v1_artifacts_substituted": false,
+  "dream_native_sampler_reference": {
+    "repository": "Dream-org/Dream-v0-Instruct-7B",
+    "revision": "2f177908857f6f96dbe7b696ad5eac5123535bbd",
+    "algorithm": "origin"
+  }
+}
