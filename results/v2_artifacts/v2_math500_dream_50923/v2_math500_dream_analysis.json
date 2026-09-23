@@ -1,0 +1,284 @@
+{
+  "analysis_type": "single_run_v2_result_analysis",
+  "caveats": [
+    "Single Dream-MATH-500 run; not the final eight-run aggregate.",
+    "Prospective policy is estimated from frozen confirmation branches, not a fresh independent test run.",
+    "Fresh compute control is disabled in the frozen Dream configuration.",
+    "Dream uses hotfix SHA 8b1361d; cross-run aggregation must preserve per-run SHA provenance."
+  ],
+  "config": "repairable_diffusion/configs/v2/runs/full_math500_dream.yaml",
+  "existence": {
+    "confirmed_repairable": 105,
+    "confirmed_repairable_rate": 0.2112676056338028,
+    "failed_items_probed": 497,
+    "repairable_but_never_correct": 87,
+    "repairable_but_never_correct_rate": 0.1750503018108652,
+    "transient_correct": 23,
+    "transient_correct_rate": 0.04627766599597585
+  },
+  "headline": {
+    "base_pass_at_k": 0.4,
+    "fresh_sampling_achieved_nfe": 0,
+    "items": 500,
+    "probe_branch_rows": 106872,
+    "prospective_net_gain": -0.0017500000000000293,
+    "prospective_policy_pass_at_k": 0.39825,
+    "prospective_policy_selector": "oof_state_value",
+    "trajectories": 4000
+  },
+  "landscape": [
+    {
+      "count": 697,
+      "normalized_step": 0.125,
+      "observed_correct_rate": 0.047345767575322814,
+      "q_native_mean": 0.20946915351506457,
+      "q_repair_mean": 0.2187948350071736,
+      "run_name": "v2_math500_dream"
+    },
+    {
+      "count": 697,
+      "normalized_step": 0.25,
+      "observed_correct_rate": 0.07747489239598278,
+      "q_native_mean": 0.2374461979913917,
+      "q_repair_mean": 0.251793400286944,
+      "run_name": "v2_math500_dream"
+    },
+    {
+      "count": 697,
+      "normalized_step": 0.375,
+      "observed_correct_rate": 0.08608321377331421,
+      "q_native_mean": 0.26040172166427544,
+      "q_repair_mean": 0.26255380200860834,
+      "run_name": "v2_math500_dream"
+    },
+    {
+      "count": 697,
+      "normalized_step": 0.5,
+      "observed_correct_rate": 0.11621233859397417,
+      "q_native_mean": 0.2686513629842181,
+      "q_repair_mean": 0.2611190817790531,
+      "run_name": "v2_math500_dream"
+    },
+    {
+      "count": 697,
+      "normalized_step": 0.625,
+      "observed_correct_rate": 0.14203730272596843,
+      "q_native_mean": 0.27941176470588236,
+      "q_repair_mean": 0.27259684361549497,
+      "run_name": "v2_math500_dream"
+    },
+    {
+      "count": 697,
+      "normalized_step": 0.75,
+      "observed_correct_rate": 0.16642754662840745,
+      "q_native_mean": 0.28012912482066,
+      "q_repair_mean": 0.2783357245337159,
+      "run_name": "v2_math500_dream"
+    },
+    {
+      "count": 697,
+      "normalized_step": 0.875,
+      "observed_correct_rate": 0.21233859397417504,
+      "q_native_mean": 0.28586800573888094,
+      "q_repair_mean": 0.28407460545193686,
+      "run_name": "v2_math500_dream"
+    },
+    {
+      "count": 697,
+      "normalized_step": 1.0,
+      "observed_correct_rate": 0.28694404591104733,
+      "q_native_mean": 0.28694404591104733,
+      "q_repair_mean": NaN,
+      "run_name": "v2_math500_dream"
+    }
+  ],
+  "operator_summary": [
+    {
+      "applicable_rate_pct": 97.5727,
+      "correct_rate_pct": 26.4753,
+      "mean_modified_count": 4.645215918712955,
+      "mean_nfe": 34.41603161162856,
+      "negative_harm_rate_on_base_successes_pct": 21.7927,
+      "operator": "low_confidence_remask_v2",
+      "recovery_rate_on_base_failures_pct": 4.6721,
+      "rows": 28344,
+      "scored_rows": 27656,
+      "stage": "confirmation"
+    },
+    {
+      "applicable_rate_pct": 100.0,
+      "correct_rate_pct": 26.2701,
+      "mean_modified_count": 0.0,
+      "mean_nfe": 34.41603161162856,
+      "negative_harm_rate_on_base_successes_pct": 18.9112,
+      "operator": "matched_stochastic_continuation",
+      "recovery_rate_on_base_failures_pct": 3.2752,
+      "rows": 28344,
+      "scored_rows": 28344,
+      "stage": "confirmation"
+    },
+    {
+      "applicable_rate_pct": 100.0,
+      "correct_rate_pct": 28.6944,
+      "mean_modified_count": 0.0,
+      "mean_nfe": 28.0,
+      "negative_harm_rate_on_base_successes_pct": 0.0,
+      "operator": "native_continuation",
+      "recovery_rate_on_base_failures_pct": 0.0,
+      "rows": 5576,
+      "scored_rows": 5576,
+      "stage": "fidelity"
+    },
+    {
+      "applicable_rate_pct": 87.5,
+      "correct_rate_pct": 26.1324,
+      "mean_modified_count": 4.290889526542324,
+      "mean_nfe": 28.0,
+      "negative_harm_rate_on_base_successes_pct": 18.0714,
+      "operator": "low_confidence_remask_v2",
+      "recovery_rate_on_base_failures_pct": 3.6792,
+      "rows": 22304,
+      "scored_rows": 19516,
+      "stage": "localization"
+    },
+    {
+      "applicable_rate_pct": 100.0,
+      "correct_rate_pct": 26.354,
+      "mean_modified_count": 0.0,
+      "mean_nfe": 28.0,
+      "negative_harm_rate_on_base_successes_pct": 14.0312,
+      "operator": "matched_stochastic_continuation",
+      "recovery_rate_on_base_failures_pct": 2.3642,
+      "rows": 22304,
+      "scored_rows": 22304,
+      "stage": "localization"
+    }
+  ],
+  "provenance": {
+    "config_sha256": "63d397d92a75defedaf476d6090dad15e2d2d7b0fcf56bc339d27dfaf6deb577",
+    "dataset": {
+      "name": "math500",
+      "path": "HuggingFaceH4/MATH-500",
+      "split": "test"
+    },
+    "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+    "model_profile": "dream_v0_instruct_7b",
+    "scientific_fingerprint": "53add4744716f3c5d0b941deee82a7773ca9bc46988082cfc7790c3d9ebdb7b7",
+    "seal_status": "SEALED",
+    "trajectory_bank_hash": "48fa6e5b5a33ecfab51bf281110a40c17d6e86b5bdc8bbf91a2d739c716dc5e4"
+  },
+  "run_name": "v2_math500_dream",
+  "selector_summary": [
+    {
+      "avg_extra_nfe": 55.31062124248497,
+      "coverage": 0.998,
+      "diagnostic_confirmed_recovery": 0.07608695652173914,
+      "diagnostic_delta_vs_native": 0.022681451612903226,
+      "negative_harm_rate": 0.3971774193548387,
+      "prospective_net_gain": 0.00024999999999997247,
+      "prospective_pass_at_k": 0.40025,
+      "run_name": "v2_math500_dream",
+      "selector": "confidence_low"
+    },
+    {
+      "avg_extra_nfe": 56.0,
+      "coverage": 1.0,
+      "diagnostic_confirmed_recovery": 0.08105022831050228,
+      "diagnostic_delta_vs_native": 0.02414486921529175,
+      "negative_harm_rate": 0.40524193548387094,
+      "prospective_net_gain": 0.0007499999999999729,
+      "prospective_pass_at_k": 0.40075,
+      "run_name": "v2_math500_dream",
+      "selector": "earliest_eligible"
+    },
+    {
+      "avg_extra_nfe": 55.952,
+      "coverage": 1.0,
+      "diagnostic_confirmed_recovery": 0.08105022831050228,
+      "diagnostic_delta_vs_native": 0.024396378269617706,
+      "negative_harm_rate": 0.40524193548387094,
+      "prospective_net_gain": 0.0007499999999999729,
+      "prospective_pass_at_k": 0.40075,
+      "run_name": "v2_math500_dream",
+      "selector": "entropy_high"
+    },
+    {
+      "avg_extra_nfe": 56.0,
+      "coverage": 1.0,
+      "diagnostic_confirmed_recovery": 0.08105022831050228,
+      "diagnostic_delta_vs_native": 0.02414486921529175,
+      "negative_harm_rate": 0.40524193548387094,
+      "prospective_net_gain": 0.0007499999999999729,
+      "prospective_pass_at_k": 0.40075,
+      "run_name": "v2_math500_dream",
+      "selector": "mask_ratio"
+    },
+    {
+      "avg_extra_nfe": 32.0,
+      "coverage": 1.0,
+      "diagnostic_confirmed_recovery": 0.017123287671232876,
+      "diagnostic_delta_vs_native": 0.009808853118712274,
+      "negative_harm_rate": 0.08870967741935484,
+      "prospective_net_gain": -0.0010000000000000009,
+      "prospective_pass_at_k": 0.399,
+      "run_name": "v2_math500_dream",
+      "selector": "normalized_midpoint"
+    },
+    {
+      "avg_extra_nfe": 48.0,
+      "coverage": 1.0,
+      "diagnostic_confirmed_recovery": 0.05279680365296804,
+      "diagnostic_delta_vs_native": 0.015593561368209255,
+      "negative_harm_rate": 0.21370967741935484,
+      "prospective_net_gain": 0.00024999999999997247,
+      "prospective_pass_at_k": 0.40025,
+      "run_name": "v2_math500_dream",
+      "selector": "normalized_quarter"
+    },
+    {
+      "avg_extra_nfe": 16.0,
+      "coverage": 1.0,
+      "diagnostic_confirmed_recovery": 0.005422374429223744,
+      "diagnostic_delta_vs_native": 0.00528169014084507,
+      "negative_harm_rate": 0.034274193548387094,
+      "prospective_net_gain": -0.000250000000000028,
+      "prospective_pass_at_k": 0.39975,
+      "run_name": "v2_math500_dream",
+      "selector": "normalized_three_quarter"
+    },
+    {
+      "avg_extra_nfe": 24.336,
+      "coverage": 1.0,
+      "diagnostic_confirmed_recovery": 0.013984018264840182,
+      "diagnostic_delta_vs_native": 0.004527162977867203,
+      "negative_harm_rate": 0.08870967741935484,
+      "prospective_net_gain": -0.0017500000000000293,
+      "prospective_pass_at_k": 0.39825,
+      "run_name": "v2_math500_dream",
+      "selector": "oof_state_value"
+    },
+    {
+      "avg_extra_nfe": 53.36,
+      "coverage": 1.0,
+      "diagnostic_confirmed_recovery": 0.09931506849315068,
+      "diagnostic_delta_vs_native": 0.042002012072434605,
+      "negative_harm_rate": 0.06653225806451613,
+      "prospective_net_gain": 0.023749999999999993,
+      "prospective_pass_at_k": 0.42375,
+      "run_name": "v2_math500_dream",
+      "selector": "oracle_localization"
+    },
+    {
+      "avg_extra_nfe": 31.336405529953918,
+      "coverage": 0.868,
+      "diagnostic_confirmed_recovery": 0.02690288713910761,
+      "diagnostic_delta_vs_native": 0.010368663594470046,
+      "negative_harm_rate": 0.10141509433962265,
+      "prospective_net_gain": 0.0,
+      "prospective_pass_at_k": 0.4,
+      "run_name": "v2_math500_dream",
+      "selector": "random_checkpoint"
+    }
+  ],
+  "status": "analysis_ready"
+}

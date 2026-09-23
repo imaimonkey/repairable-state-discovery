@@ -1,0 +1,40 @@
+{
+  "status": "enumerated",
+  "generated_at_utc": "2026-09-21T05:41:57.984452+00:00",
+  "source_job_id": "50752",
+  "source_run_name": "v2_bbh_logical5_llada",
+  "source_git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+  "source_repo": "/home/kimhj/repairable-state-discovery-v2-exec",
+  "source_output": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada",
+  "source_files_sha256": {
+    "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/run_manifest.json": "da7ade70d50de5896589b8c7412019613ec6a92d5d05a5ed88192f6ca0960a3c",
+    "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/trajectories.pkl": "ccf372423ad6e7bdb2413826659fa55433caa600135083e4b047276cfdbb52a0",
+    "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/probe_branches.jsonl": "2576c674f7b759e9f7c0f3127e9aef3383a30b38e2a5a5a5777b65316076afe6",
+    "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/state_values.jsonl": "beb478163ac2cb869ae700e9f53e18556c8c97a623d7f9e2695c0f9c44fafe1f",
+    "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/configs/v2/runs/full_bbh_logical5_llada.yaml": "e96c294b3ae23489e66ebc7615816ef4531c3407b6a38b2e7ba9f8c405b51226",
+    "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/configs/v2/measurement_contract.yaml": "e157452305d135b59e31ad772cbc9cce90e3b82a6c9b67d732f6085c32a650a0"
+  },
+  "config_sha256": "62cc0ead39ac45cfc1a1eff69a8673e3930f164562dd4e590eadd611ccb42637",
+  "record_count_total": 2000,
+  "probe_record_count": 413,
+  "item_count": 250,
+  "confirmation_branch_count": 34672,
+  "confirmation_branch_count_by_operator": {
+    "matched_stochastic_continuation": 17336,
+    "low_confidence_remask_v2": 17336
+  },
+  "confirmation_branch_count_by_step": {
+    "8": 6608,
+    "16": 6608,
+    "24": 2736,
+    "32": 6608,
+    "40": 2480,
+    "48": 6608,
+    "56": 1952,
+    "64": 1072
+  },
+  "candidate_file": "/home/kimhj/forensics/v2_50752_confirmation_20260921/confirmation_candidates.jsonl",
+  "original_artifacts_modified": false,
+  "code_or_config_modified": false,
+  "execution_rule": "Exact confirmation loop order from run_measurement.py: selected probe records, sorted required selector steps, matched_stochastic_continuation then low_confidence_remask_v2, branch_index range(confirmation_count)."
+}

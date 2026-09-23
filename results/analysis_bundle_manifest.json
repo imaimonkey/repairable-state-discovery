@@ -1,0 +1,93 @@
+{
+  "schema": "iclr2027_repairable_state_analysis_bundle_v1",
+  "generated_at_kst": "2026-09-23",
+  "purpose": "Make distributed V2 execution state and completed compact artifacts independently inspectable from the remote repository.",
+  "source_snapshot": "status/iclr2027_current_status.json",
+  "artifact_index": "status/v2_artifact_index.json",
+  "experiment_matrix": "status/v2_experiment_matrix.csv",
+  "aggregate_status": "status/aggregate_status.json",
+  "execution_generations": {
+    "llada": {
+      "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "runs": ["50668", "50669", "50738", "50752", "50753", "50754"]
+    },
+    "dream_hotfix": {
+      "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "base_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "runs": ["50923", "50924"],
+      "reason": "Dream terminal native-schedule intervention eligibility hotfix"
+    }
+  },
+  "included_runs": [
+    {
+      "job_id": "50753",
+      "run_name": "v2_bbh_logical7_llada",
+      "status": "COMPLETED_SEALED",
+      "source_server": "server2",
+      "execution_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "artifact_dir": "results/v2_artifacts/v2_bbh_logical7_llada_50753",
+      "large_raw_excluded": ["trajectories.pkl"]
+    },
+    {
+      "job_id": "50754",
+      "run_name": "v2_mbpp_llada",
+      "status": "COMPLETED_SEALED",
+      "source_server": "server2",
+      "execution_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "artifact_dir": "results/v2_artifacts/v2_mbpp_llada_50754",
+      "large_raw_excluded": ["trajectories.pkl"]
+    },
+    {
+      "job_id": "50923",
+      "run_name": "v2_math500_dream",
+      "status": "COMPLETED_SEALED",
+      "source_server": "server4",
+      "execution_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "artifact_dir": "results/v2_artifacts/v2_math500_dream_50923",
+      "large_raw_excluded": ["trajectories.pkl"]
+    },
+    {
+      "job_id": "50752",
+      "run_name": "v2_bbh_logical5_llada",
+      "status": "FAILED_FORENSIC_PARTIAL",
+      "source_server": "server2",
+      "execution_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "artifact_dir": "results/v2_forensics/v2_bbh_logical5_50752",
+      "scientific_result_eligible": false,
+      "forensic_note": "Only shard 00 completed; remaining branch-space search was pending at snapshot time."
+    }
+  ],
+  "not_copied_runs": [
+    {
+      "job_id": "50668",
+      "run_name": "v2_math500_llada",
+      "status": "RUNNING",
+      "reason": "Active output was not copied or read through a second path. See status snapshots."
+    },
+    {
+      "job_id": "50669",
+      "run_name": "v2_gsm8k_llada",
+      "status": "RUNNING",
+      "reason": "Active output was not copied or read through a second path. See status snapshots."
+    },
+    {
+      "job_id": "50924",
+      "run_name": "v2_gsm8k_dream",
+      "status": "RUNNING",
+      "reason": "Active output was not copied or read through a second path. See status snapshots."
+    },
+    {
+      "job_id": "50738",
+      "run_name": "v2_bbh_logical3_llada",
+      "status": "COMPLETED_SEALED_BUT_NOT_COPIED",
+      "reason": "Server1/devbox artifact access was unavailable; Slurm completion and prior analysis are recorded, but no artifact was inferred or fabricated."
+    }
+  ],
+  "excluded": {
+    "legacy_jobs": ["49007", "49256", "49257"],
+    "old_or_failed_dream_jobs": ["50837", "50838", "50920", "50921", "50201", "50202"],
+    "raw_files": ["trajectories.pkl", "model weights", "active logs"],
+    "final_aggregate": "intentionally not created"
+  },
+  "collection_policy": "Copy existing completed compact artifacts only; do not recompute, rewrite, delete, move, or modify active experiment outputs."
+}

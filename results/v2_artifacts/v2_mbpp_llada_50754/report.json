@@ -1,0 +1,33 @@
+{
+  "run_name": "v2_mbpp_llada",
+  "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+  "config_sha256": "6f442834dc5cbf4e5a5d13a274bf21624c80c06bfd30d67fe6b9fc4f28060edf",
+  "trajectory_bank_hash": "a65becfcec66deb1596cd30b25a9f294f5d38e15d84aa0603b648244af29eb8b",
+  "dataset": {
+    "name": "mbpp",
+    "path": "google-research-datasets/mbpp",
+    "config_name": "sanitized",
+    "split": "test"
+  },
+  "model_profile": "llada_8b_fast",
+  "items": 257,
+  "trajectories": 2056,
+  "base_pass_at_k": 0.5486381322957199,
+  "prospective_policy_selector": "oof_state_value",
+  "prospective_policy_pass_at_k": 0.5491245136186771,
+  "prospective_net_gain": 0.0004863813229571967,
+  "policy_extra_nfe_target_for_fresh": 8200,
+  "fresh_sampling_achieved_nfe": 0,
+  "fresh_sampling_pass_at_k": 0.5486381322957199,
+  "fresh_sampling_gain": 0.0,
+  "probe_branch_rows": 60336,
+  "mechanism_subset_items": [],
+  "temporal_subset_items": [],
+  "existence": {
+    "failed_items_probed": 237,
+    "transient_correct_rate": 0.004219409282700422,
+    "confirmed_repairable_rate": 0.2616033755274262,
+    "repairable_but_never_correct_rate": 0.25738396624472576
+  },
+  "v1_artifacts_substituted": false
+}

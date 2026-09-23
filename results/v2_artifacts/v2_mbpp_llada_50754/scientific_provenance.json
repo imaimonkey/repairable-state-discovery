@@ -1,0 +1,46 @@
+{
+  "status": "SEALED",
+  "run_name": "v2_mbpp_llada",
+  "required_provenance": {
+    "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+    "config_sha256": "6f442834dc5cbf4e5a5d13a274bf21624c80c06bfd30d67fe6b9fc4f28060edf",
+    "model_id": "GSAI-ML/LLaDA-8B-Instruct",
+    "model_revision": "default",
+    "dataset_id": "google-research-datasets/mbpp",
+    "dataset_revision": "default",
+    "dataset_split": "test",
+    "subset_hash": "3c42720f1620c4afa5435fd8b55e00bc4a2dc0efefca3969a55f7be7441d1554",
+    "task_adapter_version": "v2.1",
+    "trajectory_bank_hash": "a65becfcec66deb1596cd30b25a9f294f5d38e15d84aa0603b648244af29eb8b",
+    "decoder_state_schema_version": "v2.3",
+    "operator_id": "probe_bank_multi_operator",
+    "operator_version": "v2.3",
+    "localization_seed_hash": "e20fc2854bfeb652dcf666d6d60e03cc5ba8e6b8e44ce58b19456772172ebfcc",
+    "confirmation_seed_hash": "5e6a458b3fc21ca7a46d7976071e97477268a4fe89b6b2d8bcea7ce934664744",
+    "evaluator_id": "mbpp_restricted_execution",
+    "evaluator_version": "v2.1"
+  },
+  "scientific_fingerprint": "5022bc1577b1575c07ee16f5e51e4c5356f5e0fdf16bca6fe67f1623525f9288",
+  "operators": [
+    "low_confidence_remask_v2",
+    "matched_stochastic_continuation",
+    "native_continuation"
+  ],
+  "localization_seed_count": 12096,
+  "confirmation_seed_count": 16560,
+  "item_count": 257,
+  "artifacts": {
+    "report.json": "c011b2c2a0921ec1d0ab55f539bbc2d40f26600cebbe999187ca77afc6939c80",
+    "run_manifest.json": "1f5218884d62212dd221bb7b27f9df4936bc46fc328a98cdab17d9c11af9129b",
+    "probe_branches.jsonl": "f342515bd475f3c83a51a1e5ac077b265e46d692d572db6cae29965a15edfc55",
+    "trajectories.pkl": "a65becfcec66deb1596cd30b25a9f294f5d38e15d84aa0603b648244af29eb8b",
+    "state_values.jsonl": "17bcb68d15ff50bf34196086016879308123bc9d7670a584223a1ece8d0e7e66",
+    "selector_confirmation.csv": "f1b8d2b8282cce3e6e5aacf78c5750752e0fee0809261bd909c41317485dec80",
+    "existence.csv": "6b76914fcb0c42bd874b0e325ae84f9350309700c1de224da0325f8c715e6f1f",
+    "fresh_sampling.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "core_label": "CoRe-snapshot",
+  "core_source_revision": "524e01e11a8751afb67b81a2c930f938faf9a70e",
+  "v1_artifacts_substituted": false,
+  "dream_native_sampler_reference": null
+}
