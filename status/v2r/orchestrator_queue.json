@@ -503,12 +503,12 @@
       "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
       "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
       "id": "llada_math500_core_finalsha-shard-005",
-      "job_id": "52757",
+      "job_id": "52760",
       "kind": "science_shard",
       "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
       "priority": 21,
       "purpose": "core",
-      "reconciled_at": "2026-09-23T15:37:27.090315+00:00",
+      "reconciled_at": "2026-09-23T15:56:15.999877+00:00",
       "relocation_history": [
         {
           "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
@@ -553,6 +553,18 @@
           "reason": "REMOTE_EXECUTION_REJECTED_EXACT_NATIVE_REPLAY_FAILURE",
           "task_id": "llada_math500_core_finalsha-shard-005",
           "timestamp": "2026-09-23T15:37:27.090315+00:00"
+        },
+        {
+          "attempted_qos": "lab_gpu_s4",
+          "failure": "GPU_policy_QoS_must_match_target_node",
+          "new_job_id": "52760",
+          "new_node": "ubuntu",
+          "previous_job_id": "52757",
+          "previous_node": "ubuntu",
+          "previous_qos": "lab_gpu_s3",
+          "reason": "QOS4_TARGET_NODE_POLICY_REJECTED; RESTORED_ORIGINAL_QOS",
+          "task_id": "llada_math500_core_finalsha-shard-005",
+          "timestamp": "2026-09-23T15:56:15.999877+00:00"
         }
       ],
       "remote_execution": false,
