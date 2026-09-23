@@ -1,6 +1,6 @@
 {
   "record_version": "v1",
-  "phase": "pre_repair_recorded",
+  "phase": "NEEDS_MANUAL_REVIEW",
   "run_name": "v2_gsm8k_dream",
   "job_id": "50924",
   "slurm": {
@@ -45,5 +45,22 @@
   "scientific_output_recomputed": false,
   "scientific_result_changed": false,
   "rerun_required": false,
-  "correction_applied": false
+  "correction_applied": false,
+  "report_restored_to_original": true,
+  "seal_verification": {
+    "attempted_from_clean_worktree_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+    "status": "BLOCKED",
+    "failed_check": "localization_confirmation_seed_disjointness",
+    "overlap_count": 5,
+    "overlap_seeds": [
+      193953942,
+      467002859,
+      880309257,
+      1415225323,
+      1632801805
+    ],
+    "seal_error": "ValueError: localization/confirmation seed overlap",
+    "scientific_provenance_created": false
+  },
+  "next_action": "Do not correct or seal 50924 until the frozen seed-disjointness failure is independently reviewed; no rerun or metric recomputation was performed."
 }
