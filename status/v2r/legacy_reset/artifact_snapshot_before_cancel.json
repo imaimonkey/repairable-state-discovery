@@ -1,0 +1,131 @@
+{
+  "timestamp_unix": 1790161276.7737365,
+  "server": "devbox",
+  "observed_worktree_head": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+  "observed_head_is_not_execution_sha": true,
+  "runs": [
+    {
+      "job_id": "50668",
+      "run": "v2_math500_llada",
+      "artifact_root": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_math500_llada",
+      "exists": true,
+      "artifact_count": 5,
+      "total_size_bytes": 476948625,
+      "artifacts": [
+        {
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_math500_llada/probe_branches.jsonl",
+          "size_bytes": 25158564,
+          "mtime_ns": 1790003037049081173,
+          "hash_status": "not_hashed_live_large_file"
+        },
+        {
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_math500_llada/probe_complete.json",
+          "size_bytes": 198,
+          "mtime_ns": 1790003037049081173,
+          "sha256": "d1c53ca0bf1b8f69ee1b9b9f879a338a91f370c16a48e590b721db4729df208f",
+          "stable_during_read": true
+        },
+        {
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_math500_llada/run_manifest.json",
+          "size_bytes": 1196,
+          "mtime_ns": 1789828459159455589,
+          "sha256": "fabdfc0c2a6027db1daed941dac9f53f553c2f049efd6670fcc415cad0d22a31",
+          "stable_during_read": true
+        },
+        {
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_math500_llada/state_values.jsonl",
+          "size_bytes": 2631649,
+          "mtime_ns": 1790003037281084661,
+          "hash_status": "not_hashed_live_large_file"
+        },
+        {
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_math500_llada/trajectories.pkl",
+          "size_bytes": 449157018,
+          "mtime_ns": 1789828458635455020,
+          "hash_status": "not_hashed_live_large_file"
+        }
+      ],
+      "small_metadata": {
+        "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_math500_llada/run_manifest.json": {
+          "run_name": "v2_math500_llada",
+          "status": "trajectory_bank_ready",
+          "base_fingerprint": "7355cc13acca72fd77254801f4de9849f9c88f968a0ce9021d3ab9d364649355",
+          "base_provenance": {
+            "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+            "config_sha256": "bf8791d6c60ba90933d5c8e0ab14643d3274bd0da0d240538fd9a9c78d373c2e",
+            "model_id": "GSAI-ML/LLaDA-8B-Instruct",
+            "model_revision": "default",
+            "dataset_id": "HuggingFaceH4/MATH-500",
+            "dataset_revision": "default",
+            "dataset_split": "test",
+            "subset_hash": "572eb0aaa2dc016d09ba3b0bd200446d2c85c579afcd99fc0a0a5d128fd9c15c",
+            "task_adapter_version": "v2.1",
+            "evaluator_id": "math500_symbolic_equivalence",
+            "evaluator_version": "v2.1",
+            "fingerprint": "7355cc13acca72fd77254801f4de9849f9c88f968a0ce9021d3ab9d364649355"
+          },
+          "trajectory_bank_hash": "3a5ed9348ca9e09c8480b5bd5decd82f419c0a2c36b28c87086ff4bad6416729",
+          "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+          "contract_version": "v2_counterfactual_recoverability",
+          "config_path": "repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
+          "config_sha256": "bf8791d6c60ba90933d5c8e0ab14643d3274bd0da0d240538fd9a9c78d373c2e"
+        }
+      },
+      "config_path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
+      "config_sha256": "6e359a82f6f09ce15a29ed7e3bd1ad2641ed22dea8391f442afef64e009954eb",
+      "config_text": "run_name: v2_math500_llada\noutput_root: repairable_diffusion/outputs/v2_measurement\nmodel_profile: llada_8b_fast\n\ndataset:\n  name: math500\n  path: HuggingFaceH4/MATH-500\n  split: test\n\ngeneration:\n  trajectories_per_item: 8\n  base_seed: 2027\n  steps: 64\n  gen_length: 256\n  block_length: 128\n  temperature: 0.6\n  cfg_scale: 0.0\n  remasking: low_confidence\n  mask_id: 126336\n  checkpoint_stride: 8\n\noperator:\n  anchor_confidence_threshold: 0.80\n  remask_fraction: 0.25\n  min_remask_positions: 4\n  core_candidate_m: 32\n  core_replacement_confidence: 0.30\n\nprobe:\n  root_seed: 2027\n  policy_trajectory_ids: [0]\n  mechanism_subset_items: 128\n  mechanism_subset_seed: 271828\n  temporal_subset_items: 128\n  temporal_subset_seed: 314159\n  fresh_control_seed: 161803\n  mechanism_controls_enabled: true\n  temporal_confirmation_enabled: true\n\nselector:\n  target: q_repair_loc\n  primary: oof_state_value\n\ncompute_control:\n  enabled: true\n"
+    },
+    {
+      "job_id": "50669",
+      "run": "v2_gsm8k_llada",
+      "artifact_root": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_llada",
+      "exists": true,
+      "artifact_count": 2,
+      "total_size_bytes": 1184419839,
+      "artifacts": [
+        {
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_llada/run_manifest.json",
+          "size_bytes": 1167,
+          "mtime_ns": 1789875233708945073,
+          "sha256": "ac53477955305d6dbc41c86dbaabfe3a9cf5e3979fdb12106b5d1c889372c2c7",
+          "stable_during_read": true
+        },
+        {
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_llada/trajectories.pkl",
+          "size_bytes": 1184418672,
+          "mtime_ns": 1789875232340947534,
+          "hash_status": "not_hashed_live_large_file"
+        }
+      ],
+      "small_metadata": {
+        "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_llada/run_manifest.json": {
+          "run_name": "v2_gsm8k_llada",
+          "status": "trajectory_bank_ready",
+          "base_fingerprint": "3d7369329ed05790442b6c1212d68d6569cf01197b7cc1bb10bb1ae3747071a5",
+          "base_provenance": {
+            "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+            "config_sha256": "77426661a599d3dce8da8b9348f2e027dfb3b5ef229cf9fca220727ba56b2f09",
+            "model_id": "GSAI-ML/LLaDA-8B-Instruct",
+            "model_revision": "default",
+            "dataset_id": "openai/gsm8k",
+            "dataset_revision": "default",
+            "dataset_split": "test",
+            "subset_hash": "0dbac256490371a8aef0ce5f1e7d1661ba6091b67db13b7eabc6156f03ddd48d",
+            "task_adapter_version": "v2.1",
+            "evaluator_id": "gsm8k_numeric",
+            "evaluator_version": "v2.1",
+            "fingerprint": "3d7369329ed05790442b6c1212d68d6569cf01197b7cc1bb10bb1ae3747071a5"
+          },
+          "trajectory_bank_hash": "98d74704daf85ee560b44c7f6ae57ed8bde9900c16ab345bfb8390c501f9d90b",
+          "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+          "contract_version": "v2_counterfactual_recoverability",
+          "config_path": "repairable_diffusion/configs/v2/runs/full_gsm8k_llada.yaml",
+          "config_sha256": "77426661a599d3dce8da8b9348f2e027dfb3b5ef229cf9fca220727ba56b2f09"
+        }
+      },
+      "config_path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/configs/v2/runs/full_gsm8k_llada.yaml",
+      "config_sha256": "0fd3113487148272c537d9419044dbed36be7e7a8bf994c6905689e94753f073",
+      "config_text": "run_name: v2_gsm8k_llada\noutput_root: repairable_diffusion/outputs/v2_measurement\nmodel_profile: llada_8b_fast\n\ndataset:\n  name: gsm8k\n  path: openai/gsm8k\n  config_name: main\n  split: test\n\ngeneration:\n  trajectories_per_item: 8\n  base_seed: 2027\n  steps: 64\n  gen_length: 256\n  block_length: 128\n  temperature: 0.6\n  cfg_scale: 0.0\n  remasking: low_confidence\n  mask_id: 126336\n  checkpoint_stride: 8\n\noperator:\n  anchor_confidence_threshold: 0.80\n  remask_fraction: 0.25\n  min_remask_positions: 4\n  core_candidate_m: 32\n  core_replacement_confidence: 0.30\n\nprobe:\n  root_seed: 2027\n  policy_trajectory_ids: [0]\n  mechanism_subset_items: 128\n  mechanism_subset_seed: 271828\n  temporal_subset_items: 128\n  temporal_subset_seed: 314159\n  fresh_control_seed: 161803\n  mechanism_controls_enabled: true\n  temporal_confirmation_enabled: true\n\nselector:\n  target: q_repair_loc\n  primary: oof_state_value\n\ncompute_control:\n  enabled: true\n"
+    }
+  ]
+}

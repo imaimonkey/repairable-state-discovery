@@ -1,0 +1,155 @@
+{
+  "hostname": "devbox",
+  "cpu_count": 128,
+  "memory": {
+    "returncode": 0,
+    "stdout": "total        used        free      shared  buff/cache   available\nMem:     1622979940352 68736065536 190014091264   199983104 1364229783552 1545336872960\nSwap:     8589930496   434139136  8155791360",
+    "stderr": ""
+  },
+  "filesystems": [
+    {
+      "path": "/",
+      "device": 66306,
+      "total_bytes": 1888558305280,
+      "available_bytes": 331668484096,
+      "used_bytes": 1460880842752,
+      "usage_fraction": 0.8149738592247264,
+      "inodes_free": 112557048,
+      "inodes_total": 117178368,
+      "writable": false
+    },
+    {
+      "path": "/home",
+      "device": 66306,
+      "total_bytes": 1888558305280,
+      "available_bytes": 331668484096,
+      "used_bytes": 1460880842752,
+      "usage_fraction": 0.8149738592247264,
+      "inodes_free": 112557048,
+      "inodes_total": 117178368,
+      "writable": false
+    },
+    {
+      "path": "/tmp",
+      "device": 66306,
+      "total_bytes": 1888558305280,
+      "available_bytes": 331668484096,
+      "used_bytes": 1460880842752,
+      "usage_fraction": 0.8149738592247264,
+      "inodes_free": 112557048,
+      "inodes_total": 117178368,
+      "writable": true
+    },
+    {
+      "path": "/var/tmp",
+      "device": 66306,
+      "total_bytes": 1888558305280,
+      "available_bytes": 331668484096,
+      "used_bytes": 1460880842752,
+      "usage_fraction": 0.8149738592247264,
+      "inodes_free": 112557048,
+      "inodes_total": 117178368,
+      "writable": true
+    },
+    {
+      "path": "/mnt/raid5",
+      "device": 2304,
+      "total_bytes": 22951322238976,
+      "available_bytes": 1394672906240,
+      "used_bytes": 20404427886592,
+      "usage_fraction": 0.9360215396270567,
+      "inodes_free": 337764736,
+      "inodes_total": 351625216,
+      "writable": true
+    }
+  ],
+  "gpus": [
+    {
+      "index": "0",
+      "name": "NVIDIA RTX A6000",
+      "uuid": "GPU-8a497f13-d58c-bdef-5478-611ea200deae",
+      "memory_total_mib": "49140",
+      "memory_used_mib": "41356",
+      "memory_free_mib": "7187",
+      "utilization_percent": "100"
+    }
+  ],
+  "gpu_query": {
+    "returncode": 0,
+    "stdout": "0, NVIDIA RTX A6000, GPU-8a497f13-d58c-bdef-5478-611ea200deae, 49140, 41356, 7187, 100",
+    "stderr": ""
+  },
+  "gpu_processes": {
+    "returncode": 0,
+    "stdout": "GPU-8a497f13-d58c-bdef-5478-611ea200deae, 3676536, /home/kimhj/llada8b_basic/.venv/bin/python, 41346",
+    "stderr": ""
+  },
+  "own_processes": {
+    "returncode": 0,
+    "stdout": "PID    PPID     ELAPSED COMMAND\n 579454       1 115-12:29:03 systemd\n 579455  579454 115-12:29:03 (sd-pam)\n 580533       1 115-12:28:54 code-8761a5560c\n1226662 1226640       00:00 python3\n1226692 1226662       00:00 ps\n2118230  579454 49-08:51:26 dbus-daemon\n2118262  579454 49-08:51:26 at-spi-bus-laun\n3676534 3676516  4-04:53:44 slurm_script\n3676535 3676517  4-04:53:44 slurm_script\n3676536 3676535  4-04:53:44 python\n3676540 3676534  4-04:53:44 python\n3676880 3676536  4-04:53:37 python\n3676884 3676536  4-04:53:37 python\n3676888 3676536  4-04:53:37 python\n3676891 3676536  4-04:53:37 python\n3676894 3676536  4-04:53:37 python\n3676897 3676536  4-04:53:37 python\n3676900 3676536  4-04:53:37 python\n3676903 3676536  4-04:53:37 python\n3676977 3676540  4-04:53:36 python\n3676979 3676540  4-04:53:36 python\n3676981 3676540  4-04:53:36 python\n3676983 3676540  4-04:53:36 python\n3676985 3676540  4-04:53:36 python\n3676987 3676540  4-04:53:36 python\n3676989 3676540  4-04:53:36 python\n3676991 3676540  4-04:53:36 python",
+    "stderr": ""
+  },
+  "repos": [
+    {
+      "path": "/home/kimhj/repairable-state-discovery",
+      "realpath": "/home/kimhj/repairable-state-discovery",
+      "head": {
+        "returncode": 0,
+        "stdout": "f45569d7d4b74674d0679851fedf27193ca0e266",
+        "stderr": ""
+      },
+      "worktrees": {
+        "returncode": 0,
+        "stdout": "worktree /home/kimhj/repairable-state-discovery\nHEAD f45569d7d4b74674d0679851fedf27193ca0e266\nbranch refs/heads/codex/status-20260917\n\nworktree /home/kimhj/worktrees/repairable-dream-fixed\nHEAD 51a8bbdcedd9f0ad8689224378d6ade967fda024\ndetached\n\nworktree /home/kimhj/worktrees/repairable-dream-submit-51a8\nHEAD 51a8bbdcedd9f0ad8689224378d6ade967fda024\ndetached",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "/home/kimhj/repairable-state-discovery-v2-exec",
+      "realpath": "/home/kimhj/repairable-state-discovery-v2-exec",
+      "head": {
+        "returncode": 0,
+        "stdout": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+        "stderr": ""
+      },
+      "worktrees": {
+        "returncode": 0,
+        "stdout": "worktree /home/kimhj/repairable-state-discovery-v2-exec\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /home/kimhj/repairable-state-discovery-v2-seal-ops-0dd-20260923\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /home/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "/home/kimhj/repairable-state-discovery-v2-seal-ops-0dd-20260923",
+      "realpath": "/home/kimhj/repairable-state-discovery-v2-seal-ops-0dd-20260923",
+      "head": {
+        "returncode": 0,
+        "stdout": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+        "stderr": ""
+      },
+      "worktrees": {
+        "returncode": 0,
+        "stdout": "worktree /home/kimhj/repairable-state-discovery-v2-exec\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /home/kimhj/repairable-state-discovery-v2-seal-ops-0dd-20260923\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /home/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "/home/kimhj/repairable-state-discovery-v2-unified-8b1361d",
+      "realpath": "/home/kimhj/repairable-state-discovery-v2-unified-8b1361d",
+      "head": {
+        "returncode": 0,
+        "stdout": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+        "stderr": ""
+      },
+      "worktrees": {
+        "returncode": 0,
+        "stdout": "worktree /home/kimhj/repairable-state-discovery-v2-exec\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /home/kimhj/repairable-state-discovery-v2-seal-ops-0dd-20260923\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /home/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached",
+        "stderr": ""
+      }
+    }
+  ],
+  "mounts": {
+    "returncode": 0,
+    "stdout": "{\n   \"filesystems\": [\n      {\n         \"target\": \"/\",\n         \"source\": \"/dev/nvme0n1p2\",\n         \"fstype\": \"ext4\",\n         \"children\": [\n            {\n               \"target\": \"/sys\",\n               \"source\": \"sysfs\",\n               \"fstype\": \"sysfs\",\n               \"children\": [\n                  {\n                     \"target\": \"/sys/kernel/security\",\n                     \"source\": \"securityfs\",\n                     \"fstype\": \"securityfs\"\n                  },{\n                     \"target\": \"/sys/fs/cgroup\",\n                     \"source\": \"cgroup2\",\n                     \"fstype\": \"cgroup2\"\n                  },{\n                     \"target\": \"/sys/fs/pstore\",\n                     \"source\": \"pstore\",\n                     \"fstype\": \"pstore\"\n                  },{\n                     \"target\": \"/sys/firmware/efi/efivars\",\n                     \"source\": \"efivarfs\",\n                     \"fstype\": \"efivarfs\"\n                  },{\n                     \"target\": \"/sys/fs/bpf\",\n                     \"source\": \"bpf\",\n                     \"fstype\": \"bpf\"\n                  },{\n                     \"target\": \"/sys/kernel/debug\",\n                     \"source\": \"debugfs\",\n                     \"fstype\": \"debugfs\"\n                  },{\n                     \"target\": \"/sys/kernel/tracing\",\n                     \"source\": \"tracefs\",\n                     \"fstype\": \"tracefs\"\n                  },{\n                     \"target\": \"/sys/fs/fuse/connections\",\n                     \"source\": \"fusectl\",\n                     \"fstype\": \"fusectl\"\n                  },{\n                     \"target\": \"/sys/kernel/config\",\n                     \"source\": \"configfs\",\n                     \"fstype\": \"configfs\"\n                  }\n               ]\n            },{\n               \"target\": \"/proc\",\n               \"source\": \"proc\",\n               \"fstype\": \"proc\",\n               \"children\": [\n                  {\n                     \"target\": \"/proc/sys/fs/binfmt_misc\",\n                     \"source\": \"systemd-1\",\n                     \"fstype\": \"autofs\",\n                     \"children\": [\n                        {\n                           \"target\": \"/proc/sys/fs/binfmt_misc\",\n                           \"source\": \"binfmt_misc\",\n                           \"fstype\": \"binfmt_misc\"\n                        }\n                     ]\n                  },{\n                     \"target\": \"/proc/fs/nfsd\",\n                     \"source\": \"nfsd\",\n                     \"fstype\": \"nfsd\"\n                  }\n               ]\n            },{\n               \"target\": \"/dev\",\n               \"source\": \"udev\",\n               \"fstype\": \"devtmpfs\",\n               \"children\": [\n                  {\n                     \"target\": \"/dev/pts\",\n                     \"source\": \"devpts\",\n                     \"fstype\": \"devpts\"\n                  },{\n                     \"target\": \"/dev/shm\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/dev/hugepages\",\n                     \"source\": \"hugetlbfs\",\n                     \"fstype\": \"hugetlbfs\"\n                  },{\n                     \"target\": \"/dev/mqueue\",\n                     \"source\": \"mqueue\",\n                     \"fstype\": \"mqueue\"\n                  }\n               ]\n            },{\n               \"target\": \"/run\",\n               \"source\": \"tmpfs\",\n               \"fstype\": \"tmpfs\",\n               \"children\": [\n                  {\n                     \"target\": \"/run/lock\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/credentials/systemd-sysusers.service\",\n                     \"source\": \"none\",\n                     \"fstype\": \"ramfs\"\n                  },{\n                     \"target\": \"/run/user/1013\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1031\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1028\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1019\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1023\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/rpc_pipefs\",\n                     \"source\": \"sunrpc\",\n                     \"fstype\": \"rpc_pipefs\"\n                  },{\n                     \"target\": \"/run/user/1011\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/snapd/ns\",\n                     \"source\": \"tmpfs[/snapd/ns]\",\n                     \"fstype\": \"tmpfs\",\n                     \"children\": [\n                        {\n                           \"target\": \"/run/snapd/ns/lxd.mnt\",\n                           \"source\": \"nsfs[mnt:[4026542147]]\",\n                           \"fstype\": \"nsfs\"\n                        },{\n                           \"target\": \"/run/snapd/ns/mesa-2404.mnt\",\n                           \"source\": \"nsfs[mnt:[4026542141]]\",\n                           \"fstype\": \"nsfs\"\n                        },{\n                           \"target\": \"/run/snapd/ns/firefox.mnt\",\n                           \"source\": \"nsfs[mnt:[4026542145]]\",\n                           \"fstype\": \"nsfs\"\n                        }\n                     ]\n                  },{\n                     \"target\": \"/run/user/1025\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1002\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1016\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1012\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1021\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1026\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1003\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1027\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1015\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1008\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1006\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1007\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1009\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  }\n               ]\n            },{\n               \"target\": \"/home/mindw/gdrive\",\n               \"source\": \"gdrive:Server/Server1\",\n               \"fstype\": \"fuse.rclone\"\n            },{\n               \"target\": \"/snap/core22/2437\",\n               \"source\": \"/dev/loop23\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/bare/5\",\n               \"source\": \"/dev/loop2\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/core22/2955\",\n               \"source\": \"/dev/loop3\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/core20/2866\",\n               \"source\": \"/dev/loop4\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/core24/2124\",\n               \"source\": \"/dev/loop6\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/astral-uv/1749\",\n               \"source\": \"/dev/loop7\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/core24/1643\",\n               \"source\": \"/dev/loop8\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/snapd/27710\",\n               \"source\": \"/dev/loop18\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/gnome-42-2204/247\",\n               \"source\": \"/dev/loop11\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/gnome-46-2404/153\",\n               \"source\": \"/dev/loop12\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/gtk-common-themes/1535\",\n               \"source\": \"/dev/loop13\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/gnome-46-2404/164\",\n               \"source\": \"/dev/loop15\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/mesa-2404/1165\",\n               \"source\": \"/dev/loop16\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/boot/efi\",\n               \"source\": \"/dev/nvme0n1p1\",\n               \"fstype\": \"vfat\"\n            },{\n               \"target\": \"/mnt/raid5\",\n               \"source\": \"/dev/md0\",\n               \"fstype\": \"ext4\",\n               \"children\": [\n                  {\n                     \"target\": \"/mnt/raid5/leesh/.gdrive\",\n                     \"source\": \"gdrive:\",\n                     \"fstype\": \"fuse.rclone\"\n                  }\n               ]\n            },{\n               \"target\": \"/home/kimjh\",\n               \"source\": \"/dev/md0[/kimjh]\",\n               \"fstype\": \"ext4\"\n            },{\n               \"target\": \"/home/chunmei\",\n               \"source\": \"/dev/md0[/chunmei]\",\n               \"fstype\": \"ext4\"\n            },{\n               \"target\": \"/snap/mesa-2404/1839\",\n               \"source\": \"/dev/loop14\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/core20/2922\",\n               \"source\": \"/dev/loop5\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/firefox/8929\",\n               \"source\": \"/dev/loop0\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/gnome-42-2204/263\",\n               \"source\": \"/dev/loop9\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/astral-uv/1682\",\n               \"source\": \"/dev/loop1\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/lxd/40575\",\n               \"source\": \"/dev/loop22\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/lxd/40338\",\n               \"source\": \"/dev/loop17\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/firefox/8969\",\n               \"source\": \"/dev/loop20\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/snapd/27738\",\n               \"source\": \"/dev/loop10\",\n               \"fstype\": \"squashfs\"\n            }\n         ]\n      }\n   ]\n}",
+    "stderr": ""
+  }
+}

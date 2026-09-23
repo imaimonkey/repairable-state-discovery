@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-09-23T11:01:17.031469+00:00",
+  "requested_state": "CANCELLED_FOR_REFERENCE_PRIMARY_RESET",
+  "authorization": "2026-09-23 user REFERENCE-PRIMARY FULL RESET sections1,38 explicitly orders cancellation after snapshot",
+  "artifact_preservation": "read-only snapshot; no deletion, reset or overwrite",
+  "jobs": {
+    "50668": {
+      "job_id": "50668",
+      "run": "v2_math500_llada",
+      "artifact_root": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_math500_llada",
+      "exists": true,
+      "artifact_count": 5,
+      "total_size_bytes": 476948625,
+      "config_path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
+      "config_sha256": "6e359a82f6f09ce15a29ed7e3bd1ad2641ed22dea8391f442afef64e009954eb"
+    },
+    "50669": {
+      "job_id": "50669",
+      "run": "v2_gsm8k_llada",
+      "artifact_root": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_llada",
+      "exists": true,
+      "artifact_count": 2,
+      "total_size_bytes": 1184419839,
+      "config_path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/configs/v2/runs/full_gsm8k_llada.yaml",
+      "config_sha256": "0fd3113487148272c537d9419044dbed36be7e7a8bf994c6905689e94753f073"
+    }
+  },
+  "snapshot_sha256": "c3aed22e1338d5c37d8cf55b2f06a260612bd48e347dc89b682e3e9b5d4af950",
+  "cancel_command_result": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "slurm_after_cancel": {
+    "returncode": 0,
+    "stdout": "50668|CANCELLED by 1021|4-04:53:45|devbox|0:0\n50668.batch|CANCELLED|4-04:53:45|devbox|0:0\n50668.extern|CANCELLED|4-04:53:45|devbox|0:0\n50668.0|COMPLETED|00:00:00|devbox|0:0\n50668.1|COMPLETED|00:00:00|devbox|0:0\n50668.2|COMPLETED|00:00:00|devbox|0:0\n50668.3|COMPLETED|00:00:00|devbox|0:0\n50668.4|COMPLETED|00:00:00|devbox|0:0\n50668.5|COMPLETED|00:00:00|devbox|0:0\n50668.6|COMPLETED|00:00:00|devbox|0:0\n50668.7|COMPLETED|00:00:00|devbox|0:0\n50668.8|COMPLETED|00:00:00|devbox|0:0\n50668.9|COMPLETED|00:00:00|devbox|0:0\n50668.10|COMPLETED|00:00:00|devbox|0:0\n50668.11|COMPLETED|00:00:00|devbox|0:0\n50668.12|COMPLETED|00:00:00|devbox|0:0\n50668.13|FAILED|00:00:00|devbox|1:0\n50668.14|COMPLETED|00:00:00|devbox|0:0\n50668.15|COMPLETED|00:00:00|devbox|0:0\n50668.16|COMPLETED|00:00:03|devbox|0:0\n50668.17|COMPLETED|00:00:01|devbox|0:0\n50668.18|COMPLETED|00:00:00|devbox|0:0\n50668.19|COMPLETED|00:00:01|devbox|0:0\n50668.20|COMPLETED|00:00:00|devbox|0:0\n50668.21|COMPLETED|00:00:00|devbox|0:0\n50668.22|COMPLETED|00:02:55|devbox|0:0\n50668.23|COMPLETED|00:00:00|devbox|0:0\n50668.24|COMPLETED|00:00:00|devbox|0:0\n50668.25|COMPLETED|00:00:00|devbox|0:0\n50668.26|COMPLETED|00:00:01|devbox|0:0\n50668.27|COMPLETED|00:00:00|devbox|0:0\n50668.28|COMPLETED|00:00:00|devbox|0:0\n50668.29|COMPLETED|00:00:00|devbox|0:0\n50668.30|COMPLETED|00:03:14|devbox|0:0\n50668.31|COMPLETED|00:00:00|devbox|0:0\n50668.32|COMPLETED|00:00:00|devbox|0:0\n50668.33|COMPLETED|00:00:00|devbox|0:0\n50668.34|COMPLETED|00:00:00|devbox|0:0\n50668.35|COMPLETED|00:00:00|devbox|0:0\n50668.36|COMPLETED|00:00:00|devbox|0:0\n50668.37|COMPLETED|00:00:01|devbox|0:0\n50668.38|COMPLETED|00:00:00|devbox|0:0\n50668.39|FAILED|00:00:00|devbox|2:0\n50668.40|COMPLETED|00:00:00|devbox|0:0\n50668.41|COMPLETED|00:00:01|devbox|0:0\n50668.42|COMPLETED|00:00:00|devbox|0:0\n50668.43|COMPLETED|00:00:01|devbox|0:0\n50668.44|COMPLETED|00:00:45|devbox|0:0\n50668.45|COMPLETED|00:00:02|devbox|0:0\n50668.46|COMPLETED|00:00:00|devbox|0:0\n50668.47|COMPLETED|00:00:00|devbox|0:0\n50668.48|COMPLETED|00:00:00|devbox|0:0\n50668.49|COMPLETED|00:00:01|devbox|0:0\n50669|CANCELLED by 1021|4-04:53:45|devbox|0:0\n50669.batch|CANCELLED|4-04:53:45|devbox|0:0\n50669.extern|CANCELLED|4-04:53:45|devbox|0:0\n50669.0|COMPLETED|00:00:01|devbox|0:0\n50669.1|COMPLETED|00:00:00|devbox|0:0\n50669.2|COMPLETED|00:00:00|devbox|0:0\n50669.3|FAILED|00:00:00|devbox|1:0\n",
+    "stderr": ""
+  },
+  "status": "CANCELLED_FOR_REFERENCE_PRIMARY_RESET"
+}
