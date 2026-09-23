@@ -1,6 +1,6 @@
 {
   "schema_version": "v2r.fallback-pipeline.1",
-  "status": "READY_FOR_PARALLEL_CORE_BATCH",
+  "status": "SUPERSEDED_BY_INDEPENDENT_VARIANTS",
   "authoritative": false,
   "selection_policy": "Never import or merge fallback outputs into the primary paper without an explicit contingency decision and a separate provenance review.",
   "primary_lineage_preserved": true,
@@ -23,6 +23,7 @@
     "stage": "r3_core",
     "item_count": 64,
     "dispatch": "four disjoint batches per server, one GPU per batch, no primary output overlap",
-    "status": "READY_TO_SUBMIT"
+    "status": "CANCELLED_BEFORE_PAPER_USE",
+    "cancel_reason": "H200 trajectory replay is not an independent paper-applicable server version."
   }
 }

@@ -1,0 +1,55 @@
+{
+  "schema_version": "v2r.independent-variants.1",
+  "status": "R0_RUNNING",
+  "scientific_role": "paper_applicable_independent_server_variants",
+  "primary_server3_lineage_preserved": true,
+  "cross_variant_merge_policy": "forbidden; report each server variant with its own provenance and do not pool raw outcomes",
+  "shared_contract": {
+    "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+    "backbone": "llada",
+    "task": "math500",
+    "model_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07",
+    "design_seed": 20260923,
+    "gate_chain": ["R0", "R1", "R2"],
+    "paper_rule": "same dataset/model revision/source SHA/design, server-local runtime and hardware; within-variant exact replay is required"
+  },
+  "variants": {
+    "server1": {
+      "variant_id": "llada_math500_independent_server1_v1",
+      "node": "devbox",
+      "hardware": "NVIDIA RTX A6000",
+      "execution_root": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7-s1",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "gate_root": "/var/tmp/kimhj-v2r-independent/server1",
+      "output_root": "/var/tmp/kimhj-v2r-independent/server1",
+      "gate_job": "52812",
+      "status": "R0_RUNNING"
+    },
+    "server2": {
+      "variant_id": "llada_math500_independent_server2_v1",
+      "node": "server2",
+      "hardware": "NVIDIA RTX A6000",
+      "execution_root": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7-s2",
+      "model_cache": "/home/kimhj/.cache/huggingface/hub",
+      "gate_root": "/var/tmp/kimhj-v2r-independent/server2",
+      "output_root": "/dev/shm/kimhj-v2r-independent/server2",
+      "gate_job": "52813",
+      "status": "R0_RUNNING"
+    },
+    "server4": {
+      "variant_id": "llada_math500_independent_server4_v1",
+      "node": "server4",
+      "hardware": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "execution_root": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "gate_root": "/var/tmp/kimhj-v2r-independent/server4",
+      "output_root": "/dev/shm/kimhj-v2r-independent/server4",
+      "gate_job": "52814",
+      "status": "R0_RUNNING"
+    }
+  },
+  "superseded_diagnostic": {
+    "status": "CANCELLED_NOT_PAPER_APPLICABLE",
+    "reason": "The previous fallback replayed H200 trajectories and suppressed native mismatch; its smoke evidence remains diagnostic only."
+  }
+}
