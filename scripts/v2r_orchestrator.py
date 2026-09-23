@@ -63,7 +63,7 @@ def cycle():
       manifest=read_json(task['manifest']);gates=read_json(task['gates']);validate_shard(Path(task['run_dir'])/'shards'/f"shard-{int(task['shard']):03d}",manifest,int(task['shard']),gates=gates);task['status']='DONE';task['error']=None
      except Exception as exc:task.update(status='NEEDS_REVIEW',error=str(exc))
     elif state!='UNKNOWN':task.update(status='NEEDS_REVIEW',error='Terminal scientific Slurm state: '+state)
-   elif all(s=='PASS' for s in deps):
+   elif all(s in {'PASS','SEALED'} for s in deps):
     inventory=collect(OUT)
     try:task.update(submit_science(task,inventory));task['status']='SUBMITTED'
     except RuntimeError as e:task.update(status='RESOURCE_WAIT',error=str(e))
