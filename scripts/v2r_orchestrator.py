@@ -41,6 +41,18 @@ def cycle():
  for task in sorted(queue['tasks'],key=lambda t:t['priority']):
   old=task.get('status','READY')
   if task.get('kind')=='science_shard':
+   # Preserve the hard critical path: a pending GSM replication shard must not
+   # consume the next Slurm slot before LLaDA MATH core and temporal evidence.
+   # Running shards are never migrated or cancelled; this gate applies after a
+   # pending shard has been explicitly relocated with a durable lineage record.
+   if (task.get('task')=='gsm8k' and task.get('stage')=='base' and int(task.get('shard',0))>0
+       and not task.get('job_id')):
+    math_deep=[x for x in queue['tasks'] if x.get('kind')=='science_shard'
+               and x.get('task')=='math500' and x.get('stage') in {'r3_core','temporal'}]
+    if not math_deep or not all(x.get('status')=='SEALED' for x in math_deep):
+     task['status']='WAITING_PRIORITY'
+     if task['status']!=old: changed=True; event('TASK_STATE_CHANGE',{'task':task['id'],'old':old,'new':task['status'],'job_id':task.get('job_id'),'error':'Held for LLaDA MATH deep critical path'})
+     continue
    deps=[byid[k]['status'] for k in task.get('depends_on',[])]
    if task.get('job_id'):
     s=subprocess.run(['sacct','-n','-X','-P','-j',task['job_id'],'--format=JobID,State,ExitCode'],text=True,capture_output=True,timeout=15)
