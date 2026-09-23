@@ -1,5 +1,5 @@
-2026-09-23T22:42:27.337334+00:00
-HOURS TO DEADLINE: 61.28
+2026-09-23T22:43:59.637287+00:00
+HOURS TO DEADLINE: 61.25
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -60,7 +60,6 @@ MONITOR_DRIFT: Slurm job 52852 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52851 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52939 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52940 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52792 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52937 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52938 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52850 exists but legacy monitor state does not mention it.
@@ -123,7 +122,6 @@ ALL ACTIVE KIMHJ JOBS
 52851 v2r-ind-server1-math500-base-000 PENDING  KEEP_REFERENCE_CRITICAL
 52939 v2r-ind-server4-gsm8k-base-recover3-000 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52940 v2r-ind-server4-gsm8k-base-recover3-001 RUNNING server4 KEEP_REFERENCE_CRITICAL
-52792 v2r-llada_math500_core_finalsha-shard-006 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52937 v2r-ind-server4-math500-base-recover3-000 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52938 v2r-ind-server4-math500-base-recover3-001 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52850 v2r-ind-s2-gsm-r2g RUNNING server2 KEEP_REFERENCE_CRITICAL
@@ -139,7 +137,7 @@ SERVER2
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['3'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
 observed=True idle_gpu_candidates=['3', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
@@ -149,7 +147,7 @@ See legacy monitor and legacy_reset snapshots; old evidence is not reference-pri
 
 REFERENCE GATES
 llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=WAITING_PRIORITY
-llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=RUNNING, temporal=WAITING_PRIORITY
+llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=DONE, temporal=WAITING_PRIORITY
 
 REFERENCE PRIMARY
 dream_gsm8k: NOT_STARTED
@@ -173,7 +171,7 @@ llada_math500_core_finalsha-shard-002: DONE job=52740
 llada_math500_core_finalsha-shard-003: DONE job=52741
 llada_math500_core_finalsha-shard-004: DONE job=52742
 llada_math500_core_finalsha-shard-005: RUNNING job=52791
-llada_math500_core_finalsha-shard-006: RUNNING job=52792
+llada_math500_core_finalsha-shard-006: DONE job=52792
 llada_math500_temporal_finalsha-shard-000: WAITING_PRIORITY job=None
 llada_math500_temporal_finalsha-shard-001: WAITING_PRIORITY job=None
 llada_math500_temporal_finalsha-shard-002: WAITING_PRIORITY job=None
@@ -185,10 +183,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-23T22:42:04.996609+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-23T22:43:08.730618+00:00
 
 MONITOR
-heartbeat=2026-09-23T22:42:27.337334+00:00
+heartbeat=2026-09-23T22:43:59.637287+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
