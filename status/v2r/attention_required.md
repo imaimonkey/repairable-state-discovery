@@ -1,5 +1,5 @@
-2026-09-23T20:25:51.902980+00:00
-HOURS TO DEADLINE: 63.55
+2026-09-23T20:27:23.721868+00:00
+HOURS TO DEADLINE: 63.53
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,52 +9,28 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
-MONITOR_DRIFT: Slurm job 52809 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52808 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52791 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52792 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52803 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52804 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52805 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52806 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52807 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52798 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52799 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52800 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52801 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52802 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52740 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
-52809 v2r-fallback-server2-3 PENDING  KEEP_REFERENCE_CRITICAL
-52808 v2r-fallback-server2-2 PENDING  KEEP_REFERENCE_CRITICAL
 52791 v2r-llada_math500_core_finalsha-shard-005 PENDING  KEEP_REFERENCE_CRITICAL
 52792 v2r-llada_math500_core_finalsha-shard-006 PENDING  KEEP_REFERENCE_CRITICAL
-52803 v2r-fallback-server1-3 PENDING  KEEP_REFERENCE_CRITICAL
-52804 v2r-fallback-server2-0 RUNNING server2 KEEP_REFERENCE_CRITICAL
-52805 v2r-fallback-server4-2 RUNNING server4 KEEP_REFERENCE_CRITICAL
-52806 v2r-fallback-server4-3 RUNNING server4 KEEP_REFERENCE_CRITICAL
-52807 v2r-fallback-server2-1 RUNNING server2 KEEP_REFERENCE_CRITICAL
-52798 v2r-fallback-server1-0 RUNNING devbox KEEP_REFERENCE_CRITICAL
-52799 v2r-fallback-server4-0 RUNNING server4 KEEP_REFERENCE_CRITICAL
-52800 v2r-fallback-server1-1 RUNNING devbox KEEP_REFERENCE_CRITICAL
-52801 v2r-fallback-server1-2 RUNNING devbox KEEP_REFERENCE_CRITICAL
-52802 v2r-fallback-server4-1 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52742 v2r-llada_math500_core_finalsha-shard-004 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52740 v2r-llada_math500_core_finalsha-shard-002 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
-observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
+observed=True idle_gpu_candidates=['3', '4', '7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
 
 SERVER2
-observed=True idle_gpu_candidates=[] safe_filesystems=[]
+observed=True idle_gpu_candidates=['6', '7'] safe_filesystems=[]
 
 SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=['2', '3', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['0', '1', '2', '3', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -97,10 +73,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-23T20:25:11.878917+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-23T20:27:19.047037+00:00
 
 MONITOR
-heartbeat=2026-09-23T20:25:51.902980+00:00
+heartbeat=2026-09-23T20:27:23.721868+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
