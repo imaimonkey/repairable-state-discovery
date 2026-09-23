@@ -156,8 +156,20 @@ def _validate_result(manifest: Mapping[str, Any], item_id: str, result: Mapping[
     validate_metric_names(result)
     expected = sorted(row["context_id"] for row in _item_seed_records(manifest, item_id))
     consumed = result.get("seed_context_ids")
-    if not isinstance(consumed, list) or sorted(consumed) != expected:
-        raise ContractError("Executor did not attest exactly the predeclared item seed contexts")
+    unused = result.get("unused_seed_context_ids", [])
+    if (not isinstance(consumed, list) or not isinstance(unused, list)
+            or len(set(consumed + unused)) != len(consumed + unused)
+            or sorted(consumed + unused) != expected):
+        raise ContractError("Executor did not partition the complete predeclared seed registry")
+    if unused:
+        if manifest["stage"] != "r3_core" or result.get("unused_seed_context_reason") != "not_selected_checkpoint":
+            raise ContractError("Unconsumed RNG contexts need a frozen selection reason")
+        selected = result.get("selected_checkpoint")
+        for record in _item_seed_records(manifest, item_id):
+            c = record["context"]
+            should_skip = c["purpose"] == "confirmation" and c["checkpoint"] != selected
+            if (record["context_id"] in unused) != should_skip:
+                raise ContractError("Unused RNG context is not an unselected confirmation checkpoint")
     if manifest["stage"] in {"base", "r0_full", "r0_smoke"}:
         if type(result.get("correct")) is not bool:
             raise ContractError("A base trajectory requires an explicit boolean correctness result")

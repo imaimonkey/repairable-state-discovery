@@ -10,6 +10,18 @@ from repairable_diffusion.src.v2r.seeds import build_seed_registry
 from repairable_diffusion.src.v2r.reference_sources import ensure_sources,load_records,OfficialEvaluator,bridge_evaluate
 from repairable_diffusion.src.v2r.reference_gates import validate_gate_report
 
+def evidence_paths(stage_dir):
+ """Return immutable scientific payloads only.
+
+ Scheduler stdout/stderr and progress markers are mutable operational logs;
+ hashing them as gate evidence made an otherwise valid report fail when Slurm
+ appended a final line after the process exited.
+ """
+ names={'seed_registry.json','evaluator_fixtures.json','evaluator_disagreements.jsonl'}
+ return sorted(p for p in stage_dir.iterdir() if p.is_file() and (
+  p.name in names or (p.name.startswith('item-') and p.suffix=='.json')
+ ))
+
 def contract(recipe,task):
  return {'design_generation':2,'task':task,'generation':recipe['tasks'][task]['generation'],'checkpoint_grid':recipe['checkpoint_normalized_grid'],'B_loc':4,'B_eval':8,'tau_confirm':0.25,'design_seed':20260923}
 
@@ -109,7 +121,8 @@ def main():
     replay=[row for v in results for row in v.get('native_replay_checks',[])]
     report['native_replay_status']='PASS' if replay and all(all(r[k] for k in ['tokens_exact','nfe_exact','mask_exhausted']) for r in replay) else 'NOT_VALIDATED'
    report['timing']={'mean_seconds_per_base':sum(v['generation']['seconds'] for v in results)/len(results),'max_gpu_peak_bytes':max(v['generation']['gpu_peak_bytes'] for v in results),'item_count':len(selected),'total_item_output_bytes':sum(p.stat().st_size for p in stage_dir.glob('item-*.json'))}
-  report['evidence_files']={str(p.resolve()):file_hash(p) for p in stage_dir.iterdir() if p.is_file() and p.name not in ['gate_report.json','progress.json']}
+  evidence=evidence_paths(stage_dir)
+  report['evidence_files']={str(p.resolve()):file_hash(p) for p in evidence}
   report['status']='PASS' if all(report['checks'].values()) else 'NEEDS_REVIEW'
   if report['status']=='PASS':
    errors=validate_gate_report(report)

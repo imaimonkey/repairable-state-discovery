@@ -1,0 +1,50 @@
+{
+  "schema_version": "v2r.legacy_cancellation.1",
+  "recorded_at": "2026-09-23T20:45:57+09:00",
+  "owner": "kimhj",
+  "jobs": [
+    {
+      "job_id": "49256",
+      "job_name": "repair_bm_gsm8k_full_diffusion",
+      "classification": "CANCEL_LEGACY_FOR_REFERENCE_REALLOCATION",
+      "status": "CANCELLED_FOR_REFERENCE_PRIMARY_REALLOCATION",
+      "reason": "Legacy GSM8K full-diffusion measurement pipeline; incompatible with the frozen reference-primary protocol and occupying Server2 GPU6.",
+      "snapshot_dir": "49256_forensic_snapshot_20260923"
+    },
+    {
+      "job_id": "49257",
+      "job_name": "repair_pull_gsm8k_full_llada8b_fast",
+      "classification": "CANCEL_LEGACY_FOR_REFERENCE_REALLOCATION",
+      "status": "CANCELLED_FOR_REFERENCE_PRIMARY_REALLOCATION",
+      "reason": "Artifact-pull dependency of cancelled legacy job 49256."
+    },
+    {
+      "job_id": "52594",
+      "job_name": "v2-50752-forensic-s2",
+      "classification": "CANCEL_LEGACY_FOR_REFERENCE_REALLOCATION",
+      "status": "CANCELLED_FOR_REFERENCE_PRIMARY_REALLOCATION",
+      "reason": "Pending forensic shard for superseded V2/50752 evidence; dependency was already unsatisfied."
+    },
+    {
+      "job_id": "52595",
+      "job_name": "v2-50752-forensic-s3",
+      "classification": "CANCEL_LEGACY_FOR_REFERENCE_REALLOCATION",
+      "status": "CANCELLED_FOR_REFERENCE_PRIMARY_REALLOCATION",
+      "reason": "Pending forensic shard chained to cancelled 52594; outside reference-primary scope."
+    }
+  ],
+  "preservation": {
+    "slurm_metadata": true,
+    "batch_scripts": true,
+    "stdout_stderr": true,
+    "config_snapshot": true,
+    "artifact_deletion": false,
+    "other_user_processes_touched": false
+  },
+  "verification": {
+    "49256_gpu_released": true,
+    "server2_gpu6_processes_after_cancel": [],
+    "unrelated_kimjh_bpr_pid_2540440_preserved": true,
+    "other_users_preserved": true
+  }
+}

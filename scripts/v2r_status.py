@@ -35,6 +35,8 @@ def write_status(queue,health):
  for b in ['llada','dream']:
   for g in ['R0','R1','R2']:lines.append(f'{b} {g}: '+str({task:values.get(g,{}).get('status','NOT_RUN') for task,values in gates.items() if task.startswith(b)}))
  lines+=['','PRIMARY EVIDENCE']+[k+': '+v for k,v in primary.items()]+['','ACTIVE SHARDS']+[t['id']+': '+t.get('status','NOT_RUN')+' job='+str(t.get('job_id')) for t in queue.get('tasks',[])]+['','GPU / SERVER STATUS','See cluster_inventory.json; server3 root filesystem selected; critical /data rejected.','','FAILED/BLOCKED','Final scientific execution SHA/base/R3/temporal workers and measured resource budget still pending validation.','Parallel development agents stopped by usage limit; partial code is retained and checked locally.','','NEW SEALED EVIDENCE','None.','','PAPER STATUS',paper['status'],'','DEADLINE STATUS',f'{hours:.2f}h remaining; T-24 strongest completed evidence import; Dream cannot delay LLaDA.','','WHAT CHATGPT SHOULD READ NEXT','current_status.json, gate_status.json, legacy_reset/reset_state.json, docs/V2R_REFERENCE_PRIMARY_PROTOCOL.md']
- (OUT/'attention_required.md').write_text('\n'.join(lines)+'\n')
+ # The read-only unified monitor owns the human-readable attention file.  Keep
+ # this render in memory for callers, but do not race the observer by writing it
+ # from the execution authority.
  with (OUT/'progress_history.jsonl').open('a') as f:f.write(json.dumps({'timestamp':now.isoformat(),'active_tasks':current['active_tasks'],'hours_remaining':hours})+'\n')
  return current
