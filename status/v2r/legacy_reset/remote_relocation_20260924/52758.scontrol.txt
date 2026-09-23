@@ -1,0 +1,30 @@
+JobId=52758 JobName=v2r-llada_math500_core_finalsha-shard-006r1
+   UserId=kimhj(1021) GroupId=kimhj(1005) MCS_label=N/A
+   Priority=1 Nice=0 Account=lab QOS=lab_gpu_s3
+   JobState=PENDING Reason=QOSMaxGRESPerUser Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:00 TimeLimit=04:00:00 TimeMin=N/A
+   SubmitTime=2026-09-24T00:37:17 EligibleTime=2026-09-24T00:37:17
+   AccrueTime=2026-09-24T00:37:17
+   StartTime=Unknown EndTime=Unknown Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-24T00:45:34 Scheduler=Main
+   Partition=gpu AllocNode:Sid=ubuntu:2491224
+   ReqNodeList=ubuntu ExcNodeList=(null)
+   NodeList=
+   StepMgrEnabled=Yes
+   NumNodes=1-1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=4,mem=48G,node=1,billing=4,gres/gpu=1
+   AllocTRES=(null)
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=4 MinMemoryNode=48G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/var/tmp/kimhj-v2r-reference/runtime/llada_math500_core_finalsha-shard-006.sbatch
+   SubmitLine=sbatch --parsable --partition=gpu --qos=lab_gpu_s3 --nodelist=ubuntu --gres=gpu:h200:1 --cpus-per-task=4 --mem=48G --time=04:00:00 --job-name=v2r-llada_math500_core_finalsha-shard-006r1 /var/tmp/kimhj-v2r-reference/runtime/llada_math500_core_finalsha-shard-006.sbatch
+   WorkDir=/data/kimhj
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/data/kimhj/slurm-52758.out
+   TresPerNode=gres/gpu:h200:1
+   TresPerTask=cpu=4
+
