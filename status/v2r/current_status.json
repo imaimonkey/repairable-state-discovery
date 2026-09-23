@@ -1,13 +1,14 @@
 {
   "active_tasks": [
-    "llada-math500-r2-finalsha",
-    "llada-gsm8k-r2-finalsha"
+    "llada_math500_base_finalsha-shard-000",
+    "llada_gsm8k_base_finalsha-shard-000",
+    "llada_gsm8k_base_finalsha-shard-001"
   ],
   "deadline": "2026-09-26T20:59:00+09:00",
-  "development_sha": "c7a027bc31b3bf0f57ca5ce185c6cccee6b4e9c0",
+  "development_sha": "35a4385dc7e5a17c3315f73dbb192172f899794a",
   "final_scientific_execution_sha": null,
   "goal_status": "IN_PROGRESS",
-  "hours_remaining": 71.746,
+  "hours_remaining": 71.092,
   "legacy_jobs": {
     "50668": "CANCELLED_FOR_REFERENCE_PRIMARY_RESET",
     "50669": "CANCELLED_FOR_REFERENCE_PRIMARY_RESET"
@@ -43,7 +44,13 @@
         "error": null,
         "job_id": "52679",
         "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-78fe5d7-llada-gsm8k/R2/gate_report.json",
-        "status": "RUNNING"
+        "status": "PASS"
+      },
+      "base": {
+        "error": null,
+        "job_id": "52689",
+        "path": null,
+        "status": "PENDING"
       }
     },
     "llada_math500": {
@@ -63,10 +70,16 @@
         "error": null,
         "job_id": "52678",
         "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-78fe5d7-llada-math500/R2/gate_report.json",
+        "status": "PASS"
+      },
+      "base": {
+        "error": null,
+        "job_id": "52687",
+        "path": null,
         "status": "RUNNING"
       }
     }
   },
   "scientific_execution_freeze_status": "PENDING_R2_AND_COMPLETE_SCIENTIFIC_EXECUTORS",
-  "timestamp": "2026-09-23T12:14:15.834805+00:00"
+  "timestamp": "2026-09-23T12:53:29.584921+00:00"
 }

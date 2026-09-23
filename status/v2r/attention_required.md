@@ -1,5 +1,5 @@
-2026-09-23T12:12:46.400132+00:00
-HOURS TO DEADLINE: 71.77
+2026-09-23T12:52:23.623660+00:00
+HOURS TO DEADLINE: 71.11
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,13 +9,15 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
-MONITOR_DRIFT: Slurm job 52679 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52678 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52689 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52688 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52687 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
-52679 v2r-llada-gsm8k-r2-finalsha RUNNING ubuntu KEEP_REFERENCE_CRITICAL
-52678 v2r-llada-math500-r2-finalsha RUNNING ubuntu KEEP_REFERENCE_CRITICAL
+52689 v2r-llada_gsm8k_base_finalsha-shard-001 PENDING  KEEP_REFERENCE_CRITICAL
+52688 v2r-llada_gsm8k_base_finalsha-shard-000 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
+52687 v2r-llada_math500_base_finalsha-shard-000 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
 observed=False idle_gpu_candidates=[] safe_filesystems=[]
@@ -45,20 +47,23 @@ llada_math500: NOT_STARTED
 ACTIVE SHARDS
 llada-math500-r0-finalsha: PASS job=52676
 llada-math500-r1-finalsha: PASS job=None
-llada-math500-r2-finalsha: RUNNING job=52678
+llada-math500-r2-finalsha: PASS job=52678
 llada-gsm8k-r0-finalsha: PASS job=52677
 llada-gsm8k-r1-finalsha: PASS job=None
-llada-gsm8k-r2-finalsha: RUNNING job=52679
+llada-gsm8k-r2-finalsha: PASS job=52679
+llada_math500_base_finalsha-shard-000: RUNNING job=52687
+llada_gsm8k_base_finalsha-shard-000: RUNNING job=52688
+llada_gsm8k_base_finalsha-shard-001: PENDING job=52689
 
 PAPER
 status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1665866 heartbeat=2026-09-23T12:12:11.994528+00:00
+status=DEGRADED_RETRY pid=1788284 heartbeat=2026-09-23T12:52:03.312303+00:00
 
 MONITOR
-heartbeat=2026-09-23T12:12:46.400132+00:00
+heartbeat=2026-09-23T12:52:23.623660+00:00
 
 CURRENT P0
 Repair LLaDA R1 evidence inventory, rerun valid R0→R1→R2 on a final immutable SHA, then LLaDA MATH base.
