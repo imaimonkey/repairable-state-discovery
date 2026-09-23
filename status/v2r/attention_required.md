@@ -1,5 +1,5 @@
-2026-09-23T18:58:54.957482+00:00
-HOURS TO DEADLINE: 65.00
+2026-09-23T19:00:26.506751+00:00
+HOURS TO DEADLINE: 64.98
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -31,7 +31,7 @@ ALL ACTIVE KIMHJ JOBS
 52739 v2r-llada_math500_core_finalsha-shard-001 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
-observed=False idle_gpu_candidates=[] safe_filesystems=[]
+observed=True idle_gpu_candidates=['4', '7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
 
 SERVER2
 observed=True idle_gpu_candidates=['6', '7'] safe_filesystems=[]
@@ -40,7 +40,7 @@ SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=['0', '1', '2', '3', '4', '5', '6'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['1', '2', '3', '4', '5', '6'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -83,10 +83,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2758158 heartbeat=2026-09-23T18:58:18.192156+00:00
+status=RUNNING pid=2758158 heartbeat=2026-09-23T19:00:25.272449+00:00
 
 MONITOR
-heartbeat=2026-09-23T18:58:54.957482+00:00
+heartbeat=2026-09-23T19:00:26.506751+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
