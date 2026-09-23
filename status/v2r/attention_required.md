@@ -1,5 +1,5 @@
-2026-09-23T14:18:28.361707+00:00
-HOURS TO DEADLINE: 69.68
+2026-09-23T14:48:58.044896+00:00
+HOURS TO DEADLINE: 69.17
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -24,7 +24,7 @@ SERVER2
 observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=['0'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
@@ -58,10 +58,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1881023 heartbeat=2026-09-23T14:17:39.096035+00:00
+status=RUNNING pid=1881023 heartbeat=2026-09-23T14:48:44.740049+00:00
 
 MONITOR
-heartbeat=2026-09-23T14:18:28.361707+00:00
+heartbeat=2026-09-23T14:48:58.044896+00:00
 
 CURRENT P0
 Complete LLaDA MATH base and freeze the shared trajectory bank.
