@@ -1,5 +1,5 @@
-2026-09-23T15:02:40.946459+00:00
-HOURS TO DEADLINE: 68.94
+2026-09-23T15:05:43.713419+00:00
+HOURS TO DEADLINE: 68.89
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -32,13 +32,13 @@ See legacy monitor and legacy_reset snapshots; old evidence is not reference-pri
 
 REFERENCE GATES
 llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=WAITING_PRIORITY
-llada_math500: R0=PASS, R1=PASS, R2=PASS, base=RUNNING
+llada_math500: R0=PASS, R1=PASS, R2=PASS, base=DONE
 
 REFERENCE PRIMARY
 dream_gsm8k: NOT_STARTED
 dream_math500: NOT_STARTED
 llada_gsm8k: NOT_STARTED
-llada_math500: NOT_STARTED
+llada_math500: BASE_SEALED
 
 ACTIVE SHARDS
 llada-math500-r0-finalsha: PASS job=52676
@@ -47,7 +47,7 @@ llada-math500-r2-finalsha: PASS job=52678
 llada-gsm8k-r0-finalsha: PASS job=52677
 llada-gsm8k-r1-finalsha: PASS job=None
 llada-gsm8k-r2-finalsha: PASS job=52679
-llada_math500_base_finalsha-shard-000: RUNNING job=52687
+llada_math500_base_finalsha-shard-000: DONE job=52687
 llada_gsm8k_base_finalsha-shard-000: RUNNING job=52688
 llada_gsm8k_base_finalsha-shard-001: WAITING_PRIORITY job=None
 
@@ -56,13 +56,13 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1881023 heartbeat=2026-09-23T15:01:48.852586+00:00
+status=RUNNING pid=2369891 heartbeat=2026-09-23T15:04:55.755699+00:00
 
 MONITOR
-heartbeat=2026-09-23T15:02:40.946459+00:00
+heartbeat=2026-09-23T15:05:43.713419+00:00
 
 CURRENT P0
-Complete LLaDA MATH base and freeze the shared trajectory bank.
+Complete LLaDA MATH core repairability and seal its reference bundle.
 
 NEXT AUTONOMOUS ACTIONS
 Reconcile actual Slurm jobs every 90 seconds; keep only FREE_SAFE GPUs for reference shards; unlock downstream work only after sealed gates.

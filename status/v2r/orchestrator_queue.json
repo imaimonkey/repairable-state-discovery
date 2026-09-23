@@ -239,6 +239,7 @@
       "job_id": "52687",
       "kind": "science_shard",
       "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_base_finalsha.json",
+      "paper_imported": true,
       "priority": 20,
       "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_base_finalsha",
       "script": "/var/tmp/kimhj-v2r-reference/runtime/llada_math500_base_finalsha-shard-000.sbatch",
@@ -246,7 +247,7 @@
       "shard": 0,
       "slurm_state": "COMPLETED",
       "stage": "base",
-      "status": "DONE",
+      "status": "SEALED",
       "storage": {
         "available_bytes": 379655749632,
         "projected_bytes": 4294967296,
@@ -365,6 +366,258 @@
       ],
       "submitted_at": "2026-09-23T12:51:03.287524+00:00",
       "task": "gsm8k",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
+      "id": "llada_math500_core_finalsha-shard-000",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
+      "priority": 21,
+      "purpose": "core",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha",
+      "server": "server3",
+      "shard": 0,
+      "stage": "r3_core",
+      "status": "READY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
+      "id": "llada_math500_core_finalsha-shard-001",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
+      "priority": 21,
+      "purpose": "core",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha",
+      "server": "server3",
+      "shard": 1,
+      "stage": "r3_core",
+      "status": "READY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
+      "id": "llada_math500_core_finalsha-shard-002",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
+      "priority": 21,
+      "purpose": "core",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha",
+      "server": "server3",
+      "shard": 2,
+      "stage": "r3_core",
+      "status": "READY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
+      "id": "llada_math500_core_finalsha-shard-003",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
+      "priority": 21,
+      "purpose": "core",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha",
+      "server": "server3",
+      "shard": 3,
+      "stage": "r3_core",
+      "status": "READY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
+      "id": "llada_math500_core_finalsha-shard-004",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
+      "priority": 21,
+      "purpose": "core",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha",
+      "server": "server3",
+      "shard": 4,
+      "stage": "r3_core",
+      "status": "READY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
+      "id": "llada_math500_core_finalsha-shard-005",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
+      "priority": 21,
+      "purpose": "core",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha",
+      "server": "server3",
+      "shard": 5,
+      "stage": "r3_core",
+      "status": "READY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
+      "id": "llada_math500_core_finalsha-shard-006",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
+      "priority": 21,
+      "purpose": "core",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha",
+      "server": "server3",
+      "shard": 6,
+      "stage": "r3_core",
+      "status": "READY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.gates.json",
+      "id": "llada_math500_temporal_finalsha-shard-000",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.json",
+      "priority": 22,
+      "purpose": "temporal",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_temporal_finalsha",
+      "server": "server3",
+      "shard": 0,
+      "stage": "temporal",
+      "status": "READY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.gates.json",
+      "id": "llada_math500_temporal_finalsha-shard-001",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.json",
+      "priority": 22,
+      "purpose": "temporal",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_temporal_finalsha",
+      "server": "server3",
+      "shard": 1,
+      "stage": "temporal",
+      "status": "READY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.gates.json",
+      "id": "llada_math500_temporal_finalsha-shard-002",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.json",
+      "priority": 22,
+      "purpose": "temporal",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_temporal_finalsha",
+      "server": "server3",
+      "shard": 2,
+      "stage": "temporal",
+      "status": "READY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.gates.json",
+      "id": "llada_math500_temporal_finalsha-shard-003",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.json",
+      "priority": 22,
+      "purpose": "temporal",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_temporal_finalsha",
+      "server": "server3",
+      "shard": 3,
+      "stage": "temporal",
+      "status": "READY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada_math500_base_finalsha-shard-000"
+      ],
+      "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+      "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.gates.json",
+      "id": "llada_math500_temporal_finalsha-shard-004",
+      "kind": "science_shard",
+      "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.json",
+      "priority": 22,
+      "purpose": "temporal",
+      "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_temporal_finalsha",
+      "server": "server3",
+      "shard": 4,
+      "stage": "temporal",
+      "status": "READY",
+      "task": "math500",
       "walltime": "04:00:00"
     }
   ]
