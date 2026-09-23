@@ -43,6 +43,14 @@
         "tres": "gres/gpu:h200:1"
       },
       {
+        "job_id": "52788",
+        "name": "v2r-s1-deterministic-probe",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "52742",
         "name": "v2r-llada_math500_core_finalsha-shard-004",
         "node": "ubuntu",
@@ -103,6 +111,14 @@
     ],
     "running": [
       {
+        "job_id": "52788",
+        "name": "v2r-s1-deterministic-probe",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "52742",
         "name": "v2r-llada_math500_core_finalsha-shard-004",
         "node": "ubuntu",
@@ -144,7 +160,6 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
-        "4",
         "7"
       ],
       "observed": true,
@@ -224,5 +239,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T19:37:18.686812+00:00"
+  "timestamp": "2026-09-23T19:38:50.369652+00:00"
 }
