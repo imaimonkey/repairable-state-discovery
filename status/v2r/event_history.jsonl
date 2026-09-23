@@ -38,3 +38,8 @@
 {"event": "INTEGRITY_ALERT", "job_id": "49256", "message": "Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.", "timestamp": "2026-09-23T11:52:58.019601+00:00", "type": "MONITOR_DRIFT_HISTORICAL"}
 {"error": null, "event": "TASK_STATE_CHANGE", "job_id": "52676", "new": "RUNNING", "old": "SUBMITTED", "task": "llada-math500-r0-finalsha", "timestamp": "2026-09-23T11:53:44.118311+00:00"}
 {"error": null, "event": "TASK_STATE_CHANGE", "job_id": "52677", "new": "RUNNING", "old": "SUBMITTED", "task": "llada-gsm8k-r0-finalsha", "timestamp": "2026-09-23T11:53:44.126260+00:00"}
+{"event": "INTEGRITY_ALERT", "job_id": "52677", "message": "Slurm job 52677 exists but legacy monitor state does not mention it.", "timestamp": "2026-09-23T11:57:32.185679+00:00", "type": "MONITOR_DRIFT"}
+{"event": "INTEGRITY_ALERT", "job_id": "49256", "message": "Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.", "timestamp": "2026-09-23T11:57:32.185679+00:00", "type": "MONITOR_DRIFT_HISTORICAL"}
+{"error": null, "event": "TASK_STATE_CHANGE", "job_id": "52676", "new": "PASS", "old": "RUNNING", "task": "llada-math500-r0-finalsha", "timestamp": "2026-09-23T11:57:47.570799+00:00"}
+{"error": null, "event": "TASK_STATE_CHANGE", "job_id": null, "new": "PASS", "old": "WAITING_DEPENDENCY", "task": "llada-math500-r1-finalsha", "timestamp": "2026-09-23T11:57:51.141351+00:00"}
+{"error": null, "event": "TASK_STATE_CHANGE", "job_id": "52678", "new": "SUBMITTED", "old": "WAITING_DEPENDENCY", "task": "llada-math500-r2-finalsha", "timestamp": "2026-09-23T11:57:52.469957+00:00"}

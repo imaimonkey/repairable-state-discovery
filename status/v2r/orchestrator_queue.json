@@ -5,6 +5,7 @@
     {
       "backbone": "llada",
       "depends_on": [],
+      "error": null,
       "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
       "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
       "id": "llada-math500-r0-finalsha",
@@ -21,7 +22,7 @@
       "server": "server3",
       "slurm_state": "RUNNING",
       "stage": "R0",
-      "status": "RUNNING",
+      "status": "PASS",
       "storage": {
         "available_bytes": 380102967296,
         "projected_bytes": 2147483648,
@@ -60,7 +61,7 @@
       "priority": 1,
       "server": "server3",
       "stage": "R1",
-      "status": "WAITING_DEPENDENCY",
+      "status": "PASS",
       "task": "math500",
       "walltime": "04:00:00"
     },
@@ -72,12 +73,41 @@
       "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
       "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
       "id": "llada-math500-r2-finalsha",
+      "job_id": "52678",
       "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
       "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-78fe5d7-llada-math500",
       "priority": 2,
+      "script": "/var/tmp/kimhj-v2r-reference/runtime/llada-math500-r2-finalsha.sbatch",
+      "seed_audit": {
+        "context_count": 1280,
+        "unintended_collisions": 0,
+        "unique_seed_count": 384
+      },
       "server": "server3",
       "stage": "R2",
-      "status": "WAITING_DEPENDENCY",
+      "status": "SUBMITTED",
+      "storage": {
+        "available_bytes": 380032811008,
+        "projected_bytes": 2147483648,
+        "usage_fraction": 0.7879277538505112
+      },
+      "submission_args": [
+        "sbatch",
+        "--parsable",
+        "--partition=gpu",
+        "--qos=lab_gpu_s3",
+        "--nodelist=ubuntu",
+        "--gres=gpu:h200:1",
+        "--cpus-per-task=4",
+        "--mem=48G",
+        "--time=04:00:00",
+        "--job-name=v2r-llada-math500-r2-finalsha",
+        "--chdir=/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
+        "--output=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-78fe5d7-llada-math500/R2/slurm-%j.out",
+        "--error=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-78fe5d7-llada-math500/R2/slurm-%j.err",
+        "/var/tmp/kimhj-v2r-reference/runtime/llada-math500-r2-finalsha.sbatch"
+      ],
+      "submitted_at": "2026-09-23T11:57:52.469911+00:00",
       "task": "math500",
       "walltime": "04:00:00"
     },
