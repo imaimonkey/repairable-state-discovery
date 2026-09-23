@@ -33,7 +33,7 @@ def cycle():
    task['slurm_state']=state
    if state in ['RUNNING','PENDING','CONFIGURING']:task['status']=state
    elif state!='UNKNOWN':task.update(status='NEEDS_REVIEW',error='Terminal Slurm state without PASS: '+state)
-  elif task.get('status') not in ['PASS','NEEDS_REVIEW']:
+  elif task.get('status') in ['READY','RESOURCE_WAIT','WAITING_DEPENDENCY']:
    dependencies=[byid[k]['status'] for k in task.get('depends_on',[])]
    if all(s=='PASS' for s in dependencies):
     if dt.datetime.now(dt.timezone.utc)>=DEADLINE-dt.timedelta(hours=12):task['status']='DEADLINE_BLOCKED'

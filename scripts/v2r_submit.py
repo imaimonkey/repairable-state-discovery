@@ -15,7 +15,7 @@ def storage_gate(path,projected=2*1024**3):
  return {'available_bytes':available,'projected_bytes':projected,'usage_fraction':used/(used+available)}
 
 def command(task):
- return [PYTHON,str(Path(task['execution_worktree'])/'scripts/v2r_reference_gate.py'),'--backbone',task['backbone'],'--task',task['task'],'--stage',task['stage'],'--output',task['output'],'--source-cache','/var/tmp/kimhj-v2r-reference/upstream','--model-cache','/data/kimhj/.cache/huggingface/hub','--execution-sha',task['execution_git_sha']]
+ return [PYTHON,str(Path(task['execution_worktree'])/'scripts/v2r_reference_gate.py'),'--backbone',task['backbone'],'--task',task['task'],'--stage',task['stage'],'--output',task['output'],'--source-cache','/var/tmp/kimhj-v2r-reference/upstream','--model-cache',task.get('model_cache','/var/tmp/kimhj-v2r-reference/model-cache'),'--execution-sha',task['execution_git_sha']]
 
 def environment():
  return {'HF_DATASETS_CACHE':'/var/tmp/kimhj-v2r-reference/datasets','HF_MODULES_CACHE':'/var/tmp/kimhj-v2r-reference/modules','HF_HUB_CACHE':'/var/tmp/kimhj-v2r-reference/hub','OMP_NUM_THREADS':'4','TOKENIZERS_PARALLELISM':'false','PYTHONDONTWRITEBYTECODE':'1'}
