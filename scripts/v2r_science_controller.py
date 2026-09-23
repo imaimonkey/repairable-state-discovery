@@ -37,7 +37,9 @@ def base_spec(backbone, task, seconds_per_item):
  rows=load_records(recipe,task,'bridge',SOURCE_CACHE)
  model={'backbone':backbone,'id':recipe['model_id'],'revision':recipe['model_revision'],'tokenizer_revision':recipe['tokenizer_revision']}
  dataset={'id':recipe['tasks'][task]['bridge_dataset']['path'],'revision':recipe['tasks'][task]['bridge_dataset']['revision'],'split':recipe['tasks'][task]['bridge_dataset']['split'],'task':task,'content_sha256':canonical_hash(rows)}
- config={'generation':recipe['tasks'][task]['generation'],'decoder':'source_native_instrumented_reference_sampler','trajectory_policy':'one_trajectory_per_item'}
+ # The gate reports bind to this exact contract; scientific stages reuse it
+ # instead of introducing a post-gate config hash.
+ config={'design_generation':2,'task':task,'generation':recipe['tasks'][task]['generation'],'checkpoint_grid':[.125,.25,.375,.5,.625,.75,.875],'B_loc':4,'B_eval':8,'tau_confirm':.25,'design_seed':20260923}
  return {'run_id':f'{backbone}_{task}_base_finalsha','stage':'base','design_seed':20260923,'design_sha256':DESIGN_SHA,
   'execution_git_sha':'78fe5d7c1829b67d1bb1416b7205edfa647bb2fa','model':model,'dataset':dataset,'recipe':recipe,'config':config,
   'item_ids':[str(r['item_id']) for r in rows],'executor':EXECUTOR,
@@ -120,7 +122,7 @@ def _deep_spec(base_manifest, run_dir, bank, bank_sha, index, purpose, budget):
  selected=failed['item_ids']; trajectory_index={item:index[item] for item in selected}
  sample=read_json(index[selected[0]]['path'])['trajectory']; checkpoints=[x['step'] for x in sample['checkpoint_mapping']]
  stage='r3_core' if purpose=='core' else 'temporal'
- config={'generation':recipe['tasks'][task]['generation'],'checkpoint_grid':[.125,.25,.375,.5,.625,.75,.875],'B_loc':4,'B_eval':8,'tau_confirm':.25,'sensitivity_thresholds':[.125,.25,.5],'trajectory_policy':'failed_reference_bank'}
+ config={'design_generation':2,'task':task,'generation':recipe['tasks'][task]['generation'],'checkpoint_grid':[.125,.25,.375,.5,.625,.75,.875],'B_loc':4,'B_eval':8,'tau_confirm':.25,'design_seed':20260923}
  if purpose=='core':
   plan=[{'purpose':'localization','checkpoints':checkpoints,'branches':4,'operators':['matched_continuation','canonical_repair'],'rng_role':'future','paired_rng_group':'matched-future'}, {'purpose':'confirmation','checkpoints':checkpoints,'branches':8,'operators':['matched_continuation','canonical_repair'],'rng_role':'future','paired_rng_group':'matched-future'}]
  else:
