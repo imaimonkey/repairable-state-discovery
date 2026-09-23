@@ -1,5 +1,5 @@
-2026-09-23T15:36:16.213173+00:00
-HOURS TO DEADLINE: 68.38
+2026-09-23T15:37:47.821201+00:00
+HOURS TO DEADLINE: 68.35
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,6 +9,8 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
+MONITOR_DRIFT: Slurm job 52758 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52757 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52750 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52749 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52748 exists but legacy monitor state does not mention it.
@@ -17,13 +19,13 @@ MONITOR_DRIFT: Slurm job 52746 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52741 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52740 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52739 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52755 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52756 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52738 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52688 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
+52758 v2r-llada_math500_core_finalsha-shard-006r1 PENDING  KEEP_REFERENCE_CRITICAL
+52757 v2r-llada_math500_core_finalsha-shard-005r1 PENDING  KEEP_REFERENCE_CRITICAL
 52750 v2r-llada_math500_temporal_finalsha-shard-004 PENDING  KEEP_REFERENCE_CRITICAL
 52749 v2r-llada_math500_temporal_finalsha-shard-003 PENDING  KEEP_REFERENCE_CRITICAL
 52748 v2r-llada_math500_temporal_finalsha-shard-002 PENDING  KEEP_REFERENCE_CRITICAL
@@ -33,8 +35,6 @@ ALL ACTIVE KIMHJ JOBS
 52741 v2r-llada_math500_core_finalsha-shard-003 PENDING  KEEP_REFERENCE_CRITICAL
 52740 v2r-llada_math500_core_finalsha-shard-002 PENDING  KEEP_REFERENCE_CRITICAL
 52739 v2r-llada_math500_core_finalsha-shard-001 PENDING  KEEP_REFERENCE_CRITICAL
-52755 v2r-llada_math500_core_remote-005r2 RUNNING server4 KEEP_REFERENCE_CRITICAL
-52756 v2r-llada_math500_core_remote-006r2 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52738 v2r-llada_math500_core_finalsha-shard-000 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52688 v2r-llada_gsm8k_base_finalsha-shard-000 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
@@ -48,7 +48,7 @@ SERVER3
 observed=True idle_gpu_candidates=['0'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=['5'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['1', '2', '5'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -78,8 +78,8 @@ llada_math500_core_finalsha-shard-001: PENDING job=52739
 llada_math500_core_finalsha-shard-002: PENDING job=52740
 llada_math500_core_finalsha-shard-003: PENDING job=52741
 llada_math500_core_finalsha-shard-004: PENDING job=52742
-llada_math500_core_finalsha-shard-005: PENDING job=52755
-llada_math500_core_finalsha-shard-006: PENDING job=52756
+llada_math500_core_finalsha-shard-005: PENDING job=52757
+llada_math500_core_finalsha-shard-006: PENDING job=52758
 llada_math500_temporal_finalsha-shard-000: PENDING job=52746
 llada_math500_temporal_finalsha-shard-001: PENDING job=52747
 llada_math500_temporal_finalsha-shard-002: PENDING job=52748
@@ -91,10 +91,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2421135 heartbeat=2026-09-23T15:31:37.176444+00:00
+status=RUNNING pid=2491434 heartbeat=2026-09-23T15:37:34.480631+00:00
 
 MONITOR
-heartbeat=2026-09-23T15:36:16.213173+00:00
+heartbeat=2026-09-23T15:37:47.821201+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.

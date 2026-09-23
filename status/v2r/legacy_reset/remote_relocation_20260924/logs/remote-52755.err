@@ -1,0 +1,15 @@
+Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s]Loading checkpoint shards:  17%|█▋        | 1/6 [00:00<00:00,  5.57it/s]Loading checkpoint shards:  33%|███▎      | 2/6 [00:00<00:00,  6.13it/s]Loading checkpoint shards:  50%|█████     | 3/6 [00:00<00:00,  6.19it/s]Loading checkpoint shards:  67%|██████▋   | 4/6 [00:00<00:00,  6.40it/s]Loading checkpoint shards:  83%|████████▎ | 5/6 [00:00<00:00,  6.73it/s]Loading checkpoint shards: 100%|██████████| 6/6 [00:00<00:00,  6.82it/s]Loading checkpoint shards: 100%|██████████| 6/6 [00:00<00:00,  6.54it/s]
+<unknown>:62: SyntaxWarning: invalid escape sequence '\{'
+<unknown>:334: SyntaxWarning: invalid escape sequence '\%'
+<unknown>:413: SyntaxWarning: invalid escape sequence '\%'
+Traceback (most recent call last):
+  File "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7/scripts/v2r_worker.py", line 8, in <module>
+    print(json.dumps(run_worker(m,a.shard,a.run_dir,executor,gates=read_json(a.gates)),sort_keys=True))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7/repairable_diffusion/src/v2r/artifacts.py", line 224, in run_worker
+    result = dict(executor(manifest, item, temporary, _item_seed_records(manifest, item)))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7/repairable_diffusion/src/v2r/science.py", line 60, in execute_probe
+    if not ok:raise ContractError('Exact native replay failed on scientific trajectory')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repairable_diffusion.src.v2r.schema.ContractError: Exact native replay failed on scientific trajectory
