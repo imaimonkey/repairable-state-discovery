@@ -10,6 +10,7 @@ import datetime as dt, json, os, shlex, subprocess, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
+sys.path.insert(0,str(ROOT/'scripts'))
 from repairable_diffusion.src.v2r.artifacts import atomic_json, read_json, merge_run, validate_shard
 from repairable_diffusion.src.v2r.planning import make_plan, select_budget, freeze_failed_subset
 from repairable_diffusion.src.v2r.reference_sources import load_records
@@ -35,7 +36,7 @@ def base_spec(backbone, task, seconds_per_item):
  recipe=read_json(ROOT/f'results/v2r_reference/reference_recipes/{backbone}.json')
  rows=load_records(recipe,task,'bridge',SOURCE_CACHE)
  model={'backbone':backbone,'id':recipe['model_id'],'revision':recipe['model_revision'],'tokenizer_revision':recipe['tokenizer_revision']}
- dataset={'id':recipe['tasks'][task]['bridge_dataset']['id'],'revision':recipe['tasks'][task]['bridge_dataset']['revision'],'split':recipe['tasks'][task]['bridge_dataset']['split'],'task':task,'content_sha256':canonical_hash(rows)}
+ dataset={'id':recipe['tasks'][task]['bridge_dataset']['path'],'revision':recipe['tasks'][task]['bridge_dataset']['revision'],'split':recipe['tasks'][task]['bridge_dataset']['split'],'task':task,'content_sha256':canonical_hash(rows)}
  config={'generation':recipe['tasks'][task]['generation'],'decoder':'source_native_instrumented_reference_sampler','trajectory_policy':'one_trajectory_per_item'}
  return {'run_id':f'{backbone}_{task}_base_finalsha','stage':'base','design_seed':20260923,'design_sha256':DESIGN_SHA,
   'execution_git_sha':'78fe5d7c1829b67d1bb1416b7205edfa647bb2fa','model':model,'dataset':dataset,'recipe':recipe,'config':config,
