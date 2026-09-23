@@ -1,5 +1,5 @@
-2026-09-23T11:59:03.614375+00:00
-HOURS TO DEADLINE: 72.00
+2026-09-23T12:02:06.411751+00:00
+HOURS TO DEADLINE: 71.95
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -24,7 +24,7 @@ SERVER2
 observed=True idle_gpu_candidates=['6'] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=['1'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
@@ -33,7 +33,7 @@ LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
 
 REFERENCE GATES
-llada_gsm8k: R0=PASS, R1=PASS, R2=SUBMITTED
+llada_gsm8k: R0=PASS, R1=PASS, R2=RUNNING
 llada_math500: R0=PASS, R1=PASS, R2=RUNNING
 
 REFERENCE PRIMARY
@@ -48,17 +48,17 @@ llada-math500-r1-finalsha: PASS job=None
 llada-math500-r2-finalsha: RUNNING job=52678
 llada-gsm8k-r0-finalsha: PASS job=52677
 llada-gsm8k-r1-finalsha: PASS job=None
-llada-gsm8k-r2-finalsha: SUBMITTED job=52679
+llada-gsm8k-r2-finalsha: RUNNING job=52679
 
 PAPER
 status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1621930 heartbeat=2026-09-23T11:59:01.502297+00:00
+status=RUNNING pid=1621930 heartbeat=2026-09-23T12:01:10.930531+00:00
 
 MONITOR
-heartbeat=2026-09-23T11:59:03.614375+00:00
+heartbeat=2026-09-23T12:02:06.411751+00:00
 
 CURRENT P0
 Repair LLaDA R1 evidence inventory, rerun valid R0→R1→R2 on a final immutable SHA, then LLaDA MATH base.
