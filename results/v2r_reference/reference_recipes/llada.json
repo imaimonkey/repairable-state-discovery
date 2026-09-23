@@ -1,0 +1,175 @@
+{
+  "schema_version": "v2r-reference-recipe-1",
+  "backbone": "llada",
+  "repository": "https://github.com/ML-GSAI/LLaDA",
+  "repository_revision": "9182493720ed723ef8031210d85959364e51cbe0",
+  "model_id": "GSAI-ML/LLaDA-8B-Instruct",
+  "model_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07",
+  "tokenizer_id": "GSAI-ML/LLaDA-8B-Instruct",
+  "tokenizer_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07",
+  "model_dtype": "bfloat16",
+  "source_files": [
+    {
+      "path": "generate.py",
+      "sha256": "d4d2d3c015511e63fe9237cd3197346148fb0c795b6c89e0b5ef4846be25252e",
+      "url": "https://raw.githubusercontent.com/ML-GSAI/LLaDA/9182493720ed723ef8031210d85959364e51cbe0/generate.py"
+    },
+    {
+      "path": "EVAL.md",
+      "sha256": "e945ae2300ab0e8f81de0c784f2a7e1f46728edce44156f36f8538c29715a183",
+      "url": "https://raw.githubusercontent.com/ML-GSAI/LLaDA/9182493720ed723ef8031210d85959364e51cbe0/EVAL.md"
+    },
+    {
+      "path": "eval_llada_opencompass.sh",
+      "sha256": "80ade038de969a278ac948fb48733a359b8e2d7c145e7cc0b2b63181ac4f6ff0",
+      "url": "https://raw.githubusercontent.com/ML-GSAI/LLaDA/9182493720ed723ef8031210d85959364e51cbe0/eval_llada_opencompass.sh"
+    },
+    {
+      "path": "opencompass/opencompass/models/dllm.py",
+      "sha256": "2f464c76c99632ec8f83c94f061b47c0858e48b3a4998e52dbf2ea94a1f558c4",
+      "url": "https://raw.githubusercontent.com/ML-GSAI/LLaDA/9182493720ed723ef8031210d85959364e51cbe0/opencompass/opencompass/models/dllm.py"
+    },
+    {
+      "path": "opencompass/examples/llada_instruct_gen_math_length512_block64.py",
+      "sha256": "bf153ece42d45ee7e5516cbc796daacd21c72a18c66678dc98129cd52c3bdb86",
+      "url": "https://raw.githubusercontent.com/ML-GSAI/LLaDA/9182493720ed723ef8031210d85959364e51cbe0/opencompass/examples/llada_instruct_gen_math_length512_block64.py"
+    },
+    {
+      "path": "opencompass/examples/llada_instruct_gen_gsm8k_length256_block8.py",
+      "sha256": "54f27a8de592704bcfe1da47236340d981c89896886cf375b83771590622b3a7",
+      "url": "https://raw.githubusercontent.com/ML-GSAI/LLaDA/9182493720ed723ef8031210d85959364e51cbe0/opencompass/examples/llada_instruct_gen_gsm8k_length256_block8.py"
+    },
+    {
+      "path": "opencompass/opencompass/configs/datasets/gsm8k/gsm8k_gen_1d7fe4.py",
+      "sha256": "9c7da59940ec1dc481341f002095dafdb1357b2a17e25209b5748a839bbfb0ed",
+      "url": "https://raw.githubusercontent.com/ML-GSAI/LLaDA/9182493720ed723ef8031210d85959364e51cbe0/opencompass/opencompass/configs/datasets/gsm8k/gsm8k_gen_1d7fe4.py"
+    },
+    {
+      "path": "opencompass/opencompass/configs/datasets/math/math_0shot_gen_11c4b5.py",
+      "sha256": "83829a9ed0783da39f0ad6f434494333b632f6b4b6d716e4aa303fb16cdcafb5",
+      "url": "https://raw.githubusercontent.com/ML-GSAI/LLaDA/9182493720ed723ef8031210d85959364e51cbe0/opencompass/opencompass/configs/datasets/math/math_0shot_gen_11c4b5.py"
+    },
+    {
+      "path": "opencompass/opencompass/datasets/math.py",
+      "sha256": "0a012f495cea4ef7c676b66e5c8194b63c7605ce0cd2ee20a5b4d4e5d7daabd9",
+      "url": "https://raw.githubusercontent.com/ML-GSAI/LLaDA/9182493720ed723ef8031210d85959364e51cbe0/opencompass/opencompass/datasets/math.py"
+    },
+    {
+      "path": "opencompass/opencompass/datasets/gsm8k.py",
+      "sha256": "644a9ad1d875c8c8ea33b96a7cacca45779730c0ccdbaad61f872d5f48e724b3",
+      "url": "https://raw.githubusercontent.com/ML-GSAI/LLaDA/9182493720ed723ef8031210d85959364e51cbe0/opencompass/opencompass/datasets/gsm8k.py"
+    }
+  ],
+  "official_evaluation_script": "eval_llada_opencompass.sh",
+  "sampler_entrypoint": "generate.py:generate",
+  "special_token_handling": {
+    "mask_id": 126336,
+    "eos_id": 126081,
+    "eot_id": 126348,
+    "early_stop": false,
+    "decode": "skip_special_tokens=True, no first-EOS cutoff"
+  },
+  "tasks": {
+    "math500": {
+      "generation": {
+        "steps": 512,
+        "gen_length": 512,
+        "block_length": 64,
+        "temperature": 0.0,
+        "cfg_scale": 0.0,
+        "remasking": "low_confidence",
+        "mask_id": 126336,
+        "logits_eos_inf": false,
+        "confidence_eos_eot_inf": false
+      },
+      "native_dataset": {
+        "path": "opencompass/math",
+        "url": "https://opencompass.oss-cn-shanghai.aliyuncs.com/datasets/data/math.zip",
+        "sha256": "cf44a0c065f23dbb96e3239115758f7442b725776f3dedfa4473821a1c98fe03",
+        "split": "test",
+        "count": 5000
+      },
+      "bridge_dataset": {
+        "path": "HuggingFaceH4/MATH-500",
+        "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+        "config_name": null,
+        "split": "test",
+        "count": 500
+      },
+      "prompt": {
+        "source_path": "opencompass/opencompass/configs/datasets/math/math_0shot_gen_11c4b5.py",
+        "num_fewshot": 0,
+        "chat_template": true,
+        "add_generation_prompt": true,
+        "bridge_policy": "preserve_source_native_prompt"
+      },
+      "evaluator": "MATHEvaluator(version=v2)+math_postprocess_v2; string normalization, not symbolic",
+      "official_stop_strings": [],
+      "reported_comparison_status": "NOT_DIRECTLY_COMPARABLE",
+      "reported_source_value": 42.7,
+      "reported_source_metric": "OpenCompass accuracy percent",
+      "native_sampling_unit": "one trajectory per item"
+    },
+    "gsm8k": {
+      "generation": {
+        "steps": 256,
+        "gen_length": 256,
+        "block_length": 8,
+        "temperature": 0.0,
+        "cfg_scale": 0.0,
+        "remasking": "low_confidence",
+        "mask_id": 126336,
+        "logits_eos_inf": false,
+        "confidence_eos_eot_inf": false
+      },
+      "native_dataset": {
+        "path": "opencompass/gsm8k",
+        "url": "https://opencompass.oss-cn-shanghai.aliyuncs.com/datasets/data/gsm8k.zip",
+        "sha256": "5e90449bd5ed9c728dd32fc0c36a21c2cb02fd1fe38cb00fcf5672fcf3dc9378",
+        "split": "test",
+        "count": 1319
+      },
+      "bridge_dataset": {
+        "path": "openai/gsm8k",
+        "revision": "740312add88f781978c0658806c59bc2815b9866",
+        "config_name": "main",
+        "split": "test",
+        "count": 1319
+      },
+      "prompt": {
+        "source_path": "opencompass/opencompass/configs/datasets/gsm8k/gsm8k_gen_1d7fe4.py",
+        "num_fewshot": 4,
+        "chat_template": true,
+        "add_generation_prompt": true,
+        "bridge_policy": "preserve_source_native_prompt"
+      },
+      "evaluator": "Gsm8kEvaluator+gsm8k_postprocess+gsm8k_dataset_postprocess",
+      "official_stop_strings": [],
+      "reported_comparison_status": "PENDING_FULL_REPRODUCTION_AND_DATA_IDENTITY",
+      "reported_source_value": 78.9,
+      "reported_source_metric": "OpenCompass accuracy percent",
+      "native_sampling_unit": "one trajectory per item"
+    }
+  },
+  "r0_smoke_items": 16,
+  "r2_items": 32,
+  "r2_seeds": [
+    20260923,
+    20260924
+  ],
+  "checkpoint_normalized_grid": [
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875
+  ],
+  "checkpoint_mapping": "LLaDA nearest scheduled within-block active step; ties earlier; terminal separate. Dream nearest integer timestep.",
+  "native_stochasticity": "deterministic temperature=0; qC is degenerate, repeat seeds do not create independent trials",
+  "source_status": "PINNED_NOT_REPRODUCED",
+  "r0_status": "NOT_RUN",
+  "r1_status": "NOT_RUN",
+  "r2_status": "NOT_RUN"
+}

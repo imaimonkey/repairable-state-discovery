@@ -1,0 +1,188 @@
+{
+  "schema_version": "v2r-reference-recipe-1",
+  "backbone": "dream",
+  "repository": "https://github.com/DreamLM/Dream",
+  "repository_revision": "31f94a60d187e3fd481fee3bbc2c732eb94a879c",
+  "model_id": "Dream-org/Dream-v0-Instruct-7B",
+  "model_revision": "05334cb9faaf763692dcf9d8737c642be2b2a6ae",
+  "tokenizer_id": "Dream-org/Dream-v0-Instruct-7B",
+  "tokenizer_revision": "05334cb9faaf763692dcf9d8737c642be2b2a6ae",
+  "model_dtype": "bfloat16",
+  "source_files": [
+    {
+      "path": "eval_instruct/eval.sh",
+      "sha256": "346d05cf5851848ab8c57bd3647724bf96152cf34bd71659f25830c53c85e7a1",
+      "url": "https://raw.githubusercontent.com/DreamLM/Dream/31f94a60d187e3fd481fee3bbc2c732eb94a879c/eval_instruct/eval.sh"
+    },
+    {
+      "path": "eval_instruct/lm_eval/models/diffllm.py",
+      "sha256": "ec5480eae5fd440b3fb79d237021b09cbe1d04e66a61971a235f9fcd38ddf216",
+      "url": "https://raw.githubusercontent.com/DreamLM/Dream/31f94a60d187e3fd481fee3bbc2c732eb94a879c/eval_instruct/lm_eval/models/diffllm.py"
+    },
+    {
+      "path": "eval_instruct/lm_eval/tasks/minerva_math/utils.py",
+      "sha256": "7d8b058afbb950487cf7c72daedabbeef29f298fda94eadfd386d9943be067b6",
+      "url": "https://raw.githubusercontent.com/DreamLM/Dream/31f94a60d187e3fd481fee3bbc2c732eb94a879c/eval_instruct/lm_eval/tasks/minerva_math/utils.py"
+    },
+    {
+      "path": "eval_instruct/lm_eval/tasks/minerva_math/minerva_math_algebra.yaml",
+      "sha256": "a795aac06c16c28d07aa9f841d5f5cef1a206e3b8c2ee96197b59e3918d22cc6",
+      "url": "https://raw.githubusercontent.com/DreamLM/Dream/31f94a60d187e3fd481fee3bbc2c732eb94a879c/eval_instruct/lm_eval/tasks/minerva_math/minerva_math_algebra.yaml"
+    },
+    {
+      "path": "eval_instruct/lm_eval/tasks/gsm8k/gsm8k-cot.yaml",
+      "sha256": "57868b36d0f99506bcede37d3f8f8ef8f620f9d83d660811bb6a17589a4e4d3e",
+      "url": "https://raw.githubusercontent.com/DreamLM/Dream/31f94a60d187e3fd481fee3bbc2c732eb94a879c/eval_instruct/lm_eval/tasks/gsm8k/gsm8k-cot.yaml"
+    },
+    {
+      "path": "eval_instruct/lm_eval/filters/extraction.py",
+      "sha256": "d62d2d6f03fff4c9d6a3141b3cdd1c2398ddf0c12e7d2e90998101b4e17d103c",
+      "url": "https://raw.githubusercontent.com/DreamLM/Dream/31f94a60d187e3fd481fee3bbc2c732eb94a879c/eval_instruct/lm_eval/filters/extraction.py"
+    },
+    {
+      "path": "hf_model/generation_utils.py",
+      "sha256": "7f8ad01484898946b3c9c9d5ebc85e5ac726061d0fa7b4a522c4b8110c13a921",
+      "url": "https://huggingface.co/Dream-org/Dream-v0-Instruct-7B/resolve/05334cb9faaf763692dcf9d8737c642be2b2a6ae/generation_utils.py"
+    },
+    {
+      "path": "hf_model/config.json",
+      "sha256": "11afc7fe7a1881e73dcd70cca6868aaaf8eb89ad45ea5fc6426c3fb82dec9340",
+      "url": "https://huggingface.co/Dream-org/Dream-v0-Instruct-7B/resolve/05334cb9faaf763692dcf9d8737c642be2b2a6ae/config.json"
+    },
+    {
+      "path": "hf_model/generation_config.json",
+      "sha256": "e4fa42a31ef22740804534395c7a18f335a3c1f9abd9db83a6941b1c8748b2ee",
+      "url": "https://huggingface.co/Dream-org/Dream-v0-Instruct-7B/resolve/05334cb9faaf763692dcf9d8737c642be2b2a6ae/generation_config.json"
+    }
+  ],
+  "official_evaluation_script": "eval_instruct/eval.sh",
+  "sampler_entrypoint": "model.diffusion_generate (pinned HF generation_utils.py)",
+  "special_token_handling": {
+    "mask_id": 151666,
+    "eos_id": 151643,
+    "eot_id": null,
+    "early_stop": false,
+    "decode": "decode default; split at tokenizer.eos_token then task until strings"
+  },
+  "tasks": {
+    "math500": {
+      "generation": {
+        "steps": 512,
+        "max_new_tokens": 512,
+        "temperature": 0.1,
+        "top_p": 0.9,
+        "top_k": null,
+        "alg": "entropy",
+        "alg_temp": 0.0,
+        "eps": 0.001,
+        "output_history": false,
+        "return_dict_in_generate": true
+      },
+      "native_dataset": {
+        "path": "EleutherAI/hendrycks_math",
+        "revision": "21a5633873b6a120296cce3e2df9d5550074f4a3",
+        "config_names": [
+          "algebra",
+          "counting_and_probability",
+          "geometry",
+          "intermediate_algebra",
+          "number_theory",
+          "prealgebra",
+          "precalculus"
+        ],
+        "split": "test",
+        "count": 5000
+      },
+      "bridge_dataset": {
+        "path": "HuggingFaceH4/MATH-500",
+        "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+        "config_name": null,
+        "split": "test",
+        "count": 500
+      },
+      "prompt": {
+        "source_path": "eval_instruct/lm_eval/tasks/minerva_math/utils.py",
+        "num_fewshot": 0,
+        "chat_template": true,
+        "add_generation_prompt": true,
+        "bridge_policy": "preserve_source_native_prompt"
+      },
+      "evaluator": "minerva_math.utils.process_results: exact_match plus math_verify",
+      "official_stop_strings": [
+        "Problem:"
+      ],
+      "reported_comparison_status": "NOT_DIRECTLY_COMPARABLE",
+      "reported_source_value": null,
+      "reported_source_metric": "not asserted without primary reported table",
+      "native_sampling_unit": "one trajectory per item"
+    },
+    "gsm8k": {
+      "generation": {
+        "steps": 256,
+        "max_new_tokens": 256,
+        "temperature": 0.1,
+        "top_p": 0.9,
+        "top_k": null,
+        "alg": "entropy",
+        "alg_temp": 0.0,
+        "eps": 0.001,
+        "output_history": false,
+        "return_dict_in_generate": true
+      },
+      "native_dataset": {
+        "path": "openai/gsm8k",
+        "revision": "740312add88f781978c0658806c59bc2815b9866",
+        "config_names": [
+          "main"
+        ],
+        "split": "test",
+        "count": 1319
+      },
+      "bridge_dataset": {
+        "path": "openai/gsm8k",
+        "revision": "740312add88f781978c0658806c59bc2815b9866",
+        "config_name": "main",
+        "split": "test",
+        "count": 1319
+      },
+      "prompt": {
+        "source_path": "eval_instruct/lm_eval/tasks/gsm8k/gsm8k-cot.yaml",
+        "num_fewshot": 0,
+        "chat_template": true,
+        "add_generation_prompt": true,
+        "bridge_policy": "preserve_source_native_prompt"
+      },
+      "evaluator": "gsm8k_cot strict-match and flexible-extract exact_match",
+      "official_stop_strings": [
+        "Q:",
+        "</s>",
+        "<|im_end|>"
+      ],
+      "reported_comparison_status": "PENDING_FULL_REPRODUCTION_AND_DATA_IDENTITY",
+      "reported_source_value": null,
+      "reported_source_metric": "not asserted without primary reported table",
+      "native_sampling_unit": "one trajectory per item"
+    }
+  },
+  "r0_smoke_items": 16,
+  "r2_items": 32,
+  "r2_seeds": [
+    20260923,
+    20260924
+  ],
+  "checkpoint_normalized_grid": [
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875
+  ],
+  "checkpoint_mapping": "LLaDA nearest scheduled within-block active step; ties earlier; terminal separate. Dream nearest integer timestep.",
+  "native_stochasticity": "categorical multinomial temperature=.1, entropy priority deterministic alg_temp=0",
+  "source_status": "PINNED_NOT_REPRODUCED",
+  "r0_status": "NOT_RUN",
+  "r1_status": "NOT_RUN",
+  "r2_status": "NOT_RUN"
+}
