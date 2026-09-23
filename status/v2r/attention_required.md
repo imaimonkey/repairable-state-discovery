@@ -1,5 +1,5 @@
-2026-09-23T20:13:40.085850+00:00
-HOURS TO DEADLINE: 63.76
+2026-09-23T20:15:11.492685+00:00
+HOURS TO DEADLINE: 63.73
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -11,12 +11,14 @@ Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestra
 INTEGRITY ALERTS
 MONITOR_DRIFT: Slurm job 52791 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52792 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52794 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52740 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
 52791 v2r-llada_math500_core_finalsha-shard-005 PENDING  KEEP_REFERENCE_CRITICAL
 52792 v2r-llada_math500_core_finalsha-shard-006 PENDING  KEEP_REFERENCE_CRITICAL
+52794 v2r-qos-normal-probe PENDING  KEEP_REFERENCE_CRITICAL
 52742 v2r-llada_math500_core_finalsha-shard-004 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52740 v2r-llada_math500_core_finalsha-shard-002 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
@@ -73,10 +75,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-23T20:13:32.057147+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-23T20:14:35.365018+00:00
 
 MONITOR
-heartbeat=2026-09-23T20:13:40.085850+00:00
+heartbeat=2026-09-23T20:15:11.492685+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
