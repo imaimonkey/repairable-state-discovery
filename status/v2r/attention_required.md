@@ -1,5 +1,5 @@
-2026-09-23T17:51:46.669068+00:00
-HOURS TO DEADLINE: 66.12
+2026-09-23T17:53:18.211406+00:00
+HOURS TO DEADLINE: 66.09
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -46,7 +46,7 @@ SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=['1', '2', '3', '4', '5', '6'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['1', '2', '3', '5', '6'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -89,10 +89,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2758158 heartbeat=2026-09-23T17:51:33.081921+00:00
+status=RUNNING pid=2758158 heartbeat=2026-09-23T17:52:36.459426+00:00
 
 MONITOR
-heartbeat=2026-09-23T17:51:46.669068+00:00
+heartbeat=2026-09-23T17:53:18.211406+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
