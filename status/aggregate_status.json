@@ -1,0 +1,28 @@
+{
+  "schema": "iclr2027_aggregate_observation_v1",
+  "generated_at_kst": "2026-09-23T13:53:16+09:00",
+  "collector_commit": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+  "source_server": "ubuntu/server3 controller; source repos inspected locally and via server2/server4 read-only SSH",
+  "execution_sha": "mixed; see input_runs",
+  "artifact_path": "/data/kimhj/repairable-state-discovery-status-20260923/status/aggregate_status.json",
+  "aggregate_script": "/data/kimhj/repairable-state-discovery-v2-unified-8b1361d/scripts/aggregate_v2_results.py",
+  "aggregate_command": "python scripts/aggregate_v2_results.py (normally via bash scripts/run_v2_suite.sh aggregate after seal_v2_runs.py --all-completed)",
+  "current_v2_aggregate_artifact": null,
+  "current_v2_aggregate_status": "MISSING_NOT_CREATED",
+  "existing_non_v2_or_historical_artifacts": [
+    {"path": "/data/kimhj/repairable-state-discovery-v2-exec/results/final_reports/aggregate_report.json", "size_bytes": 5264, "mtime_kst": "2026-09-18T19:30:28+09:00", "generated_sha": "f848d2be81bc3e24f8e88c68b6fdda4b35345215", "classification": "historical/V1-style tracked artifact; not used as V2 aggregate"},
+    {"path": "/data/kimhj/repairable-state-discovery-v2-exec/results/submission_reports/aggregate_report.json", "size_bytes": 9455, "mtime_kst": "2026-09-18T19:30:28+09:00", "generated_sha": "f848d2be81bc3e24f8e88c68b6fdda4b35345215", "classification": "historical/submission artifact; not used as V2 aggregate"}
+  ],
+  "input_run_ids": ["50668", "50669", "50924", "50738", "50753", "50754", "50923", "50752"],
+  "eligible_observed_input_run_ids": ["50753", "50754", "50923"],
+  "excluded_run_ids": ["50752"],
+  "unobserved_or_active_run_ids": ["50668", "50669", "50924", "50738"],
+  "provisional_or_final": "NOT_CREATED",
+  "created_by_this_snapshot": false,
+  "overwrite_performed": false,
+  "readiness": {
+    "ready_for_final": false,
+    "ready_for_provisional": false,
+    "blocking_reasons": ["active jobs remain", "50752 failed and is excluded", "50738 artifacts were not observable from server1/devbox"]
+  }
+}
