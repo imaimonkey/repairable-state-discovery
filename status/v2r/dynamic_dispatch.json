@@ -3,6 +3,22 @@
   "jobs": {
     "all_reference_jobs": [
       {
+        "job_id": "52809",
+        "name": "v2r-fallback-server2-3",
+        "node": "",
+        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52808",
+        "name": "v2r-fallback-server2-2",
+        "node": "",
+        "reason": "(Resources)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "52791",
         "name": "v2r-llada_math500_core_finalsha-shard-005",
         "node": "",
@@ -17,6 +33,86 @@
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:h200:1"
+      },
+      {
+        "job_id": "52803",
+        "name": "v2r-fallback-server1-3",
+        "node": "",
+        "reason": "(Resources)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52804",
+        "name": "v2r-fallback-server2-0",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52805",
+        "name": "v2r-fallback-server4-2",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52806",
+        "name": "v2r-fallback-server4-3",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52807",
+        "name": "v2r-fallback-server2-1",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52798",
+        "name": "v2r-fallback-server1-0",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52799",
+        "name": "v2r-fallback-server4-0",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52800",
+        "name": "v2r-fallback-server1-1",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52801",
+        "name": "v2r-fallback-server1-2",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52802",
+        "name": "v2r-fallback-server4-1",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
         "job_id": "52742",
@@ -37,6 +133,22 @@
     ],
     "pending": [
       {
+        "job_id": "52809",
+        "name": "v2r-fallback-server2-3",
+        "node": "",
+        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52808",
+        "name": "v2r-fallback-server2-2",
+        "node": "",
+        "reason": "(Resources)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "52791",
         "name": "v2r-llada_math500_core_finalsha-shard-005",
         "node": "",
@@ -51,9 +163,89 @@
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:h200:1"
+      },
+      {
+        "job_id": "52803",
+        "name": "v2r-fallback-server1-3",
+        "node": "",
+        "reason": "(Resources)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
       }
     ],
     "running": [
+      {
+        "job_id": "52804",
+        "name": "v2r-fallback-server2-0",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52805",
+        "name": "v2r-fallback-server4-2",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52806",
+        "name": "v2r-fallback-server4-3",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52807",
+        "name": "v2r-fallback-server2-1",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52798",
+        "name": "v2r-fallback-server1-0",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52799",
+        "name": "v2r-fallback-server4-0",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52800",
+        "name": "v2r-fallback-server1-1",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52801",
+        "name": "v2r-fallback-server1-2",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52802",
+        "name": "v2r-fallback-server4-1",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
       {
         "job_id": "52742",
         "name": "v2r-llada_math500_core_finalsha-shard-004",
@@ -98,13 +290,10 @@
       ],
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
-      "idle_gpu_candidates": [
-        "3",
-        "4",
-        "7"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "exact_native_replay_failed"
       ],
       "reference_compatible": false,
@@ -125,8 +314,10 @@
       "eligibility": false,
       "fallback_action": null,
       "idle_gpu_candidates": [
-        "6",
-        "7"
+        "2",
+        "3",
+        "4",
+        "5"
       ],
       "observed": true,
       "reasons": [
@@ -167,12 +358,8 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
-        "0",
-        "1",
         "2",
         "3",
-        "4",
-        "5",
         "6",
         "7"
       ],
@@ -187,5 +374,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T20:23:05.221772+00:00"
+  "timestamp": "2026-09-23T20:24:37.011392+00:00"
 }
