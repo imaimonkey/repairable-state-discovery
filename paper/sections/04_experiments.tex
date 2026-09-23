@@ -1,16 +1,52 @@
 \section{Experimental Setup}
 
-\paragraph{Models.}
-The primary diffusion backbone is LLaDA-8B-Instruct with the fast RFBA-compatible implementation. Dream-v0-Instruct-7B is evaluated as a second diffusion backbone. Qwen2.5-7B-Instruct and Llama-3.1-8B-Instruct are autoregressive references.
+\paragraph{Reference decoder.}
+The intended primary matrix pairs LLaDA-8B-Instruct and Dream-v0-Instruct-7B with
+MATH-500 and GSM8K. Reference recipes must be pinned to upstream source and
+validated independently before repairability is measured. An upstream benchmark
+whose dataset, prompt, or evaluator differs from the paper setting is reported
+with source-native smoke and recipe-fidelity status separate from the full
+paper-task baseline; its reported score is not treated as directly comparable.
+A different full official benchmark is not rerun solely as a prerequisite.
 
-\paragraph{Datasets and split.}
-We use the test split of MATH-500 and the main test split of GSM8K. The canonical full protocols intentionally omit a dataset limit. Each diffusion run uses eight trajectories per item, 64 refinement steps, generation length 256, block length 128, checkpoint stride 8 unless the robustness protocol changes it, and four repair branches unless the branch-count ablation changes it.
+\paragraph{Reference trajectory bank and metric.}
+Each backbone uses one sampled trajectory for each of 500 MATH-500 test items and
+1,319 GSM8K test items. The main baseline is reference trajectory accuracy
+(pass@1). The exact instrumented bank supplies failed and successful trajectory
+pools; it is not regenerated for probing. Deep probing is restricted to a
+deterministic failed-trajectory subset, ranked by a hash of design seed,
+backbone, task, item identifier, and trajectory identifier. Selection never uses
+repair outcomes.
 
-\paragraph{Full-paper matrix.}
-The matrix contains seven protocols: two main protocols with one diffusion and two autoregressive runs each; three MATH/GSM seed-repeat or configuration protocols; and two Dream backbone protocols. This yields 11 diffusion rows and four autoregressive rows. Full diffusion protocols evaluate negative repair over all successful trajectories by setting `max_success_trajectories_for_negative_repair` to zero.
+\paragraph{Budget and priority.}
+LLaDA targets 64 failed trajectories per task, with a minimum of 32. Dream
+targets 32. The chosen count is frozen from measured
+throughput, available GPU-hours, and remaining time before repair outcomes are
+observed. LLaDA mechanism and temporal subsets each target 32 per task. LLaDA MATH deep
+evidence is the critical path, followed by GSM8K replication. Dream validation
+must not delay completion, sealing, or paper integration of LLaDA evidence.
+These are design targets, not completed sample counts.
 
-\paragraph{Uncertainty and analysis.}
-We use item-level bootstrap resampling for repaired pass@$k$ and gain intervals. Repeated-seed runs are reported separately from configuration robustness. The extended analysis includes simple selectors, predictor thresholds, seven feature ablations, cost normalization, qualitative examples, and generated figure data.
+\paragraph{Mechanism and localization comparisons.}
+The LLaDA mechanism comparison includes exact native replay, matched stochastic
+continuation, canonical repair, random-position remasking with matched modified
+position counts, CoRe-snapshot, and actually decoded fresh sampling at a matched
+compute budget. CoRe-snapshot is a checkpoint adaptation, not a claim of
+unmodified full-sequence CoRe reproduction. Localization reports confirmed
+recovery, prospective trajectory-accuracy change, successful-trajectory harm,
+coverage, the independently confirmed oracle gap, and NFE. The selector is not
+replaced based on the observed reference result.
 
-\paragraph{Reproducibility boundary.}
-The canonical source map is `results/full_paper_manifest.json`. Reports under `results/final_reports`, `results/submission_reports`, and `results/extended_analysis` are historical development artifacts and are not substituted for full-split evidence.
+\paragraph{Measurement decoder.}
+Existing V2 experiments use a separate measurement decoder and
+\emph{measurement-decoder pass@8}. Their item-level pass@8 and all-eight-failed
+item rate are distinct from reference pass@1 and the sampled-failed-trajectory
+denominator. Existing LLaDA, Dream, BBH, and MBPP artifacts remain separate;
+their eventual role as secondary evidence, decoder-regime robustness, or
+appendix material depends on the sealed reference evidence.
+
+\paragraph{Evidence boundary.}
+Tables~\ref{tab:reference-existence}--\ref{tab:reference-localization} define the
+reference reporting structure. Numerical cells require validated, sealed
+reference bundles with artifact hashes and fixed execution provenance. An
+em dash means that no sealed evidence has been integrated, not a zero estimate.

@@ -1,53 +1,25 @@
-\section{Analysis}
+\section{Analysis Plan}
 
-\subsection{Where repairability occurs}
-The repair-gain curves and best-step distributions provide the localization evidence. The main-run peak checkpoints are \mathPeakStep for MATH-500 and \gsmPeakStep for GSM8K. The figures are generated from per-run report fields and preserve dataset and backbone labels.
+\paragraph{Existence and temporal extent.}
+RQ1 requires independently confirmed recovery on sampled failed reference
+trajectories. The never-correct repairable rate additionally requires the
+observed candidate to remain incorrect on the measured checkpoint grid.
+Temporal reporting comprises $q_C(t)$, $q_R(t)$, $\Delta_R(t)$,
+$T_{\mathrm{last}}^R$, and a clearly defined repairability-survival summary.
+Confirmation outcomes can fluctuate over time; a survival summary must not
+silently impose monotonic recovery.
 
-\begin{figure}[t]
-\centering
-\resultfigure{repair_gain_curves}{0.92\linewidth}
-\caption{Correction rate across refinement checkpoints for the principal diffusion runs.}
-\label{fig:gain-curves}
-\end{figure}
+\paragraph{Mechanism.}
+RQ2 compares $q_R$ with matched $q_C$, reports modified positions and NFE, and
+retains null, negative, and inconsistent differences. Native replay fidelity
+alone does not measure stochastic continuation recoverability. Fresh sampling
+must be actually decoded; an analytic pass@$k$ approximation cannot substitute
+for this control.
 
-\begin{figure}[t]
-\centering
-\resultfigure{best_step_histogram}{0.92\linewidth}
-\caption{Distribution of the best repair checkpoint on the main datasets.}
-\label{fig:best-step}
-\end{figure}
-
-\subsection{Selector strength and predictor gap}
-Table~\ref{tab:selectors} compares simple signals, predictor thresholds, the full predictor, and the oracle. We interpret a predictor--simple-selector tie as evidence that repairability is structured by refinement stage or mask state. We interpret the oracle gap as remaining localization error under the stated probe, not as an intrinsic upper bound on all possible selectors.
-
-\generatedtable{selector_comparison.tex}
-
-\begin{figure}[t]
-\centering
-\resultfigure{predictor_oracle}{0.92\linewidth}
-\caption{Predictor-selected versus oracle-selected repaired pass@$k$ for the principal runs.}
-\label{fig:predictor-oracle}
-\end{figure}
-
-\subsection{Feature ablations and uncertainty}
-The ablation table reports repaired pass@$k$, gain, negative repair, and held-out predictor diagnostics together. A feature can improve classification while failing to improve the item-level repair objective, so ROC-AUC is not used as the sole ablation criterion.
-
-\generatedtable{predictor_ablation.tex}
-\generatedtable{robustness_seed.tex}
-
-\subsection{Negative repair and cost}
-Negative repair is a first-class safety metric. The tradeoff figure places predictor gain next to the rate at which intervention degrades originally successful trajectories. The cost table reports repair branch evaluations and the matched extra-sampling approximation; the latter is explicitly a proxy derived from observed sample accuracy, not a decoded control.
-
-\begin{figure}[t]
-\centering
-\resultfigure{gain_negative_repair}{0.92\linewidth}
-\caption{Repair gain versus negative repair for the principal diffusion runs.}
-\label{fig:tradeoff}
-\end{figure}
-
-\generatedtable{cost_normalized.tex}
-
-\subsection{Dataset and backbone dependence}
-The full matrix compares MATH-500 with GSM8K and LLaDA with Dream. We retain unfavorable or inconsistent cases, because transfer is a limitation-sensitive analysis rather than a filtering step.
-
-\generatedtable{backbone_dataset.tex}
+\paragraph{Localization and transfer.}
+RQ3 evaluates the frozen observable-state selector prospectively, counting harm
+to successful trajectories and coverage. A selector tie or negative value is
+retained. RQ4 uses the declared task and backbone matrix, with per-run
+uncertainty and evidence status. Decoder-regime differences remain distinct
+from cross-backbone generalization. Interpretation is deferred until the
+corresponding reference evidence is sealed and reviewed by the authors.

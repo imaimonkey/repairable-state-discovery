@@ -1,19 +1,61 @@
 \section{State-Level Repairability Protocol}
 
-\subsection{Trajectory collection}
-For item $i$, the diffusion decoder produces $K$ trajectories. At refinement step $t$, the state contains the prompt, the current token sequence, token confidences, masked-token entropy, and a provisional answer candidate. We save a checkpoint every $s$ steps. Let $y_i$ be the reference answer and let $a_{i,k}$ be the extracted answer of trajectory $k$. A trajectory is failed when $a_{i,k}$ does not match $y_i$ under the benchmark evaluator.
+\subsection{Sampled trajectory and reference validation}
+The primary unit is one sampled reference trajectory per item. A trajectory is
+failed if its final answer is incorrect under the frozen task evaluator.
+The primary denominator comprises sampled trajectories whose final answer is
+incorrect, rather than items for which all eight measurement trajectories fail.
+Reference trajectory accuracy is pass@1 on this one-trajectory-per-item bank.
 
-\subsection{Repair probe and oracle localization}
-Given a failed snapshot $x_{i,k,t}$, the probe selects low-confidence committed positions, remasks a fixed fraction subject to a minimum count, and resumes the same diffusion decoder until completion. We run $B$ branches with fixed temperatures, remasking fractions, and deterministic seed derivations. The correction rate is
+The decoder recipe fixes the source revision, model and tokenizer revisions,
+prompt, sampling settings, schedule, and evaluator. Source-native smoke and recipe fidelity (R0) precedes evaluator bridge validation (R1) and instrumentation
+equivalence (R2). R2 requires exact final token sequence, final answer,
+correctness, schedule, and model-evaluation-count agreement between instrumented
+and uninstrumented decoding on fixed items and seeds. Snapshot collection must
+not consume additional randomness. The validated instrumented implementation
+creates the trajectory bank reused by the repair experiment.
+
+\subsection{Continuation, intervention, and independent confirmation}
+Let $x_{i,t}$ be a snapshot and $o_{i,t}$ its observed candidate correctness.
+For continuation operator $C$ and repair operator $R$, define
 \[
- r(i,k,t) = \frac{1}{B}\sum_{b=1}^{B} \mathbb{1}[\operatorname{Eval}(\operatorname{Repair}(x_{i,k,t};b))=y_i].
+q_C(x_{i,t})=\Pr[\operatorname{Eval}(C(x_{i,t};\xi))=1],\qquad
+q_R(x_{i,t})=\Pr[\operatorname{Eval}(R(x_{i,t};\xi))=1],
 \]
-The oracle selects $\arg\max_t r(i,k,t)$ on failed trajectories. On originally successful trajectories, the analogous intervention measures degradation and defines negative repair. These outcomes quantify recoverability under the probe; they do not establish that the probe is the only or causal mechanism of recovery.
+and $\Delta_R(x_{i,t})=q_R(x_{i,t})-q_C(x_{i,t})$.
+Exact native continuation is a fidelity control. The estimator of $q_C$ uses
+matched continuation with resampled future randomness where the reference
+decoder is stochastic. The official LLaDA temperature-zero recipe is
+deterministic; repeated seeds do not supply independent Bernoulli information.
+The canonical repair remasks low-confidence eligible committed positions within
+the active decoder phase. Matched stochastic continuation and repair share the
+declared future-noise group for paired comparisons.
 
-\subsection{Non-oracle selection}
-The predictor is a logistic regression trained to imitate the top oracle checkpoints. Its feature vector includes normalized step position, masked and committed ratios, token-confidence statistics, masked-token entropy, answer disagreement, and candidate-change rate. Training and evaluation are grouped by item, so checkpoints from the same item do not cross the split. At inference, the predictor scores eligible checkpoints and selects the highest score. Threshold variants repair only when the maximum score exceeds 0.50, 0.70, or 0.90.
+Localization uses $B_{\mathrm{loc}}=4$ branches. Independent confirmation uses
+$B_{\mathrm{eval}}=8$ branches and canonical threshold
+$\tau_{\mathrm{confirm}}=0.25$, with sensitivity thresholds $0.125$ and $0.5$.
+The finite-sample maximum used for localization is not reported as an
+independently confirmed oracle estimate. The seed registry identifies stage,
+item, trajectory, checkpoint, branch, and intentional pairing; unintended reuse
+between localization, confirmation, fresh sampling, and independent controls
+must be rejected before submission of a run.
 
-We compare against confidence-low, entropy-high, mask-ratio-high, early-step, and middle-step selectors. This comparison is essential: if a simple refinement-state prior matches the predictor, the appropriate interpretation is structured localization rather than predictor superiority.
+\subsection{Temporal and prospective quantities}
+Snapshots correspond to the nearest valid states on normalized refinement
+progress $\{0.125,0.250,0.375,0.500,0.625,0.750,0.875\}$, with final-endpoint
+metadata recorded separately. Absolute step numbers need not agree between
+decoders. The core procedure localizes with four branches per grid state and confirms
+only the highest-localization-$q_R$ candidate, breaking ties toward earlier
+progress. The temporal subset receives independent confirmation over the whole
+grid. Completed LLaDA blocks are not reopened: grid targets at block boundaries
+map to the nearest open-block snapshot, with ties toward the earlier step. $T_{\mathrm{last}}^R$ is the last confirmed repairable checkpoint on this
+grid, conditional on the operator, branch budget, and threshold; it is not a
+proof of absolute irrecoverability. No monotonicity constraint is imposed.
 
-\subsection{Metrics}
-For each policy we report base item pass@$k$, repaired pass@$k$, gain, bootstrap confidence intervals, negative repair, the predictor--oracle gap, selected failed and successful trajectories, repair branch evaluations, cost per item, and gain per 1,000 branch evaluations. The matched extra-sampling number is computed from observed sample accuracy and expected repair branch cost. It is a proxy for a matched budget, not a separately decoded baseline.
+The frozen state-value estimator is evaluated out of fold with grouping by item.
+A prospective policy selects a checkpoint on the single base trajectory using
+observable signals, without conditioning deployment on its final correctness.
+Prospective accuracy change includes degradation of originally successful
+trajectories. Retrospective recovery and prospective policy value are reported
+separately. Number of function evaluations (NFE), coverage, and harm accompany
+recovery measures.

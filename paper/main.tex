@@ -1,9 +1,9 @@
-\documentclass[10pt]{article}
-\usepackage[margin=0.78in]{geometry}
+\documentclass{article}
+\usepackage{iclr2027_conference,times}
 \usepackage{amsmath,amssymb,booktabs,graphicx,hyperref,xcolor}
 \usepackage{array}
 \graphicspath{{figures/}}
-\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,pdfauthor={},pdftitle={Repairable States in Diffusion Reasoning Trajectories},pdfsubject={},pdfkeywords={}}
 
 \newcommand{\generatedtable}[1]{\IfFileExists{tables/#1}{\input{tables/#1}}{\begin{center}\textit{Generated table pending full-split finalization.}\end{center}}}
 \newcommand{\resultfigure}[2]{\IfFileExists{figures/#1.pdf}{\includegraphics[width=#2]{figures/#1.pdf}}{\fbox{\parbox[c][1.25in][c]{#2}{\centering Figure pending full-split finalization.}}}}
@@ -20,6 +20,12 @@
 Diffusion language models expose intermediate refinement states, but a failed final trajectory does not reveal whether an earlier state remained recoverable. We study this question as a measurement problem. We collect multi-trajectory diffusion reasoning traces, snapshot intermediate states, restart from snapshots with a local repair probe, and quantify both oracle recoverability and non-oracle selection. The evaluation treats repair gain, negative repair, selector comparisons, uncertainty, and repair cost as a joint object. The full-split results in this manuscript are generated from the canonical benchmark manifest; the paper deliberately avoids interpreting autoregressive references as a raw diffusion-versus-autoregressive claim.
 \end{abstract}
 
+\begin{center}
+\textbf{Working draft: reference evidence awaiting validation.}\\
+The abstract and conclusion retain the author-controlled source wording;
+their empirical statements await author review against sealed reference evidence.
+\end{center}
+
 \input{sections/01_introduction.tex}
 \input{sections/02_related_work.tex}
 \input{sections/03_method.tex}
@@ -29,9 +35,18 @@ Diffusion language models expose intermediate refinement states, but a failed fi
 \input{sections/07_limitations.tex}
 \input{sections/08_conclusion.tex}
 
-\bibliographystyle{plain}
+\label{main-text-end}
+\clearpage
+\section*{AI use statement}
+Generative AI assisted research software implementation, experiment workflow
+preparation, provenance and manuscript audits, and manuscript organization and
+editing. The authors must review this disclosure against the complete project
+history and verify all assisted artifacts before submission.
+
+\bibliographystyle{iclr2027_conference}
 \bibliography{references}
 
+\clearpage
 \appendix
 \input{sections/09_reproducibility.tex}
 \end{document}

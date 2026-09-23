@@ -1,9 +1,17 @@
 \section{Limitations}
 
-First, repairability is defined relative to a particular anchored-remasking probe, branch budget, checkpoint schedule, and answer extractor. A state may be repairable under a different intervention even when this probe fails, and probe success is not a causal explanation of the original model's reasoning.
+Repairability is conditional on a decoder, intervention, checkpoint grid,
+branch budget, and evaluator. Failure to recover within this design does not
+establish that a state is irrecoverable under every intervention.
 
-Second, the study covers two mathematical datasets and two diffusion backbones. Dataset- and backbone-dependent localization should therefore be treated as an empirical finding within the evaluated matrix, not as a universal diffusion-language-model property.
+The reference design prioritizes two mathematical tasks and two backbones.
+Deep probing uses deterministic subsets of failed trajectories, whereas the
+baseline uses the full one-trajectory-per-item bank. Their denominators and
+uncertainty must remain explicit. Legacy measurement-decoder breadth evidence
+does not fill a missing reference anchor.
 
-Third, the predictor is trained from oracle probe outcomes. Although its inference features exclude branch outcomes and its split is grouped by item, the predictor is not a fully deployment-independent selector. The predictor--oracle gap and negative-repair rate remain central limitations.
-
-Finally, the matched extra-sampling comparison is an approximation based on observed sample accuracy and branch cost. It should not be read as evidence from a separately decoded extra-sampling control. The manuscript preserves this distinction in the tables, figure captions, and reproducibility appendix.
+The learned selector relies on probe supervision during training even when its
+inference signals are observable. Grouped out-of-fold evaluation and
+successful-trajectory harm are necessary for interpreting prospective value.
+Reference numerical results, temporal title support, and broader empirical
+conclusions are not yet established in this working draft.
