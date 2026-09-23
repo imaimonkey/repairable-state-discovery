@@ -43,14 +43,6 @@
         "tres": "gres/gpu:h200:1"
       },
       {
-        "job_id": "52788",
-        "name": "v2r-s1-deterministic-probe",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "52742",
         "name": "v2r-llada_math500_core_finalsha-shard-004",
         "node": "ubuntu",
@@ -111,14 +103,6 @@
     ],
     "running": [
       {
-        "job_id": "52788",
-        "name": "v2r-s1-deterministic-probe",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "52742",
         "name": "v2r-llada_math500_core_finalsha-shard-004",
         "node": "ubuntu",
@@ -155,11 +139,13 @@
       "compatibility_evidence": [
         "SSH authentication restored and inventory succeeded",
         "model-load preflight 52785 passed on NVIDIA RTX A6000",
-        "single-item exact replay probe 52787 failed exact native replay"
+        "single-item exact replay probe 52787 failed exact native replay",
+        "deterministic/TF32-disabled replay probe 52788 also failed exact native replay"
       ],
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
+        "4",
         "7"
       ],
       "observed": true,
@@ -239,5 +225,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T19:38:50.369652+00:00"
+  "timestamp": "2026-09-23T19:40:21.954695+00:00"
 }
