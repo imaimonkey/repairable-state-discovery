@@ -1,5 +1,5 @@
-2026-09-23T14:48:58.044896+00:00
-HOURS TO DEADLINE: 69.17
+2026-09-23T15:02:40.946459+00:00
+HOURS TO DEADLINE: 68.94
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -10,12 +10,10 @@ Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestra
 
 INTEGRITY ALERTS
 MONITOR_DRIFT: Slurm job 52688 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52687 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
 52688 v2r-llada_gsm8k_base_finalsha-shard-000 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
-52687 v2r-llada_math500_base_finalsha-shard-000 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
 observed=False idle_gpu_candidates=[] safe_filesystems=[]
@@ -24,7 +22,7 @@ SERVER2
 observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['3'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
@@ -58,10 +56,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1881023 heartbeat=2026-09-23T14:48:44.740049+00:00
+status=RUNNING pid=1881023 heartbeat=2026-09-23T15:01:48.852586+00:00
 
 MONITOR
-heartbeat=2026-09-23T14:48:58.044896+00:00
+heartbeat=2026-09-23T15:02:40.946459+00:00
 
 CURRENT P0
 Complete LLaDA MATH base and freeze the shared trajectory bank.
