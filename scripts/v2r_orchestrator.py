@@ -11,6 +11,27 @@ from v2r_reduce import reduce_stage
 from repairable_diffusion.src.v2r.artifacts import read_json,validate_shard
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'status/v2r';RUNTIME=Path('/var/tmp/kimhj-v2r-reference/runtime')
 
+def sync_remote_shard(task):
+    """Pull a completed remote shard into the authoritative local run tree.
+
+    Remote execution is admitted only for tasks whose deployment and provenance
+    were recorded by the relocation controller.  The scientific worker still
+    runs at the immutable execution SHA; this copy step only makes its sealed
+    shard visible to the local reducer.
+    """
+    if not task.get('remote_execution'):
+        return
+    host=str(task.get('remote_host') or '')
+    if not host:
+        raise RuntimeError('REMOTE_TASK_MISSING_HOST')
+    shard=f"shard-{int(task['shard']):03d}"
+    local=Path(task['run_dir'])/'shards'/shard
+    local.mkdir(parents=True,exist_ok=True)
+    remote=f"{host}:{task['run_dir']}/shards/{shard}/"
+    r=subprocess.run(['rsync','-a',remote,str(local)+'/'],text=True,capture_output=True,timeout=120)
+    if r.returncode:
+        raise RuntimeError('REMOTE_SHARD_SYNC_FAILED: '+(r.stderr[-1000:] or r.stdout[-1000:]))
+
 def event(name,payload):
  with (OUT/'event_history.jsonl').open('a') as f:f.write(json.dumps({'timestamp':dt.datetime.now(dt.timezone.utc).isoformat(),'event':name,**payload},sort_keys=True)+'\n')
 
@@ -60,6 +81,7 @@ def cycle():
     if state in ['RUNNING','PENDING','CONFIGURING','COMPLETING']:task['status']=state
     elif state=='COMPLETED':
      try:
+      sync_remote_shard(task)
       manifest=read_json(task['manifest']);gates=read_json(task['gates']);validate_shard(Path(task['run_dir'])/'shards'/f"shard-{int(task['shard']):03d}",manifest,int(task['shard']),gates=gates);task['status']='SEALED' if Path(task['run_dir'],'SEAL_RECORD.json').exists() else 'DONE';task['error']=None
      except Exception as exc:task.update(status='NEEDS_REVIEW',error=str(exc))
     elif state!='UNKNOWN':task.update(status='NEEDS_REVIEW',error='Terminal scientific Slurm state: '+state)
