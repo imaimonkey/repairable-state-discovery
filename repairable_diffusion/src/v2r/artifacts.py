@@ -339,6 +339,14 @@ def merge_run(manifest: Mapping[str, Any], run_dir: str | Path, *, gates: Mappin
 COMPACT_FILES = frozenset({"reference_recipe.json", "run_manifest.json", "scientific_provenance.json",
     "base_report.json", "existence.csv", "temporal_summary.csv", "mechanism_summary.csv",
     "selector_summary.csv", "decoder_regime_summary.json"})
+STAGE_COMPACT_FILES = {
+    "base": frozenset({"base_report.json", "existence.csv", "decoder_regime_summary.json"}),
+    "r3_core": frozenset({"existence.csv", "selector_summary.csv", "decoder_regime_summary.json"}),
+    "temporal": frozenset({"existence.csv", "temporal_summary.csv", "decoder_regime_summary.json"}),
+    "mechanism": frozenset({"existence.csv", "mechanism_summary.csv", "decoder_regime_summary.json"}),
+    "localization": frozenset({"existence.csv", "selector_summary.csv", "decoder_regime_summary.json"}),
+    "fresh_control": frozenset({"existence.csv", "decoder_regime_summary.json"}),
+}
 
 
 def seal_run(manifest: Mapping[str, Any], run_dir: str | Path, bundle_dir: str | Path,
@@ -367,8 +375,9 @@ def seal_run(manifest: Mapping[str, Any], run_dir: str | Path, bundle_dir: str |
         raise ContractError("Sealing manifest is not the merged execution manifest")
     supplied = set(compact_artifacts)
     generated = {"reference_recipe.json", "run_manifest.json", "scientific_provenance.json"}
-    if supplied != COMPACT_FILES - generated:
-        raise ContractError(f"A complete compact bundle is required; expected {sorted(COMPACT_FILES - generated)}")
+    expected_compact = STAGE_COMPACT_FILES.get(manifest["stage"], COMPACT_FILES - generated)
+    if supplied != expected_compact:
+        raise ContractError(f"Stage {manifest['stage']} requires compact files {sorted(expected_compact)}")
     total = 0
     for name, source in compact_artifacts.items():
         path = Path(source)

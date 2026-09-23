@@ -135,7 +135,7 @@ def ensure_deep_tasks(queue):
  for task in tasks:
   if task.get('kind')=='science_shard' and task.get('stage')=='base':groups.setdefault(task['run_dir'],[]).append(task)
  for run_dir,base_tasks in groups.items():
-  if not base_tasks or not all(t.get('status')=='MERGED' for t in base_tasks):continue
+  if not base_tasks or not all(t.get('status') in {'MERGED','SEALED'} for t in base_tasks):continue
   base_manifest=read_json(base_tasks[0]['manifest']); task_name=base_manifest['dataset']['task']
   if any(t.get('kind')=='science_shard' and t.get('run_dir','').endswith('_core_finalsha') and t.get('task')==task_name for t in tasks):continue
   bank_manifest=Path(run_dir)/'bank.json'

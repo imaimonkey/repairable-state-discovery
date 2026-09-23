@@ -7,6 +7,7 @@ from v2r_inventory import atomic_json,collect
 from v2r_submit import submit,command,environment,DEADLINE
 from v2r_status import write_status,read
 from v2r_science_controller import ensure_base_tasks,ensure_deep_tasks,submit_science,finalize_base
+from v2r_reduce import reduce_stage
 from repairable_diffusion.src.v2r.artifacts import read_json,validate_shard
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'status/v2r';RUNTIME=Path('/var/tmp/kimhj-v2r-reference/runtime')
 
@@ -72,19 +73,26 @@ def cycle():
  # Unlock one-trajectory base banks as soon as matching R2 is sealed.
  if ensure_base_tasks(queue):
   changed=True;event('SCIENCE_QUEUE_UNLOCKED',{'stage':'base','execution_sha':queue.get('execution_git_sha')})
- # Merge complete base shards with strict provenance; never infer missing items.
+ # Merge and seal complete scientific stages with strict provenance; never infer missing items.
  groups={}
  for task in queue.get('tasks',[]):
-  if task.get('kind')=='science_shard' and task.get('stage')=='base':groups.setdefault(task['run_dir'],[]).append(task)
+  if task.get('kind')=='science_shard':groups.setdefault(task['run_dir'],[]).append(task)
  for run_dir,tasks in groups.items():
-  if tasks and all(t.get('status') in {'DONE','MERGED'} for t in tasks) and not Path(run_dir,'aggregate','MERGED.json').exists():
-   try:
-    aggregate=finalize_base(tasks); event('SCIENCE_BASE_MERGED',{'run_dir':run_dir,'item_count':aggregate['item_count']})
+  if not tasks or not all(t.get('status') in {'DONE','MERGED','SEALED'} for t in tasks):continue
+  try:
+   if not Path(run_dir,'aggregate','MERGED.json').exists():
+    aggregate=finalize_base(tasks); event('SCIENCE_STAGE_MERGED',{'run_dir':run_dir,'stage':tasks[0]['stage'],'item_count':aggregate['item_count']})
     for task in tasks:task['status']='MERGED'
     changed=True
-   except Exception as exc:
-    for task in tasks:task['error']='MERGE_BLOCKED: '+str(exc)
-    event('SCIENCE_MERGE_BLOCKED',{'run_dir':run_dir,'error':str(exc)})
+   if all(t.get('status')=='MERGED' for t in tasks) and not Path(run_dir,'SEAL_RECORD.json').exists():
+    bundle=Path('/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/bundles')/Path(run_dir).name
+    record=reduce_stage(tasks[0]['manifest'],run_dir,tasks[0]['gates'],bundle)
+    atomic_json(Path(run_dir)/'SEAL_RECORD.json',record)
+    for task in tasks:task['status']='SEALED'
+    changed=True;event('SCIENCE_STAGE_SEALED',{'run_dir':run_dir,'stage':tasks[0]['stage'],'bundle':str(bundle)})
+  except Exception as exc:
+   for task in tasks:task['error']='MERGE_OR_SEAL_BLOCKED: '+str(exc)
+   event('SCIENCE_MERGE_OR_SEAL_BLOCKED',{'run_dir':run_dir,'stage':tasks[0].get('stage'),'error':str(exc)})
  if ensure_deep_tasks(queue):
   changed=True;event('SCIENCE_QUEUE_UNLOCKED',{'stage':'r3_core_temporal','execution_sha':queue.get('execution_git_sha')})
  atomic_json(OUT/'orchestrator_queue.json',queue)
