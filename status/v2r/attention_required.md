@@ -1,11 +1,11 @@
-2026-09-23T11:22:17.088076+00:00
+2026-09-23T11:26:23.818319+00:00
 
 NEW EVENTS
 50668/50669 archived and cancelled by explicit reset authorization. Legacy artifacts preserved.
 
 REFERENCE GATES
-llada R0: {'llada_math500': 'RUNNING', 'llada_gsm8k': 'RUNNING'}
-llada R1: {'llada_math500': 'WAITING_DEPENDENCY', 'llada_gsm8k': 'WAITING_DEPENDENCY'}
+llada R0: {'llada_math500': 'PASS', 'llada_gsm8k': 'RUNNING'}
+llada R1: {'llada_math500': 'NEEDS_REVIEW', 'llada_gsm8k': 'WAITING_DEPENDENCY'}
 llada R2: {'llada_math500': 'WAITING_DEPENDENCY', 'llada_gsm8k': 'WAITING_DEPENDENCY'}
 dream R0: {}
 dream R1: {}
@@ -18,8 +18,8 @@ dream_math500: NOT_STARTED
 dream_gsm8k: NOT_STARTED
 
 ACTIVE SHARDS
-llada-math500-r0-cachefix2: RUNNING job=52665
-llada-math500-r1-cachefix2: WAITING_DEPENDENCY job=None
+llada-math500-r0-cachefix2: PASS job=52665
+llada-math500-r1-cachefix2: NEEDS_REVIEW job=None
 llada-math500-r2-cachefix2: WAITING_DEPENDENCY job=None
 llada-gsm8k-r0-cachefix2: RUNNING job=52666
 llada-gsm8k-r1-cachefix2: WAITING_DEPENDENCY job=None
@@ -39,7 +39,7 @@ PAPER STATUS
 NOT_SUBMISSION_READY
 
 DEADLINE STATUS
-72.61h remaining; T-24 strongest completed evidence import; Dream cannot delay LLaDA.
+72.54h remaining; T-24 strongest completed evidence import; Dream cannot delay LLaDA.
 
 WHAT CHATGPT SHOULD READ NEXT
 current_status.json, gate_status.json, legacy_reset/reset_state.json, docs/V2R_REFERENCE_PRIMARY_PROTOCOL.md
