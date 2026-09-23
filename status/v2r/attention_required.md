@@ -1,5 +1,5 @@
-2026-09-23T21:36:19.520962+00:00
-HOURS TO DEADLINE: 62.38
+2026-09-23T21:37:51.850830+00:00
+HOURS TO DEADLINE: 62.35
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -16,8 +16,6 @@ MONITOR_DRIFT: Slurm job 52902 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52901 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52900 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52899 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52898 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52897 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52896 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52895 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52894 exists but legacy monitor state does not mention it.
@@ -70,7 +68,6 @@ MONITOR_DRIFT: Slurm job 52791 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52834 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52820 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52821 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52822 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
@@ -81,8 +78,6 @@ ALL ACTIVE KIMHJ JOBS
 52901 v2r-ind-server4-gsm8k-base-002 PENDING  KEEP_REFERENCE_CRITICAL
 52900 v2r-ind-server4-gsm8k-base-001 PENDING  KEEP_REFERENCE_CRITICAL
 52899 v2r-ind-server4-gsm8k-base-000 PENDING  KEEP_REFERENCE_CRITICAL
-52898 v2r-ind-server4-math500-base-001 PENDING  KEEP_REFERENCE_CRITICAL
-52897 v2r-ind-server4-math500-base-000 PENDING  KEEP_REFERENCE_CRITICAL
 52896 v2r-ind-server2-gsm8k-base-017 PENDING  KEEP_REFERENCE_CRITICAL
 52895 v2r-ind-server2-gsm8k-base-016 PENDING  KEEP_REFERENCE_CRITICAL
 52894 v2r-ind-server2-gsm8k-base-015 PENDING  KEEP_REFERENCE_CRITICAL
@@ -135,7 +130,6 @@ ALL ACTIVE KIMHJ JOBS
 52834 v2r-ind-s4-gsm-r2 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52820 v2r-ind-s1-r2 RUNNING devbox KEEP_REFERENCE_CRITICAL
 52821 v2r-ind-s2-r2 RUNNING server2 KEEP_REFERENCE_CRITICAL
-52822 v2r-ind-s4-r2 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52742 v2r-llada_math500_core_finalsha-shard-004 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
@@ -148,7 +142,7 @@ SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=['2', '3', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['0', '2', '3', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -191,10 +185,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-23T21:36:15.545817+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-23T21:37:19.117076+00:00
 
 MONITOR
-heartbeat=2026-09-23T21:36:19.520962+00:00
+heartbeat=2026-09-23T21:37:51.850830+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
