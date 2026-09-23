@@ -1,9 +1,9 @@
 {
-  "generated_at_kst": "2026-09-24T03:31:10+09:00",
+  "generated_at_kst": "2026-09-24T04:01:28+09:00",
   "deadline_kst": "2026-09-26T20:59:00+09:00",
-  "hours_remaining": 65.46,
+  "hours_remaining": 64.96,
   "experiment": {
-    "sealed_rows": 3,
+    "sealed_rows": 4,
     "running_rows": 0,
     "failed_rows": 1,
     "aggregate_ready": false,
@@ -14,7 +14,7 @@
       "COMPLETED_UNSEALED"
     ],
     "backbone_status": {
-      "LLaDA": 2,
+      "LLaDA": 3,
       "Dream": 1
     }
   },
@@ -35,6 +35,30 @@
     ],
     "p2": []
   },
-  "latest_new_evidence": [],
-  "latest_event": null
+  "latest_new_evidence": [
+    {
+      "timestamp_kst": "2026-09-24T04:01:26+09:00",
+      "type": "PROVENANCE_SEALED",
+      "job_id": "50738",
+      "run_name": "v2_bbh_logical3_llada"
+    }
+  ],
+  "latest_event": {
+    "timestamp_kst": "2026-09-24T04:01:28+09:00",
+    "type": "COMPACT_ARTIFACT_COLLECTED",
+    "job_id": "50738",
+    "run_name": "v2_bbh_logical3_llada",
+    "files": [
+      "report.json",
+      "scientific_provenance.json",
+      "run_manifest.json",
+      "probe_complete.json",
+      "existence.csv",
+      "selector_confirmation.csv",
+      "state_values.jsonl",
+      "fresh_sampling.jsonl",
+      "probe_branches.jsonl",
+      "full_bbh_logical3_llada.yaml"
+    ]
+  }
 }

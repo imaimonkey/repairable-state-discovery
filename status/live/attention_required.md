@@ -1,9 +1,14 @@
 # Attention required
 
-2026-09-24T03:31:10+09:00
+2026-09-24T04:01:28+09:00
 
 ## NEW EVENTS
-- No new scientific or operational event since previous cycle.
+- SERVER_ARTIFACT_ACCESS_RESTORED: job 50668
+- SERVER_ARTIFACT_ACCESS_RESTORED: job 50669
+- JOB_STATE_CHANGED: job 50738
+- PROVENANCE_SEALED: job 50738
+- SERVER_ARTIFACT_ACCESS_RESTORED: job 50738
+- COMPACT_ARTIFACT_COLLECTED: job 50738
 
 ## P0
 - 50924 execution provenance mismatch; manual review before seal
@@ -14,6 +19,7 @@
 ## ACTIVE JOBS
 
 ## NEW SEALED RESULTS
+- v2_bbh_logical3_llada
 
 ## WHAT CHATGPT SHOULD READ NOW
 1. `status/live/current_status.json`

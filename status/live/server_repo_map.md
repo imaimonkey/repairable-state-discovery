@@ -1,12 +1,12 @@
 # Live server/repository observation
 
-Snapshot: `2026-09-24T03:31:10+09:00 KST`
+Snapshot: `2026-09-24T04:01:28+09:00 KST`
 
 | server | execution SHA | workdir | source access | job dependency |
 |---|---|---|---|---|
-| server1 | `0dd161c8` | `/home/kimhj/repairable-state-discovery-v2-exec` | `False` | 50668 UNOBSERVED |
-| server1 | `0dd161c8` | `/home/kimhj/repairable-state-discovery-v2-exec` | `False` | 50669 UNOBSERVED |
-| server1 | `0dd161c8` | `/home/kimhj/repairable-state-discovery-v2-exec` | `False` | 50738 UNOBSERVED |
+| server1 | `0dd161c8` | `/home/kimhj/repairable-state-discovery-v2-exec` | `True` | 50668 UNOBSERVED |
+| server1 | `0dd161c8` | `/home/kimhj/repairable-state-discovery-v2-exec` | `True` | 50669 UNOBSERVED |
+| server1 | `0dd161c8` | `/home/kimhj/repairable-state-discovery-v2-exec` | `True` | 50738 SEALED |
 | server2 | `0dd161c8` | `/home/kimhj/repairable-state-discovery-v2-exec` | `True` | 50752 FAILED_EXCLUDED |
 | server2 | `0dd161c8` | `/home/kimhj/repairable-state-discovery-v2-exec` | `True` | 50753 SEALED |
 | server2 | `0dd161c8` | `/home/kimhj/repairable-state-discovery-v2-exec` | `True` | 50754 SEALED |
