@@ -1,0 +1,1410 @@
+{
+  "schema": "iclr2027_live_status_v1",
+  "generated_at_kst": "2026-09-23T15:45:40+09:00",
+  "collector_hostname": "ubuntu",
+  "monitor_branch": "codex/iclr2027-live-monitor-20260923",
+  "monitor_commit": "7cb34ddcf76ae52debfcbf940d5c5c2ded956c17",
+  "baseline_analysis_bundle_commit": "c41d6b10ed0c041581cae4f84a41b4ad783ebe00",
+  "observation_sources": [
+    "squeue",
+    "sacct",
+    "scontrol",
+    "server1-4 read-only SSH where available",
+    "execution artifact metadata"
+  ],
+  "execution_generations": {
+    "llada": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+    "dream": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d"
+  },
+  "jobs": [
+    {
+      "job_id": "50668",
+      "run_name": "v2_math500_llada",
+      "model": "LLaDA-8B-Instruct",
+      "task": "MATH-500",
+      "server": "server1",
+      "execution_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "config": "repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
+      "slurm": {
+        "job_id": "50668",
+        "squeue": "50668|v2-full-math|RUNNING|4-00:38:06|30-00:00:00|2026-09-19T15:07:32|devbox",
+        "squeue_error": "",
+        "job_name": "v2-full-math",
+        "state": "RUNNING",
+        "elapsed": "4-00:38:06",
+        "time_limit": "30-00:00:00",
+        "start_time": "2026-09-19T15:07:32",
+        "reason": "devbox",
+        "JobState": "RUNNING",
+        "RunTime": "4-00:38:06",
+        "TimeLimit": "30-00:00:00",
+        "StartTime": "2026-09-19T15:07:32",
+        "EndTime": "2026-10-19T15:07:32",
+        "ExitCode": "0:0",
+        "NodeList": "devbox",
+        "WorkDir": "/home/kimhj/repairable-state-discovery-v2-exec",
+        "StdOut": "/home/kimhj/repairable-state-discovery-v2-exec/logs/v2_measurement/v2_math500_llada-50668.out",
+        "StdErr": "/home/kimhj/repairable-state-discovery-v2-exec/logs/v2_measurement/v2_math500_llada-50668.err",
+        "Reason": "None",
+        "BatchHost": "devbox",
+        "sacct": [
+          "50668|RUNNING|4-00:38:06|0:0|devbox"
+        ]
+      },
+      "status": "RUNNING",
+      "classification": "UNOBSERVABLE",
+      "totals": {
+        "items": {
+          "completed": "UNOBSERVABLE",
+          "expected": 500
+        },
+        "trajectories": {
+          "completed": "UNOBSERVABLE",
+          "expected": 4000
+        },
+        "localization": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "state_value": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "confirmation": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "selector": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "mechanism_control": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "temporal": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "fresh_sampling": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        }
+      },
+      "files": {},
+      "manifest": {},
+      "provenance": {},
+      "liveness": {},
+      "sstat": {
+        "ok": true,
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead\n50668.batch|4-00:39:20|3785492K|476974720|576197683",
+        "error": ""
+      },
+      "source_available": false,
+      "source_error": "kimhj@10.0.12.120: Permission denied (publickey,password).",
+      "baseline": {
+        "last_snapshot": null
+      }
+    },
+    {
+      "job_id": "50669",
+      "run_name": "v2_gsm8k_llada",
+      "model": "LLaDA-8B-Instruct",
+      "task": "GSM8K",
+      "server": "server1",
+      "execution_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "config": "repairable_diffusion/configs/v2/runs/full_gsm8k_llada.yaml",
+      "slurm": {
+        "job_id": "50669",
+        "squeue": "50669|v2-full-gsm|RUNNING|4-00:38:06|30-00:00:00|2026-09-19T15:07:32|devbox",
+        "squeue_error": "",
+        "job_name": "v2-full-gsm",
+        "state": "RUNNING",
+        "elapsed": "4-00:38:06",
+        "time_limit": "30-00:00:00",
+        "start_time": "2026-09-19T15:07:32",
+        "reason": "devbox",
+        "JobState": "RUNNING",
+        "RunTime": "4-00:38:06",
+        "TimeLimit": "30-00:00:00",
+        "StartTime": "2026-09-19T15:07:32",
+        "EndTime": "2026-10-19T15:07:32",
+        "ExitCode": "0:0",
+        "NodeList": "devbox",
+        "WorkDir": "/home/kimhj/repairable-state-discovery-v2-exec",
+        "StdOut": "/home/kimhj/repairable-state-discovery-v2-exec/logs/v2_measurement/v2_gsm8k_llada-50669.out",
+        "StdErr": "/home/kimhj/repairable-state-discovery-v2-exec/logs/v2_measurement/v2_gsm8k_llada-50669.err",
+        "Reason": "None",
+        "BatchHost": "devbox",
+        "sacct": [
+          "50669|RUNNING|4-00:38:06|0:0|devbox"
+        ]
+      },
+      "status": "RUNNING",
+      "classification": "UNOBSERVABLE",
+      "totals": {
+        "items": {
+          "completed": "UNOBSERVABLE",
+          "expected": 1319
+        },
+        "trajectories": {
+          "completed": "UNOBSERVABLE",
+          "expected": 10552
+        },
+        "localization": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "state_value": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "confirmation": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "selector": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "mechanism_control": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "temporal": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "fresh_sampling": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        }
+      },
+      "files": {},
+      "manifest": {},
+      "provenance": {},
+      "liveness": {},
+      "sstat": {
+        "ok": true,
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead\n50669.batch|4-00:39:18|8065180K|1184448321|1311468537",
+        "error": ""
+      },
+      "source_available": false,
+      "source_error": "kimhj@10.0.12.120: Permission denied (publickey,password).",
+      "baseline": {
+        "last_snapshot": null
+      }
+    },
+    {
+      "job_id": "50738",
+      "run_name": "v2_bbh_logical3_llada",
+      "model": "LLaDA-8B-Instruct",
+      "task": "BBH logical3",
+      "server": "server1",
+      "execution_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "config": "repairable_diffusion/configs/v2/runs/full_bbh_logical3_llada.yaml",
+      "slurm": {
+        "job_id": "50738",
+        "squeue": "",
+        "squeue_error": "slurm_load_jobs error: Invalid job id specified",
+        "sacct": [
+          "50738|COMPLETED|2-05:13:34|0:0|devbox"
+        ]
+      },
+      "status": "UNOBSERVED",
+      "classification": "UNOBSERVABLE",
+      "totals": {
+        "items": {
+          "completed": "UNOBSERVABLE",
+          "expected": 250
+        },
+        "trajectories": {
+          "completed": "UNOBSERVABLE",
+          "expected": 2000
+        },
+        "localization": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "state_value": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "confirmation": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "selector": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "mechanism_control": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "temporal": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        },
+        "fresh_sampling": {
+          "completed": "UNOBSERVABLE",
+          "expected": "UNKNOWN_EXPECTED_TOTAL"
+        }
+      },
+      "files": {},
+      "manifest": {},
+      "provenance": {},
+      "liveness": {},
+      "sstat": {
+        "ok": true,
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead",
+        "error": "sstat: error: couldn't get steps for JobId=50738"
+      },
+      "source_available": false,
+      "source_error": "kimhj@10.0.12.120: Permission denied (publickey,password).",
+      "baseline": {
+        "last_snapshot": null
+      }
+    },
+    {
+      "job_id": "50752",
+      "run_name": "v2_bbh_logical5_llada",
+      "model": "LLaDA-8B-Instruct",
+      "task": "BBH logical5",
+      "server": "server2",
+      "execution_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "config": "repairable_diffusion/configs/v2/runs/full_bbh_logical5_llada.yaml",
+      "slurm": {
+        "job_id": "50752",
+        "squeue": "",
+        "squeue_error": "slurm_load_jobs error: Invalid job id specified",
+        "sacct": [
+          "50752|FAILED|1-09:56:11|1:0|server2"
+        ]
+      },
+      "status": "UNOBSERVED",
+      "classification": "UNKNOWN",
+      "totals": {
+        "items": {
+          "completed": 250,
+          "expected": 250
+        },
+        "trajectories": {
+          "completed": 2000,
+          "expected": 2000
+        },
+        "localization": {
+          "completed": 26432,
+          "expected": 26432
+        },
+        "state_value": {
+          "completed": 3304,
+          "expected": 3304
+        },
+        "confirmation": {
+          "completed": 0,
+          "expected": 34672
+        },
+        "selector": {
+          "completed": null,
+          "expected": 4130
+        },
+        "mechanism_control": {
+          "completed": 0,
+          "expected": 0
+        },
+        "temporal": {
+          "completed": null,
+          "expected": 0
+        },
+        "fresh_sampling": {
+          "completed": null,
+          "expected": 0
+        }
+      },
+      "files": {
+        "run_manifest.json": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/run_manifest.json",
+          "size_bytes": 1193,
+          "mtime_epoch": 1789816880.7800636,
+          "mtime_kst": "2026-09-19T20:21:20+0900"
+        },
+        "trajectories.pkl": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/trajectories.pkl",
+          "size_bytes": 236406121,
+          "mtime_epoch": 1789816880.5760639,
+          "mtime_kst": "2026-09-19T20:21:20+0900"
+        },
+        "probe_complete.json": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/probe_complete.json",
+          "size_bytes": 198,
+          "mtime_epoch": 1789920023.3341355,
+          "mtime_kst": "2026-09-21T01:00:23+0900"
+        },
+        "probe_branches.jsonl": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/probe_branches.jsonl",
+          "size_bytes": 11899683,
+          "mtime_epoch": 1789920023.3341355,
+          "mtime_kst": "2026-09-21T01:00:23+0900"
+        },
+        "state_values.jsonl": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/state_values.jsonl",
+          "size_bytes": 1555250,
+          "mtime_epoch": 1789920023.4261355,
+          "mtime_kst": "2026-09-21T01:00:23+0900"
+        },
+        "selector_confirmation.csv": {
+          "exists": false,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/selector_confirmation.csv"
+        },
+        "fresh_sampling.jsonl": {
+          "exists": false,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/fresh_sampling.jsonl"
+        },
+        "existence.csv": {
+          "exists": false,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/existence.csv"
+        },
+        "report.json": {
+          "exists": false,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/report.json"
+        },
+        "scientific_provenance.json": {
+          "exists": false,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/scientific_provenance.json"
+        }
+      },
+      "manifest": {
+        "run_name": "v2_bbh_logical5_llada",
+        "status": "trajectory_bank_ready",
+        "base_fingerprint": "2e63f0f984296872de9b0e51f703aa31c2deddae197da274e24c7967cb76d089",
+        "base_provenance": {
+          "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+          "config_sha256": "62cc0ead39ac45cfc1a1eff69a8673e3930f164562dd4e590eadd611ccb42637",
+          "model_id": "GSAI-ML/LLaDA-8B-Instruct",
+          "model_revision": "default",
+          "dataset_id": "maveriq/bigbenchhard",
+          "dataset_revision": "default",
+          "dataset_split": "train",
+          "subset_hash": "9d3fd43921b3d6f081108a61ce1d00eee00a641e3f187aa14f15554c233c576f",
+          "task_adapter_version": "v2.1",
+          "evaluator_id": "bbh_exact_choice",
+          "evaluator_version": "v2.1",
+          "fingerprint": "2e63f0f984296872de9b0e51f703aa31c2deddae197da274e24c7967cb76d089"
+        },
+        "trajectory_bank_hash": "ccf372423ad6e7bdb2413826659fa55433caa600135083e4b047276cfdbb52a0",
+        "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+        "contract_version": "v2_counterfactual_recoverability",
+        "config_path": "repairable_diffusion/configs/v2/runs/full_bbh_logical5_llada.yaml",
+        "config_sha256": "62cc0ead39ac45cfc1a1eff69a8673e3930f164562dd4e590eadd611ccb42637"
+      },
+      "provenance": {},
+      "liveness": {
+        "processes": [],
+        "gpu_compute_apps": [
+          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 25036 MiB",
+          "785414, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34316 MiB",
+          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14926 MiB",
+          "1995095, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6586 MiB",
+          "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 264 MiB",
+          "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6596 MiB",
+          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 8072 MiB",
+          "1951705, /home/kimhj/llada8b_basic/.venv/bin/python, 33618 MiB",
+          "1772952, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 8704 MiB"
+        ]
+      },
+      "sstat": {
+        "ok": true,
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead",
+        "error": "sstat: error: couldn't get steps for JobId=50752"
+      },
+      "source_available": true,
+      "source_error": null,
+      "baseline": {
+        "last_snapshot": null
+      }
+    },
+    {
+      "job_id": "50753",
+      "run_name": "v2_bbh_logical7_llada",
+      "model": "LLaDA-8B-Instruct",
+      "task": "BBH logical7",
+      "server": "server2",
+      "execution_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "config": "repairable_diffusion/configs/v2/runs/full_bbh_logical7_llada.yaml",
+      "slurm": {
+        "job_id": "50753",
+        "squeue": "",
+        "squeue_error": "slurm_load_jobs error: Invalid job id specified",
+        "sacct": [
+          "50753|COMPLETED|2-19:20:49|0:0|server2"
+        ]
+      },
+      "status": "COMPLETED_UNSEALED",
+      "classification": "UNKNOWN",
+      "totals": {
+        "items": {
+          "completed": null,
+          "expected": 250
+        },
+        "trajectories": {
+          "completed": null,
+          "expected": 2000
+        },
+        "localization": {
+          "completed": 23552,
+          "expected": 23552
+        },
+        "state_value": {
+          "completed": 2944,
+          "expected": 2944
+        },
+        "confirmation": {
+          "completed": 32400,
+          "expected": 32400
+        },
+        "selector": {
+          "completed": 3680,
+          "expected": 3680
+        },
+        "mechanism_control": {
+          "completed": 0,
+          "expected": 0
+        },
+        "temporal": {
+          "completed": null,
+          "expected": 0
+        },
+        "fresh_sampling": {
+          "completed": 0,
+          "expected": 0
+        }
+      },
+      "files": {
+        "run_manifest.json": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical7_llada/run_manifest.json",
+          "size_bytes": 1302,
+          "mtime_epoch": 1790041880.440233,
+          "mtime_kst": "2026-09-22T10:51:20+0900"
+        },
+        "trajectories.pkl": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical7_llada/trajectories.pkl",
+          "size_bytes": 239051314,
+          "mtime_epoch": 1789817476.7555227,
+          "mtime_kst": "2026-09-19T20:31:16+0900"
+        },
+        "probe_complete.json": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical7_llada/probe_complete.json",
+          "size_bytes": 198,
+          "mtime_epoch": 1789912352.43822,
+          "mtime_kst": "2026-09-20T22:52:32+0900"
+        },
+        "probe_branches.jsonl": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical7_llada/probe_branches.jsonl",
+          "size_bytes": 23706168,
+          "mtime_epoch": 1790041880.324233,
+          "mtime_kst": "2026-09-22T10:51:20+0900"
+        },
+        "state_values.jsonl": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical7_llada/state_values.jsonl",
+          "size_bytes": 1384408,
+          "mtime_epoch": 1789912352.5302205,
+          "mtime_kst": "2026-09-20T22:52:32+0900"
+        },
+        "selector_confirmation.csv": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical7_llada/selector_confirmation.csv",
+          "size_bytes": 163547,
+          "mtime_epoch": 1790041880.396233,
+          "mtime_kst": "2026-09-22T10:51:20+0900"
+        },
+        "fresh_sampling.jsonl": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical7_llada/fresh_sampling.jsonl",
+          "size_bytes": 0,
+          "mtime_epoch": 1790041880.412233,
+          "mtime_kst": "2026-09-22T10:51:20+0900"
+        },
+        "existence.csv": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical7_llada/existence.csv",
+          "size_bytes": 7826,
+          "mtime_epoch": 1790041880.416233,
+          "mtime_kst": "2026-09-22T10:51:20+0900"
+        },
+        "report.json": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical7_llada/report.json",
+          "size_bytes": 1154,
+          "mtime_epoch": 1790041880.424233,
+          "mtime_kst": "2026-09-22T10:51:20+0900"
+        },
+        "scientific_provenance.json": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical7_llada/scientific_provenance.json",
+          "size_bytes": 2298,
+          "mtime_epoch": 1790138442.2426455,
+          "mtime_kst": "2026-09-23T13:40:42+0900"
+        }
+      },
+      "manifest": {
+        "run_name": "v2_bbh_logical7_llada",
+        "status": "complete",
+        "base_fingerprint": "6fd527cd3068ba47ccac1a3890ebf0b6c498c96752b44bad772af7cdac5adc19",
+        "base_provenance": {
+          "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+          "config_sha256": "c545ee56673123a65ddeaaf247c93f4fb863c7e5e4113a18266a945c9403bc79",
+          "model_id": "GSAI-ML/LLaDA-8B-Instruct",
+          "model_revision": "default",
+          "dataset_id": "maveriq/bigbenchhard",
+          "dataset_revision": "default",
+          "dataset_split": "train",
+          "subset_hash": "40e8ea9d86d75b7e405752f1bc76489d85e92a358929a32394055455396e6209",
+          "task_adapter_version": "v2.1",
+          "evaluator_id": "bbh_exact_choice",
+          "evaluator_version": "v2.1",
+          "fingerprint": "6fd527cd3068ba47ccac1a3890ebf0b6c498c96752b44bad772af7cdac5adc19"
+        },
+        "trajectory_bank_hash": "87c68c55852d3c0a3ca6abe803e75fdff9169bc468185fe0082d3cb5d42490fc",
+        "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+        "contract_version": "v2_counterfactual_recoverability",
+        "config_path": "repairable_diffusion/configs/v2/runs/full_bbh_logical7_llada.yaml",
+        "config_sha256": "c545ee56673123a65ddeaaf247c93f4fb863c7e5e4113a18266a945c9403bc79",
+        "report": "report.json",
+        "probe_branches_sha256": "0afc3c99a89e38afeacc1bfb67bf20ceb294cc4feff00a0c62e3de18d46b8879"
+      },
+      "provenance": {
+        "status": "SEALED",
+        "run_name": "v2_bbh_logical7_llada",
+        "required_provenance": {
+          "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+          "config_sha256": "c545ee56673123a65ddeaaf247c93f4fb863c7e5e4113a18266a945c9403bc79",
+          "model_id": "GSAI-ML/LLaDA-8B-Instruct",
+          "model_revision": "default",
+          "dataset_id": "maveriq/bigbenchhard",
+          "dataset_revision": "default",
+          "dataset_split": "train",
+          "subset_hash": "1b77ea802beae347d9cb02d8a6a73ff52a1740c4eb50686b32b57b1f17b28f08",
+          "task_adapter_version": "v2.1",
+          "trajectory_bank_hash": "87c68c55852d3c0a3ca6abe803e75fdff9169bc468185fe0082d3cb5d42490fc",
+          "decoder_state_schema_version": "v2.3",
+          "operator_id": "probe_bank_multi_operator",
+          "operator_version": "v2.3",
+          "localization_seed_hash": "703bcf5d3fa4ee5374a4d0887691637c8caa264bfd9cd855d3a3f06f1e2d8cda",
+          "confirmation_seed_hash": "acd189174da8ecf9884964d103e34ba96b7b55e6c7a0c48fd21162265c4ac1c4",
+          "evaluator_id": "bbh_exact_choice",
+          "evaluator_version": "v2.1"
+        },
+        "scientific_fingerprint": "f8f4302ec791c8e98342c49196b4cb0aa28b55afafbabb7312325947ac211530",
+        "operators": [
+          "low_confidence_remask_v2",
+          "matched_stochastic_continuation",
+          "native_continuation"
+        ],
+        "localization_seed_count": 11776,
+        "confirmation_seed_count": 16200,
+        "item_count": 250,
+        "artifacts": {
+          "report.json": "502f26c55dc8a004058a11c88cd79e33d9805748b698dbbc9ec8c54256d1ec24",
+          "run_manifest.json": "f72d0b77370c70540ea790c58a7e2a32061e43d52efb385685e04037f633b9e7",
+          "probe_branches.jsonl": "0afc3c99a89e38afeacc1bfb67bf20ceb294cc4feff00a0c62e3de18d46b8879",
+          "trajectories.pkl": "87c68c55852d3c0a3ca6abe803e75fdff9169bc468185fe0082d3cb5d42490fc",
+          "state_values.jsonl": "f963f29b1dc1c9612a0506b98241ed485c5bc68f5b96f38974ed2a73ac3af8d5",
+          "selector_confirmation.csv": "afd86998569737d23ef16af81d9c5a5037113fc289c49d8b3a612be31b72fd68",
+          "existence.csv": "70854a92f3ad1f3e65c80e0738cb7fdfd67dd9cd19b4ffebed4006e94dabb537",
+          "fresh_sampling.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "core_label": "CoRe-snapshot",
+        "core_source_revision": "524e01e11a8751afb67b81a2c930f938faf9a70e",
+        "v1_artifacts_substituted": false,
+        "dream_native_sampler_reference": null
+      },
+      "liveness": {
+        "processes": [],
+        "gpu_compute_apps": [
+          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 25036 MiB",
+          "785414, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34316 MiB",
+          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 15386 MiB",
+          "1995095, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6586 MiB",
+          "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 264 MiB",
+          "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6596 MiB",
+          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 8072 MiB",
+          "1951705, /home/kimhj/llada8b_basic/.venv/bin/python, 33618 MiB",
+          "1772952, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 8708 MiB"
+        ]
+      },
+      "sstat": {
+        "ok": true,
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead",
+        "error": "sstat: error: couldn't get steps for JobId=50753"
+      },
+      "source_available": true,
+      "source_error": null,
+      "baseline": {
+        "last_snapshot": null
+      }
+    },
+    {
+      "job_id": "50754",
+      "run_name": "v2_mbpp_llada",
+      "model": "LLaDA-8B-Instruct",
+      "task": "MBPP sanitized",
+      "server": "server2",
+      "execution_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "config": "repairable_diffusion/configs/v2/runs/full_mbpp_llada.yaml",
+      "slurm": {
+        "job_id": "50754",
+        "squeue": "",
+        "squeue_error": "slurm_load_jobs error: Invalid job id specified",
+        "sacct": [
+          "50754|COMPLETED|2-18:19:02|0:0|server2"
+        ]
+      },
+      "status": "COMPLETED_UNSEALED",
+      "classification": "UNKNOWN",
+      "totals": {
+        "items": {
+          "completed": null,
+          "expected": 257
+        },
+        "trajectories": {
+          "completed": null,
+          "expected": 2056
+        },
+        "localization": {
+          "completed": 24192,
+          "expected": 24192
+        },
+        "state_value": {
+          "completed": 3024,
+          "expected": 3024
+        },
+        "confirmation": {
+          "completed": 33120,
+          "expected": 33120
+        },
+        "selector": {
+          "completed": 3780,
+          "expected": 3780
+        },
+        "mechanism_control": {
+          "completed": 0,
+          "expected": 0
+        },
+        "temporal": {
+          "completed": null,
+          "expected": 0
+        },
+        "fresh_sampling": {
+          "completed": 0,
+          "expected": 0
+        }
+      },
+      "files": {
+        "run_manifest.json": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_mbpp_llada/run_manifest.json",
+          "size_bytes": 1303,
+          "mtime_epoch": 1790038174.5202029,
+          "mtime_kst": "2026-09-22T09:49:34+0900"
+        },
+        "trajectories.pkl": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_mbpp_llada/trajectories.pkl",
+          "size_bytes": 267757021,
+          "mtime_epoch": 1789819809.9399168,
+          "mtime_kst": "2026-09-19T21:10:09+0900"
+        },
+        "probe_complete.json": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_mbpp_llada/probe_complete.json",
+          "size_bytes": 198,
+          "mtime_epoch": 1789910444.3901827,
+          "mtime_kst": "2026-09-20T22:20:44+0900"
+        },
+        "probe_branches.jsonl": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_mbpp_llada/probe_branches.jsonl",
+          "size_bytes": 42928469,
+          "mtime_epoch": 1790038174.3482037,
+          "mtime_kst": "2026-09-22T09:49:34+0900"
+        },
+        "state_values.jsonl": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_mbpp_llada/state_values.jsonl",
+          "size_bytes": 1426660,
+          "mtime_epoch": 1789910444.4981828,
+          "mtime_kst": "2026-09-20T22:20:44+0900"
+        },
+        "selector_confirmation.csv": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_mbpp_llada/selector_confirmation.csv",
+          "size_bytes": 166460,
+          "mtime_epoch": 1790038174.4562032,
+          "mtime_kst": "2026-09-22T09:49:34+0900"
+        },
+        "fresh_sampling.jsonl": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_mbpp_llada/fresh_sampling.jsonl",
+          "size_bytes": 0,
+          "mtime_epoch": 1790038174.472203,
+          "mtime_kst": "2026-09-22T09:49:34+0900"
+        },
+        "existence.csv": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_mbpp_llada/existence.csv",
+          "size_bytes": 10170,
+          "mtime_epoch": 1790038174.484203,
+          "mtime_kst": "2026-09-22T09:49:34+0900"
+        },
+        "report.json": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_mbpp_llada/report.json",
+          "size_bytes": 1190,
+          "mtime_epoch": 1790038174.488203,
+          "mtime_kst": "2026-09-22T09:49:34+0900"
+        },
+        "scientific_provenance.json": {
+          "exists": true,
+          "path": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_mbpp_llada/scientific_provenance.json",
+          "size_bytes": 2307,
+          "mtime_epoch": 1790138449.1946235,
+          "mtime_kst": "2026-09-23T13:40:49+0900"
+        }
+      },
+      "manifest": {
+        "run_name": "v2_mbpp_llada",
+        "status": "complete",
+        "base_fingerprint": "684b8b5fd89f58c4e3ad38d42a73a071417197aef61a89193a5b73b2026edcbd",
+        "base_provenance": {
+          "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+          "config_sha256": "6f442834dc5cbf4e5a5d13a274bf21624c80c06bfd30d67fe6b9fc4f28060edf",
+          "model_id": "GSAI-ML/LLaDA-8B-Instruct",
+          "model_revision": "default",
+          "dataset_id": "google-research-datasets/mbpp",
+          "dataset_revision": "default",
+          "dataset_split": "test",
+          "subset_hash": "07a123b668e9b745cbd603be83c7e6315f16fe14fadd7a569920873da3f3d32e",
+          "task_adapter_version": "v2.1",
+          "evaluator_id": "mbpp_restricted_execution",
+          "evaluator_version": "v2.1",
+          "fingerprint": "684b8b5fd89f58c4e3ad38d42a73a071417197aef61a89193a5b73b2026edcbd"
+        },
+        "trajectory_bank_hash": "a65becfcec66deb1596cd30b25a9f294f5d38e15d84aa0603b648244af29eb8b",
+        "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+        "contract_version": "v2_counterfactual_recoverability",
+        "config_path": "repairable_diffusion/configs/v2/runs/full_mbpp_llada.yaml",
+        "config_sha256": "6f442834dc5cbf4e5a5d13a274bf21624c80c06bfd30d67fe6b9fc4f28060edf",
+        "report": "report.json",
+        "probe_branches_sha256": "f342515bd475f3c83a51a1e5ac077b265e46d692d572db6cae29965a15edfc55"
+      },
+      "provenance": {
+        "status": "SEALED",
+        "run_name": "v2_mbpp_llada",
+        "required_provenance": {
+          "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+          "config_sha256": "6f442834dc5cbf4e5a5d13a274bf21624c80c06bfd30d67fe6b9fc4f28060edf",
+          "model_id": "GSAI-ML/LLaDA-8B-Instruct",
+          "model_revision": "default",
+          "dataset_id": "google-research-datasets/mbpp",
+          "dataset_revision": "default",
+          "dataset_split": "test",
+          "subset_hash": "3c42720f1620c4afa5435fd8b55e00bc4a2dc0efefca3969a55f7be7441d1554",
+          "task_adapter_version": "v2.1",
+          "trajectory_bank_hash": "a65becfcec66deb1596cd30b25a9f294f5d38e15d84aa0603b648244af29eb8b",
+          "decoder_state_schema_version": "v2.3",
+          "operator_id": "probe_bank_multi_operator",
+          "operator_version": "v2.3",
+          "localization_seed_hash": "e20fc2854bfeb652dcf666d6d60e03cc5ba8e6b8e44ce58b19456772172ebfcc",
+          "confirmation_seed_hash": "5e6a458b3fc21ca7a46d7976071e97477268a4fe89b6b2d8bcea7ce934664744",
+          "evaluator_id": "mbpp_restricted_execution",
+          "evaluator_version": "v2.1"
+        },
+        "scientific_fingerprint": "5022bc1577b1575c07ee16f5e51e4c5356f5e0fdf16bca6fe67f1623525f9288",
+        "operators": [
+          "low_confidence_remask_v2",
+          "matched_stochastic_continuation",
+          "native_continuation"
+        ],
+        "localization_seed_count": 12096,
+        "confirmation_seed_count": 16560,
+        "item_count": 257,
+        "artifacts": {
+          "report.json": "c011b2c2a0921ec1d0ab55f539bbc2d40f26600cebbe999187ca77afc6939c80",
+          "run_manifest.json": "1f5218884d62212dd221bb7b27f9df4936bc46fc328a98cdab17d9c11af9129b",
+          "probe_branches.jsonl": "f342515bd475f3c83a51a1e5ac077b265e46d692d572db6cae29965a15edfc55",
+          "trajectories.pkl": "a65becfcec66deb1596cd30b25a9f294f5d38e15d84aa0603b648244af29eb8b",
+          "state_values.jsonl": "17bcb68d15ff50bf34196086016879308123bc9d7670a584223a1ece8d0e7e66",
+          "selector_confirmation.csv": "f1b8d2b8282cce3e6e5aacf78c5750752e0fee0809261bd909c41317485dec80",
+          "existence.csv": "6b76914fcb0c42bd874b0e325ae84f9350309700c1de224da0325f8c715e6f1f",
+          "fresh_sampling.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "core_label": "CoRe-snapshot",
+        "core_source_revision": "524e01e11a8751afb67b81a2c930f938faf9a70e",
+        "v1_artifacts_substituted": false,
+        "dream_native_sampler_reference": null
+      },
+      "liveness": {
+        "processes": [],
+        "gpu_compute_apps": [
+          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 25036 MiB",
+          "785414, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 32040 MiB",
+          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 15388 MiB",
+          "1995095, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6586 MiB",
+          "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 264 MiB",
+          "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6596 MiB",
+          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 8072 MiB",
+          "1951705, /home/kimhj/llada8b_basic/.venv/bin/python, 33618 MiB",
+          "1772952, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 9050 MiB"
+        ]
+      },
+      "sstat": {
+        "ok": true,
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead",
+        "error": "sstat: error: couldn't get steps for JobId=50754"
+      },
+      "source_available": true,
+      "source_error": null,
+      "baseline": {
+        "last_snapshot": null
+      }
+    },
+    {
+      "job_id": "50923",
+      "run_name": "v2_math500_dream",
+      "model": "Dream-v0-Instruct-7B",
+      "task": "MATH-500",
+      "server": "server4",
+      "execution_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "config": "repairable_diffusion/configs/v2/runs/full_math500_dream.yaml",
+      "slurm": {
+        "job_id": "50923",
+        "squeue": "",
+        "squeue_error": "slurm_load_jobs error: Invalid job id specified",
+        "sacct": [
+          "50923|COMPLETED|1-05:48:51|0:0|server4"
+        ]
+      },
+      "status": "COMPLETED_UNSEALED",
+      "classification": "UNKNOWN",
+      "totals": {
+        "items": {
+          "completed": null,
+          "expected": 500
+        },
+        "trajectories": {
+          "completed": null,
+          "expected": 4000
+        },
+        "localization": {
+          "completed": 44608,
+          "expected": 44608
+        },
+        "state_value": {
+          "completed": 5576,
+          "expected": 5576
+        },
+        "confirmation": {
+          "completed": 56688,
+          "expected": 56688
+        },
+        "selector": {
+          "completed": 6970,
+          "expected": 6970
+        },
+        "mechanism_control": {
+          "completed": 0,
+          "expected": 0
+        },
+        "temporal": {
+          "completed": null,
+          "expected": 0
+        },
+        "fresh_sampling": {
+          "completed": 0,
+          "expected": 0
+        }
+      },
+      "files": {
+        "run_manifest.json": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_math500_dream/run_manifest.json",
+          "size_bytes": 1343,
+          "mtime_epoch": 1789920829.778445,
+          "mtime_kst": "2026-09-21T01:13:49+0900"
+        },
+        "trajectories.pkl": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_math500_dream/trajectories.pkl",
+          "size_bytes": 456014807,
+          "mtime_epoch": 1789822896.0015624,
+          "mtime_kst": "2026-09-19T22:01:36+0900"
+        },
+        "probe_complete.json": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_math500_dream/probe_complete.json",
+          "size_bytes": 198,
+          "mtime_epoch": 1789863887.6663344,
+          "mtime_kst": "2026-09-20T09:24:47+0900"
+        },
+        "probe_branches.jsonl": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_math500_dream/probe_branches.jsonl",
+          "size_bytes": 42085029,
+          "mtime_epoch": 1789920829.6204453,
+          "mtime_kst": "2026-09-21T01:13:49+0900"
+        },
+        "state_values.jsonl": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_math500_dream/state_values.jsonl",
+          "size_bytes": 2714635,
+          "mtime_epoch": 1789863887.8373356,
+          "mtime_kst": "2026-09-20T09:24:47+0900"
+        },
+        "selector_confirmation.csv": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_math500_dream/selector_confirmation.csv",
+          "size_bytes": 318388,
+          "mtime_epoch": 1789920829.6864452,
+          "mtime_kst": "2026-09-21T01:13:49+0900"
+        },
+        "fresh_sampling.jsonl": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_math500_dream/fresh_sampling.jsonl",
+          "size_bytes": 0,
+          "mtime_epoch": 1789920829.7174451,
+          "mtime_kst": "2026-09-21T01:13:49+0900"
+        },
+        "existence.csv": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_math500_dream/existence.csv",
+          "size_bytes": 21372,
+          "mtime_epoch": 1789920829.737445,
+          "mtime_kst": "2026-09-21T01:13:49+0900"
+        },
+        "report.json": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_math500_dream/report.json",
+          "size_bytes": 1124,
+          "mtime_epoch": 1789920829.7424452,
+          "mtime_kst": "2026-09-21T01:13:49+0900"
+        },
+        "scientific_provenance.json": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_math500_dream/scientific_provenance.json",
+          "size_bytes": 2483,
+          "mtime_epoch": 1789971096.3363688,
+          "mtime_kst": "2026-09-21T15:11:36+0900"
+        }
+      },
+      "manifest": {
+        "run_name": "v2_math500_dream",
+        "status": "complete",
+        "base_fingerprint": "5491f6da3b7f67c1a907451dc08096a6460d553b10df81655238ef1dffad5114",
+        "base_provenance": {
+          "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+          "config_sha256": "63d397d92a75defedaf476d6090dad15e2d2d7b0fcf56bc339d27dfaf6deb577",
+          "model_id": "Dream-org/Dream-v0-Instruct-7B",
+          "model_revision": "2f177908857f6f96dbe7b696ad5eac5123535bbd",
+          "dataset_id": "HuggingFaceH4/MATH-500",
+          "dataset_revision": "default",
+          "dataset_split": "test",
+          "subset_hash": "572eb0aaa2dc016d09ba3b0bd200446d2c85c579afcd99fc0a0a5d128fd9c15c",
+          "task_adapter_version": "v2.1",
+          "evaluator_id": "math500_symbolic_equivalence",
+          "evaluator_version": "v2.1",
+          "fingerprint": "5491f6da3b7f67c1a907451dc08096a6460d553b10df81655238ef1dffad5114"
+        },
+        "trajectory_bank_hash": "48fa6e5b5a33ecfab51bf281110a40c17d6e86b5bdc8bbf91a2d739c716dc5e4",
+        "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+        "contract_version": "v2_counterfactual_recoverability",
+        "config_path": "repairable_diffusion/configs/v2/runs/full_math500_dream.yaml",
+        "config_sha256": "63d397d92a75defedaf476d6090dad15e2d2d7b0fcf56bc339d27dfaf6deb577",
+        "report": "report.json",
+        "probe_branches_sha256": "aea7b2e08a8c50edb495120ed9c6a75fd495b568a384b754de2967f579ef22ae"
+      },
+      "provenance": {
+        "status": "SEALED",
+        "run_name": "v2_math500_dream",
+        "required_provenance": {
+          "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+          "config_sha256": "63d397d92a75defedaf476d6090dad15e2d2d7b0fcf56bc339d27dfaf6deb577",
+          "model_id": "Dream-org/Dream-v0-Instruct-7B",
+          "model_revision": "2f177908857f6f96dbe7b696ad5eac5123535bbd",
+          "dataset_id": "HuggingFaceH4/MATH-500",
+          "dataset_revision": "default",
+          "dataset_split": "test",
+          "subset_hash": "09109f1984951590b44809c7fe4023bb246bc5094c82607d524f93f8666a177c",
+          "task_adapter_version": "v2.1",
+          "trajectory_bank_hash": "48fa6e5b5a33ecfab51bf281110a40c17d6e86b5bdc8bbf91a2d739c716dc5e4",
+          "decoder_state_schema_version": "v2.3",
+          "operator_id": "probe_bank_multi_operator",
+          "operator_version": "v2.3",
+          "localization_seed_hash": "f87f9fa7cace1730e6067f406324cae8b5a877aa6076f55b9a5b20225fd904eb",
+          "confirmation_seed_hash": "5c0287fca512ea1bbf30f3b3162c0a7a226a88b2d6cddbe0c7b4fd9d8ebae786",
+          "evaluator_id": "math500_symbolic_equivalence",
+          "evaluator_version": "v2.1"
+        },
+        "scientific_fingerprint": "53add4744716f3c5d0b941deee82a7773ca9bc46988082cfc7790c3d9ebdb7b7",
+        "operators": [
+          "low_confidence_remask_v2",
+          "matched_stochastic_continuation",
+          "native_continuation"
+        ],
+        "localization_seed_count": 22304,
+        "confirmation_seed_count": 28344,
+        "item_count": 500,
+        "artifacts": {
+          "report.json": "ce382ac4e1f883ad0ee960e660c6453c3c426ee84a0657e5a61fc9a9631c9d2a",
+          "run_manifest.json": "2b55ca1c5c1b8119651a470308ddcfe2b2984e9c6e2b8c963637b557494b597f",
+          "probe_branches.jsonl": "aea7b2e08a8c50edb495120ed9c6a75fd495b568a384b754de2967f579ef22ae",
+          "trajectories.pkl": "48fa6e5b5a33ecfab51bf281110a40c17d6e86b5bdc8bbf91a2d739c716dc5e4",
+          "state_values.jsonl": "6f48658ea2b553fa828395bbf8fe2eb9453c2b5dc82f836ea3f677e324e150cc",
+          "selector_confirmation.csv": "4b5559e38009e9e8e5eb1e220b6f12c87a44dda978742f1c62112ccc792719d0",
+          "existence.csv": "b63ca9a91c0af4eda7d4d57e7d723576b2414e6fdaa53d6a4f572506e191b3af",
+          "fresh_sampling.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "core_label": "CoRe-snapshot",
+        "core_source_revision": "524e01e11a8751afb67b81a2c930f938faf9a70e",
+        "v1_artifacts_substituted": false,
+        "dream_native_sampler_reference": {
+          "repository": "Dream-org/Dream-v0-Instruct-7B",
+          "revision": "2f177908857f6f96dbe7b696ad5eac5123535bbd",
+          "algorithm": "origin"
+        }
+      },
+      "liveness": {
+        "processes": [],
+        "gpu_compute_apps": [
+          "2698890, VLLM::Worker, 77388 MiB",
+          "2698915, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 6624 MiB",
+          "2705038, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 55838 MiB",
+          "2736790, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 39344 MiB",
+          "3032555, /data/janghj/EasyEdit/.venv/bin/python, 36234 MiB",
+          "2604497, /data/janghj/EasyEdit/.venv/bin/python, 34692 MiB",
+          "2903083, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 38284 MiB",
+          "1590193, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 23734 MiB",
+          "2420266, VLLM::EngineCore, 83208 MiB"
+        ]
+      },
+      "sstat": {
+        "ok": true,
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead",
+        "error": "sstat: error: couldn't get steps for JobId=50923"
+      },
+      "source_available": true,
+      "source_error": null,
+      "baseline": {
+        "last_snapshot": null
+      }
+    },
+    {
+      "job_id": "50924",
+      "run_name": "v2_gsm8k_dream",
+      "model": "Dream-v0-Instruct-7B",
+      "task": "GSM8K",
+      "server": "server4",
+      "execution_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+      "config": "repairable_diffusion/configs/v2/runs/full_gsm8k_dream.yaml",
+      "slurm": {
+        "job_id": "50924",
+        "squeue": "",
+        "squeue_error": "slurm_load_jobs error: Invalid job id specified",
+        "sacct": [
+          "50924|COMPLETED|3-19:58:50|0:0|server4"
+        ]
+      },
+      "status": "COMPLETED_UNSEALED",
+      "classification": "UNKNOWN",
+      "totals": {
+        "items": {
+          "completed": null,
+          "expected": 1319
+        },
+        "trajectories": {
+          "completed": null,
+          "expected": 10552
+        },
+        "localization": {
+          "completed": 141824,
+          "expected": 141824
+        },
+        "state_value": {
+          "completed": 17728,
+          "expected": 17728
+        },
+        "confirmation": {
+          "completed": 178560,
+          "expected": 178560
+        },
+        "selector": {
+          "completed": 22160,
+          "expected": 22160
+        },
+        "mechanism_control": {
+          "completed": 0,
+          "expected": 0
+        },
+        "temporal": {
+          "completed": null,
+          "expected": 0
+        },
+        "fresh_sampling": {
+          "completed": 0,
+          "expected": 0
+        }
+      },
+      "files": {
+        "run_manifest.json": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/run_manifest.json",
+          "size_bytes": 1314,
+          "mtime_epoch": 1790144622.7184155,
+          "mtime_kst": "2026-09-23T15:23:42+0900"
+        },
+        "trajectories.pkl": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/trajectories.pkl",
+          "size_bytes": 1206315707,
+          "mtime_epoch": 1789836976.1368973,
+          "mtime_kst": "2026-09-20T01:56:16+0900"
+        },
+        "probe_complete.json": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/probe_complete.json",
+          "size_bytes": 199,
+          "mtime_epoch": 1789964468.3087118,
+          "mtime_kst": "2026-09-21T13:21:08+0900"
+        },
+        "probe_branches.jsonl": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/probe_branches.jsonl",
+          "size_bytes": 131730516,
+          "mtime_epoch": 1790144622.166418,
+          "mtime_kst": "2026-09-23T15:23:42+0900"
+        },
+        "state_values.jsonl": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/state_values.jsonl",
+          "size_bytes": 8638757,
+          "mtime_epoch": 1789964468.7757108,
+          "mtime_kst": "2026-09-21T13:21:08+0900"
+        },
+        "selector_confirmation.csv": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/selector_confirmation.csv",
+          "size_bytes": 1028644,
+          "mtime_epoch": 1790144622.405417,
+          "mtime_kst": "2026-09-23T15:23:42+0900"
+        },
+        "fresh_sampling.jsonl": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/fresh_sampling.jsonl",
+          "size_bytes": 0,
+          "mtime_epoch": 1790144622.5254164,
+          "mtime_kst": "2026-09-23T15:23:42+0900"
+        },
+        "existence.csv": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/existence.csv",
+          "size_bytes": 56592,
+          "mtime_epoch": 1790144622.5974162,
+          "mtime_kst": "2026-09-23T15:23:42+0900"
+        },
+        "report.json": {
+          "exists": true,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/report.json",
+          "size_bytes": 1182,
+          "mtime_epoch": 1790144622.603416,
+          "mtime_kst": "2026-09-23T15:23:42+0900"
+        },
+        "scientific_provenance.json": {
+          "exists": false,
+          "path": "/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/scientific_provenance.json"
+        }
+      },
+      "manifest": {
+        "run_name": "v2_gsm8k_dream",
+        "status": "complete",
+        "base_fingerprint": "1510b7673e2abe29255290633d263c020893530b9a879d5aa72ab09566a3b419",
+        "base_provenance": {
+          "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+          "config_sha256": "352ee442a097cb6835cfdf221e625e890be5973bd78c0396b937fe83752ec0db",
+          "model_id": "Dream-org/Dream-v0-Instruct-7B",
+          "model_revision": "2f177908857f6f96dbe7b696ad5eac5123535bbd",
+          "dataset_id": "openai/gsm8k",
+          "dataset_revision": "default",
+          "dataset_split": "test",
+          "subset_hash": "0dbac256490371a8aef0ce5f1e7d1661ba6091b67db13b7eabc6156f03ddd48d",
+          "task_adapter_version": "v2.1",
+          "evaluator_id": "gsm8k_numeric",
+          "evaluator_version": "v2.1",
+          "fingerprint": "1510b7673e2abe29255290633d263c020893530b9a879d5aa72ab09566a3b419"
+        },
+        "trajectory_bank_hash": "7d472f1d7e9ba66cf528bfaefe7009fa874165870ca73e6c688065df42da96a4",
+        "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+        "contract_version": "v2_counterfactual_recoverability",
+        "config_path": "repairable_diffusion/configs/v2/runs/full_gsm8k_dream.yaml",
+        "config_sha256": "352ee442a097cb6835cfdf221e625e890be5973bd78c0396b937fe83752ec0db",
+        "report": "report.json",
+        "probe_branches_sha256": "e0c1854efa213b830fdd909ad77d1114be5f1c3a3ea32bd4155a66f677f6beee"
+      },
+      "provenance": {},
+      "liveness": {
+        "processes": [],
+        "gpu_compute_apps": [
+          "2698890, VLLM::Worker, 77388 MiB",
+          "2698915, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 6624 MiB",
+          "2705038, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 55838 MiB",
+          "2736790, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 39344 MiB",
+          "3032555, /data/janghj/EasyEdit/.venv/bin/python, 36234 MiB",
+          "2604497, /data/janghj/EasyEdit/.venv/bin/python, 34692 MiB",
+          "2903083, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 38284 MiB",
+          "1590193, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 23734 MiB",
+          "2420266, VLLM::EngineCore, 83208 MiB"
+        ]
+      },
+      "sstat": {
+        "ok": true,
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead",
+        "error": "sstat: error: couldn't get steps for JobId=50924"
+      },
+      "source_available": true,
+      "source_error": null,
+      "baseline": {
+        "last_snapshot": null
+      }
+    }
+  ],
+  "paper": {
+    "path": "/data/kimhj/repairable-state-discovery-iclr-2027",
+    "available": true,
+    "head": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+    "branch": "",
+    "origin_main": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+    "status_lines": [
+      " M paper/sections/04_experiments.tex",
+      " M paper/sections/09_reproducibility.tex",
+      "?? paper/build/"
+    ],
+    "tracked_dirty": [
+      " M paper/sections/04_experiments.tex",
+      " M paper/sections/09_reproducibility.tex",
+      "?? paper/build/"
+    ],
+    "files": {
+      "main.tex": {
+        "exists": true,
+        "path": "/data/kimhj/repairable-state-discovery-iclr-2027/paper/main.tex",
+        "size_bytes": 2007
+      },
+      "CLAIM_LEDGER.md": {
+        "exists": false,
+        "path": "/data/kimhj/repairable-state-discovery-iclr-2027/CLAIM_LEDGER.md",
+        "size_bytes": null
+      },
+      "PAPER_STATE.md": {
+        "exists": false,
+        "path": "/data/kimhj/repairable-state-discovery-iclr-2027/PAPER_STATE.md",
+        "size_bytes": null
+      },
+      "RESULT_INTEGRATION.md": {
+        "exists": false,
+        "path": "/data/kimhj/repairable-state-discovery-iclr-2027/RESULT_INTEGRATION.md",
+        "size_bytes": null
+      },
+      "Makefile": {
+        "exists": false,
+        "path": "/data/kimhj/repairable-state-discovery-iclr-2027/Makefile",
+        "size_bytes": null
+      },
+      "main.pdf": {
+        "exists": false,
+        "path": "/data/kimhj/repairable-state-discovery-iclr-2027/paper/main.pdf",
+        "size_bytes": null
+      }
+    },
+    "todo_count": null,
+    "claim_dependencies": {
+      "CLAIM_LEDGER.md": false,
+      "PAPER_STATE.md": false,
+      "RESULT_INTEGRATION.md": false
+    }
+  },
+  "storage": {
+    "local": [
+      "Filesystem     1024-blocks       Used Available Capacity Mounted on",
+      "/dev/nvme0n1p2  1843726932 1377665816 372331172      79% /",
+      "/dev/nvme1n1p1  7441182592 6915743956 150349076      98% /data"
+    ],
+    "10.0.12.120": {
+      "available": false,
+      "error": "kimhj@10.0.12.120: Permission denied (publickey,password)."
+    },
+    "10.0.12.121": {
+      "available": false,
+      "error": "df: /data: No such file or directory"
+    },
+    "10.0.12.163": [
+      "Filesystem     1024-blocks       Used Available Capacity Mounted on",
+      "/dev/nvme1n1p2  1843726932 1640987268 109009720      94% /",
+      "/dev/nvme0n1p1  7441182592 6938388004 127705028      99% /data"
+    ]
+  },
+  "readiness": {
+    "generated_at_kst": "2026-09-23T15:45:40+09:00",
+    "deadline_kst": "2026-09-26T20:59:00+09:00",
+    "hours_remaining": 77.22,
+    "experiment": {
+      "sealed_rows": 0,
+      "running_rows": 2,
+      "failed_rows": 0,
+      "aggregate_ready": false,
+      "tier_a_status": [
+        "RUNNING",
+        "RUNNING",
+        "COMPLETED_UNSEALED",
+        "COMPLETED_UNSEALED"
+      ],
+      "backbone_status": {
+        "LLaDA": 0,
+        "Dream": 0
+      }
+    },
+    "paper": {
+      "build_pass": null,
+      "submission_audit_pass": null,
+      "result_todos_remaining": null,
+      "generated_tables_ready": null,
+      "generated_figures_ready": null,
+      "anonymous_package_ready": false
+    },
+    "blockers": {
+      "p0": [],
+      "p1": [
+        "server1 artifact access unavailable for Tier-A observation",
+        "active V2 jobs remain; final aggregate is intentionally not run"
+      ],
+      "p2": []
+    },
+    "latest_new_evidence": [],
+    "latest_event": null
+  },
+  "constraints": {
+    "scientific_code_modified": false,
+    "scientific_config_modified": false,
+    "active_jobs_modified": false,
+    "aggregate_created": false,
+    "paper_sources_modified": false
+  }
+}
