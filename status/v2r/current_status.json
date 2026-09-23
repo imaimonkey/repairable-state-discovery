@@ -1,10 +1,13 @@
 {
-  "active_tasks": [],
+  "active_tasks": [
+    "llada-math500-r0-cachefix",
+    "llada-gsm8k-r0-cachefix"
+  ],
   "deadline": "2026-09-26T20:59:00+09:00",
-  "development_sha": "8ec9a6eab8f1ff7ced3338b8904d0acb5fe9d72d",
+  "development_sha": "6fd1b6369588c99767b2d0187fc05f2b41ac5129",
   "final_scientific_execution_sha": null,
   "goal_status": "IN_PROGRESS",
-  "hours_remaining": 72.67,
+  "hours_remaining": 72.652,
   "legacy_jobs": {
     "50668": "CANCELLED_FOR_REFERENCE_PRIMARY_RESET",
     "50669": "CANCELLED_FOR_REFERENCE_PRIMARY_RESET"
@@ -25,45 +28,45 @@
   "reference_gates": {
     "llada_gsm8k": {
       "R0": {
-        "error": "/data/kimhj/.cache/huggingface/hub/models--GSAI-ML--LLaDA-8B-Instruct/snapshots/08b83a6feb34df1a6011b80c3c00c7563e963b07 does not appear to have a file named modeling_llada.py. Checkout 'https://huggingface.co//data/kimhj/.cache/huggingface/hub/models--GSAI-ML--LLaDA-8B-Instruct/snapshots/08b83a6feb34df1a6011b80c3c00c7563e963b07/tree/08b83a6feb34df1a6011b80c3c00c7563e963b07' for available files.",
-        "job_id": "52662",
-        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-llada-gsm8k/R0/gate_report.json",
-        "status": "NEEDS_REVIEW"
+        "error": null,
+        "job_id": "52664",
+        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-gsm8k/R0/gate_report.json",
+        "status": "SUBMITTED"
       },
       "R1": {
         "error": null,
         "job_id": null,
-        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-llada-gsm8k/R1/gate_report.json",
+        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-gsm8k/R1/gate_report.json",
         "status": "WAITING_DEPENDENCY"
       },
       "R2": {
         "error": null,
         "job_id": null,
-        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-llada-gsm8k/R2/gate_report.json",
+        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-gsm8k/R2/gate_report.json",
         "status": "WAITING_DEPENDENCY"
       }
     },
     "llada_math500": {
       "R0": {
-        "error": "/data/kimhj/.cache/huggingface/hub/models--GSAI-ML--LLaDA-8B-Instruct/snapshots/08b83a6feb34df1a6011b80c3c00c7563e963b07 does not appear to have a file named modeling_llada.py. Checkout 'https://huggingface.co//data/kimhj/.cache/huggingface/hub/models--GSAI-ML--LLaDA-8B-Instruct/snapshots/08b83a6feb34df1a6011b80c3c00c7563e963b07/tree/08b83a6feb34df1a6011b80c3c00c7563e963b07' for available files.",
-        "job_id": "52661",
-        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-llada-math500/R0/gate_report.json",
-        "status": "NEEDS_REVIEW"
+        "error": null,
+        "job_id": "52663",
+        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-math500/R0/gate_report.json",
+        "status": "SUBMITTED"
       },
       "R1": {
         "error": null,
         "job_id": null,
-        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-llada-math500/R1/gate_report.json",
+        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-math500/R1/gate_report.json",
         "status": "WAITING_DEPENDENCY"
       },
       "R2": {
         "error": null,
         "job_id": null,
-        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-llada-math500/R2/gate_report.json",
+        "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-math500/R2/gate_report.json",
         "status": "WAITING_DEPENDENCY"
       }
     }
   },
   "scientific_execution_freeze_status": "PENDING_R2_AND_COMPLETE_SCIENTIFIC_EXECUTORS",
-  "timestamp": "2026-09-23T11:18:47.178642+00:00"
+  "timestamp": "2026-09-23T11:19:53.259090+00:00"
 }
