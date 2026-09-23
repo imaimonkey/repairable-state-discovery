@@ -207,11 +207,15 @@ for s in specs:
     prov = {}
     try: prov = json.loads((d / "scientific_provenance.json").read_text())
     except Exception: pass
+    report = {}
+    try: report = json.loads((d / "report.json").read_text())
+    except Exception: pass
     expected = selector_expected(d / "state_values.jsonl") if state_rows else {}
     result["runs"][s["job_id"]] = {
         "files": files, "branches": branches, "state_rows": state_rows,
         "selector_rows": selector_rows, "fresh_rows": fresh_rows, "existence_rows": existence_rows,
         "manifest": manifest, "provenance": prov, "selector_expected": expected,
+        "report": report,
         "liveness": process_snapshot(s["run_name"]),
     }
 print(json.dumps(result, separators=(",", ":")))
@@ -410,7 +414,7 @@ def collect_compact_artifacts(rows: list[dict[str, Any]]) -> list[dict[str, Any]
     events = []
     allowlist = ["report.json", "scientific_provenance.json", "run_manifest.json", "probe_complete.json", "existence.csv", "selector_confirmation.csv", "state_values.jsonl", "fresh_sampling.jsonl", "probe_branches.jsonl"]
     for row in rows:
-        if row["status"] != "SEALED" or not row["source_available"]:
+        if row["status"] != "SEALED" or not row["source_available"] or row.get("integrity_alerts"):
             continue
         dest = ROOT / "results" / "v2_artifacts" / f"{row['run_name']}_{row['job_id']}"
         if (dest / "artifact_manifest.json").exists() or (dest / "report.json").exists():
@@ -507,6 +511,17 @@ def matrix_row(run: dict[str, Any], slurm: dict[str, Any], remote: dict[str, Any
     report = bool(files.get("report.json", {}).get("exists"))
     prov = bool(files.get("scientific_provenance.json", {}).get("exists"))
     prov_payload = observed.get("provenance", {})
+    report_payload = observed.get("report", {})
+    integrity_alerts = []
+    for label, payload in [("run_manifest", observed.get("manifest", {})), ("report", report_payload), ("provenance", prov_payload)]:
+        recorded_sha = payload.get("git_sha") if isinstance(payload, dict) else None
+        if recorded_sha and recorded_sha != run["sha"]:
+            integrity_alerts.append({"type": "EXECUTION_PROVENANCE_MISMATCH", "source": label, "expected": run["sha"], "observed": recorded_sha})
+    if isinstance(observed.get("manifest"), dict) and isinstance(report_payload, dict):
+        mcfg = observed["manifest"].get("config_sha256")
+        rcfg = report_payload.get("config_sha256")
+        if mcfg and rcfg and mcfg != rcfg:
+            integrity_alerts.append({"type": "CONFIG_FINGERPRINT_MISMATCH", "expected": mcfg, "observed": rcfg})
     sealed = prov and str(prov_payload.get("status", "")).upper() == "SEALED"
     state = str(slurm.get("state") or slurm.get("JobState") or "UNKNOWN")
     if sealed and state == "COMPLETED": status = "SEALED"
@@ -518,7 +533,8 @@ def matrix_row(run: dict[str, Any], slurm: dict[str, Any], remote: dict[str, Any
     return {"job_id": run["job_id"], "run_name": run["run_name"], "model": run["model"], "task": run["task"],
             "server": run["server"], "execution_sha": run["sha"], "config": run["config"], "slurm": slurm,
             "status": status, "classification": classify(run, slurm, observed), "totals": totals,
-            "files": files, "manifest": observed.get("manifest", {}), "provenance": prov_payload,
+            "files": files, "manifest": observed.get("manifest", {}), "report": report_payload, "provenance": prov_payload,
+            "integrity_alerts": integrity_alerts,
             "liveness": observed.get("liveness", {}), "sstat": sstat_snapshot(run["job_id"]),
             "source_available": remote.get("available", False), "source_error": remote.get("error"),
             "baseline": baseline}
@@ -588,6 +604,8 @@ def event_list(rows: list[dict[str, Any]], previous: dict[str, Any]) -> list[dic
             events.append({"timestamp_kst": iso(), "type": "PROVENANCE_SEALED", "job_id": row["job_id"], "run_name": row["run_name"]})
         if row.get("status") == "FAILED_EXCLUDED" and before.get("status") != "FAILED_EXCLUDED":
             events.append({"timestamp_kst": iso(), "type": "JOB_FAILED", "job_id": row["job_id"], "run_name": row["run_name"]})
+        if row.get("integrity_alerts") and not before.get("integrity_alerts"):
+            events.append({"timestamp_kst": iso(), "type": "EXECUTION_PROVENANCE_MISMATCH", "job_id": row["job_id"], "run_name": row["run_name"], "details": row["integrity_alerts"]})
         if row.get("source_available") is False and before.get("source_available") is True:
             events.append({"timestamp_kst": iso(), "type": "SERVER_ARTIFACT_ACCESS_LOST", "job_id": row["job_id"], "server": row["server"]})
         if row.get("source_available") is True and before.get("source_available") is False:
@@ -609,8 +627,10 @@ def write_matrix(rows: list[dict[str, Any]]) -> None:
 def write_attention(rows: list[dict[str, Any]], events: list[dict[str, Any]], readiness: dict[str, Any]) -> None:
     lines = [f"# Attention required\n\n{iso()}\n", "## NEW EVENTS"]
     lines += [f"- {e['type']}: job {e.get('job_id', '')}" for e in events] or ["- No new scientific or operational event since previous cycle."]
-    lines += ["\n## P0"] + [f"- {x}" for x in readiness["blockers"]["p0"]] or ["- None observed"]
-    lines += ["\n## P1"] + [f"- {x}" for x in readiness["blockers"]["p1"]] or ["- None observed"]
+    lines += ["\n## P0"]
+    lines += [f"- {x}" for x in readiness["blockers"]["p0"]] or ["- None observed"]
+    lines += ["\n## P1"]
+    lines += [f"- {x}" for x in readiness["blockers"]["p1"]] or ["- None observed"]
     lines += ["\n## ACTIVE JOBS"] + [f"- {r['job_id']} {r['run_name']}: {r['status']} / {r['classification']}" for r in rows if r["status"] == "RUNNING"]
     lines += ["\n## NEW SEALED RESULTS"] + [f"- {e.get('run_name', e.get('job_id'))}" for e in events if e["type"] == "PROVENANCE_SEALED"] or ["- None"]
     lines += ["\n## WHAT CHATGPT SHOULD READ NOW", "1. `status/live/current_status.json`", "2. `status/live/v2_experiment_matrix.csv`", "3. `status/live/analysis_handoff.json`"]
@@ -630,6 +650,9 @@ def build_readiness(rows: list[dict[str, Any]], paper: dict[str, Any], events: l
         p1.append("server1 artifact access unavailable for Tier-A observation")
     if any(r["job_id"] == "50752" and r["status"] == "FAILED_EXCLUDED" for r in rows):
         p1.append("BBH5 50752 failed and forensic root cause remains unresolved")
+    for row in rows:
+        if row.get("integrity_alerts"):
+            p0.append(f"{row['job_id']} execution provenance mismatch; manual review before seal")
     if running:
         p1.append("active V2 jobs remain; final aggregate is intentionally not run")
     return {"generated_at_kst": iso(), "deadline_kst": DEADLINE.isoformat(), "hours_remaining": round(hours, 2),
