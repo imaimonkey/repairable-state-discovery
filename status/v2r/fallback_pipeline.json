@@ -1,0 +1,28 @@
+{
+  "schema_version": "v2r.fallback-pipeline.1",
+  "status": "READY_FOR_PARALLEL_CORE_BATCH",
+  "authoritative": false,
+  "selection_policy": "Never import or merge fallback outputs into the primary paper without an explicit contingency decision and a separate provenance review.",
+  "primary_lineage_preserved": true,
+  "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+  "model_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07",
+  "input_run": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_base_finalsha",
+  "fallback_code": "runtime/v2r_fallback_probe.py",
+  "batch_code": "runtime/v2r_fallback_batch.py",
+  "output_root_pattern": "/var/tmp/kimhj-v2r-fallback/{server}/",
+  "native_replay_mismatch_policy": "record_and_continue_in_fallback_only",
+  "smoke": {
+    "item_id": "497",
+    "servers": {
+      "server1": {"status": "SMOKE_COMPLETE", "native_exact_replay_pass": false},
+      "server2": {"status": "SMOKE_COMPLETE", "native_exact_replay_pass": false},
+      "server4": {"status": "SMOKE_COMPLETE", "native_exact_replay_pass": false}
+    }
+  },
+  "full_batch": {
+    "stage": "r3_core",
+    "item_count": 64,
+    "dispatch": "four disjoint batches per server, one GPU per batch, no primary output overlap",
+    "status": "READY_TO_SUBMIT"
+  }
+}
