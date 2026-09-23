@@ -409,6 +409,53 @@ def storage_observation() -> dict[str, Any]:
     return out
 
 
+def forensic_observation() -> dict[str, Any]:
+    command = [
+        "bash", "-lc",
+        "root=/home/kimhj/forensics/v2_50752_confirmation_20260921; "
+        "if [ ! -d \"$root\" ]; then echo '{\"available\":false}'; exit 0; fi; "
+        "printf '{\"available\":true,\"files\":['; "
+        "find \"$root\" -maxdepth 1 -type f -printf '\"%f|%s|%T@\",' | sed 's/,$//'; "
+        "printf ']}\\n'"
+    ]
+    result = ssh("10.0.12.121", command, timeout=30)
+    if not result["ok"]:
+        return {"available": False, "error": result["stderr"].strip()}
+    try:
+        payload = json.loads(result["stdout"])
+        payload["source_root"] = "/home/kimhj/forensics/v2_50752_confirmation_20260921"
+        return payload
+    except Exception as exc:
+        return {"available": False, "error": repr(exc), "raw": result["stdout"][-2000:]}
+
+
+def live_repo_map(rows: list[dict[str, Any]]) -> str:
+    lines = ["# Live server/repository observation", "", f"Snapshot: `{iso()} KST`", "", "| server | execution SHA | workdir | source access | job dependency |", "|---|---|---|---|---|"]
+    for run in RUNS:
+        row = next((r for r in rows if r["job_id"] == run["job_id"]), None)
+        if row:
+            lines.append(f"| {run['server']} | `{run['sha'][:8]}` | `{run['workdir']}` | `{row['source_available']}` | {run['job_id']} {row['status']} |")
+    lines += ["", "Execution SHA and filesystem HEAD are kept as separate observations.", "No active execution worktree was checked out, pulled, reset, or synchronized by this monitor."]
+    return "\n".join(lines) + "\n"
+
+
+def evidence_delta(rows: list[dict[str, Any]], previous: dict[str, Any]) -> dict[str, Any]:
+    old = {str(r.get("job_id")): r for r in previous.get("jobs", []) if isinstance(r, dict)}
+    return {
+        "generated_at_kst": iso(),
+        "newly_sealed_runs": [r["job_id"] for r in rows if r["status"] == "SEALED" and old.get(r["job_id"], {}).get("status") != "SEALED"],
+        "newly_available_reports": [r["job_id"] for r in rows if r["files"].get("report.json", {}).get("exists") and not old.get(r["job_id"], {}).get("files", {}).get("report.json", {}).get("exists")],
+        "newly_available_provenance": [r["job_id"] for r in rows if r["files"].get("scientific_provenance.json", {}).get("exists") and not old.get(r["job_id"], {}).get("files", {}).get("scientific_provenance.json", {}).get("exists")],
+        "still_missing_matrix_rows": [r["job_id"] for r in rows if r["status"] != "SEALED"],
+        "interpretation": "inventory only; no scientific conclusion generated",
+    }
+
+
+def paper_partial_import_observation() -> dict[str, Any]:
+    script = PAPER_REPO / "scripts" / "import_v2_artifacts.py"
+    return {"generated_at_kst": iso(), "available": script.exists(), "path": str(script), "executed": False, "reason": "inspection-only import not run automatically"}
+
+
 def collect_compact_artifacts(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Copy only terminal, sealed, allowlisted artifacts into the monitor branch."""
     events = []
@@ -606,6 +653,11 @@ def event_list(rows: list[dict[str, Any]], previous: dict[str, Any]) -> list[dic
             events.append({"timestamp_kst": iso(), "type": "JOB_FAILED", "job_id": row["job_id"], "run_name": row["run_name"]})
         if row.get("integrity_alerts") and not before.get("integrity_alerts"):
             events.append({"timestamp_kst": iso(), "type": "EXECUTION_PROVENANCE_MISMATCH", "job_id": row["job_id"], "run_name": row["run_name"], "details": row["integrity_alerts"]})
+        if row.get("status") == "SEALED" and before.get("status") == "SEALED":
+            for name, current_file in row.get("files", {}).items():
+                previous_file = before.get("files", {}).get(name, {})
+                if current_file.get("exists") and previous_file.get("exists") and (current_file.get("size_bytes") != previous_file.get("size_bytes") or current_file.get("mtime_epoch") != previous_file.get("mtime_epoch")):
+                    events.append({"timestamp_kst": iso(), "type": "SEALED_ARTIFACT_MUTATION", "job_id": row["job_id"], "file": name, "previous": previous_file, "current": current_file})
         if row.get("source_available") is False and before.get("source_available") is True:
             events.append({"timestamp_kst": iso(), "type": "SERVER_ARTIFACT_ACCESS_LOST", "job_id": row["job_id"], "server": row["server"]})
         if row.get("source_available") is True and before.get("source_available") is False:
@@ -616,12 +668,12 @@ def event_list(rows: list[dict[str, Any]], previous: dict[str, Any]) -> list[dic
 def write_matrix(rows: list[dict[str, Any]]) -> None:
     path = LIVE / "v2_experiment_matrix.csv"
     path.parent.mkdir(parents=True, exist_ok=True)
-    fields = ["job_id", "run_name", "model", "task", "server", "execution_sha", "status", "classification", "slurm_state", "elapsed", "time_limit", "source_available", "trajectory_completed", "trajectory_expected", "localization_completed", "localization_expected", "state_value_completed", "state_value_expected", "confirmation_completed", "confirmation_expected", "selector_completed", "selector_expected", "report", "provenance", "sealed"]
+    fields = ["job_id", "run_name", "model", "task", "server", "execution_sha", "status", "classification", "slurm_state", "elapsed", "time_limit", "source_available", "trajectory_completed", "trajectory_expected", "localization_completed", "localization_expected", "state_value_completed", "state_value_expected", "confirmation_completed", "confirmation_expected", "selector_completed", "selector_expected", "report", "provenance", "sealed", "integrity_alerts"]
     with path.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=fields); writer.writeheader()
         for row in rows:
             t = row["totals"]
-            writer.writerow({"job_id": row["job_id"], "run_name": row["run_name"], "model": row["model"], "task": row["task"], "server": row["server"], "execution_sha": row["execution_sha"], "status": row["status"], "classification": row["classification"], "slurm_state": row["slurm"].get("state", row["slurm"].get("JobState", "")), "elapsed": row["slurm"].get("elapsed", row["slurm"].get("RunTime", "")), "time_limit": row["slurm"].get("time_limit", row["slurm"].get("TimeLimit", "")), "source_available": row["source_available"], "trajectory_completed": t["trajectories"]["completed"], "trajectory_expected": t["trajectories"]["expected"], "localization_completed": t["localization"]["completed"], "localization_expected": t["localization"]["expected"], "state_value_completed": t["state_value"]["completed"], "state_value_expected": t["state_value"]["expected"], "confirmation_completed": t["confirmation"]["completed"], "confirmation_expected": t["confirmation"]["expected"], "selector_completed": t["selector"]["completed"], "selector_expected": t["selector"]["expected"], "report": row["files"].get("report.json", {}).get("exists"), "provenance": row["files"].get("scientific_provenance.json", {}).get("exists"), "sealed": str(row["provenance"].get("status", "")).upper() == "SEALED"})
+            writer.writerow({"job_id": row["job_id"], "run_name": row["run_name"], "model": row["model"], "task": row["task"], "server": row["server"], "execution_sha": row["execution_sha"], "status": row["status"], "classification": row["classification"], "slurm_state": row["slurm"].get("state", row["slurm"].get("JobState", "")), "elapsed": row["slurm"].get("elapsed", row["slurm"].get("RunTime", "")), "time_limit": row["slurm"].get("time_limit", row["slurm"].get("TimeLimit", "")), "source_available": row["source_available"], "trajectory_completed": t["trajectories"]["completed"], "trajectory_expected": t["trajectories"]["expected"], "localization_completed": t["localization"]["completed"], "localization_expected": t["localization"]["expected"], "state_value_completed": t["state_value"]["completed"], "state_value_expected": t["state_value"]["expected"], "confirmation_completed": t["confirmation"]["completed"], "confirmation_expected": t["confirmation"]["expected"], "selector_completed": t["selector"]["completed"], "selector_expected": t["selector"]["expected"], "report": row["files"].get("report.json", {}).get("exists"), "provenance": row["files"].get("scientific_provenance.json", {}).get("exists"), "sealed": str(row["provenance"].get("status", "")).upper() == "SEALED", "integrity_alerts": json.dumps(row.get("integrity_alerts", []), ensure_ascii=False)})
 
 
 def write_attention(rows: list[dict[str, Any]], events: list[dict[str, Any]], readiness: dict[str, Any]) -> None:
@@ -693,6 +745,7 @@ def cycle() -> dict[str, Any]:
         rows.append(matrix_row(run, slurm, remote, {"last_snapshot": previous.get("generated_at_kst")}))
     paper = paper_observation()
     storage = storage_observation()
+    forensic = forensic_observation()
     events = event_list(rows, previous)
     compact_events = collect_compact_artifacts(rows)
     events.extend(compact_events)
@@ -701,14 +754,19 @@ def cycle() -> dict[str, Any]:
     paper["build"] = paper_build
     history = progress_history(rows, previous)
     readiness = build_readiness(rows, paper, events)
-    current = {"schema": "iclr2027_live_status_v1", "generated_at_kst": iso(), "collector_hostname": socket.gethostname(), "monitor_branch": "codex/iclr2027-live-monitor-20260923", "monitor_commit": run_cmd(["git", "-C", str(ROOT), "rev-parse", "HEAD"], timeout=15)["stdout"].strip(), "baseline_analysis_bundle_commit": BASELINE_COMMIT, "observation_sources": ["squeue", "sacct", "scontrol", "server1-4 read-only SSH where available", "execution artifact metadata"], "execution_generations": {"llada": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e", "dream": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d"}, "jobs": rows, "paper": paper, "storage": storage, "readiness": readiness, "constraints": {"scientific_code_modified": False, "scientific_config_modified": False, "active_jobs_modified": False, "aggregate_created": False, "paper_sources_modified": False}}
+    current = {"schema": "iclr2027_live_status_v1", "generated_at_kst": iso(), "collector_hostname": socket.gethostname(), "monitor_branch": "codex/iclr2027-live-monitor-20260923", "monitor_commit": run_cmd(["git", "-C", str(ROOT), "rev-parse", "HEAD"], timeout=15)["stdout"].strip(), "baseline_analysis_bundle_commit": BASELINE_COMMIT, "observation_sources": ["squeue", "sacct", "scontrol", "server1-4 read-only SSH where available", "execution artifact metadata"], "execution_generations": {"llada": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e", "dream": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d"}, "jobs": rows, "paper": paper, "storage": storage, "forensic_50752": forensic, "readiness": readiness, "constraints": {"scientific_code_modified": False, "scientific_config_modified": False, "active_jobs_modified": False, "aggregate_created": False, "paper_sources_modified": False}}
     LIVE.mkdir(parents=True, exist_ok=True)
     write_json(LIVE / "current_status.json", current)
     write_json(LIVE / "aggregate_readiness.json", {"generated_at_kst": current["generated_at_kst"], "final_aggregate_ready": readiness["experiment"]["aggregate_ready"], "sealed_rows": readiness["experiment"]["sealed_rows"], "expected_rows": 8, "missing_rows": [r["job_id"] for r in rows if r["status"] != "SEALED"], "failed_excluded": [r["job_id"] for r in rows if r["status"] == "FAILED_EXCLUDED"], "blockers": readiness["blockers"]["p0"] + readiness["blockers"]["p1"]})
     write_json(LIVE / "submission_readiness.json", readiness)
     write_json(LIVE / "paper_status.json", paper)
     write_json(LIVE / "paper_build_status.json", paper_build)
+    write_json(LIVE / "paper_partial_import_status.json", paper_partial_import_observation())
     write_json(LIVE / "server_health.json", storage)
+    write_json(LIVE / "bbh5_forensic.json", forensic)
+    write_json(LIVE / "evidence_delta.json", evidence_delta(rows, previous))
+    write_json(LIVE / "submission_clock.json", {"current_kst": current["generated_at_kst"], "deadline_kst": DEADLINE.isoformat(), "hours_remaining": readiness["hours_remaining"], "active_tier_a_jobs": [r["job_id"] for r in rows if r["status"] == "RUNNING" and r["task"] in {"MATH-500", "GSM8K"}], "unresolved_p0_blockers": readiness["blockers"]["p0"], "unresolved_p1_blockers": readiness["blockers"]["p1"], "final_aggregate_ready": readiness["experiment"]["aggregate_ready"], "paper_build_pass": paper_build.get("build_pass"), "submission_audit_pass": paper_build.get("submission_audit_pass")})
+    (LIVE / "server_repo_map.md").write_text(live_repo_map(rows), encoding="utf-8")
     write_json(LIVE / "claim_dependency_status.json", {"observation_only": True, "dependencies": paper.get("claim_dependencies", {}), "note": "Claim content is not modified by this monitor."})
     write_json(LIVE / "rq_evidence_readiness.json", {"observation_only": True, "rows": [{"job_id": r["job_id"], "status": r["status"], "report": r["files"].get("report.json", {}).get("exists"), "provenance": r["files"].get("scientific_provenance.json", {}).get("exists"), "sealed": r["status"] == "SEALED"} for r in rows]})
     write_json(LIVE / "analysis_handoff.json", {"generated_at_kst": current["generated_at_kst"], "runs": [{"job_id": r["job_id"], "run_name": r["run_name"], "status": r["status"], "execution_sha": r["execution_sha"], "server": r["server"], "artifact_path": next((x["output"] for x in RUNS if x["job_id"] == r["job_id"]), None), "remote_status": r["source_available"], "report_available": r["files"].get("report.json", {}).get("exists"), "provenance_available": r["files"].get("scientific_provenance.json", {}).get("exists")} for r in rows]})
