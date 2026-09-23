@@ -1,5 +1,5 @@
-2026-09-23T15:10:17.933643+00:00
-HOURS TO DEADLINE: 68.81
+2026-09-23T15:11:49.365115+00:00
+HOURS TO DEADLINE: 68.79
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,10 +9,19 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
+MONITOR_DRIFT: Slurm job 52739 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52740 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52741 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52738 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52688 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
+52739 v2r-llada_math500_core_finalsha-shard-001 PENDING  KEEP_REFERENCE_CRITICAL
+52740 v2r-llada_math500_core_finalsha-shard-002 PENDING  KEEP_REFERENCE_CRITICAL
+52741 v2r-llada_math500_core_finalsha-shard-003 PENDING  KEEP_REFERENCE_CRITICAL
+52742 v2r-llada_math500_core_finalsha-shard-004 PENDING  KEEP_REFERENCE_CRITICAL
+52738 v2r-llada_math500_core_finalsha-shard-000 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52688 v2r-llada_gsm8k_base_finalsha-shard-000 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
@@ -22,17 +31,17 @@ SERVER2
 observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=['3'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=['3'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
 
 REFERENCE GATES
 llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=WAITING_PRIORITY
-llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=WAITING_DEPENDENCY, temporal=WAITING_DEPENDENCY
+llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=RESOURCE_WAIT, temporal=RESOURCE_WAIT
 
 REFERENCE PRIMARY
 dream_gsm8k: NOT_STARTED
@@ -50,31 +59,31 @@ llada-gsm8k-r2-finalsha: PASS job=52679
 llada_math500_base_finalsha-shard-000: SEALED job=52687
 llada_gsm8k_base_finalsha-shard-000: RUNNING job=52688
 llada_gsm8k_base_finalsha-shard-001: WAITING_PRIORITY job=None
-llada_math500_core_finalsha-shard-000: WAITING_DEPENDENCY job=None
-llada_math500_core_finalsha-shard-001: WAITING_DEPENDENCY job=None
-llada_math500_core_finalsha-shard-002: WAITING_DEPENDENCY job=None
-llada_math500_core_finalsha-shard-003: WAITING_DEPENDENCY job=None
-llada_math500_core_finalsha-shard-004: WAITING_DEPENDENCY job=None
-llada_math500_core_finalsha-shard-005: WAITING_DEPENDENCY job=None
-llada_math500_core_finalsha-shard-006: WAITING_DEPENDENCY job=None
-llada_math500_temporal_finalsha-shard-000: WAITING_DEPENDENCY job=None
-llada_math500_temporal_finalsha-shard-001: WAITING_DEPENDENCY job=None
-llada_math500_temporal_finalsha-shard-002: WAITING_DEPENDENCY job=None
-llada_math500_temporal_finalsha-shard-003: WAITING_DEPENDENCY job=None
-llada_math500_temporal_finalsha-shard-004: WAITING_DEPENDENCY job=None
+llada_math500_core_finalsha-shard-000: RESOURCE_WAIT job=None
+llada_math500_core_finalsha-shard-001: RESOURCE_WAIT job=None
+llada_math500_core_finalsha-shard-002: RESOURCE_WAIT job=None
+llada_math500_core_finalsha-shard-003: RESOURCE_WAIT job=None
+llada_math500_core_finalsha-shard-004: RESOURCE_WAIT job=None
+llada_math500_core_finalsha-shard-005: RESOURCE_WAIT job=None
+llada_math500_core_finalsha-shard-006: RESOURCE_WAIT job=None
+llada_math500_temporal_finalsha-shard-000: RESOURCE_WAIT job=None
+llada_math500_temporal_finalsha-shard-001: RESOURCE_WAIT job=None
+llada_math500_temporal_finalsha-shard-002: RESOURCE_WAIT job=None
+llada_math500_temporal_finalsha-shard-003: RESOURCE_WAIT job=None
+llada_math500_temporal_finalsha-shard-004: RESOURCE_WAIT job=None
 
 PAPER
 status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2389284 heartbeat=2026-09-23T15:10:13.737253+00:00
+status=RUNNING pid=2395472 heartbeat=2026-09-23T15:11:47.795519+00:00
 
 MONITOR
-heartbeat=2026-09-23T15:10:17.933643+00:00
+heartbeat=2026-09-23T15:11:49.365115+00:00
 
 CURRENT P0
-Import sealed LLaDA evidence, build the PDF, and close author review.
+Complete LLaDA MATH core repairability and seal its reference bundle.
 
 NEXT AUTONOMOUS ACTIONS
 Reconcile actual Slurm jobs every 90 seconds; keep only FREE_SAFE GPUs for reference shards; unlock downstream work only after sealed gates.
