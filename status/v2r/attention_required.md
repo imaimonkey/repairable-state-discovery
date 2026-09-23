@@ -1,5 +1,5 @@
-2026-09-23T20:28:55.135231+00:00
-HOURS TO DEADLINE: 63.50
+2026-09-23T20:30:26.609548+00:00
+HOURS TO DEADLINE: 63.48
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -11,26 +11,32 @@ Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestra
 INTEGRITY ALERTS
 MONITOR_DRIFT: Slurm job 52791 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52792 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52814 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52812 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52813 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52740 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
 52791 v2r-llada_math500_core_finalsha-shard-005 PENDING  KEEP_REFERENCE_CRITICAL
 52792 v2r-llada_math500_core_finalsha-shard-006 PENDING  KEEP_REFERENCE_CRITICAL
+52814 v2r-ind-s4-r0 RUNNING server4 KEEP_REFERENCE_CRITICAL
+52812 v2r-ind-s1-r0 RUNNING devbox KEEP_REFERENCE_CRITICAL
+52813 v2r-ind-s2-r0 RUNNING server2 KEEP_REFERENCE_CRITICAL
 52742 v2r-llada_math500_core_finalsha-shard-004 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52740 v2r-llada_math500_core_finalsha-shard-002 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
-observed=True idle_gpu_candidates=['3', '4', '7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
+observed=True idle_gpu_candidates=['4', '7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
 
 SERVER2
-observed=True idle_gpu_candidates=['6', '7'] safe_filesystems=[]
+observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
 
 SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=['0', '1', '2', '3', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['1', '2', '3', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -73,10 +79,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-23T20:28:22.578704+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-23T20:29:26.213255+00:00
 
 MONITOR
-heartbeat=2026-09-23T20:28:55.135231+00:00
+heartbeat=2026-09-23T20:30:26.609548+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
