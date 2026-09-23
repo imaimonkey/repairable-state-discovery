@@ -1,5 +1,5 @@
-2026-09-23T17:24:17.904174+00:00
-HOURS TO DEADLINE: 66.58
+2026-09-23T17:25:49.444587+00:00
+HOURS TO DEADLINE: 66.55
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,7 +9,6 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
-MONITOR_DRIFT: Slurm job 52741 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52746 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52747 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52748 exists but legacy monitor state does not mention it.
@@ -19,12 +18,11 @@ MONITOR_DRIFT: Slurm job 52758 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52760 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52764 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52740 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52741 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52739 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52738 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
-52741 v2r-llada_math500_core_finalsha-shard-003 PENDING  KEEP_REFERENCE_CRITICAL
 52742 v2r-llada_math500_core_finalsha-shard-004 PENDING  KEEP_REFERENCE_CRITICAL
 52746 v2r-llada_math500_temporal_finalsha-shard-000 PENDING  KEEP_REFERENCE_CRITICAL
 52747 v2r-llada_math500_temporal_finalsha-shard-001 PENDING  KEEP_REFERENCE_CRITICAL
@@ -35,8 +33,8 @@ ALL ACTIVE KIMHJ JOBS
 52760 v2r-llada_math500_core_finalsha-shard-005r2 PENDING  KEEP_REFERENCE_CRITICAL
 52764 v2r-gsm8k-base-recovery-r1 PENDING  KEEP_REFERENCE_CRITICAL
 52740 v2r-llada_math500_core_finalsha-shard-002 PENDING  KEEP_REFERENCE_CRITICAL
+52741 v2r-llada_math500_core_finalsha-shard-003 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52739 v2r-llada_math500_core_finalsha-shard-001 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
-52738 v2r-llada_math500_core_finalsha-shard-000 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
 observed=False idle_gpu_candidates=[] safe_filesystems=[]
@@ -91,10 +89,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2758158 heartbeat=2026-09-23T17:23:58.654773+00:00
+status=RUNNING pid=2758158 heartbeat=2026-09-23T17:25:01.924840+00:00
 
 MONITOR
-heartbeat=2026-09-23T17:24:17.904174+00:00
+heartbeat=2026-09-23T17:25:49.444587+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
