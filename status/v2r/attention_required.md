@@ -1,5 +1,5 @@
-2026-09-23T20:54:52.066055+00:00
-HOURS TO DEADLINE: 63.07
+2026-09-23T20:56:23.935911+00:00
+HOURS TO DEADLINE: 63.04
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -11,15 +11,13 @@ Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestra
 INTEGRITY ALERTS
 MONITOR_DRIFT: Slurm job 52791 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52792 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52848 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52850 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52847 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52846 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52844 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52834 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52831 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52842 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52843 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52828 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52820 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52821 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52822 exists but legacy monitor state does not mention it.
@@ -29,15 +27,13 @@ MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was c
 ALL ACTIVE KIMHJ JOBS
 52791 v2r-llada_math500_core_finalsha-shard-005 PENDING  KEEP_REFERENCE_CRITICAL
 52792 v2r-llada_math500_core_finalsha-shard-006 PENDING  KEEP_REFERENCE_CRITICAL
-52848 v2r-ind-s2-gsm-r2e PENDING  KEEP_REFERENCE_CRITICAL
+52850 v2r-ind-s2-gsm-r2g PENDING  KEEP_REFERENCE_CRITICAL
 52847 v2r-ind-s1-gsm-r2d PENDING  KEEP_REFERENCE_CRITICAL
 52846 v2r-ind-s2-gsm-r1e PENDING  KEEP_REFERENCE_CRITICAL
 52844 v2r-ind-s1-gsm-r1d PENDING  KEEP_REFERENCE_CRITICAL
-52834 v2r-ind-s4-gsm-r2 PENDING  KEEP_REFERENCE_CRITICAL
-52831 v2r-ind-s4-gsm-r1 PENDING  KEEP_REFERENCE_CRITICAL
+52834 v2r-ind-s4-gsm-r2 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52842 v2r-ind-s1-gsm-r0d RUNNING devbox KEEP_REFERENCE_CRITICAL
 52843 v2r-ind-s2-gsm-r0d RUNNING server2 KEEP_REFERENCE_CRITICAL
-52828 v2r-ind-s4-gsm-r0 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52820 v2r-ind-s1-r2 RUNNING devbox KEEP_REFERENCE_CRITICAL
 52821 v2r-ind-s2-r2 RUNNING server2 KEEP_REFERENCE_CRITICAL
 52822 v2r-ind-s4-r2 RUNNING server4 KEEP_REFERENCE_CRITICAL
@@ -97,10 +93,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-23T20:54:52.818126+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-23T20:55:56.183916+00:00
 
 MONITOR
-heartbeat=2026-09-23T20:54:52.066055+00:00
+heartbeat=2026-09-23T20:56:23.935911+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
