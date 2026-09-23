@@ -1,5 +1,5 @@
-2026-09-23T21:40:56.359795+00:00
-HOURS TO DEADLINE: 62.30
+2026-09-23T21:42:28.555697+00:00
+HOURS TO DEADLINE: 62.28
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -10,35 +10,34 @@ Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestra
 
 INTEGRITY ALERTS
 MONITOR_DRIFT: Slurm job 52792 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52904 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52903 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52902 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52901 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52900 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52899 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52896 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52895 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52894 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52893 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52892 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52891 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52890 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52889 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52888 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52887 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52886 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52885 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52884 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52883 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52882 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52881 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52880 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52879 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52878 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52877 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52876 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52875 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52874 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52935 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52934 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52933 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52932 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52931 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52930 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52927 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52926 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52925 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52924 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52923 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52922 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52921 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52920 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52919 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52918 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52917 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52916 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52915 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52914 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52913 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52912 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52911 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52910 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52909 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52908 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52907 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52905 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52873 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52872 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52871 exists but legacy monitor state does not mention it.
@@ -72,35 +71,35 @@ MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was c
 
 ALL ACTIVE KIMHJ JOBS
 52792 v2r-llada_math500_core_finalsha-shard-006 PENDING  KEEP_REFERENCE_CRITICAL
-52904 v2r-ind-server4-gsm8k-base-005 PENDING  KEEP_REFERENCE_CRITICAL
-52903 v2r-ind-server4-gsm8k-base-004 PENDING  KEEP_REFERENCE_CRITICAL
-52902 v2r-ind-server4-gsm8k-base-003 PENDING  KEEP_REFERENCE_CRITICAL
-52901 v2r-ind-server4-gsm8k-base-002 PENDING  KEEP_REFERENCE_CRITICAL
-52900 v2r-ind-server4-gsm8k-base-001 PENDING  KEEP_REFERENCE_CRITICAL
-52899 v2r-ind-server4-gsm8k-base-000 PENDING  KEEP_REFERENCE_CRITICAL
-52896 v2r-ind-server2-gsm8k-base-017 PENDING  KEEP_REFERENCE_CRITICAL
-52895 v2r-ind-server2-gsm8k-base-016 PENDING  KEEP_REFERENCE_CRITICAL
-52894 v2r-ind-server2-gsm8k-base-015 PENDING  KEEP_REFERENCE_CRITICAL
-52893 v2r-ind-server2-gsm8k-base-014 PENDING  KEEP_REFERENCE_CRITICAL
-52892 v2r-ind-server2-gsm8k-base-013 PENDING  KEEP_REFERENCE_CRITICAL
-52891 v2r-ind-server2-gsm8k-base-012 PENDING  KEEP_REFERENCE_CRITICAL
-52890 v2r-ind-server2-gsm8k-base-011 PENDING  KEEP_REFERENCE_CRITICAL
-52889 v2r-ind-server2-gsm8k-base-010 PENDING  KEEP_REFERENCE_CRITICAL
-52888 v2r-ind-server2-gsm8k-base-009 PENDING  KEEP_REFERENCE_CRITICAL
-52887 v2r-ind-server2-gsm8k-base-008 PENDING  KEEP_REFERENCE_CRITICAL
-52886 v2r-ind-server2-gsm8k-base-007 PENDING  KEEP_REFERENCE_CRITICAL
-52885 v2r-ind-server2-gsm8k-base-006 PENDING  KEEP_REFERENCE_CRITICAL
-52884 v2r-ind-server2-gsm8k-base-005 PENDING  KEEP_REFERENCE_CRITICAL
-52883 v2r-ind-server2-gsm8k-base-004 PENDING  KEEP_REFERENCE_CRITICAL
-52882 v2r-ind-server2-gsm8k-base-003 PENDING  KEEP_REFERENCE_CRITICAL
-52881 v2r-ind-server2-gsm8k-base-002 PENDING  KEEP_REFERENCE_CRITICAL
-52880 v2r-ind-server2-gsm8k-base-001 PENDING  KEEP_REFERENCE_CRITICAL
-52879 v2r-ind-server2-gsm8k-base-000 PENDING  KEEP_REFERENCE_CRITICAL
-52878 v2r-ind-server2-math500-base-004 PENDING  KEEP_REFERENCE_CRITICAL
-52877 v2r-ind-server2-math500-base-003 PENDING  KEEP_REFERENCE_CRITICAL
-52876 v2r-ind-server2-math500-base-002 PENDING  KEEP_REFERENCE_CRITICAL
-52875 v2r-ind-server2-math500-base-001 PENDING  KEEP_REFERENCE_CRITICAL
-52874 v2r-ind-server2-math500-base-000 PENDING  KEEP_REFERENCE_CRITICAL
+52935 v2r-ind-server4-gsm8k-base-recover-005 PENDING  KEEP_REFERENCE_CRITICAL
+52934 v2r-ind-server4-gsm8k-base-recover-004 PENDING  KEEP_REFERENCE_CRITICAL
+52933 v2r-ind-server4-gsm8k-base-recover-003 PENDING  KEEP_REFERENCE_CRITICAL
+52932 v2r-ind-server4-gsm8k-base-recover-002 PENDING  KEEP_REFERENCE_CRITICAL
+52931 v2r-ind-server4-gsm8k-base-recover-001 PENDING  KEEP_REFERENCE_CRITICAL
+52930 v2r-ind-server4-gsm8k-base-recover-000 PENDING  KEEP_REFERENCE_CRITICAL
+52927 v2r-ind-server2-gsm8k-base-recover-017 PENDING  KEEP_REFERENCE_CRITICAL
+52926 v2r-ind-server2-gsm8k-base-recover-016 PENDING  KEEP_REFERENCE_CRITICAL
+52925 v2r-ind-server2-gsm8k-base-recover-015 PENDING  KEEP_REFERENCE_CRITICAL
+52924 v2r-ind-server2-gsm8k-base-recover-014 PENDING  KEEP_REFERENCE_CRITICAL
+52923 v2r-ind-server2-gsm8k-base-recover-013 PENDING  KEEP_REFERENCE_CRITICAL
+52922 v2r-ind-server2-gsm8k-base-recover-012 PENDING  KEEP_REFERENCE_CRITICAL
+52921 v2r-ind-server2-gsm8k-base-recover-011 PENDING  KEEP_REFERENCE_CRITICAL
+52920 v2r-ind-server2-gsm8k-base-recover-010 PENDING  KEEP_REFERENCE_CRITICAL
+52919 v2r-ind-server2-gsm8k-base-recover-009 PENDING  KEEP_REFERENCE_CRITICAL
+52918 v2r-ind-server2-gsm8k-base-recover-008 PENDING  KEEP_REFERENCE_CRITICAL
+52917 v2r-ind-server2-gsm8k-base-recover-007 PENDING  KEEP_REFERENCE_CRITICAL
+52916 v2r-ind-server2-gsm8k-base-recover-006 PENDING  KEEP_REFERENCE_CRITICAL
+52915 v2r-ind-server2-gsm8k-base-recover-005 PENDING  KEEP_REFERENCE_CRITICAL
+52914 v2r-ind-server2-gsm8k-base-recover-004 PENDING  KEEP_REFERENCE_CRITICAL
+52913 v2r-ind-server2-gsm8k-base-recover-003 PENDING  KEEP_REFERENCE_CRITICAL
+52912 v2r-ind-server2-gsm8k-base-recover-002 PENDING  KEEP_REFERENCE_CRITICAL
+52911 v2r-ind-server2-gsm8k-base-recover-001 PENDING  KEEP_REFERENCE_CRITICAL
+52910 v2r-ind-server2-gsm8k-base-recover-000 PENDING  KEEP_REFERENCE_CRITICAL
+52909 v2r-ind-server2-math500-base-recover-004 PENDING  KEEP_REFERENCE_CRITICAL
+52908 v2r-ind-server2-math500-base-recover-003 PENDING  KEEP_REFERENCE_CRITICAL
+52907 v2r-ind-server2-math500-base-recover-002 PENDING  KEEP_REFERENCE_CRITICAL
+52906 v2r-ind-server2-math500-base-recover-001 PENDING  KEEP_REFERENCE_CRITICAL
+52905 v2r-ind-server2-math500-base-recover-000 PENDING  KEEP_REFERENCE_CRITICAL
 52873 v2r-ind-server1-gsm8k-base-017 PENDING  KEEP_REFERENCE_CRITICAL
 52872 v2r-ind-server1-gsm8k-base-016 PENDING  KEEP_REFERENCE_CRITICAL
 52871 v2r-ind-server1-gsm8k-base-015 PENDING  KEEP_REFERENCE_CRITICAL
@@ -185,10 +184,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-23T21:40:26.691099+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-23T21:41:30.286932+00:00
 
 MONITOR
-heartbeat=2026-09-23T21:40:56.359795+00:00
+heartbeat=2026-09-23T21:42:28.555697+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
