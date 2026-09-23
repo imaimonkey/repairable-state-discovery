@@ -1,0 +1,109 @@
+{
+  "algorithm_commit": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+  "namespace_size": 2147483647,
+  "formula": "lambda = N_localization_seed_draws * N_confirmation_seed_draws / (2**31 - 1); P(any) approximated as 1-exp(-lambda).",
+  "assumptions": [
+    "Server1 artifacts are unavailable, so these are risk estimates, not observed overlaps.",
+    "Each item contributes 1 or 2 selected probe records because policy trajectory 0 duplicates either the first failed or first successful trajectory.",
+    "Eight localization checkpoints follow the observed frozen V2 artifact schedule; distinct confirmation checkpoints are shown from 1 to 10 because selectors can collapse.",
+    "Two paired operators share each seed and do not create additional unique seed draws."
+  ],
+  "50668_predicted_collision_risk": {
+    "range": [
+      {
+        "records_per_item": 1,
+        "selected_probe_records": 500,
+        "localization_seed_draws": 16000,
+        "confirmation_seed_draws": 4000,
+        "expected_cross_stage_collisions": 0.0298023224015731,
+        "probability_at_least_one_collision": 0.02936261214699154,
+        "selector_checkpoint_assumption": 1
+      },
+      {
+        "records_per_item": 1,
+        "selected_probe_records": 500,
+        "localization_seed_draws": 16000,
+        "confirmation_seed_draws": 40000,
+        "expected_cross_stage_collisions": 0.298023224015731,
+        "probability_at_least_one_collision": 0.2577158992700367,
+        "selector_checkpoint_assumption": 10
+      },
+      {
+        "records_per_item": 2,
+        "selected_probe_records": 1000,
+        "localization_seed_draws": 32000,
+        "confirmation_seed_draws": 8000,
+        "expected_cross_stage_collisions": 0.1192092896062924,
+        "probability_at_least_one_collision": 0.1123779887405506,
+        "selector_checkpoint_assumption": 1
+      },
+      {
+        "records_per_item": 2,
+        "selected_probe_records": 1000,
+        "localization_seed_draws": 32000,
+        "confirmation_seed_draws": 80000,
+        "expected_cross_stage_collisions": 1.192092896062924,
+        "probability_at_least_one_collision": 0.6964147736065827,
+        "selector_checkpoint_assumption": 10
+      }
+    ],
+    "central_planning_point": {
+      "selected_probe_records": 750.0,
+      "checkpoints_per_record": 8,
+      "distinct_confirmation_checkpoints_per_record": 5,
+      "localization_seed_draws": 24000.0,
+      "confirmation_seed_draws": 30000.0,
+      "expected_cross_stage_collisions": 0.3352761270176974,
+      "probability_at_least_one_collision": 0.28485941055149955
+    }
+  },
+  "50669_predicted_collision_risk": {
+    "range": [
+      {
+        "records_per_item": 1,
+        "selected_probe_records": 1319,
+        "localization_seed_draws": 42208,
+        "confirmation_seed_draws": 10552,
+        "expected_cross_stage_collisions": 0.20739567289473287,
+        "probability_at_least_one_collision": 0.18730197621723244,
+        "selector_checkpoint_assumption": 1
+      },
+      {
+        "records_per_item": 1,
+        "selected_probe_records": 1319,
+        "localization_seed_draws": 42208,
+        "confirmation_seed_draws": 105520,
+        "expected_cross_stage_collisions": 2.0739567289473286,
+        "probability_at_least_one_collision": 0.8743125147680368,
+        "selector_checkpoint_assumption": 10
+      },
+      {
+        "records_per_item": 2,
+        "selected_probe_records": 2638,
+        "localization_seed_draws": 84416,
+        "confirmation_seed_draws": 21104,
+        "expected_cross_stage_collisions": 0.8295826915789315,
+        "probability_at_least_one_collision": 0.5637687086658105,
+        "selector_checkpoint_assumption": 1
+      },
+      {
+        "records_per_item": 2,
+        "selected_probe_records": 2638,
+        "localization_seed_draws": 84416,
+        "confirmation_seed_draws": 211040,
+        "expected_cross_stage_collisions": 8.295826915789315,
+        "probability_at_least_one_collision": 0.999750443924317,
+        "selector_checkpoint_assumption": 10
+      }
+    ],
+    "central_planning_point": {
+      "selected_probe_records": 1978.5,
+      "checkpoints_per_record": 8,
+      "distinct_confirmation_checkpoints_per_record": 5,
+      "localization_seed_draws": 63312.0,
+      "confirmation_seed_draws": 79140.0,
+      "expected_cross_stage_collisions": 2.333201320065745,
+      "probability_at_least_one_collision": 0.9030152297042259
+    }
+  }
+}

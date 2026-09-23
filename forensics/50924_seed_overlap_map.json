@@ -1,0 +1,497 @@
+{
+  "run_name": "v2_gsm8k_dream",
+  "job_id": "50924",
+  "execution_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+  "source_probe_branches_sha256": "e0c1854efa213b830fdd909ad77d1114be5f1c3a3ea32bd4155a66f677f6beee",
+  "overlap_seeds": [
+    193953942,
+    467002859,
+    880309257,
+    1415225323,
+    1632801805
+  ],
+  "seeds": {
+    "193953942": {
+      "classification": "CROSS_CONTEXT_OR_ITEM_COLLISION",
+      "localization_rows": [
+        {
+          "branch_seed": 193953942,
+          "stage": "localization",
+          "item_id": 512,
+          "trajectory_id": 0,
+          "step_index": 56,
+          "normalized_step": 0.875,
+          "operator_id": "low_confidence_remask_v2",
+          "branch_index": 2,
+          "base_correct": true,
+          "applicable": true,
+          "correct": true,
+          "modified_count": 4,
+          "nfe": 8,
+          "forward_calls": 8
+        },
+        {
+          "branch_seed": 193953942,
+          "stage": "localization",
+          "item_id": 512,
+          "trajectory_id": 0,
+          "step_index": 56,
+          "normalized_step": 0.875,
+          "operator_id": "matched_stochastic_continuation",
+          "branch_index": 2,
+          "base_correct": true,
+          "applicable": true,
+          "correct": true,
+          "modified_count": 0,
+          "nfe": 8,
+          "forward_calls": 8
+        }
+      ],
+      "confirmation_rows": [
+        {
+          "branch_seed": 193953942,
+          "stage": "confirmation",
+          "item_id": 996,
+          "trajectory_id": 0,
+          "step_index": 48,
+          "normalized_step": 0.75,
+          "operator_id": "low_confidence_remask_v2",
+          "branch_index": 0,
+          "base_correct": false,
+          "applicable": true,
+          "correct": false,
+          "modified_count": 5,
+          "nfe": 16,
+          "forward_calls": 16
+        },
+        {
+          "branch_seed": 193953942,
+          "stage": "confirmation",
+          "item_id": 996,
+          "trajectory_id": 0,
+          "step_index": 48,
+          "normalized_step": 0.75,
+          "operator_id": "matched_stochastic_continuation",
+          "branch_index": 0,
+          "base_correct": false,
+          "applicable": true,
+          "correct": false,
+          "modified_count": 0,
+          "nfe": 16,
+          "forward_calls": 16
+        }
+      ],
+      "localization_contexts": [
+        {
+          "item_id": 512,
+          "trajectory_id": 0,
+          "step_index": 56,
+          "branch_index": 2
+        }
+      ],
+      "confirmation_contexts": [
+        {
+          "item_id": 996,
+          "trajectory_id": 0,
+          "step_index": 48,
+          "branch_index": 0
+        }
+      ]
+    },
+    "467002859": {
+      "classification": "CROSS_CONTEXT_OR_ITEM_COLLISION",
+      "localization_rows": [
+        {
+          "branch_seed": 467002859,
+          "stage": "localization",
+          "item_id": 677,
+          "trajectory_id": 0,
+          "step_index": 40,
+          "normalized_step": 0.625,
+          "operator_id": "low_confidence_remask_v2",
+          "branch_index": 1,
+          "base_correct": false,
+          "applicable": true,
+          "correct": false,
+          "modified_count": 7,
+          "nfe": 24,
+          "forward_calls": 24
+        },
+        {
+          "branch_seed": 467002859,
+          "stage": "localization",
+          "item_id": 677,
+          "trajectory_id": 0,
+          "step_index": 40,
+          "normalized_step": 0.625,
+          "operator_id": "matched_stochastic_continuation",
+          "branch_index": 1,
+          "base_correct": false,
+          "applicable": true,
+          "correct": false,
+          "modified_count": 0,
+          "nfe": 24,
+          "forward_calls": 24
+        }
+      ],
+      "confirmation_rows": [
+        {
+          "branch_seed": 467002859,
+          "stage": "confirmation",
+          "item_id": 343,
+          "trajectory_id": 0,
+          "step_index": 40,
+          "normalized_step": 0.625,
+          "operator_id": "low_confidence_remask_v2",
+          "branch_index": 4,
+          "base_correct": false,
+          "applicable": true,
+          "correct": false,
+          "modified_count": 4,
+          "nfe": 24,
+          "forward_calls": 24
+        },
+        {
+          "branch_seed": 467002859,
+          "stage": "confirmation",
+          "item_id": 343,
+          "trajectory_id": 0,
+          "step_index": 40,
+          "normalized_step": 0.625,
+          "operator_id": "matched_stochastic_continuation",
+          "branch_index": 4,
+          "base_correct": false,
+          "applicable": true,
+          "correct": false,
+          "modified_count": 0,
+          "nfe": 24,
+          "forward_calls": 24
+        }
+      ],
+      "localization_contexts": [
+        {
+          "item_id": 677,
+          "trajectory_id": 0,
+          "step_index": 40,
+          "branch_index": 1
+        }
+      ],
+      "confirmation_contexts": [
+        {
+          "item_id": 343,
+          "trajectory_id": 0,
+          "step_index": 40,
+          "branch_index": 4
+        }
+      ]
+    },
+    "880309257": {
+      "classification": "CROSS_CONTEXT_OR_ITEM_COLLISION",
+      "localization_rows": [
+        {
+          "branch_seed": 880309257,
+          "stage": "localization",
+          "item_id": 758,
+          "trajectory_id": 2,
+          "step_index": 48,
+          "normalized_step": 0.75,
+          "operator_id": "low_confidence_remask_v2",
+          "branch_index": 3,
+          "base_correct": true,
+          "applicable": true,
+          "correct": true,
+          "modified_count": 4,
+          "nfe": 16,
+          "forward_calls": 16
+        },
+        {
+          "branch_seed": 880309257,
+          "stage": "localization",
+          "item_id": 758,
+          "trajectory_id": 2,
+          "step_index": 48,
+          "normalized_step": 0.75,
+          "operator_id": "matched_stochastic_continuation",
+          "branch_index": 3,
+          "base_correct": true,
+          "applicable": true,
+          "correct": true,
+          "modified_count": 0,
+          "nfe": 16,
+          "forward_calls": 16
+        }
+      ],
+      "confirmation_rows": [
+        {
+          "branch_seed": 880309257,
+          "stage": "confirmation",
+          "item_id": 1212,
+          "trajectory_id": 0,
+          "step_index": 48,
+          "normalized_step": 0.75,
+          "operator_id": "low_confidence_remask_v2",
+          "branch_index": 4,
+          "base_correct": false,
+          "applicable": true,
+          "correct": false,
+          "modified_count": 4,
+          "nfe": 16,
+          "forward_calls": 16
+        },
+        {
+          "branch_seed": 880309257,
+          "stage": "confirmation",
+          "item_id": 1212,
+          "trajectory_id": 0,
+          "step_index": 48,
+          "normalized_step": 0.75,
+          "operator_id": "matched_stochastic_continuation",
+          "branch_index": 4,
+          "base_correct": false,
+          "applicable": true,
+          "correct": false,
+          "modified_count": 0,
+          "nfe": 16,
+          "forward_calls": 16
+        }
+      ],
+      "localization_contexts": [
+        {
+          "item_id": 758,
+          "trajectory_id": 2,
+          "step_index": 48,
+          "branch_index": 3
+        }
+      ],
+      "confirmation_contexts": [
+        {
+          "item_id": 1212,
+          "trajectory_id": 0,
+          "step_index": 48,
+          "branch_index": 4
+        }
+      ]
+    },
+    "1415225323": {
+      "classification": "CROSS_CONTEXT_OR_ITEM_COLLISION",
+      "localization_rows": [
+        {
+          "branch_seed": 1415225323,
+          "stage": "localization",
+          "item_id": 878,
+          "trajectory_id": 3,
+          "step_index": 48,
+          "normalized_step": 0.75,
+          "operator_id": "low_confidence_remask_v2",
+          "branch_index": 3,
+          "base_correct": true,
+          "applicable": true,
+          "correct": true,
+          "modified_count": 4,
+          "nfe": 16,
+          "forward_calls": 16
+        },
+        {
+          "branch_seed": 1415225323,
+          "stage": "localization",
+          "item_id": 878,
+          "trajectory_id": 3,
+          "step_index": 48,
+          "normalized_step": 0.75,
+          "operator_id": "matched_stochastic_continuation",
+          "branch_index": 3,
+          "base_correct": true,
+          "applicable": true,
+          "correct": true,
+          "modified_count": 0,
+          "nfe": 16,
+          "forward_calls": 16
+        }
+      ],
+      "confirmation_rows": [
+        {
+          "branch_seed": 1415225323,
+          "stage": "confirmation",
+          "item_id": 1269,
+          "trajectory_id": 0,
+          "step_index": 32,
+          "normalized_step": 0.5,
+          "operator_id": "low_confidence_remask_v2",
+          "branch_index": 6,
+          "base_correct": false,
+          "applicable": true,
+          "correct": false,
+          "modified_count": 4,
+          "nfe": 32,
+          "forward_calls": 32
+        },
+        {
+          "branch_seed": 1415225323,
+          "stage": "confirmation",
+          "item_id": 1269,
+          "trajectory_id": 0,
+          "step_index": 32,
+          "normalized_step": 0.5,
+          "operator_id": "matched_stochastic_continuation",
+          "branch_index": 6,
+          "base_correct": false,
+          "applicable": true,
+          "correct": false,
+          "modified_count": 0,
+          "nfe": 32,
+          "forward_calls": 32
+        }
+      ],
+      "localization_contexts": [
+        {
+          "item_id": 878,
+          "trajectory_id": 3,
+          "step_index": 48,
+          "branch_index": 3
+        }
+      ],
+      "confirmation_contexts": [
+        {
+          "item_id": 1269,
+          "trajectory_id": 0,
+          "step_index": 32,
+          "branch_index": 6
+        }
+      ]
+    },
+    "1632801805": {
+      "classification": "CROSS_CONTEXT_OR_ITEM_COLLISION",
+      "localization_rows": [
+        {
+          "branch_seed": 1632801805,
+          "stage": "localization",
+          "item_id": 890,
+          "trajectory_id": 0,
+          "step_index": 48,
+          "normalized_step": 0.75,
+          "operator_id": "low_confidence_remask_v2",
+          "branch_index": 2,
+          "base_correct": true,
+          "applicable": true,
+          "correct": true,
+          "modified_count": 4,
+          "nfe": 16,
+          "forward_calls": 16
+        },
+        {
+          "branch_seed": 1632801805,
+          "stage": "localization",
+          "item_id": 890,
+          "trajectory_id": 0,
+          "step_index": 48,
+          "normalized_step": 0.75,
+          "operator_id": "matched_stochastic_continuation",
+          "branch_index": 2,
+          "base_correct": true,
+          "applicable": true,
+          "correct": true,
+          "modified_count": 0,
+          "nfe": 16,
+          "forward_calls": 16
+        }
+      ],
+      "confirmation_rows": [
+        {
+          "branch_seed": 1632801805,
+          "stage": "confirmation",
+          "item_id": 42,
+          "trajectory_id": 0,
+          "step_index": 16,
+          "normalized_step": 0.25,
+          "operator_id": "low_confidence_remask_v2",
+          "branch_index": 6,
+          "base_correct": true,
+          "applicable": true,
+          "correct": true,
+          "modified_count": 4,
+          "nfe": 48,
+          "forward_calls": 48
+        },
+        {
+          "branch_seed": 1632801805,
+          "stage": "confirmation",
+          "item_id": 42,
+          "trajectory_id": 0,
+          "step_index": 16,
+          "normalized_step": 0.25,
+          "operator_id": "matched_stochastic_continuation",
+          "branch_index": 6,
+          "base_correct": true,
+          "applicable": true,
+          "correct": true,
+          "modified_count": 0,
+          "nfe": 48,
+          "forward_calls": 48
+        }
+      ],
+      "localization_contexts": [
+        {
+          "item_id": 890,
+          "trajectory_id": 0,
+          "step_index": 48,
+          "branch_index": 2
+        }
+      ],
+      "confirmation_contexts": [
+        {
+          "item_id": 42,
+          "trajectory_id": 0,
+          "step_index": 16,
+          "branch_index": 6
+        }
+      ]
+    }
+  },
+  "summary": {
+    "overlapping_unique_seed_count": 5,
+    "affected_localization_contexts": 5,
+    "affected_localization_rows": 10,
+    "affected_confirmation_contexts": 5,
+    "affected_confirmation_rows": 10,
+    "affected_items": [
+      42,
+      343,
+      512,
+      677,
+      758,
+      878,
+      890,
+      996,
+      1212,
+      1269
+    ],
+    "affected_item_count": 10,
+    "affected_trajectories": [
+      "1212/0",
+      "1269/0",
+      "343/0",
+      "42/0",
+      "512/0",
+      "677/0",
+      "758/2",
+      "878/3",
+      "890/0",
+      "996/0"
+    ],
+    "affected_checkpoints": [
+      16,
+      32,
+      40,
+      48,
+      56
+    ],
+    "affected_operators": [
+      "low_confidence_remask_v2",
+      "matched_stochastic_continuation"
+    ],
+    "operator_pairing": "Each seed is shared by matched_stochastic_continuation and low_confidence_remask_v2 within a stage; this is intentional paired-randomness semantics.",
+    "classification_counts": {
+      "CROSS_CONTEXT_OR_ITEM_COLLISION": 5
+    }
+  }
+}
