@@ -445,9 +445,9 @@
       {
         "job_id": "52850",
         "name": "v2r-ind-s2-gsm-r2g",
-        "node": "",
-        "reason": "(Dependency)",
-        "state": "PENDING",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
       },
       {
@@ -947,17 +947,17 @@
         "reason": "(Dependency)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "52850",
-        "name": "v2r-ind-s2-gsm-r2g",
-        "node": "",
-        "reason": "(Dependency)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
       }
     ],
     "running": [
+      {
+        "job_id": "52850",
+        "name": "v2r-ind-s2-gsm-r2g",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
       {
         "job_id": "52847",
         "name": "v2r-ind-s1-gsm-r2d",
@@ -1067,11 +1067,10 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [
-        "7"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "no_safe_filesystem",
         "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
       ],
@@ -1126,5 +1125,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T21:19:44.435794+00:00"
+  "timestamp": "2026-09-23T21:21:16.815388+00:00"
 }
