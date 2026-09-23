@@ -1,0 +1,31 @@
+JobId=49257 JobName=repair_pull_gsm8k_full_llada8b_fast
+   SLUID=sD8DM2PVW5G100
+   UserId=kimhj(1021) GroupId=kimhj(1005) MCS_label=N/A
+   Priority=1 Nice=0 Account=lab QOS=lab_gpu_s3
+   JobState=PENDING Reason=Dependency Dependency=afterok:49256(unfulfilled)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=00:00:00 TimeLimit=04:00:00 TimeMin=N/A
+   SubmitTime=2026-09-17T14:01:50 EligibleTime=Unknown
+   AccrueTime=Unknown
+   StartTime=Unknown EndTime=Unknown Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-17T14:01:50 Scheduler=Main
+   Partition=gpu AllocNode:Sid=ubuntu:602392
+   ReqNodeList=ubuntu ExcNodeList=(null)
+   NodeList=
+   StepMgrEnabled=Yes
+   NumNodes=1-1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=2,mem=4G,node=1,billing=2
+   AllocTRES=(null)
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=2 MinMemoryNode=4G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/data/kimhj/repairable-state-discovery/scripts/pull_run_artifacts.sh
+   SubmitLine=sbatch --parsable --dependency=afterok:49256 --job-name=repair_pull_gsm8k_full_llada8b_fast --nodelist=ubuntu --cpus-per-task=2 --mem=4G --chdir=/data/kimhj/repairable-state-discovery --output=/data/kimhj/repairable-state-discovery/logs/pull_gsm8k_full_llada8b_fast_%j.out --error=/data/kimhj/repairable-state-discovery/logs/pull_gsm8k_full_llada8b_fast_%j.err /data/kimhj/repairable-state-discovery/scripts/pull_run_artifacts.sh 10.0.12.121 /home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_full_llada8b_fast /data/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs gsm8k_full_llada8b_fast report.json,trajectories.pkl,oracle_repair.json,repair_predictor.json
+   WorkDir=/data/kimhj/repairable-state-discovery
+   StdErr=/data/kimhj/repairable-state-discovery/logs/pull_gsm8k_full_llada8b_fast_49257.err
+   StdIn=/dev/null
+   StdOut=/data/kimhj/repairable-state-discovery/logs/pull_gsm8k_full_llada8b_fast_49257.out
+   TresPerTask=cpu=2
+

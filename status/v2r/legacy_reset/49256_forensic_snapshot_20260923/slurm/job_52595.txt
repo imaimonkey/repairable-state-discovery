@@ -1,0 +1,32 @@
+JobId=52595 JobName=v2-50752-forensic-s3
+   SLUID=sD8DM3690RHA00
+   UserId=kimhj(1021) GroupId=kimhj(1005) MCS_label=N/A
+   Priority=1 Nice=0 Account=lab QOS=lab_gpu_s2
+   JobState=PENDING Reason=Dependency Dependency=afterok:52594(unfulfilled)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=00:00:00 TimeLimit=2-00:00:00 TimeMin=N/A
+   SubmitTime=2026-09-23T13:40:09 EligibleTime=Unknown
+   AccrueTime=Unknown
+   StartTime=Unknown EndTime=Unknown Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-23T13:40:09 Scheduler=Main
+   Partition=gpu AllocNode:Sid=ubuntu:866086
+   ReqNodeList=server2 ExcNodeList=(null)
+   NodeList=
+   StepMgrEnabled=Yes
+   NumNodes=1-1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=56G,node=1,billing=8,gres/gpu=1
+   AllocTRES=(null)
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=56G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=(null)
+   SubmitLine=sbatch --parsable --dependency=afterok:52594 --job-name=v2-50752-forensic-s3 --nodelist=server2 --partition=gpu --time=2-00:00:00 --cpus-per-task=8 --mem=56G --gres=gpu:a6000:1 --output=/home/kimhj/forensics/v2_50752_confirmation_20260921_shard3-%j.out --error=/home/kimhj/forensics/v2_50752_confirmation_20260921_shard3-%j.err
+   WorkDir=/data/kimhj
+   StdErr=/home/kimhj/forensics/v2_50752_confirmation_20260921_shard3-52595.err
+   StdIn=/dev/null
+   StdOut=/home/kimhj/forensics/v2_50752_confirmation_20260921_shard3-52595.out
+   TresPerNode=gres/gpu:a6000:1
+   TresPerTask=cpu=8
+

@@ -1,0 +1,82 @@
+===job_env===
+PROTOCOL_RUN_NAMES=gsm8k_full_llada8b_fast
+SLURM_JOB_USER=kimhj
+SLURM_TASKS_PER_NODE=1
+SLURM_JOB_UID=1021
+SLURM_EXPORT_ENV=ALL,REPAIRABLE_ROOT=/home/kimhj/repairable-state-discovery,PROTOCOL_PATH=/home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml,PROTOCOL_RUN_NAMES=gsm8k_full_llada8b_fast,PROTOCOL_FAMILIES=diffusion,PROTOCOL_WRITE_REPORT=false,PYTHON_BIN=/home/kimhj/llada8b_basic/.venv/bin/python,HF_HOME=/home/kimhj/.cache/huggingface,RFBA_ROOT=/home/kimhj/rfba,DIFFUSION_PLAYGROUND_ROOT=
+SLURM_TASK_PID=1951669
+SLURM_JOB_GPUS=6
+SLURM_LOCALID=0
+SLURM_SUBMIT_DIR=/home/kimhj/repairable-state-discovery
+SLURMD_NODENAME=server2
+SLURM_JOB_START_TIME=1789621310
+SLURM_CLUSTER_NAME=lab-cluster
+SLURM_JOB_END_TIME=1792213310
+SLURM_CPUS_ON_NODE=8
+SLURM_JOB_CPUS_PER_NODE=8
+SLURM_GPUS_ON_NODE=1
+SLURM_GTIDS=0
+SLURM_JOB_PARTITION=gpu
+SLURM_TRES_PER_TASK=cpu=8
+SLURM_OOM_KILL_STEP=0
+REPAIRABLE_ROOT=/home/kimhj/repairable-state-discovery
+SLURM_JOB_NUM_NODES=1
+SLURM_STEPID=-5
+PROTOCOL_WRITE_REPORT=false
+SLURM_JOBID=49256
+SLURM_JOB_QOS=lab_gpu_s2
+SLURM_JOB_EXCLUSIVE=NO
+SLURM_PROCID=0
+SLURM_CPUS_PER_TASK=8
+PROTOCOL_PATH=/home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml
+SLURM_TOPOLOGY_ADDR=server2
+SLURM_STEPMGR=server2
+PROTOCOL_FAMILIES=diffusion
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+CUDA_VISIBLE_DEVICES=0
+HF_HOME=/home/kimhj/.cache/huggingface
+SLURM_MEM_PER_NODE=61440
+SLURM_NODELIST=server2
+SLURM_STEP_ID=-5
+SLURM_JOB_ACCOUNT=lab
+SLURM_PRIO_PROCESS=0
+SLURM_NNODES=1
+SLURM_SUBMIT_HOST=server2
+SLURM_JOB_ID=49256
+SLURM_NODEID=0
+SLURM_JOB_OVERSUBSCRIBE=NO
+SLURM_JOB_SLUID=sD8DM2PVW5FT00
+CUDA_HOME=/usr/local/cuda
+SLURM_CONF=/etc/slurm/slurm.conf
+SLURM_JOB_NAME=repair_bm_gsm8k_full_diffusion
+SLURM_JOB_GID=1022
+SLURM_GET_USER_ENV=1
+PYTHON_BIN=/home/kimhj/llada8b_basic/.venv/bin/python
+SLURM_JOB_NODELIST=server2
+===processes===
+kimhj    1951669 1951642  6-06:43:45  0.0  0.0 /bin/bash /var/spool/slurmd/job49256/slurm_script
+kimhj    1951705 1951669  6-06:43:44  100  0.6 /home/kimhj/llada8b_basic/.venv/bin/python -m repairable_diffusion.src.run_protocol --protocol /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml --families diffusion --run-names gsm8k_full_llada8b_fast --no-protocol-report
+kimhj    1952149 1951705  6-06:43:41  0.0  0.0 /home/kimhj/llada8b_basic/.venv/bin/python -m repairable_diffusion.src.run_protocol --protocol /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml --families diffusion --run-names gsm8k_full_llada8b_fast --no-protocol-report
+kimhj    1952160 1951705  6-06:43:41  0.0  0.0 /home/kimhj/llada8b_basic/.venv/bin/python -m repairable_diffusion.src.run_protocol --protocol /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml --families diffusion --run-names gsm8k_full_llada8b_fast --no-protocol-report
+kimhj    1952166 1951705  6-06:43:41  0.0  0.0 /home/kimhj/llada8b_basic/.venv/bin/python -m repairable_diffusion.src.run_protocol --protocol /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml --families diffusion --run-names gsm8k_full_llada8b_fast --no-protocol-report
+kimhj    1952174 1951705  6-06:43:41  0.0  0.0 /home/kimhj/llada8b_basic/.venv/bin/python -m repairable_diffusion.src.run_protocol --protocol /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml --families diffusion --run-names gsm8k_full_llada8b_fast --no-protocol-report
+kimhj    1952181 1951705  6-06:43:41  0.0  0.0 /home/kimhj/llada8b_basic/.venv/bin/python -m repairable_diffusion.src.run_protocol --protocol /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml --families diffusion --run-names gsm8k_full_llada8b_fast --no-protocol-report
+kimhj    1952188 1951705  6-06:43:41  0.0  0.0 /home/kimhj/llada8b_basic/.venv/bin/python -m repairable_diffusion.src.run_protocol --protocol /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml --families diffusion --run-names gsm8k_full_llada8b_fast --no-protocol-report
+kimhj    1952191 1951705  6-06:43:41  0.0  0.0 /home/kimhj/llada8b_basic/.venv/bin/python -m repairable_diffusion.src.run_protocol --protocol /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml --families diffusion --run-names gsm8k_full_llada8b_fast --no-protocol-report
+kimhj    1952196 1951705  6-06:43:41  0.0  0.0 /home/kimhj/llada8b_basic/.venv/bin/python -m repairable_diffusion.src.run_protocol --protocol /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml --families diffusion --run-names gsm8k_full_llada8b_fast --no-protocol-report
+kimhj    2598191 2598188       00:00  0.0  0.0 bash -c set -o pipefail; d=/home/kimhj/repairable-state-discovery; echo "===job_env==="; tr "\\0" "\\n" </proc/1951705/environ 2>/dev/null | rg "REPAIRABLE|PROTOCOL|PYTHON|HF_HOME|CUDA|SLURM" || true; echo "===processes==="; ps -eo user,pid,ppid,etime,pcpu,pmem,args | rg "1951669|1951705|1952149|run_protocol" || true; echo "===gpu=== "; nvidia-smi -i 6 --query-gpu=index,name,memory.total,memory.used,utilization.gpu --format=csv,noheader; nvidia-smi -i 6 --query-compute-apps=pid,process_name,used_memory --format=csv,noheader; echo "===output=== "; find "$d/repairable_diffusion/outputs/runs/gsm8k_full_llada8b_fast" -maxdepth 2 -type f -printf "%p %s %TY-%Tm-%TdT%TH:%TM:%TS\\n" | sort; echo "===configs=== "; sha256sum "$d/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml" "$d/repairable-state-discovery/repairable_diffusion/configs/final/gsm8k_diffusion_final.yaml" 2>/dev/null || sha256sum "$d/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml" "$d/repairable_diffusion/configs/final/gsm8k_diffusion_final.yaml"; git -C "$d" rev-parse --verify HEAD 2>&1 || true; git -C "$d" status --short 2>&1 | head -80
+kimhj    2598195 2598191       00:00  0.0  0.0 rg 1951669|1951705|1952149|run_protocol
+===gpu=== 
+6, NVIDIA RTX A6000, 49140 MiB, 33628 MiB, 100 %
+1951705, /home/kimhj/llada8b_basic/.venv/bin/python, 33618 MiB
+===output=== 
+/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_full_llada8b_fast/config.snapshot.json 1646 2026-09-17T14:01:54.1981667550
+/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_full_llada8b_fast/trajectories.light.jsonl 1036766 2026-09-18T11:26:53.4096458520
+/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_full_llada8b_fast/trajectories.pkl 288006335 2026-09-18T11:26:53.3456459290
+/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_full_llada8b_fast/trajectory_summary.json 14210 2026-09-18T11:26:53.4096458520
+===configs=== 
+1b3cee89c4b481d3f7c84191a78717cafa37ba06f0064d1824644c28c2cc8379  /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml
+1b3cee89c4b481d3f7c84191a78717cafa37ba06f0064d1824644c28c2cc8379  /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml
+d11decd99636a58d449efa393b4e8f560572e6289b2e76065b45325830259a23  /home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/gsm8k_diffusion_final.yaml
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git

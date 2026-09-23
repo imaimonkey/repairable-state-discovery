@@ -1,21 +1,43 @@
-2026-09-23T11:27:31.238975+00:00
+2026-09-23T11:51:26.609337+00:00
+HOURS TO DEADLINE: 72.13
+CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
+
+OVERALL GOAL
+reference baseline → instrumentation equivalence → repairability → full paper
 
 NEW EVENTS
-50668/50669 archived and cancelled by explicit reset authorization. Legacy artifacts preserved.
+Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
+
+INTEGRITY ALERTS
+MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
+
+ALL ACTIVE KIMHJ JOBS
+None
+
+SERVER1
+observed=False idle_gpu_candidates=[] safe_filesystems=[]
+
+SERVER2
+observed=True idle_gpu_candidates=['6'] safe_filesystems=[]
+
+SERVER3
+observed=True idle_gpu_candidates=['1', '3'] safe_filesystems=['/tmp', '/var/tmp']
+
+SERVER4
+observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
+
+LEGACY V2
+See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
 
 REFERENCE GATES
-llada R0: {'llada_math500': 'PASS', 'llada_gsm8k': 'PASS'}
-llada R1: {'llada_math500': 'NEEDS_REVIEW', 'llada_gsm8k': 'NEEDS_REVIEW'}
-llada R2: {'llada_math500': 'WAITING_DEPENDENCY', 'llada_gsm8k': 'WAITING_DEPENDENCY'}
-dream R0: {}
-dream R1: {}
-dream R2: {}
+llada_gsm8k: R0=PASS, R1=NEEDS_REVIEW, R2=WAITING_DEPENDENCY
+llada_math500: R0=PASS, R1=NEEDS_REVIEW, R2=WAITING_DEPENDENCY
 
-PRIMARY EVIDENCE
-llada_math500: NOT_STARTED
-llada_gsm8k: NOT_STARTED
-dream_math500: NOT_STARTED
+REFERENCE PRIMARY
 dream_gsm8k: NOT_STARTED
+dream_math500: NOT_STARTED
+llada_gsm8k: NOT_STARTED
+llada_math500: NOT_STARTED
 
 ACTIVE SHARDS
 llada-math500-r0-cachefix2: PASS job=52665
@@ -25,21 +47,21 @@ llada-gsm8k-r0-cachefix2: PASS job=52666
 llada-gsm8k-r1-cachefix2: NEEDS_REVIEW job=None
 llada-gsm8k-r2-cachefix2: WAITING_DEPENDENCY job=None
 
-GPU / SERVER STATUS
-See cluster_inventory.json; server3 root filesystem selected; critical /data rejected.
+PAPER
+status=NOT_SUBMISSION_READY
+technical_pdf_audit=PASS
 
-FAILED/BLOCKED
-Final scientific execution SHA/base/R3/temporal workers and measured resource budget still pending validation.
-Parallel development agents stopped by usage limit; partial code is retained and checked locally.
+ORCHESTRATOR
+status=RUNNING pid=1532432 heartbeat=2026-09-23T11:50:36.064277+00:00
 
-NEW SEALED EVIDENCE
-None.
+MONITOR
+heartbeat=2026-09-23T11:51:26.609337+00:00
 
-PAPER STATUS
-NOT_SUBMISSION_READY
+CURRENT P0
+Repair LLaDA R1 evidence inventory, rerun valid R0→R1→R2 on a final immutable SHA, then LLaDA MATH base.
 
-DEADLINE STATUS
-72.52h remaining; T-24 strongest completed evidence import; Dream cannot delay LLaDA.
+NEXT AUTONOMOUS ACTIONS
+Reconcile actual Slurm jobs every 90 seconds; keep only FREE_SAFE GPUs for reference shards; unlock downstream work only after sealed gates.
 
-WHAT CHATGPT SHOULD READ NEXT
-current_status.json, gate_status.json, legacy_reset/reset_state.json, docs/V2R_REFERENCE_PRIMARY_PROTOCOL.md
+TRUE USER-REQUIRED BLOCKERS
+None currently.

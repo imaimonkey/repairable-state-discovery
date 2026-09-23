@@ -1,0 +1,35 @@
+JobId=49256 JobName=repair_bm_gsm8k_full_diffusion
+   SLUID=sD8DM2PVW5FT00
+   UserId=kimhj(1021) GroupId=temp3(1022) MCS_label=N/A
+   Priority=1 Nice=0 Account=lab QOS=lab_gpu_s2
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=6-06:43:24 TimeLimit=30-00:00:00 TimeMin=N/A
+   SubmitTime=2026-09-17T14:01:50 EligibleTime=2026-09-17T14:01:50
+   AccrueTime=2026-09-17T14:01:50
+   StartTime=2026-09-17T14:01:50 EndTime=2026-10-17T14:01:50 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-17T14:01:50 Scheduler=Main
+   Partition=gpu AllocNode:Sid=server2:1951583
+   ReqNodeList=server2 ExcNodeList=(null)
+   NodeList=server2
+   BatchHost=server2
+   StepMgrEnabled=Yes
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=60G,node=1,billing=8,gres/gpu=1
+   AllocTRES=cpu=8,mem=60G,node=1,billing=8,gres/gpu=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   JOB_GRES=gpu:a6000:1
+     Nodes=server2 CPU_IDs=23-30 Mem=61440 GRES=gpu:a6000:1(IDX:6)
+   MinCPUsNode=8 MinMemoryNode=60G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/kimhj/repairable-state-discovery/scripts/run_protocol_repairability_final.sh
+   SubmitLine=sbatch --parsable --job-name=repair_bm_gsm8k_full_diffusion --nodelist=server2 --output=/home/kimhj/repairable-state-discovery/logs/repair_bm_gsm8k_full_diffusion_%j.out --error=/home/kimhj/repairable-state-discovery/logs/repair_bm_gsm8k_full_diffusion_%j.err --export=ALL,REPAIRABLE_ROOT=/home/kimhj/repairable-state-discovery,PROTOCOL_PATH=/home/kimhj/repairable-state-discovery/repairable_diffusion/configs/final/protocol_gsm8k_full.yaml,PROTOCOL_RUN_NAMES=gsm8k_full_llada8b_fast,PROTOCOL_FAMILIES=diffusion,PROTOCOL_WRITE_REPORT=false,PYTHON_BIN=/home/kimhj/llada8b_basic/.venv/bin/python,HF_HOME=/home/kimhj/.cache/huggingface,RFBA_ROOT=/home/kimhj/rfba,DIFFUSION_PLAYGROUND_ROOT= scripts/run_protocol_repairability_final.sh
+   WorkDir=/home/kimhj/repairable-state-discovery
+   StdErr=/home/kimhj/repairable-state-discovery/logs/repair_bm_gsm8k_full_diffusion_49256.err
+   StdIn=/dev/null
+   StdOut=/home/kimhj/repairable-state-discovery/logs/repair_bm_gsm8k_full_diffusion_49256.out
+   TresPerNode=gres/gpu:1
+   TresPerTask=cpu=8
+

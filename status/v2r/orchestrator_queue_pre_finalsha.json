@@ -1,0 +1,176 @@
+{
+  "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+  "generation_kind": "preflight_gates_not_final_scientific_execution",
+  "tasks": [
+    {
+      "backbone": "llada",
+      "depends_on": [],
+      "error": null,
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-math500-r0-cachefix2",
+      "job_id": "52665",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix2-llada-math500",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada math500 R0\n",
+      "priority": 0,
+      "script": "/var/tmp/kimhj-v2r-reference/runtime/llada-math500-r0-cachefix2.sbatch",
+      "seed_audit": {
+        "context_count": 960,
+        "unintended_collisions": 0,
+        "unique_seed_count": 192
+      },
+      "server": "server3",
+      "slurm_state": "RUNNING",
+      "stage": "R0",
+      "status": "PASS",
+      "storage": {
+        "available_bytes": 380474314752,
+        "projected_bytes": 2147483648,
+        "usage_fraction": 0.7876813785693213
+      },
+      "submission_args": [
+        "sbatch",
+        "--parsable",
+        "--partition=gpu",
+        "--qos=lab_gpu_s3",
+        "--nodelist=ubuntu",
+        "--gres=gpu:h200:1",
+        "--cpus-per-task=4",
+        "--mem=48G",
+        "--time=04:00:00",
+        "--job-name=v2r-llada-math500-r0-cachefix2",
+        "--chdir=/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+        "--output=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix2-llada-math500/R0/slurm-%j.out",
+        "--error=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix2-llada-math500/R0/slurm-%j.err",
+        "/var/tmp/kimhj-v2r-reference/runtime/llada-math500-r0-cachefix2.sbatch"
+      ],
+      "submitted_at": "2026-09-23T11:21:12.474153+00:00",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada-math500-r0-cachefix2"
+      ],
+      "error": null,
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-math500-r1-cachefix2",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix2-llada-math500",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada math500 R1\n",
+      "priority": 1,
+      "server": "server3",
+      "stage": "R1",
+      "status": "NEEDS_REVIEW",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada-math500-r1-cachefix2"
+      ],
+      "error": null,
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-math500-r2-cachefix2",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix2-llada-math500",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada math500 R2\n",
+      "priority": 2,
+      "server": "server3",
+      "stage": "R2",
+      "status": "WAITING_DEPENDENCY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [],
+      "error": null,
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-gsm8k-r0-cachefix2",
+      "job_id": "52666",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix2-llada-gsm8k",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada gsm8k R0\n",
+      "priority": 10,
+      "script": "/var/tmp/kimhj-v2r-reference/runtime/llada-gsm8k-r0-cachefix2.sbatch",
+      "seed_audit": {
+        "context_count": 960,
+        "unintended_collisions": 0,
+        "unique_seed_count": 192
+      },
+      "server": "server3",
+      "slurm_state": "RUNNING",
+      "stage": "R0",
+      "status": "PASS",
+      "storage": {
+        "available_bytes": 380474290176,
+        "projected_bytes": 2147483648,
+        "usage_fraction": 0.7876813922836307
+      },
+      "submission_args": [
+        "sbatch",
+        "--parsable",
+        "--partition=gpu",
+        "--qos=lab_gpu_s3",
+        "--nodelist=ubuntu",
+        "--gres=gpu:h200:1",
+        "--cpus-per-task=4",
+        "--mem=48G",
+        "--time=04:00:00",
+        "--job-name=v2r-llada-gsm8k-r0-cachefix2",
+        "--chdir=/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+        "--output=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix2-llada-gsm8k/R0/slurm-%j.out",
+        "--error=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix2-llada-gsm8k/R0/slurm-%j.err",
+        "/var/tmp/kimhj-v2r-reference/runtime/llada-gsm8k-r0-cachefix2.sbatch"
+      ],
+      "submitted_at": "2026-09-23T11:21:13.872454+00:00",
+      "task": "gsm8k",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada-gsm8k-r0-cachefix2"
+      ],
+      "error": null,
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-gsm8k-r1-cachefix2",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix2-llada-gsm8k",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada gsm8k R1\n",
+      "priority": 11,
+      "server": "server3",
+      "stage": "R1",
+      "status": "NEEDS_REVIEW",
+      "task": "gsm8k",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada-gsm8k-r1-cachefix2"
+      ],
+      "error": null,
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-gsm8k-r2-cachefix2",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix2-llada-gsm8k",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada gsm8k R2\n",
+      "priority": 12,
+      "server": "server3",
+      "stage": "R2",
+      "status": "WAITING_DEPENDENCY",
+      "task": "gsm8k",
+      "walltime": "04:00:00"
+    }
+  ]
+}
