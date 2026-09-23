@@ -3,14 +3,6 @@
   "jobs": {
     "all_reference_jobs": [
       {
-        "job_id": "52791",
-        "name": "v2r-llada_math500_core_finalsha-shard-005",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:h200:1"
-      },
-      {
         "job_id": "52792",
         "name": "v2r-llada_math500_core_finalsha-shard-006",
         "node": "",
@@ -483,6 +475,14 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "52791",
+        "name": "v2r-llada_math500_core_finalsha-shard-005",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "52834",
         "name": "v2r-ind-s4-gsm-r2",
         "node": "server4",
@@ -537,25 +537,9 @@
         "reason": "ubuntu",
         "state": "RUNNING",
         "tres": "gres/gpu:h200:1"
-      },
-      {
-        "job_id": "52740",
-        "name": "v2r-llada_math500_core_finalsha-shard-002",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
       }
     ],
     "pending": [
-      {
-        "job_id": "52791",
-        "name": "v2r-llada_math500_core_finalsha-shard-005",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:h200:1"
-      },
       {
         "job_id": "52792",
         "name": "v2r-llada_math500_core_finalsha-shard-006",
@@ -1031,6 +1015,14 @@
     ],
     "running": [
       {
+        "job_id": "52791",
+        "name": "v2r-llada_math500_core_finalsha-shard-005",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "52834",
         "name": "v2r-ind-s4-gsm-r2",
         "node": "server4",
@@ -1081,14 +1073,6 @@
       {
         "job_id": "52742",
         "name": "v2r-llada_math500_core_finalsha-shard-004",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
-      },
-      {
-        "job_id": "52740",
-        "name": "v2r-llada_math500_core_finalsha-shard-002",
         "node": "ubuntu",
         "reason": "ubuntu",
         "state": "RUNNING",
@@ -1205,5 +1189,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T21:13:34.790500+00:00"
+  "timestamp": "2026-09-23T21:15:07.220418+00:00"
 }
