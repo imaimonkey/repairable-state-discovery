@@ -1,5 +1,5 @@
-2026-09-23T19:52:17.208259+00:00
-HOURS TO DEADLINE: 64.11
+2026-09-23T19:53:48.578146+00:00
+HOURS TO DEADLINE: 64.09
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -17,10 +17,10 @@ ALL ACTIVE KIMHJ JOBS
 52740 v2r-llada_math500_core_finalsha-shard-002 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
-observed=True idle_gpu_candidates=['4', '7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
+observed=True idle_gpu_candidates=['3', '4', '7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
 
 SERVER2
-observed=True idle_gpu_candidates=['6', '7'] safe_filesystems=[]
+observed=True idle_gpu_candidates=['2', '3', '4', '5', '6', '7'] safe_filesystems=[]
 
 SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
@@ -69,10 +69,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3462723 heartbeat=2026-09-23T19:51:42.658351+00:00
+status=RUNNING pid=3462723 heartbeat=2026-09-23T19:52:49.039225+00:00
 
 MONITOR
-heartbeat=2026-09-23T19:52:17.208259+00:00
+heartbeat=2026-09-23T19:53:48.578146+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
