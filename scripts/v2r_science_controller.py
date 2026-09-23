@@ -6,12 +6,12 @@ the matching LLaDA R2 report is PASS, uses the frozen one-trajectory executor,
 and leaves merge/seal decisions to the same single orchestrator.
 """
 from __future__ import annotations
-import datetime as dt, json, shlex, subprocess, sys
+import datetime as dt, json, os, shlex, subprocess, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from repairable_diffusion.src.v2r.artifacts import atomic_json, read_json, merge_run, validate_shard
-from repairable_diffusion.src.v2r.planning import make_plan
+from repairable_diffusion.src.v2r.planning import make_plan, select_budget, freeze_failed_subset
 from repairable_diffusion.src.v2r.reference_sources import load_records
 from repairable_diffusion.src.v2r.schema import canonical_hash, file_hash
 from v2r_submit import storage_gate, environment, PYTHON, RUNTIME
@@ -90,3 +90,66 @@ def finalize_base(task_group):
  first=task_group[0];manifest=read_json(first['manifest']);gates=read_json(first['gates']);run_dir=Path(first['run_dir'])
  aggregate=merge_run(manifest,run_dir,gates=gates)
  return aggregate
+
+def _bank_for_base(task_group):
+ first=task_group[0]; manifest=read_json(first['manifest']); run_dir=Path(first['run_dir'])
+ aggregate=read_json(run_dir/'aggregate/aggregate.json')
+ shard_for={item:shard['shard_id'] for shard in manifest['shards'] for item in shard['item_ids']}
+ bank=[]; index={}
+ for row in aggregate['items']:
+  item=str(row['item_id']); shard=shard_for[item]
+  path=run_dir/'shards'/f'shard-{shard:03d}'/'items'/canonical_hash(item)/'trajectory.json'
+  entry={'item_id':item,'trajectory_id':0,'correct':bool(row['result']['correct']),'path':str(path),'sha256':file_hash(path)}
+  bank.append(entry); index[item]={'path':str(path),'sha256':entry['sha256']}
+ bank.sort(key=lambda x:x['item_id'])
+ bank_sha=canonical_hash(bank)
+ atomic_json(run_dir/'bank.json',{'status':'FROZEN_INPUT','bank_sha256':bank_sha,'items':bank})
+ return manifest,run_dir,bank,bank_sha,index
+
+def _budget(bank, purpose, base_seconds):
+ failed=sum(not x['correct'] for x in bank)
+ now=dt.datetime.now(dt.timezone.utc); deadline=dt.datetime.fromisoformat('2026-09-26T20:59:00+09:00')
+ fs=Path('/var/tmp/kimhj-v2r-reference/outputs/v2r_reference'); v=os.statvfs(fs); free=v.f_bavail*v.f_frsize; used=(v.f_blocks-v.f_bfree)*v.f_frsize; frac=used/(used+free)
+ multiplier=79 if purpose=='core' else 112
+ return select_budget(backbone='llada',purpose=purpose,seconds_per_item=max(1.0,base_seconds*multiplier),bytes_per_item=16*1024*1024,available_gpu_hours=max(1.0,(deadline-now).total_seconds()/3600),deadline_hours=max(1.0,(deadline-now).total_seconds()/3600),gpu_count=1,free_bytes=free,safety_margin_bytes=50*1024**3,filesystem_used_fraction=frac,pilot_item_count=8,failed_pool_size=failed,reserve_hours=6.0)
+
+def _deep_spec(base_manifest, run_dir, bank, bank_sha, index, purpose, budget):
+ recipe=base_manifest['recipe']; task=base_manifest['dataset']['task']; items=[x['item_id'] for x in bank if not x['correct']]
+ failed=freeze_failed_subset(bank,bank_sha256=bank_sha,budget=budget,design_seed=20260923,backbone='llada',task=task,purpose=purpose)
+ selected=failed['item_ids']; trajectory_index={item:index[item] for item in selected}
+ sample=read_json(index[selected[0]]['path'])['trajectory']; checkpoints=[x['step'] for x in sample['checkpoint_mapping']]
+ stage='r3_core' if purpose=='core' else 'temporal'
+ config={'generation':recipe['tasks'][task]['generation'],'checkpoint_grid':[.125,.25,.375,.5,.625,.75,.875],'B_loc':4,'B_eval':8,'tau_confirm':.25,'sensitivity_thresholds':[.125,.25,.5],'trajectory_policy':'failed_reference_bank'}
+ if purpose=='core':
+  plan=[{'purpose':'localization','checkpoints':checkpoints,'branches':4,'operators':['matched_continuation','canonical_repair'],'rng_role':'future','paired_rng_group':'matched-future'}, {'purpose':'confirmation','checkpoints':checkpoints,'branches':8,'operators':['matched_continuation','canonical_repair'],'rng_role':'future','paired_rng_group':'matched-future'}]
+ else:
+  plan=[{'purpose':'confirmation','checkpoints':checkpoints,'branches':8,'operators':['matched_continuation','canonical_repair'],'rng_role':'future','paired_rng_group':'matched-future'}]
+ return {'run_id':f'llada_{task}_{purpose}_finalsha','stage':stage,'design_seed':20260923,'design_sha256':DESIGN_SHA,'execution_git_sha':base_manifest['execution_git_sha'],'model':base_manifest['model'],'dataset':base_manifest['dataset'],'recipe':recipe,'config':config,'item_ids':selected,'executor':'repairable_diffusion.src.v2r.science:execute_probe','runtime_paths':base_manifest['runtime_paths'],'execution_worktree':base_manifest['execution_worktree'],'trajectory_index':trajectory_index,'failed_pool_freeze':failed,'budget':budget,'timing':{'seconds_per_item':budget['inputs']['seconds_per_item'],'target_shard_hours':4.0},'seed_plan':plan}
+
+def ensure_deep_tasks(queue):
+ tasks=queue.setdefault('tasks',[]); changed=False
+ groups={}
+ for task in tasks:
+  if task.get('kind')=='science_shard' and task.get('stage')=='base':groups.setdefault(task['run_dir'],[]).append(task)
+ for run_dir,base_tasks in groups.items():
+  if not base_tasks or not all(t.get('status')=='MERGED' for t in base_tasks):continue
+  base_manifest=read_json(base_tasks[0]['manifest']); task_name=base_manifest['dataset']['task']
+  if any(t.get('kind')=='science_shard' and t.get('run_dir','').endswith('_core_finalsha') and t.get('task')==task_name for t in tasks):continue
+  bank_manifest=Path(run_dir)/'bank.json'
+  if bank_manifest.exists():
+   bank_doc=read_json(bank_manifest); bank=bank_doc['items']; bank_sha=bank_doc['bank_sha256']; index={x['item_id']:{'path':x['path'],'sha256':x['sha256']} for x in bank}
+  else:
+   base_manifest,run_dir,bank,bank_sha,index=_bank_for_base(base_tasks)
+  gates=gates_for('llada',task_name)
+  if gates is None:continue
+  base_seconds=float(gates['R0'].get('timing',{}).get('mean_seconds_per_base',20.0))
+  for purpose in ('core','temporal'):
+   budget=_budget(bank,purpose,base_seconds)
+   if budget['status']!='FROZEN':continue
+   spec=_deep_spec(base_manifest,run_dir,bank,bank_sha,index,purpose,budget)
+   manifest_path=OUT/f'plans/{spec["run_id"]}.json'; gates_path=OUT/f'plans/{spec["run_id"]}.gates.json'; atomic_json(manifest_path,spec);atomic_json(gates_path,gates)
+   deep_dir=OUT/f'runs/{spec["run_id"]}';deep_dir.mkdir(parents=True,exist_ok=True)
+   for shard in spec['shards']:
+    sid=shard['shard_id']; tasks.append({'id':f'{spec["run_id"]}-shard-{sid:03d}','kind':'science_shard','backbone':'llada','task':task_name,'stage':spec['stage'],'purpose':purpose,'priority':40 if purpose=='core' else 50,'status':'READY','depends_on':[t['id'] for t in base_tasks],'execution_git_sha':spec['execution_git_sha'],'execution_worktree':spec['execution_worktree'],'manifest':str(manifest_path),'gates':str(gates_path),'run_dir':str(deep_dir),'shard':sid,'server':'server3','walltime':'04:00:00'})
+   changed=True
+ return changed

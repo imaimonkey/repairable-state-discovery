@@ -6,7 +6,7 @@ from pathlib import Path
 from v2r_inventory import atomic_json,collect
 from v2r_submit import submit,command,environment,DEADLINE
 from v2r_status import write_status,read
-from v2r_science_controller import ensure_base_tasks,submit_science,finalize_base
+from v2r_science_controller import ensure_base_tasks,ensure_deep_tasks,submit_science,finalize_base
 from repairable_diffusion.src.v2r.artifacts import read_json,validate_shard
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'status/v2r';RUNTIME=Path('/var/tmp/kimhj-v2r-reference/runtime')
 
@@ -85,6 +85,8 @@ def cycle():
    except Exception as exc:
     for task in tasks:task['error']='MERGE_BLOCKED: '+str(exc)
     event('SCIENCE_MERGE_BLOCKED',{'run_dir':run_dir,'error':str(exc)})
+ if ensure_deep_tasks(queue):
+  changed=True;event('SCIENCE_QUEUE_UNLOCKED',{'stage':'r3_core_temporal','execution_sha':queue.get('execution_git_sha')})
  atomic_json(OUT/'orchestrator_queue.json',queue)
  now=dt.datetime.now(dt.timezone.utc);health={'timestamp':now.isoformat(),'pid':os.getpid(),'tmux':'iclr2027-reference-orchestrator','status':'RUNNING','inventory_cycle_seconds':1800,'event_poll_seconds':60,'next_poll':(now+dt.timedelta(seconds=60)).isoformat(),'last_error':None}
  write_status(queue,health)
