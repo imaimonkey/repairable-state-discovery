@@ -93,13 +93,15 @@
         "model-load preflight 52785 passed on NVIDIA RTX A6000",
         "single-item exact replay probe 52787 failed exact native replay",
         "deterministic/TF32-disabled replay probe 52788 also failed exact native replay",
-        "math-SDPA-only diagnostic on idle GPU 4 also failed exact native replay"
+        "math-SDPA-only diagnostic on idle GPU 4 also failed exact native replay",
+        "FP32 plus math-SDPA diagnostic on idle GPU 7 also failed exact native replay"
       ],
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
         "3",
-        "4"
+        "4",
+        "7"
       ],
       "observed": true,
       "reasons": [
@@ -117,11 +119,13 @@
         "/ and /home exceed the 95% storage gate",
         "/mnt/raid5 exceeds the 95% storage gate",
         "/dev/shm has 252G free and was used for a frozen-SHA diagnostic",
-        "server2 GPU 6 exact replay failed after gate evidence deployment"
+        "server2 GPU 6 exact replay failed after gate evidence deployment",
+        "FP32 plus math-SDPA diagnostic on idle GPU 6 also failed exact native replay"
       ],
       "eligibility": false,
       "fallback_action": null,
       "idle_gpu_candidates": [
+        "6",
         "7"
       ],
       "observed": true,
@@ -155,6 +159,7 @@
         "model-load preflight 52781 passed",
         "reference worker trials 52755 and 52756 failed exact native replay",
         "native torch 2.7 math-SDPA diagnostic on idle GPU 0 also failed exact native replay",
+        "native torch 2.7 FP32 plus math-SDPA diagnostic on idle GPU 1 also failed exact native replay",
         "GPU 7 is occupied by an unrelated job; GPUs 0-6 were observed idle",
         "server3 PyTorch 2.1.2+cu121 on server4 sm_120: no kernel image is available",
         "server4 native PyTorch 2.7.0+cu128 loads the model but does not pass exact replay"
@@ -182,5 +187,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T20:10:52.921880+00:00"
+  "timestamp": "2026-09-23T20:12:24.428291+00:00"
 }
