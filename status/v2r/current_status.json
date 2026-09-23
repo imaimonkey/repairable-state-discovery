@@ -1,13 +1,13 @@
 {
   "active_tasks": [
     "llada-math500-r2-finalsha",
-    "llada-gsm8k-r0-finalsha"
+    "llada-gsm8k-r2-finalsha"
   ],
   "deadline": "2026-09-26T20:59:00+09:00",
-  "development_sha": "75a79249a7c133e0d6f3f5e066d44131a5d1ff49",
+  "development_sha": "194fd03e05ee1b7aac09c6bc0a2981f6ac76131e",
   "final_scientific_execution_sha": null,
   "goal_status": "IN_PROGRESS",
-  "hours_remaining": 72.019,
+  "hours_remaining": 72.0,
   "legacy_jobs": {
     "50668": "CANCELLED_FOR_REFERENCE_PRIMARY_RESET",
     "50669": "CANCELLED_FOR_REFERENCE_PRIMARY_RESET"
@@ -31,19 +31,19 @@
         "error": null,
         "job_id": "52677",
         "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-78fe5d7-llada-gsm8k/R0/gate_report.json",
-        "status": "RUNNING"
+        "status": "PASS"
       },
       "R1": {
         "error": null,
         "job_id": null,
         "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-78fe5d7-llada-gsm8k/R1/gate_report.json",
-        "status": "WAITING_DEPENDENCY"
+        "status": "PASS"
       },
       "R2": {
         "error": null,
-        "job_id": null,
+        "job_id": "52679",
         "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-78fe5d7-llada-gsm8k/R2/gate_report.json",
-        "status": "WAITING_DEPENDENCY"
+        "status": "SUBMITTED"
       }
     },
     "llada_math500": {
@@ -63,10 +63,10 @@
         "error": null,
         "job_id": "52678",
         "path": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-78fe5d7-llada-math500/R2/gate_report.json",
-        "status": "SUBMITTED"
+        "status": "RUNNING"
       }
     }
   },
   "scientific_execution_freeze_status": "PENDING_R2_AND_COMPLETE_SCIENTIFIC_EXECUTORS",
-  "timestamp": "2026-09-23T11:57:52.475392+00:00"
+  "timestamp": "2026-09-23T11:59:01.502318+00:00"
 }
