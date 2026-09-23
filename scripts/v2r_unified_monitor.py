@@ -46,6 +46,7 @@ def reconcile():
     queue=read(OUT/'orchestrator_queue.json',{'tasks':[]}) or {'tasks':[]}
     orchestrator=read(OUT/'orchestrator_health.json',{}) or {}
     paper=read(OUT/'paper_readiness.json',{}) or {}
+    current=read(OUT/'current_status.json',{}) or {}
     old_text=json.dumps(old_current,sort_keys=True)
     drift=[]
     for job in jobs.get('active_or_pending',[]):
@@ -96,10 +97,22 @@ def reconcile():
     gates=read(OUT/'gate_status.json',{}) or {}
     for key,val in sorted(gates.items()): lines.append(f"{key}: "+', '.join(f'{k}={v.get("status")}' for k,v in val.items()))
     lines += ['','REFERENCE PRIMARY']
-    current=read(OUT/'current_status.json',{}) or {}
     for key,val in (current.get('primary_evidence') or {}).items(): lines.append(f'{key}: {val}')
     lines += ['','ACTIVE SHARDS']+[f"{t.get('id')}: {t.get('status')} job={t.get('job_id')}" for t in queue.get('tasks',[])]
-    lines += ['','PAPER',f"status={paper.get('status')}",f"technical_pdf_audit={paper.get('technical_pdf_audit',{}).get('status')}",'','ORCHESTRATOR',f"status={orchestrator.get('status')} pid={orchestrator.get('pid')} heartbeat={orchestrator.get('timestamp')}",'','MONITOR',f"heartbeat={now.isoformat()}",'','CURRENT P0','Repair LLaDA R1 evidence inventory, rerun valid R0→R1→R2 on a final immutable SHA, then LLaDA MATH base.','','NEXT AUTONOMOUS ACTIONS','Reconcile actual Slurm jobs every 90 seconds; keep only FREE_SAFE GPUs for reference shards; unlock downstream work only after sealed gates.','','TRUE USER-REQUIRED BLOCKERS','None currently.']
+    science=[t for t in queue.get('tasks',[]) if t.get('kind')=='science_shard']
+    math=[t for t in science if t.get('task')=='math500']
+    math_base=[t for t in math if t.get('stage')=='base']
+    math_core=[t for t in math if t.get('purpose')=='core']
+    math_temporal=[t for t in math if t.get('purpose')=='temporal']
+    if not math_base or any(t.get('status') in {'READY','SUBMITTED','PENDING','RUNNING','RESOURCE_WAIT'} for t in math_base):
+        p0='Complete LLaDA MATH base and freeze the shared trajectory bank.'
+    elif not math_core or any(t.get('status') in {'READY','SUBMITTED','PENDING','RUNNING','RESOURCE_WAIT'} for t in math_core):
+        p0='Complete LLaDA MATH core repairability and seal its reference bundle.'
+    elif not math_temporal or any(t.get('status') in {'READY','SUBMITTED','PENDING','RUNNING','RESOURCE_WAIT'} for t in math_temporal):
+        p0='Complete LLaDA MATH temporal evidence and seal its reference bundle.'
+    else:
+        p0='Import sealed LLaDA evidence, build the PDF, and close author review.'
+    lines += ['','PAPER',f"status={paper.get('status')}",f"technical_pdf_audit={paper.get('technical_pdf_audit',{}).get('status')}",'','ORCHESTRATOR',f"status={orchestrator.get('status')} pid={orchestrator.get('pid')} heartbeat={orchestrator.get('timestamp')}",'','MONITOR',f"heartbeat={now.isoformat()}",'','CURRENT P0',p0,'','NEXT AUTONOMOUS ACTIONS','Reconcile actual Slurm jobs every 90 seconds; keep only FREE_SAFE GPUs for reference shards; unlock downstream work only after sealed gates.','','TRUE USER-REQUIRED BLOCKERS','None currently.']
     (OUT/'attention_required.md').write_text('\n'.join(lines)+'\n')
     return unified
 
