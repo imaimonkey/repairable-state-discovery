@@ -1,11 +1,12 @@
 # Attention required
 
-2026-09-23T15:48:58+09:00
+2026-09-23T15:50:52+09:00
 
 ## NEW EVENTS
-- No new scientific or operational event since previous cycle.
+- EXECUTION_PROVENANCE_MISMATCH: job 50924
 
 ## P0
+- 50924 execution provenance mismatch; manual review before seal
 
 ## P1
 - server1 artifact access unavailable for Tier-A observation

@@ -1,9 +1,9 @@
 {
   "schema": "iclr2027_live_status_v1",
-  "generated_at_kst": "2026-09-23T15:48:58+09:00",
+  "generated_at_kst": "2026-09-23T15:50:52+09:00",
   "collector_hostname": "ubuntu",
   "monitor_branch": "codex/iclr2027-live-monitor-20260923",
-  "monitor_commit": "c3549011edac60191e4b74a682ac607a326b9b11",
+  "monitor_commit": "d43192c2fad553602ce6ed9bda2eb3513404dd0a",
   "baseline_analysis_bundle_commit": "c41d6b10ed0c041581cae4f84a41b4ad783ebe00",
   "observation_sources": [
     "squeue",
@@ -27,16 +27,16 @@
       "config": "repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
       "slurm": {
         "job_id": "50668",
-        "squeue": "50668|v2-full-math|RUNNING|4-00:41:24|30-00:00:00|2026-09-19T15:07:32|devbox",
+        "squeue": "50668|v2-full-math|RUNNING|4-00:43:19|30-00:00:00|2026-09-19T15:07:32|devbox",
         "squeue_error": "",
         "job_name": "v2-full-math",
         "state": "RUNNING",
-        "elapsed": "4-00:41:24",
+        "elapsed": "4-00:43:19",
         "time_limit": "30-00:00:00",
         "start_time": "2026-09-19T15:07:32",
         "reason": "devbox",
         "JobState": "RUNNING",
-        "RunTime": "4-00:41:24",
+        "RunTime": "4-00:43:19",
         "TimeLimit": "30-00:00:00",
         "StartTime": "2026-09-19T15:07:32",
         "EndTime": "2026-10-19T15:07:32",
@@ -48,7 +48,7 @@
         "Reason": "None",
         "BatchHost": "devbox",
         "sacct": [
-          "50668|RUNNING|4-00:41:24|0:0|devbox"
+          "50668|RUNNING|4-00:43:19|0:0|devbox"
         ],
         "exit_code": "0:0",
         "node_list": "devbox"
@@ -95,17 +95,19 @@
       },
       "files": {},
       "manifest": {},
+      "report": {},
       "provenance": {},
+      "integrity_alerts": [],
       "liveness": {},
       "sstat": {
         "ok": true,
-        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead\n50668.batch|4-00:42:38|3785492K|476974720|576197683",
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead\n50668.batch|4-00:44:32|3785492K|476974720|576197683",
         "error": ""
       },
       "source_available": false,
       "source_error": "kimhj@10.0.12.120: Permission denied (publickey,password).",
       "baseline": {
-        "last_snapshot": "2026-09-23T15:46:39+09:00"
+        "last_snapshot": "2026-09-23T15:48:58+09:00"
       },
       "velocity": {
         "30m": "UNOBSERVABLE",
@@ -123,16 +125,16 @@
       "config": "repairable_diffusion/configs/v2/runs/full_gsm8k_llada.yaml",
       "slurm": {
         "job_id": "50669",
-        "squeue": "50669|v2-full-gsm|RUNNING|4-00:41:24|30-00:00:00|2026-09-19T15:07:32|devbox",
+        "squeue": "50669|v2-full-gsm|RUNNING|4-00:43:19|30-00:00:00|2026-09-19T15:07:32|devbox",
         "squeue_error": "",
         "job_name": "v2-full-gsm",
         "state": "RUNNING",
-        "elapsed": "4-00:41:24",
+        "elapsed": "4-00:43:19",
         "time_limit": "30-00:00:00",
         "start_time": "2026-09-19T15:07:32",
         "reason": "devbox",
         "JobState": "RUNNING",
-        "RunTime": "4-00:41:24",
+        "RunTime": "4-00:43:19",
         "TimeLimit": "30-00:00:00",
         "StartTime": "2026-09-19T15:07:32",
         "EndTime": "2026-10-19T15:07:32",
@@ -144,7 +146,7 @@
         "Reason": "None",
         "BatchHost": "devbox",
         "sacct": [
-          "50669|RUNNING|4-00:41:24|0:0|devbox"
+          "50669|RUNNING|4-00:43:19|0:0|devbox"
         ],
         "exit_code": "0:0",
         "node_list": "devbox"
@@ -191,17 +193,19 @@
       },
       "files": {},
       "manifest": {},
+      "report": {},
       "provenance": {},
+      "integrity_alerts": [],
       "liveness": {},
       "sstat": {
         "ok": true,
-        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead\n50669.batch|4-00:42:37|8065180K|1184448321|1311468537",
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead\n50669.batch|4-00:44:31|8065180K|1184448321|1311468537",
         "error": ""
       },
       "source_available": false,
       "source_error": "kimhj@10.0.12.120: Permission denied (publickey,password).",
       "baseline": {
-        "last_snapshot": "2026-09-23T15:46:39+09:00"
+        "last_snapshot": "2026-09-23T15:48:58+09:00"
       },
       "velocity": {
         "30m": "UNOBSERVABLE",
@@ -271,7 +275,9 @@
       },
       "files": {},
       "manifest": {},
+      "report": {},
       "provenance": {},
+      "integrity_alerts": [],
       "liveness": {},
       "sstat": {
         "ok": true,
@@ -281,7 +287,7 @@
       "source_available": false,
       "source_error": "kimhj@10.0.12.120: Permission denied (publickey,password).",
       "baseline": {
-        "last_snapshot": "2026-09-23T15:46:39+09:00"
+        "last_snapshot": "2026-09-23T15:48:58+09:00"
       },
       "velocity": {
         "30m": "UNOBSERVABLE",
@@ -430,11 +436,13 @@
         "config_path": "repairable_diffusion/configs/v2/runs/full_bbh_logical5_llada.yaml",
         "config_sha256": "62cc0ead39ac45cfc1a1eff69a8673e3930f164562dd4e590eadd611ccb42637"
       },
+      "report": {},
       "provenance": {},
+      "integrity_alerts": [],
       "liveness": {
         "processes": [],
         "gpu_compute_apps": [
-          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 33958 MiB",
+          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 24694 MiB",
           "785414, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 35134 MiB",
           "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 28130 MiB",
           "1995095, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6586 MiB",
@@ -442,7 +450,7 @@
           "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6596 MiB",
           "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 8072 MiB",
           "1951705, /home/kimhj/llada8b_basic/.venv/bin/python, 33618 MiB",
-          "1799343, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 16526 MiB"
+          "1799343, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 16634 MiB"
         ]
       },
       "sstat": {
@@ -453,7 +461,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-23T15:46:39+09:00"
+        "last_snapshot": "2026-09-23T15:48:58+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -619,6 +627,39 @@
         "report": "report.json",
         "probe_branches_sha256": "0afc3c99a89e38afeacc1bfb67bf20ceb294cc4feff00a0c62e3de18d46b8879"
       },
+      "report": {
+        "run_name": "v2_bbh_logical7_llada",
+        "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+        "config_sha256": "c545ee56673123a65ddeaaf247c93f4fb863c7e5e4113a18266a945c9403bc79",
+        "trajectory_bank_hash": "87c68c55852d3c0a3ca6abe803e75fdff9169bc468185fe0082d3cb5d42490fc",
+        "dataset": {
+          "name": "bbh",
+          "path": "maveriq/bigbenchhard",
+          "config_name": "logical_deduction_seven_objects",
+          "split": "train"
+        },
+        "model_profile": "llada_8b_fast",
+        "items": 250,
+        "trajectories": 2000,
+        "base_pass_at_k": 0.764,
+        "prospective_policy_selector": "oof_state_value",
+        "prospective_policy_pass_at_k": 0.764,
+        "prospective_net_gain": 0.0,
+        "policy_extra_nfe_target_for_fresh": 10408,
+        "fresh_sampling_achieved_nfe": 0,
+        "fresh_sampling_pass_at_k": 0.764,
+        "fresh_sampling_gain": 0.0,
+        "probe_branch_rows": 58896,
+        "mechanism_subset_items": [],
+        "temporal_subset_items": [],
+        "existence": {
+          "failed_items_probed": 177,
+          "transient_correct_rate": 0.011299435028248588,
+          "confirmed_repairable_rate": 0.4689265536723164,
+          "repairable_but_never_correct_rate": 0.4632768361581921
+        },
+        "v1_artifacts_substituted": false
+      },
       "provenance": {
         "status": "SEALED",
         "run_name": "v2_bbh_logical7_llada",
@@ -665,10 +706,11 @@
         "v1_artifacts_substituted": false,
         "dream_native_sampler_reference": null
       },
+      "integrity_alerts": [],
       "liveness": {
         "processes": [],
         "gpu_compute_apps": [
-          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 33958 MiB",
+          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 24696 MiB",
           "785414, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 35134 MiB",
           "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 28130 MiB",
           "1995095, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6586 MiB",
@@ -676,7 +718,7 @@
           "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6596 MiB",
           "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 8072 MiB",
           "1951705, /home/kimhj/llada8b_basic/.venv/bin/python, 33618 MiB",
-          "1799343, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 16526 MiB"
+          "1799343, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 16634 MiB"
         ]
       },
       "sstat": {
@@ -687,7 +729,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-23T15:46:39+09:00"
+        "last_snapshot": "2026-09-23T15:48:58+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -853,6 +895,39 @@
         "report": "report.json",
         "probe_branches_sha256": "f342515bd475f3c83a51a1e5ac077b265e46d692d572db6cae29965a15edfc55"
       },
+      "report": {
+        "run_name": "v2_mbpp_llada",
+        "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+        "config_sha256": "6f442834dc5cbf4e5a5d13a274bf21624c80c06bfd30d67fe6b9fc4f28060edf",
+        "trajectory_bank_hash": "a65becfcec66deb1596cd30b25a9f294f5d38e15d84aa0603b648244af29eb8b",
+        "dataset": {
+          "name": "mbpp",
+          "path": "google-research-datasets/mbpp",
+          "config_name": "sanitized",
+          "split": "test"
+        },
+        "model_profile": "llada_8b_fast",
+        "items": 257,
+        "trajectories": 2056,
+        "base_pass_at_k": 0.5486381322957199,
+        "prospective_policy_selector": "oof_state_value",
+        "prospective_policy_pass_at_k": 0.5491245136186771,
+        "prospective_net_gain": 0.0004863813229571967,
+        "policy_extra_nfe_target_for_fresh": 8200,
+        "fresh_sampling_achieved_nfe": 0,
+        "fresh_sampling_pass_at_k": 0.5486381322957199,
+        "fresh_sampling_gain": 0.0,
+        "probe_branch_rows": 60336,
+        "mechanism_subset_items": [],
+        "temporal_subset_items": [],
+        "existence": {
+          "failed_items_probed": 237,
+          "transient_correct_rate": 0.004219409282700422,
+          "confirmed_repairable_rate": 0.2616033755274262,
+          "repairable_but_never_correct_rate": 0.25738396624472576
+        },
+        "v1_artifacts_substituted": false
+      },
       "provenance": {
         "status": "SEALED",
         "run_name": "v2_mbpp_llada",
@@ -899,10 +974,11 @@
         "v1_artifacts_substituted": false,
         "dream_native_sampler_reference": null
       },
+      "integrity_alerts": [],
       "liveness": {
         "processes": [],
         "gpu_compute_apps": [
-          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 33958 MiB",
+          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 24696 MiB",
           "785414, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 35134 MiB",
           "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 28130 MiB",
           "1995095, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6586 MiB",
@@ -910,7 +986,7 @@
           "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6596 MiB",
           "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 8072 MiB",
           "1951705, /home/kimhj/llada8b_basic/.venv/bin/python, 33618 MiB",
-          "1799343, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 16526 MiB"
+          "1799343, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 16634 MiB"
         ]
       },
       "sstat": {
@@ -921,7 +997,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-23T15:46:39+09:00"
+        "last_snapshot": "2026-09-23T15:48:58+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1087,6 +1163,38 @@
         "report": "report.json",
         "probe_branches_sha256": "aea7b2e08a8c50edb495120ed9c6a75fd495b568a384b754de2967f579ef22ae"
       },
+      "report": {
+        "run_name": "v2_math500_dream",
+        "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+        "config_sha256": "63d397d92a75defedaf476d6090dad15e2d2d7b0fcf56bc339d27dfaf6deb577",
+        "trajectory_bank_hash": "48fa6e5b5a33ecfab51bf281110a40c17d6e86b5bdc8bbf91a2d739c716dc5e4",
+        "dataset": {
+          "name": "math500",
+          "path": "HuggingFaceH4/MATH-500",
+          "split": "test"
+        },
+        "model_profile": "dream_v0_instruct_7b",
+        "items": 500,
+        "trajectories": 4000,
+        "base_pass_at_k": 0.4,
+        "prospective_policy_selector": "oof_state_value",
+        "prospective_policy_pass_at_k": 0.39825,
+        "prospective_net_gain": -0.0017500000000000293,
+        "policy_extra_nfe_target_for_fresh": 12168,
+        "fresh_sampling_achieved_nfe": 0,
+        "fresh_sampling_pass_at_k": 0.4,
+        "fresh_sampling_gain": 0.0,
+        "probe_branch_rows": 106872,
+        "mechanism_subset_items": [],
+        "temporal_subset_items": [],
+        "existence": {
+          "failed_items_probed": 497,
+          "transient_correct_rate": 0.04627766599597585,
+          "confirmed_repairable_rate": 0.2112676056338028,
+          "repairable_but_never_correct_rate": 0.1750503018108652
+        },
+        "v1_artifacts_substituted": false
+      },
       "provenance": {
         "status": "SEALED",
         "run_name": "v2_math500_dream",
@@ -1137,17 +1245,18 @@
           "algorithm": "origin"
         }
       },
+      "integrity_alerts": [],
       "liveness": {
         "processes": [],
         "gpu_compute_apps": [
           "2698890, VLLM::Worker, 77388 MiB",
-          "2698915, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 6864 MiB",
+          "2698915, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 6984 MiB",
           "2705038, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 55838 MiB",
           "2736790, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 39344 MiB",
-          "3032555, /data/janghj/EasyEdit/.venv/bin/python, 37690 MiB",
+          "3032555, /data/janghj/EasyEdit/.venv/bin/python, 36080 MiB",
           "2604497, /data/janghj/EasyEdit/.venv/bin/python, 34692 MiB",
           "2903083, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 38284 MiB",
-          "1590193, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 34220 MiB",
+          "1590193, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 23628 MiB",
           "2420266, VLLM::EngineCore, 83208 MiB"
         ]
       },
@@ -1159,7 +1268,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-23T15:46:39+09:00"
+        "last_snapshot": "2026-09-23T15:48:58+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1322,18 +1431,59 @@
         "report": "report.json",
         "probe_branches_sha256": "e0c1854efa213b830fdd909ad77d1114be5f1c3a3ea32bd4155a66f677f6beee"
       },
+      "report": {
+        "run_name": "v2_gsm8k_dream",
+        "git_sha": "15f40e052329261885c757664273f25bede2b074",
+        "config_sha256": "352ee442a097cb6835cfdf221e625e890be5973bd78c0396b937fe83752ec0db",
+        "trajectory_bank_hash": "7d472f1d7e9ba66cf528bfaefe7009fa874165870ca73e6c688065df42da96a4",
+        "dataset": {
+          "name": "gsm8k",
+          "path": "openai/gsm8k",
+          "config_name": "main",
+          "split": "test"
+        },
+        "model_profile": "dream_v0_instruct_7b",
+        "items": 1319,
+        "trajectories": 10552,
+        "base_pass_at_k": 0.6959818043972706,
+        "prospective_policy_selector": "oof_state_value",
+        "prospective_policy_pass_at_k": 0.6992987111448067,
+        "prospective_net_gain": 0.0033169067475360414,
+        "policy_extra_nfe_target_for_fresh": 43088,
+        "fresh_sampling_achieved_nfe": 0,
+        "fresh_sampling_pass_at_k": 0.6959818043972706,
+        "fresh_sampling_gain": 0.0,
+        "probe_branch_rows": 338112,
+        "mechanism_subset_items": [],
+        "temporal_subset_items": [],
+        "existence": {
+          "failed_items_probed": 1298,
+          "transient_correct_rate": 0.029275808936825885,
+          "confirmed_repairable_rate": 0.40215716486902925,
+          "repairable_but_never_correct_rate": 0.3828967642526965
+        },
+        "v1_artifacts_substituted": false
+      },
       "provenance": {},
+      "integrity_alerts": [
+        {
+          "type": "EXECUTION_PROVENANCE_MISMATCH",
+          "source": "report",
+          "expected": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+          "observed": "15f40e052329261885c757664273f25bede2b074"
+        }
+      ],
       "liveness": {
         "processes": [],
         "gpu_compute_apps": [
           "2698890, VLLM::Worker, 77388 MiB",
-          "2698915, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 6864 MiB",
+          "2698915, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 6984 MiB",
           "2705038, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 55838 MiB",
           "2736790, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 39344 MiB",
-          "3032555, /data/janghj/EasyEdit/.venv/bin/python, 37690 MiB",
+          "3032555, /data/janghj/EasyEdit/.venv/bin/python, 36080 MiB",
           "2604497, /data/janghj/EasyEdit/.venv/bin/python, 34692 MiB",
           "2903083, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 38284 MiB",
-          "1590193, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 34220 MiB",
+          "1590193, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 28262 MiB",
           "2420266, VLLM::EngineCore, 83208 MiB"
         ]
       },
@@ -1345,7 +1495,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-23T15:46:39+09:00"
+        "last_snapshot": "2026-09-23T15:48:58+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1409,21 +1559,20 @@
       "RESULT_INTEGRATION.md": false
     },
     "build": {
-      "checked_at_kst": "2026-09-23T15:48:58+09:00",
+      "checked_at_kst": "2026-09-23T15:50:52+09:00",
       "paper_head": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
-      "performed": true,
+      "performed": false,
       "build_pass": null,
       "submission_audit_pass": null,
-      "errors": [
-        "Makefile not present in paper HEAD"
-      ]
+      "errors": [],
+      "reason": "not_due"
     }
   },
   "storage": {
     "local": [
       "Filesystem     1024-blocks       Used Available Capacity Mounted on",
-      "/dev/nvme0n1p2  1843726932 1377664856 372332132      79% /",
-      "/dev/nvme1n1p1  7441182592 6915789916 150303116      98% /data"
+      "/dev/nvme0n1p2  1843726932 1377673440 372323548      79% /",
+      "/dev/nvme1n1p1  7441182592 6915790700 150302332      98% /data"
     ],
     "10.0.12.120": {
       "available": false,
@@ -1435,14 +1584,14 @@
     },
     "10.0.12.163": [
       "Filesystem     1024-blocks       Used Available Capacity Mounted on",
-      "/dev/nvme1n1p2  1843726932 1640987320 109009668      94% /",
-      "/dev/nvme0n1p1  7441182592 6959233100 106859932      99% /data"
+      "/dev/nvme1n1p2  1843726932 1640987384 109009604      94% /",
+      "/dev/nvme0n1p1  7441182592 6950075028 116018004      99% /data"
     ]
   },
   "readiness": {
-    "generated_at_kst": "2026-09-23T15:48:58+09:00",
+    "generated_at_kst": "2026-09-23T15:50:52+09:00",
     "deadline_kst": "2026-09-26T20:59:00+09:00",
-    "hours_remaining": 77.17,
+    "hours_remaining": 77.14,
     "experiment": {
       "sealed_rows": 3,
       "running_rows": 2,
@@ -1468,7 +1617,9 @@
       "anonymous_package_ready": false
     },
     "blockers": {
-      "p0": [],
+      "p0": [
+        "50924 execution provenance mismatch; manual review before seal"
+      ],
       "p1": [
         "server1 artifact access unavailable for Tier-A observation",
         "BBH5 50752 failed and forensic root cause remains unresolved",
@@ -1477,7 +1628,20 @@
       "p2": []
     },
     "latest_new_evidence": [],
-    "latest_event": null
+    "latest_event": {
+      "timestamp_kst": "2026-09-23T15:50:52+09:00",
+      "type": "EXECUTION_PROVENANCE_MISMATCH",
+      "job_id": "50924",
+      "run_name": "v2_gsm8k_dream",
+      "details": [
+        {
+          "type": "EXECUTION_PROVENANCE_MISMATCH",
+          "source": "report",
+          "expected": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+          "observed": "15f40e052329261885c757664273f25bede2b074"
+        }
+      ]
+    }
   },
   "constraints": {
     "scientific_code_modified": false,
