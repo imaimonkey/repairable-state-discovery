@@ -1,0 +1,28 @@
+{
+  "args": [
+    "sbatch",
+    "--parsable",
+    "--partition=gpu",
+    "--qos=lab_gpu_s3",
+    "--nodelist=ubuntu",
+    "--gres=gpu:h200:1",
+    "--cpus-per-task=4",
+    "--mem=48G",
+    "--time=00:30:00",
+    "--job-name=v2r-gsm8k-base-recovery-r1",
+    "--chdir=/data/kimhj/repairable-state-discovery-reference-20260923",
+    "--output=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_gsm8k_base_finalsha/logs/slurm-gsm-recovery-%j.out",
+    "--error=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_gsm8k_base_finalsha/logs/slurm-gsm-recovery-%j.err",
+    "/var/tmp/kimhj-v2r-reference/runtime/llada_gsm8k_base_finalsha-shard-000-recovery-r1.sbatch"
+  ],
+  "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+  "gates_sha256": "8a1a488a68f9848bb075fe21c39d247b47ee1e241e2d8a594d3d569a2ee0b1a8",
+  "job_id": "52764",
+  "manifest_sha256": "f2331dd899316046aaad0331668a8265dfdc0d7dd1e1b9df02e34233859a36e0",
+  "missing_item_ids": [
+    "895"
+  ],
+  "script": "/var/tmp/kimhj-v2r-reference/runtime/llada_gsm8k_base_finalsha-shard-000-recovery-r1.sbatch",
+  "script_sha256": "68e9d92582fad6425a57d1854a00b1edbda31769dd796d579b4fc5f28bba4e43",
+  "submitted_at": "2026-09-23T16:56:31.671791+00:00"
+}

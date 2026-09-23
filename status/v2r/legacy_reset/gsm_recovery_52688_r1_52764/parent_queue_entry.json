@@ -1,0 +1,23 @@
+{
+  "error": "Terminal scientific Slurm state: TIMEOUT",
+  "job_id": "52688",
+  "script": "/var/tmp/kimhj-v2r-reference/runtime/llada_gsm8k_base_finalsha-shard-000.sbatch",
+  "slurm_state": "TIMEOUT",
+  "status": "NEEDS_REVIEW",
+  "submission_args": [
+    "sbatch",
+    "--parsable",
+    "--partition=gpu",
+    "--qos=lab_gpu_s3",
+    "--nodelist=ubuntu",
+    "--gres=gpu:h200:1",
+    "--cpus-per-task=4",
+    "--mem=48G",
+    "--time=04:00:00",
+    "--job-name=v2r-llada_gsm8k_base_finalsha-shard-000",
+    "--chdir=/data/kimhj/repairable-state-discovery-reference-20260923",
+    "--output=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_gsm8k_base_finalsha/logs/slurm-%j.out",
+    "--error=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_gsm8k_base_finalsha/logs/slurm-%j.err",
+    "/var/tmp/kimhj-v2r-reference/runtime/llada_gsm8k_base_finalsha-shard-000.sbatch"
+  ]
+}
