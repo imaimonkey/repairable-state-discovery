@@ -78,7 +78,8 @@ def cycle():
    if task.get('job_id'):
     s=subprocess.run(['sacct','-n','-X','-P','-j',task['job_id'],'--format=JobID,State,ExitCode'],text=True,capture_output=True,timeout=15)
     state=next((l.split('|')[1] for l in s.stdout.splitlines() if l.split('|')[0]==task['job_id']),'UNKNOWN');task['slurm_state']=state
-    if state in ['RUNNING','PENDING','CONFIGURING','COMPLETING']:task['status']=state
+    if state in ['RUNNING','PENDING','CONFIGURING','COMPLETING']:
+     task['status']=state;task['error']=None
     elif state=='COMPLETED':
      try:
       sync_remote_shard(task)

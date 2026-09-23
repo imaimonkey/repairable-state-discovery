@@ -71,7 +71,14 @@ def ensure_base_tasks(queue):
 
 def submit_science(task, inventory):
  node=inventory['servers'].get(task['server'],{})
- if not node.get('observed') or not node.get('idle_gpu_candidates'): raise RuntimeError('NO_OBSERVED_IDLE_GPU_FOR_SCIENCE')
+ if not node.get('observed'): raise RuntimeError('NO_OBSERVED_SERVER_FOR_SCIENCE')
+ # Queue the next frozen server3 core shards ahead of slot release. Slurm
+ # keeps these pending under the QoS cap and starts them as soon as a H200 is
+ # released; no GPU is oversubscribed and temporal remains priority-gated.
+ queue_ahead=(task.get('server')=='server3' and task.get('stage')=='r3_core'
+              and not node.get('idle_gpu_candidates'))
+ if not node.get('idle_gpu_candidates') and not queue_ahead:
+  raise RuntimeError('NO_OBSERVED_IDLE_GPU_FOR_SCIENCE')
  storage=storage_gate(task['run_dir'],projected=4*1024**3)
  manifest=read_json(task['manifest']); gates=read_json(task['gates'])
  if manifest.get('execution_git_sha')!='78fe5d7c1829b67d1bb1416b7205edfa647bb2fa': raise RuntimeError('SCIENCE_SHA_MISMATCH')
@@ -87,7 +94,7 @@ def submit_science(task, inventory):
  if r.returncode:raise RuntimeError(r.stderr)
  jid=r.stdout.strip().split(';')[0]
  if not jid.isdigit():raise RuntimeError('Invalid scientific sbatch id '+r.stdout)
- return {'job_id':jid,'submitted_at':dt.datetime.now(dt.timezone.utc).isoformat(),'submission_args':args,'script':str(script),'storage':storage}
+ return {'job_id':jid,'submitted_at':dt.datetime.now(dt.timezone.utc).isoformat(),'submission_args':args,'script':str(script),'storage':storage,'queue_ahead':queue_ahead,'error':None}
 
 def finalize_base(task_group):
  first=task_group[0];manifest=read_json(first['manifest']);gates=read_json(first['gates']);run_dir=Path(first['run_dir'])
