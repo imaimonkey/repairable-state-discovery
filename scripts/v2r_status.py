@@ -13,8 +13,10 @@ def write_status(queue,health):
  now=dt.datetime.now(dt.timezone.utc);deadline=dt.datetime.fromisoformat('2026-09-26T20:59:00+09:00');hours=(deadline-now).total_seconds()/3600
  gates={}; artifacts=[]
  for task in queue.get('tasks',[]):
-  report=read(Path(task['output'])/task['stage']/'gate_report.json')
-  key=task['backbone']+'_'+task['task'];gates.setdefault(key,{})[task['stage']]={'status':report['status'] if report else task.get('status','NOT_RUN'),'path':str(Path(task['output'])/task['stage']/'gate_report.json'),'job_id':task.get('job_id'),'error':report.get('error') if report else task.get('error')}
+  task_output=task.get('output')
+  report=read(Path(task_output)/task['stage']/'gate_report.json') if task_output else None
+  key=task['backbone']+'_'+task['task'];report_path=str(Path(task_output)/task['stage']/'gate_report.json') if task_output else None
+  gates.setdefault(key,{})[task['stage']]={'status':report['status'] if report else task.get('status','NOT_RUN'),'path':report_path,'job_id':task.get('job_id'),'error':report.get('error') if report else task.get('error')}
   if report:artifacts.append({'kind':'gate_report','server':task['server'],'path':gates[key][task['stage']]['path'],'execution_sha':task['execution_git_sha'],'status':report['status']})
  primary={name:'NOT_STARTED' for name in ['llada_math500','llada_gsm8k','dream_math500','dream_gsm8k']}
  current={'timestamp':now.isoformat(),'goal_status':'IN_PROGRESS','protocol_generation':2,'priority':['llada_math500_deep','llada_gsm8k_replication','dream_math500_replication','dream_gsm8k_optional'],'legacy_jobs':{'50668':'CANCELLED_FOR_REFERENCE_PRIMARY_RESET','50669':'CANCELLED_FOR_REFERENCE_PRIMARY_RESET'},'reference_gates':gates,'primary_evidence':primary,'deadline':deadline.isoformat(),'hours_remaining':round(hours,3),'development_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'final_scientific_execution_sha':None,'scientific_execution_freeze_status':'PENDING_R2_AND_COMPLETE_SCIENTIFIC_EXECUTORS','active_tasks':[t['id'] for t in queue.get('tasks',[]) if t.get('status') in ['RUNNING','SUBMITTED','PENDING']]}
