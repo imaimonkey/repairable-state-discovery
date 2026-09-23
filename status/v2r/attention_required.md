@@ -1,5 +1,5 @@
-2026-09-23T15:07:15.079527+00:00
-HOURS TO DEADLINE: 68.86
+2026-09-23T15:08:46.512290+00:00
+HOURS TO DEADLINE: 68.84
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -32,7 +32,7 @@ See legacy monitor and legacy_reset snapshots; old evidence is not reference-pri
 
 REFERENCE GATES
 llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=WAITING_PRIORITY
-llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=READY, temporal=READY
+llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=WAITING_DEPENDENCY, temporal=WAITING_DEPENDENCY
 
 REFERENCE PRIMARY
 dream_gsm8k: NOT_STARTED
@@ -50,31 +50,31 @@ llada-gsm8k-r2-finalsha: PASS job=52679
 llada_math500_base_finalsha-shard-000: SEALED job=52687
 llada_gsm8k_base_finalsha-shard-000: RUNNING job=52688
 llada_gsm8k_base_finalsha-shard-001: WAITING_PRIORITY job=None
-llada_math500_core_finalsha-shard-000: READY job=None
-llada_math500_core_finalsha-shard-001: READY job=None
-llada_math500_core_finalsha-shard-002: READY job=None
-llada_math500_core_finalsha-shard-003: READY job=None
-llada_math500_core_finalsha-shard-004: READY job=None
-llada_math500_core_finalsha-shard-005: READY job=None
-llada_math500_core_finalsha-shard-006: READY job=None
-llada_math500_temporal_finalsha-shard-000: READY job=None
-llada_math500_temporal_finalsha-shard-001: READY job=None
-llada_math500_temporal_finalsha-shard-002: READY job=None
-llada_math500_temporal_finalsha-shard-003: READY job=None
-llada_math500_temporal_finalsha-shard-004: READY job=None
+llada_math500_core_finalsha-shard-000: WAITING_DEPENDENCY job=None
+llada_math500_core_finalsha-shard-001: WAITING_DEPENDENCY job=None
+llada_math500_core_finalsha-shard-002: WAITING_DEPENDENCY job=None
+llada_math500_core_finalsha-shard-003: WAITING_DEPENDENCY job=None
+llada_math500_core_finalsha-shard-004: WAITING_DEPENDENCY job=None
+llada_math500_core_finalsha-shard-005: WAITING_DEPENDENCY job=None
+llada_math500_core_finalsha-shard-006: WAITING_DEPENDENCY job=None
+llada_math500_temporal_finalsha-shard-000: WAITING_DEPENDENCY job=None
+llada_math500_temporal_finalsha-shard-001: WAITING_DEPENDENCY job=None
+llada_math500_temporal_finalsha-shard-002: WAITING_DEPENDENCY job=None
+llada_math500_temporal_finalsha-shard-003: WAITING_DEPENDENCY job=None
+llada_math500_temporal_finalsha-shard-004: WAITING_DEPENDENCY job=None
 
 PAPER
 status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2381041 heartbeat=2026-09-23T15:06:36.904595+00:00
+status=RUNNING pid=2381041 heartbeat=2026-09-23T15:08:47.259946+00:00
 
 MONITOR
-heartbeat=2026-09-23T15:07:15.079527+00:00
+heartbeat=2026-09-23T15:08:46.512290+00:00
 
 CURRENT P0
-Complete LLaDA MATH core repairability and seal its reference bundle.
+Import sealed LLaDA evidence, build the PDF, and close author review.
 
 NEXT AUTONOMOUS ACTIONS
 Reconcile actual Slurm jobs every 90 seconds; keep only FREE_SAFE GPUs for reference shards; unlock downstream work only after sealed gates.
