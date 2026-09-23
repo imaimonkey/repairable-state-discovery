@@ -3,14 +3,6 @@
   "jobs": {
     "all_reference_jobs": [
       {
-        "job_id": "52740",
-        "name": "v2r-llada_math500_core_finalsha-shard-002",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:h200:1"
-      },
-      {
         "job_id": "52742",
         "name": "v2r-llada_math500_core_finalsha-shard-004",
         "node": "",
@@ -59,16 +51,16 @@
         "tres": "gres/gpu:h200:1"
       },
       {
-        "job_id": "52741",
-        "name": "v2r-llada_math500_core_finalsha-shard-003",
+        "job_id": "52740",
+        "name": "v2r-llada_math500_core_finalsha-shard-002",
         "node": "ubuntu",
         "reason": "ubuntu",
         "state": "RUNNING",
         "tres": "gres/gpu:h200:1"
       },
       {
-        "job_id": "52739",
-        "name": "v2r-llada_math500_core_finalsha-shard-001",
+        "job_id": "52741",
+        "name": "v2r-llada_math500_core_finalsha-shard-003",
         "node": "ubuntu",
         "reason": "ubuntu",
         "state": "RUNNING",
@@ -76,14 +68,6 @@
       }
     ],
     "pending": [
-      {
-        "job_id": "52740",
-        "name": "v2r-llada_math500_core_finalsha-shard-002",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:h200:1"
-      },
       {
         "job_id": "52742",
         "name": "v2r-llada_math500_core_finalsha-shard-004",
@@ -135,16 +119,16 @@
     ],
     "running": [
       {
-        "job_id": "52741",
-        "name": "v2r-llada_math500_core_finalsha-shard-003",
+        "job_id": "52740",
+        "name": "v2r-llada_math500_core_finalsha-shard-002",
         "node": "ubuntu",
         "reason": "ubuntu",
         "state": "RUNNING",
         "tres": "gres/gpu:h200:1"
       },
       {
-        "job_id": "52739",
-        "name": "v2r-llada_math500_core_finalsha-shard-001",
+        "job_id": "52741",
+        "name": "v2r-llada_math500_core_finalsha-shard-003",
         "node": "ubuntu",
         "reason": "ubuntu",
         "state": "RUNNING",
@@ -153,9 +137,11 @@
     ]
   },
   "next_batch": {
-    "action": "WAIT_WITH_INTERVAL_REPLAN",
-    "eligible_servers": [],
-    "rationale": "No server currently passes the combined observation, storage, GPU, and reference-runtime gates."
+    "action": "PLACE_NEXT_PRIORITY_SHARD",
+    "eligible_servers": [
+      "server3"
+    ],
+    "rationale": "eligible servers: server3"
   },
   "policy": {
     "all_servers_observed": true,
@@ -210,12 +196,12 @@
         "execution SHA 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
         "existing R0/R1/R2 gate chain"
       ],
-      "eligibility": false,
-      "idle_gpu_candidates": [],
-      "observed": true,
-      "reasons": [
-        "no_idle_gpu_candidate"
+      "eligibility": true,
+      "idle_gpu_candidates": [
+        "1"
       ],
+      "observed": true,
+      "reasons": [],
       "reference_compatible": true,
       "safe_filesystem_candidates": [
         "/tmp",
@@ -226,7 +212,9 @@
       "compatibility_evidence": [
         "model-load preflight 52781 passed",
         "reference worker trials 52755 and 52756 failed exact native replay",
-        "GPU 7 is occupied by an unrelated job; GPUs 0-6 were observed idle"
+        "GPU 7 is occupied by an unrelated job; GPUs 0-6 were observed idle",
+        "server3 PyTorch 2.1.2+cu121 on server4 sm_120: no kernel image is available",
+        "server4 native PyTorch 2.7.0+cu128 loads the model but does not pass exact replay"
       ],
       "eligibility": false,
       "idle_gpu_candidates": [
@@ -240,7 +228,7 @@
       ],
       "observed": true,
       "reasons": [
-        "exact_native_replay_failed"
+        "exact_native_replay_failed;_reference_torch_2_1_2_is_sm120_incompatible"
       ],
       "reference_compatible": false,
       "safe_filesystem_candidates": [
@@ -249,5 +237,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T19:00:06.708327+00:00"
+  "timestamp": "2026-09-23T19:01:38.617395+00:00"
 }
