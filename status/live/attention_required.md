@@ -1,10 +1,9 @@
 # Attention required
 
-2026-09-23T20:27:31+09:00
+2026-09-23T20:57:46+09:00
 
 ## NEW EVENTS
-- JOB_STATE_CHANGED: job 50668
-- JOB_STATE_CHANGED: job 50669
+- No new scientific or operational event since previous cycle.
 
 ## P0
 - 50924 execution provenance mismatch; manual review before seal
