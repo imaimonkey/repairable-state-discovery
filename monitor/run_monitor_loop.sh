@@ -16,7 +16,7 @@ fi
 printf '%s monitor loop started pid=%s\n' "$(date --iso-8601=seconds)" "$$" >> "$LOG"
 sleep 1800
 while true; do
-  if ! RSD_MONITOR_RUNTIME="$RUNTIME" "$PYTHON" "$ROOT/monitor/live_monitor.py" >> "$LOG" 2>&1; then
+  if ! RSD_MONITOR_RUNTIME="$RUNTIME" RSD_MONITOR_LOOP_PID="$$" RSD_MONITOR_SESSION="iclr2027-live-monitor" "$PYTHON" "$ROOT/monitor/live_monitor.py" >> "$LOG" 2>&1; then
     printf '%s cycle failed; next cycle will retry\n' "$(date --iso-8601=seconds)" >> "$LOG"
   fi
   sleep 1800

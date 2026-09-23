@@ -780,7 +780,7 @@ def cycle() -> dict[str, Any]:
     append_jsonl(LIVE / "event_history.jsonl", events)
     write_attention(rows, events, readiness)
     health = read_json(LIVE / "monitor_health.json", {}) or {}
-    health.update({"monitor_start_time": health.get("monitor_start_time", iso()), "monitor_pid": os.getpid(), "last_cycle_start": iso(started), "last_successful_cycle": iso(), "next_expected_cycle": iso(now() + dt.timedelta(minutes=30)), "consecutive_cycle_failures": 0, "last_cycle_events": len(events), "last_cycle_source_failures": sum(not r["source_available"] for r in rows)})
+    health.update({"monitor_start_time": health.get("monitor_start_time", iso()), "monitor_pid": os.getpid(), "monitor_loop_pid": os.environ.get("RSD_MONITOR_LOOP_PID"), "monitor_session": os.environ.get("RSD_MONITOR_SESSION"), "last_cycle_start": iso(started), "last_successful_cycle": iso(), "next_expected_cycle": iso(now() + dt.timedelta(minutes=30)), "consecutive_cycle_failures": 0, "last_cycle_events": len(events), "last_cycle_source_failures": sum(not r["source_available"] for r in rows)})
     write_json(LIVE / "monitor_health.json", health)
     git = git_commit_push(events)
     health["last_successful_push"] = iso() if git.get("push") else health.get("last_successful_push")
