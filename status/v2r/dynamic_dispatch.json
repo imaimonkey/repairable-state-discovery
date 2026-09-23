@@ -595,14 +595,6 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "52940",
-        "name": "v2r-ind-server4-gsm8k-base-recover3-001",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "52850",
         "name": "v2r-ind-s2-gsm-r2g",
         "node": "server2",
@@ -1215,14 +1207,6 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "52940",
-        "name": "v2r-ind-server4-gsm8k-base-recover3-001",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "52850",
         "name": "v2r-ind-s2-gsm-r2g",
         "node": "server2",
@@ -1331,6 +1315,7 @@
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
         "3",
+        "5",
         "6",
         "7"
       ],
@@ -1345,5 +1330,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T23:56:57.158892+00:00"
+  "timestamp": "2026-09-23T23:58:29.914843+00:00"
 }
