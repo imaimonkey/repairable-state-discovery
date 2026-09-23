@@ -511,6 +511,7 @@
       "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
       "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
       "id": "llada_math500_core_finalsha-shard-005",
+      "job_id": "52791",
       "kind": "science_shard",
       "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
       "priority": 21,
@@ -580,12 +581,29 @@
       "server": "server3",
       "shard": 5,
       "stage": "r3_core",
-      "status": "RESOURCE_WAIT",
+      "status": "SUBMITTED",
       "storage": {
-        "available_bytes": 377640476672,
+        "available_bytes": 293178368000,
         "projected_bytes": 4294967296,
-        "usage_fraction": 0.7892627641482547
+        "usage_fraction": 0.8363957184136593
       },
+      "submission_args": [
+        "sbatch",
+        "--parsable",
+        "--partition=gpu",
+        "--qos=lab_gpu_s3",
+        "--nodelist=ubuntu",
+        "--gres=gpu:h200:1",
+        "--cpus-per-task=4",
+        "--mem=48G",
+        "--time=04:00:00",
+        "--job-name=v2r-llada_math500_core_finalsha-shard-005",
+        "--chdir=/data/kimhj/repairable-state-discovery-reference-20260923",
+        "--output=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha/logs/slurm-%j.out",
+        "--error=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha/logs/slurm-%j.err",
+        "/var/tmp/kimhj-v2r-reference/runtime/llada_math500_core_finalsha-shard-005.sbatch"
+      ],
+      "submitted_at": "2026-09-23T20:07:10.715450+00:00",
       "task": "math500",
       "walltime": "04:00:00"
     },
@@ -599,6 +617,7 @@
       "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
       "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
       "id": "llada_math500_core_finalsha-shard-006",
+      "job_id": "52792",
       "kind": "science_shard",
       "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
       "priority": 21,
@@ -656,12 +675,29 @@
       "server": "server3",
       "shard": 6,
       "stage": "r3_core",
-      "status": "RESOURCE_WAIT",
+      "status": "SUBMITTED",
       "storage": {
-        "available_bytes": 377640148992,
+        "available_bytes": 293146345472,
         "projected_bytes": 4294967296,
-        "usage_fraction": 0.7892629470057122
+        "usage_fraction": 0.8364135881587015
       },
+      "submission_args": [
+        "sbatch",
+        "--parsable",
+        "--partition=gpu",
+        "--qos=lab_gpu_s3",
+        "--nodelist=ubuntu",
+        "--gres=gpu:h200:1",
+        "--cpus-per-task=4",
+        "--mem=48G",
+        "--time=04:00:00",
+        "--job-name=v2r-llada_math500_core_finalsha-shard-006",
+        "--chdir=/data/kimhj/repairable-state-discovery-reference-20260923",
+        "--output=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha/logs/slurm-%j.out",
+        "--error=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha/logs/slurm-%j.err",
+        "/var/tmp/kimhj-v2r-reference/runtime/llada_math500_core_finalsha-shard-006.sbatch"
+      ],
+      "submitted_at": "2026-09-23T20:07:12.154679+00:00",
       "task": "math500",
       "walltime": "04:00:00"
     },

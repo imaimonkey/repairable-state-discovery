@@ -59,7 +59,8 @@
         "SSH authentication restored and inventory succeeded",
         "model-load preflight 52785 passed on NVIDIA RTX A6000",
         "single-item exact replay probe 52787 failed exact native replay",
-        "deterministic/TF32-disabled replay probe 52788 also failed exact native replay"
+        "deterministic/TF32-disabled replay probe 52788 also failed exact native replay",
+        "math-SDPA-only diagnostic on idle GPU 4 also failed exact native replay"
       ],
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
@@ -82,7 +83,9 @@
     "server2": {
       "compatibility_evidence": [
         "/ and /home exceed the 95% storage gate",
-        "/mnt/raid5 exceeds the 95% storage gate"
+        "/mnt/raid5 exceeds the 95% storage gate",
+        "/dev/shm has 252G free and was used for a frozen-SHA diagnostic",
+        "server2 GPU 6 exact replay failed after gate evidence deployment"
       ],
       "eligibility": false,
       "fallback_action": null,
@@ -92,7 +95,8 @@
       ],
       "observed": true,
       "reasons": [
-        "no_safe_filesystem"
+        "no_safe_filesystem",
+        "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
       ],
       "reference_compatible": false,
       "safe_filesystem_candidates": []
@@ -119,6 +123,7 @@
       "compatibility_evidence": [
         "model-load preflight 52781 passed",
         "reference worker trials 52755 and 52756 failed exact native replay",
+        "native torch 2.7 math-SDPA diagnostic on idle GPU 0 also failed exact native replay",
         "GPU 7 is occupied by an unrelated job; GPUs 0-6 were observed idle",
         "server3 PyTorch 2.1.2+cu121 on server4 sm_120: no kernel image is available",
         "server4 native PyTorch 2.7.0+cu128 loads the model but does not pass exact replay"
@@ -146,5 +151,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T20:04:46.842860+00:00"
+  "timestamp": "2026-09-23T20:06:18.350644+00:00"
 }
