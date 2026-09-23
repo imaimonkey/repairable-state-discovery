@@ -498,17 +498,17 @@
       "depends_on": [
         "llada_math500_base_finalsha-shard-000"
       ],
-      "error": "Terminal scientific Slurm state: FAILED",
+      "error": null,
       "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
       "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
       "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
       "id": "llada_math500_core_finalsha-shard-005",
-      "job_id": "52755",
+      "job_id": "52757",
       "kind": "science_shard",
       "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
       "priority": 21,
       "purpose": "core",
-      "reconciled_at": "2026-09-23T15:35:54.913849+00:00",
+      "reconciled_at": "2026-09-23T15:37:27.090315+00:00",
       "relocation_history": [
         {
           "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
@@ -542,17 +542,27 @@
           "reason": "RETRY_AFTER_MISSING_REMOTE_DYNAMIC_MODEL_CONFIG",
           "task_id": "llada_math500_core_finalsha-shard-005",
           "timestamp": "2026-09-23T15:35:54.913849+00:00"
+        },
+        {
+          "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+          "failure": "EXACT_NATIVE_REPLAY_FAILED_ON_SERVER4_BLACKWELL; NO_EVIDENCE_ACCEPTED",
+          "new_job_id": "52757",
+          "new_node": "server3",
+          "previous_job_id": "52755",
+          "previous_node": "server4",
+          "reason": "REMOTE_EXECUTION_REJECTED_EXACT_NATIVE_REPLAY_FAILURE",
+          "task_id": "llada_math500_core_finalsha-shard-005",
+          "timestamp": "2026-09-23T15:37:27.090315+00:00"
         }
       ],
-      "remote_execution": true,
-      "remote_host": "10.0.12.163",
+      "remote_execution": false,
       "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha",
       "script": "/var/tmp/kimhj-v2r-reference/runtime/llada_math500_core_finalsha-shard-005.sbatch",
-      "server": "server4",
+      "server": "server3",
       "shard": 5,
-      "slurm_state": "FAILED",
+      "slurm_state": "PENDING",
       "stage": "r3_core",
-      "status": "NEEDS_REVIEW",
+      "status": "PENDING",
       "storage": {
         "available_bytes": 377640476672,
         "projected_bytes": 4294967296,
@@ -577,17 +587,17 @@
       "depends_on": [
         "llada_math500_base_finalsha-shard-000"
       ],
-      "error": "Terminal scientific Slurm state: FAILED",
+      "error": null,
       "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
       "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
       "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.gates.json",
       "id": "llada_math500_core_finalsha-shard-006",
-      "job_id": "52756",
+      "job_id": "52758",
       "kind": "science_shard",
       "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_core_finalsha.json",
       "priority": 21,
       "purpose": "core",
-      "reconciled_at": "2026-09-23T15:35:54.913849+00:00",
+      "reconciled_at": "2026-09-23T15:37:27.090315+00:00",
       "relocation_history": [
         {
           "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
@@ -621,17 +631,27 @@
           "reason": "RETRY_AFTER_MISSING_REMOTE_DYNAMIC_MODEL_CONFIG",
           "task_id": "llada_math500_core_finalsha-shard-006",
           "timestamp": "2026-09-23T15:35:54.913849+00:00"
+        },
+        {
+          "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+          "failure": "EXACT_NATIVE_REPLAY_FAILED_ON_SERVER4_BLACKWELL; NO_EVIDENCE_ACCEPTED",
+          "new_job_id": "52758",
+          "new_node": "server3",
+          "previous_job_id": "52756",
+          "previous_node": "server4",
+          "reason": "REMOTE_EXECUTION_REJECTED_EXACT_NATIVE_REPLAY_FAILURE",
+          "task_id": "llada_math500_core_finalsha-shard-006",
+          "timestamp": "2026-09-23T15:37:27.090315+00:00"
         }
       ],
-      "remote_execution": true,
-      "remote_host": "10.0.12.163",
+      "remote_execution": false,
       "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_math500_core_finalsha",
       "script": "/var/tmp/kimhj-v2r-reference/runtime/llada_math500_core_finalsha-shard-006.sbatch",
-      "server": "server4",
+      "server": "server3",
       "shard": 6,
-      "slurm_state": "FAILED",
+      "slurm_state": "PENDING",
       "stage": "r3_core",
-      "status": "NEEDS_REVIEW",
+      "status": "PENDING",
       "storage": {
         "available_bytes": 377640148992,
         "projected_bytes": 4294967296,
