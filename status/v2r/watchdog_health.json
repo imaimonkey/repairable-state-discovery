@@ -1,32 +1,32 @@
 {
   "monitor_health": {
-    "integrity_alert_count": 8,
-    "last_successful_cycle": "2026-09-23T19:30:56.481977+00:00",
+    "integrity_alert_count": 7,
+    "last_successful_cycle": "2026-09-23T19:32:27.998611+00:00",
     "legacy_monitor_health": {
       "consecutive_cycle_failures": 0,
-      "last_cycle_events": 6,
+      "last_cycle_events": 0,
       "last_cycle_source_failures": 0,
-      "last_cycle_start": "2026-09-24T04:01:16+09:00",
+      "last_cycle_start": "2026-09-24T04:31:37+09:00",
       "last_git_result": {
         "commit": true,
-        "commit_output": "[codex/iclr2027-live-monitor-20260923 38661f4] monitor: SERVER_ARTIFACT_ACCESS_RESTORED\n 29 files changed, 57160 insertions(+), 170 deletions(-)\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/SHA256SUMS\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/artifact_manifest.json\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/existence.csv\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/fresh_sampling.jsonl\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/full_bbh_logical3_llada.yaml\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/probe_branches.jsonl\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/probe_complete.json\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/report.json\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/run_manifest.json\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/scientific_provenance.json\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/selector_confirmation.csv\n create mode 100644 results/v2_artifacts/v2_bbh_logical3_llada_50738/state_values.jsonl\n",
+        "commit_output": "[codex/iclr2027-live-monitor-20260923 1a01a71] monitor: 2026-09-24 04:31 KST\n 14 files changed, 87 insertions(+), 142 deletions(-)\n",
         "push": true,
         "push_error": null
       },
-      "last_successful_cycle": "2026-09-24T04:01:28+09:00",
-      "last_successful_push": "2026-09-24T04:01:34+09:00",
+      "last_successful_cycle": "2026-09-24T04:31:47+09:00",
+      "last_successful_push": "2026-09-24T04:31:50+09:00",
       "monitor_loop_pid": "1164484",
-      "monitor_pid": 3264250,
+      "monitor_pid": 3391262,
       "monitor_session": "iclr2027-live-monitor",
       "monitor_start_time": "2026-09-23T15:45:40+09:00",
-      "next_expected_cycle": "2026-09-24T04:31:28+09:00"
+      "next_expected_cycle": "2026-09-24T05:01:47+09:00"
     },
     "legacy_monitor_preserved": true,
     "pid": 2497502,
     "poll_interval_seconds": 90,
     "schema_version": "v2r.monitor_health.1",
     "status": "RUNNING",
-    "timestamp": "2026-09-23T19:30:56.481977+00:00",
+    "timestamp": "2026-09-23T19:32:27.998611+00:00",
     "tmux": "iclr2027-unified-monitor"
   },
   "monitor_session_alive": true,
@@ -34,16 +34,16 @@
     "event_poll_seconds": 60,
     "inventory_cycle_seconds": 1800,
     "last_error": null,
-    "next_poll": "2026-09-23T19:32:11.082547+00:00",
+    "next_poll": "2026-09-23T19:34:18.364741+00:00",
     "pid": 2758158,
     "status": "RUNNING",
-    "timestamp": "2026-09-23T19:31:11.082547+00:00",
+    "timestamp": "2026-09-23T19:33:18.364741+00:00",
     "tmux": "iclr2027-reference-orchestrator"
   },
   "orchestrator_session_alive": true,
   "pid": 2758149,
   "schema_version": "v2r.watchdog_health.1",
   "status": "RUNNING",
-  "timestamp": "2026-09-23T19:31:26.924616+00:00",
+  "timestamp": "2026-09-23T19:33:26.931407+00:00",
   "tmux": "iclr2027-reference-watchdog"
 }
