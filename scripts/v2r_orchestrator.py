@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Single controller for prepared gates; never modifies a scientific worktree."""
 from __future__ import annotations
-import argparse,datetime as dt,fcntl,json,os,subprocess,time,traceback
+import argparse,datetime as dt,fcntl,json,os,subprocess,sys,time,traceback
 from pathlib import Path
 from v2r_inventory import atomic_json,collect
 from v2r_submit import submit,command,environment,DEADLINE
@@ -20,6 +20,18 @@ def publish():
  if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
   subprocess.run(['git','commit','-m','Update reference-primary gate and resource status'],cwd=ROOT,check=True,capture_output=True)
  return subprocess.run(['git','push','origin','codex/iclr2027-reference-live-20260923'],cwd=ROOT,text=True,capture_output=True,timeout=45).returncode
+
+def integrate_paper():
+ paper=Path('/data/kimhj/repairable-state-discovery-reference-paper-20260923')
+ script=paper/'scripts/import_v2r_reference.py'
+ if not script.is_file(): return {'status':'MISSING_IMPORTER'}
+ r=subprocess.run([sys.executable,str(script)],cwd=paper,text=True,capture_output=True,timeout=60)
+ if r.returncode:return {'status':'IMPORT_FAILED','stderr':r.stderr[-2000:]}
+ subprocess.run(['git','add','paper/generated','paper/reference_generated/tables','status/v2r/reference_import.json'],cwd=paper,check=True)
+ if subprocess.run(['git','diff','--cached','--quiet'],cwd=paper).returncode==0:return {'status':'NO_CHANGE'}
+ subprocess.run(['git','commit','-m','Import sealed reference evidence'],cwd=paper,check=True,capture_output=True)
+ push=subprocess.run(['git','push','origin','codex/reference-primary-paper-20260923'],cwd=paper,text=True,capture_output=True,timeout=45)
+ return {'status':'IMPORTED','push_returncode':push.returncode}
 
 def cycle():
  queue=read(OUT/'orchestrator_queue.json',{'tasks':[]});changed=False
@@ -93,6 +105,11 @@ def cycle():
   except Exception as exc:
    for task in tasks:task['error']='MERGE_OR_SEAL_BLOCKED: '+str(exc)
    event('SCIENCE_MERGE_OR_SEAL_BLOCKED',{'run_dir':run_dir,'stage':tasks[0].get('stage'),'error':str(exc)})
+  if all(t.get('status')=='SEALED' for t in tasks) and any(not t.get('paper_imported') for t in tasks):
+   result=integrate_paper(); event('PAPER_REFERENCE_IMPORT',{'run_dir':run_dir,'result':result})
+   if result.get('status') in {'IMPORTED','NO_CHANGE'}:
+    for task in tasks:task['paper_imported']=True
+    changed=True
  if ensure_deep_tasks(queue):
   changed=True;event('SCIENCE_QUEUE_UNLOCKED',{'stage':'r3_core_temporal','execution_sha':queue.get('execution_git_sha')})
  atomic_json(OUT/'orchestrator_queue.json',queue)
