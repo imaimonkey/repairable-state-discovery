@@ -84,8 +84,33 @@ def cycle():
       sync_remote_shard(task)
       manifest=read_json(task['manifest']);gates=read_json(task['gates']);validate_shard(Path(task['run_dir'])/'shards'/f"shard-{int(task['shard']):03d}",manifest,int(task['shard']),gates=gates);task['status']='SEALED' if Path(task['run_dir'],'SEAL_RECORD.json').exists() else 'DONE';task['error']=None
      except Exception as exc:task.update(status='NEEDS_REVIEW',error=str(exc))
+    elif state.startswith('CANCELLED') and task.get('stage') in {'r3_core','temporal'}:
+     # A cancelled placeholder can be safely requeued only when the shard
+     # directory contains no scientific files. Submission creates empty
+     # shard directories, so directory existence alone is not evidence.
+     shard_root=Path(task['run_dir'])/'shards'/f"shard-{int(task['shard']):03d}"
+     has_artifacts=shard_root.exists() and any(p.is_file() for p in shard_root.rglob('*'))
+     if not has_artifacts:
+      old_job=task.get('job_id')
+      for key in ('job_id','slurm_state','error','submission_args','submitted_at'):
+       task.pop(key,None)
+      task['status']='READY'
+      event('SCIENCE_TASK_REQUEUED_AFTER_CANCELLATION',{
+       'task':task['id'],'old_job_id':old_job,'reason':'cancelled_without_shard_artifacts',
+       'execution_git_sha':task.get('execution_git_sha')})
+     else:task.update(status='NEEDS_REVIEW',error='Cancelled scientific job has shard artifacts; manual review required')
     elif state!='UNKNOWN':task.update(status='NEEDS_REVIEW',error='Terminal scientific Slurm state: '+state)
    elif all(s in {'PASS','SEALED'} for s in deps):
+    # Keep deadline-critical core evidence ahead of temporal expansion.
+    # Temporal tasks must not consume a scarce H200 slot until every core
+    # shard for this task is sealed.
+    if task.get('stage')=='temporal':
+     core_tasks=[x for x in queue['tasks'] if x.get('kind')=='science_shard'
+                 and x.get('task')==task.get('task') and x.get('stage')=='r3_core']
+     if core_tasks and not all(x.get('status')=='SEALED' for x in core_tasks):
+      task['status']='WAITING_PRIORITY';task['error']='WAITING_FOR_CORE_SEAL'
+      if task['status']!=old: changed=True; event('TASK_STATE_CHANGE',{'task':task['id'],'old':old,'new':task['status'],'job_id':task.get('job_id'),'error':task.get('error')})
+      continue
     inventory=collect(OUT)
     try:task.update(submit_science(task,inventory));task['status']='SUBMITTED'
     except RuntimeError as e:task.update(status='RESOURCE_WAIT',error=str(e))
