@@ -1,0 +1,33 @@
+{
+  "run_name": "v2_gsm8k_dream",
+  "git_sha": "15f40e052329261885c757664273f25bede2b074",
+  "config_sha256": "352ee442a097cb6835cfdf221e625e890be5973bd78c0396b937fe83752ec0db",
+  "trajectory_bank_hash": "7d472f1d7e9ba66cf528bfaefe7009fa874165870ca73e6c688065df42da96a4",
+  "dataset": {
+    "name": "gsm8k",
+    "path": "openai/gsm8k",
+    "config_name": "main",
+    "split": "test"
+  },
+  "model_profile": "dream_v0_instruct_7b",
+  "items": 1319,
+  "trajectories": 10552,
+  "base_pass_at_k": 0.6959818043972706,
+  "prospective_policy_selector": "oof_state_value",
+  "prospective_policy_pass_at_k": 0.6992987111448067,
+  "prospective_net_gain": 0.0033169067475360414,
+  "policy_extra_nfe_target_for_fresh": 43088,
+  "fresh_sampling_achieved_nfe": 0,
+  "fresh_sampling_pass_at_k": 0.6959818043972706,
+  "fresh_sampling_gain": 0.0,
+  "probe_branch_rows": 338112,
+  "mechanism_subset_items": [],
+  "temporal_subset_items": [],
+  "existence": {
+    "failed_items_probed": 1298,
+    "transient_correct_rate": 0.029275808936825885,
+    "confirmed_repairable_rate": 0.40215716486902925,
+    "repairable_but_never_correct_rate": 0.3828967642526965
+  },
+  "v1_artifacts_substituted": false
+}
