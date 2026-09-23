@@ -1,6 +1,6 @@
 # V2R cluster inventory
 
-2026-09-23T23:50:43.038749+00:00
+2026-09-23T23:52:15.875533+00:00
 
 Read-only observation; idle candidates still require Slurm allocation, safe immutable execution worktree and measured shard storage gate.
 
@@ -8,47 +8,47 @@ Read-only observation; idle candidates still require Slurm allocation, safe immu
 |---|---|---|---|
 | server1 | True | [] | ['/tmp', '/var/tmp', '/mnt/raid5'] |
 
-server1 `/`: 325587513344 available bytes; 81.84% used; 112501015 free inodes.
+server1 `/`: 325586055168 available bytes; 81.84% used; 112500999 free inodes.
 
-server1 `/home`: 325587513344 available bytes; 81.84% used; 112501015 free inodes.
+server1 `/home`: 325586055168 available bytes; 81.84% used; 112500999 free inodes.
 
-server1 `/tmp`: 325587513344 available bytes; 81.84% used; 112501015 free inodes.
+server1 `/tmp`: 325586055168 available bytes; 81.84% used; 112500999 free inodes.
 
-server1 `/var/tmp`: 325587513344 available bytes; 81.84% used; 112501015 free inodes.
+server1 `/var/tmp`: 325586055168 available bytes; 81.84% used; 112500999 free inodes.
 
-server1 `/mnt/raid5`: 1306446540800 available bytes; 94.01% used; 337735708 free inodes.
+server1 `/mnt/raid5`: 1299844411392 available bytes; 94.04% used; 337735640 free inodes.
 | server2 | True | [] | [] |
 
-server2 `/`: 41024946176 available bytes; 97.71% used; 110432489 free inodes.
+server2 `/`: 41023254528 available bytes; 97.71% used; 110432478 free inodes.
 
-server2 `/home`: 41024946176 available bytes; 97.71% used; 110432489 free inodes.
+server2 `/home`: 41023254528 available bytes; 97.71% used; 110432478 free inodes.
 
-server2 `/tmp`: 41024946176 available bytes; 97.71% used; 110432489 free inodes.
+server2 `/tmp`: 41023254528 available bytes; 97.71% used; 110432478 free inodes.
 
-server2 `/var/tmp`: 41024946176 available bytes; 97.71% used; 110432489 free inodes.
+server2 `/var/tmp`: 41023254528 available bytes; 97.71% used; 110432478 free inodes.
 
-server2 `/mnt/raid5`: 533287669760 available bytes; 96.32% used; 445204686 free inodes.
+server2 `/mnt/raid5`: 533759053824 available bytes; 96.31% used; 445204511 free inodes.
 | server3 | True | [] | ['/tmp', '/var/tmp'] |
 
-server3 `/`: 292810002432 available bytes; 83.66% used; 114214063 free inodes.
+server3 `/`: 292808151040 available bytes; 83.66% used; 114214059 free inodes.
 
-server3 `/home`: 292810002432 available bytes; 83.66% used; 114214063 free inodes.
+server3 `/home`: 292808151040 available bytes; 83.66% used; 114214059 free inodes.
 
-server3 `/data`: 82291408896 available bytes; 98.86% used; 225845010 free inodes.
+server3 `/data`: 82286129152 available bytes; 98.86% used; 225844984 free inodes.
 
-server3 `/tmp`: 292810002432 available bytes; 83.66% used; 114214063 free inodes.
+server3 `/tmp`: 292808151040 available bytes; 83.66% used; 114214059 free inodes.
 
-server3 `/var/tmp`: 292810002432 available bytes; 83.66% used; 114214063 free inodes.
+server3 `/var/tmp`: 292808151040 available bytes; 83.66% used; 114214059 free inodes.
 | server4 | True | ['3', '6', '7'] | ['/tmp', '/var/tmp'] |
 
-server4 `/`: 106159620096 available bytes; 94.08% used; 114351603 free inodes.
+server4 `/`: 106156544000 available bytes; 94.08% used; 114351555 free inodes.
 
-server4 `/home`: 106159620096 available bytes; 94.08% used; 114351603 free inodes.
+server4 `/home`: 106156544000 available bytes; 94.08% used; 114351555 free inodes.
 
-server4 `/data`: 292961406976 available bytes; 95.95% used; 225417779 free inodes.
+server4 `/data`: 292957888512 available bytes; 95.95% used; 225417406 free inodes.
 
-server4 `/tmp`: 106159620096 available bytes; 94.08% used; 114351603 free inodes.
+server4 `/tmp`: 106156544000 available bytes; 94.08% used; 114351555 free inodes.
 
-server4 `/var/tmp`: 106159620096 available bytes; 94.08% used; 114351603 free inodes.
+server4 `/var/tmp`: 106156544000 available bytes; 94.08% used; 114351555 free inodes.
 
 server1 SSH access failure leaves GPU process/disk/worktree details unobserved. Its Slurm allocations are observed; it is not eligible. Existing jobs and monitor are never cancelled by this tool.
