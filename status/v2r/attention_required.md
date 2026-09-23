@@ -1,5 +1,5 @@
-2026-09-23T15:13:20.858013+00:00
-HOURS TO DEADLINE: 68.76
+2026-09-23T15:14:52.348714+00:00
+HOURS TO DEADLINE: 68.74
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -34,7 +34,7 @@ SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['1'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -59,11 +59,11 @@ llada-gsm8k-r2-finalsha: PASS job=52679
 llada_math500_base_finalsha-shard-000: SEALED job=52687
 llada_gsm8k_base_finalsha-shard-000: RUNNING job=52688
 llada_gsm8k_base_finalsha-shard-001: WAITING_PRIORITY job=None
-llada_math500_core_finalsha-shard-000: RESOURCE_WAIT job=None
-llada_math500_core_finalsha-shard-001: RESOURCE_WAIT job=None
-llada_math500_core_finalsha-shard-002: RESOURCE_WAIT job=None
-llada_math500_core_finalsha-shard-003: RESOURCE_WAIT job=None
-llada_math500_core_finalsha-shard-004: RESOURCE_WAIT job=None
+llada_math500_core_finalsha-shard-000: RUNNING job=52738
+llada_math500_core_finalsha-shard-001: PENDING job=52739
+llada_math500_core_finalsha-shard-002: PENDING job=52740
+llada_math500_core_finalsha-shard-003: PENDING job=52741
+llada_math500_core_finalsha-shard-004: PENDING job=52742
 llada_math500_core_finalsha-shard-005: RESOURCE_WAIT job=None
 llada_math500_core_finalsha-shard-006: RESOURCE_WAIT job=None
 llada_math500_temporal_finalsha-shard-000: RESOURCE_WAIT job=None
@@ -77,10 +77,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2395472 heartbeat=2026-09-23T15:13:16.986924+00:00
+status=RUNNING pid=2409494 heartbeat=2026-09-23T15:14:31.136776+00:00
 
 MONITOR
-heartbeat=2026-09-23T15:13:20.858013+00:00
+heartbeat=2026-09-23T15:14:52.348714+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
