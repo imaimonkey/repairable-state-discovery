@@ -1,21 +1,18 @@
 # Attention required
 
-2026-09-23T19:57:16+09:00
+2026-09-23T20:27:31+09:00
 
 ## NEW EVENTS
-- No new scientific or operational event since previous cycle.
+- JOB_STATE_CHANGED: job 50668
+- JOB_STATE_CHANGED: job 50669
 
 ## P0
 - 50924 execution provenance mismatch; manual review before seal
 
 ## P1
-- server1 artifact access unavailable for Tier-A observation
 - BBH5 50752 failed and forensic root cause remains unresolved
-- active V2 jobs remain; final aggregate is intentionally not run
 
 ## ACTIVE JOBS
-- 50668 v2_math500_llada: RUNNING / UNOBSERVABLE
-- 50669 v2_gsm8k_llada: RUNNING / UNOBSERVABLE
 
 ## NEW SEALED RESULTS
 
