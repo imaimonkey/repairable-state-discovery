@@ -1,9 +1,9 @@
 {
   "schema": "iclr2027_live_status_v1",
-  "generated_at_kst": "2026-09-23T15:53:46+09:00",
+  "generated_at_kst": "2026-09-23T15:54:46+09:00",
   "collector_hostname": "ubuntu",
   "monitor_branch": "codex/iclr2027-live-monitor-20260923",
-  "monitor_commit": "d026d9c1b45c3f60f723a6ee74bb632afdc98035",
+  "monitor_commit": "b1d4f2cd99194e7b10cb127b1cb96ac7e4d9230e",
   "baseline_analysis_bundle_commit": "c41d6b10ed0c041581cae4f84a41b4ad783ebe00",
   "observation_sources": [
     "squeue",
@@ -27,16 +27,16 @@
       "config": "repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
       "slurm": {
         "job_id": "50668",
-        "squeue": "50668|v2-full-math|RUNNING|4-00:46:11|30-00:00:00|2026-09-19T15:07:32|devbox",
+        "squeue": "50668|v2-full-math|RUNNING|4-00:47:11|30-00:00:00|2026-09-19T15:07:32|devbox",
         "squeue_error": "",
         "job_name": "v2-full-math",
         "state": "RUNNING",
-        "elapsed": "4-00:46:11",
+        "elapsed": "4-00:47:11",
         "time_limit": "30-00:00:00",
         "start_time": "2026-09-19T15:07:32",
         "reason": "devbox",
         "JobState": "RUNNING",
-        "RunTime": "4-00:46:11",
+        "RunTime": "4-00:47:11",
         "TimeLimit": "30-00:00:00",
         "StartTime": "2026-09-19T15:07:32",
         "EndTime": "2026-10-19T15:07:32",
@@ -48,7 +48,7 @@
         "Reason": "None",
         "BatchHost": "devbox",
         "sacct": [
-          "50668|RUNNING|4-00:46:11|0:0|devbox"
+          "50668|RUNNING|4-00:47:11|0:0|devbox"
         ],
         "exit_code": "0:0",
         "node_list": "devbox"
@@ -101,13 +101,13 @@
       "liveness": {},
       "sstat": {
         "ok": true,
-        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead\n50668.batch|4-00:47:25|3785492K|476974720|576197683",
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead\n50668.batch|4-00:48:25|3785492K|476974720|576197683",
         "error": ""
       },
       "source_available": false,
       "source_error": "kimhj@10.0.12.120: Permission denied (publickey,password).",
       "baseline": {
-        "last_snapshot": "2026-09-23T15:50:52+09:00"
+        "last_snapshot": "2026-09-23T15:53:46+09:00"
       },
       "velocity": {
         "30m": "UNOBSERVABLE",
@@ -125,16 +125,16 @@
       "config": "repairable_diffusion/configs/v2/runs/full_gsm8k_llada.yaml",
       "slurm": {
         "job_id": "50669",
-        "squeue": "50669|v2-full-gsm|RUNNING|4-00:46:11|30-00:00:00|2026-09-19T15:07:32|devbox",
+        "squeue": "50669|v2-full-gsm|RUNNING|4-00:47:11|30-00:00:00|2026-09-19T15:07:32|devbox",
         "squeue_error": "",
         "job_name": "v2-full-gsm",
         "state": "RUNNING",
-        "elapsed": "4-00:46:11",
+        "elapsed": "4-00:47:11",
         "time_limit": "30-00:00:00",
         "start_time": "2026-09-19T15:07:32",
         "reason": "devbox",
         "JobState": "RUNNING",
-        "RunTime": "4-00:46:11",
+        "RunTime": "4-00:47:11",
         "TimeLimit": "30-00:00:00",
         "StartTime": "2026-09-19T15:07:32",
         "EndTime": "2026-10-19T15:07:32",
@@ -146,7 +146,7 @@
         "Reason": "None",
         "BatchHost": "devbox",
         "sacct": [
-          "50669|RUNNING|4-00:46:11|0:0|devbox"
+          "50669|RUNNING|4-00:47:11|0:0|devbox"
         ],
         "exit_code": "0:0",
         "node_list": "devbox"
@@ -199,13 +199,13 @@
       "liveness": {},
       "sstat": {
         "ok": true,
-        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead\n50669.batch|4-00:47:24|8065180K|1184448321|1311468537",
+        "output": "JobID|AveCPU|MaxRSS|MaxDiskWrite|MaxDiskRead\n50669.batch|4-00:48:24|8065180K|1184448321|1311468537",
         "error": ""
       },
       "source_available": false,
       "source_error": "kimhj@10.0.12.120: Permission denied (publickey,password).",
       "baseline": {
-        "last_snapshot": "2026-09-23T15:50:52+09:00"
+        "last_snapshot": "2026-09-23T15:53:46+09:00"
       },
       "velocity": {
         "30m": "UNOBSERVABLE",
@@ -287,7 +287,7 @@
       "source_available": false,
       "source_error": "kimhj@10.0.12.120: Permission denied (publickey,password).",
       "baseline": {
-        "last_snapshot": "2026-09-23T15:50:52+09:00"
+        "last_snapshot": "2026-09-23T15:53:46+09:00"
       },
       "velocity": {
         "30m": "UNOBSERVABLE",
@@ -444,7 +444,7 @@
         "gpu_compute_apps": [
           "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34588 MiB",
           "785414, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 35492 MiB",
-          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 28130 MiB",
+          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 16148 MiB",
           "1995095, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6586 MiB",
           "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 264 MiB",
           "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6596 MiB",
@@ -461,7 +461,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-23T15:50:52+09:00"
+        "last_snapshot": "2026-09-23T15:53:46+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -712,7 +712,7 @@
         "gpu_compute_apps": [
           "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34588 MiB",
           "785414, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 35492 MiB",
-          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 28130 MiB",
+          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 16688 MiB",
           "1995095, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6586 MiB",
           "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 264 MiB",
           "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6596 MiB",
@@ -729,7 +729,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-23T15:50:52+09:00"
+        "last_snapshot": "2026-09-23T15:53:46+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -980,7 +980,7 @@
         "gpu_compute_apps": [
           "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34588 MiB",
           "785414, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 35492 MiB",
-          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 28130 MiB",
+          "703228, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17068 MiB",
           "1995095, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6586 MiB",
           "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 264 MiB",
           "1995096, /mnt/raid5/choihj/haebim-disaster/serve/.venv/bin/python, 6596 MiB",
@@ -997,7 +997,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-23T15:50:52+09:00"
+        "last_snapshot": "2026-09-23T15:53:46+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1250,13 +1250,13 @@
         "processes": [],
         "gpu_compute_apps": [
           "2698890, VLLM::Worker, 77388 MiB",
-          "2698915, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 7184 MiB",
+          "2698915, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 7264 MiB",
           "2705038, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 55838 MiB",
           "2736790, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 39344 MiB",
-          "3032555, /data/janghj/EasyEdit/.venv/bin/python, 35422 MiB",
+          "3032555, /data/janghj/EasyEdit/.venv/bin/python, 35450 MiB",
           "2604497, /data/janghj/EasyEdit/.venv/bin/python, 34692 MiB",
           "2903083, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 38284 MiB",
-          "1590193, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 24254 MiB",
+          "1590193, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 36610 MiB",
           "2420266, VLLM::EngineCore, 83208 MiB"
         ]
       },
@@ -1268,7 +1268,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-23T15:50:52+09:00"
+        "last_snapshot": "2026-09-23T15:53:46+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1477,13 +1477,13 @@
         "processes": [],
         "gpu_compute_apps": [
           "2698890, VLLM::Worker, 77388 MiB",
-          "2698915, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 7204 MiB",
+          "2698915, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 7264 MiB",
           "2705038, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 55838 MiB",
           "2736790, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 39344 MiB",
-          "3032555, /data/janghj/EasyEdit/.venv/bin/python, 35422 MiB",
+          "3032555, /data/janghj/EasyEdit/.venv/bin/python, 35450 MiB",
           "2604497, /data/janghj/EasyEdit/.venv/bin/python, 34692 MiB",
           "2903083, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 38284 MiB",
-          "1590193, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 24254 MiB",
+          "1590193, /data/mindw/RejectionSFT-GPT6/.venv/bin/python, 36610 MiB",
           "2420266, VLLM::EngineCore, 83208 MiB"
         ]
       },
@@ -1495,7 +1495,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-23T15:50:52+09:00"
+        "last_snapshot": "2026-09-23T15:53:46+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1559,7 +1559,7 @@
       "RESULT_INTEGRATION.md": false
     },
     "build": {
-      "checked_at_kst": "2026-09-23T15:53:46+09:00",
+      "checked_at_kst": "2026-09-23T15:54:46+09:00",
       "paper_head": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
       "performed": false,
       "build_pass": null,
@@ -1571,8 +1571,8 @@
   "storage": {
     "local": [
       "Filesystem     1024-blocks       Used Available Capacity Mounted on",
-      "/dev/nvme0n1p2  1843726932 1377674164 372322824      79% /",
-      "/dev/nvme1n1p1  7441182592 6902389536 163703496      98% /data"
+      "/dev/nvme0n1p2  1843726932 1377674536 372322452      79% /",
+      "/dev/nvme1n1p1  7441182592 6902392312 163700720      98% /data"
     ],
     "10.0.12.120": {
       "available": false,
@@ -1584,18 +1584,144 @@
     },
     "10.0.12.163": [
       "Filesystem     1024-blocks       Used Available Capacity Mounted on",
-      "/dev/nvme1n1p2  1843726932 1640987412 109009576      94% /",
-      "/dev/nvme0n1p1  7441182592 6942234428 123858604      99% /data"
+      "/dev/nvme1n1p2  1843726932 1640987424 109009564      94% /",
+      "/dev/nvme0n1p1  7441182592 6942614576 123478456      99% /data"
     ]
   },
   "forensic_50752": {
-    "available": false,
-    "source_root": "/home/kimhj/forensics/v2_50752_confirmation_20260921"
+    "available": true,
+    "source_root": "/home/kimhj/forensics/v2_50752_confirmation_20260921",
+    "files": [
+      {
+        "name": "confirmation_candidates.jsonl",
+        "size_bytes": 32239738,
+        "mtime_kst": "2026-09-21T14:41:57+0900"
+      },
+      {
+        "name": "confirmation_index.json",
+        "size_bytes": 2583,
+        "mtime_kst": "2026-09-21T14:41:58+0900"
+      },
+      {
+        "name": "shard-00-resume-51860.err",
+        "size_bytes": 2652,
+        "mtime_kst": "2026-09-21T15:04:18+0900"
+      },
+      {
+        "name": "shard-00-resume-51860.out",
+        "size_bytes": 0,
+        "mtime_kst": "2026-09-21T15:04:14+0900"
+      },
+      {
+        "name": "shard-00-resume-51862.err",
+        "size_bytes": 1132,
+        "mtime_kst": "2026-09-21T15:08:47+0900"
+      },
+      {
+        "name": "shard-00-resume-51862.out",
+        "size_bytes": 13345,
+        "mtime_kst": "2026-09-22T00:45:08+0900"
+      },
+      {
+        "name": "shard-00.events.jsonl",
+        "size_bytes": 6183961,
+        "mtime_kst": "2026-09-22T00:45:08+0900"
+      },
+      {
+        "name": "shard-00.summary.json",
+        "size_bytes": 328,
+        "mtime_kst": "2026-09-22T00:45:08+0900"
+      },
+      {
+        "name": "shards.json",
+        "size_bytes": 1444,
+        "mtime_kst": "2026-09-21T14:43:02+0900"
+      }
+    ],
+    "index": {
+      "status": "enumerated",
+      "generated_at_utc": "2026-09-21T05:41:57.984452+00:00",
+      "source_job_id": "50752",
+      "source_run_name": "v2_bbh_logical5_llada",
+      "source_git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+      "source_repo": "/home/kimhj/repairable-state-discovery-v2-exec",
+      "source_output": "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada",
+      "source_files_sha256": {
+        "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/run_manifest.json": "da7ade70d50de5896589b8c7412019613ec6a92d5d05a5ed88192f6ca0960a3c",
+        "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/trajectories.pkl": "ccf372423ad6e7bdb2413826659fa55433caa600135083e4b047276cfdbb52a0",
+        "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/probe_branches.jsonl": "2576c674f7b759e9f7c0f3127e9aef3383a30b38e2a5a5a5777b65316076afe6",
+        "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/outputs/v2_measurement/v2_bbh_logical5_llada/state_values.jsonl": "beb478163ac2cb869ae700e9f53e18556c8c97a623d7f9e2695c0f9c44fafe1f",
+        "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/configs/v2/runs/full_bbh_logical5_llada.yaml": "e96c294b3ae23489e66ebc7615816ef4531c3407b6a38b2e7ba9f8c405b51226",
+        "/home/kimhj/repairable-state-discovery-v2-exec/repairable_diffusion/configs/v2/measurement_contract.yaml": "e157452305d135b59e31ad772cbc9cce90e3b82a6c9b67d732f6085c32a650a0"
+      },
+      "config_sha256": "62cc0ead39ac45cfc1a1eff69a8673e3930f164562dd4e590eadd611ccb42637",
+      "record_count_total": 2000,
+      "probe_record_count": 413,
+      "item_count": 250,
+      "confirmation_branch_count": 34672,
+      "confirmation_branch_count_by_operator": {
+        "matched_stochastic_continuation": 17336,
+        "low_confidence_remask_v2": 17336
+      },
+      "confirmation_branch_count_by_step": {
+        "8": 6608,
+        "16": 6608,
+        "24": 2736,
+        "32": 6608,
+        "40": 2480,
+        "48": 6608,
+        "56": 1952,
+        "64": 1072
+      },
+      "candidate_file": "/home/kimhj/forensics/v2_50752_confirmation_20260921/confirmation_candidates.jsonl",
+      "original_artifacts_modified": false,
+      "code_or_config_modified": false,
+      "execution_rule": "Exact confirmation loop order from run_measurement.py: selected probe records, sorted required selector steps, matched_stochastic_continuation then low_confidence_remask_v2, branch_index range(confirmation_count)."
+    },
+    "shards": {
+      "status": "planned",
+      "source_candidates": "/home/kimhj/forensics/v2_50752_confirmation_20260921/confirmation_candidates.jsonl",
+      "total_candidates": 34672,
+      "shards": [
+        {
+          "shard_id": 0,
+          "ordinal_start": 0,
+          "ordinal_end_exclusive": 8668,
+          "status": "pending",
+          "events": "/home/kimhj/forensics/v2_50752_confirmation_20260921/shard-00.events.jsonl",
+          "summary": "/home/kimhj/forensics/v2_50752_confirmation_20260921/shard-00.summary.json"
+        },
+        {
+          "shard_id": 1,
+          "ordinal_start": 8668,
+          "ordinal_end_exclusive": 17336,
+          "status": "pending",
+          "events": "/home/kimhj/forensics/v2_50752_confirmation_20260921/shard-01.events.jsonl",
+          "summary": "/home/kimhj/forensics/v2_50752_confirmation_20260921/shard-01.summary.json"
+        },
+        {
+          "shard_id": 2,
+          "ordinal_start": 17336,
+          "ordinal_end_exclusive": 26004,
+          "status": "pending",
+          "events": "/home/kimhj/forensics/v2_50752_confirmation_20260921/shard-02.events.jsonl",
+          "summary": "/home/kimhj/forensics/v2_50752_confirmation_20260921/shard-02.summary.json"
+        },
+        {
+          "shard_id": 3,
+          "ordinal_start": 26004,
+          "ordinal_end_exclusive": 34672,
+          "status": "pending",
+          "events": "/home/kimhj/forensics/v2_50752_confirmation_20260921/shard-03.events.jsonl",
+          "summary": "/home/kimhj/forensics/v2_50752_confirmation_20260921/shard-03.summary.json"
+        }
+      ]
+    }
   },
   "readiness": {
-    "generated_at_kst": "2026-09-23T15:53:46+09:00",
+    "generated_at_kst": "2026-09-23T15:54:46+09:00",
     "deadline_kst": "2026-09-26T20:59:00+09:00",
-    "hours_remaining": 77.09,
+    "hours_remaining": 77.07,
     "experiment": {
       "sealed_rows": 3,
       "running_rows": 2,
