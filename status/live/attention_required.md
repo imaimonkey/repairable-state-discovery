@@ -1,16 +1,9 @@
 # Attention required
 
-2026-09-23T15:46:40+09:00
+2026-09-23T15:48:58+09:00
 
 ## NEW EVENTS
-- JOB_STATE_CHANGED: job 50752
-- JOB_FAILED: job 50752
-- JOB_STATE_CHANGED: job 50753
-- PROVENANCE_SEALED: job 50753
-- JOB_STATE_CHANGED: job 50754
-- PROVENANCE_SEALED: job 50754
-- JOB_STATE_CHANGED: job 50923
-- PROVENANCE_SEALED: job 50923
+- No new scientific or operational event since previous cycle.
 
 ## P0
 
@@ -24,9 +17,6 @@
 - 50669 v2_gsm8k_llada: RUNNING / UNOBSERVABLE
 
 ## NEW SEALED RESULTS
-- v2_bbh_logical7_llada
-- v2_mbpp_llada
-- v2_math500_dream
 
 ## WHAT CHATGPT SHOULD READ NOW
 1. `status/live/current_status.json`
