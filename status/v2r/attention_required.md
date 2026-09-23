@@ -1,5 +1,5 @@
-2026-09-23T18:49:45.764572+00:00
-HOURS TO DEADLINE: 65.15
+2026-09-23T18:51:17.274592+00:00
+HOURS TO DEADLINE: 65.13
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -17,6 +17,7 @@ MONITOR_DRIFT: Slurm job 52749 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52750 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52758 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52760 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52781 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52741 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52739 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
@@ -31,6 +32,7 @@ ALL ACTIVE KIMHJ JOBS
 52750 v2r-llada_math500_temporal_finalsha-shard-004 PENDING  KEEP_REFERENCE_CRITICAL
 52758 v2r-llada_math500_core_finalsha-shard-006r1 PENDING  KEEP_REFERENCE_CRITICAL
 52760 v2r-llada_math500_core_finalsha-shard-005r2 PENDING  KEEP_REFERENCE_CRITICAL
+52781 v2r-preflight-server4-script RUNNING server4 KEEP_REFERENCE_CRITICAL
 52741 v2r-llada_math500_core_finalsha-shard-003 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52739 v2r-llada_math500_core_finalsha-shard-001 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
@@ -87,10 +89,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2758158 heartbeat=2026-09-23T18:48:46.555584+00:00
+status=RUNNING pid=2758158 heartbeat=2026-09-23T18:50:53.652574+00:00
 
 MONITOR
-heartbeat=2026-09-23T18:49:45.764572+00:00
+heartbeat=2026-09-23T18:51:17.274592+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
