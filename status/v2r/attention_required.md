@@ -1,5 +1,5 @@
-2026-09-23T19:37:02.433148+00:00
-HOURS TO DEADLINE: 64.37
+2026-09-23T19:38:33.972573+00:00
+HOURS TO DEADLINE: 64.34
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -14,6 +14,7 @@ MONITOR_DRIFT: Slurm job 52747 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52748 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52749 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52750 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52788 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52740 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
@@ -23,11 +24,12 @@ ALL ACTIVE KIMHJ JOBS
 52748 v2r-llada_math500_temporal_finalsha-shard-002 PENDING  KEEP_REFERENCE_CRITICAL
 52749 v2r-llada_math500_temporal_finalsha-shard-003 PENDING  KEEP_REFERENCE_CRITICAL
 52750 v2r-llada_math500_temporal_finalsha-shard-004 PENDING  KEEP_REFERENCE_CRITICAL
+52788 v2r-s1-deterministic-probe RUNNING devbox KEEP_REFERENCE_CRITICAL
 52742 v2r-llada_math500_core_finalsha-shard-004 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52740 v2r-llada_math500_core_finalsha-shard-002 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
-observed=True idle_gpu_candidates=['4', '7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
+observed=True idle_gpu_candidates=['7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
 
 SERVER2
 observed=True idle_gpu_candidates=['6', '7'] safe_filesystems=[]
@@ -79,10 +81,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2758158 heartbeat=2026-09-23T19:36:28.997073+00:00
+status=RUNNING pid=2758158 heartbeat=2026-09-23T19:37:32.592435+00:00
 
 MONITOR
-heartbeat=2026-09-23T19:37:02.433148+00:00
+heartbeat=2026-09-23T19:38:33.972573+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
