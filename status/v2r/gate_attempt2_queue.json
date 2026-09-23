@@ -1,0 +1,116 @@
+{
+  "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+  "generation_kind": "preflight_gates_not_final_scientific_execution",
+  "tasks": [
+    {
+      "backbone": "llada",
+      "depends_on": [],
+      "error": "/data/kimhj/.cache/huggingface/hub/models--GSAI-ML--LLaDA-8B-Instruct/snapshots/08b83a6feb34df1a6011b80c3c00c7563e963b07 does not appear to have a file named modeling_llada.py. Checkout 'https://huggingface.co//data/kimhj/.cache/huggingface/hub/models--GSAI-ML--LLaDA-8B-Instruct/snapshots/08b83a6feb34df1a6011b80c3c00c7563e963b07/tree/08b83a6feb34df1a6011b80c3c00c7563e963b07' for available files.",
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-math500-r0-cachefix",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-math500",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada math500 R0\n",
+      "priority": 0,
+      "server": "server3",
+      "stage": "R0",
+      "status": "NEEDS_REVIEW",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada-math500-r0-cachefix"
+      ],
+      "error": null,
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-math500-r1-cachefix",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-math500",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada math500 R1\n",
+      "priority": 1,
+      "server": "server3",
+      "stage": "R1",
+      "status": "WAITING_DEPENDENCY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada-math500-r1-cachefix"
+      ],
+      "error": null,
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-math500-r2-cachefix",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-math500",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada math500 R2\n",
+      "priority": 2,
+      "server": "server3",
+      "stage": "R2",
+      "status": "WAITING_DEPENDENCY",
+      "task": "math500",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [],
+      "error": "/data/kimhj/.cache/huggingface/hub/models--GSAI-ML--LLaDA-8B-Instruct/snapshots/08b83a6feb34df1a6011b80c3c00c7563e963b07 does not appear to have a file named modeling_llada.py. Checkout 'https://huggingface.co//data/kimhj/.cache/huggingface/hub/models--GSAI-ML--LLaDA-8B-Instruct/snapshots/08b83a6feb34df1a6011b80c3c00c7563e963b07/tree/08b83a6feb34df1a6011b80c3c00c7563e963b07' for available files.",
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-gsm8k-r0-cachefix",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-gsm8k",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada gsm8k R0\n",
+      "priority": 10,
+      "server": "server3",
+      "stage": "R0",
+      "status": "NEEDS_REVIEW",
+      "task": "gsm8k",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada-gsm8k-r0-cachefix"
+      ],
+      "error": null,
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-gsm8k-r1-cachefix",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-gsm8k",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada gsm8k R1\n",
+      "priority": 11,
+      "server": "server3",
+      "stage": "R1",
+      "status": "WAITING_DEPENDENCY",
+      "task": "gsm8k",
+      "walltime": "04:00:00"
+    },
+    {
+      "backbone": "llada",
+      "depends_on": [
+        "llada-gsm8k-r1-cachefix"
+      ],
+      "error": null,
+      "execution_git_sha": "45c295fbb53bbc1a11b99cd648038cc75f081213",
+      "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-45c295f",
+      "id": "llada-gsm8k-r2-cachefix",
+      "model_cache": "/var/tmp/kimhj-v2r-reference/model-cache",
+      "output": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/gate-45c295f-cachefix-llada-gsm8k",
+      "preparation_output": "CPU_PREPARED_NOT_A_GATE_PASS llada gsm8k R2\n",
+      "priority": 12,
+      "server": "server3",
+      "stage": "R2",
+      "status": "WAITING_DEPENDENCY",
+      "task": "gsm8k",
+      "walltime": "04:00:00"
+    }
+  ]
+}
