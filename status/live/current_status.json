@@ -1,9 +1,9 @@
 {
   "schema": "iclr2027_live_status_v1",
-  "generated_at_kst": "2026-09-24T04:01:28+09:00",
+  "generated_at_kst": "2026-09-24T04:31:47+09:00",
   "collector_hostname": "ubuntu",
   "monitor_branch": "codex/iclr2027-live-monitor-20260923",
-  "monitor_commit": "05fddac229d53e1de1f0e409527e55395ce74648",
+  "monitor_commit": "b088de0d9bba3a7b9c457e94a384c2a6ef8aa38e",
   "baseline_analysis_bundle_commit": "c41d6b10ed0c041581cae4f84a41b4ad783ebe00",
   "observation_sources": [
     "squeue",
@@ -164,7 +164,7 @@
       "liveness": {
         "processes": [],
         "gpu_compute_apps": [
-          "2105491, VLLM::EngineCore, 41312 MiB",
+          "2105491, VLLM::EngineCore, 41314 MiB",
           "1607627, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 32414 MiB",
           "1680278, VLLM::EngineCore, 44818 MiB",
           "1269892, VLLM::EngineCore, 45552 MiB",
@@ -180,12 +180,12 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-24T03:31:10+09:00"
+        "last_snapshot": "2026-09-24T04:01:28+09:00"
       },
       "velocity": {
-        "30m": "UNOBSERVABLE",
-        "1h": "UNOBSERVABLE",
-        "6h": "UNOBSERVABLE"
+        "30m": 0,
+        "1h": 0,
+        "6h": 0
       }
     },
     {
@@ -326,7 +326,7 @@
       "liveness": {
         "processes": [],
         "gpu_compute_apps": [
-          "2105491, VLLM::EngineCore, 41312 MiB",
+          "2105491, VLLM::EngineCore, 41314 MiB",
           "1607627, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 32414 MiB",
           "1680278, VLLM::EngineCore, 44818 MiB",
           "1269892, VLLM::EngineCore, 45552 MiB",
@@ -342,12 +342,12 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-24T03:31:10+09:00"
+        "last_snapshot": "2026-09-24T04:01:28+09:00"
       },
       "velocity": {
-        "30m": "UNOBSERVABLE",
-        "1h": "UNOBSERVABLE",
-        "6h": "UNOBSERVABLE"
+        "30m": 0,
+        "1h": 0,
+        "6h": 0
       }
     },
     {
@@ -591,7 +591,7 @@
       "liveness": {
         "processes": [],
         "gpu_compute_apps": [
-          "2105491, VLLM::EngineCore, 41312 MiB",
+          "2105491, VLLM::EngineCore, 41314 MiB",
           "1607627, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 32414 MiB",
           "1680278, VLLM::EngineCore, 44818 MiB",
           "1269892, VLLM::EngineCore, 45552 MiB",
@@ -607,12 +607,12 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-24T03:31:10+09:00"
+        "last_snapshot": "2026-09-24T04:01:28+09:00"
       },
       "velocity": {
-        "30m": "UNOBSERVABLE",
-        "1h": "UNOBSERVABLE",
-        "6h": "UNOBSERVABLE"
+        "30m": 0,
+        "1h": 0,
+        "6h": 0
       }
     },
     {
@@ -762,12 +762,12 @@
       "liveness": {
         "processes": [],
         "gpu_compute_apps": [
-          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34344 MiB",
+          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 25280 MiB",
           "3079879, VLLM::EngineCore, 41354 MiB",
           "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 12554 MiB",
-          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14026 MiB",
-          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14026 MiB",
-          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 12026 MiB"
+          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14066 MiB",
+          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14066 MiB",
+          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14086 MiB"
         ]
       },
       "sstat": {
@@ -778,7 +778,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-24T03:31:10+09:00"
+        "last_snapshot": "2026-09-24T04:01:28+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1027,12 +1027,12 @@
       "liveness": {
         "processes": [],
         "gpu_compute_apps": [
-          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34344 MiB",
+          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 25280 MiB",
           "3079879, VLLM::EngineCore, 41354 MiB",
           "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 12554 MiB",
-          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14026 MiB",
-          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14026 MiB",
-          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 12026 MiB"
+          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14066 MiB",
+          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14066 MiB",
+          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14086 MiB"
         ]
       },
       "sstat": {
@@ -1043,7 +1043,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-24T03:31:10+09:00"
+        "last_snapshot": "2026-09-24T04:01:28+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1292,12 +1292,12 @@
       "liveness": {
         "processes": [],
         "gpu_compute_apps": [
-          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34344 MiB",
+          "1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 25280 MiB",
           "3079879, VLLM::EngineCore, 41354 MiB",
           "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 12554 MiB",
-          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14026 MiB",
-          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14026 MiB",
-          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 12026 MiB"
+          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14066 MiB",
+          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14066 MiB",
+          "3714687, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 14086 MiB"
         ]
       },
       "sstat": {
@@ -1308,7 +1308,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-24T03:31:10+09:00"
+        "last_snapshot": "2026-09-24T04:01:28+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1571,7 +1571,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-24T03:31:10+09:00"
+        "last_snapshot": "2026-09-24T04:01:28+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1790,7 +1790,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-24T03:31:10+09:00"
+        "last_snapshot": "2026-09-24T04:01:28+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1854,21 +1854,20 @@
       "RESULT_INTEGRATION.md": false
     },
     "build": {
-      "checked_at_kst": "2026-09-24T04:01:28+09:00",
+      "checked_at_kst": "2026-09-24T04:31:47+09:00",
       "paper_head": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
-      "performed": true,
+      "performed": false,
       "build_pass": null,
       "submission_audit_pass": null,
-      "errors": [
-        "Makefile not present in paper HEAD"
-      ]
+      "errors": [],
+      "reason": "not_due"
     }
   },
   "storage": {
     "local": [
       "Filesystem     1024-blocks       Used Available Capacity Mounted on",
-      "/dev/nvme0n1p2  1843726932 1463031380 286965608      84% /",
-      "/dev/nvme1n1p1  7441182592 7014522524  51570508     100% /data"
+      "/dev/nvme0n1p2  1843726932 1463731148 286265840      84% /",
+      "/dev/nvme1n1p1  7441182592 7014592716  51500316     100% /data"
     ],
     "10.0.12.120": {
       "available": false,
@@ -1880,8 +1879,8 @@
     },
     "10.0.12.163": [
       "Filesystem     1024-blocks       Used Available Capacity Mounted on",
-      "/dev/nvme1n1p2  1843726932 1646016676 103980312      95% /",
-      "/dev/nvme0n1p1  7441182592 7066093032         0     100% /data"
+      "/dev/nvme1n1p2  1843726932 1645963920 104033068      95% /",
+      "/dev/nvme0n1p1  7441182592 7066092028      1004     100% /data"
     ]
   },
   "forensic_50752": {
@@ -2015,9 +2014,9 @@
     }
   },
   "readiness": {
-    "generated_at_kst": "2026-09-24T04:01:28+09:00",
+    "generated_at_kst": "2026-09-24T04:31:47+09:00",
     "deadline_kst": "2026-09-26T20:59:00+09:00",
-    "hours_remaining": 64.96,
+    "hours_remaining": 64.45,
     "experiment": {
       "sealed_rows": 4,
       "running_rows": 0,
@@ -2051,32 +2050,8 @@
       ],
       "p2": []
     },
-    "latest_new_evidence": [
-      {
-        "timestamp_kst": "2026-09-24T04:01:26+09:00",
-        "type": "PROVENANCE_SEALED",
-        "job_id": "50738",
-        "run_name": "v2_bbh_logical3_llada"
-      }
-    ],
-    "latest_event": {
-      "timestamp_kst": "2026-09-24T04:01:28+09:00",
-      "type": "COMPACT_ARTIFACT_COLLECTED",
-      "job_id": "50738",
-      "run_name": "v2_bbh_logical3_llada",
-      "files": [
-        "report.json",
-        "scientific_provenance.json",
-        "run_manifest.json",
-        "probe_complete.json",
-        "existence.csv",
-        "selector_confirmation.csv",
-        "state_values.jsonl",
-        "fresh_sampling.jsonl",
-        "probe_branches.jsonl",
-        "full_bbh_logical3_llada.yaml"
-      ]
-    }
+    "latest_new_evidence": [],
+    "latest_event": null
   },
   "constraints": {
     "scientific_code_modified": false,
