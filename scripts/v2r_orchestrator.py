@@ -104,6 +104,12 @@ def cycle():
  for run_dir,tasks in groups.items():
   if not tasks or not all(t.get('status') in {'DONE','MERGED','SEALED'} for t in tasks):continue
   try:
+   # Crash-safe recovery: a prior cycle may have published the aggregate and
+   # seal record before queue persistence. Those immutable markers are enough
+   # to restore the durable task state without rerunning or mutating evidence.
+   if Path(run_dir,'SEAL_RECORD.json').exists():
+    for task in tasks: task['status']='SEALED'; task['error']=None
+    changed=True
    if not Path(run_dir,'aggregate','MERGED.json').exists():
     aggregate=finalize_base(tasks); event('SCIENCE_STAGE_MERGED',{'run_dir':run_dir,'stage':tasks[0]['stage'],'item_count':aggregate['item_count']})
     for task in tasks:task['status']='MERGED'
