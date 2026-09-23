@@ -1,5 +1,5 @@
-2026-09-23T20:07:34.323318+00:00
-HOURS TO DEADLINE: 63.86
+2026-09-23T20:09:05.729176+00:00
+HOURS TO DEADLINE: 63.83
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -27,17 +27,17 @@ SERVER2
 observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=['2'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=['0', '2', '3', '4', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['0', '1', '2', '3', '4', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
 
 REFERENCE GATES
 llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=WAITING_PRIORITY
-llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=SUBMITTED, temporal=WAITING_PRIORITY
+llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=PENDING, temporal=WAITING_PRIORITY
 
 REFERENCE PRIMARY
 dream_gsm8k: NOT_STARTED
@@ -60,8 +60,8 @@ llada_math500_core_finalsha-shard-001: DONE job=52739
 llada_math500_core_finalsha-shard-002: RUNNING job=52740
 llada_math500_core_finalsha-shard-003: DONE job=52741
 llada_math500_core_finalsha-shard-004: RUNNING job=52742
-llada_math500_core_finalsha-shard-005: SUBMITTED job=52791
-llada_math500_core_finalsha-shard-006: SUBMITTED job=52792
+llada_math500_core_finalsha-shard-005: PENDING job=52791
+llada_math500_core_finalsha-shard-006: PENDING job=52792
 llada_math500_temporal_finalsha-shard-000: WAITING_PRIORITY job=None
 llada_math500_temporal_finalsha-shard-001: WAITING_PRIORITY job=None
 llada_math500_temporal_finalsha-shard-002: WAITING_PRIORITY job=None
@@ -73,10 +73,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3462723 heartbeat=2026-09-23T20:07:12.167444+00:00
+status=RUNNING pid=3462723 heartbeat=2026-09-23T20:08:15.807115+00:00
 
 MONITOR
-heartbeat=2026-09-23T20:07:34.323318+00:00
+heartbeat=2026-09-23T20:09:05.729176+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
