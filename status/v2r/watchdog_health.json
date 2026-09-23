@@ -1,7 +1,7 @@
 {
   "monitor_health": {
     "integrity_alert_count": 4,
-    "last_successful_cycle": "2026-09-23T12:52:23.623660+00:00",
+    "last_successful_cycle": "2026-09-23T12:55:26.450131+00:00",
     "legacy_monitor_health": {
       "consecutive_cycle_failures": 0,
       "last_cycle_events": 0,
@@ -26,20 +26,24 @@
     "poll_interval_seconds": 90,
     "schema_version": "v2r.monitor_health.1",
     "status": "RUNNING",
-    "timestamp": "2026-09-23T12:52:23.623660+00:00",
+    "timestamp": "2026-09-23T12:55:26.450131+00:00",
     "tmux": "iclr2027-unified-monitor"
   },
   "monitor_session_alive": true,
   "orchestrator_health": {
-    "error": "'output'",
-    "pid": 1788284,
-    "status": "DEGRADED_RETRY",
-    "timestamp": "2026-09-23T12:52:03.312303+00:00"
+    "event_poll_seconds": 60,
+    "inventory_cycle_seconds": 1800,
+    "last_error": null,
+    "next_poll": "2026-09-23T12:57:32.929777+00:00",
+    "pid": 1797354,
+    "status": "RUNNING",
+    "timestamp": "2026-09-23T12:56:32.929777+00:00",
+    "tmux": "iclr2027-reference-orchestrator"
   },
   "orchestrator_session_alive": true,
   "pid": 1621933,
   "schema_version": "v2r.watchdog_health.1",
   "status": "RUNNING",
-  "timestamp": "2026-09-23T12:52:38.412285+00:00",
+  "timestamp": "2026-09-23T12:56:38.432803+00:00",
   "tmux": "iclr2027-reference-watchdog"
 }

@@ -1,5 +1,5 @@
-2026-09-23T12:52:23.623660+00:00
-HOURS TO DEADLINE: 71.11
+2026-09-23T12:56:57.792957+00:00
+HOURS TO DEADLINE: 71.03
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -35,8 +35,8 @@ LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
 
 REFERENCE GATES
-llada_gsm8k: R0=PASS, R1=PASS, R2=RUNNING
-llada_math500: R0=PASS, R1=PASS, R2=RUNNING
+llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=PENDING
+llada_math500: R0=PASS, R1=PASS, R2=PASS, base=RUNNING
 
 REFERENCE PRIMARY
 dream_gsm8k: NOT_STARTED
@@ -60,10 +60,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=DEGRADED_RETRY pid=1788284 heartbeat=2026-09-23T12:52:03.312303+00:00
+status=RUNNING pid=1797354 heartbeat=2026-09-23T12:56:32.929777+00:00
 
 MONITOR
-heartbeat=2026-09-23T12:52:23.623660+00:00
+heartbeat=2026-09-23T12:56:57.792957+00:00
 
 CURRENT P0
 Repair LLaDA R1 evidence inventory, rerun valid R0→R1→R2 on a final immutable SHA, then LLaDA MATH base.
