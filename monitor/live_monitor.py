@@ -270,6 +270,14 @@ def slurm_snapshot(job_id: str) -> dict[str, Any]:
                 row[key] = data[key]
     a = run_cmd(["sacct", "-X", "-n", "-P", "-j", job_id, "--format=JobIDRaw,State,Elapsed,ExitCode,NodeList"], timeout=15)
     row["sacct"] = a["stdout"].strip().splitlines()[:5]
+    if row["sacct"]:
+        parts = row["sacct"][0].split("|")
+        if len(parts) >= 5:
+            row.setdefault("job_id", parts[0])
+            row["state"] = parts[1]
+            row["elapsed"] = parts[2]
+            row["exit_code"] = parts[3]
+            row["node_list"] = parts[4]
     return row
 
 
@@ -329,7 +337,7 @@ def paper_observation() -> dict[str, Any]:
         files[name] = {"exists": p.exists(), "path": str(p), "size_bytes": p.stat().st_size if p.exists() else None}
     todo = run_cmd(["rg", "-n", "RESULT TODO|TODO|FIXME", str(PAPER_REPO / "paper"), "-g", "!build/**"], timeout=15)
     state["files"] = files
-    state["todo_count"] = len(todo["stdout"].splitlines()) if todo["ok"] else None
+    state["todo_count"] = len(todo["stdout"].splitlines()) if todo["ok"] else 0 if todo["returncode"] == 1 else None
     state["claim_dependencies"] = {name: files[name]["exists"] for name in ["CLAIM_LEDGER.md", "PAPER_STATE.md", "RESULT_INTEGRATION.md"]}
     return state
 
@@ -404,6 +412,7 @@ def matrix_row(run: dict[str, Any], slurm: dict[str, Any], remote: dict[str, Any
     sealed = prov and str(prov_payload.get("status", "")).upper() == "SEALED"
     state = str(slurm.get("state") or slurm.get("JobState") or "UNKNOWN")
     if sealed and state == "COMPLETED": status = "SEALED"
+    elif state == "COMPLETED" and not remote.get("available"): status = "UNOBSERVED"
     elif state == "RUNNING": status = "RUNNING"
     elif state in {"FAILED", "TIMEOUT", "CANCELLED", "OUT_OF_MEMORY"}: status = "FAILED_EXCLUDED"
     elif report: status = "COMPLETED_UNSEALED"
