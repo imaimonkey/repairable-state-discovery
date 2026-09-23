@@ -118,17 +118,23 @@ def collect(output):
                                'classifications':{c:sum(x['classification']==c for x in job_inventory['active_or_pending']) for c in ['KEEP_REFERENCE_CRITICAL','KEEP_UNRELATED','CANCEL_LEGACY_FOR_REFERENCE_REALLOCATION','UNKNOWN_NEEDS_FORENSIC']}},
       'historical_jobs':run(['sacct','-n','-P','-j',','.join(HISTORICAL_JOBS),'--format=JobID,State,Elapsed,Timelimit,NodeList,AllocTRES,ExitCode']),
       'protected_monitor':run(['tmux','list-panes','-a','-F','#{session_name}|#{pane_pid}|#{pane_current_command}'])}
-    for s in servers.values():
+    # The frozen LLaDA reference evidence has only been equivalence-validated
+    # on server3/ubuntu.  Other nodes may have idle hardware, but remain
+    # ineligible for this execution generation until an exact replay gate is
+    # passed there.  This is deliberately stricter than the observational idle
+    # candidate list.
+    for name,s in servers.items():
         processes=s.get('gpu_processes',{}).get('stdout','')
         # Candidate is not an allocation. Submit must additionally obtain exclusive Slurm GRES.
         s['idle_gpu_candidates']=[g['index'] for g in s.get('gpus',[]) if int(g['memory_used_mib'])<128 and int(g['utilization_percent'])==0 and g['uuid'] not in processes]
         s['safe_filesystem_candidates']=[f['path'] for f in s.get('filesystems',[]) if f['usage_fraction']<0.95 and f['available_bytes']>=50*1024**3 and f['inodes_free']>10000 and f['writable']]
-        s['new_scientific_jobs_eligible']=bool(s['observed'] and s['idle_gpu_candidates'] and s['safe_filesystem_candidates'])
+        s['reference_execution_compatible']=bool(name=='server3' and s.get('node')=='ubuntu')
+        s['new_scientific_jobs_eligible']=bool(s['observed'] and s['idle_gpu_candidates'] and s['safe_filesystem_candidates'] and s['reference_execution_compatible'])
     atomic_json(output/'cluster_inventory.json',inventory)
     atomic_json(output/'job_inventory.json',job_inventory)
-    lines=['# V2R cluster inventory','',now,'','Read-only observation; idle candidates still require Slurm allocation, safe immutable execution worktree and measured shard storage gate.','', '| Server | Observed | Idle GPU candidates | Writable safe filesystem candidates |','|---|---|---|---|']
+    lines=['# V2R cluster inventory','',now,'','Read-only observation; idle candidates still require Slurm allocation, safe immutable execution worktree, exact reference replay compatibility, and measured shard storage gate.','', '| Server | Observed | Idle GPU candidates | Writable safe filesystem candidates | Reference-compatible |','|---|---|---|---|---|']
     for name,s in servers.items():
-        lines.append(f"| {name} | {s['observed']} | {s['idle_gpu_candidates']} | {s['safe_filesystem_candidates']} |")
+        lines.append(f"| {name} | {s['observed']} | {s['idle_gpu_candidates']} | {s['safe_filesystem_candidates']} | reference_compatible={s.get('reference_execution_compatible',False)} |")
         for f in s.get('filesystems',[]):lines.append(f"\n{name} `{f['path']}`: {f['available_bytes']} available bytes; {f['usage_fraction']:.2%} used; {f['inodes_free']} free inodes.")
     lines+=['','server1 SSH access failure leaves GPU process/disk/worktree details unobserved. Its Slurm allocations are observed; it is not eligible. Existing jobs and monitor are never cancelled by this tool.']
     (output/'cluster_inventory.md').write_text('\n'.join(lines)+'\n')
