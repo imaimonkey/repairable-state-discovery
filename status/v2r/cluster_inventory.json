@@ -26,79 +26,79 @@
       "cpu_count": 128,
       "filesystems": [
         {
-          "available_bytes": 325739491328,
+          "available_bytes": 325738983424,
           "device": 66306,
           "inodes_free": 112501849,
           "inodes_total": 117178368,
           "path": "/",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.8182814350214971,
-          "used_bytes": 1466809835520,
+          "usage_fraction": 0.8182817183632117,
+          "used_bytes": 1466810343424,
           "writable": false
         },
         {
-          "available_bytes": 325739491328,
+          "available_bytes": 325738983424,
           "device": 66306,
           "inodes_free": 112501849,
           "inodes_total": 117178368,
           "path": "/home",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.8182814350214971,
-          "used_bytes": 1466809835520,
+          "usage_fraction": 0.8182817183632117,
+          "used_bytes": 1466810343424,
           "writable": false
         },
         {
-          "available_bytes": 325739491328,
+          "available_bytes": 325738983424,
           "device": 66306,
           "inodes_free": 112501849,
           "inodes_total": 117178368,
           "path": "/tmp",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.8182814350214971,
-          "used_bytes": 1466809835520,
+          "usage_fraction": 0.8182817183632117,
+          "used_bytes": 1466810343424,
           "writable": true
         },
         {
-          "available_bytes": 325739491328,
+          "available_bytes": 325738983424,
           "device": 66306,
           "inodes_free": 112501849,
           "inodes_total": 117178368,
           "path": "/var/tmp",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.8182814350214971,
-          "used_bytes": 1466809835520,
+          "usage_fraction": 0.8182817183632117,
+          "used_bytes": 1466810343424,
           "writable": true
         },
         {
-          "available_bytes": 1389008105472,
+          "available_bytes": 1388996788224,
           "device": 2304,
-          "inodes_free": 337741203,
+          "inodes_free": 337741185,
           "inodes_total": 351625216,
           "path": "/mnt/raid5",
           "total_bytes": 22951322238976,
-          "usage_fraction": 0.9362814035921732,
-          "used_bytes": 20410092687360,
+          "usage_fraction": 0.936281922753404,
+          "used_bytes": 20410104004608,
           "writable": true
         }
       ],
       "gpu_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 2296284, VLLM::EngineCore, 41310\nGPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 1607627, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 32414\nGPU-8a497f13-d58c-bdef-5478-611ea200deae, 1680278, VLLM::EngineCore, 44818\nGPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22, 2382111, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34162\nGPU-8b402bc3-f797-6774-24e2-d1c920adadfb, 1493727, VLLM::EngineCore, 45710"
+        "stdout": "GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 2296284, VLLM::EngineCore, 41312\nGPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 1607627, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 32414\nGPU-8a497f13-d58c-bdef-5478-611ea200deae, 1680278, VLLM::EngineCore, 44818\nGPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22, 2382111, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 22476\nGPU-8b402bc3-f797-6774-24e2-d1c920adadfb, 1493727, VLLM::EngineCore, 45710"
       },
       "gpu_query": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "0, NVIDIA RTX A6000, GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 49140, 41320, 7223, 47\n1, NVIDIA RTX A6000, GPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 49140, 32424, 16119, 100\n2, NVIDIA RTX A6000, GPU-8a497f13-d58c-bdef-5478-611ea200deae, 49140, 44828, 3715, 100\n3, NVIDIA RTX A6000, GPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee, 49140, 1, 48541, 0\n4, NVIDIA RTX A6000, GPU-d623a715-ed10-696d-07ec-50b7614c4272, 49140, 1, 48541, 0\n5, NVIDIA RTX A6000, GPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22, 49140, 34172, 14371, 70\n6, NVIDIA RTX A6000, GPU-8b402bc3-f797-6774-24e2-d1c920adadfb, 49140, 45720, 2823, 100\n7, NVIDIA RTX A6000, GPU-9edcc6a0-bc56-e743-e1d7-05815ef24483, 49140, 1, 48541, 0"
+        "stdout": "0, NVIDIA RTX A6000, GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 49140, 41322, 7221, 48\n1, NVIDIA RTX A6000, GPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 49140, 32424, 16119, 100\n2, NVIDIA RTX A6000, GPU-8a497f13-d58c-bdef-5478-611ea200deae, 49140, 44828, 3715, 100\n3, NVIDIA RTX A6000, GPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee, 49140, 1, 48541, 0\n4, NVIDIA RTX A6000, GPU-d623a715-ed10-696d-07ec-50b7614c4272, 49140, 1, 48541, 0\n5, NVIDIA RTX A6000, GPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22, 49140, 22486, 26057, 0\n6, NVIDIA RTX A6000, GPU-8b402bc3-f797-6774-24e2-d1c920adadfb, 49140, 45720, 2823, 100\n7, NVIDIA RTX A6000, GPU-9edcc6a0-bc56-e743-e1d7-05815ef24483, 49140, 1, 48541, 0"
       },
       "gpus": [
         {
           "index": "0",
-          "memory_free_mib": "7223",
+          "memory_free_mib": "7221",
           "memory_total_mib": "49140",
-          "memory_used_mib": "41320",
+          "memory_used_mib": "41322",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "47",
+          "utilization_percent": "48",
           "uuid": "GPU-2087c567-ec90-0aa2-09c5-c5174daec87a"
         },
         {
@@ -139,11 +139,11 @@
         },
         {
           "index": "5",
-          "memory_free_mib": "14371",
+          "memory_free_mib": "26057",
           "memory_total_mib": "49140",
-          "memory_used_mib": "34172",
+          "memory_used_mib": "22486",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "70",
+          "utilization_percent": "0",
           "uuid": "GPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22"
         },
         {
@@ -174,7 +174,7 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     1622979940352 47633297408 222291853312   136994816 1353054789632 1566485544960\nSwap:     8589930496   344223744  8245706752"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     1622979940352 47661895680 222251737088   136986624 1353066307584 1566456975360\nSwap:     8589930496   344223744  8245706752"
       },
       "mounts": {
         "returncode": 0,
@@ -187,7 +187,7 @@
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n 579454       1 115-21:27:12 systemd\n 579455  579454 115-21:27:12 (sd-pam)\n 580533       1 115-21:27:03 code-8761a5560c\n2118230  579454 49-17:49:35 dbus-daemon\n2118262  579454 49-17:49:35 at-spi-bus-laun\n2299651 2299597       00:00 sshd\n2299652 2299651       00:00 python3\n2299674 2299652       00:00 ps"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n 579454       1 115-21:28:19 systemd\n 579455  579454 115-21:28:19 (sd-pam)\n 580533       1 115-21:28:10 code-8761a5560c\n2118230  579454 49-17:50:42 dbus-daemon\n2118262  579454 49-17:50:42 at-spi-bus-laun\n2301597 2301545       00:01 sshd\n2301599 2301597       00:01 python3\n2301614 2301599       00:00 ps"
       },
       "reference_execution_compatible": false,
       "repos": [
@@ -257,7 +257,7 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=devbox Arch=x86_64 CoresPerSocket=32  CPUAlloc=48 CPUEfctv=128 CPUTot=128 CPULoad=3.70 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=devbox NodeHostName=devbox Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=1536000 AllocMem=393216 FreeMem=209841 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:44:53 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-12T10:47:33 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=1500G,billing=128,gres/gpu=8 AllocTRES=cpu=48,mem=384G,gres/gpu=5 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=devbox Arch=x86_64 CoresPerSocket=32  CPUAlloc=48 CPUEfctv=128 CPUTot=128 CPULoad=5.30 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=devbox NodeHostName=devbox Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=1536000 AllocMem=393216 FreeMem=211985 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:44:53 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-12T10:47:33 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=1500G,billing=128,gres/gpu=8 AllocTRES=cpu=48,mem=384G,gres/gpu=5 CurrentWatts=0 AveWatts=0\n"
       },
       "ssh_host": "kimhj@10.0.12.120"
     },
@@ -265,79 +265,79 @@
       "cpu_count": 64,
       "filesystems": [
         {
-          "available_bytes": 41311281152,
+          "available_bytes": 41311043584,
           "device": 2050,
           "inodes_free": 110435401,
           "inodes_total": 117178368,
           "path": "/",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.9769538943596932,
-          "used_bytes": 1751238045696,
+          "usage_fraction": 0.9769540268904952,
+          "used_bytes": 1751238283264,
           "writable": false
         },
         {
-          "available_bytes": 41311281152,
+          "available_bytes": 41311043584,
           "device": 2050,
           "inodes_free": 110435401,
           "inodes_total": 117178368,
           "path": "/home",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.9769538943596932,
-          "used_bytes": 1751238045696,
+          "usage_fraction": 0.9769540268904952,
+          "used_bytes": 1751238283264,
           "writable": false
         },
         {
-          "available_bytes": 41311281152,
+          "available_bytes": 41311043584,
           "device": 2050,
           "inodes_free": 110435401,
           "inodes_total": 117178368,
           "path": "/tmp",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.9769538943596932,
-          "used_bytes": 1751238045696,
+          "usage_fraction": 0.9769540268904952,
+          "used_bytes": 1751238283264,
           "writable": true
         },
         {
-          "available_bytes": 41311281152,
+          "available_bytes": 41311043584,
           "device": 2050,
           "inodes_free": 110435401,
           "inodes_total": 117178368,
           "path": "/var/tmp",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.9769538943596932,
-          "used_bytes": 1751238045696,
+          "usage_fraction": 0.9769540268904952,
+          "used_bytes": 1751238283264,
           "writable": true
         },
         {
-          "available_bytes": 541864820736,
+          "available_bytes": 541799895040,
           "device": 2304,
-          "inodes_free": 445211809,
+          "inodes_free": 445211680,
           "inodes_total": 468836352,
           "path": "/mnt/raid5",
           "total_bytes": 15240493973504,
-          "usage_fraction": 0.9625585915862699,
-          "used_bytes": 13930475929600,
+          "usage_fraction": 0.9625630777780422,
+          "used_bytes": 13930540855296,
           "writable": true
         }
       ],
       "gpu_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 33958\nGPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 3079879, VLLM::EngineCore, 41354\nGPU-e8cad71e-960c-b6b8-9152-5f7b146c557e, 3926172, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 12554\nGPU-ca5070d9-5463-7527-5e0e-a4216548e38b, 3926172, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 7944\nGPU-933bf467-90ac-31b1-24d8-15dc3162537b, 3926172, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 7944\nGPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa, 3926172, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 7944"
+        "stdout": "GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 1155573, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 21990\nGPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 3079879, VLLM::EngineCore, 41354\nGPU-e8cad71e-960c-b6b8-9152-5f7b146c557e, 3926172, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 12554\nGPU-ca5070d9-5463-7527-5e0e-a4216548e38b, 3926172, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 7944\nGPU-933bf467-90ac-31b1-24d8-15dc3162537b, 3926172, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 7944\nGPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa, 3926172, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 7944"
       },
       "gpu_query": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "0, NVIDIA RTX A6000, GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 49140, 33968, 14575, 53\n1, NVIDIA RTX A6000, GPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 49140, 41364, 7179, 76\n2, NVIDIA RTX A6000, GPU-e8cad71e-960c-b6b8-9152-5f7b146c557e, 49140, 12564, 35979, 0\n3, NVIDIA RTX A6000, GPU-ca5070d9-5463-7527-5e0e-a4216548e38b, 49140, 7954, 40589, 0\n4, NVIDIA RTX A6000, GPU-933bf467-90ac-31b1-24d8-15dc3162537b, 49140, 7954, 40589, 0\n5, NVIDIA RTX A6000, GPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa, 49140, 7954, 40589, 0\n6, NVIDIA RTX A6000, GPU-aaac1d4e-ab02-c216-ddd6-2f7f23d332eb, 49140, 1, 48541, 0\n7, NVIDIA RTX A6000, GPU-c39e323c-ef2e-9fdd-c848-315171c06345, 49140, 1, 48541, 0"
+        "stdout": "0, NVIDIA RTX A6000, GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 49140, 22000, 26543, 0\n1, NVIDIA RTX A6000, GPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 49140, 41364, 7179, 75\n2, NVIDIA RTX A6000, GPU-e8cad71e-960c-b6b8-9152-5f7b146c557e, 49140, 12564, 35979, 46\n3, NVIDIA RTX A6000, GPU-ca5070d9-5463-7527-5e0e-a4216548e38b, 49140, 7954, 40589, 0\n4, NVIDIA RTX A6000, GPU-933bf467-90ac-31b1-24d8-15dc3162537b, 49140, 7954, 40589, 0\n5, NVIDIA RTX A6000, GPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa, 49140, 7954, 40589, 0\n6, NVIDIA RTX A6000, GPU-aaac1d4e-ab02-c216-ddd6-2f7f23d332eb, 49140, 1, 48541, 0\n7, NVIDIA RTX A6000, GPU-c39e323c-ef2e-9fdd-c848-315171c06345, 49140, 1, 48541, 0"
       },
       "gpus": [
         {
           "index": "0",
-          "memory_free_mib": "14575",
+          "memory_free_mib": "26543",
           "memory_total_mib": "49140",
-          "memory_used_mib": "33968",
+          "memory_used_mib": "22000",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "53",
+          "utilization_percent": "0",
           "uuid": "GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4"
         },
         {
@@ -346,7 +346,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "41364",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "76",
+          "utilization_percent": "75",
           "uuid": "GPU-13c8b5a1-b148-ea25-95a4-de1086725ed1"
         },
         {
@@ -355,7 +355,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "12564",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "0",
+          "utilization_percent": "46",
           "uuid": "GPU-e8cad71e-960c-b6b8-9152-5f7b146c557e"
         },
         {
@@ -412,7 +412,7 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540813615104 161129086976 345271488512  6370430976 34413039616 367824666624\nSwap:     8589930496  8589926400        4096"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540813615104 161414766592 344875696128  6370443264 34523152384 367540580352\nSwap:     8589930496  8589922304        8192"
       },
       "mounts": {
         "returncode": 0,
@@ -425,7 +425,7 @@
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n 681187       1 64-13:23:16 systemd\n 681188  681187 64-13:23:16 (sd-pam)\n 683308       1 64-13:22:44 code-8a7abeba6e\n3943999 3943938       00:00 sshd\n3944001 3943999       00:00 python3\n3944014 3944001       00:00 ps"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n 681187       1 64-13:24:22 systemd\n 681188  681187 64-13:24:22 (sd-pam)\n 683308       1 64-13:23:50 code-8a7abeba6e\n3945706 3945639       00:00 sshd\n3945708 3945706       00:00 python3\n3945749 3945708       00:00 ps"
       },
       "reference_execution_compatible": false,
       "repos": [
@@ -481,7 +481,7 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=server2 Arch=x86_64 CoresPerSocket=32  CPUAlloc=40 CPUEfctv=64 CPUTot=64 CPULoad=10.08 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=server2 NodeHostName=server2 Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=319488 FreeMem=329541 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-07-21T01:32:02 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-15T08:24:29 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=64,mem=500G,billing=64,gres/gpu=8 AllocTRES=cpu=40,mem=312G,gres/gpu=6 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=server2 Arch=x86_64 CoresPerSocket=32  CPUAlloc=40 CPUEfctv=64 CPUTot=64 CPULoad=8.63 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=server2 NodeHostName=server2 Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=319488 FreeMem=329225 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-07-21T01:32:02 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-15T08:24:29 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=64,mem=500G,billing=64,gres/gpu=8 AllocTRES=cpu=40,mem=312G,gres/gpu=6 CurrentWatts=0 AveWatts=0\n"
       },
       "ssh_host": "kimhj@10.0.12.121"
     },
@@ -489,58 +489,58 @@
       "cpu_count": 96,
       "filesystems": [
         {
-          "available_bytes": 293662638080,
+          "available_bytes": 293666988032,
           "device": 66306,
-          "inodes_free": 114240149,
+          "inodes_free": 114239534,
           "inodes_total": 117145600,
           "path": "/",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.8361254779485369,
-          "used_bytes": 1498334277632,
+          "usage_fraction": 0.8361230505157875,
+          "used_bytes": 1498329927680,
           "writable": false
         },
         {
-          "available_bytes": 293662638080,
+          "available_bytes": 293666988032,
           "device": 66306,
-          "inodes_free": 114240149,
+          "inodes_free": 114239534,
           "inodes_total": 117145600,
           "path": "/home",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.8361254779485369,
-          "used_bytes": 1498334277632,
+          "usage_fraction": 0.8361230505157875,
+          "used_bytes": 1498329927680,
           "writable": false
         },
         {
-          "available_bytes": 52703481856,
+          "available_bytes": 52702117888,
           "device": 66308,
-          "inodes_free": 225844657,
+          "inodes_free": 225844637,
           "inodes_total": 234422272,
           "path": "/data",
           "total_bytes": 7619770974208,
-          "usage_fraction": 0.9927161666614185,
-          "used_bytes": 7182975782912,
+          "usage_fraction": 0.9927163551672864,
+          "used_bytes": 7182977146880,
           "writable": false
         },
         {
-          "available_bytes": 293662638080,
+          "available_bytes": 293666988032,
           "device": 66306,
-          "inodes_free": 114240149,
+          "inodes_free": 114239534,
           "inodes_total": 117145600,
           "path": "/tmp",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.8361254779485369,
-          "used_bytes": 1498334277632,
+          "usage_fraction": 0.8361230505157875,
+          "used_bytes": 1498329927680,
           "writable": true
         },
         {
-          "available_bytes": 293662638080,
+          "available_bytes": 293666988032,
           "device": 66306,
-          "inodes_free": 114240149,
+          "inodes_free": 114239534,
           "inodes_total": 117145600,
           "path": "/var/tmp",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.8361254779485369,
-          "used_bytes": 1498334277632,
+          "usage_fraction": 0.8361230505157875,
+          "used_bytes": 1498329927680,
           "writable": true
         }
       ],
@@ -552,7 +552,7 @@
       "gpu_query": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "0, NVIDIA H200 NVL, GPU-4f8edcb9-889c-c054-f48d-990e34fc95ed, 143771, 13153, 130006, 95\n1, NVIDIA H200 NVL, GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2, 143771, 16781, 126378, 100\n2, NVIDIA H200 NVL, GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134, 143771, 115365, 27794, 97\n3, NVIDIA H200 NVL, GPU-40729417-86d2-9b2e-32a1-a0f5ed143870, 143771, 16701, 126458, 100"
+        "stdout": "0, NVIDIA H200 NVL, GPU-4f8edcb9-889c-c054-f48d-990e34fc95ed, 143771, 13153, 130006, 89\n1, NVIDIA H200 NVL, GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2, 143771, 16781, 126378, 99\n2, NVIDIA H200 NVL, GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134, 143771, 115365, 27794, 98\n3, NVIDIA H200 NVL, GPU-40729417-86d2-9b2e-32a1-a0f5ed143870, 143771, 16701, 126458, 100"
       },
       "gpus": [
         {
@@ -561,7 +561,7 @@
           "memory_total_mib": "143771",
           "memory_used_mib": "13153",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "95",
+          "utilization_percent": "89",
           "uuid": "GPU-4f8edcb9-889c-c054-f48d-990e34fc95ed"
         },
         {
@@ -570,7 +570,7 @@
           "memory_total_mib": "143771",
           "memory_used_mib": "16781",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "100",
+          "utilization_percent": "99",
           "uuid": "GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2"
         },
         {
@@ -579,7 +579,7 @@
           "memory_total_mib": "143771",
           "memory_used_mib": "115365",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "97",
+          "utilization_percent": "98",
           "uuid": "GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134"
         },
         {
@@ -597,7 +597,7 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540546285568 20317204480  2757869568  3317882880 517471211520 513246150656\nSwap:     8589930496  7286280192  1303650304"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540546285568 20260061184  2819469312  3317882880 517466755072 513303293952\nSwap:     8589930496  7286280192  1303650304"
       },
       "mounts": {
         "returncode": 0,
@@ -610,7 +610,7 @@
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n 871894 1030430    15:16:40 sh\n 871898  871894    15:16:40 MainThread\n 871926  871898    15:16:40 MainThread\n 872263  871926    15:16:37 MainThread\n 976708       1  3-14:03:59 systemd\n 976709  976708  3-14:03:59 (sd-pam)\n1030430       1  3-12:56:27 code-645f29cc31\n1122679 1122540    13:33:34 sshd\n1122680 1122679    13:33:34 sh\n1122698 1122680    13:33:34 code-7debcd0e2a\n1122818 1122698    13:33:33 sh\n1122822 1122818    13:33:33 MainThread\n1122851 1122822    13:33:33 MainThread\n1122880 1122822    13:33:32 MainThread\n1122916 1122851    13:33:32 codex\n1123093 1122822    13:33:31 MainThread\n1123171 1123093    13:33:31 bash\n1126551 1122916    13:31:36 codex-code-mode\n1164483       1    13:04:04 tmux: server\n1164484 1164483    13:04:04 bash\n1475685 1122851    09:00:33 MainThread\n2497502 1164483    04:19:03 python\n2758149 1164483    03:02:00 python\n3265583 3265574       57:51 python\n3290161 1164483       49:37 python3\n3391654 3391645       27:46 python\n3393382 1164484       27:32 sleep\n3462723 1164483       09:59 python\n3520999 1122680       00:33 sleep\n3523943 3462723       00:00 python3\n3523944 3462723       00:00 ssh\n3523945 3462723       00:00 ssh\n3523946 3462723       00:00 ssh\n3523997 3523943       00:00 ps"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n 871894 1030430    15:17:46 sh\n 871898  871894    15:17:46 MainThread\n 871926  871898    15:17:46 MainThread\n 872263  871926    15:17:43 MainThread\n 976708       1  3-14:05:05 systemd\n 976709  976708  3-14:05:05 (sd-pam)\n1030430       1  3-12:57:33 code-645f29cc31\n1122679 1122540    13:34:40 sshd\n1122680 1122679    13:34:40 sh\n1122698 1122680    13:34:40 code-7debcd0e2a\n1122818 1122698    13:34:39 sh\n1122822 1122818    13:34:39 MainThread\n1122851 1122822    13:34:39 MainThread\n1122880 1122822    13:34:38 MainThread\n1122916 1122851    13:34:38 codex\n1123093 1122822    13:34:37 MainThread\n1123171 1123093    13:34:37 bash\n1126551 1122916    13:32:42 codex-code-mode\n1164483       1    13:05:10 tmux: server\n1164484 1164483    13:05:10 bash\n1475685 1122851    09:01:39 MainThread\n2497502 1164483    04:20:09 python\n2758149 1164483    03:03:06 python\n3265583 3265574       58:57 python\n3290161 1164483       50:43 python3\n3391654 3391645       28:52 python\n3393382 1164484       28:38 sleep\n3462723 1164483       11:05 python\n3520999 1122680       01:39 sleep\n3530898 3462723       00:00 ssh\n3530899 3462723       00:00 python3\n3530900 3462723       00:00 ssh\n3530901 3462723       00:00 ssh\n3530951 3530899       00:00 ps"
       },
       "reference_execution_compatible": true,
       "repos": [
@@ -625,7 +625,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -639,7 +639,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -653,7 +653,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -667,7 +667,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -681,7 +681,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -692,14 +692,14 @@
           "head": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "50632383cf9968563e471f3937980ef5696c46d0"
+            "stdout": "7844595f796c98a5f239caee23d191129796f61b"
           },
           "path": "/home/kimhj/repairable-state-discovery-reference-20260923",
           "realpath": "/data/kimhj/repairable-state-discovery-reference-20260923",
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -713,7 +713,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -727,7 +727,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -741,7 +741,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -755,7 +755,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -769,7 +769,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -783,7 +783,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -797,7 +797,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -811,7 +811,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -825,7 +825,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -839,7 +839,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -850,14 +850,14 @@
           "head": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "50632383cf9968563e471f3937980ef5696c46d0"
+            "stdout": "7844595f796c98a5f239caee23d191129796f61b"
           },
           "path": "/data/kimhj/repairable-state-discovery-reference-20260923",
           "realpath": "/data/kimhj/repairable-state-discovery-reference-20260923",
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -871,7 +871,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -885,7 +885,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -899,7 +899,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -913,7 +913,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -927,7 +927,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 50632383cf9968563e471f3937980ef5696c46d0\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923\nHEAD 7a6c479c9c308bc74461515c22ef1e906d3c2872\nbranch refs/heads/codex/v2-gsm8k-dream-50924-provenance-20260923\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 76f6d768d55f77eff1e0093a36cbadb4ede72ca4\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-provenance-fix-20260923\nHEAD 435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc\nbranch refs/heads/fix/v2-stable-execution-provenance\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 7844595f796c98a5f239caee23d191129796f61b\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 0ba2b365f5ea618780c9a28d0ed72896f1ba8a12\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-seed-forensic-20260923\nHEAD e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4\nbranch refs/heads/codex/v2-seed-collision-forensic-20260923\n\nworktree /data/kimhj/repairable-state-discovery-status-20260923\nHEAD c41d6b10ed0c041581cae4f84a41b4ad783ebe00\nbranch refs/heads/codex/iclr2027-analysis-bundle-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec\nHEAD b5f8e52b31c9d58ceab89c6d7c85367622584839\nbranch refs/heads/codex/current-job-status-20260921\n\nworktree /data/kimhj/repairable-state-discovery-v2-unified-8b1361d\nHEAD 8b1361d3d8d60a58e28847ac35af8dfc2b023d2d\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         }
       ],
@@ -939,7 +939,7 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=ubuntu Arch=x86_64 CoresPerSocket=24  CPUAlloc=24 CPUEfctv=96 CPUTot=96 CPULoad=5.47 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:h200:4 NodeAddr=ubuntu NodeHostName=ubuntu Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=245760 FreeMem=2627 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:20:31 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-17T12:34:36 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=96,mem=500G,billing=96,gres/gpu=4 AllocTRES=cpu=24,mem=240G,gres/gpu=4 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=ubuntu Arch=x86_64 CoresPerSocket=24  CPUAlloc=24 CPUEfctv=96 CPUTot=96 CPULoad=5.48 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:h200:4 NodeAddr=ubuntu NodeHostName=ubuntu Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=245760 FreeMem=2692 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:20:31 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-17T12:34:36 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=96,mem=500G,billing=96,gres/gpu=4 AllocTRES=cpu=24,mem=240G,gres/gpu=4 CurrentWatts=0 AveWatts=0\n"
       },
       "ssh_host": null
     },
@@ -947,58 +947,58 @@
       "cpu_count": 128,
       "filesystems": [
         {
-          "available_bytes": 106528415744,
+          "available_bytes": 106528370688,
           "device": 66308,
           "inodes_free": 114356235,
           "inodes_total": 117145600,
           "path": "/",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9405532371122001,
-          "used_bytes": 1685468499968,
+          "usage_fraction": 0.9405532622551005,
+          "used_bytes": 1685468545024,
           "writable": false
         },
         {
-          "available_bytes": 106528415744,
+          "available_bytes": 106528370688,
           "device": 66308,
           "inodes_free": 114356235,
           "inodes_total": 117145600,
           "path": "/home",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9405532371122001,
-          "used_bytes": 1685468499968,
+          "usage_fraction": 0.9405532622551005,
+          "used_bytes": 1685468545024,
           "writable": false
         },
         {
-          "available_bytes": 6590464,
+          "available_bytes": 5099520,
           "device": 66305,
           "inodes_free": 225457632,
           "inodes_total": 234422272,
           "path": "/data",
           "total_bytes": 7619770974208,
-          "usage_fraction": 0.9999990891713467,
-          "used_bytes": 7235672674304,
+          "usage_fraction": 0.999999295225809,
+          "used_bytes": 7235674165248,
           "writable": false
         },
         {
-          "available_bytes": 106528415744,
+          "available_bytes": 106528370688,
           "device": 66308,
           "inodes_free": 114356235,
           "inodes_total": 117145600,
           "path": "/tmp",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9405532371122001,
-          "used_bytes": 1685468499968,
+          "usage_fraction": 0.9405532622551005,
+          "used_bytes": 1685468545024,
           "writable": true
         },
         {
-          "available_bytes": 106528415744,
+          "available_bytes": 106528370688,
           "device": 66308,
           "inodes_free": 114356235,
           "inodes_total": 117145600,
           "path": "/var/tmp",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9405532371122001,
-          "used_bytes": 1685468499968,
+          "usage_fraction": 0.9405532622551005,
+          "used_bytes": 1685468545024,
           "writable": true
         }
       ],
@@ -1100,7 +1100,7 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540487856128 37413838848  3956101120     5799936 504390832128 503074017280\nSwap:    68719472640  2652114944 66067357696"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540487856128 37460475904  3907624960     5791744 504392679424 503027380224\nSwap:    68719472640  2652114944 66067357696"
       },
       "mounts": {
         "returncode": 0,
@@ -1113,7 +1113,7 @@
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n4082116       1       00:02 systemd\n4082117 4082116       00:02 (sd-pam)\n4082240 4082192       00:00 sshd\n4082241 4082240       00:00 python3\n4082255 4082241       00:00 ps"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n4082812       1       00:01 systemd\n4082813 4082812       00:01 (sd-pam)\n4082949 4082900       00:00 sshd\n4082950 4082949       00:00 python3\n4082965 4082950       00:00 ps"
       },
       "reference_execution_compatible": false,
       "repos": [
@@ -1182,7 +1182,7 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=server4 Arch=x86_64 CoresPerSocket=32  CPUAlloc=0 CPUEfctv=128 CPUTot=128 CPULoad=0.45 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:rtx_pro_6000:8(S:0-1) NodeAddr=server4 NodeHostName=server4 Version=26.05.0 OS=Linux 6.8.0-124-generic #124-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 13:00:45 UTC 2026  RealMemory=512000 AllocMem=0 FreeMem=3849 Sockets=2 Boards=1 State=IDLE ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-06-26T10:55:08 SlurmdStartTime=2026-09-12T06:05:32 LastBusyTime=2026-09-24T04:45:17 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=500G,billing=128,gres/gpu=8 AllocTRES= CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=server4 Arch=x86_64 CoresPerSocket=32  CPUAlloc=0 CPUEfctv=128 CPUTot=128 CPULoad=0.48 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:rtx_pro_6000:8(S:0-1) NodeAddr=server4 NodeHostName=server4 Version=26.05.0 OS=Linux 6.8.0-124-generic #124-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 13:00:45 UTC 2026  RealMemory=512000 AllocMem=0 FreeMem=3826 Sockets=2 Boards=1 State=IDLE ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-06-26T10:55:08 SlurmdStartTime=2026-09-12T06:05:32 LastBusyTime=2026-09-24T04:45:17 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=500G,billing=128,gres/gpu=8 AllocTRES= CurrentWatts=0 AveWatts=0\n"
       },
       "ssh_host": "kimhj@10.0.12.163"
     }
@@ -1190,7 +1190,7 @@
   "slurm_jobs": {
     "returncode": 0,
     "stderr": "",
-    "stdout": "52774|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-devbox-g11\n52771|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-ubuntu-g11\n52772|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-server2-g11\n52773|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-server4-g11\n52620|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime26_StudentPlain_TeacherHint\n52619|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime26_StudentHint_TeacherCoT\n52618|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime25_StudentPlain_TeacherHint\n52617|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime25_StudentHint_TeacherCoT\n52616|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_hmmt25_StudentPlain_TeacherHint\n52570|ahnjm|PENDING|0:00|8:00:00|1||gres/gpu:a6000:1|eval-pool\n52559|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt26_Disagreement_CoT_restart1\n52474|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_Disagreement_CoT\n52473|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_Majority_CoT\n52472|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_GT_reviewed_answer\n52471|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_B_tentative\n52470|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_D_no_candidate\n52469|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_OPSD_OT_matched8\n52465|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_Disagreement_CoT\n52464|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_OPSD_same_reference\n52463|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_OPSD_OT_matched8\n52462|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_Disagreement_CoT\n52461|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_OPSD_same_reference\n52460|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_OPSD_OT_matched8\n52459|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_Disagreement_CoT\n52458|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_OPSD_same_reference\n52457|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_OPSD_OT_matched8\n52447|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_Majority_CoT\n52446|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_GT_reviewed_answer\n52445|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_D_no_candidate\n52444|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_B_tentative\n52443|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_Majority_CoT\n52442|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_GT_reviewed_answer\n52441|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_D_no_candidate\n52440|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_B_tentative\n52439|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_Majority_CoT\n52438|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_GT_reviewed_answer\n52437|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_D_no_candidate\n52436|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_B_tentative\n52302|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52246|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52245|ahnjm|PENDING|0:00|12:00:00|1||gres/gpu:a6000:1|eval-pool\n52244|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52242|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52241|ahnjm|PENDING|0:00|12:00:00|1||gres/gpu:a6000:1|eval-pool\n52238|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52790|mindw|RUNNING|2:28|2:00:00|1|devbox|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-P13-devbox-s44-Base-dev-greedy-generate-a0\n52789|mindw|RUNNING|2:31|12:00:00|1|devbox|N/A|Rejection-Sampling-SFT-Qwen3-1.7B-P13-devbox-s44-Base-dev-sampled-score-a0\n52742|kimhj|RUNNING|27:46|4:00:00|1|ubuntu|gres/gpu:h200:1|v2r-llada_math500_core_finalsha-shard-004\n52740|kimhj|RUNNING|57:52|4:00:00|1|ubuntu|gres/gpu:h200:1|v2r-llada_math500_core_finalsha-shard-002\n52615|leejg|RUNNING|2:16:21|12:00:00|1|ubuntu|gres/gpu:h200:1|ot8b_hint_eval_hmmt25_StudentHint_TeacherCoT\n52768|parkyr|RUNNING|2:25:30|1-00:00:00|1|ubuntu|gres/gpu:h200:1|cipher-math-l5-2048\n52699|kimjh|RUNNING|4:10:28|4-00:00:00|1|server2|gres/gpu:a6000:4|agentmem-exp03-v33-4g\n52235|ahnjm|RUNNING|5:12:03|12:00:00|1|devbox|gres/gpu:a6000:1|eval-pool\n52725|mindw|RUNNING|5:21:25|12:00:00|1|server2|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-randh-server2-gen-sampled-a0\n52716|mindw|RUNNING|5:50:49|1-00:00:00|1|devbox|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-P13-devbox-s44-A-train-a0\n52239|ahnjm|RUNNING|6:49:03|12:00:00|1|devbox|gres/gpu:a6000:1|eval-pool\n52329|mindw|RUNNING|1-07:42:03|2-00:00:00|1|devbox|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-short-devbox-train-a0\n52136|mindw|RUNNING|1-17:54:21|2-00:00:00|1|server2|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-hard-server2-train-a0\n"
+    "stdout": "52774|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-devbox-g11\n52771|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-ubuntu-g11\n52772|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-server2-g11\n52773|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-server4-g11\n52620|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime26_StudentPlain_TeacherHint\n52619|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime26_StudentHint_TeacherCoT\n52618|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime25_StudentPlain_TeacherHint\n52617|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime25_StudentHint_TeacherCoT\n52616|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_hmmt25_StudentPlain_TeacherHint\n52570|ahnjm|PENDING|0:00|8:00:00|1||gres/gpu:a6000:1|eval-pool\n52559|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt26_Disagreement_CoT_restart1\n52474|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_Disagreement_CoT\n52473|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_Majority_CoT\n52472|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_GT_reviewed_answer\n52471|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_B_tentative\n52470|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_D_no_candidate\n52469|leejg|PENDING|0:00|1-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_gpqa16_r3_OPSD_OT_matched8\n52465|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_Disagreement_CoT\n52464|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_OPSD_same_reference\n52463|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_OPSD_OT_matched8\n52462|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_Disagreement_CoT\n52461|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_OPSD_same_reference\n52460|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_OPSD_OT_matched8\n52459|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_Disagreement_CoT\n52458|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_OPSD_same_reference\n52457|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_OPSD_OT_matched8\n52447|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_Majority_CoT\n52446|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_GT_reviewed_answer\n52445|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_D_no_candidate\n52444|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_B_tentative\n52443|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_Majority_CoT\n52442|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_GT_reviewed_answer\n52441|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_D_no_candidate\n52440|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_B_tentative\n52439|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_Majority_CoT\n52438|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_GT_reviewed_answer\n52437|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_D_no_candidate\n52436|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_B_tentative\n52302|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52246|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52245|ahnjm|PENDING|0:00|12:00:00|1||gres/gpu:a6000:1|eval-pool\n52244|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52242|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52241|ahnjm|PENDING|0:00|12:00:00|1||gres/gpu:a6000:1|eval-pool\n52238|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52790|mindw|RUNNING|3:35|2:00:00|1|devbox|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-P13-devbox-s44-Base-dev-greedy-generate-a0\n52789|mindw|RUNNING|3:38|12:00:00|1|devbox|N/A|Rejection-Sampling-SFT-Qwen3-1.7B-P13-devbox-s44-Base-dev-sampled-score-a0\n52742|kimhj|RUNNING|28:53|4:00:00|1|ubuntu|gres/gpu:h200:1|v2r-llada_math500_core_finalsha-shard-004\n52740|kimhj|RUNNING|58:59|4:00:00|1|ubuntu|gres/gpu:h200:1|v2r-llada_math500_core_finalsha-shard-002\n52615|leejg|RUNNING|2:17:28|12:00:00|1|ubuntu|gres/gpu:h200:1|ot8b_hint_eval_hmmt25_StudentHint_TeacherCoT\n52768|parkyr|RUNNING|2:26:37|1-00:00:00|1|ubuntu|gres/gpu:h200:1|cipher-math-l5-2048\n52699|kimjh|RUNNING|4:11:35|4-00:00:00|1|server2|gres/gpu:a6000:4|agentmem-exp03-v33-4g\n52235|ahnjm|RUNNING|5:13:10|12:00:00|1|devbox|gres/gpu:a6000:1|eval-pool\n52725|mindw|RUNNING|5:22:32|12:00:00|1|server2|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-randh-server2-gen-sampled-a0\n52716|mindw|RUNNING|5:51:56|1-00:00:00|1|devbox|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-P13-devbox-s44-A-train-a0\n52239|ahnjm|RUNNING|6:50:10|12:00:00|1|devbox|gres/gpu:a6000:1|eval-pool\n52329|mindw|RUNNING|1-07:43:10|2-00:00:00|1|devbox|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-short-devbox-train-a0\n52136|mindw|RUNNING|1-17:55:28|2-00:00:00|1|server2|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-hard-server2-train-a0\n"
   },
-  "timestamp": "2026-09-23T19:59:25.659989+00:00"
+  "timestamp": "2026-09-23T20:00:31.953438+00:00"
 }
