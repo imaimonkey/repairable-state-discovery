@@ -410,15 +410,20 @@ def storage_observation() -> dict[str, Any]:
 
 
 def forensic_observation() -> dict[str, Any]:
-    command = [
-        "bash", "-lc",
-        "root=/home/kimhj/forensics/v2_50752_confirmation_20260921; "
-        "if [ ! -d \"$root\" ]; then echo '{\"available\":false}'; exit 0; fi; "
-        "printf '{\"available\":true,\"files\":['; "
-        "find \"$root\" -maxdepth 1 -type f -printf '\"%f|%s|%T@\",' | sed 's/,$//'; "
-        "printf ']}\\n'"
-    ]
-    result = ssh("10.0.12.121", command, timeout=30)
+    code = r'''import json, time
+from pathlib import Path
+root=Path("/home/kimhj/forensics/v2_50752_confirmation_20260921")
+out={"available":root.exists(),"source_root":str(root),"files":[]}
+if root.exists():
+    for p in sorted(root.iterdir()):
+        if p.is_file():
+            s=p.stat(); out["files"].append({"name":p.name,"size_bytes":s.st_size,"mtime_kst":time.strftime("%Y-%m-%dT%H:%M:%S%z",time.localtime(s.st_mtime))})
+    try: out["index"]=json.loads((root/"confirmation_index.json").read_text())
+    except Exception: pass
+    try: out["shards"]=json.loads((root/"shards.json").read_text())
+    except Exception: pass
+print(json.dumps(out,separators=(",",":")))'''
+    result = ssh("10.0.12.121", ["python3", "-"], input_text=code, timeout=30)
     if not result["ok"]:
         return {"available": False, "error": result["stderr"].strip()}
     try:
