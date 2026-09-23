@@ -1,5 +1,5 @@
-2026-09-23T20:50:16.821151+00:00
-HOURS TO DEADLINE: 63.15
+2026-09-23T20:51:48.528880+00:00
+HOURS TO DEADLINE: 63.12
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -11,6 +11,10 @@ Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestra
 INTEGRITY ALERTS
 MONITOR_DRIFT: Slurm job 52791 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52792 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52841 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52840 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52839 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52837 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52834 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52831 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52828 exists but legacy monitor state does not mention it.
@@ -23,6 +27,10 @@ MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was c
 ALL ACTIVE KIMHJ JOBS
 52791 v2r-llada_math500_core_finalsha-shard-005 PENDING  KEEP_REFERENCE_CRITICAL
 52792 v2r-llada_math500_core_finalsha-shard-006 PENDING  KEEP_REFERENCE_CRITICAL
+52841 v2r-ind-s2-gsm-r2b PENDING  KEEP_REFERENCE_CRITICAL
+52840 v2r-ind-s1-gsm-r2b PENDING  KEEP_REFERENCE_CRITICAL
+52839 v2r-ind-s2-gsm-r1c PENDING  KEEP_REFERENCE_CRITICAL
+52837 v2r-ind-s1-gsm-r1b PENDING  KEEP_REFERENCE_CRITICAL
 52834 v2r-ind-s4-gsm-r2 PENDING  KEEP_REFERENCE_CRITICAL
 52831 v2r-ind-s4-gsm-r1 PENDING  KEEP_REFERENCE_CRITICAL
 52828 v2r-ind-s4-gsm-r0 RUNNING server4 KEEP_REFERENCE_CRITICAL
@@ -85,10 +93,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-23T20:49:34.977822+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-23T20:51:42.330931+00:00
 
 MONITOR
-heartbeat=2026-09-23T20:50:16.821151+00:00
+heartbeat=2026-09-23T20:51:48.528880+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
