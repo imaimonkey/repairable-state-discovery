@@ -3,6 +3,22 @@
   "jobs": {
     "all_reference_jobs": [
       {
+        "job_id": "52791",
+        "name": "v2r-llada_math500_core_finalsha-shard-005",
+        "node": "",
+        "reason": "(QOSMaxGRESPerUser)",
+        "state": "PENDING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
+        "job_id": "52792",
+        "name": "v2r-llada_math500_core_finalsha-shard-006",
+        "node": "",
+        "reason": "(QOSMaxGRESPerUser)",
+        "state": "PENDING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "52742",
         "name": "v2r-llada_math500_core_finalsha-shard-004",
         "node": "ubuntu",
@@ -19,7 +35,24 @@
         "tres": "gres/gpu:h200:1"
       }
     ],
-    "pending": [],
+    "pending": [
+      {
+        "job_id": "52791",
+        "name": "v2r-llada_math500_core_finalsha-shard-005",
+        "node": "",
+        "reason": "(QOSMaxGRESPerUser)",
+        "state": "PENDING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
+        "job_id": "52792",
+        "name": "v2r-llada_math500_core_finalsha-shard-006",
+        "node": "",
+        "reason": "(QOSMaxGRESPerUser)",
+        "state": "PENDING",
+        "tres": "gres/gpu:h200:1"
+      }
+    ],
     "running": [
       {
         "job_id": "52742",
@@ -40,9 +73,9 @@
     ]
   },
   "next_batch": {
-    "action": "NO_REFERENCE_SHARD_PENDING",
+    "action": "WAIT_WITH_INTERVAL_REPLAN",
     "eligible_servers": [],
-    "rationale": "No pending reference shard was observed."
+    "rationale": "No server currently passes the combined observation, storage, GPU, and reference-runtime gates."
   },
   "policy": {
     "all_servers_observed": true,
@@ -66,8 +99,7 @@
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
         "3",
-        "4",
-        "7"
+        "4"
       ],
       "observed": true,
       "reasons": [
@@ -90,7 +122,6 @@
       "eligibility": false,
       "fallback_action": null,
       "idle_gpu_candidates": [
-        "6",
         "7"
       ],
       "observed": true,
@@ -132,7 +163,6 @@
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
         "0",
-        "1",
         "2",
         "3",
         "4",
@@ -151,5 +181,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T20:06:18.350644+00:00"
+  "timestamp": "2026-09-23T20:07:49.859339+00:00"
 }
