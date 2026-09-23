@@ -1,16 +1,41 @@
 from __future__ import annotations
 
 import unittest
+from unittest.mock import patch
 
+from repairable_diffusion.src.v2 import run_measurement
 from repairable_diffusion.src.v2.backends import ComputeCounter, V2DreamBackend, V2Snapshot, _restore_rng, _rng_snapshot
 from repairable_diffusion.src.v2.contracts import deterministic_branch_seed, validate_contract_dict
 from repairable_diffusion.src.v2.metrics import last_repairable_step, paired_branch_item_pass_at_k, summarize_state
 from repairable_diffusion.src.v2.oof import crossfit_binary_scores, crossfit_value_scores
 from repairable_diffusion.src.v2.provenance import assert_fingerprint_match, scientific_fingerprint
 from repairable_diffusion.src.v2.task_adapters import GSM8KAdapter, Math500Adapter, MBPPAdapter
+from scripts.seal_v2_runs import _assert_revision_alignment
 
 
 class V2ContractTests(unittest.TestCase):
+    def test_report_provenance_freezes_execution_sha_when_head_moves(self) -> None:
+        execution_sha = "8b" * 20
+        finalization_sha = "15f" * 13 + "1"
+        with patch.object(run_measurement, "_git_sha", return_value=finalization_sha):
+            provenance = run_measurement._final_report_provenance({"git_sha": execution_sha})
+        self.assertEqual(provenance["git_sha"], execution_sha)
+        self.assertEqual(provenance["execution_git_sha"], execution_sha)
+        self.assertEqual(provenance["finalization_git_sha"], finalization_sha)
+
+    def test_sealing_uses_frozen_execution_sha(self) -> None:
+        execution_sha = "8b" * 20
+        finalization_sha = "15f" * 13 + "1"
+        report = {
+            "git_sha": execution_sha,
+            "execution_git_sha": execution_sha,
+            "finalization_git_sha": finalization_sha,
+        }
+        manifest = {"git_sha": execution_sha}
+        self.assertEqual(_assert_revision_alignment(report, manifest, execution_sha), execution_sha)
+        with self.assertRaises(RuntimeError):
+            _assert_revision_alignment(report, manifest, finalization_sha)
+
     def test_branch_seed_reproducibility(self) -> None:
         kwargs = dict(root_seed=7, item_id=3, trajectory_id=2, step_index=16, branch_index=1, stage="localization")
         self.assertEqual(deterministic_branch_seed(**kwargs), deterministic_branch_seed(**kwargs))

@@ -36,6 +36,28 @@ def _seed_hash(seeds: list[int]) -> str:
     return config_sha256({"seeds": sorted(set(int(x) for x in seeds))})
 
 
+def _assert_revision_alignment(
+    report: dict[str, Any], run_manifest: dict[str, Any], current_sha: str
+) -> str:
+    """Validate execution SHA while tolerating a separately recorded finalization HEAD."""
+    execution_sha = str(report.get("execution_git_sha") or report.get("git_sha") or "")
+    if not execution_sha:
+        raise RuntimeError("report is missing execution provenance git SHA")
+    if report.get("git_sha") != execution_sha:
+        raise RuntimeError("report git_sha must equal execution_git_sha")
+    if run_manifest.get("git_sha") != execution_sha:
+        raise RuntimeError(
+            "run manifest revision differs from scientific execution revision: "
+            f"manifest={run_manifest.get('git_sha')} execution={execution_sha}"
+        )
+    if current_sha != execution_sha:
+        raise RuntimeError(
+            "clean sealing checkout does not match scientific execution revision: "
+            f"current={current_sha} execution={execution_sha}"
+        )
+    return execution_sha
+
+
 def seal(config_path: Path) -> dict[str, Any]:
     cfg = load_yaml(config_path)
     run_name = str(cfg["run_name"])
@@ -52,11 +74,7 @@ def seal(config_path: Path) -> dict[str, Any]:
     report = json.loads(report_path.read_text(encoding="utf-8"))
     run_manifest = json.loads(run_manifest_path.read_text(encoding="utf-8"))
     current_sha = _git_sha()
-    if report.get("git_sha") != current_sha or run_manifest.get("git_sha") != current_sha:
-        raise RuntimeError(
-            f"refusing to seal run from another code revision: run={run_name} "
-            f"report={report.get('git_sha')} manifest={run_manifest.get('git_sha')} current={current_sha}"
-        )
+    execution_sha = _assert_revision_alignment(report, run_manifest, current_sha)
     if report.get("v1_artifacts_substituted") is not False:
         raise RuntimeError(f"run {run_name} does not explicitly reject V1 substitution")
 
@@ -74,7 +92,7 @@ def seal(config_path: Path) -> dict[str, Any]:
 
     base = dict(run_manifest.get("base_provenance") or {})
     required_provenance = {
-        "git_sha": current_sha,
+        "git_sha": execution_sha,
         "config_sha256": str(report["config_sha256"]),
         "model_id": base.get("model_id"),
         "model_revision": base.get("model_revision", "default"),

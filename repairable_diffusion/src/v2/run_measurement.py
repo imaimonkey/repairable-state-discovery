@@ -30,6 +30,16 @@ def _git_sha() -> str:
     return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
 
 
+def _final_report_provenance(base_fingerprint: dict[str, Any]) -> dict[str, str]:
+    """Keep scientific execution provenance stable if the worktree moves later."""
+    execution_sha = str(base_fingerprint["git_sha"])
+    return {
+        "git_sha": execution_sha,
+        "execution_git_sha": execution_sha,
+        "finalization_git_sha": _git_sha(),
+    }
+
+
 def _load_profile(name: str, path: Path = PROFILES_PATH) -> dict[str, Any]:
     payload = load_yaml(path)
     profile = dict(payload["models"][name])
@@ -621,7 +631,7 @@ def run(config_path: Path, *, force: bool = False) -> dict[str, Any]:
 
     report = {
         "run_name": run_name,
-        "git_sha": _git_sha(),
+        **_final_report_provenance(base_fp),
         "config_sha256": config_sha256(cfg),
         "trajectory_bank_hash": bank_hash,
         "dataset": cfg["dataset"],
