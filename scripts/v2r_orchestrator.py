@@ -60,7 +60,7 @@ def cycle():
     if state in ['RUNNING','PENDING','CONFIGURING','COMPLETING']:task['status']=state
     elif state=='COMPLETED':
      try:
-      manifest=read_json(task['manifest']);gates=read_json(task['gates']);validate_shard(Path(task['run_dir'])/'shards'/f"shard-{int(task['shard']):03d}",manifest,int(task['shard']),gates=gates);task['status']='DONE';task['error']=None
+      manifest=read_json(task['manifest']);gates=read_json(task['gates']);validate_shard(Path(task['run_dir'])/'shards'/f"shard-{int(task['shard']):03d}",manifest,int(task['shard']),gates=gates);task['status']='SEALED' if Path(task['run_dir'],'SEAL_RECORD.json').exists() else 'DONE';task['error']=None
      except Exception as exc:task.update(status='NEEDS_REVIEW',error=str(exc))
     elif state!='UNKNOWN':task.update(status='NEEDS_REVIEW',error='Terminal scientific Slurm state: '+state)
    elif all(s in {'PASS','SEALED'} for s in deps):
