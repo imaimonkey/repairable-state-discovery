@@ -1,5 +1,5 @@
-2026-09-23T18:52:48.841229+00:00
-HOURS TO DEADLINE: 65.10
+2026-09-23T18:54:20.465183+00:00
+HOURS TO DEADLINE: 65.08
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -15,8 +15,6 @@ MONITOR_DRIFT: Slurm job 52747 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52748 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52749 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52750 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52758 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52760 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52741 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52739 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
@@ -29,8 +27,6 @@ ALL ACTIVE KIMHJ JOBS
 52748 v2r-llada_math500_temporal_finalsha-shard-002 PENDING  KEEP_REFERENCE_CRITICAL
 52749 v2r-llada_math500_temporal_finalsha-shard-003 PENDING  KEEP_REFERENCE_CRITICAL
 52750 v2r-llada_math500_temporal_finalsha-shard-004 PENDING  KEEP_REFERENCE_CRITICAL
-52758 v2r-llada_math500_core_finalsha-shard-006r1 PENDING  KEEP_REFERENCE_CRITICAL
-52760 v2r-llada_math500_core_finalsha-shard-005r2 PENDING  KEEP_REFERENCE_CRITICAL
 52741 v2r-llada_math500_core_finalsha-shard-003 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52739 v2r-llada_math500_core_finalsha-shard-001 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
@@ -87,10 +83,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2758158 heartbeat=2026-09-23T18:51:57.101821+00:00
+status=RUNNING pid=2758158 heartbeat=2026-09-23T18:54:04.233014+00:00
 
 MONITOR
-heartbeat=2026-09-23T18:52:48.841229+00:00
+heartbeat=2026-09-23T18:54:20.465183+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
