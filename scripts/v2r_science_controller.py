@@ -6,15 +6,16 @@ the matching LLaDA R2 report is PASS, uses the frozen one-trajectory executor,
 and leaves merge/seal decisions to the same single orchestrator.
 """
 from __future__ import annotations
-import datetime as dt, json, shlex, subprocess
+import datetime as dt, json, shlex, subprocess, sys
 from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
 from repairable_diffusion.src.v2r.artifacts import atomic_json, read_json, merge_run, validate_shard
 from repairable_diffusion.src.v2r.planning import make_plan
 from repairable_diffusion.src.v2r.reference_sources import load_records
 from repairable_diffusion.src.v2r.schema import canonical_hash, file_hash
 from v2r_submit import storage_gate, environment, PYTHON, RUNTIME
 
-ROOT=Path(__file__).resolve().parents[1]
 OUT=Path('/var/tmp/kimhj-v2r-reference/outputs/v2r_reference')
 SOURCE_CACHE=Path('/var/tmp/kimhj-v2r-reference/upstream')
 MODEL_CACHE=Path('/var/tmp/kimhj-v2r-reference/model-cache')
