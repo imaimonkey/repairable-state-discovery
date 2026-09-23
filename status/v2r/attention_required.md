@@ -1,5 +1,5 @@
-2026-09-23T23:25:36.432573+00:00
-HOURS TO DEADLINE: 60.56
+2026-09-23T23:27:08.760844+00:00
+HOURS TO DEADLINE: 60.53
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -149,7 +149,7 @@ See legacy monitor and legacy_reset snapshots; old evidence is not reference-pri
 
 REFERENCE GATES
 llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=WAITING_PRIORITY
-llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=SEALED, temporal=SUBMITTED
+llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=SEALED, temporal=PENDING
 
 REFERENCE PRIMARY
 dream_gsm8k: NOT_STARTED
@@ -174,21 +174,21 @@ llada_math500_core_finalsha-shard-003: SEALED job=52741
 llada_math500_core_finalsha-shard-004: SEALED job=52742
 llada_math500_core_finalsha-shard-005: SEALED job=52791
 llada_math500_core_finalsha-shard-006: SEALED job=52792
-llada_math500_temporal_finalsha-shard-000: SUBMITTED job=52955
-llada_math500_temporal_finalsha-shard-001: SUBMITTED job=52956
-llada_math500_temporal_finalsha-shard-002: SUBMITTED job=52957
-llada_math500_temporal_finalsha-shard-003: SUBMITTED job=52958
-llada_math500_temporal_finalsha-shard-004: SUBMITTED job=52959
+llada_math500_temporal_finalsha-shard-000: RUNNING job=52955
+llada_math500_temporal_finalsha-shard-001: RUNNING job=52956
+llada_math500_temporal_finalsha-shard-002: PENDING job=52957
+llada_math500_temporal_finalsha-shard-003: PENDING job=52958
+llada_math500_temporal_finalsha-shard-004: PENDING job=52959
 
 PAPER
 status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-23T23:24:53.261406+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-23T23:27:01.328178+00:00
 
 MONITOR
-heartbeat=2026-09-23T23:25:36.432573+00:00
+heartbeat=2026-09-23T23:27:08.760844+00:00
 
 CURRENT P0
 Complete LLaDA MATH temporal evidence and seal its reference bundle.
