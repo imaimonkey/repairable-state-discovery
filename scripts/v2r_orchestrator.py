@@ -6,6 +6,8 @@ from pathlib import Path
 from v2r_inventory import atomic_json,collect
 from v2r_submit import submit,command,environment,DEADLINE
 from v2r_status import write_status,read
+from v2r_science_controller import ensure_base_tasks,submit_science,finalize_base
+from repairable_diffusion.src.v2r.artifacts import read_json,validate_shard
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'status/v2r';RUNTIME=Path('/var/tmp/kimhj-v2r-reference/runtime')
 
 def event(name,payload):
@@ -24,7 +26,26 @@ def cycle():
  if not inventory or time.time()-dt.datetime.fromisoformat(inventory['timestamp']).timestamp()>1800:inventory=collect(OUT)
  byid={t['id']:t for t in queue['tasks']}
  for task in sorted(queue['tasks'],key=lambda t:t['priority']):
-  old=task.get('status','READY');report=read(Path(task['output'])/task['stage']/'gate_report.json')
+  old=task.get('status','READY')
+  if task.get('kind')=='science_shard':
+   deps=[byid[k]['status'] for k in task.get('depends_on',[])]
+   if task.get('job_id'):
+    s=subprocess.run(['sacct','-n','-X','-P','-j',task['job_id'],'--format=JobID,State,ExitCode'],text=True,capture_output=True,timeout=15)
+    state=next((l.split('|')[1] for l in s.stdout.splitlines() if l.split('|')[0]==task['job_id']),'UNKNOWN');task['slurm_state']=state
+    if state in ['RUNNING','PENDING','CONFIGURING','COMPLETING']:task['status']=state
+    elif state=='COMPLETED':
+     try:
+      manifest=read_json(task['manifest']);gates=read_json(task['gates']);validate_shard(Path(task['run_dir'])/'shards'/f"shard-{int(task['shard']):03d}",manifest,int(task['shard']),gates=gates);task['status']='DONE';task['error']=None
+     except Exception as exc:task.update(status='NEEDS_REVIEW',error=str(exc))
+    elif state!='UNKNOWN':task.update(status='NEEDS_REVIEW',error='Terminal scientific Slurm state: '+state)
+   elif all(s=='PASS' for s in deps):
+    inventory=collect(OUT)
+    try:task.update(submit_science(task,inventory));task['status']='SUBMITTED'
+    except RuntimeError as e:task.update(status='RESOURCE_WAIT',error=str(e))
+   else:task['status']='WAITING_DEPENDENCY'
+   if task['status']!=old:changed=True;event('TASK_STATE_CHANGE',{'task':task['id'],'old':old,'new':task['status'],'job_id':task.get('job_id'),'error':task.get('error')})
+   continue
+  report=read(Path(task['output'])/task['stage']/'gate_report.json')
   if report and report.get('status') in ['PASS','NEEDS_REVIEW']:
    task['status']=report['status'];task['error']=report.get('error')
   elif task.get('job_id'):
@@ -48,6 +69,22 @@ def cycle():
      except RuntimeError as e:task.update(status='RESOURCE_WAIT',error=str(e))
    else:task['status']='WAITING_DEPENDENCY'
   if task['status']!=old:changed=True;event('TASK_STATE_CHANGE',{'task':task['id'],'old':old,'new':task['status'],'job_id':task.get('job_id'),'error':task.get('error')})
+ # Unlock one-trajectory base banks as soon as matching R2 is sealed.
+ if ensure_base_tasks(queue):
+  changed=True;event('SCIENCE_QUEUE_UNLOCKED',{'stage':'base','execution_sha':queue.get('execution_git_sha')})
+ # Merge complete base shards with strict provenance; never infer missing items.
+ groups={}
+ for task in queue.get('tasks',[]):
+  if task.get('kind')=='science_shard' and task.get('stage')=='base':groups.setdefault(task['run_dir'],[]).append(task)
+ for run_dir,tasks in groups.items():
+  if tasks and all(t.get('status') in {'DONE','MERGED'} for t in tasks) and not Path(run_dir,'aggregate','MERGED.json').exists():
+   try:
+    aggregate=finalize_base(tasks); event('SCIENCE_BASE_MERGED',{'run_dir':run_dir,'item_count':aggregate['item_count']})
+    for task in tasks:task['status']='MERGED'
+    changed=True
+   except Exception as exc:
+    for task in tasks:task['error']='MERGE_BLOCKED: '+str(exc)
+    event('SCIENCE_MERGE_BLOCKED',{'run_dir':run_dir,'error':str(exc)})
  atomic_json(OUT/'orchestrator_queue.json',queue)
  now=dt.datetime.now(dt.timezone.utc);health={'timestamp':now.isoformat(),'pid':os.getpid(),'tmux':'iclr2027-reference-orchestrator','status':'RUNNING','inventory_cycle_seconds':1800,'event_poll_seconds':60,'next_poll':(now+dt.timedelta(seconds=60)).isoformat(),'last_error':None}
  write_status(queue,health)
