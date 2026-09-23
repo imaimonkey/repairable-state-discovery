@@ -342,12 +342,110 @@ def paper_observation() -> dict[str, Any]:
     return state
 
 
+def paper_build_observation(previous: dict[str, Any], *, force: bool = False) -> dict[str, Any]:
+    previous_build = read_json(LIVE / "paper_build_status.json", {}) or {}
+    head = previous.get("head")
+    last = previous_build.get("checked_at_kst")
+    due = force or not last
+    if last:
+        try:
+            due = due or (now() - dt.datetime.fromisoformat(last)).total_seconds() >= 6 * 3600
+        except ValueError:
+            due = True
+    result = {"checked_at_kst": iso(), "paper_head": head, "performed": False, "build_pass": previous_build.get("build_pass"), "submission_audit_pass": previous_build.get("submission_audit_pass"), "errors": []}
+    if not due or not previous.get("available"):
+        result["reason"] = "not_due" if previous.get("available") else "paper_repo_unavailable"
+        return result
+    result["performed"] = True
+    tmp = Path(tempfile.mkdtemp(prefix="rsd-paper-build-", dir="/tmp"))
+    try:
+        archive = tmp / "paper.tar"
+        ar = run_cmd(["git", "-C", str(PAPER_REPO), "archive", "--format=tar", "HEAD", "-o", str(archive)], timeout=60)
+        if not ar["ok"]:
+            result["errors"].append(f"git archive failed: {ar['stderr'][-1000:]}")
+            return result
+        ex = run_cmd(["tar", "xf", str(archive), "-C", str(tmp)], timeout=60)
+        if not ex["ok"]:
+            result["errors"].append(f"tar extraction failed: {ex['stderr'][-1000:]}")
+            return result
+        makefile = tmp / "Makefile"
+        if not makefile.exists():
+            result["errors"].append("Makefile not present in paper HEAD")
+            return result
+        # Execute the build only inside the temporary archive checkout.
+        build_proc = subprocess.run(["make"], cwd=tmp, text=True, capture_output=True, timeout=900)
+        result["build_pass"] = build_proc.returncode == 0
+        result["build_returncode"] = build_proc.returncode
+        result["build_stdout_tail"] = build_proc.stdout[-3000:]
+        result["build_stderr_tail"] = build_proc.stderr[-3000:]
+        pdfs = list(tmp.rglob("*.pdf"))
+        result["pdfs"] = [{"path": str(p.relative_to(tmp)), "size_bytes": p.stat().st_size} for p in pdfs]
+        audit_target = run_cmd(["make", "-n", "submission-audit"], timeout=60)
+        if audit_target["ok"]:
+            audit = subprocess.run(["make", "submission-audit"], cwd=tmp, text=True, capture_output=True, timeout=900)
+            result["submission_audit_pass"] = audit.returncode == 0
+            result["audit_returncode"] = audit.returncode
+            result["audit_stdout_tail"] = audit.stdout[-3000:]
+            result["audit_stderr_tail"] = audit.stderr[-3000:]
+        else:
+            result["submission_audit_pass"] = None
+            result["audit_reason"] = "submission-audit target unavailable"
+    except Exception as exc:
+        result["errors"].append(repr(exc))
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return result
+
+
 def storage_observation() -> dict[str, Any]:
     out: dict[str, Any] = {"local": run_cmd(["df", "-P", "/", "/data"], timeout=15)["stdout"].splitlines()}
     for host in ["10.0.12.120", "10.0.12.121", "10.0.12.163"]:
         result = ssh(host, ["df", "-P", "/", "/data"], timeout=15)
         out[host] = result["stdout"].splitlines() if result["ok"] else {"available": False, "error": result["stderr"].strip()}
     return out
+
+
+def collect_compact_artifacts(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Copy only terminal, sealed, allowlisted artifacts into the monitor branch."""
+    events = []
+    allowlist = ["report.json", "scientific_provenance.json", "run_manifest.json", "probe_complete.json", "existence.csv", "selector_confirmation.csv", "state_values.jsonl", "fresh_sampling.jsonl", "probe_branches.jsonl"]
+    for row in rows:
+        if row["status"] != "SEALED" or not row["source_available"]:
+            continue
+        dest = ROOT / "results" / "v2_artifacts" / f"{row['run_name']}_{row['job_id']}"
+        if (dest / "artifact_manifest.json").exists() or (dest / "report.json").exists():
+            continue
+        spec = next((r for r in RUNS if r["job_id"] == row["job_id"]), None)
+        if not spec:
+            continue
+        dest.mkdir(parents=True, exist_ok=True)
+        copied = []
+        for name in allowlist:
+            info = row["files"].get(name, {})
+            if not info.get("exists") or int(info.get("size_bytes", 0)) > 80_000_000:
+                continue
+            remote_path = f"{spec['host']}:{spec['output']}/{name}"
+            cp = run_cmd(["scp", *SSH_OPTS, remote_path, str(dest / name)], timeout=180)
+            if cp["ok"]:
+                copied.append(name)
+        config_name = Path(spec["config"]).name
+        remote_config = f"{spec['host']}:{spec['workdir']}/{spec['config']}"
+        config_dest = dest / config_name
+        config_cp = run_cmd(["scp", *SSH_OPTS, remote_config, str(config_dest)], timeout=60)
+        if config_cp["ok"]:
+            copied.append(config_name)
+        if not copied:
+            shutil.rmtree(dest, ignore_errors=True)
+            continue
+        checksums = []
+        for p in sorted(dest.iterdir()):
+            if p.is_file() and p.name not in {"SHA256SUMS", "artifact_manifest.json"}:
+                digest = hashlib.sha256(p.read_bytes()).hexdigest()
+                checksums.append(f"{digest}  {p.name}")
+        (dest / "SHA256SUMS").write_text("\n".join(checksums) + "\n", encoding="utf-8")
+        write_json(dest / "artifact_manifest.json", {"schema": "v2_compact_artifact_v1", "collected_at_kst": iso(), "job_id": row["job_id"], "run_name": row["run_name"], "source_server": spec["server"], "source_host": spec["host"], "source_output": spec["output"], "execution_sha": row["execution_sha"], "copied_files": copied, "excluded_files": ["trajectories.pkl", "model weights", "active logs"], "collection_rule": "terminal SEALED only; no recomputation"})
+        events.append({"timestamp_kst": iso(), "type": "COMPACT_ARTIFACT_COLLECTED", "job_id": row["job_id"], "run_name": row["run_name"], "files": copied})
+    return events
 
 
 def expected_totals(run: dict[str, Any], observed: dict[str, Any]) -> dict[str, Any]:
@@ -452,6 +550,33 @@ def progress_history(rows: list[dict[str, Any]], previous: dict[str, Any]) -> li
     return result
 
 
+def velocity_for(rows: list[dict[str, Any]]) -> None:
+    history_path = LIVE / "progress_history.jsonl"
+    if not history_path.exists():
+        for row in rows: row["velocity"] = {"30m": "UNOBSERVABLE", "1h": "UNOBSERVABLE", "6h": "UNOBSERVABLE"}
+        return
+    entries = []
+    for line in history_path.read_text(encoding="utf-8").splitlines():
+        try: entries.append(json.loads(line))
+        except Exception: pass
+    current_time = now()
+    for row in rows:
+        current_value = row["totals"]["confirmation"].get("completed")
+        values = {}
+        for label, minutes in [("30m", 30), ("1h", 60), ("6h", 360)]:
+            candidates = []
+            for entry in entries:
+                if str(entry.get("job_id")) != str(row["job_id"]): continue
+                try: age = (current_time - dt.datetime.fromisoformat(entry["timestamp_kst"])).total_seconds() / 60
+                except Exception: continue
+                if 0 <= age <= minutes + 5 and isinstance(entry.get("persisted_completed"), int): candidates.append(entry)
+            if not isinstance(current_value, int) or not candidates:
+                values[label] = "UNOBSERVABLE"
+            else:
+                values[label] = current_value - min(candidates, key=lambda x: x["timestamp_kst"])["persisted_completed"]
+        row["velocity"] = values
+
+
 def event_list(rows: list[dict[str, Any]], previous: dict[str, Any]) -> list[dict[str, Any]]:
     old = {str(row.get("job_id")): row for row in previous.get("jobs", []) if isinstance(row, dict)}
     events = []
@@ -509,7 +634,7 @@ def build_readiness(rows: list[dict[str, Any]], paper: dict[str, Any], events: l
         p1.append("active V2 jobs remain; final aggregate is intentionally not run")
     return {"generated_at_kst": iso(), "deadline_kst": DEADLINE.isoformat(), "hours_remaining": round(hours, 2),
             "experiment": {"sealed_rows": len(sealed), "running_rows": len(running), "failed_rows": len(failed), "aggregate_ready": len(sealed) == 8 and not running and not failed, "tier_a_status": [r["status"] for r in rows if r["task"] in {"MATH-500", "GSM8K"}], "backbone_status": {"LLaDA": sum(r["status"] == "SEALED" for r in rows if r["model"].startswith("LLaDA")), "Dream": sum(r["status"] == "SEALED" for r in rows if r["model"].startswith("Dream"))}},
-            "paper": {"build_pass": None, "submission_audit_pass": None, "result_todos_remaining": paper.get("todo_count"), "generated_tables_ready": None, "generated_figures_ready": None, "anonymous_package_ready": False},
+            "paper": {"build_pass": paper.get("build", {}).get("build_pass"), "submission_audit_pass": paper.get("build", {}).get("submission_audit_pass"), "result_todos_remaining": paper.get("todo_count"), "generated_tables_ready": None, "generated_figures_ready": None, "anonymous_package_ready": False},
             "blockers": {"p0": p0, "p1": p1, "p2": []}, "latest_new_evidence": [e for e in events if e["type"] in {"PROVENANCE_SEALED", "REPORT_CREATED"}], "latest_event": events[-1] if events else None}
 
 
@@ -520,7 +645,7 @@ def append_jsonl(path: Path, values: list[dict[str, Any]]) -> None:
 
 
 def git_commit_push(events: list[dict[str, Any]]) -> dict[str, Any]:
-    add = run_cmd(["git", "-C", str(ROOT), "add", "-f", "status/live"], timeout=30)
+    add = run_cmd(["git", "-C", str(ROOT), "add", "-f", "status/live", "results/v2_artifacts"], timeout=30)
     if not add["ok"]: return {"commit": False, "push": False, "error": add["stderr"]}
     check = run_cmd(["git", "-C", str(ROOT), "status", "--short"], timeout=15)
     if not check["stdout"].strip(): return {"commit": False, "push": False, "message": "no changes"}
@@ -546,6 +671,11 @@ def cycle() -> dict[str, Any]:
     paper = paper_observation()
     storage = storage_observation()
     events = event_list(rows, previous)
+    compact_events = collect_compact_artifacts(rows)
+    events.extend(compact_events)
+    velocity_for(rows)
+    paper_build = paper_build_observation(paper, force=any(e["type"] == "PROVENANCE_SEALED" for e in events) or previous.get("paper", {}).get("head") != paper.get("head"))
+    paper["build"] = paper_build
     history = progress_history(rows, previous)
     readiness = build_readiness(rows, paper, events)
     current = {"schema": "iclr2027_live_status_v1", "generated_at_kst": iso(), "collector_hostname": socket.gethostname(), "monitor_branch": "codex/iclr2027-live-monitor-20260923", "monitor_commit": run_cmd(["git", "-C", str(ROOT), "rev-parse", "HEAD"], timeout=15)["stdout"].strip(), "baseline_analysis_bundle_commit": BASELINE_COMMIT, "observation_sources": ["squeue", "sacct", "scontrol", "server1-4 read-only SSH where available", "execution artifact metadata"], "execution_generations": {"llada": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e", "dream": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d"}, "jobs": rows, "paper": paper, "storage": storage, "readiness": readiness, "constraints": {"scientific_code_modified": False, "scientific_config_modified": False, "active_jobs_modified": False, "aggregate_created": False, "paper_sources_modified": False}}
@@ -554,6 +684,7 @@ def cycle() -> dict[str, Any]:
     write_json(LIVE / "aggregate_readiness.json", {"generated_at_kst": current["generated_at_kst"], "final_aggregate_ready": readiness["experiment"]["aggregate_ready"], "sealed_rows": readiness["experiment"]["sealed_rows"], "expected_rows": 8, "missing_rows": [r["job_id"] for r in rows if r["status"] != "SEALED"], "failed_excluded": [r["job_id"] for r in rows if r["status"] == "FAILED_EXCLUDED"], "blockers": readiness["blockers"]["p0"] + readiness["blockers"]["p1"]})
     write_json(LIVE / "submission_readiness.json", readiness)
     write_json(LIVE / "paper_status.json", paper)
+    write_json(LIVE / "paper_build_status.json", paper_build)
     write_json(LIVE / "server_health.json", storage)
     write_json(LIVE / "claim_dependency_status.json", {"observation_only": True, "dependencies": paper.get("claim_dependencies", {}), "note": "Claim content is not modified by this monitor."})
     write_json(LIVE / "rq_evidence_readiness.json", {"observation_only": True, "rows": [{"job_id": r["job_id"], "status": r["status"], "report": r["files"].get("report.json", {}).get("exists"), "provenance": r["files"].get("scientific_provenance.json", {}).get("exists"), "sealed": r["status"] == "SEALED"} for r in rows]})
