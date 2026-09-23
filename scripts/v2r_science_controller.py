@@ -153,6 +153,6 @@ def ensure_deep_tasks(queue):
    manifest_path=OUT/f'plans/{spec["run_id"]}.json'; gates_path=OUT/f'plans/{spec["run_id"]}.gates.json'; atomic_json(manifest_path,spec);atomic_json(gates_path,gates)
    deep_dir=OUT/f'runs/{spec["run_id"]}';deep_dir.mkdir(parents=True,exist_ok=True)
    for shard in spec['shards']:
-    sid=shard['shard_id']; tasks.append({'id':f'{spec["run_id"]}-shard-{sid:03d}','kind':'science_shard','backbone':'llada','task':task_name,'stage':spec['stage'],'purpose':purpose,'priority':40 if purpose=='core' else 50,'status':'READY','depends_on':[t['id'] for t in base_tasks],'execution_git_sha':spec['execution_git_sha'],'execution_worktree':spec['execution_worktree'],'manifest':str(manifest_path),'gates':str(gates_path),'run_dir':str(deep_dir),'shard':sid,'server':'server3','walltime':'04:00:00'})
+    sid=shard['shard_id']; tasks.append({'id':f'{spec["run_id"]}-shard-{sid:03d}','kind':'science_shard','backbone':'llada','task':task_name,'stage':spec['stage'],'purpose':purpose,'priority':21 if purpose=='core' else 22,'status':'READY','depends_on':[t['id'] for t in base_tasks],'execution_git_sha':spec['execution_git_sha'],'execution_worktree':spec['execution_worktree'],'manifest':str(manifest_path),'gates':str(gates_path),'run_dir':str(deep_dir),'shard':sid,'server':'server3','walltime':'04:00:00'})
    changed=True
  return changed
