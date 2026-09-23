@@ -1,5 +1,5 @@
-2026-09-23T20:47:13.665818+00:00
-HOURS TO DEADLINE: 63.20
+2026-09-23T20:48:45.172003+00:00
+HOURS TO DEADLINE: 63.17
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -11,10 +11,15 @@ Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestra
 INTEGRITY ALERTS
 MONITOR_DRIFT: Slurm job 52791 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52792 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52821 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52834 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52833 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52832 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52831 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52830 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52829 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52828 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52820 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52818 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52817 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52821 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52822 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52740 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
@@ -22,25 +27,30 @@ MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was c
 ALL ACTIVE KIMHJ JOBS
 52791 v2r-llada_math500_core_finalsha-shard-005 PENDING  KEEP_REFERENCE_CRITICAL
 52792 v2r-llada_math500_core_finalsha-shard-006 PENDING  KEEP_REFERENCE_CRITICAL
-52821 v2r-ind-s2-r2 PENDING  KEEP_REFERENCE_CRITICAL
-52820 v2r-ind-s1-r2 PENDING  KEEP_REFERENCE_CRITICAL
-52818 v2r-ind-s2-r1 PENDING  KEEP_REFERENCE_CRITICAL
-52817 v2r-ind-s1-r1 PENDING  KEEP_REFERENCE_CRITICAL
+52834 v2r-ind-s4-gsm-r2 PENDING  KEEP_REFERENCE_CRITICAL
+52833 v2r-ind-s2-gsm-r2 PENDING  KEEP_REFERENCE_CRITICAL
+52832 v2r-ind-s1-gsm-r2 PENDING  KEEP_REFERENCE_CRITICAL
+52831 v2r-ind-s4-gsm-r1 PENDING  KEEP_REFERENCE_CRITICAL
+52830 v2r-ind-s2-gsm-r1 PENDING  KEEP_REFERENCE_CRITICAL
+52829 v2r-ind-s1-gsm-r1 PENDING  KEEP_REFERENCE_CRITICAL
+52828 v2r-ind-s4-gsm-r0 RUNNING server4 KEEP_REFERENCE_CRITICAL
+52820 v2r-ind-s1-r2 RUNNING devbox KEEP_REFERENCE_CRITICAL
+52821 v2r-ind-s2-r2 RUNNING server2 KEEP_REFERENCE_CRITICAL
 52822 v2r-ind-s4-r2 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52742 v2r-llada_math500_core_finalsha-shard-004 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52740 v2r-llada_math500_core_finalsha-shard-002 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
-observed=True idle_gpu_candidates=['3', '6', '7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
+observed=True idle_gpu_candidates=['0', '6', '7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
 
 SERVER2
-observed=True idle_gpu_candidates=['6', '7'] safe_filesystems=[]
+observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
 
 SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=['1', '2', '3', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['2', '3', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -83,10 +93,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-23T20:46:24.023212+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-23T20:48:31.247348+00:00
 
 MONITOR
-heartbeat=2026-09-23T20:47:13.665818+00:00
+heartbeat=2026-09-23T20:48:45.172003+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.

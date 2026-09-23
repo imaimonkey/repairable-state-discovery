@@ -19,19 +19,75 @@
         "tres": "gres/gpu:h200:1"
       },
       {
-        "job_id": "52821",
-        "name": "v2r-ind-s2-r2",
+        "job_id": "52834",
+        "name": "v2r-ind-s4-gsm-r2",
+        "node": "",
+        "reason": "(Dependency)",
+        "state": "PENDING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52833",
+        "name": "v2r-ind-s2-gsm-r2",
         "node": "",
         "reason": "(Dependency)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "52820",
-        "name": "v2r-ind-s1-r2",
+        "job_id": "52832",
+        "name": "v2r-ind-s1-gsm-r2",
         "node": "",
         "reason": "(Dependency)",
         "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52831",
+        "name": "v2r-ind-s4-gsm-r1",
+        "node": "",
+        "reason": "(Dependency)",
+        "state": "PENDING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52830",
+        "name": "v2r-ind-s2-gsm-r1",
+        "node": "",
+        "reason": "(DependencyNeverSatisfied)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52829",
+        "name": "v2r-ind-s1-gsm-r1",
+        "node": "",
+        "reason": "(DependencyNeverSatisfied)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52828",
+        "name": "v2r-ind-s4-gsm-r0",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52820",
+        "name": "v2r-ind-s1-r2",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52821",
+        "name": "v2r-ind-s2-r2",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
       },
       {
@@ -77,23 +133,79 @@
         "tres": "gres/gpu:h200:1"
       },
       {
-        "job_id": "52821",
-        "name": "v2r-ind-s2-r2",
+        "job_id": "52834",
+        "name": "v2r-ind-s4-gsm-r2",
+        "node": "",
+        "reason": "(Dependency)",
+        "state": "PENDING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52833",
+        "name": "v2r-ind-s2-gsm-r2",
         "node": "",
         "reason": "(Dependency)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "52820",
-        "name": "v2r-ind-s1-r2",
+        "job_id": "52832",
+        "name": "v2r-ind-s1-gsm-r2",
         "node": "",
         "reason": "(Dependency)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52831",
+        "name": "v2r-ind-s4-gsm-r1",
+        "node": "",
+        "reason": "(Dependency)",
+        "state": "PENDING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52830",
+        "name": "v2r-ind-s2-gsm-r1",
+        "node": "",
+        "reason": "(DependencyNeverSatisfied)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52829",
+        "name": "v2r-ind-s1-gsm-r1",
+        "node": "",
+        "reason": "(DependencyNeverSatisfied)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
       }
     ],
     "running": [
+      {
+        "job_id": "52828",
+        "name": "v2r-ind-s4-gsm-r0",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52820",
+        "name": "v2r-ind-s1-r2",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52821",
+        "name": "v2r-ind-s2-r2",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
       {
         "job_id": "52822",
         "name": "v2r-ind-s4-r2",
@@ -147,7 +259,7 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
-        "3",
+        "0",
         "6",
         "7"
       ],
@@ -173,7 +285,6 @@
       "eligibility": false,
       "fallback_action": null,
       "idle_gpu_candidates": [
-        "6",
         "7"
       ],
       "observed": true,
@@ -215,7 +326,6 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
-        "1",
         "2",
         "3",
         "5",
@@ -233,5 +343,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T20:47:31.487237+00:00"
+  "timestamp": "2026-09-23T20:49:03.174949+00:00"
 }
