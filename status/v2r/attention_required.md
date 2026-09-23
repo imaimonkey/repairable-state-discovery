@@ -1,5 +1,5 @@
-2026-09-23T17:25:49.444587+00:00
-HOURS TO DEADLINE: 66.55
+2026-09-23T17:27:20.979415+00:00
+HOURS TO DEADLINE: 66.53
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -71,10 +71,10 @@ llada-gsm8k-r2-finalsha: PASS job=52679
 llada_math500_base_finalsha-shard-000: SEALED job=52687
 llada_gsm8k_base_finalsha-shard-000: PENDING job=52764
 llada_gsm8k_base_finalsha-shard-001: WAITING_PRIORITY job=None
-llada_math500_core_finalsha-shard-000: RUNNING job=52738
+llada_math500_core_finalsha-shard-000: DONE job=52738
 llada_math500_core_finalsha-shard-001: RUNNING job=52739
 llada_math500_core_finalsha-shard-002: PENDING job=52740
-llada_math500_core_finalsha-shard-003: PENDING job=52741
+llada_math500_core_finalsha-shard-003: RUNNING job=52741
 llada_math500_core_finalsha-shard-004: PENDING job=52742
 llada_math500_core_finalsha-shard-005: PENDING job=52760
 llada_math500_core_finalsha-shard-006: PENDING job=52758
@@ -89,10 +89,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2758158 heartbeat=2026-09-23T17:25:01.924840+00:00
+status=RUNNING pid=2758158 heartbeat=2026-09-23T17:27:09.598370+00:00
 
 MONITOR
-heartbeat=2026-09-23T17:25:49.444587+00:00
+heartbeat=2026-09-23T17:27:20.979415+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
