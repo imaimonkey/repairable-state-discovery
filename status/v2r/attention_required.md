@@ -1,5 +1,5 @@
-2026-09-23T19:30:56.481977+00:00
-HOURS TO DEADLINE: 64.47
+2026-09-23T19:32:27.998611+00:00
+HOURS TO DEADLINE: 64.44
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -15,18 +15,16 @@ MONITOR_DRIFT: Slurm job 52748 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52749 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52750 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52740 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52741 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
-52742 v2r-llada_math500_core_finalsha-shard-004 PENDING  KEEP_REFERENCE_CRITICAL
 52746 v2r-llada_math500_temporal_finalsha-shard-000 PENDING  KEEP_REFERENCE_CRITICAL
 52747 v2r-llada_math500_temporal_finalsha-shard-001 PENDING  KEEP_REFERENCE_CRITICAL
 52748 v2r-llada_math500_temporal_finalsha-shard-002 PENDING  KEEP_REFERENCE_CRITICAL
 52749 v2r-llada_math500_temporal_finalsha-shard-003 PENDING  KEEP_REFERENCE_CRITICAL
 52750 v2r-llada_math500_temporal_finalsha-shard-004 PENDING  KEEP_REFERENCE_CRITICAL
+52742 v2r-llada_math500_core_finalsha-shard-004 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52740 v2r-llada_math500_core_finalsha-shard-002 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
-52741 v2r-llada_math500_core_finalsha-shard-003 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
 observed=True idle_gpu_candidates=['4', '7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
@@ -66,8 +64,8 @@ llada_gsm8k_base_finalsha-shard-001: WAITING_PRIORITY job=None
 llada_math500_core_finalsha-shard-000: DONE job=52738
 llada_math500_core_finalsha-shard-001: DONE job=52739
 llada_math500_core_finalsha-shard-002: RUNNING job=52740
-llada_math500_core_finalsha-shard-003: RUNNING job=52741
-llada_math500_core_finalsha-shard-004: PENDING job=52742
+llada_math500_core_finalsha-shard-003: DONE job=52741
+llada_math500_core_finalsha-shard-004: RUNNING job=52742
 llada_math500_core_finalsha-shard-005: NEEDS_REVIEW job=52760
 llada_math500_core_finalsha-shard-006: NEEDS_REVIEW job=52758
 llada_math500_temporal_finalsha-shard-000: PENDING job=52746
@@ -81,10 +79,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2758158 heartbeat=2026-09-23T19:30:06.371085+00:00
+status=RUNNING pid=2758158 heartbeat=2026-09-23T19:32:14.705047+00:00
 
 MONITOR
-heartbeat=2026-09-23T19:30:56.481977+00:00
+heartbeat=2026-09-23T19:32:27.998611+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
