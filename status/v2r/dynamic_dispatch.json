@@ -172,16 +172,20 @@
         "SSH authentication failure to 10.0.12.120"
       ],
       "eligibility": false,
-      "idle_gpu_candidates": [],
-      "observed": false,
+      "idle_gpu_candidates": [
+        "4",
+        "7"
+      ],
+      "observed": true,
       "reasons": [
-        "inventory_unobserved",
-        "no_idle_gpu_candidate",
-        "no_safe_filesystem",
         "inventory_unobserved"
       ],
       "reference_compatible": false,
-      "safe_filesystem_candidates": []
+      "safe_filesystem_candidates": [
+        "/tmp",
+        "/var/tmp",
+        "/mnt/raid5"
+      ]
     },
     "server2": {
       "compatibility_evidence": [
@@ -245,5 +249,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T18:58:35.053084+00:00"
+  "timestamp": "2026-09-23T19:00:06.708327+00:00"
 }
