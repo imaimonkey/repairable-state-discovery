@@ -1,5 +1,5 @@
-2026-09-23T21:48:37.442894+00:00
-HOURS TO DEADLINE: 62.17
+2026-09-23T21:50:09.762153+00:00
+HOURS TO DEADLINE: 62.15
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,7 +9,6 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
-MONITOR_DRIFT: Slurm job 52792 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52944 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52943 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52942 exists but legacy monitor state does not mention it.
@@ -61,6 +60,7 @@ MONITOR_DRIFT: Slurm job 52854 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52853 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52852 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52851 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52792 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52937 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52938 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52850 exists but legacy monitor state does not mention it.
@@ -72,7 +72,6 @@ MONITOR_DRIFT: Slurm job 52821 exists but legacy monitor state does not mention 
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
-52792 v2r-llada_math500_core_finalsha-shard-006 PENDING  KEEP_REFERENCE_CRITICAL
 52944 v2r-ind-server4-gsm8k-base-recover3-005 PENDING  KEEP_REFERENCE_CRITICAL
 52943 v2r-ind-server4-gsm8k-base-recover3-004 PENDING  KEEP_REFERENCE_CRITICAL
 52942 v2r-ind-server4-gsm8k-base-recover3-003 PENDING  KEEP_REFERENCE_CRITICAL
@@ -125,6 +124,7 @@ ALL ACTIVE KIMHJ JOBS
 52853 v2r-ind-server1-math500-base-002 PENDING  KEEP_REFERENCE_CRITICAL
 52852 v2r-ind-server1-math500-base-001 PENDING  KEEP_REFERENCE_CRITICAL
 52851 v2r-ind-server1-math500-base-000 PENDING  KEEP_REFERENCE_CRITICAL
+52792 v2r-llada_math500_core_finalsha-shard-006 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52937 v2r-ind-server4-math500-base-recover3-000 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52938 v2r-ind-server4-math500-base-recover3-001 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52850 v2r-ind-s2-gsm-r2g RUNNING server2 KEEP_REFERENCE_CRITICAL
@@ -133,7 +133,6 @@ ALL ACTIVE KIMHJ JOBS
 52834 v2r-ind-s4-gsm-r2 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52820 v2r-ind-s1-r2 RUNNING devbox KEEP_REFERENCE_CRITICAL
 52821 v2r-ind-s2-r2 RUNNING server2 KEEP_REFERENCE_CRITICAL
-52742 v2r-llada_math500_core_finalsha-shard-004 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 
 SERVER1
 observed=True idle_gpu_candidates=['6', '7'] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
@@ -152,7 +151,7 @@ See legacy monitor and legacy_reset snapshots; old evidence is not reference-pri
 
 REFERENCE GATES
 llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=WAITING_PRIORITY
-llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=PENDING, temporal=WAITING_PRIORITY
+llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=RUNNING, temporal=WAITING_PRIORITY
 
 REFERENCE PRIMARY
 dream_gsm8k: NOT_STARTED
@@ -174,9 +173,9 @@ llada_math500_core_finalsha-shard-000: DONE job=52738
 llada_math500_core_finalsha-shard-001: DONE job=52739
 llada_math500_core_finalsha-shard-002: DONE job=52740
 llada_math500_core_finalsha-shard-003: DONE job=52741
-llada_math500_core_finalsha-shard-004: RUNNING job=52742
+llada_math500_core_finalsha-shard-004: DONE job=52742
 llada_math500_core_finalsha-shard-005: RUNNING job=52791
-llada_math500_core_finalsha-shard-006: PENDING job=52792
+llada_math500_core_finalsha-shard-006: RUNNING job=52792
 llada_math500_temporal_finalsha-shard-000: WAITING_PRIORITY job=None
 llada_math500_temporal_finalsha-shard-001: WAITING_PRIORITY job=None
 llada_math500_temporal_finalsha-shard-002: WAITING_PRIORITY job=None
@@ -188,10 +187,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-23T21:47:52.433068+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-23T21:49:59.683013+00:00
 
 MONITOR
-heartbeat=2026-09-23T21:48:37.442894+00:00
+heartbeat=2026-09-23T21:50:09.762153+00:00
 
 CURRENT P0
 Complete LLaDA MATH core repairability and seal its reference bundle.
