@@ -1,0 +1,32 @@
+{
+  "status": "R0_RUNNING_OR_QUEUED",
+  "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
+  "model_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07",
+  "task": "gsm8k",
+  "cache_policy": "server-owned writable scratch cache; no shared foreign-owned locks are used",
+  "servers": {
+    "server1": {
+      "cache_root": "/var/tmp/kimhj-v2r-independent/server1/gsm8k-cache",
+      "r0": "52835",
+      "r1": "52837",
+      "r2": "52840"
+    },
+    "server2": {
+      "cache_root": "/dev/shm/kimhj-v2r-independent/server2/gsm8k-cache",
+      "r0": "52836",
+      "r1": "52839",
+      "r2": "52841"
+    },
+    "server4": {
+      "cache_root": "/var/tmp/kimhj-v2r-independent/server4",
+      "r0": "52828",
+      "r1": "52831",
+      "r2": "52834"
+    }
+  },
+  "failed_attempts": {
+    "server1_r0": "52826",
+    "server2_r0": "52827",
+    "cause": "Hugging Face Xet attempted to write into a foreign-owned shared cache; no scientific output was accepted"
+  }
+}
