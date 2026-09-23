@@ -1,27 +1,27 @@
 {
-  "generated_at_kst": "2026-09-23T15:45:40+09:00",
+  "generated_at_kst": "2026-09-23T15:46:39+09:00",
   "deadline_kst": "2026-09-26T20:59:00+09:00",
-  "hours_remaining": 77.22,
+  "hours_remaining": 77.21,
   "experiment": {
-    "sealed_rows": 0,
+    "sealed_rows": 3,
     "running_rows": 2,
-    "failed_rows": 0,
+    "failed_rows": 1,
     "aggregate_ready": false,
     "tier_a_status": [
       "RUNNING",
       "RUNNING",
-      "COMPLETED_UNSEALED",
+      "SEALED",
       "COMPLETED_UNSEALED"
     ],
     "backbone_status": {
-      "LLaDA": 0,
-      "Dream": 0
+      "LLaDA": 2,
+      "Dream": 1
     }
   },
   "paper": {
     "build_pass": null,
     "submission_audit_pass": null,
-    "result_todos_remaining": null,
+    "result_todos_remaining": 0,
     "generated_tables_ready": null,
     "generated_figures_ready": null,
     "anonymous_package_ready": false
@@ -30,10 +30,35 @@
     "p0": [],
     "p1": [
       "server1 artifact access unavailable for Tier-A observation",
+      "BBH5 50752 failed and forensic root cause remains unresolved",
       "active V2 jobs remain; final aggregate is intentionally not run"
     ],
     "p2": []
   },
-  "latest_new_evidence": [],
-  "latest_event": null
+  "latest_new_evidence": [
+    {
+      "timestamp_kst": "2026-09-23T15:46:39+09:00",
+      "type": "PROVENANCE_SEALED",
+      "job_id": "50753",
+      "run_name": "v2_bbh_logical7_llada"
+    },
+    {
+      "timestamp_kst": "2026-09-23T15:46:39+09:00",
+      "type": "PROVENANCE_SEALED",
+      "job_id": "50754",
+      "run_name": "v2_mbpp_llada"
+    },
+    {
+      "timestamp_kst": "2026-09-23T15:46:39+09:00",
+      "type": "PROVENANCE_SEALED",
+      "job_id": "50923",
+      "run_name": "v2_math500_dream"
+    }
+  ],
+  "latest_event": {
+    "timestamp_kst": "2026-09-23T15:46:39+09:00",
+    "type": "PROVENANCE_SEALED",
+    "job_id": "50923",
+    "run_name": "v2_math500_dream"
+  }
 }
