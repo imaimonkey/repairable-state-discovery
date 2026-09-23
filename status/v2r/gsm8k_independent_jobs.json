@@ -7,15 +7,15 @@
   "servers": {
     "server1": {
       "cache_root": "/var/tmp/kimhj-v2r-independent/server1/gsm8k-cache",
-      "r0": "52835",
-      "r1": "52837",
-      "r2": "52840"
+      "r0": "52842",
+      "r1": "52844",
+      "r2": "52847"
     },
     "server2": {
       "cache_root": "/dev/shm/kimhj-v2r-independent/server2/gsm8k-cache",
-      "r0": "52836",
-      "r1": "52839",
-      "r2": "52841"
+      "r0": "52843",
+      "r1": "52846",
+      "r2": "52850"
     },
     "server4": {
       "cache_root": "/var/tmp/kimhj-v2r-independent/server4",
@@ -25,8 +25,8 @@
     }
   },
   "failed_attempts": {
-    "server1_r0": "52826",
-    "server2_r0": "52827",
+    "server1_r0": ["52826", "52835"],
+    "server2_r0": ["52827", "52836"],
     "cause": "Hugging Face Xet attempted to write into a foreign-owned shared cache; no scientific output was accepted"
   }
 }
