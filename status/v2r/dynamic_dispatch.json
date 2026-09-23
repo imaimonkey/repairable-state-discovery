@@ -137,11 +137,9 @@
     ]
   },
   "next_batch": {
-    "action": "PLACE_NEXT_PRIORITY_SHARD",
-    "eligible_servers": [
-      "server3"
-    ],
-    "rationale": "eligible servers: server3"
+    "action": "WAIT_WITH_INTERVAL_REPLAN",
+    "eligible_servers": [],
+    "rationale": "No server currently passes the combined observation, storage, GPU, and reference-runtime gates."
   },
   "policy": {
     "all_servers_observed": true,
@@ -196,12 +194,12 @@
         "execution SHA 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
         "existing R0/R1/R2 gate chain"
       ],
-      "eligibility": true,
-      "idle_gpu_candidates": [
-        "1"
-      ],
+      "eligibility": false,
+      "idle_gpu_candidates": [],
       "observed": true,
-      "reasons": [],
+      "reasons": [
+        "no_idle_gpu_candidate"
+      ],
       "reference_compatible": true,
       "safe_filesystem_candidates": [
         "/tmp",
@@ -237,5 +235,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T19:01:38.617395+00:00"
+  "timestamp": "2026-09-23T19:03:10.759963+00:00"
 }
