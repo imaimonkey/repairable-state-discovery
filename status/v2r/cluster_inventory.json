@@ -70,14 +70,14 @@
           "writable": true
         },
         {
-          "available_bytes": 417007190016,
+          "available_bytes": 417007153152,
           "device": 2304,
-          "inodes_free": 337674000,
+          "inodes_free": 337673998,
           "inodes_total": 351625216,
           "path": "/mnt/raid5",
           "total_bytes": 22951322238976,
-          "usage_fraction": 0.9808704407590463,
-          "used_bytes": 21382093602816,
+          "usage_fraction": 0.9808704424501252,
+          "used_bytes": 21382093639680,
           "writable": true
         }
       ],
@@ -89,7 +89,7 @@
       "gpu_query": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "0, NVIDIA RTX A6000, GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 49140, 16574, 31969, 100\n1, NVIDIA RTX A6000, GPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 49140, 16856, 31687, 100\n2, NVIDIA RTX A6000, GPU-8a497f13-d58c-bdef-5478-611ea200deae, 49140, 44914, 3629, 100\n3, NVIDIA RTX A6000, GPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee, 49140, 16288, 32255, 100\n4, NVIDIA RTX A6000, GPU-d623a715-ed10-696d-07ec-50b7614c4272, 49140, 41364, 7179, 60\n5, NVIDIA RTX A6000, GPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22, 49140, 33424, 15119, 37\n6, NVIDIA RTX A6000, GPU-8b402bc3-f797-6774-24e2-d1c920adadfb, 49140, 17016, 31527, 100\n7, NVIDIA RTX A6000, GPU-9edcc6a0-bc56-e743-e1d7-05815ef24483, 49140, 3510, 45033, 32"
+        "stdout": "0, NVIDIA RTX A6000, GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 49140, 16574, 31969, 100\n1, NVIDIA RTX A6000, GPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 49140, 16856, 31687, 100\n2, NVIDIA RTX A6000, GPU-8a497f13-d58c-bdef-5478-611ea200deae, 49140, 44914, 3629, 100\n3, NVIDIA RTX A6000, GPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee, 49140, 16288, 32255, 100\n4, NVIDIA RTX A6000, GPU-d623a715-ed10-696d-07ec-50b7614c4272, 49140, 41364, 7179, 60\n5, NVIDIA RTX A6000, GPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22, 49140, 33424, 15119, 37\n6, NVIDIA RTX A6000, GPU-8b402bc3-f797-6774-24e2-d1c920adadfb, 49140, 17016, 31527, 100\n7, NVIDIA RTX A6000, GPU-9edcc6a0-bc56-e743-e1d7-05815ef24483, 49140, 3510, 45033, 28"
       },
       "gpus": [
         {
@@ -161,7 +161,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "3510",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "32",
+          "utilization_percent": "28",
           "uuid": "GPU-9edcc6a0-bc56-e743-e1d7-05815ef24483"
         }
       ],
@@ -170,7 +170,7 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     1622979940352 48411901952 45785276416   156508160 1528782761984 1565914025984\nSwap:     8589930496   393244672  8196685824"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     1622979940352 48436281344 45760856064   156508160 1528782802944 1565889646592\nSwap:     8589930496   393244672  8196685824"
       },
       "mounts": {
         "returncode": 0,
@@ -183,9 +183,8 @@
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n 579454       1 116-15:08:15 systemd\n 579455  579454 116-15:08:15 (sd-pam)\n 580533       1 116-15:08:06 code-8761a5560c\n1255080 1255071    01:17:49 python\n1293136 1293126    01:06:54 python\n1365903 1365894       46:54 python\n1410018 1410009       33:19 python\n1521882 1521831       00:00 sshd\n1521883 1521882       00:00 python3\n1521899 1521883       00:00 ps\n2118230  579454 50-11:30:38 dbus-daemon\n2118262  579454 50-11:30:38 at-spi-bus-laun"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n 579454       1 116-15:08:16 systemd\n 579455  579454 116-15:08:16 (sd-pam)\n 580533       1 116-15:08:07 code-8761a5560c\n1255080 1255071    01:17:50 python\n1293136 1293126    01:06:55 python\n1365903 1365894       46:55 python\n1410018 1410009       33:20 python\n1521955 1521904       00:01 sshd\n1521956 1521955       00:01 python3\n1521987 1521956       00:00 ps\n2118230  579454 50-11:30:39 dbus-daemon\n2118262  579454 50-11:30:39 at-spi-bus-laun"
       },
-      "reference_execution_compatible": false,
       "repos": [
         {
           "head": {
@@ -254,7 +253,12 @@
         "stderr": "",
         "stdout": "NodeName=devbox Arch=x86_64 CoresPerSocket=32  CPUAlloc=48 CPUEfctv=128 CPUTot=128 CPULoad=14.34 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=devbox NodeHostName=devbox Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=1536000 AllocMem=524288 FreeMem=43681 Sockets=2 Boards=1 State=MIXED+PLANNED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:44:53 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-12T10:47:33 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=1500G,billing=128,gres/gpu=8 AllocTRES=cpu=48,mem=512G,gres/gpu=8 CurrentWatts=0 AveWatts=0\n"
       },
-      "ssh_host": "kimhj@10.0.12.120"
+      "ssh_host": "kimhj@10.0.12.120",
+      "strict_reference_exclusion_reasons": [
+        "no_idle_gpu_candidate",
+        "exact_native_replay_failed"
+      ],
+      "strict_reference_jobs_eligible": false
     },
     "server2": {
       "cpu_count": 64,
@@ -304,14 +308,14 @@
           "writable": true
         },
         {
-          "available_bytes": 505766920192,
+          "available_bytes": 505766772736,
           "device": 2304,
           "inodes_free": 445169384,
           "inodes_total": 468836352,
           "path": "/mnt/raid5",
           "total_bytes": 15240493973504,
-          "usage_fraction": 0.9650528598713198,
-          "used_bytes": 13966573830144,
+          "usage_fraction": 0.9650528700601347,
+          "used_bytes": 13966573977600,
           "writable": true
         }
       ],
@@ -323,7 +327,7 @@
       "gpu_query": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "0, NVIDIA RTX A6000, GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 49140, 20560, 27983, 0\n1, NVIDIA RTX A6000, GPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 49140, 35670, 12873, 100\n2, NVIDIA RTX A6000, GPU-e8cad71e-960c-b6b8-9152-5f7b146c557e, 49140, 23076, 25467, 100\n3, NVIDIA RTX A6000, GPU-ca5070d9-5463-7527-5e0e-a4216548e38b, 49140, 21210, 27333, 99\n4, NVIDIA RTX A6000, GPU-933bf467-90ac-31b1-24d8-15dc3162537b, 49140, 22970, 25573, 99\n5, NVIDIA RTX A6000, GPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa, 49140, 17704, 30839, 97\n6, NVIDIA RTX A6000, GPU-aaac1d4e-ab02-c216-ddd6-2f7f23d332eb, 49140, 22898, 25645, 100\n7, NVIDIA RTX A6000, GPU-c39e323c-ef2e-9fdd-c848-315171c06345, 49140, 1, 48541, 0"
+        "stdout": "0, NVIDIA RTX A6000, GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 49140, 20560, 27983, 0\n1, NVIDIA RTX A6000, GPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 49140, 35670, 12873, 100\n2, NVIDIA RTX A6000, GPU-e8cad71e-960c-b6b8-9152-5f7b146c557e, 49140, 23076, 25467, 100\n3, NVIDIA RTX A6000, GPU-ca5070d9-5463-7527-5e0e-a4216548e38b, 49140, 21210, 27333, 100\n4, NVIDIA RTX A6000, GPU-933bf467-90ac-31b1-24d8-15dc3162537b, 49140, 22970, 25573, 100\n5, NVIDIA RTX A6000, GPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa, 49140, 17704, 30839, 97\n6, NVIDIA RTX A6000, GPU-aaac1d4e-ab02-c216-ddd6-2f7f23d332eb, 49140, 22898, 25645, 100\n7, NVIDIA RTX A6000, GPU-c39e323c-ef2e-9fdd-c848-315171c06345, 49140, 1, 48541, 0"
       },
       "gpus": [
         {
@@ -359,7 +363,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "21210",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "99",
+          "utilization_percent": "100",
           "uuid": "GPU-ca5070d9-5463-7527-5e0e-a4216548e38b"
         },
         {
@@ -368,7 +372,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "22970",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "99",
+          "utilization_percent": "100",
           "uuid": "GPU-933bf467-90ac-31b1-24d8-15dc3162537b"
         },
         {
@@ -406,7 +410,7 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540813615104 183065395200 200695681024  6416322560 157052538880 346373533696\nSwap:     8589930496  8581124096     8806400"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540813615104 183042621440 200716496896  6416314368 157054496768 346396340224\nSwap:     8589930496  8581124096     8806400"
       },
       "mounts": {
         "returncode": 0,
@@ -419,9 +423,8 @@
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n 681187       1 65-07:04:19 systemd\n 681188  681187 65-07:04:19 (sd-pam)\n 683308       1 65-07:03:47 code-8a7abeba6e\n2876682 2876673    01:12:55 python\n2885514 2885505    01:10:21 python\n2891565 2891556    01:08:56 python\n3091230 3091221       09:20 python\n3122900 3122837       00:00 sshd\n3122918 3122900       00:00 python3\n3122932 3122918       00:00 ps"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n 681187       1 65-07:04:20 systemd\n 681188  681187 65-07:04:20 (sd-pam)\n 683308       1 65-07:03:48 code-8a7abeba6e\n2876682 2876673    01:12:56 python\n2885514 2885505    01:10:22 python\n2891565 2891556    01:08:57 python\n3091230 3091221       09:21 python\n3122972 3122862       00:01 sshd\n3122973 3122972       00:01 python3\n3122989 3122973       00:00 ps"
       },
-      "reference_execution_compatible": false,
       "repos": [
         {
           "path": "/home/kimhj/repairable-state-discovery",
@@ -477,7 +480,12 @@
         "stderr": "",
         "stdout": "NodeName=server2 Arch=x86_64 CoresPerSocket=32  CPUAlloc=40 CPUEfctv=64 CPUTot=64 CPULoad=14.02 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=server2 NodeHostName=server2 Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=380928 FreeMem=191511 Sockets=2 Boards=1 State=MIXED+PLANNED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-07-21T01:32:02 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-15T08:24:29 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=64,mem=500G,billing=64,gres/gpu=8 AllocTRES=cpu=40,mem=372G,gres/gpu=7 CurrentWatts=0 AveWatts=0\n"
       },
-      "ssh_host": "kimhj@10.0.12.121"
+      "ssh_host": "kimhj@10.0.12.121",
+      "strict_reference_exclusion_reasons": [
+        "no_safe_filesystem",
+        "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
+      ],
+      "strict_reference_jobs_eligible": false
     },
     "server3": {
       "cpu_count": 96,
@@ -505,14 +513,14 @@
           "writable": false
         },
         {
-          "available_bytes": 161193897984,
+          "available_bytes": 161193889792,
           "device": 66308,
           "inodes_free": 225802982,
           "inodes_total": 234422272,
           "path": "/data",
           "total_bytes": 7619770974208,
-          "usage_fraction": 0.977722354448616,
-          "used_bytes": 7074485366784,
+          "usage_fraction": 0.9777223555807835,
+          "used_bytes": 7074485374976,
           "writable": false
         },
         {
@@ -546,7 +554,7 @@
       "gpu_query": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "0, NVIDIA H200 NVL, GPU-4f8edcb9-889c-c054-f48d-990e34fc95ed, 143771, 18221, 124938, 99\n1, NVIDIA H200 NVL, GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2, 143771, 44105, 99054, 3\n2, NVIDIA H200 NVL, GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134, 143771, 115365, 27794, 97\n3, NVIDIA H200 NVL, GPU-40729417-86d2-9b2e-32a1-a0f5ed143870, 143771, 115401, 27758, 97"
+        "stdout": "0, NVIDIA H200 NVL, GPU-4f8edcb9-889c-c054-f48d-990e34fc95ed, 143771, 18221, 124938, 98\n1, NVIDIA H200 NVL, GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2, 143771, 44105, 99054, 3\n2, NVIDIA H200 NVL, GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134, 143771, 115365, 27794, 96\n3, NVIDIA H200 NVL, GPU-40729417-86d2-9b2e-32a1-a0f5ed143870, 143771, 115401, 27758, 96"
       },
       "gpus": [
         {
@@ -555,7 +563,7 @@
           "memory_total_mib": "143771",
           "memory_used_mib": "18221",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "99",
+          "utilization_percent": "98",
           "uuid": "GPU-4f8edcb9-889c-c054-f48d-990e34fc95ed"
         },
         {
@@ -573,7 +581,7 @@
           "memory_total_mib": "143771",
           "memory_used_mib": "115365",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "97",
+          "utilization_percent": "96",
           "uuid": "GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134"
         },
         {
@@ -582,7 +590,7 @@
           "memory_total_mib": "143771",
           "memory_used_mib": "115401",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "97",
+          "utilization_percent": "96",
           "uuid": "GPU-40729417-86d2-9b2e-32a1-a0f5ed143870"
         }
       ],
@@ -591,7 +599,7 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540546285568 29797617664 46586773504  4322562048 464161894400 502635229184\nSwap:     8589930496  8226381824   363548672"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540546285568 29819572224 46564810752  4322562048 464161902592 502613270528\nSwap:     8589930496  8226381824   363548672"
       },
       "mounts": {
         "returncode": 0,
@@ -604,9 +612,8 @@
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n 871894 1030430  1-08:57:43 sh\n 871898  871894  1-08:57:43 MainThread\n 871926  871898  1-08:57:43 MainThread\n 872263  871926  1-08:57:40 MainThread\n 976708       1  4-07:45:02 systemd\n 976709  976708  4-07:45:02 (sd-pam)\n1030430       1  4-06:37:30 code-645f29cc31\n1122679 1122540  1-07:14:37 sshd\n1122680 1122679  1-07:14:37 sh\n1122698 1122680  1-07:14:37 code-7debcd0e2a\n1122818 1122698  1-07:14:36 sh\n1122822 1122818  1-07:14:36 MainThread\n1122851 1122822  1-07:14:36 MainThread\n1122880 1122822  1-07:14:35 MainThread\n1122916 1122851  1-07:14:35 codex\n1123093 1122822  1-07:14:34 MainThread\n1123171 1123093  1-07:14:34 bash\n1126551 1122916  1-07:12:39 codex-code-mode\n1164483       1  1-06:45:07 tmux: server\n1164484 1164483  1-06:45:07 bash\n1475685 1122851  1-02:41:36 MainThread\n1633674 1164483    08:06:37 bash\n1653827 1633674    08:00:37 python3\n2497502 1164483    22:00:06 python\n2548944 1164483    04:42:17 python3\n2596891 1164483    04:32:47 python\n2758149 1164483    20:43:03 python\n3679349 1164484       28:42 sleep\n3743552 3743543       07:49 slurm_script\n3743553 3743552       07:49 python\n3757967 1122680       02:36 sleep\n3777913 1122916       00:03 bash\n3777917 3777913       00:03 sleep\n3777967 2497502       00:00 ssh\n3777968 2497502       00:00 ssh\n3777969 2497502       00:00 python3\n3777970 2497502       00:00 ssh\n3778020 3777969       00:00 ps"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n 871894 1030430  1-08:57:43 sh\n 871898  871894  1-08:57:43 MainThread\n 871926  871898  1-08:57:43 MainThread\n 872263  871926  1-08:57:40 MainThread\n 976708       1  4-07:45:02 systemd\n 976709  976708  4-07:45:02 (sd-pam)\n1030430       1  4-06:37:30 code-645f29cc31\n1122679 1122540  1-07:14:37 sshd\n1122680 1122679  1-07:14:37 sh\n1122698 1122680  1-07:14:37 code-7debcd0e2a\n1122818 1122698  1-07:14:36 sh\n1122822 1122818  1-07:14:36 MainThread\n1122851 1122822  1-07:14:36 MainThread\n1122880 1122822  1-07:14:35 MainThread\n1122916 1122851  1-07:14:35 codex\n1123093 1122822  1-07:14:34 MainThread\n1123171 1123093  1-07:14:34 bash\n1126551 1122916  1-07:12:39 codex-code-mode\n1164483       1  1-06:45:07 tmux: server\n1164484 1164483  1-06:45:07 bash\n1475685 1122851  1-02:41:36 MainThread\n1633674 1164483    08:06:37 bash\n1653827 1633674    08:00:37 python3\n2497502 1164483    22:00:06 python\n2548944 1164483    04:42:17 python3\n2596891 1164483    04:32:47 python\n2758149 1164483    20:43:03 python\n3679349 1164484       28:42 sleep\n3743552 3743543       07:49 slurm_script\n3743553 3743552       07:49 python\n3757967 1122680       02:36 sleep\n3777913 1122916       00:03 bash\n3777917 3777913       00:03 sleep\n3777967 2497502       00:00 ssh\n3777968 2497502       00:00 ssh\n3778040 2548944       00:00 python3\n3778045 3778040       00:00 ssh\n3778047 3778040       00:00 python3\n3778048 3778040       00:00 ssh\n3778049 3778040       00:00 ssh\n3778105 3778047       00:00 ps"
       },
-      "reference_execution_compatible": true,
       "repos": [
         {
           "head": {
@@ -932,31 +939,36 @@
         "stderr": "",
         "stdout": "NodeName=ubuntu Arch=x86_64 CoresPerSocket=24  CPUAlloc=44 CPUEfctv=96 CPUTot=96 CPULoad=10.21 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:h200:4 NodeAddr=ubuntu NodeHostName=ubuntu Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=368640 FreeMem=44521 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:20:31 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-17T12:34:36 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=96,mem=500G,billing=96,gres/gpu=4 AllocTRES=cpu=44,mem=360G,gres/gpu=4 CurrentWatts=0 AveWatts=0\n"
       },
-      "ssh_host": null
+      "ssh_host": null,
+      "strict_reference_exclusion_reasons": [
+        "no_idle_gpu_candidate",
+        "no_safe_filesystem"
+      ],
+      "strict_reference_jobs_eligible": false
     },
     "server4": {
       "cpu_count": 128,
       "filesystems": [
         {
-          "available_bytes": 105760923648,
+          "available_bytes": 105760915456,
           "device": 66308,
           "inodes_free": 114348733,
           "inodes_total": 117145600,
           "path": "/",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9409815258493462,
-          "used_bytes": 1686235992064,
+          "usage_fraction": 0.9409815304207827,
+          "used_bytes": 1686236000256,
           "writable": false
         },
         {
-          "available_bytes": 105760923648,
+          "available_bytes": 105760915456,
           "device": 66308,
           "inodes_free": 114348733,
           "inodes_total": 117145600,
           "path": "/home",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9409815258493462,
-          "used_bytes": 1686235992064,
+          "usage_fraction": 0.9409815304207827,
+          "used_bytes": 1686236000256,
           "writable": false
         },
         {
@@ -971,25 +983,25 @@
           "writable": false
         },
         {
-          "available_bytes": 105760923648,
+          "available_bytes": 105760915456,
           "device": 66308,
           "inodes_free": 114348733,
           "inodes_total": 117145600,
           "path": "/tmp",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9409815258493462,
-          "used_bytes": 1686235992064,
+          "usage_fraction": 0.9409815304207827,
+          "used_bytes": 1686236000256,
           "writable": true
         },
         {
-          "available_bytes": 105760923648,
+          "available_bytes": 105760915456,
           "device": 66308,
           "inodes_free": 114348733,
           "inodes_total": 117145600,
           "path": "/var/tmp",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9409815258493462,
-          "used_bytes": 1686235992064,
+          "usage_fraction": 0.9409815304207827,
+          "used_bytes": 1686236000256,
           "writable": true
         }
       ],
@@ -1001,7 +1013,7 @@
       "gpu_query": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "0, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e, 97887, 19871, 77382, 99\n1, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f, 97887, 35337, 61916, 99\n2, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8, 97887, 12063, 85190, 30\n3, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-99df2304-fad0-5a27-29dd-4d1a3dd498c8, 97887, 18135, 79118, 99\n4, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df, 97887, 18119, 79134, 99\n5, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-5a338da8-f075-a117-8f2e-aeee88049f4b, 97887, 35039, 62214, 100\n6, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-2647a80a-d813-cbd4-46da-d87355fb69f9, 97887, 7941, 89312, 24\n7, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-e79472b8-9d53-acea-a1b7-5564b1ef9919, 97887, 18077, 79176, 99"
+        "stdout": "0, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e, 97887, 19871, 77382, 99\n1, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f, 97887, 35337, 61916, 99\n2, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8, 97887, 12063, 85190, 30\n3, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-99df2304-fad0-5a27-29dd-4d1a3dd498c8, 97887, 18135, 79118, 100\n4, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df, 97887, 18119, 79134, 99\n5, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-5a338da8-f075-a117-8f2e-aeee88049f4b, 97887, 35039, 62214, 100\n6, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-2647a80a-d813-cbd4-46da-d87355fb69f9, 97887, 7941, 89312, 23\n7, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-e79472b8-9d53-acea-a1b7-5564b1ef9919, 97887, 18077, 79176, 99"
       },
       "gpus": [
         {
@@ -1037,7 +1049,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "18135",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "99",
+          "utilization_percent": "100",
           "uuid": "GPU-99df2304-fad0-5a27-29dd-4d1a3dd498c8"
         },
         {
@@ -1064,7 +1076,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "7941",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "24",
+          "utilization_percent": "23",
           "uuid": "GPU-2647a80a-d813-cbd4-46da-d87355fb69f9"
         },
         {
@@ -1082,7 +1094,7 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540487856128 64569282560  4851314688   178970624 476386123776 475918573568\nSwap:    68719472640  3282571264 65436901376"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540487856128 64591712256  4828880896   178962432 476386119680 475896143872\nSwap:    68719472640  3282571264 65436901376"
       },
       "mounts": {
         "returncode": 0,
@@ -1095,9 +1107,8 @@
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n1568653 1568640    01:56:53 python3.11\n1573332 1573323    01:54:20 python3.11\n1637318 1637309    01:20:00 python3.11\n1707386 1707377       42:54 python3.11\n1779798       1       00:00 systemd\n1779799 1779798       00:00 (sd-pam)\n1779875 1779794       00:00 sshd\n1779876 1779875       00:00 python3\n1779910 1779876       00:00 ps"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n1568653 1568640    01:56:54 python3.11\n1573332 1573323    01:54:20 python3.11\n1637318 1637309    01:20:01 python3.11\n1707386 1707377       42:55 python3.11\n1779798       1       00:01 systemd\n1779799 1779798       00:01 (sd-pam)\n1779941 1779880       00:00 sshd\n1779942 1779941       00:00 python3\n1779963 1779942       00:00 ps"
       },
-      "reference_execution_compatible": false,
       "repos": [
         {
           "head": {
@@ -1166,13 +1177,18 @@
         "stderr": "",
         "stdout": "NodeName=server4 Arch=x86_64 CoresPerSocket=32  CPUAlloc=40 CPUEfctv=128 CPUTot=128 CPULoad=8.32 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:rtx_pro_6000:8(S:0-1) NodeAddr=server4 NodeHostName=server4 Version=26.05.0 OS=Linux 6.8.0-124-generic #124-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 13:00:45 UTC 2026  RealMemory=512000 AllocMem=417792 FreeMem=4658 Sockets=2 Boards=1 State=MIXED+PLANNED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-06-26T10:55:08 SlurmdStartTime=2026-09-12T06:05:32 LastBusyTime=2026-09-24T05:36:51 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=500G,billing=128,gres/gpu=8 AllocTRES=cpu=40,mem=408G,gres/gpu=8 CurrentWatts=0 AveWatts=0\n"
       },
-      "ssh_host": "kimhj@10.0.12.163"
+      "ssh_host": "kimhj@10.0.12.163",
+      "strict_reference_exclusion_reasons": [
+        "no_idle_gpu_candidate",
+        "exact_native_replay_failed;_reference_torch_2_1_2_is_sm120_incompatible"
+      ],
+      "strict_reference_jobs_eligible": false
     }
   },
   "slurm_jobs": {
     "returncode": 0,
     "stderr": "",
-    "stdout": "53182|janghj|PENDING|0:00|7-00:00:00|1||gres/gpu:1|odeedit_hist_alpha_s4\n53173|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-server4-g13\n53225|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-devbox-g14\n53223|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-ubuntu-g14\n53224|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-server2-g14\n53215|kimjh|PENDING|0:00|7-00:00:00|1||gres/gpu:a6000:4|agentmem-v34-s1\n53047|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-007\n53048|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-008\n53049|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-009\n53050|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-010\n53051|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-011\n53052|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-012\n53053|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-013\n53054|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-014\n53055|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-015\n53056|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-016\n53057|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-017\n53200|kimjh|PENDING|0:00|7-00:00:00|1||gres/gpu:a6000:4|agentmem-v34\n53005|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-010\n53135|mindw|PENDING|0:00|4:00:00|1||gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-gen-server4-ucpo-gate-a-a0\n53248_[0-8%1]|zuchi|PENDING|0:00|1-00:00:00|1||gres/gpu:1|vit_tv_analysis\n53247|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:h200:1|v2r-dream-gsm8k-R2\n53246|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:h200:1|v2r-dream-gsm8k-R1\n53245|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:h200:1|v2r-dream-gsm8k-R0\n53229|mindw|PENDING|0:00|12:00:00|1||gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-randh-devbox-gen-sampled-a0\n53228|choihb|PENDING|0:00|3-00:00:00|1||gres/gpu:2|strlp_chain\n53222|parksh|PENDING|0:00|8:00:00|1||N/A|wt50-judge-no_meta\n53221|parksh|PENDING|0:00|2-00:00:00|1||gres/gpu:1|wt50-no_meta-s1\n53220|parksh|PENDING|0:00|2-00:00:00|1||gres/gpu:1|wt50-no_meta-s0\n53219|parksh|PENDING|0:00|8:00:00|1||N/A|wt50-judge-with_meta\n53218|parksh|PENDING|0:00|2-00:00:00|1||gres/gpu:1|wt50-with_meta-s1\n53217|parksh|PENDING|0:00|2-00:00:00|1||gres/gpu:1|wt50-with_meta-s0\n53216|kimjh|PENDING|0:00|10:00|1||N/A|agentmem-v34-race-cleanup\n53212|mindw|PENDING|0:00|4:00:00|1||gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-off2-server4-ucpo-gate-b-a0\n53194|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|hint_recover_3_hmmt26\n53193|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|hint_recover_2_hmmt26\n53192|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|hint_recover_1_hmmt25\n53191|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|hint_recover_0_hmmt25\n53184|janghj|PENDING|0:00|4:00:00|1||N/A|odeedit_hist_T4_s4\n53183|janghj|PENDING|0:00|7-00:00:00|1||gres/gpu:1|odeedit_hist_memit_s4\n53171|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-015\n53170|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-014\n53169|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-013\n53168|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-012\n53167|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-011\n53166|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-010\n53165|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-009\n53164|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-008\n53163|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-007\n53162|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-006\n53161|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-005\n53160|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-004\n53159|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-003\n53158|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-002\n53157|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-001\n53156|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-000\n53155|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-017\n53154|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-016\n53153|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-015\n53152|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-014\n53151|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-013\n53150|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-012\n53149|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-011\n53148|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-010\n53147|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-009\n53146|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-008\n53145|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-007\n53144|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-006\n53143|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-005\n53142|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-004\n53141|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-003\n53140|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-002\n53139|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-001\n53138|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-000\n53123|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-017\n53122|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-016\n53121|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-015\n53120|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-014\n53119|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-013\n53118|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-012\n53117|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-011\n53105|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime26_OPSD_same_reference\n53104|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime26_OPSD_OT_matched8\n53103|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime26_Base\n53102|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime25_OPSD_same_reference\n53101|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime25_OPSD_OT_matched8\n53100|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime25_Base\n53099|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_hmmt25_OPSD_same_reference\n53098|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_hmmt25_OPSD_OT_matched8\n53097|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_hmmt25_Base\n53096|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_hmmt26_OPSD_same_reference\n53088|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt26_same\n53087|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt26_opsd\n53086|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt26_base\n53085|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt25_same\n53084|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt25_opsd\n53083|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt25_base\n53082|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_aime25_same\n53081|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_aime25_opsd\n53080|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_aime25_base\n53079|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_aime26_same\n53078|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_aime26_opsd\n53074|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-015\n53073|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-014\n53072|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-013\n53071|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-012\n53070|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-011\n53069|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-010\n53068|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-009\n53067|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-008\n53066|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-007\n53065|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-006\n53064|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-005\n53063|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-004\n53062|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-003\n53061|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-002\n53060|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-001\n53059|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-000\n53039|leejg|PENDING|0:00|30:00|1||N/A|ot_recover_hazard_report\n53013|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-007\n53012|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-006\n53011|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-005\n53010|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-004\n53009|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-003\n53008|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-002\n53007|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-001\n53006|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-000\n52998|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-003\n52997|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-002\n52985|leejg|PENDING|0:00|45:00|1||N/A|ot_same_hint_report\n52984|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_same_hint_eval16_s1\n52983|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_same_hint_eval16_s0\n52954|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52953|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52952|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52951|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52950|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52949|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52620|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime26_StudentPlain_TeacherHint\n52619|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime26_StudentHint_TeacherCoT\n52570|ahnjm|PENDING|0:00|8:00:00|1||gres/gpu:a6000:1|eval-pool\n52559|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt26_Disagreement_CoT_restart1\n52465|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_Disagreement_CoT\n52464|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_OPSD_same_reference\n52463|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_OPSD_OT_matched8\n52462|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_Disagreement_CoT\n52461|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_OPSD_same_reference\n52460|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_OPSD_OT_matched8\n52459|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_Disagreement_CoT\n52458|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_OPSD_same_reference\n52457|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_OPSD_OT_matched8\n52447|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_Majority_CoT\n52446|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_GT_reviewed_answer\n52445|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_D_no_candidate\n52444|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_B_tentative\n52443|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_Majority_CoT\n52442|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_GT_reviewed_answer\n52441|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_D_no_candidate\n52440|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_B_tentative\n52439|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_Majority_CoT\n52438|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_GT_reviewed_answer\n52437|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_D_no_candidate\n52436|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_B_tentative\n52302|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52246|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52245|ahnjm|PENDING|0:00|12:00:00|1||gres/gpu:a6000:1|eval-pool\n52244|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n53244|kimhj|RUNNING|7:52|4:00:00|1|ubuntu|gres/gpu:h200:1|v2r-dream-math500-R2\n53116|kimhj|RUNNING|9:22|4:00:00|1|server2|gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-010\n53046|kimhj|RUNNING|33:22|4:00:00|1|devbox|gres/gpu:a6000:1|v2r-ind-server1-math500-core-006\n53004|kimhj|RUNNING|42:57|4:00:00|1|server4|gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-009\n53211|mindw|RUNNING|45:52|12:00:00|1|devbox|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-hard-devbox-gen-sampled-a0\n53045|kimhj|RUNNING|46:57|4:00:00|1|devbox|gres/gpu:a6000:1|v2r-ind-server1-math500-core-005\n52994|leejg|RUNNING|55:57|12:00:00|1|ubuntu|gres/gpu:h200:1|ot8b_same_hint_eval_aime26\n53044|kimhj|RUNNING|1:06:57|4:00:00|1|devbox|gres/gpu:a6000:1|v2r-ind-server1-math500-core-004\n53115|kimhj|RUNNING|1:08:57|4:00:00|1|server2|gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-009\n53114|kimhj|RUNNING|1:10:22|4:00:00|1|server2|gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-008\n53095|leejg|RUNNING|1:11:23|12:00:00|1|ubuntu|gres/gpu:h200:1|ot14b_ref_eval_hmmt26_OPSD_OT_matched8\n53113|kimhj|RUNNING|1:12:57|4:00:00|1|server2|gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-007\n53043|kimhj|RUNNING|1:17:53|4:00:00|1|devbox|gres/gpu:a6000:1|v2r-ind-server1-math500-core-003\n53003|kimhj|RUNNING|1:20:04|4:00:00|1|server4|gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-008\n53002|kimhj|RUNNING|1:54:23|4:00:00|1|server4|gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-007\n53001|kimhj|RUNNING|1:56:57|4:00:00|1|server4|gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-006\n52948|ryujh|RUNNING|2:49:57|1-00:00:00|1|server2|gres/gpu:a6000:1|grpo-opd-pilot\n53036|leejg|RUNNING|2:51:53|5-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|ot_recover_hazard0\n53037|leejg|RUNNING|3:16:54|5-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|ot_recover_hazard1\n53198_0|chunmei|RUNNING|3:56:24|1-00:00:00|1|devbox|gres/gpu:1|csds-zsre-arr\n53185|mindw|RUNNING|5:48:55|2-00:00:00|1|devbox|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-short-devbox-train-a1\n52241|ahnjm|RUNNING|6:53:57|12:00:00|1|devbox|gres/gpu:a6000:1|eval-pool\n53124|choihb|RUNNING|7:08:30|3-00:00:00|1|server4|gres/gpu:2|strlp_train\n53181|mindw|RUNNING|7:31:01|1-12:00:00|1|ubuntu|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-GRPO-D01V6R22-D01-P02-train-a0\n52816|mindw|RUNNING|17:07:11|2-00:00:00|1|server2|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-hard-server2-train-a1\n52793|mindw|RUNNING|17:27:13|2-00:00:00|1|server2|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-randpos-server2-train-a1\n"
+    "stdout": "53182|janghj|PENDING|0:00|7-00:00:00|1||gres/gpu:1|odeedit_hist_alpha_s4\n53173|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-server4-g13\n53225|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-devbox-g14\n53223|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-ubuntu-g14\n53224|mindw|PENDING|0:00|4:00:00|1||N/A|Rejection-Sampling-SFT-Qwen3-1.7B-A10-analysis-server2-g14\n53215|kimjh|PENDING|0:00|7-00:00:00|1||gres/gpu:a6000:4|agentmem-v34-s1\n53047|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-007\n53048|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-008\n53049|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-009\n53050|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-010\n53051|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-011\n53052|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-012\n53053|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-013\n53054|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-014\n53055|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-015\n53056|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-016\n53057|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-core-017\n53200|kimjh|PENDING|0:00|7-00:00:00|1||gres/gpu:a6000:4|agentmem-v34\n53005|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-010\n53135|mindw|PENDING|0:00|4:00:00|1||gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-gen-server4-ucpo-gate-a-a0\n53248_[0-8%1]|zuchi|PENDING|0:00|1-00:00:00|1||gres/gpu:1|vit_tv_analysis\n53247|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:h200:1|v2r-dream-gsm8k-R2\n53246|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:h200:1|v2r-dream-gsm8k-R1\n53245|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:h200:1|v2r-dream-gsm8k-R0\n53229|mindw|PENDING|0:00|12:00:00|1||gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-randh-devbox-gen-sampled-a0\n53228|choihb|PENDING|0:00|3-00:00:00|1||gres/gpu:2|strlp_chain\n53222|parksh|PENDING|0:00|8:00:00|1||N/A|wt50-judge-no_meta\n53221|parksh|PENDING|0:00|2-00:00:00|1||gres/gpu:1|wt50-no_meta-s1\n53220|parksh|PENDING|0:00|2-00:00:00|1||gres/gpu:1|wt50-no_meta-s0\n53219|parksh|PENDING|0:00|8:00:00|1||N/A|wt50-judge-with_meta\n53218|parksh|PENDING|0:00|2-00:00:00|1||gres/gpu:1|wt50-with_meta-s1\n53217|parksh|PENDING|0:00|2-00:00:00|1||gres/gpu:1|wt50-with_meta-s0\n53216|kimjh|PENDING|0:00|10:00|1||N/A|agentmem-v34-race-cleanup\n53212|mindw|PENDING|0:00|4:00:00|1||gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-off2-server4-ucpo-gate-b-a0\n53194|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|hint_recover_3_hmmt26\n53193|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|hint_recover_2_hmmt26\n53192|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|hint_recover_1_hmmt25\n53191|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|hint_recover_0_hmmt25\n53184|janghj|PENDING|0:00|4:00:00|1||N/A|odeedit_hist_T4_s4\n53183|janghj|PENDING|0:00|7-00:00:00|1||gres/gpu:1|odeedit_hist_memit_s4\n53171|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-015\n53170|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-014\n53169|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-013\n53168|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-012\n53167|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-011\n53166|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-010\n53165|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-009\n53164|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-008\n53163|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-007\n53162|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-006\n53161|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-005\n53160|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-004\n53159|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-003\n53158|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-002\n53157|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-001\n53156|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-temporal-v2-000\n53155|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-017\n53154|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-016\n53153|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-015\n53152|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-014\n53151|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-013\n53150|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-012\n53149|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-011\n53148|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-010\n53147|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-009\n53146|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-008\n53145|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-007\n53144|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-006\n53143|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-005\n53142|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-004\n53141|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-003\n53140|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-002\n53139|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-001\n53138|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server2-math500-core-000\n53123|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-017\n53122|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-016\n53121|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-015\n53120|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-014\n53119|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-013\n53118|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-012\n53117|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-011\n53105|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime26_OPSD_same_reference\n53104|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime26_OPSD_OT_matched8\n53103|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime26_Base\n53102|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime25_OPSD_same_reference\n53101|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime25_OPSD_OT_matched8\n53100|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_aime25_Base\n53099|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_hmmt25_OPSD_same_reference\n53098|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_hmmt25_OPSD_OT_matched8\n53097|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_hmmt25_Base\n53096|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_ref_eval_hmmt26_OPSD_same_reference\n53088|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt26_same\n53087|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt26_opsd\n53086|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt26_base\n53085|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt25_same\n53084|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt25_opsd\n53083|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_hmmt25_base\n53082|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_aime25_same\n53081|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_aime25_opsd\n53080|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_aime25_base\n53079|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_aime26_same\n53078|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_aime26_opsd\n53074|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-015\n53073|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-014\n53072|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-013\n53071|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-012\n53070|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-011\n53069|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-010\n53068|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-009\n53067|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-008\n53066|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-007\n53065|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-006\n53064|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-005\n53063|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-004\n53062|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-003\n53061|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-002\n53060|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-001\n53059|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:a6000:1|v2r-ind-server1-math500-temporal-v2-000\n53039|leejg|PENDING|0:00|30:00|1||N/A|ot_recover_hazard_report\n53013|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-007\n53012|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-006\n53011|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-005\n53010|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-004\n53009|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-003\n53008|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-002\n53007|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-001\n53006|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-temporal-000\n52998|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-003\n52997|kimhj|PENDING|0:00|4:00:00|1||gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-002\n52985|leejg|PENDING|0:00|45:00|1||N/A|ot_same_hint_report\n52984|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_same_hint_eval16_s1\n52983|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_same_hint_eval16_s0\n52954|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52953|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52952|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52951|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52950|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52949|ryujh|PENDING|0:00|1-00:00:00|1||gres/gpu:a6000:1|grpo-opd-pilot\n52620|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime26_StudentPlain_TeacherHint\n52619|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_hint_eval_aime26_StudentHint_TeacherCoT\n52570|ahnjm|PENDING|0:00|8:00:00|1||gres/gpu:a6000:1|eval-pool\n52559|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt26_Disagreement_CoT_restart1\n52465|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_Disagreement_CoT\n52464|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_OPSD_same_reference\n52463|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_OPSD_OT_matched8\n52462|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_Disagreement_CoT\n52461|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_OPSD_same_reference\n52460|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_OPSD_OT_matched8\n52459|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_Disagreement_CoT\n52458|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_OPSD_same_reference\n52457|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_OPSD_OT_matched8\n52447|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_Majority_CoT\n52446|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_GT_reviewed_answer\n52445|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_D_no_candidate\n52444|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime26_B_tentative\n52443|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_Majority_CoT\n52442|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_GT_reviewed_answer\n52441|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_D_no_candidate\n52440|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_aime25_B_tentative\n52439|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_Majority_CoT\n52438|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_GT_reviewed_answer\n52437|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_D_no_candidate\n52436|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot8b_vllm_eval_hmmt25_B_tentative\n52302|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52246|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n52245|ahnjm|PENDING|0:00|12:00:00|1||gres/gpu:a6000:1|eval-pool\n52244|ahnjm|PENDING|0:00|5:00:00|1||gres/gpu:a6000:1|eval-pool\n53244|kimhj|RUNNING|7:53|4:00:00|1|ubuntu|gres/gpu:h200:1|v2r-dream-math500-R2\n53116|kimhj|RUNNING|9:23|4:00:00|1|server2|gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-010\n53046|kimhj|RUNNING|33:23|4:00:00|1|devbox|gres/gpu:a6000:1|v2r-ind-server1-math500-core-006\n53004|kimhj|RUNNING|42:58|4:00:00|1|server4|gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-009\n53211|mindw|RUNNING|45:53|12:00:00|1|devbox|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-hard-devbox-gen-sampled-a0\n53045|kimhj|RUNNING|46:58|4:00:00|1|devbox|gres/gpu:a6000:1|v2r-ind-server1-math500-core-005\n52994|leejg|RUNNING|55:58|12:00:00|1|ubuntu|gres/gpu:h200:1|ot8b_same_hint_eval_aime26\n53044|kimhj|RUNNING|1:06:58|4:00:00|1|devbox|gres/gpu:a6000:1|v2r-ind-server1-math500-core-004\n53115|kimhj|RUNNING|1:08:58|4:00:00|1|server2|gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-009\n53114|kimhj|RUNNING|1:10:23|4:00:00|1|server2|gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-008\n53095|leejg|RUNNING|1:11:24|12:00:00|1|ubuntu|gres/gpu:h200:1|ot14b_ref_eval_hmmt26_OPSD_OT_matched8\n53113|kimhj|RUNNING|1:12:58|4:00:00|1|server2|gres/gpu:a6000:1|v2r-recovery-server2-gsm8k-base-007\n53043|kimhj|RUNNING|1:17:54|4:00:00|1|devbox|gres/gpu:a6000:1|v2r-ind-server1-math500-core-003\n53003|kimhj|RUNNING|1:20:05|4:00:00|1|server4|gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-008\n53002|kimhj|RUNNING|1:54:24|4:00:00|1|server4|gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-007\n53001|kimhj|RUNNING|1:56:58|4:00:00|1|server4|gres/gpu:rtx_pro_6000:1|v2r-ind-server4-gsm8k-core-006\n52948|ryujh|RUNNING|2:49:58|1-00:00:00|1|server2|gres/gpu:a6000:1|grpo-opd-pilot\n53036|leejg|RUNNING|2:51:54|5-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|ot_recover_hazard0\n53037|leejg|RUNNING|3:16:55|5-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|ot_recover_hazard1\n53198_0|chunmei|RUNNING|3:56:25|1-00:00:00|1|devbox|gres/gpu:1|csds-zsre-arr\n53185|mindw|RUNNING|5:48:56|2-00:00:00|1|devbox|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-short-devbox-train-a1\n52241|ahnjm|RUNNING|6:53:58|12:00:00|1|devbox|gres/gpu:a6000:1|eval-pool\n53124|choihb|RUNNING|7:08:31|3-00:00:00|1|server4|gres/gpu:2|strlp_train\n53181|mindw|RUNNING|7:31:02|1-12:00:00|1|ubuntu|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-GRPO-D01V6R22-D01-P02-train-a0\n52816|mindw|RUNNING|17:07:12|2-00:00:00|1|server2|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-hard-server2-train-a1\n52793|mindw|RUNNING|17:27:14|2-00:00:00|1|server2|gres/gpu:1|Rejection-Sampling-SFT-Qwen3-1.7B-A10-bl19-randpos-server2-train-a1\n"
   },
-  "timestamp": "2026-09-24T13:40:28.580420+00:00"
+  "timestamp": "2026-09-24T13:40:29.225550+00:00"
 }
