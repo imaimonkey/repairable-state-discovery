@@ -38,7 +38,7 @@
         "job_id": "53109",
         "name": "v2r-recovery-server2-gsm8k-base-003",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "reason": "(Resources)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
       },
@@ -113,14 +113,6 @@
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53108",
-        "name": "v2r-recovery-server2-gsm8k-base-002",
-        "node": "",
-        "reason": "(Resources)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
       },
       {
         "job_id": "53171",
@@ -843,6 +835,14 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
+        "job_id": "53108",
+        "name": "v2r-recovery-server2-gsm8k-base-002",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53197",
         "name": "v2r-llada_gsm8k_base_finalsha-shard-001",
         "node": "ubuntu",
@@ -913,14 +913,6 @@
         "reason": "devbox",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53107",
-        "name": "v2r-recovery-server2-gsm8k-base-001",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
       }
     ],
     "pending": [
@@ -960,7 +952,7 @@
         "job_id": "53109",
         "name": "v2r-recovery-server2-gsm8k-base-003",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "reason": "(Resources)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
       },
@@ -1035,14 +1027,6 @@
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53108",
-        "name": "v2r-recovery-server2-gsm8k-base-002",
-        "node": "",
-        "reason": "(Resources)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
       },
       {
         "job_id": "53171",
@@ -1767,6 +1751,14 @@
     ],
     "running": [
       {
+        "job_id": "53108",
+        "name": "v2r-recovery-server2-gsm8k-base-002",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53197",
         "name": "v2r-llada_gsm8k_base_finalsha-shard-001",
         "node": "ubuntu",
@@ -1835,14 +1827,6 @@
         "name": "v2r-recovery-server1-gsm8k-base-012",
         "node": "devbox",
         "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53107",
-        "name": "v2r-recovery-server2-gsm8k-base-001",
-        "node": "server2",
-        "reason": "server2",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
       }
@@ -1948,5 +1932,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T09:26:12.224991+00:00"
+  "timestamp": "2026-09-24T09:27:45.609069+00:00"
 }
