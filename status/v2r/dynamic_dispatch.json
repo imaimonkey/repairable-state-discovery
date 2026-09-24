@@ -43,14 +43,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53151",
-        "name": "v2r-ind-server2-math500-core-013",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53152",
         "name": "v2r-ind-server2-math500-core-014",
         "node": "",
@@ -275,6 +267,14 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "53151",
+        "name": "v2r-ind-server2-math500-core-013",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53150",
         "name": "v2r-ind-server2-math500-core-012",
         "node": "server2",
@@ -353,14 +353,6 @@
         "name": "v2r-ind-server1-math500-temporal-v2-004",
         "node": "",
         "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53151",
-        "name": "v2r-ind-server2-math500-core-013",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
       },
@@ -591,6 +583,14 @@
     ],
     "running": [
       {
+        "job_id": "53151",
+        "name": "v2r-ind-server2-math500-core-013",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53150",
         "name": "v2r-ind-server2-math500-core-012",
         "node": "server2",
@@ -680,11 +680,10 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [
-        "6"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "no_safe_filesystem",
         "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
       ],
@@ -734,5 +733,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T22:50:02.293698+00:00"
+  "timestamp": "2026-09-24T22:51:34.499399+00:00"
 }
