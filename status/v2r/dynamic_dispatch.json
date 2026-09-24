@@ -347,22 +347,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53012",
-        "name": "v2r-ind-server4-gsm8k-temporal-006",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53013",
-        "name": "v2r-ind-server4-gsm8k-temporal-007",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "53059",
         "name": "v2r-ind-server1-math500-temporal-v2-000",
         "node": "devbox",
@@ -719,22 +703,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53012",
-        "name": "v2r-ind-server4-gsm8k-temporal-006",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53013",
-        "name": "v2r-ind-server4-gsm8k-temporal-007",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "53059",
         "name": "v2r-ind-server1-math500-temporal-v2-000",
         "node": "devbox",
@@ -831,7 +799,9 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
-        "4"
+        "1",
+        "4",
+        "5"
       ],
       "observed": true,
       "reasons": [
@@ -844,5 +814,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T21:26:54.898849+00:00"
+  "timestamp": "2026-09-24T21:28:27.296299+00:00"
 }
