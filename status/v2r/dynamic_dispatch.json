@@ -777,14 +777,6 @@
         "reason": "server4",
         "state": "RUNNING",
         "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53112",
-        "name": "v2r-recovery-server2-gsm8k-base-006",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
       }
     ],
     "pending": [
@@ -1565,14 +1557,6 @@
         "reason": "server4",
         "state": "RUNNING",
         "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53112",
-        "name": "v2r-recovery-server2-gsm8k-base-006",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
       }
     ]
   },
@@ -1625,6 +1609,7 @@
       "eligibility": false,
       "fallback_action": null,
       "idle_gpu_candidates": [
+        "6",
         "7"
       ],
       "observed": true,
@@ -1676,5 +1661,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T13:29:27.234769+00:00"
+  "timestamp": "2026-09-24T13:31:01.459835+00:00"
 }
