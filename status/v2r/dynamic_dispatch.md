@@ -1,16 +1,16 @@
 # ICLR 2027 V2R dynamic dispatch
 
-Updated: `2026-09-24T01:31:21.702907+00:00`; next inventory interval: `90s`.
+Updated: `2026-09-24T01:32:55.321507+00:00`; next inventory interval: `90s`.
 
 This is a read-only placement decision. It does not cancel, preempt, or delete jobs/artifacts.
 
 | Server | Observed | Idle GPUs | Safe FS | Reference compatible | Eligible | Reasons |
 |---|---:|---|---|---:|---:|---|
-| server1 | True | ['4'] | ['/tmp', '/var/tmp'] | False | False | exact_native_replay_failed |
+| server1 | True | ['4', '6', '7'] | ['/tmp', '/var/tmp'] | False | False | exact_native_replay_failed |
 | server2 | True | [] | [] | False | False | no_idle_gpu_candidate, no_safe_filesystem, exact_native_replay_failed;_safe_scratch_is_non_authoritative |
 | server3 | True | [] | ['/tmp', '/var/tmp'] | True | False | no_idle_gpu_candidate |
 | server4 | True | ['2', '3', '6', '7'] | ['/tmp', '/var/tmp'] | False | False | exact_native_replay_failed;_reference_torch_2_1_2_is_sm120_incompatible |
 
 **Next batch:** `WAIT_WITH_INTERVAL_REPLAN` — No server currently passes the combined observation, storage, GPU, and reference-runtime gates.
 
-Running reference jobs: `12`; pending/configuring: `57`.
+Running reference jobs: `10`; pending/configuring: `52`.
