@@ -1,5 +1,5 @@
-2026-09-24T20:20:17.293916+00:00
-HOURS TO DEADLINE: 39.65
+2026-09-24T20:21:49.875991+00:00
+HOURS TO DEADLINE: 39.62
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -47,7 +47,6 @@ MONITOR_DRIFT: Slurm job 53148 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53147 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53146 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53145 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53144 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53074 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53073 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53072 exists but legacy monitor state does not mention it.
@@ -57,6 +56,7 @@ MONITOR_DRIFT: Slurm job 53069 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53068 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53067 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53066 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53144 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53262 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53012 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53013 exists but legacy monitor state does not mention it.
@@ -65,7 +65,6 @@ MONITOR_DRIFT: Slurm job 53143 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53011 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53142 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53141 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53140 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
@@ -108,7 +107,6 @@ ALL ACTIVE KIMHJ JOBS
 53147 v2r-ind-server2-math500-core-009 PENDING  KEEP_REFERENCE_CRITICAL
 53146 v2r-ind-server2-math500-core-008 PENDING  KEEP_REFERENCE_CRITICAL
 53145 v2r-ind-server2-math500-core-007 PENDING  KEEP_REFERENCE_CRITICAL
-53144 v2r-ind-server2-math500-core-006 PENDING  KEEP_REFERENCE_CRITICAL
 53074 v2r-ind-server1-math500-temporal-v2-015 PENDING  KEEP_REFERENCE_CRITICAL
 53073 v2r-ind-server1-math500-temporal-v2-014 PENDING  KEEP_REFERENCE_CRITICAL
 53072 v2r-ind-server1-math500-temporal-v2-013 PENDING  KEEP_REFERENCE_CRITICAL
@@ -118,6 +116,7 @@ ALL ACTIVE KIMHJ JOBS
 53068 v2r-ind-server1-math500-temporal-v2-009 PENDING  KEEP_REFERENCE_CRITICAL
 53067 v2r-ind-server1-math500-temporal-v2-008 PENDING  KEEP_REFERENCE_CRITICAL
 53066 v2r-ind-server1-math500-temporal-v2-007 PENDING  KEEP_REFERENCE_CRITICAL
+53144 v2r-ind-server2-math500-core-006 RUNNING server2 KEEP_REFERENCE_CRITICAL
 53262 v2full-gsm8k RUNNING ubuntu UNKNOWN_NEEDS_FORENSIC
 53012 v2r-ind-server4-gsm8k-temporal-006 RUNNING server4 KEEP_REFERENCE_CRITICAL
 53013 v2r-ind-server4-gsm8k-temporal-007 RUNNING server4 KEEP_REFERENCE_CRITICAL
@@ -126,7 +125,6 @@ ALL ACTIVE KIMHJ JOBS
 53011 v2r-ind-server4-gsm8k-temporal-005 RUNNING server4 KEEP_REFERENCE_CRITICAL
 53142 v2r-ind-server2-math500-core-004 RUNNING server2 KEEP_REFERENCE_CRITICAL
 53141 v2r-ind-server2-math500-core-003 RUNNING server2 KEEP_REFERENCE_CRITICAL
-53140 v2r-ind-server2-math500-core-002 RUNNING server2 KEEP_REFERENCE_CRITICAL
 
 SERVER1
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
@@ -183,10 +181,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3958268 heartbeat=2026-09-24T20:20:16.467803+00:00
+status=RUNNING pid=3958268 heartbeat=2026-09-24T20:21:20.500360+00:00
 
 MONITOR
-heartbeat=2026-09-24T20:20:17.293916+00:00
+heartbeat=2026-09-24T20:21:49.875991+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
