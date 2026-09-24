@@ -3,14 +3,6 @@
   "jobs": {
     "all_reference_jobs": [
       {
-        "job_id": "53011",
-        "name": "v2r-ind-server4-gsm8k-temporal-005",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "53012",
         "name": "v2r-ind-server4-gsm8k-temporal-006",
         "node": "",
@@ -245,14 +237,6 @@
       {
         "job_id": "53144",
         "name": "v2r-ind-server2-math500-core-006",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53143",
-        "name": "v2r-ind-server2-math500-core-005",
         "node": "",
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
@@ -387,6 +371,22 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "53143",
+        "name": "v2r-ind-server2-math500-core-005",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "53011",
+        "name": "v2r-ind-server4-gsm8k-temporal-005",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "53142",
         "name": "v2r-ind-server2-math500-core-004",
         "node": "server2",
@@ -441,33 +441,9 @@
         "reason": "devbox",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53139",
-        "name": "v2r-ind-server2-math500-core-001",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53007",
-        "name": "v2r-ind-server4-gsm8k-temporal-001",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       }
     ],
     "pending": [
-      {
-        "job_id": "53011",
-        "name": "v2r-ind-server4-gsm8k-temporal-005",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
       {
         "job_id": "53012",
         "name": "v2r-ind-server4-gsm8k-temporal-006",
@@ -703,14 +679,6 @@
       {
         "job_id": "53144",
         "name": "v2r-ind-server2-math500-core-006",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53143",
-        "name": "v2r-ind-server2-math500-core-005",
         "node": "",
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
@@ -847,6 +815,22 @@
     ],
     "running": [
       {
+        "job_id": "53143",
+        "name": "v2r-ind-server2-math500-core-005",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "53011",
+        "name": "v2r-ind-server4-gsm8k-temporal-005",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "53142",
         "name": "v2r-ind-server2-math500-core-004",
         "node": "server2",
@@ -901,22 +885,6 @@
         "reason": "devbox",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53139",
-        "name": "v2r-ind-server2-math500-core-001",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53007",
-        "name": "v2r-ind-server4-gsm8k-temporal-001",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       }
     ]
   },
@@ -968,10 +936,12 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [],
+      "idle_gpu_candidates": [
+        "6",
+        "7"
+      ],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate",
         "no_safe_filesystem",
         "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
       ],
@@ -1020,5 +990,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T19:24:41.433595+00:00"
+  "timestamp": "2026-09-24T19:26:13.752860+00:00"
 }
