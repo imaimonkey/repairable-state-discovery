@@ -619,14 +619,6 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "53247",
-        "name": "v2r-dream-gsm8k-R2",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
-      },
-      {
         "job_id": "53047",
         "name": "v2r-ind-server1-math500-core-007",
         "node": "devbox",
@@ -669,14 +661,6 @@
       {
         "job_id": "53045",
         "name": "v2r-ind-server1-math500-core-005",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53044",
-        "name": "v2r-ind-server1-math500-core-004",
         "node": "devbox",
         "reason": "devbox",
         "state": "RUNNING",
@@ -1335,14 +1319,6 @@
     ],
     "running": [
       {
-        "job_id": "53247",
-        "name": "v2r-dream-gsm8k-R2",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
-      },
-      {
         "job_id": "53047",
         "name": "v2r-ind-server1-math500-core-007",
         "node": "devbox",
@@ -1385,14 +1361,6 @@
       {
         "job_id": "53045",
         "name": "v2r-ind-server1-math500-core-005",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53044",
-        "name": "v2r-ind-server1-math500-core-004",
         "node": "devbox",
         "reason": "devbox",
         "state": "RUNNING",
@@ -1458,10 +1426,11 @@
       ],
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
-      "idle_gpu_candidates": [],
+      "idle_gpu_candidates": [
+        "6"
+      ],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate",
         "exact_native_replay_failed"
       ],
       "reference_compatible": false,
@@ -1498,10 +1467,11 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [],
+      "idle_gpu_candidates": [
+        "0"
+      ],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate",
         "no_safe_filesystem"
       ],
       "reference_compatible": true,
@@ -1532,5 +1502,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T14:22:31.202100+00:00"
+  "timestamp": "2026-09-24T14:24:04.044744+00:00"
 }
