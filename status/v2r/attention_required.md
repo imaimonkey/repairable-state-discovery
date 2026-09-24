@@ -1,5 +1,5 @@
-2026-09-24T04:31:12.708823+00:00
-HOURS TO DEADLINE: 55.46
+2026-09-24T04:32:46.589667+00:00
+HOURS TO DEADLINE: 55.44
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,6 +9,23 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
+MONITOR_DRIFT: Slurm job 53122 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53121 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53120 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53119 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53118 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53117 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53116 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53115 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53114 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53113 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53112 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53111 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53110 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53109 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53108 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53107 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53106 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53074 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53073 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53072 exists but legacy monitor state does not mention it.
@@ -94,6 +111,23 @@ MONITOR_DRIFT: Slurm job 52964 exists but legacy monitor state does not mention 
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
+53122 v2r-recovery-server2-gsm8k-base-016 PENDING  KEEP_REFERENCE_CRITICAL
+53121 v2r-recovery-server2-gsm8k-base-015 PENDING  KEEP_REFERENCE_CRITICAL
+53120 v2r-recovery-server2-gsm8k-base-014 PENDING  KEEP_REFERENCE_CRITICAL
+53119 v2r-recovery-server2-gsm8k-base-013 PENDING  KEEP_REFERENCE_CRITICAL
+53118 v2r-recovery-server2-gsm8k-base-012 PENDING  KEEP_REFERENCE_CRITICAL
+53117 v2r-recovery-server2-gsm8k-base-011 PENDING  KEEP_REFERENCE_CRITICAL
+53116 v2r-recovery-server2-gsm8k-base-010 PENDING  KEEP_REFERENCE_CRITICAL
+53115 v2r-recovery-server2-gsm8k-base-009 PENDING  KEEP_REFERENCE_CRITICAL
+53114 v2r-recovery-server2-gsm8k-base-008 PENDING  KEEP_REFERENCE_CRITICAL
+53113 v2r-recovery-server2-gsm8k-base-007 PENDING  KEEP_REFERENCE_CRITICAL
+53112 v2r-recovery-server2-gsm8k-base-006 PENDING  KEEP_REFERENCE_CRITICAL
+53111 v2r-recovery-server2-gsm8k-base-005 PENDING  KEEP_REFERENCE_CRITICAL
+53110 v2r-recovery-server2-gsm8k-base-004 PENDING  KEEP_REFERENCE_CRITICAL
+53109 v2r-recovery-server2-gsm8k-base-003 PENDING  KEEP_REFERENCE_CRITICAL
+53108 v2r-recovery-server2-gsm8k-base-002 PENDING  KEEP_REFERENCE_CRITICAL
+53107 v2r-recovery-server2-gsm8k-base-001 PENDING  KEEP_REFERENCE_CRITICAL
+53106 v2r-recovery-server2-gsm8k-base-000 PENDING  KEEP_REFERENCE_CRITICAL
 53074 v2r-ind-server1-math500-temporal-v2-015 PENDING  KEEP_REFERENCE_CRITICAL
 53073 v2r-ind-server1-math500-temporal-v2-014 PENDING  KEEP_REFERENCE_CRITICAL
 53072 v2r-ind-server1-math500-temporal-v2-013 PENDING  KEEP_REFERENCE_CRITICAL
@@ -185,7 +219,7 @@ SERVER2
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=['1', '3'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['1'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
 observed=True idle_gpu_candidates=['7'] safe_filesystems=['/tmp', '/var/tmp']
@@ -231,10 +265,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1317285 heartbeat=2026-09-24T04:30:34.295325+00:00
+status=RUNNING pid=1317285 heartbeat=2026-09-24T04:32:42.395200+00:00
 
 MONITOR
-heartbeat=2026-09-24T04:31:12.708823+00:00
+heartbeat=2026-09-24T04:32:46.589667+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
