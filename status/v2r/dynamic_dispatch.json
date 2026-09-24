@@ -3,14 +3,6 @@
   "jobs": {
     "all_reference_jobs": [
       {
-        "job_id": "53047",
-        "name": "v2r-ind-server1-math500-core-007",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53048",
         "name": "v2r-ind-server1-math500-core-008",
         "node": "",
@@ -651,6 +643,14 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
+        "job_id": "53047",
+        "name": "v2r-ind-server1-math500-core-007",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53005",
         "name": "v2r-ind-server4-gsm8k-core-010",
         "node": "server4",
@@ -731,14 +731,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53043",
-        "name": "v2r-ind-server1-math500-core-003",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53003",
         "name": "v2r-ind-server4-gsm8k-core-008",
         "node": "server4",
@@ -748,14 +740,6 @@
       }
     ],
     "pending": [
-      {
-        "job_id": "53047",
-        "name": "v2r-ind-server1-math500-core-007",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
       {
         "job_id": "53048",
         "name": "v2r-ind-server1-math500-core-008",
@@ -1399,6 +1383,14 @@
     ],
     "running": [
       {
+        "job_id": "53047",
+        "name": "v2r-ind-server1-math500-core-007",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53005",
         "name": "v2r-ind-server4-gsm8k-core-010",
         "node": "server4",
@@ -1475,14 +1467,6 @@
         "name": "v2r-recovery-server2-gsm8k-base-007",
         "node": "server2",
         "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53043",
-        "name": "v2r-ind-server1-math500-core-003",
-        "node": "devbox",
-        "reason": "devbox",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
       },
@@ -1596,5 +1580,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T13:57:38.265496+00:00"
+  "timestamp": "2026-09-24T13:59:11.150775+00:00"
 }
