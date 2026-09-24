@@ -483,14 +483,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53054",
-        "name": "v2r-ind-server1-math500-core-014",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53006",
         "name": "v2r-ind-server4-gsm8k-temporal-000",
         "node": "server4",
@@ -999,14 +991,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53054",
-        "name": "v2r-ind-server1-math500-core-014",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53006",
         "name": "v2r-ind-server4-gsm8k-temporal-000",
         "node": "server4",
@@ -1059,6 +1043,7 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
+        "0",
         "7"
       ],
       "observed": true,
@@ -1133,5 +1118,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T18:24:34.837739+00:00"
+  "timestamp": "2026-09-24T18:26:07.260198+00:00"
 }
