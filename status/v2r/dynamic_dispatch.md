@@ -1,6 +1,6 @@
 # ICLR 2027 V2R dynamic dispatch
 
-Updated: `2026-09-24T23:00:54.105118+00:00`; next inventory interval: `90s`.
+Updated: `2026-09-24T23:02:26.639197+00:00`; next inventory interval: `90s`.
 
 This is a read-only placement decision. It does not cancel, preempt, or delete jobs/artifacts.
 
