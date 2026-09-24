@@ -86,7 +86,7 @@ def submit_worker(v: dict, *, name: str, manifest: str, gates: str, shard: int,
                   run_dir: str, dependency: str | None = None) -> str:
     logs = f"{run_dir}/logs"
     ssh(v, f"mkdir -p {shlex.quote(logs)}")
-    export = ["ALL", f"V2R_EXEC_ROOT={v['exec']}", f"V2R_PY={v['py']}",
+    export = ["ALL", "V2R_HUB_DISABLE_XET=1", f"V2R_EXEC_ROOT={v['exec']}", f"V2R_PY={v['py']}",
               f"V2R_MANIFEST={manifest}", f"V2R_GATES={gates}", f"V2R_SHARD={shard}",
               f"V2R_RUN_DIR={run_dir}", f"V2R_EXECUTION_SHA={SHA}"]
     if v["pythonpath"]:
