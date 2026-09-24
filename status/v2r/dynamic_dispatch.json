@@ -859,6 +859,14 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
+        "job_id": "53195",
+        "name": "v2r-llada_math500_temporal_finalsha-shard-004",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "52974",
         "name": "v2r-ind-server4-math500-temporal-004",
         "node": "server4",
@@ -1791,6 +1799,14 @@
     ],
     "running": [
       {
+        "job_id": "53195",
+        "name": "v2r-llada_math500_temporal_finalsha-shard-004",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "52974",
         "name": "v2r-ind-server4-math500-temporal-004",
         "node": "server4",
@@ -1929,11 +1945,10 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [
-        "0"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "no_safe_filesystem"
       ],
       "reference_compatible": true,
@@ -1964,5 +1979,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T09:02:54.031633+00:00"
+  "timestamp": "2026-09-24T09:04:27.246465+00:00"
 }
