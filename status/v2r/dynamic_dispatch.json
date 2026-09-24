@@ -459,14 +459,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "52855",
-        "name": "v2r-ind-server1-math500-base-004",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "52958",
         "name": "v2r-llada_math500_temporal_finalsha-shard-003",
         "node": "ubuntu",
@@ -975,14 +967,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "52855",
-        "name": "v2r-ind-server1-math500-base-004",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "52958",
         "name": "v2r-llada_math500_temporal_finalsha-shard-003",
         "node": "ubuntu",
@@ -1059,6 +1043,7 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
+        "3",
         "4",
         "6",
         "7"
@@ -1139,5 +1124,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T02:10:18.525736+00:00"
+  "timestamp": "2026-09-24T02:11:52.256963+00:00"
 }
