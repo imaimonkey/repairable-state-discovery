@@ -1387,11 +1387,10 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [
-        "6"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "no_safe_filesystem",
         "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
       ],
@@ -1406,8 +1405,7 @@
       "eligibility": true,
       "fallback_action": null,
       "idle_gpu_candidates": [
-        "1",
-        "3"
+        "1"
       ],
       "observed": true,
       "reasons": [],
@@ -1443,5 +1441,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T04:27:29.440703+00:00"
+  "timestamp": "2026-09-24T04:29:08.914940+00:00"
 }

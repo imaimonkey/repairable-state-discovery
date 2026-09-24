@@ -332,7 +332,7 @@
       "depends_on": [
         "llada-gsm8k-r2-finalsha"
       ],
-      "error": null,
+      "error": "SERVER3_DISABLED_BY_USER",
       "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
       "execution_worktree": "/data/kimhj/repairable-state-discovery-reference-20260923",
       "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_gsm8k_base_finalsha.gates.json",
@@ -351,7 +351,7 @@
       "shard": 1,
       "slurm_state": "PENDING",
       "stage": "base",
-      "status": "WAITING_PRIORITY",
+      "status": "SERVER_DISABLED",
       "storage": {
         "available_bytes": 378464444416,
         "projected_bytes": 4294967296,
@@ -912,7 +912,7 @@
       "depends_on": [
         "llada_math500_base_finalsha-shard-000"
       ],
-      "error": "Cancelled scientific job has shard artifacts; manual review required",
+      "error": "SERVER3_DISABLED_BY_USER",
       "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
       "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
       "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.gates.json",
@@ -930,7 +930,7 @@
       "shard": 4,
       "slurm_state": "CANCELLED by 1021",
       "stage": "temporal",
-      "status": "NEEDS_REVIEW",
+      "status": "SERVER_DISABLED",
       "storage": {
         "available_bytes": 292860145664,
         "projected_bytes": 4294967296,
