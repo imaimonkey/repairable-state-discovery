@@ -3,18 +3,10 @@
   "jobs": {
     "all_reference_jobs": [
       {
-        "job_id": "53013",
-        "name": "v2r-ind-server4-gsm8k-temporal-007",
+        "job_id": "53010",
+        "name": "v2r-ind-server4-gsm8k-temporal-004",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53012",
-        "name": "v2r-ind-server4-gsm8k-temporal-006",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
@@ -22,31 +14,23 @@
         "job_id": "53011",
         "name": "v2r-ind-server4-gsm8k-temporal-005",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "53010",
-        "name": "v2r-ind-server4-gsm8k-temporal-004",
+        "job_id": "53012",
+        "name": "v2r-ind-server4-gsm8k-temporal-006",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "53009",
-        "name": "v2r-ind-server4-gsm8k-temporal-003",
+        "job_id": "53013",
+        "name": "v2r-ind-server4-gsm8k-temporal-007",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53008",
-        "name": "v2r-ind-server4-gsm8k-temporal-002",
-        "node": "",
-        "reason": "(Resources)",
+        "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
@@ -435,11 +419,27 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "53008",
+        "name": "v2r-ind-server4-gsm8k-temporal-002",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "53009",
+        "name": "v2r-ind-server4-gsm8k-temporal-003",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "53057",
         "name": "v2r-ind-server1-math500-core-017",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
       },
       {
@@ -511,32 +511,16 @@
         "name": "v2r-recovery-server2-gsm8k-base-015",
         "node": "server2",
         "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53052",
-        "name": "v2r-ind-server1-math500-core-012",
-        "node": "devbox",
-        "reason": "devbox",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
       }
     ],
     "pending": [
       {
-        "job_id": "53013",
-        "name": "v2r-ind-server4-gsm8k-temporal-007",
+        "job_id": "53010",
+        "name": "v2r-ind-server4-gsm8k-temporal-004",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53012",
-        "name": "v2r-ind-server4-gsm8k-temporal-006",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
@@ -544,31 +528,23 @@
         "job_id": "53011",
         "name": "v2r-ind-server4-gsm8k-temporal-005",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "53010",
-        "name": "v2r-ind-server4-gsm8k-temporal-004",
+        "job_id": "53012",
+        "name": "v2r-ind-server4-gsm8k-temporal-006",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "53009",
-        "name": "v2r-ind-server4-gsm8k-temporal-003",
+        "job_id": "53013",
+        "name": "v2r-ind-server4-gsm8k-temporal-007",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53008",
-        "name": "v2r-ind-server4-gsm8k-temporal-002",
-        "node": "",
-        "reason": "(Resources)",
+        "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
@@ -955,17 +931,33 @@
         "reason": "(Dependency)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
+      }
+    ],
+    "running": [
+      {
+        "job_id": "53008",
+        "name": "v2r-ind-server4-gsm8k-temporal-002",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "53009",
+        "name": "v2r-ind-server4-gsm8k-temporal-003",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
         "job_id": "53057",
         "name": "v2r-ind-server1-math500-core-017",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      }
-    ],
-    "running": [
+      },
       {
         "job_id": "53056",
         "name": "v2r-ind-server1-math500-core-016",
@@ -1035,14 +1027,6 @@
         "name": "v2r-recovery-server2-gsm8k-base-015",
         "node": "server2",
         "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53052",
-        "name": "v2r-ind-server1-math500-core-012",
-        "node": "devbox",
-        "reason": "devbox",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
       }
@@ -1149,5 +1133,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T17:47:34.775894+00:00"
+  "timestamp": "2026-09-24T17:49:07.386619+00:00"
 }
