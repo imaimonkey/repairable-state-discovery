@@ -1,7 +1,7 @@
 {
   "monitor_health": {
     "integrity_alert_count": 114,
-    "last_successful_cycle": "2026-09-24T09:57:06.879915+00:00",
+    "last_successful_cycle": "2026-09-24T09:58:39.874342+00:00",
     "legacy_monitor_health": {
       "consecutive_cycle_failures": 0,
       "last_cycle_events": 0,
@@ -26,20 +26,24 @@
     "poll_interval_seconds": 90,
     "schema_version": "v2r.monitor_health.1",
     "status": "RUNNING",
-    "timestamp": "2026-09-24T09:57:06.879915+00:00",
+    "timestamp": "2026-09-24T09:58:39.874342+00:00",
     "tmux": "iclr2027-unified-monitor"
   },
   "monitor_session_alive": true,
   "orchestrator_health": {
-    "error": "Command '['git', 'add', 'status/v2r']' returned non-zero exit status 128.",
+    "event_poll_seconds": 60,
+    "inventory_cycle_seconds": 1800,
+    "last_error": null,
+    "next_poll": "2026-09-24T10:00:15.386425+00:00",
     "pid": 2596891,
-    "status": "DEGRADED_RETRY",
-    "timestamp": "2026-09-24T09:57:09.863741+00:00"
+    "status": "RUNNING",
+    "timestamp": "2026-09-24T09:59:15.386425+00:00",
+    "tmux": "iclr2027-reference-orchestrator"
   },
   "orchestrator_session_alive": true,
   "pid": 2758149,
   "schema_version": "v2r.watchdog_health.1",
   "status": "RUNNING",
-  "timestamp": "2026-09-24T09:57:31.140405+00:00",
+  "timestamp": "2026-09-24T09:59:31.149811+00:00",
   "tmux": "iclr2027-reference-watchdog"
 }
