@@ -43,14 +43,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "52975",
-        "name": "v2r-ind-server4-math500-temporal-005",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "52976",
         "name": "v2r-ind-server4-math500-temporal-006",
         "node": "",
@@ -859,6 +851,14 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
+        "job_id": "52975",
+        "name": "v2r-ind-server4-math500-temporal-005",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "53195",
         "name": "v2r-llada_math500_temporal_finalsha-shard-004",
         "node": "ubuntu",
@@ -913,14 +913,6 @@
         "reason": "devbox",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "52971",
-        "name": "v2r-ind-server4-math500-temporal-001",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
         "job_id": "53107",
@@ -979,14 +971,6 @@
         "reason": "(ReqNodeNotAvail, May be reserved for other job)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "52975",
-        "name": "v2r-ind-server4-math500-temporal-005",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
         "job_id": "52976",
@@ -1799,6 +1783,14 @@
     ],
     "running": [
       {
+        "job_id": "52975",
+        "name": "v2r-ind-server4-math500-temporal-005",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "53195",
         "name": "v2r-llada_math500_temporal_finalsha-shard-004",
         "node": "ubuntu",
@@ -1853,14 +1845,6 @@
         "reason": "devbox",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "52971",
-        "name": "v2r-ind-server4-math500-temporal-001",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
         "job_id": "53107",
@@ -1979,5 +1963,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T09:10:40.167876+00:00"
+  "timestamp": "2026-09-24T09:12:13.424463+00:00"
 }
