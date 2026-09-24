@@ -1,5 +1,5 @@
-2026-09-24T14:25:36.293024+00:00
-HOURS TO DEADLINE: 45.56
+2026-09-24T14:27:08.982197+00:00
+HOURS TO DEADLINE: 45.53
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,6 +9,8 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
+MONITOR_DRIFT: Slurm job 52998 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52997 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53049 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53050 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53051 exists but legacy monitor state does not mention it.
@@ -82,8 +84,6 @@ MONITOR_DRIFT: Slurm job 53009 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53008 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53007 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53006 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52998 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52997 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53048 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53047 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53005 exists but legacy monitor state does not mention it.
@@ -94,10 +94,11 @@ MONITOR_DRIFT: Slurm job 53045 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53115 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53114 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53113 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53003 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
+52998 v2r-ind-server4-gsm8k-core-003 PENDING  KEEP_REFERENCE_CRITICAL
+52997 v2r-ind-server4-gsm8k-core-002 PENDING  KEEP_REFERENCE_CRITICAL
 53049 v2r-ind-server1-math500-core-009 PENDING  KEEP_REFERENCE_CRITICAL
 53050 v2r-ind-server1-math500-core-010 PENDING  KEEP_REFERENCE_CRITICAL
 53051 v2r-ind-server1-math500-core-011 PENDING  KEEP_REFERENCE_CRITICAL
@@ -172,8 +173,6 @@ ALL ACTIVE KIMHJ JOBS
 53008 v2r-ind-server4-gsm8k-temporal-002 PENDING  KEEP_REFERENCE_CRITICAL
 53007 v2r-ind-server4-gsm8k-temporal-001 PENDING  KEEP_REFERENCE_CRITICAL
 53006 v2r-ind-server4-gsm8k-temporal-000 PENDING  KEEP_REFERENCE_CRITICAL
-52998 v2r-ind-server4-gsm8k-core-003 PENDING  KEEP_REFERENCE_CRITICAL
-52997 v2r-ind-server4-gsm8k-core-002 PENDING  KEEP_REFERENCE_CRITICAL
 53048 v2r-ind-server1-math500-core-008 RUNNING devbox KEEP_REFERENCE_CRITICAL
 53047 v2r-ind-server1-math500-core-007 RUNNING devbox KEEP_REFERENCE_CRITICAL
 53005 v2r-ind-server4-gsm8k-core-010 RUNNING server4 KEEP_REFERENCE_CRITICAL
@@ -184,7 +183,6 @@ ALL ACTIVE KIMHJ JOBS
 53115 v2r-recovery-server2-gsm8k-base-009 RUNNING server2 KEEP_REFERENCE_CRITICAL
 53114 v2r-recovery-server2-gsm8k-base-008 RUNNING server2 KEEP_REFERENCE_CRITICAL
 53113 v2r-recovery-server2-gsm8k-base-007 RUNNING server2 KEEP_REFERENCE_CRITICAL
-53003 v2r-ind-server4-gsm8k-core-008 RUNNING server4 KEEP_REFERENCE_CRITICAL
 
 SERVER1
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
@@ -239,10 +237,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2596891 heartbeat=2026-09-24T14:24:53.983652+00:00
+status=RUNNING pid=2596891 heartbeat=2026-09-24T14:27:03.993841+00:00
 
 MONITOR
-heartbeat=2026-09-24T14:25:36.293024+00:00
+heartbeat=2026-09-24T14:27:08.982197+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.

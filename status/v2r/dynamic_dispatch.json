@@ -3,6 +3,22 @@
   "jobs": {
     "all_reference_jobs": [
       {
+        "job_id": "52998",
+        "name": "v2r-ind-server4-gsm8k-core-003",
+        "node": "",
+        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "state": "PENDING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52997",
+        "name": "v2r-ind-server4-gsm8k-core-002",
+        "node": "",
+        "reason": "(Resources)",
+        "state": "PENDING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "53049",
         "name": "v2r-ind-server1-math500-core-009",
         "node": "",
@@ -591,22 +607,6 @@
         "name": "v2r-ind-server4-gsm8k-temporal-000",
         "node": "",
         "reason": "(Dependency)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52998",
-        "name": "v2r-ind-server4-gsm8k-core-003",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52997",
-        "name": "v2r-ind-server4-gsm8k-core-002",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
@@ -689,17 +689,25 @@
         "reason": "server2",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53003",
-        "name": "v2r-ind-server4-gsm8k-core-008",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       }
     ],
     "pending": [
+      {
+        "job_id": "52998",
+        "name": "v2r-ind-server4-gsm8k-core-003",
+        "node": "",
+        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "state": "PENDING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52997",
+        "name": "v2r-ind-server4-gsm8k-core-002",
+        "node": "",
+        "reason": "(Resources)",
+        "state": "PENDING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
       {
         "job_id": "53049",
         "name": "v2r-ind-server1-math500-core-009",
@@ -1289,22 +1297,6 @@
         "name": "v2r-ind-server4-gsm8k-temporal-000",
         "node": "",
         "reason": "(Dependency)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52998",
-        "name": "v2r-ind-server4-gsm8k-core-003",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52997",
-        "name": "v2r-ind-server4-gsm8k-core-002",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       }
@@ -1389,14 +1381,6 @@
         "reason": "server2",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53003",
-        "name": "v2r-ind-server4-gsm8k-core-008",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       }
     ]
   },
@@ -1501,5 +1485,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T14:25:36.976491+00:00"
+  "timestamp": "2026-09-24T14:27:09.926761+00:00"
 }
