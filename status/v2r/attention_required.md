@@ -1,5 +1,5 @@
-2026-09-24T04:40:38.520590+00:00
-HOURS TO DEADLINE: 55.31
+2026-09-24T04:42:15.993116+00:00
+HOURS TO DEADLINE: 55.28
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -108,7 +108,6 @@ MONITOR_DRIFT: Slurm job 52966 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52965 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52908 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53020 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52964 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
@@ -203,7 +202,7 @@ ALL ACTIVE KIMHJ JOBS
 52971 v2r-ind-server4-math500-temporal-001 PENDING  KEEP_REFERENCE_CRITICAL
 52970 v2r-ind-server4-math500-temporal-000 PENDING  KEEP_REFERENCE_CRITICAL
 52969 v2r-ind-server4-math500-core-009 PENDING  KEEP_REFERENCE_CRITICAL
-52968 v2r-ind-server4-math500-core-008 PENDING  KEEP_REFERENCE_CRITICAL
+52968 v2r-ind-server4-math500-core-008 RUNNING server4 KEEP_REFERENCE_CRITICAL
 53023 v2r-recovery-server1-gsm8k-base-006 RUNNING devbox KEEP_REFERENCE_CRITICAL
 53022 v2r-recovery-server1-gsm8k-base-005 RUNNING devbox KEEP_REFERENCE_CRITICAL
 53021 v2r-recovery-server1-gsm8k-base-004 RUNNING devbox KEEP_REFERENCE_CRITICAL
@@ -212,7 +211,6 @@ ALL ACTIVE KIMHJ JOBS
 52965 v2r-ind-server4-math500-core-005 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52908 v2r-ind-server2-math500-base-recover-003 RUNNING server2 KEEP_REFERENCE_CRITICAL
 53020 v2r-recovery-server1-gsm8k-base-003 RUNNING devbox KEEP_REFERENCE_CRITICAL
-52964 v2r-ind-server4-math500-core-004 RUNNING server4 KEEP_REFERENCE_CRITICAL
 
 SERVER1
 observed=True idle_gpu_candidates=['7'] safe_filesystems=['/tmp', '/var/tmp']
@@ -267,10 +265,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1317285 heartbeat=2026-09-24T04:40:11.657854+00:00
+status=RUNNING pid=1317285 heartbeat=2026-09-24T04:41:15.705604+00:00
 
 MONITOR
-heartbeat=2026-09-24T04:40:38.520590+00:00
+heartbeat=2026-09-24T04:42:15.993116+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
