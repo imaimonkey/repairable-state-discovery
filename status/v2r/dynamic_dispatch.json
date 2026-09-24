@@ -206,29 +206,13 @@
         "job_id": "52961",
         "name": "v2r-ind-server4-math500-core-001",
         "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
+        "reason": "(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
         "job_id": "52960",
         "name": "v2r-ind-server4-math500-core-000",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52944",
-        "name": "v2r-ind-server4-gsm8k-base-recover3-005",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52943",
-        "name": "v2r-ind-server4-gsm8k-base-recover3-004",
         "node": "",
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
@@ -523,6 +507,22 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "52944",
+        "name": "v2r-ind-server4-gsm8k-base-recover3-005",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52943",
+        "name": "v2r-ind-server4-gsm8k-base-recover3-004",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "52942",
         "name": "v2r-ind-server4-gsm8k-base-recover3-003",
         "node": "server4",
@@ -581,14 +581,6 @@
       {
         "job_id": "52941",
         "name": "v2r-ind-server4-gsm8k-base-recover3-002",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52939",
-        "name": "v2r-ind-server4-gsm8k-base-recover3-000",
         "node": "server4",
         "reason": "server4",
         "state": "RUNNING",
@@ -816,29 +808,13 @@
         "job_id": "52961",
         "name": "v2r-ind-server4-math500-core-001",
         "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
+        "reason": "(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
         "job_id": "52960",
         "name": "v2r-ind-server4-math500-core-000",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52944",
-        "name": "v2r-ind-server4-gsm8k-base-recover3-005",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52943",
-        "name": "v2r-ind-server4-gsm8k-base-recover3-004",
         "node": "",
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
@@ -1135,6 +1111,22 @@
     ],
     "running": [
       {
+        "job_id": "52944",
+        "name": "v2r-ind-server4-gsm8k-base-recover3-005",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52943",
+        "name": "v2r-ind-server4-gsm8k-base-recover3-004",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "52942",
         "name": "v2r-ind-server4-gsm8k-base-recover3-003",
         "node": "server4",
@@ -1193,14 +1185,6 @@
       {
         "job_id": "52941",
         "name": "v2r-ind-server4-gsm8k-base-recover3-002",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52939",
-        "name": "v2r-ind-server4-gsm8k-base-recover3-000",
         "node": "server4",
         "reason": "server4",
         "state": "RUNNING",
@@ -1315,7 +1299,6 @@
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
         "3",
-        "5",
         "6",
         "7"
       ],
@@ -1330,5 +1313,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-23T23:58:29.914843+00:00"
+  "timestamp": "2026-09-24T00:00:02.808721+00:00"
 }
