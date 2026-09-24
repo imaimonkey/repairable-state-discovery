@@ -1,13 +1,13 @@
 # ICLR 2027 V2R dynamic dispatch
 
-Updated: `2026-09-24T11:29:15.375099+00:00`; next inventory interval: `90s`.
+Updated: `2026-09-24T11:30:49.672500+00:00`; next inventory interval: `90s`.
 
 This is a read-only placement decision. It does not cancel, preempt, or delete jobs/artifacts.
 
 | Server | Observed | Idle GPUs | Safe FS | Reference compatible | Eligible | Reasons |
 |---|---:|---|---|---:|---:|---|
 | server1 | True | [] | ['/tmp', '/var/tmp'] | False | False | no_idle_gpu_candidate, exact_native_replay_failed |
-| server2 | True | ['6', '7'] | [] | False | False | no_safe_filesystem, exact_native_replay_failed;_safe_scratch_is_non_authoritative |
+| server2 | True | ['7'] | [] | False | False | no_safe_filesystem, exact_native_replay_failed;_safe_scratch_is_non_authoritative |
 | server3 | True | [] | [] | True | False | no_idle_gpu_candidate, no_safe_filesystem |
 | server4 | True | [] | ['/tmp', '/var/tmp'] | False | False | no_idle_gpu_candidate, exact_native_replay_failed;_reference_torch_2_1_2_is_sm120_incompatible |
 
