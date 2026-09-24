@@ -1794,11 +1794,10 @@
       ],
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
-      "idle_gpu_candidates": [
-        "1"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "exact_native_replay_failed"
       ],
       "reference_compatible": false,
@@ -1868,5 +1867,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T10:20:35.105555+00:00"
+  "timestamp": "2026-09-24T10:22:08.330968+00:00"
 }
