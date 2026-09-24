@@ -659,14 +659,6 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "53244",
-        "name": "v2r-dream-math500-R2",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
-      },
-      {
         "job_id": "53116",
         "name": "v2r-recovery-server2-gsm8k-base-010",
         "node": "server2",
@@ -1399,14 +1391,6 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "53244",
-        "name": "v2r-dream-math500-R2",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
-      },
-      {
         "job_id": "53116",
         "name": "v2r-recovery-server2-gsm8k-base-010",
         "node": "server2",
@@ -1546,10 +1530,11 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [],
+      "idle_gpu_candidates": [
+        "0"
+      ],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate",
         "no_safe_filesystem"
       ],
       "reference_compatible": true,
@@ -1580,5 +1565,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T14:06:59.942219+00:00"
+  "timestamp": "2026-09-24T14:08:32.766970+00:00"
 }
