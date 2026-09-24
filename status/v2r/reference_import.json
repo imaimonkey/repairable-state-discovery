@@ -1,6 +1,7 @@
 {
   "author_review_required": true,
   "bundles": {
+    "llada_gsm8k_base_finalsha": "fbfcca08c5becc1e88d506e304c18137d561a876d89ddb796907da81d467c7a5",
     "llada_math500_base_finalsha": "b9d48cd6d5937ea0ced6f1afbc3182fc9d29753aba017d3bd8b73d0c88ed40f1",
     "llada_math500_core_finalsha": "2daaa24c2e13b25046f8758e9c62d2b0aa79ddab16deefaf500426e36a86e87c",
     "llada_math500_temporal_finalsha": "b75d79559b8e4a2522ddec5cf7ad2775508c2f9a2caac20b6cd161774990ba04"
@@ -20,12 +21,12 @@
       "tlast": 0.373046875
     },
     {
-      "accuracy": null,
+      "accuracy": 0.8165276724791509,
       "backbone": "LLaDA",
-      "base": false,
+      "base": true,
       "confirmed": null,
       "core": false,
-      "failed": null,
+      "failed": 242,
       "native": null,
       "never": null,
       "task": "GSM8K",
@@ -61,5 +62,5 @@
   ],
   "schema_version": "v2r.paper_import.1",
   "status": "SEALED_ONLY_IMPORT",
-  "timestamp": "2026-09-24T11:35:01.764702+00:00"
+  "timestamp": "2026-09-24T13:15:53.734422+00:00"
 }
