@@ -1,6 +1,6 @@
 # ICLR 2027 V2R dynamic dispatch
 
-Updated: `2026-09-24T01:34:27.738530+00:00`; next inventory interval: `90s`.
+Updated: `2026-09-24T01:36:00.232473+00:00`; next inventory interval: `90s`.
 
 This is a read-only placement decision. It does not cancel, preempt, or delete jobs/artifacts.
 
@@ -13,4 +13,4 @@ This is a read-only placement decision. It does not cancel, preempt, or delete j
 
 **Next batch:** `WAIT_WITH_INTERVAL_REPLAN` — No server currently passes the combined observation, storage, GPU, and reference-runtime gates.
 
-Running reference jobs: `10`; pending/configuring: `46`.
+Running reference jobs: `10`; pending/configuring: `40`.
