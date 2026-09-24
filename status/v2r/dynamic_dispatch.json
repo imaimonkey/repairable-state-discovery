@@ -843,6 +843,14 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
+        "job_id": "53197",
+        "name": "v2r-llada_gsm8k_base_finalsha-shard-001",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "53032",
         "name": "v2r-recovery-server1-gsm8k-base-015",
         "node": "devbox",
@@ -1759,6 +1767,14 @@
     ],
     "running": [
       {
+        "job_id": "53197",
+        "name": "v2r-llada_gsm8k_base_finalsha-shard-001",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "53032",
         "name": "v2r-recovery-server1-gsm8k-base-015",
         "node": "devbox",
@@ -1898,11 +1914,10 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [
-        "0"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "no_safe_filesystem"
       ],
       "reference_compatible": true,
@@ -1933,5 +1948,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T09:21:32.703477+00:00"
+  "timestamp": "2026-09-24T09:23:06.142479+00:00"
 }

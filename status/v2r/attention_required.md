@@ -1,5 +1,5 @@
-2026-09-24T09:21:23.928773+00:00
-HOURS TO DEADLINE: 50.63
+2026-09-24T09:22:57.191261+00:00
+HOURS TO DEADLINE: 50.60
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -113,6 +113,7 @@ MONITOR_DRIFT: Slurm job 53007 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53006 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52998 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52997 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53197 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53032 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52975 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52974 exists but legacy monitor state does not mention it.
@@ -230,6 +231,7 @@ ALL ACTIVE KIMHJ JOBS
 53006 v2r-ind-server4-gsm8k-temporal-000 PENDING  KEEP_REFERENCE_CRITICAL
 52998 v2r-ind-server4-gsm8k-core-003 PENDING  KEEP_REFERENCE_CRITICAL
 52997 v2r-ind-server4-gsm8k-core-002 PENDING  KEEP_REFERENCE_CRITICAL
+53197 v2r-llada_gsm8k_base_finalsha-shard-001 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 53032 v2r-recovery-server1-gsm8k-base-015 RUNNING devbox KEEP_REFERENCE_CRITICAL
 52975 v2r-ind-server4-math500-temporal-005 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52974 v2r-ind-server4-math500-temporal-004 RUNNING server4 KEEP_REFERENCE_CRITICAL
@@ -247,7 +249,7 @@ SERVER2
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=['0'] safe_filesystems=[]
+observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER4
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
@@ -256,7 +258,7 @@ LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
 
 REFERENCE GATES
-llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=WAITING_PRIORITY
+llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=RUNNING
 llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=SEALED, temporal=SEALED
 
 REFERENCE PRIMARY
@@ -274,7 +276,7 @@ llada-gsm8k-r1-finalsha: PASS job=None
 llada-gsm8k-r2-finalsha: PASS job=52679
 llada_math500_base_finalsha-shard-000: SEALED job=52687
 llada_gsm8k_base_finalsha-shard-000: DONE job=53058
-llada_gsm8k_base_finalsha-shard-001: WAITING_PRIORITY job=None
+llada_gsm8k_base_finalsha-shard-001: RUNNING job=53197
 llada_math500_core_finalsha-shard-000: SEALED job=52738
 llada_math500_core_finalsha-shard-001: SEALED job=52739
 llada_math500_core_finalsha-shard-002: SEALED job=52740
@@ -293,10 +295,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2596891 heartbeat=2026-09-24T09:20:34.332930+00:00
+status=RUNNING pid=2596891 heartbeat=2026-09-24T09:22:46.596375+00:00
 
 MONITOR
-heartbeat=2026-09-24T09:21:23.928773+00:00
+heartbeat=2026-09-24T09:22:57.191261+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
