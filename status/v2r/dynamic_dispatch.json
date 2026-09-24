@@ -739,14 +739,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53027",
-        "name": "v2r-recovery-server1-gsm8k-base-010",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53013",
         "name": "v2r-ind-server4-gsm8k-temporal-007",
         "node": "",
@@ -945,6 +937,14 @@
         "reason": "(Dependency)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "53027",
+        "name": "v2r-recovery-server1-gsm8k-base-010",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
       },
       {
         "job_id": "53026",
@@ -1749,14 +1749,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53027",
-        "name": "v2r-recovery-server1-gsm8k-base-010",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53013",
         "name": "v2r-ind-server4-gsm8k-temporal-007",
         "node": "",
@@ -1959,6 +1951,14 @@
     ],
     "running": [
       {
+        "job_id": "53027",
+        "name": "v2r-recovery-server1-gsm8k-base-010",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53026",
         "name": "v2r-recovery-server1-gsm8k-base-009",
         "node": "devbox",
@@ -2127,5 +2127,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T06:20:45.108884+00:00"
+  "timestamp": "2026-09-24T06:22:18.277531+00:00"
 }

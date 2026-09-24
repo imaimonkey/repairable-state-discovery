@@ -1,5 +1,5 @@
-2026-09-24T06:21:07.889884+00:00
-HOURS TO DEADLINE: 53.63
+2026-09-24T06:22:41.116777+00:00
+HOURS TO DEADLINE: 53.61
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -265,7 +265,7 @@ ALL ACTIVE KIMHJ JOBS
 52967 v2r-ind-server4-math500-core-007 RUNNING server4 KEEP_REFERENCE_CRITICAL
 
 SERVER1
-observed=True idle_gpu_candidates=['6', '7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['7'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER2
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
@@ -317,10 +317,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1317285 heartbeat=2026-09-24T06:20:48.718939+00:00
+status=RUNNING pid=1317285 heartbeat=2026-09-24T06:21:52.887385+00:00
 
 MONITOR
-heartbeat=2026-09-24T06:21:07.889884+00:00
+heartbeat=2026-09-24T06:22:41.116777+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
