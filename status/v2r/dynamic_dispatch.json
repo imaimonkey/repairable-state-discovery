@@ -545,14 +545,6 @@
         "reason": "server2",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53051",
-        "name": "v2r-ind-server1-math500-core-011",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
       }
     ],
     "pending": [
@@ -1101,14 +1093,6 @@
         "reason": "server2",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53051",
-        "name": "v2r-ind-server1-math500-core-011",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
       }
     ]
   },
@@ -1139,6 +1123,7 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
+        "1",
         "7"
       ],
       "observed": true,
@@ -1213,5 +1198,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T17:02:37.231175+00:00"
+  "timestamp": "2026-09-24T17:04:10.061438+00:00"
 }

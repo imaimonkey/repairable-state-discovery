@@ -1,5 +1,5 @@
-2026-09-24T17:02:42.139115+00:00
-HOURS TO DEADLINE: 42.94
+2026-09-24T17:04:14.685257+00:00
+HOURS TO DEADLINE: 42.91
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -66,8 +66,8 @@ MONITOR_DRIFT: Slurm job 53060 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53059 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53057 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53056 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53055 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53013 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53055 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53054 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53123 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53006 exists but legacy monitor state does not mention it.
@@ -76,7 +76,6 @@ MONITOR_DRIFT: Slurm job 53121 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53053 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53052 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53120 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53051 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
@@ -138,8 +137,8 @@ ALL ACTIVE KIMHJ JOBS
 53059 v2r-ind-server1-math500-temporal-v2-000 PENDING  KEEP_REFERENCE_CRITICAL
 53057 v2r-ind-server1-math500-core-017 PENDING  KEEP_REFERENCE_CRITICAL
 53056 v2r-ind-server1-math500-core-016 PENDING  KEEP_REFERENCE_CRITICAL
-53055 v2r-ind-server1-math500-core-015 PENDING  KEEP_REFERENCE_CRITICAL
 53013 v2r-ind-server4-gsm8k-temporal-007 PENDING  KEEP_REFERENCE_CRITICAL
+53055 v2r-ind-server1-math500-core-015 RUNNING devbox KEEP_REFERENCE_CRITICAL
 53054 v2r-ind-server1-math500-core-014 RUNNING devbox KEEP_REFERENCE_CRITICAL
 53123 v2r-recovery-server2-gsm8k-base-017 RUNNING server2 KEEP_REFERENCE_CRITICAL
 53006 v2r-ind-server4-gsm8k-temporal-000 RUNNING server4 KEEP_REFERENCE_CRITICAL
@@ -148,10 +147,9 @@ ALL ACTIVE KIMHJ JOBS
 53053 v2r-ind-server1-math500-core-013 RUNNING devbox KEEP_REFERENCE_CRITICAL
 53052 v2r-ind-server1-math500-core-012 RUNNING devbox KEEP_REFERENCE_CRITICAL
 53120 v2r-recovery-server2-gsm8k-base-014 RUNNING server2 KEEP_REFERENCE_CRITICAL
-53051 v2r-ind-server1-math500-core-011 RUNNING devbox KEEP_REFERENCE_CRITICAL
 
 SERVER1
-observed=True idle_gpu_candidates=['7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['1', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER2
 observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
@@ -205,10 +203,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3958268 heartbeat=2026-09-24T17:02:35.996182+00:00
+status=RUNNING pid=3958268 heartbeat=2026-09-24T17:03:40.299671+00:00
 
 MONITOR
-heartbeat=2026-09-24T17:02:42.139115+00:00
+heartbeat=2026-09-24T17:04:14.685257+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
