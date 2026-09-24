@@ -22,6 +22,7 @@ SOURCE_CACHE=Path('/var/tmp/kimhj-v2r-reference/upstream')
 MODEL_CACHE=Path('/var/tmp/kimhj-v2r-reference/model-cache')
 DESIGN_SHA=canonical_hash(read_json(ROOT/'status/v2r/design_freeze.json'))
 EXECUTOR='repairable_diffusion.src.v2r.science:execute_base'
+DISABLED_SERVERS={'server3'}
 
 def _gate_paths(backbone, task):
  base=OUT/f'gate-78fe5d7-llada-{task}'
@@ -50,6 +51,7 @@ def base_spec(backbone, task, seconds_per_item):
 
 def ensure_base_tasks(queue):
  """Append base shard tasks exactly once for every newly passing LLaDA R2."""
+ if DISABLED_SERVERS: return False
  tasks=queue.setdefault('tasks',[]); changed=False
  for task_name in ('math500','gsm8k'):
   r2=next((t for t in tasks if t.get('id')==f'llada-{task_name}-r2-finalsha'),None)
@@ -70,6 +72,7 @@ def ensure_base_tasks(queue):
  return changed
 
 def submit_science(task, inventory):
+ if task.get('server') in DISABLED_SERVERS: raise RuntimeError('SERVER3_DISABLED_BY_USER')
  node=inventory['servers'].get(task['server'],{})
  if not node.get('observed'): raise RuntimeError('NO_OBSERVED_SERVER_FOR_SCIENCE')
  # Queue the next frozen server3 core shards ahead of slot release. Slurm
@@ -137,6 +140,7 @@ def _deep_spec(base_manifest, run_dir, bank, bank_sha, index, purpose, budget):
  return make_plan({'run_id':f'llada_{task}_{purpose}_finalsha','stage':stage,'design_seed':20260923,'design_sha256':DESIGN_SHA,'execution_git_sha':base_manifest['execution_git_sha'],'model':base_manifest['model'],'dataset':base_manifest['dataset'],'recipe':recipe,'config':config,'item_ids':selected,'executor':'repairable_diffusion.src.v2r.science:execute_probe','runtime_paths':base_manifest['runtime_paths'],'execution_worktree':base_manifest['execution_worktree'],'trajectory_index':trajectory_index,'failed_pool_freeze':failed,'budget':budget,'timing':{'seconds_per_item':budget['inputs']['seconds_per_item'],'target_shard_hours':4.0},'seed_plan':plan})
 
 def ensure_deep_tasks(queue):
+ if DISABLED_SERVERS: return False
  tasks=queue.setdefault('tasks',[]); changed=False
  groups={}
  for task in tasks:

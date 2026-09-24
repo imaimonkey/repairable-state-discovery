@@ -10,6 +10,10 @@ from v2r_science_controller import ensure_base_tasks,ensure_deep_tasks,submit_sc
 from v2r_reduce import reduce_stage
 from repairable_diffusion.src.v2r.artifacts import read_json,validate_shard
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'status/v2r';RUNTIME=Path('/var/tmp/kimhj-v2r-reference/runtime')
+# Server3/ubuntu is unavailable for this run from this point onward.  Keep
+# already sealed evidence readable, but never submit, resume, or requeue an
+# unfinished task there.
+DISABLED_SERVERS={'server3'}
 
 def sync_remote_shard(task):
     """Pull a completed remote shard into the authoritative local run tree.
@@ -61,6 +65,13 @@ def cycle():
  byid={t['id']:t for t in queue['tasks']}
  for task in sorted(queue['tasks'],key=lambda t:t['priority']):
   old=task.get('status','READY')
+  if task.get('server') in DISABLED_SERVERS and old not in {'PASS','DONE','MERGED','SEALED'}:
+   task['status']='SERVER_DISABLED'
+   task['error']='SERVER3_DISABLED_BY_USER'
+   if old!=task['status']:
+    changed=True
+    event('TASK_STATE_CHANGE',{'task':task['id'],'old':old,'new':task['status'],'job_id':task.get('job_id'),'error':task['error']})
+   continue
   if task.get('kind')=='science_shard':
    # Preserve the hard critical path: a pending GSM replication shard must not
    # consume the next Slurm slot before LLaDA MATH core and temporal evidence.

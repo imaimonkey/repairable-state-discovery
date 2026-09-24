@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HOSTS = {'server1': 'kimhj@10.0.12.120', 'server2': 'kimhj@10.0.12.121', 'server3': None, 'server4': 'kimhj@10.0.12.163'}
 NODES = {'server1': 'devbox', 'server2': 'server2', 'server3': 'ubuntu', 'server4': 'server4'}
+DISABLED_SERVERS = {'server3'}
 HISTORICAL_JOBS = ['50668','50669','50738','50752','50753','50754','50923','50924','49256']
 # Absolute values use statvfs available bytes (unprivileged reserve excluded).
 PROBE = r'''
@@ -128,7 +129,8 @@ def collect(output):
         # Candidate is not an allocation. Submit must additionally obtain exclusive Slurm GRES.
         s['idle_gpu_candidates']=[g['index'] for g in s.get('gpus',[]) if int(g['memory_used_mib'])<128 and int(g['utilization_percent'])==0 and g['uuid'] not in processes]
         s['safe_filesystem_candidates']=[f['path'] for f in s.get('filesystems',[]) if f['usage_fraction']<0.95 and f['available_bytes']>=50*1024**3 and f['inodes_free']>10000 and f['writable']]
-        s['reference_execution_compatible']=bool(name=='server3' and s.get('node')=='ubuntu')
+        s['disabled_by_user']=name in DISABLED_SERVERS
+        s['reference_execution_compatible']=bool(name=='server3' and s.get('node')=='ubuntu' and name not in DISABLED_SERVERS)
         s['new_scientific_jobs_eligible']=bool(s['observed'] and s['idle_gpu_candidates'] and s['safe_filesystem_candidates'] and s['reference_execution_compatible'])
     atomic_json(output/'cluster_inventory.json',inventory)
     atomic_json(output/'job_inventory.json',job_inventory)

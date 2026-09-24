@@ -34,6 +34,7 @@ def audit_prepared_registries():
 def submit(task,inventory,dry_run=False):
  hours=(DEADLINE-dt.datetime.now(dt.timezone.utc)).total_seconds()/3600
  if hours<=12:raise RuntimeError('DEADLINE_NO_NEW_LONG_SCIENTIFIC_JOB')
+ if task.get('server')=='server3':raise RuntimeError('SERVER3_DISABLED_BY_USER')
  if task['server']!='server3':raise RuntimeError('Remote execution requires verified code/cache deployment first')
  node=inventory['servers'][task['server']]
  if not node['observed'] or not node['idle_gpu_candidates']:raise RuntimeError('NO_OBSERVED_IDLE_GPU')
