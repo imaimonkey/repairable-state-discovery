@@ -85,6 +85,33 @@ def cycle():
       sync_remote_shard(task)
       manifest=read_json(task['manifest']);gates=read_json(task['gates']);validate_shard(Path(task['run_dir'])/'shards'/f"shard-{int(task['shard']):03d}",manifest,int(task['shard']),gates=gates);task['status']='SEALED' if Path(task['run_dir'],'SEAL_RECORD.json').exists() else 'DONE';task['error']=None
      except Exception as exc:task.update(status='NEEDS_REVIEW',error=str(exc))
+    elif (state.startswith('CANCELLED') or state in {'TIMEOUT','FAILED','NODE_FAIL','OUT_OF_MEMORY'}) and task.get('stage')=='base':
+     # A base shard can be resumed only when its immutable run tree contains a
+     # verifiable, incomplete progress record.  This keeps the same manifest,
+     # item assignment, model/gate binding, and execution SHA while recovering
+     # scheduler/time-limit interruptions without declaring partial evidence
+     # complete.  Never loop indefinitely: each such shard gets at most three
+     # resume attempts before requiring review.
+     shard_root=Path(task['run_dir'])/'shards'/f"shard-{int(task['shard']):03d}"
+     progress_path=shard_root/'progress.json'
+     try: progress=read_json(progress_path) if progress_path.is_file() else None
+     except Exception: progress=None
+     completed=int(progress.get('completed_count',0)) if isinstance(progress,dict) else 0
+     expected=int(progress.get('expected_count',0)) if isinstance(progress,dict) else 0
+     attempts=int(task.get('recovery_attempt',0))
+     if progress and expected>completed and attempts<3:
+      old_job=task.get('job_id')
+      for key in ('job_id','slurm_state','error','submission_args','submitted_at','script','storage','queue_ahead'):
+       task.pop(key,None)
+      task.update({'status':'READY','error':None,'recovery_attempt':attempts+1,
+                   'recovery_parent_job_id':old_job,
+                   'recovery_reason':f'{state}_AFTER_{completed}_OF_{expected}_RESUME_EXISTING_COMPLETED_ITEMS'})
+      event('SCIENCE_BASE_RESUME_READY',{
+       'task':task['id'],'old_job_id':old_job,'completed_count':completed,
+       'expected_count':expected,'attempt':attempts+1,
+       'execution_git_sha':task.get('execution_git_sha')})
+     else:
+      task.update(status='NEEDS_REVIEW',error='Terminal scientific Slurm state: '+state)
     elif state.startswith('CANCELLED') and task.get('stage') in {'r3_core','temporal'}:
      # A cancelled placeholder can be safely requeued only when the shard
      # directory contains no scientific files. Submission creates empty
