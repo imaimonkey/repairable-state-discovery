@@ -667,6 +667,14 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "53058",
+        "name": "v2r-llada_gsm8k_base_finalsha-shard-000",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "52959",
         "name": "v2r-llada_math500_temporal_finalsha-shard-004",
         "node": "ubuntu",
@@ -1423,6 +1431,14 @@
     ],
     "running": [
       {
+        "job_id": "53058",
+        "name": "v2r-llada_gsm8k_base_finalsha-shard-000",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "52959",
         "name": "v2r-llada_math500_temporal_finalsha-shard-004",
         "node": "ubuntu",
@@ -1513,11 +1529,9 @@
     ]
   },
   "next_batch": {
-    "action": "PLACE_NEXT_PRIORITY_SHARD",
-    "eligible_servers": [
-      "server3"
-    ],
-    "rationale": "eligible servers: server3"
+    "action": "WAIT_WITH_INTERVAL_REPLAN",
+    "eligible_servers": [],
+    "rationale": "No server currently passes the combined observation, storage, GPU, and reference-runtime gates."
   },
   "policy": {
     "all_servers_observed": true,
@@ -1578,13 +1592,13 @@
         "execution SHA 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
         "existing R0/R1/R2 gate chain"
       ],
-      "eligibility": true,
+      "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [
-        "1"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
-      "reasons": [],
+      "reasons": [
+        "no_idle_gpu_candidate"
+      ],
       "reference_compatible": true,
       "safe_filesystem_candidates": [
         "/tmp",
@@ -1618,5 +1632,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T03:24:13.937184+00:00"
+  "timestamp": "2026-09-24T03:25:48.971188+00:00"
 }
