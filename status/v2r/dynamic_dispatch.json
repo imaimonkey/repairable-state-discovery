@@ -51,14 +51,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "52959",
-        "name": "v2r-llada_math500_temporal_finalsha-shard-004",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:h200:1"
-      },
-      {
         "job_id": "53057",
         "name": "v2r-ind-server1-math500-core-017",
         "node": "",
@@ -675,6 +667,14 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "52959",
+        "name": "v2r-llada_math500_temporal_finalsha-shard-004",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "52908",
         "name": "v2r-ind-server2-math500-base-recover-003",
         "node": "server2",
@@ -755,14 +755,6 @@
         "tres": "gres/gpu:h200:1"
       },
       {
-        "job_id": "52957",
-        "name": "v2r-llada_math500_temporal_finalsha-shard-002",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
-      },
-      {
         "job_id": "52961",
         "name": "v2r-ind-server4-math500-core-001",
         "node": "server4",
@@ -819,14 +811,6 @@
         "reason": "(Resources)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "52959",
-        "name": "v2r-llada_math500_temporal_finalsha-shard-004",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:h200:1"
       },
       {
         "job_id": "53057",
@@ -1447,6 +1431,14 @@
     ],
     "running": [
       {
+        "job_id": "52959",
+        "name": "v2r-llada_math500_temporal_finalsha-shard-004",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "52908",
         "name": "v2r-ind-server2-math500-base-recover-003",
         "node": "server2",
@@ -1527,14 +1519,6 @@
         "tres": "gres/gpu:h200:1"
       },
       {
-        "job_id": "52957",
-        "name": "v2r-llada_math500_temporal_finalsha-shard-002",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
-      },
-      {
         "job_id": "52961",
         "name": "v2r-ind-server4-math500-core-001",
         "node": "server4",
@@ -1545,9 +1529,11 @@
     ]
   },
   "next_batch": {
-    "action": "WAIT_WITH_INTERVAL_REPLAN",
-    "eligible_servers": [],
-    "rationale": "No server currently passes the combined observation, storage, GPU, and reference-runtime gates."
+    "action": "PLACE_NEXT_PRIORITY_SHARD",
+    "eligible_servers": [
+      "server3"
+    ],
+    "rationale": "eligible servers: server3"
   },
   "policy": {
     "all_servers_observed": true,
@@ -1608,13 +1594,13 @@
         "execution SHA 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
         "existing R0/R1/R2 gate chain"
       ],
-      "eligibility": false,
+      "eligibility": true,
       "fallback_action": null,
-      "idle_gpu_candidates": [],
-      "observed": true,
-      "reasons": [
-        "no_idle_gpu_candidate"
+      "idle_gpu_candidates": [
+        "3"
       ],
+      "observed": true,
+      "reasons": [],
       "reference_compatible": true,
       "safe_filesystem_candidates": [
         "/tmp",
@@ -1648,5 +1634,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T03:21:04.598203+00:00"
+  "timestamp": "2026-09-24T03:22:40.246317+00:00"
 }
