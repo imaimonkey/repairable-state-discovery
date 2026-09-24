@@ -26,6 +26,17 @@ def fmt(v):
     try:return f'{float(v):.4f}'
     except (TypeError,ValueError):return str(v).replace('_',r'\_')
 
+def numeric(v, default=0.0):
+    """Parse compact CSV booleans and numeric values without changing semantics."""
+    if v in (None, ''): return default
+    if isinstance(v, bool): return 1.0 if v else 0.0
+    if isinstance(v, str):
+        s=v.strip().lower()
+        if s == 'true': return 1.0
+        if s == 'false': return 0.0
+    try: return float(v)
+    except (TypeError, ValueError): return default
+
 def main():
     specs=[('LLaDA','MATH-500','llada_math500_base_finalsha','llada_math500_core_finalsha','llada_math500_temporal_finalsha'),('LLaDA','GSM8K','llada_gsm8k_base_finalsha','llada_gsm8k_core_finalsha','llada_gsm8k_temporal_finalsha'),('Dream','MATH-500','dream_math500_base_finalsha','dream_math500_core_finalsha','dream_math500_temporal_finalsha'),('Dream','GSM8K','dream_gsm8k_base_finalsha','dream_gsm8k_core_finalsha','dream_gsm8k_temporal_finalsha')]
     rows=[];import_hashes={}
@@ -37,9 +48,9 @@ def main():
         for b in (base,core,temp):
             if b['sealed']:import_hashes[b['path'].name]=hashlib.sha256((b['path']/'SEALED.json').read_bytes()).hexdigest()
         failed=len([r for r in existence if r.get('correct','').lower()=='false']) if existence else None
-        native=sum(float(r.get('native_recoverable',0) or 0) for r in temporal)/len(temporal) if temporal else None
-        confirmed=sum(float(r.get('confirmed_repairable',0) or 0) for r in temporal)/len(temporal) if temporal else None
-        vals=[float(r['T_last_R']) for r in temporal if r.get('T_last_R') not in (None,'')]
+        native=sum(numeric(r.get('native_recoverable')) for r in temporal)/len(temporal) if temporal else None
+        confirmed=sum(numeric(r.get('confirmed_repairable')) for r in temporal)/len(temporal) if temporal else None
+        vals=[numeric(r.get('T_last_R')) for r in temporal if r.get('T_last_R') not in (None,'')]
         rows.append({'backbone':backbone,'task':task,'accuracy':(base_report or {}).get('reference_trajectory_accuracy'),'failed':failed,'native':native,'confirmed':confirmed,'never':None,'tlast':sum(vals)/len(vals) if vals else None,'base':base['sealed'],'core':core['sealed'],'temporal':temp['sealed']})
     OUT.mkdir(parents=True,exist_ok=True)
     lines=[r'\begin{table}[t]',r'\caption{Reference baseline and independently confirmed repairability. Dashes denote evidence that is not yet sealed.}',r'\label{tab:reference-existence}',r'\centering\scriptsize',r'\resizebox{\linewidth}{!}{\begin{tabular}{llrrrrrr}',r'\toprule',r'Backbone & Task & Accuracy & Failed probed & Native recoverable & Confirmed repairable & Never-correct repairable & $T_{\rm last}^{R}$ \\',r'\midrule']
