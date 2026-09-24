@@ -1,5 +1,5 @@
-2026-09-24T00:42:48.567128+00:00
-HOURS TO DEADLINE: 59.27
+2026-09-24T00:44:21.227490+00:00
+HOURS TO DEADLINE: 59.24
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -161,7 +161,7 @@ ALL ACTIVE KIMHJ JOBS
 52847 v2r-ind-s1-gsm-r2d RUNNING devbox KEEP_REFERENCE_CRITICAL
 
 SERVER1
-observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp', '/mnt/raid5']
+observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER2
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
@@ -213,10 +213,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-24T00:42:35.185701+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-24T00:43:39.024394+00:00
 
 MONITOR
-heartbeat=2026-09-24T00:42:48.567128+00:00
+heartbeat=2026-09-24T00:44:21.227490+00:00
 
 CURRENT P0
 Complete LLaDA MATH temporal evidence and seal its reference bundle.
