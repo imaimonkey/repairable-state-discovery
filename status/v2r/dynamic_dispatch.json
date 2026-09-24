@@ -43,14 +43,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "52958",
-        "name": "v2r-llada_math500_temporal_finalsha-shard-003",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:h200:1"
-      },
-      {
         "job_id": "52959",
         "name": "v2r-llada_math500_temporal_finalsha-shard-004",
         "node": "",
@@ -467,6 +459,14 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "52958",
+        "name": "v2r-llada_math500_temporal_finalsha-shard-003",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "52957",
         "name": "v2r-llada_math500_temporal_finalsha-shard-002",
         "node": "ubuntu",
@@ -521,14 +521,6 @@
         "reason": "server4",
         "state": "RUNNING",
         "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52956",
-        "name": "v2r-llada_math500_temporal_finalsha-shard-001",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
       },
       {
         "job_id": "52851",
@@ -603,14 +595,6 @@
         "reason": "(ReqNodeNotAvail, May be reserved for other job)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "52958",
-        "name": "v2r-llada_math500_temporal_finalsha-shard-003",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:h200:1"
       },
       {
         "job_id": "52959",
@@ -1031,6 +1015,14 @@
     ],
     "running": [
       {
+        "job_id": "52958",
+        "name": "v2r-llada_math500_temporal_finalsha-shard-003",
+        "node": "ubuntu",
+        "reason": "ubuntu",
+        "state": "RUNNING",
+        "tres": "gres/gpu:h200:1"
+      },
+      {
         "job_id": "52957",
         "name": "v2r-llada_math500_temporal_finalsha-shard-002",
         "node": "ubuntu",
@@ -1085,14 +1077,6 @@
         "reason": "server4",
         "state": "RUNNING",
         "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52956",
-        "name": "v2r-llada_math500_temporal_finalsha-shard-001",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
       },
       {
         "job_id": "52851",
@@ -1234,5 +1218,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T01:22:03.512996+00:00"
+  "timestamp": "2026-09-24T01:23:36.323464+00:00"
 }

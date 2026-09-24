@@ -1,5 +1,5 @@
-2026-09-24T01:21:30.467356+00:00
-HOURS TO DEADLINE: 58.62
+2026-09-24T01:23:03.148887+00:00
+HOURS TO DEADLINE: 58.60
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -14,8 +14,6 @@ MONITOR_DRIFT: Slurm job 52911 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52910 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52909 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52908 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52957 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52958 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52959 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52907 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52977 exists but legacy monitor state does not mention it.
@@ -68,12 +66,13 @@ MONITOR_DRIFT: Slurm job 52858 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52857 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52856 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52855 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52958 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52957 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52961 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52854 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52960 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52943 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52942 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52956 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52851 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52852 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52853 exists but legacy monitor state does not mention it.
@@ -86,8 +85,6 @@ ALL ACTIVE KIMHJ JOBS
 52910 v2r-ind-server2-gsm8k-base-recover-000 PENDING  KEEP_REFERENCE_CRITICAL
 52909 v2r-ind-server2-math500-base-recover-004 PENDING  KEEP_REFERENCE_CRITICAL
 52908 v2r-ind-server2-math500-base-recover-003 PENDING  KEEP_REFERENCE_CRITICAL
-52957 v2r-llada_math500_temporal_finalsha-shard-002 PENDING  KEEP_REFERENCE_CRITICAL
-52958 v2r-llada_math500_temporal_finalsha-shard-003 PENDING  KEEP_REFERENCE_CRITICAL
 52959 v2r-llada_math500_temporal_finalsha-shard-004 PENDING  KEEP_REFERENCE_CRITICAL
 52907 v2r-ind-server2-math500-base-recover-002 PENDING  KEEP_REFERENCE_CRITICAL
 52977 v2r-ind-server4-math500-temporal-007 PENDING  KEEP_REFERENCE_CRITICAL
@@ -140,13 +137,14 @@ ALL ACTIVE KIMHJ JOBS
 52857 v2r-ind-server1-gsm8k-base-001 PENDING  KEEP_REFERENCE_CRITICAL
 52856 v2r-ind-server1-gsm8k-base-000 PENDING  KEEP_REFERENCE_CRITICAL
 52855 v2r-ind-server1-math500-base-004 PENDING  KEEP_REFERENCE_CRITICAL
+52958 v2r-llada_math500_temporal_finalsha-shard-003 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
+52957 v2r-llada_math500_temporal_finalsha-shard-002 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52961 v2r-ind-server4-math500-core-001 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52906 v2r-ind-server2-math500-base-recover-001 RUNNING server2 KEEP_REFERENCE_CRITICAL
 52854 v2r-ind-server1-math500-base-003 RUNNING devbox KEEP_REFERENCE_CRITICAL
 52960 v2r-ind-server4-math500-core-000 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52943 v2r-ind-server4-gsm8k-base-recover3-004 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52942 v2r-ind-server4-gsm8k-base-recover3-003 RUNNING server4 KEEP_REFERENCE_CRITICAL
-52956 v2r-llada_math500_temporal_finalsha-shard-001 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52851 v2r-ind-server1-math500-base-000 RUNNING devbox KEEP_REFERENCE_CRITICAL
 52852 v2r-ind-server1-math500-base-001 RUNNING devbox KEEP_REFERENCE_CRITICAL
 52853 v2r-ind-server1-math500-base-002 RUNNING devbox KEEP_REFERENCE_CRITICAL
@@ -159,7 +157,7 @@ SERVER2
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=['3'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
 observed=True idle_gpu_candidates=['2', '3', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
@@ -194,10 +192,10 @@ llada_math500_core_finalsha-shard-003: SEALED job=52741
 llada_math500_core_finalsha-shard-004: SEALED job=52742
 llada_math500_core_finalsha-shard-005: SEALED job=52791
 llada_math500_core_finalsha-shard-006: SEALED job=52792
-llada_math500_temporal_finalsha-shard-000: RUNNING job=52955
-llada_math500_temporal_finalsha-shard-001: RUNNING job=52956
-llada_math500_temporal_finalsha-shard-002: PENDING job=52957
-llada_math500_temporal_finalsha-shard-003: PENDING job=52958
+llada_math500_temporal_finalsha-shard-000: DONE job=52955
+llada_math500_temporal_finalsha-shard-001: DONE job=52956
+llada_math500_temporal_finalsha-shard-002: RUNNING job=52957
+llada_math500_temporal_finalsha-shard-003: RUNNING job=52958
 llada_math500_temporal_finalsha-shard-004: PENDING job=52959
 
 PAPER
@@ -205,10 +203,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-24T01:20:54.636770+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-24T01:23:02.759487+00:00
 
 MONITOR
-heartbeat=2026-09-24T01:21:30.467356+00:00
+heartbeat=2026-09-24T01:23:03.148887+00:00
 
 CURRENT P0
 Complete LLaDA MATH temporal evidence and seal its reference bundle.
