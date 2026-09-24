@@ -3,14 +3,6 @@
   "jobs": {
     "all_reference_jobs": [
       {
-        "job_id": "52941",
-        "name": "v2r-ind-server4-gsm8k-base-recover3-002",
-        "node": "",
-        "reason": "",
-        "state": "COMPLETING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "52912",
         "name": "v2r-ind-server2-gsm8k-base-recover-002",
         "node": "",
@@ -205,14 +197,6 @@
       {
         "job_id": "52962",
         "name": "v2r-ind-server4-math500-core-002",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52961",
-        "name": "v2r-ind-server4-math500-core-001",
         "node": "",
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
@@ -489,6 +473,14 @@
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "52961",
+        "name": "v2r-ind-server4-math500-core-001",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
         "job_id": "52906",
@@ -781,14 +773,6 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "52961",
-        "name": "v2r-ind-server4-math500-core-001",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "52927",
         "name": "v2r-ind-server2-gsm8k-base-recover-017",
         "node": "",
@@ -1063,6 +1047,14 @@
     ],
     "running": [
       {
+        "job_id": "52961",
+        "name": "v2r-ind-server4-math500-core-001",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "52906",
         "name": "v2r-ind-server2-math500-base-recover-001",
         "node": "server2",
@@ -1242,7 +1234,7 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
-        "1",
+        "2",
         "3",
         "6",
         "7"
@@ -1258,5 +1250,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T01:18:57.954364+00:00"
+  "timestamp": "2026-09-24T01:20:30.728069+00:00"
 }
