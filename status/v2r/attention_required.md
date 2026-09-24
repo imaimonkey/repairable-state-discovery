@@ -1,5 +1,5 @@
-2026-09-24T03:40:35.527754+00:00
-HOURS TO DEADLINE: 56.31
+2026-09-24T03:42:08.399138+00:00
+HOURS TO DEADLINE: 56.28
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,6 +9,7 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
+MONITOR_DRIFT: Slurm job 52915 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52914 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52913 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52912 exists but legacy monitor state does not mention it.
@@ -104,7 +105,6 @@ MONITOR_DRIFT: Slurm job 52919 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52918 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52917 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52916 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52915 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52909 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52965 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52959 exists but legacy monitor state does not mention it.
@@ -119,6 +119,7 @@ MONITOR_DRIFT: Slurm job 52962 exists but legacy monitor state does not mention 
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
+52915 v2r-ind-server2-gsm8k-base-recover-005 PENDING  KEEP_REFERENCE_CRITICAL
 52914 v2r-ind-server2-gsm8k-base-recover-004 PENDING  KEEP_REFERENCE_CRITICAL
 52913 v2r-ind-server2-gsm8k-base-recover-003 PENDING  KEEP_REFERENCE_CRITICAL
 52912 v2r-ind-server2-gsm8k-base-recover-002 PENDING  KEEP_REFERENCE_CRITICAL
@@ -215,7 +216,6 @@ ALL ACTIVE KIMHJ JOBS
 52918 v2r-ind-server2-gsm8k-base-recover-008 PENDING  KEEP_REFERENCE_CRITICAL
 52917 v2r-ind-server2-gsm8k-base-recover-007 PENDING  KEEP_REFERENCE_CRITICAL
 52916 v2r-ind-server2-gsm8k-base-recover-006 PENDING  KEEP_REFERENCE_CRITICAL
-52915 v2r-ind-server2-gsm8k-base-recover-005 PENDING  KEEP_REFERENCE_CRITICAL
 52909 v2r-ind-server2-math500-base-recover-004 RUNNING server2 KEEP_REFERENCE_CRITICAL
 52965 v2r-ind-server4-math500-core-005 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52959 v2r-llada_math500_temporal_finalsha-shard-004 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
@@ -232,7 +232,7 @@ SERVER1
 observed=True idle_gpu_candidates=['7'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER2
-observed=True idle_gpu_candidates=['6'] safe_filesystems=[]
+observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER3
 observed=True idle_gpu_candidates=['1'] safe_filesystems=['/tmp', '/var/tmp']
@@ -281,10 +281,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1049656 heartbeat=2026-09-24T03:40:16.720525+00:00
+status=RUNNING pid=1049656 heartbeat=2026-09-24T03:41:20.862314+00:00
 
 MONITOR
-heartbeat=2026-09-24T03:40:35.527754+00:00
+heartbeat=2026-09-24T03:42:08.399138+00:00
 
 CURRENT P0
 Complete LLaDA MATH temporal evidence and seal its reference bundle.
