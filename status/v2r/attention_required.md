@@ -1,5 +1,5 @@
-2026-09-24T01:35:24.113566+00:00
-HOURS TO DEADLINE: 58.39
+2026-09-24T01:36:56.449464+00:00
+HOURS TO DEADLINE: 58.37
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -46,11 +46,6 @@ MONITOR_DRIFT: Slurm job 52917 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52916 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52915 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52914 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52873 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52872 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52871 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52870 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52869 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52907 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52855 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52958 exists but legacy monitor state does not mention it.
@@ -100,11 +95,6 @@ ALL ACTIVE KIMHJ JOBS
 52916 v2r-ind-server2-gsm8k-base-recover-006 PENDING  KEEP_REFERENCE_CRITICAL
 52915 v2r-ind-server2-gsm8k-base-recover-005 PENDING  KEEP_REFERENCE_CRITICAL
 52914 v2r-ind-server2-gsm8k-base-recover-004 PENDING  KEEP_REFERENCE_CRITICAL
-52873 v2r-ind-server1-gsm8k-base-017 PENDING  KEEP_REFERENCE_CRITICAL
-52872 v2r-ind-server1-gsm8k-base-016 PENDING  KEEP_REFERENCE_CRITICAL
-52871 v2r-ind-server1-gsm8k-base-015 PENDING  KEEP_REFERENCE_CRITICAL
-52870 v2r-ind-server1-gsm8k-base-014 PENDING  KEEP_REFERENCE_CRITICAL
-52869 v2r-ind-server1-gsm8k-base-013 PENDING  KEEP_REFERENCE_CRITICAL
 52907 v2r-ind-server2-math500-base-recover-002 RUNNING server2 KEEP_REFERENCE_CRITICAL
 52855 v2r-ind-server1-math500-base-004 RUNNING devbox KEEP_REFERENCE_CRITICAL
 52958 v2r-llada_math500_temporal_finalsha-shard-003 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
@@ -169,10 +159,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-24T01:34:45.653474+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-24T01:36:53.887417+00:00
 
 MONITOR
-heartbeat=2026-09-24T01:35:24.113566+00:00
+heartbeat=2026-09-24T01:36:56.449464+00:00
 
 CURRENT P0
 Complete LLaDA MATH temporal evidence and seal its reference bundle.
