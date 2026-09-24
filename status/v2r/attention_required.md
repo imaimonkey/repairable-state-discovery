@@ -1,5 +1,5 @@
-2026-09-24T23:00:42.304675+00:00
-HOURS TO DEADLINE: 36.97
+2026-09-24T23:02:15.694306+00:00
+HOURS TO DEADLINE: 36.95
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -15,6 +15,10 @@ MONITOR_DRIFT: Slurm job 53065 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53264 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53064 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53063 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53152 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53153 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53154 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53155 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53062 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53275 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53268 exists but legacy monitor state does not mention it.
@@ -36,10 +40,6 @@ MONITOR_DRIFT: Slurm job 53159 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53158 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53157 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53156 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53155 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53154 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53153 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53152 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53074 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53073 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53072 exists but legacy monitor state does not mention it.
@@ -63,6 +63,10 @@ ALL ACTIVE KIMHJ JOBS
 53264 v2-v2_bbh_logical3_llada PENDING  UNKNOWN_NEEDS_FORENSIC
 53064 v2r-ind-server1-math500-temporal-v2-005 PENDING  KEEP_REFERENCE_CRITICAL
 53063 v2r-ind-server1-math500-temporal-v2-004 PENDING  KEEP_REFERENCE_CRITICAL
+53152 v2r-ind-server2-math500-core-014 PENDING  KEEP_REFERENCE_CRITICAL
+53153 v2r-ind-server2-math500-core-015 PENDING  KEEP_REFERENCE_CRITICAL
+53154 v2r-ind-server2-math500-core-016 PENDING  KEEP_REFERENCE_CRITICAL
+53155 v2r-ind-server2-math500-core-017 PENDING  KEEP_REFERENCE_CRITICAL
 53062 v2r-ind-server1-math500-temporal-v2-003 PENDING  KEEP_REFERENCE_CRITICAL
 53275 v2full-math500 PENDING  UNKNOWN_NEEDS_FORENSIC
 53268 v2-gate-dream PENDING  UNKNOWN_NEEDS_FORENSIC
@@ -85,10 +89,6 @@ ALL ACTIVE KIMHJ JOBS
 53158 v2r-ind-server2-math500-temporal-v2-002 PENDING  KEEP_REFERENCE_CRITICAL
 53157 v2r-ind-server2-math500-temporal-v2-001 PENDING  KEEP_REFERENCE_CRITICAL
 53156 v2r-ind-server2-math500-temporal-v2-000 PENDING  KEEP_REFERENCE_CRITICAL
-53155 v2r-ind-server2-math500-core-017 PENDING  KEEP_REFERENCE_CRITICAL
-53154 v2r-ind-server2-math500-core-016 PENDING  KEEP_REFERENCE_CRITICAL
-53153 v2r-ind-server2-math500-core-015 PENDING  KEEP_REFERENCE_CRITICAL
-53152 v2r-ind-server2-math500-core-014 PENDING  KEEP_REFERENCE_CRITICAL
 53074 v2r-ind-server1-math500-temporal-v2-015 PENDING  KEEP_REFERENCE_CRITICAL
 53073 v2r-ind-server1-math500-temporal-v2-014 PENDING  KEEP_REFERENCE_CRITICAL
 53072 v2r-ind-server1-math500-temporal-v2-013 PENDING  KEEP_REFERENCE_CRITICAL
@@ -159,10 +159,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3958268 heartbeat=2026-09-24T23:00:12.836369+00:00
+status=RUNNING pid=3958268 heartbeat=2026-09-24T23:01:17.234016+00:00
 
 MONITOR
-heartbeat=2026-09-24T23:00:42.304675+00:00
+heartbeat=2026-09-24T23:02:15.694306+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
