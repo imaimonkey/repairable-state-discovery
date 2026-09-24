@@ -351,7 +351,7 @@
       "shard": 1,
       "slurm_state": "PENDING",
       "stage": "base",
-      "status": "SERVER_DISABLED",
+      "status": "WAITING_PRIORITY",
       "storage": {
         "available_bytes": 378464444416,
         "projected_bytes": 4294967296,
@@ -912,7 +912,7 @@
       "depends_on": [
         "llada_math500_base_finalsha-shard-000"
       ],
-      "error": "SERVER3_DISABLED_BY_USER",
+      "error": "Cancelled scientific job has shard artifacts; manual review required",
       "execution_git_sha": "78fe5d7c1829b67d1bb1416b7205edfa647bb2fa",
       "execution_worktree": "/var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7",
       "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_math500_temporal_finalsha.gates.json",
@@ -930,7 +930,7 @@
       "shard": 4,
       "slurm_state": "CANCELLED by 1021",
       "stage": "temporal",
-      "status": "SERVER_DISABLED",
+      "status": "NEEDS_REVIEW",
       "storage": {
         "available_bytes": 292860145664,
         "projected_bytes": 4294967296,
