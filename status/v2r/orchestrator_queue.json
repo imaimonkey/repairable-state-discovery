@@ -283,9 +283,11 @@
       "execution_worktree": "/data/kimhj/repairable-state-discovery-reference-20260923",
       "gates": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_gsm8k_base_finalsha.gates.json",
       "id": "llada_gsm8k_base_finalsha-shard-000",
+      "job_id": "53058",
       "kind": "science_shard",
       "manifest": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/plans/llada_gsm8k_base_finalsha.json",
       "priority": 30,
+      "queue_ahead": false,
       "recovery_attempt": 2,
       "recovery_missing_item_ids": [
         "895"
@@ -294,10 +296,33 @@
       "recovery_reason": "CANCELLED by 1021_AFTER_667_OF_668_RESUME_EXISTING_COMPLETED_ITEMS",
       "recovery_script": "/var/tmp/kimhj-v2r-reference/runtime/llada_gsm8k_base_finalsha-shard-000-recovery-r1.sbatch",
       "run_dir": "/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_gsm8k_base_finalsha",
+      "script": "/var/tmp/kimhj-v2r-reference/runtime/llada_gsm8k_base_finalsha-shard-000.sbatch",
       "server": "server3",
       "shard": 0,
       "stage": "base",
-      "status": "READY",
+      "status": "SUBMITTED",
+      "storage": {
+        "available_bytes": 292379762688,
+        "projected_bytes": 4294967296,
+        "usage_fraction": 0.8368413694664028
+      },
+      "submission_args": [
+        "sbatch",
+        "--parsable",
+        "--partition=gpu",
+        "--qos=lab_gpu_s3",
+        "--nodelist=ubuntu",
+        "--gres=gpu:h200:1",
+        "--cpus-per-task=4",
+        "--mem=48G",
+        "--time=04:00:00",
+        "--job-name=v2r-llada_gsm8k_base_finalsha-shard-000",
+        "--chdir=/data/kimhj/repairable-state-discovery-reference-20260923",
+        "--output=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_gsm8k_base_finalsha/logs/slurm-%j.out",
+        "--error=/var/tmp/kimhj-v2r-reference/outputs/v2r_reference/runs/llada_gsm8k_base_finalsha/logs/slurm-%j.err",
+        "/var/tmp/kimhj-v2r-reference/runtime/llada_gsm8k_base_finalsha-shard-000.sbatch"
+      ],
+      "submitted_at": "2026-09-24T03:25:19.033268+00:00",
       "task": "gsm8k",
       "walltime": "04:00:00"
     },
