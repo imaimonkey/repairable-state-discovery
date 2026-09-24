@@ -1,5 +1,5 @@
-2026-09-24T19:26:17.379846+00:00
-HOURS TO DEADLINE: 40.55
+2026-09-24T19:27:49.720130+00:00
+HOURS TO DEADLINE: 40.52
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -62,7 +62,6 @@ MONITOR_DRIFT: Slurm job 53140 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53010 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53008 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53009 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53056 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
@@ -120,10 +119,9 @@ ALL ACTIVE KIMHJ JOBS
 53010 v2r-ind-server4-gsm8k-temporal-004 RUNNING server4 KEEP_REFERENCE_CRITICAL
 53008 v2r-ind-server4-gsm8k-temporal-002 RUNNING server4 KEEP_REFERENCE_CRITICAL
 53009 v2r-ind-server4-gsm8k-temporal-003 RUNNING server4 KEEP_REFERENCE_CRITICAL
-53056 v2r-ind-server1-math500-core-016 RUNNING devbox KEEP_REFERENCE_CRITICAL
 
 SERVER1
-observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['3'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER2
 observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
@@ -177,10 +175,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3958268 heartbeat=2026-09-24T19:25:28.437563+00:00
+status=RUNNING pid=3958268 heartbeat=2026-09-24T19:27:37.492617+00:00
 
 MONITOR
-heartbeat=2026-09-24T19:26:17.379846+00:00
+heartbeat=2026-09-24T19:27:49.720130+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
