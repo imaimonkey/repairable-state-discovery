@@ -51,14 +51,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "52977",
-        "name": "v2r-ind-server4-math500-temporal-007",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "52999",
         "name": "v2r-ind-server4-gsm8k-core-004",
         "node": "",
@@ -827,6 +819,14 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
+        "job_id": "52977",
+        "name": "v2r-ind-server4-math500-temporal-007",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "52976",
         "name": "v2r-ind-server4-math500-temporal-006",
         "node": "server4",
@@ -947,14 +947,6 @@
         "reason": "(Resources)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "52977",
-        "name": "v2r-ind-server4-math500-temporal-007",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
         "job_id": "52999",
@@ -1727,6 +1719,14 @@
     ],
     "running": [
       {
+        "job_id": "52977",
+        "name": "v2r-ind-server4-math500-temporal-007",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "52976",
         "name": "v2r-ind-server4-math500-temporal-006",
         "node": "server4",
@@ -1886,11 +1886,10 @@
       ],
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
-      "idle_gpu_candidates": [
-        "0"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "exact_native_replay_failed;_reference_torch_2_1_2_is_sm120_incompatible"
       ],
       "reference_compatible": false,
@@ -1900,5 +1899,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T10:05:02.453440+00:00"
+  "timestamp": "2026-09-24T10:06:35.967132+00:00"
 }
