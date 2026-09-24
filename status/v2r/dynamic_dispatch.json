@@ -38,14 +38,6 @@
         "job_id": "53107",
         "name": "v2r-recovery-server2-gsm8k-base-001",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53106",
-        "name": "v2r-recovery-server2-gsm8k-base-000",
-        "node": "",
         "reason": "(Resources)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
@@ -723,6 +715,14 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
+        "job_id": "53106",
+        "name": "v2r-recovery-server2-gsm8k-base-000",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53024",
         "name": "v2r-recovery-server1-gsm8k-base-007",
         "node": "devbox",
@@ -785,14 +785,6 @@
         "reason": "server4",
         "state": "RUNNING",
         "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52908",
-        "name": "v2r-ind-server2-math500-base-recover-003",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
       }
     ],
     "pending": [
@@ -831,14 +823,6 @@
       {
         "job_id": "53107",
         "name": "v2r-recovery-server2-gsm8k-base-001",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53106",
-        "name": "v2r-recovery-server2-gsm8k-base-000",
         "node": "",
         "reason": "(Resources)",
         "state": "PENDING",
@@ -1519,6 +1503,14 @@
     ],
     "running": [
       {
+        "job_id": "53106",
+        "name": "v2r-recovery-server2-gsm8k-base-000",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53024",
         "name": "v2r-recovery-server1-gsm8k-base-007",
         "node": "devbox",
@@ -1581,14 +1573,6 @@
         "reason": "server4",
         "state": "RUNNING",
         "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "52908",
-        "name": "v2r-ind-server2-math500-base-recover-003",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
       }
     ]
   },
@@ -1697,5 +1681,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T05:21:15.689965+00:00"
+  "timestamp": "2026-09-24T05:22:48.986246+00:00"
 }
