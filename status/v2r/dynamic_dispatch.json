@@ -3,6 +3,14 @@
   "jobs": {
     "all_reference_jobs": [
       {
+        "job_id": "53113",
+        "name": "v2r-recovery-server2-gsm8k-base-007",
+        "node": "",
+        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "52976",
         "name": "v2r-ind-server4-math500-temporal-006",
         "node": "",
@@ -78,7 +86,7 @@
         "job_id": "53108",
         "name": "v2r-recovery-server2-gsm8k-base-002",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "reason": "(Resources)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
       },
@@ -89,14 +97,6 @@
         "reason": "(Resources)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53107",
-        "name": "v2r-recovery-server2-gsm8k-base-001",
-        "node": "",
-        "reason": "(Resources)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
       },
       {
         "job_id": "53171",
@@ -445,14 +445,6 @@
       {
         "job_id": "53114",
         "name": "v2r-recovery-server2-gsm8k-base-008",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53113",
-        "name": "v2r-recovery-server2-gsm8k-base-007",
         "node": "",
         "reason": "(ReqNodeNotAvail, May be reserved for other job)",
         "state": "PENDING",
@@ -923,6 +915,14 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
+        "job_id": "53107",
+        "name": "v2r-recovery-server2-gsm8k-base-001",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53028",
         "name": "v2r-recovery-server1-gsm8k-base-011",
         "node": "devbox",
@@ -980,6 +980,14 @@
       }
     ],
     "pending": [
+      {
+        "job_id": "53113",
+        "name": "v2r-recovery-server2-gsm8k-base-007",
+        "node": "",
+        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
       {
         "job_id": "52976",
         "name": "v2r-ind-server4-math500-temporal-006",
@@ -1056,7 +1064,7 @@
         "job_id": "53108",
         "name": "v2r-recovery-server2-gsm8k-base-002",
         "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "reason": "(Resources)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
       },
@@ -1067,14 +1075,6 @@
         "reason": "(Resources)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53107",
-        "name": "v2r-recovery-server2-gsm8k-base-001",
-        "node": "",
-        "reason": "(Resources)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
       },
       {
         "job_id": "53171",
@@ -1423,14 +1423,6 @@
       {
         "job_id": "53114",
         "name": "v2r-recovery-server2-gsm8k-base-008",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53113",
-        "name": "v2r-recovery-server2-gsm8k-base-007",
         "node": "",
         "reason": "(ReqNodeNotAvail, May be reserved for other job)",
         "state": "PENDING",
@@ -1903,6 +1895,14 @@
     ],
     "running": [
       {
+        "job_id": "53107",
+        "name": "v2r-recovery-server2-gsm8k-base-001",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53028",
         "name": "v2r-recovery-server1-gsm8k-base-011",
         "node": "devbox",
@@ -2063,5 +2063,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T07:24:31.993883+00:00"
+  "timestamp": "2026-09-24T07:26:07.331257+00:00"
 }

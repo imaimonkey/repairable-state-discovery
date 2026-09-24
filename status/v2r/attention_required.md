@@ -1,5 +1,5 @@
-2026-09-24T07:24:54.494764+00:00
-HOURS TO DEADLINE: 52.57
+2026-09-24T07:26:27.888922+00:00
+HOURS TO DEADLINE: 52.54
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,6 +9,7 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
+MONITOR_DRIFT: Slurm job 53113 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52976 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53112 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52975 exists but legacy monitor state does not mention it.
@@ -63,7 +64,6 @@ MONITOR_DRIFT: Slurm job 53117 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53116 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53115 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53114 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53113 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53074 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53073 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53072 exists but legacy monitor state does not mention it.
@@ -133,6 +133,7 @@ MONITOR_DRIFT: Slurm job 53025 exists but legacy monitor state does not mention 
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
+53113 v2r-recovery-server2-gsm8k-base-007 PENDING  KEEP_REFERENCE_CRITICAL
 52976 v2r-ind-server4-math500-temporal-006 PENDING  KEEP_REFERENCE_CRITICAL
 53112 v2r-recovery-server2-gsm8k-base-006 PENDING  KEEP_REFERENCE_CRITICAL
 52975 v2r-ind-server4-math500-temporal-005 PENDING  KEEP_REFERENCE_CRITICAL
@@ -188,7 +189,6 @@ ALL ACTIVE KIMHJ JOBS
 53116 v2r-recovery-server2-gsm8k-base-010 PENDING  KEEP_REFERENCE_CRITICAL
 53115 v2r-recovery-server2-gsm8k-base-009 PENDING  KEEP_REFERENCE_CRITICAL
 53114 v2r-recovery-server2-gsm8k-base-008 PENDING  KEEP_REFERENCE_CRITICAL
-53113 v2r-recovery-server2-gsm8k-base-007 PENDING  KEEP_REFERENCE_CRITICAL
 53074 v2r-ind-server1-math500-temporal-v2-015 PENDING  KEEP_REFERENCE_CRITICAL
 53073 v2r-ind-server1-math500-temporal-v2-014 PENDING  KEEP_REFERENCE_CRITICAL
 53072 v2r-ind-server1-math500-temporal-v2-013 PENDING  KEEP_REFERENCE_CRITICAL
@@ -309,10 +309,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1317285 heartbeat=2026-09-24T07:23:56.939809+00:00
+status=RUNNING pid=1317285 heartbeat=2026-09-24T07:26:05.905139+00:00
 
 MONITOR
-heartbeat=2026-09-24T07:24:54.494764+00:00
+heartbeat=2026-09-24T07:26:27.888922+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
