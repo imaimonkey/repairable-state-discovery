@@ -43,22 +43,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53012",
-        "name": "v2r-ind-server4-gsm8k-temporal-006",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53013",
-        "name": "v2r-ind-server4-gsm8k-temporal-007",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "53060",
         "name": "v2r-ind-server1-math500-temporal-v2-001",
         "node": "",
@@ -363,6 +347,22 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "53012",
+        "name": "v2r-ind-server4-gsm8k-temporal-006",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "53013",
+        "name": "v2r-ind-server4-gsm8k-temporal-007",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "53059",
         "name": "v2r-ind-server1-math500-temporal-v2-000",
         "node": "devbox",
@@ -417,22 +417,6 @@
         "reason": "server4",
         "state": "RUNNING",
         "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53008",
-        "name": "v2r-ind-server4-gsm8k-temporal-002",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53009",
-        "name": "v2r-ind-server4-gsm8k-temporal-003",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       }
     ],
     "pending": [
@@ -475,22 +459,6 @@
         "reason": "(ReqNodeNotAvail, May be reserved for other job)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53012",
-        "name": "v2r-ind-server4-gsm8k-temporal-006",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53013",
-        "name": "v2r-ind-server4-gsm8k-temporal-007",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
         "job_id": "53060",
@@ -799,6 +767,22 @@
     ],
     "running": [
       {
+        "job_id": "53012",
+        "name": "v2r-ind-server4-gsm8k-temporal-006",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "53013",
+        "name": "v2r-ind-server4-gsm8k-temporal-007",
+        "node": "server4",
+        "reason": "server4",
+        "state": "RUNNING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
         "job_id": "53059",
         "name": "v2r-ind-server1-math500-temporal-v2-000",
         "node": "devbox",
@@ -849,22 +833,6 @@
       {
         "job_id": "53010",
         "name": "v2r-ind-server4-gsm8k-temporal-004",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53008",
-        "name": "v2r-ind-server4-gsm8k-temporal-002",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
-        "job_id": "53009",
-        "name": "v2r-ind-server4-gsm8k-temporal-003",
         "node": "server4",
         "reason": "server4",
         "state": "RUNNING",
@@ -920,10 +888,11 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [],
+      "idle_gpu_candidates": [
+        "7"
+      ],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate",
         "no_safe_filesystem",
         "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
       ],
@@ -972,5 +941,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T19:37:01.150040+00:00"
+  "timestamp": "2026-09-24T19:38:33.498122+00:00"
 }
