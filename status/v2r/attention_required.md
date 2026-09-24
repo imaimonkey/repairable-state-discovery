@@ -1,5 +1,5 @@
-2026-09-24T10:03:19.254997+00:00
-HOURS TO DEADLINE: 49.93
+2026-09-24T10:04:52.483122+00:00
+HOURS TO DEADLINE: 49.90
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -118,7 +118,6 @@ MONITOR_DRIFT: Slurm job 53032 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52975 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52974 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53031 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 52972 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53030 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53029 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
@@ -234,7 +233,6 @@ ALL ACTIVE KIMHJ JOBS
 52975 v2r-ind-server4-math500-temporal-005 RUNNING server4 KEEP_REFERENCE_CRITICAL
 52974 v2r-ind-server4-math500-temporal-004 RUNNING server4 KEEP_REFERENCE_CRITICAL
 53031 v2r-recovery-server1-gsm8k-base-014 RUNNING devbox KEEP_REFERENCE_CRITICAL
-52972 v2r-ind-server4-math500-temporal-002 RUNNING server4 KEEP_REFERENCE_CRITICAL
 53030 v2r-recovery-server1-gsm8k-base-013 RUNNING devbox KEEP_REFERENCE_CRITICAL
 53029 v2r-recovery-server1-gsm8k-base-012 RUNNING devbox KEEP_REFERENCE_CRITICAL
 
@@ -248,7 +246,7 @@ SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER4
-observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['0'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -291,10 +289,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2596891 heartbeat=2026-09-24T10:02:29.217364+00:00
+status=RUNNING pid=2596891 heartbeat=2026-09-24T10:04:38.812245+00:00
 
 MONITOR
-heartbeat=2026-09-24T10:03:19.254997+00:00
+heartbeat=2026-09-24T10:04:52.483122+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
