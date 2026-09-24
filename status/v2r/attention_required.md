@@ -1,5 +1,5 @@
-2026-09-24T03:24:52.596188+00:00
-HOURS TO DEADLINE: 56.57
+2026-09-24T03:26:25.932133+00:00
+HOURS TO DEADLINE: 56.54
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -207,7 +207,7 @@ SERVER2
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=['1'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['1', '2'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
 observed=True idle_gpu_candidates=['3', '7'] safe_filesystems=['/tmp', '/var/tmp']
@@ -233,7 +233,7 @@ llada-gsm8k-r0-finalsha: PASS job=52677
 llada-gsm8k-r1-finalsha: PASS job=None
 llada-gsm8k-r2-finalsha: PASS job=52679
 llada_math500_base_finalsha-shard-000: SEALED job=52687
-llada_gsm8k_base_finalsha-shard-000: READY job=None
+llada_gsm8k_base_finalsha-shard-000: DONE job=53058
 llada_gsm8k_base_finalsha-shard-001: WAITING_PRIORITY job=None
 llada_math500_core_finalsha-shard-000: SEALED job=52738
 llada_math500_core_finalsha-shard-001: SEALED job=52739
@@ -253,10 +253,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1049656 heartbeat=2026-09-24T03:24:08.685428+00:00
+status=RUNNING pid=1049656 heartbeat=2026-09-24T03:26:23.246019+00:00
 
 MONITOR
-heartbeat=2026-09-24T03:24:52.596188+00:00
+heartbeat=2026-09-24T03:26:25.932133+00:00
 
 CURRENT P0
 Complete LLaDA MATH temporal evidence and seal its reference bundle.
