@@ -369,14 +369,6 @@
         "reason": "devbox",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53011",
-        "name": "v2r-ind-server4-gsm8k-temporal-005",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       }
     ],
     "pending": [
@@ -749,14 +741,6 @@
         "reason": "devbox",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53011",
-        "name": "v2r-ind-server4-gsm8k-temporal-005",
-        "node": "server4",
-        "reason": "server4",
-        "state": "RUNNING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
       }
     ]
   },
@@ -826,10 +810,11 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [],
+      "idle_gpu_candidates": [
+        "3"
+      ],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate",
         "no_safe_filesystem"
       ],
       "reference_compatible": true,
@@ -848,7 +833,8 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
-        "4"
+        "4",
+        "7"
       ],
       "observed": true,
       "reasons": [
@@ -861,5 +847,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T21:14:20.273096+00:00"
+  "timestamp": "2026-09-24T21:15:52.569525+00:00"
 }
