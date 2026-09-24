@@ -1,5 +1,5 @@
-2026-09-24T06:31:59.791868+00:00
-HOURS TO DEADLINE: 53.45
+2026-09-24T06:33:32.874643+00:00
+HOURS TO DEADLINE: 53.42
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,7 +9,6 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
-MONITOR_DRIFT: Slurm job 52998 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53112 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53111 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53110 exists but legacy monitor state does not mention it.
@@ -102,6 +101,7 @@ MONITOR_DRIFT: Slurm job 53030 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53029 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53028 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52997 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 52998 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53013 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53012 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53011 exists but legacy monitor state does not mention it.
@@ -136,7 +136,6 @@ MONITOR_DRIFT: Slurm job 52968 exists but legacy monitor state does not mention 
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
-52998 v2r-ind-server4-gsm8k-core-003 COMPLETING server4 KEEP_REFERENCE_CRITICAL
 53112 v2r-recovery-server2-gsm8k-base-006 PENDING  KEEP_REFERENCE_CRITICAL
 53111 v2r-recovery-server2-gsm8k-base-005 PENDING  KEEP_REFERENCE_CRITICAL
 53110 v2r-recovery-server2-gsm8k-base-004 PENDING  KEEP_REFERENCE_CRITICAL
@@ -230,6 +229,7 @@ ALL ACTIVE KIMHJ JOBS
 53029 v2r-recovery-server1-gsm8k-base-012 PENDING  KEEP_REFERENCE_CRITICAL
 53028 v2r-recovery-server1-gsm8k-base-011 PENDING  KEEP_REFERENCE_CRITICAL
 52997 v2r-ind-server4-gsm8k-core-002 PENDING  KEEP_REFERENCE_CRITICAL
+52998 v2r-ind-server4-gsm8k-core-003 PENDING  KEEP_REFERENCE_CRITICAL
 53013 v2r-ind-server4-gsm8k-temporal-007 PENDING  KEEP_REFERENCE_CRITICAL
 53012 v2r-ind-server4-gsm8k-temporal-006 PENDING  KEEP_REFERENCE_CRITICAL
 53011 v2r-ind-server4-gsm8k-temporal-005 PENDING  KEEP_REFERENCE_CRITICAL
@@ -272,7 +272,7 @@ SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=['1'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -315,10 +315,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1317285 heartbeat=2026-09-24T06:31:30.245413+00:00
+status=RUNNING pid=1317285 heartbeat=2026-09-24T06:32:34.387484+00:00
 
 MONITOR
-heartbeat=2026-09-24T06:31:59.791868+00:00
+heartbeat=2026-09-24T06:33:32.874643+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
