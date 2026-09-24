@@ -1,5 +1,5 @@
-2026-09-24T00:01:05.162501+00:00
-HOURS TO DEADLINE: 59.97
+2026-09-24T00:02:37.847116+00:00
+HOURS TO DEADLINE: 59.94
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -172,7 +172,7 @@ SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER4
-observed=True idle_gpu_candidates=['3', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['3', '4', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -215,10 +215,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3568062 heartbeat=2026-09-24T00:01:04.682037+00:00
+status=RUNNING pid=3568062 heartbeat=2026-09-24T00:02:08.595795+00:00
 
 MONITOR
-heartbeat=2026-09-24T00:01:05.162501+00:00
+heartbeat=2026-09-24T00:02:37.847116+00:00
 
 CURRENT P0
 Complete LLaDA MATH temporal evidence and seal its reference bundle.
