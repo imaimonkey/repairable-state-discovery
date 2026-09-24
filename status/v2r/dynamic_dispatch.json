@@ -2029,13 +2029,11 @@
       "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate"
+        "no_idle_gpu_candidate",
+        "no_safe_filesystem"
       ],
       "reference_compatible": true,
-      "safe_filesystem_candidates": [
-        "/tmp",
-        "/var/tmp"
-      ]
+      "safe_filesystem_candidates": []
     },
     "server4": {
       "compatibility_evidence": [
@@ -2062,5 +2060,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T07:52:34.798739+00:00"
+  "timestamp": "2026-09-24T07:54:08.070087+00:00"
 }
