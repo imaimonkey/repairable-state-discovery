@@ -737,14 +737,6 @@
         "reason": "server2",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53197",
-        "name": "v2r-llada_gsm8k_base_finalsha-shard-001",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
       }
     ],
     "pending": [
@@ -1485,14 +1477,6 @@
         "reason": "server2",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53197",
-        "name": "v2r-llada_gsm8k_base_finalsha-shard-001",
-        "node": "ubuntu",
-        "reason": "ubuntu",
-        "state": "RUNNING",
-        "tres": "gres/gpu:h200:1"
       }
     ]
   },
@@ -1562,10 +1546,11 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [],
+      "idle_gpu_candidates": [
+        "0"
+      ],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate",
         "no_safe_filesystem"
       ],
       "reference_compatible": true,
@@ -1596,5 +1581,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T13:15:30.794188+00:00"
+  "timestamp": "2026-09-24T13:17:03.610466+00:00"
 }

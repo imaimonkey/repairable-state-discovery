@@ -1,5 +1,5 @@
-2026-09-24T13:15:35.954567+00:00
-HOURS TO DEADLINE: 46.72
+2026-09-24T13:17:12.075151+00:00
+HOURS TO DEADLINE: 46.70
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -203,7 +203,7 @@ SERVER2
 observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=[] safe_filesystems=[]
+observed=True idle_gpu_candidates=['0'] safe_filesystems=[]
 
 SERVER4
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
@@ -212,13 +212,13 @@ LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
 
 REFERENCE GATES
-llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=RUNNING
+llada_gsm8k: R0=PASS, R1=PASS, R2=PASS, base=SEALED
 llada_math500: R0=PASS, R1=PASS, R2=PASS, base=SEALED, r3_core=SEALED, temporal=SEALED
 
 REFERENCE PRIMARY
 dream_gsm8k: NOT_STARTED
 dream_math500: NOT_STARTED
-llada_gsm8k: NOT_STARTED
+llada_gsm8k: BASE_SEALED
 llada_math500: TEMPORAL_SEALED
 
 ACTIVE SHARDS
@@ -229,8 +229,8 @@ llada-gsm8k-r0-finalsha: PASS job=52677
 llada-gsm8k-r1-finalsha: PASS job=None
 llada-gsm8k-r2-finalsha: PASS job=52679
 llada_math500_base_finalsha-shard-000: SEALED job=52687
-llada_gsm8k_base_finalsha-shard-000: DONE job=53058
-llada_gsm8k_base_finalsha-shard-001: RUNNING job=53197
+llada_gsm8k_base_finalsha-shard-000: SEALED job=53058
+llada_gsm8k_base_finalsha-shard-001: SEALED job=53197
 llada_math500_core_finalsha-shard-000: SEALED job=52738
 llada_math500_core_finalsha-shard-001: SEALED job=52739
 llada_math500_core_finalsha-shard-002: SEALED job=52740
@@ -249,10 +249,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2596891 heartbeat=2026-09-24T13:14:48.029161+00:00
+status=RUNNING pid=2596891 heartbeat=2026-09-24T13:17:01.811860+00:00
 
 MONITOR
-heartbeat=2026-09-24T13:15:35.954567+00:00
+heartbeat=2026-09-24T13:17:12.075151+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
