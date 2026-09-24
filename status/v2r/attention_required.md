@@ -1,5 +1,5 @@
-2026-09-24T09:18:17.710240+00:00
-HOURS TO DEADLINE: 50.68
+2026-09-24T09:19:50.858450+00:00
+HOURS TO DEADLINE: 50.65
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -115,7 +115,6 @@ MONITOR_DRIFT: Slurm job 52998 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 52997 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53032 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52975 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53195 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52974 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53031 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 52973 exists but legacy monitor state does not mention it.
@@ -233,7 +232,6 @@ ALL ACTIVE KIMHJ JOBS
 52997 v2r-ind-server4-gsm8k-core-002 PENDING  KEEP_REFERENCE_CRITICAL
 53032 v2r-recovery-server1-gsm8k-base-015 RUNNING devbox KEEP_REFERENCE_CRITICAL
 52975 v2r-ind-server4-math500-temporal-005 RUNNING server4 KEEP_REFERENCE_CRITICAL
-53195 v2r-llada_math500_temporal_finalsha-shard-004 RUNNING ubuntu KEEP_REFERENCE_CRITICAL
 52974 v2r-ind-server4-math500-temporal-004 RUNNING server4 KEEP_REFERENCE_CRITICAL
 53031 v2r-recovery-server1-gsm8k-base-014 RUNNING devbox KEEP_REFERENCE_CRITICAL
 52973 v2r-ind-server4-math500-temporal-003 RUNNING server4 KEEP_REFERENCE_CRITICAL
@@ -249,7 +247,7 @@ SERVER2
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=[] safe_filesystems=[]
+observed=True idle_gpu_candidates=['0'] safe_filesystems=[]
 
 SERVER4
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
@@ -295,10 +293,10 @@ status=NOT_SUBMISSION_READY
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2596891 heartbeat=2026-09-24T09:17:20.387101+00:00
+status=RUNNING pid=2596891 heartbeat=2026-09-24T09:19:29.734380+00:00
 
 MONITOR
-heartbeat=2026-09-24T09:18:17.710240+00:00
+heartbeat=2026-09-24T09:19:50.858450+00:00
 
 CURRENT P0
 Complete LLaDA MATH temporal evidence and seal its reference bundle.
