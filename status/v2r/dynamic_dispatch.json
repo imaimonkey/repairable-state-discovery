@@ -859,14 +859,6 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "52998",
-        "name": "v2r-ind-server4-gsm8k-core-003",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "52977",
         "name": "v2r-ind-server4-math500-temporal-007",
         "node": "",
@@ -933,6 +925,14 @@
       {
         "job_id": "52997",
         "name": "v2r-ind-server4-gsm8k-core-002",
+        "node": "",
+        "reason": "(job requeued in held state)",
+        "state": "PENDING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52998",
+        "name": "v2r-ind-server4-gsm8k-core-003",
         "node": "server4",
         "reason": "server4",
         "state": "RUNNING",
@@ -1861,14 +1861,6 @@
         "tres": "gres/gpu:rtx_pro_6000:1"
       },
       {
-        "job_id": "52998",
-        "name": "v2r-ind-server4-gsm8k-core-003",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:rtx_pro_6000:1"
-      },
-      {
         "job_id": "52977",
         "name": "v2r-ind-server4-math500-temporal-007",
         "node": "",
@@ -1931,12 +1923,20 @@
         "reason": "(Dependency)",
         "state": "PENDING",
         "tres": "gres/gpu:rtx_pro_6000:1"
+      },
+      {
+        "job_id": "52997",
+        "name": "v2r-ind-server4-gsm8k-core-002",
+        "node": "",
+        "reason": "(job requeued in held state)",
+        "state": "PENDING",
+        "tres": "gres/gpu:rtx_pro_6000:1"
       }
     ],
     "running": [
       {
-        "job_id": "52997",
-        "name": "v2r-ind-server4-gsm8k-core-002",
+        "job_id": "52998",
+        "name": "v2r-ind-server4-gsm8k-core-003",
         "node": "server4",
         "reason": "server4",
         "state": "RUNNING",
@@ -2112,5 +2112,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-24T06:30:04.183384+00:00"
+  "timestamp": "2026-09-24T06:31:37.331241+00:00"
 }
