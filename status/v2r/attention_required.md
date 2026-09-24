@@ -1,5 +1,5 @@
-2026-09-24T15:12:19.181140+00:00
-HOURS TO DEADLINE: 44.78
+2026-09-24T15:13:51.892669+00:00
+HOURS TO DEADLINE: 44.75
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -86,7 +86,6 @@ MONITOR_DRIFT: Slurm job 52998 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53117 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53048 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53047 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53005 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53116 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53046 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
@@ -170,7 +169,6 @@ ALL ACTIVE KIMHJ JOBS
 53117 v2r-recovery-server2-gsm8k-base-011 RUNNING server2 KEEP_REFERENCE_CRITICAL
 53048 v2r-ind-server1-math500-core-008 RUNNING devbox KEEP_REFERENCE_CRITICAL
 53047 v2r-ind-server1-math500-core-007 RUNNING devbox KEEP_REFERENCE_CRITICAL
-53005 v2r-ind-server4-gsm8k-core-010 RUNNING server4 KEEP_REFERENCE_CRITICAL
 53116 v2r-recovery-server2-gsm8k-base-010 RUNNING server2 KEEP_REFERENCE_CRITICAL
 53046 v2r-ind-server1-math500-core-006 RUNNING devbox KEEP_REFERENCE_CRITICAL
 
@@ -229,10 +227,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3958268 heartbeat=2026-09-24T15:11:31.398651+00:00
+status=RUNNING pid=3958268 heartbeat=2026-09-24T15:13:40.538171+00:00
 
 MONITOR
-heartbeat=2026-09-24T15:12:19.181140+00:00
+heartbeat=2026-09-24T15:13:51.892669+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
