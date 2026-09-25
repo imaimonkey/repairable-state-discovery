@@ -4,7 +4,7 @@
       "gpu_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 3043887, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 10018\nGPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 3043887, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17994\nGPU-8a497f13-d58c-bdef-5478-611ea200deae, 46735, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 33800\nGPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee, 3935188, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 25094\nGPU-d623a715-ed10-696d-07ec-50b7614c4272, 1463483, VLLM::EngineCore, 44366\nGPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22, 1481013, VLLM::EngineCore, 44366\nGPU-8b402bc3-f797-6774-24e2-d1c920adadfb, 3043887, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17994\nGPU-9edcc6a0-bc56-e743-e1d7-05815ef24483, 3043887, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17954"
+        "stdout": "GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 3043887, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 10018\nGPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 3043887, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17994\nGPU-8a497f13-d58c-bdef-5478-611ea200deae, 46735, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34448\nGPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee, 3935188, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34346\nGPU-d623a715-ed10-696d-07ec-50b7614c4272, 1463483, VLLM::EngineCore, 44366\nGPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22, 1481013, VLLM::EngineCore, 44366\nGPU-8b402bc3-f797-6774-24e2-d1c920adadfb, 3043887, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17994\nGPU-9edcc6a0-bc56-e743-e1d7-05815ef24483, 3043887, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17954"
       },
       "gpus": [
         {
@@ -27,20 +27,20 @@
         },
         {
           "index": "2",
-          "memory_free_mib": "14733",
+          "memory_free_mib": "14085",
           "memory_total_mib": "49140",
-          "memory_used_mib": "33810",
+          "memory_used_mib": "34458",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "73",
+          "utilization_percent": "97",
           "uuid": "GPU-8a497f13-d58c-bdef-5478-611ea200deae"
         },
         {
           "index": "3",
-          "memory_free_mib": "23439",
+          "memory_free_mib": "14187",
           "memory_total_mib": "49140",
-          "memory_used_mib": "25104",
+          "memory_used_mib": "34356",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "3",
+          "utilization_percent": "36",
           "uuid": "GPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee"
         },
         {
@@ -76,7 +76,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "17964",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "0",
+          "utilization_percent": "100",
           "uuid": "GPU-9edcc6a0-bc56-e743-e1d7-05815ef24483"
         }
       ],
@@ -85,14 +85,14 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=devbox Arch=x86_64 CoresPerSocket=32  CPUAlloc=56 CPUEfctv=128 CPUTot=128 CPULoad=4.58 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=devbox NodeHostName=devbox Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=1536000 AllocMem=573440 FreeMem=47774 Sockets=2 Boards=1 State=MIXED+PLANNED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:44:52 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-12T10:47:33 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=1500G,billing=128,gres/gpu=8 AllocTRES=cpu=56,mem=560G,gres/gpu=8 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=devbox Arch=x86_64 CoresPerSocket=32  CPUAlloc=56 CPUEfctv=128 CPUTot=128 CPULoad=4.45 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=devbox NodeHostName=devbox Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=1536000 AllocMem=573440 FreeMem=45807 Sockets=2 Boards=1 State=MIXED+PLANNED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:44:52 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-12T10:47:33 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=1500G,billing=128,gres/gpu=8 AllocTRES=cpu=56,mem=560G,gres/gpu=8 CurrentWatts=0 AveWatts=0\n"
       }
     },
     "server2": {
       "gpu_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 3333243, VLLM::EngineCore, 41354\nGPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 3632412, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 12836\nGPU-c39e323c-ef2e-9fdd-c848-315171c06345, 2589239, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34956"
+        "stdout": "GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 3333243, VLLM::EngineCore, 41354\nGPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 3632412, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 12838\nGPU-c39e323c-ef2e-9fdd-c848-315171c06345, 2589239, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 35042"
       },
       "gpus": [
         {
@@ -101,16 +101,16 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "41364",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "71",
+          "utilization_percent": "70",
           "uuid": "GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4"
         },
         {
           "index": "1",
-          "memory_free_mib": "35697",
+          "memory_free_mib": "35695",
           "memory_total_mib": "49140",
-          "memory_used_mib": "12846",
+          "memory_used_mib": "12848",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "32",
+          "utilization_percent": "36",
           "uuid": "GPU-13c8b5a1-b148-ea25-95a4-de1086725ed1"
         },
         {
@@ -160,11 +160,11 @@
         },
         {
           "index": "7",
-          "memory_free_mib": "13577",
+          "memory_free_mib": "13491",
           "memory_total_mib": "49140",
-          "memory_used_mib": "34966",
+          "memory_used_mib": "35052",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "71",
+          "utilization_percent": "38",
           "uuid": "GPU-c39e323c-ef2e-9fdd-c848-315171c06345"
         }
       ],
@@ -173,7 +173,7 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=server2 Arch=x86_64 CoresPerSocket=32  CPUAlloc=24 CPUEfctv=64 CPUTot=64 CPULoad=5.76 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=server2 NodeHostName=server2 Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=184320 FreeMem=137363 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-07-21T01:32:02 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-15T08:24:29 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=64,mem=500G,billing=64,gres/gpu=8 AllocTRES=cpu=24,mem=180G,gres/gpu=3 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=server2 Arch=x86_64 CoresPerSocket=32  CPUAlloc=24 CPUEfctv=64 CPUTot=64 CPULoad=6.11 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=server2 NodeHostName=server2 Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=184320 FreeMem=127539 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-07-21T01:32:02 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-15T08:24:29 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=64,mem=500G,billing=64,gres/gpu=8 AllocTRES=cpu=24,mem=180G,gres/gpu=3 CurrentWatts=0 AveWatts=0\n"
       }
     },
     "server3": {
@@ -198,7 +198,7 @@
           "memory_total_mib": "143771",
           "memory_used_mib": "31181",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "100",
+          "utilization_percent": "99",
           "uuid": "GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2"
         },
         {
@@ -216,7 +216,7 @@
           "memory_total_mib": "143771",
           "memory_used_mib": "115403",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "97",
+          "utilization_percent": "75",
           "uuid": "GPU-40729417-86d2-9b2e-32a1-a0f5ed143870"
         }
       ],
@@ -225,14 +225,14 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=ubuntu Arch=x86_64 CoresPerSocket=24  CPUAlloc=32 CPUEfctv=96 CPUTot=96 CPULoad=6.31 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:h200:4 NodeAddr=ubuntu NodeHostName=ubuntu Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=327680 FreeMem=43301 Sockets=2 Boards=1 State=MIXED+PLANNED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:20:31 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-17T12:34:36 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=96,mem=500G,billing=96,gres/gpu=4 AllocTRES=cpu=32,mem=320G,gres/gpu=4 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=ubuntu Arch=x86_64 CoresPerSocket=24  CPUAlloc=32 CPUEfctv=96 CPUTot=96 CPULoad=6.25 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:h200:4 NodeAddr=ubuntu NodeHostName=ubuntu Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=327680 FreeMem=43249 Sockets=2 Boards=1 State=MIXED+PLANNED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:20:31 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-17T12:34:36 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=96,mem=500G,billing=96,gres/gpu=4 AllocTRES=cpu=32,mem=320G,gres/gpu=4 CurrentWatts=0 AveWatts=0\n"
       }
     },
     "server4": {
       "gpu_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e, 4126754, VLLM::Worker, 78616\nGPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f, 4042277, VLLM::Worker, 78616\nGPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8, 178846, VLLM::Worker, 78614\nGPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df, 204456, VLLM::Worker, 78614\nGPU-2647a80a-d813-cbd4-46da-d87355fb69f9, 3967473, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 40162\nGPU-e79472b8-9d53-acea-a1b7-5564b1ef9919, 3967475, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 40094"
+        "stdout": "GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e, 4126754, VLLM::Worker, 78616\nGPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f, 4042277, VLLM::Worker, 78616\nGPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8, 178846, VLLM::Worker, 78616\nGPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df, 204456, VLLM::Worker, 78614\nGPU-2647a80a-d813-cbd4-46da-d87355fb69f9, 3967473, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 40162\nGPU-e79472b8-9d53-acea-a1b7-5564b1ef9919, 3967475, /data/choihb/DyPRAG/experiments/runtime/prag_legacy_compat/.venv/bin/python3, 40094"
       },
       "gpus": [
         {
@@ -241,7 +241,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "78625",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "49",
+          "utilization_percent": "43",
           "uuid": "GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e"
         },
         {
@@ -250,16 +250,16 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "78625",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "92",
+          "utilization_percent": "98",
           "uuid": "GPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f"
         },
         {
           "index": "2",
-          "memory_free_mib": "18630",
+          "memory_free_mib": "18628",
           "memory_total_mib": "97887",
-          "memory_used_mib": "78623",
+          "memory_used_mib": "78625",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "33",
+          "utilization_percent": "39",
           "uuid": "GPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8"
         },
         {
@@ -277,7 +277,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "78623",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "88",
+          "utilization_percent": "94",
           "uuid": "GPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df"
         },
         {
@@ -295,7 +295,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "40171",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "55",
+          "utilization_percent": "54",
           "uuid": "GPU-2647a80a-d813-cbd4-46da-d87355fb69f9"
         },
         {
@@ -313,9 +313,9 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=server4 Arch=x86_64 CoresPerSocket=32  CPUAlloc=40 CPUEfctv=128 CPUTot=128 CPULoad=11.04 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:rtx_pro_6000:8(S:0-1) NodeAddr=server4 NodeHostName=server4 Version=26.05.0 OS=Linux 6.8.0-124-generic #124-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 13:00:45 UTC 2026  RealMemory=512000 AllocMem=344064 FreeMem=3643 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-06-26T10:55:08 SlurmdStartTime=2026-09-12T06:05:32 LastBusyTime=2026-09-25T11:40:47 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=500G,billing=128,gres/gpu=8 AllocTRES=cpu=40,mem=336G,gres/gpu=6 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=server4 Arch=x86_64 CoresPerSocket=32  CPUAlloc=40 CPUEfctv=128 CPUTot=128 CPULoad=10.97 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:rtx_pro_6000:8(S:0-1) NodeAddr=server4 NodeHostName=server4 Version=26.05.0 OS=Linux 6.8.0-124-generic #124-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 13:00:45 UTC 2026  RealMemory=512000 AllocMem=344064 FreeMem=3452 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-06-26T10:55:08 SlurmdStartTime=2026-09-12T06:05:32 LastBusyTime=2026-09-25T11:40:47 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=500G,billing=128,gres/gpu=8 AllocTRES=cpu=40,mem=336G,gres/gpu=6 CurrentWatts=0 AveWatts=0\n"
       }
     }
   },
-  "timestamp": "2026-09-25T15:51:56.825511+00:00"
+  "timestamp": "2026-09-25T15:53:28.483440+00:00"
 }
