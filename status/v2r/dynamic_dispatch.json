@@ -3,14 +3,6 @@
   "jobs": {
     "all_reference_jobs": [
       {
-        "job_id": "53165",
-        "name": "v2r-ind-server2-math500-temporal-v2-009",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53166",
         "name": "v2r-ind-server2-math500-temporal-v2-010",
         "node": "",
@@ -115,6 +107,14 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "53165",
+        "name": "v2r-ind-server2-math500-temporal-v2-009",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53164",
         "name": "v2r-ind-server2-math500-temporal-v2-008",
         "node": "server2",
@@ -140,14 +140,6 @@
       }
     ],
     "pending": [
-      {
-        "job_id": "53165",
-        "name": "v2r-ind-server2-math500-temporal-v2-009",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
       {
         "job_id": "53166",
         "name": "v2r-ind-server2-math500-temporal-v2-010",
@@ -255,6 +247,14 @@
     ],
     "running": [
       {
+        "job_id": "53165",
+        "name": "v2r-ind-server2-math500-temporal-v2-009",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53164",
         "name": "v2r-ind-server2-math500-temporal-v2-008",
         "node": "server2",
@@ -328,11 +328,10 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [
-        "6"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "no_safe_filesystem",
         "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
       ],
@@ -381,5 +380,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-25T06:03:01.658032+00:00"
+  "timestamp": "2026-09-25T06:04:33.815347+00:00"
 }
