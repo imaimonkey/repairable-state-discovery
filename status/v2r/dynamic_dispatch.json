@@ -57,14 +57,6 @@
         "reason": "(job requeued in held state)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53171",
-        "name": "v2r-ind-server2-math500-temporal-v2-015",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
       }
     ],
     "pending": [
@@ -125,16 +117,7 @@
         "tres": "gres/gpu:a6000:1"
       }
     ],
-    "running": [
-      {
-        "job_id": "53171",
-        "name": "v2r-ind-server2-math500-temporal-v2-015",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      }
-    ]
+    "running": []
   },
   "next_batch": {
     "action": "WAIT_WITH_INTERVAL_REPLAN",
@@ -188,6 +171,7 @@
         "1",
         "2",
         "3",
+        "4",
         "5",
         "6"
       ],
@@ -241,5 +225,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-25T10:59:24.735829+00:00"
+  "timestamp": "2026-09-25T11:00:56.492168+00:00"
 }
