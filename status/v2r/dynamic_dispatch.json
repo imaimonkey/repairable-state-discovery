@@ -219,14 +219,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53155",
-        "name": "v2r-ind-server2-math500-core-017",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53154",
         "name": "v2r-ind-server2-math500-core-016",
         "node": "server2",
@@ -245,14 +237,6 @@
       {
         "job_id": "53063",
         "name": "v2r-ind-server1-math500-temporal-v2-004",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53062",
-        "name": "v2r-ind-server1-math500-temporal-v2-003",
         "node": "devbox",
         "reason": "devbox",
         "state": "RUNNING",
@@ -479,14 +463,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53155",
-        "name": "v2r-ind-server2-math500-core-017",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53154",
         "name": "v2r-ind-server2-math500-core-016",
         "node": "server2",
@@ -505,14 +481,6 @@
       {
         "job_id": "53063",
         "name": "v2r-ind-server1-math500-temporal-v2-004",
-        "node": "devbox",
-        "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53062",
-        "name": "v2r-ind-server1-math500-temporal-v2-003",
         "node": "devbox",
         "reason": "devbox",
         "state": "RUNNING",
@@ -546,10 +514,11 @@
       ],
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
-      "idle_gpu_candidates": [],
+      "idle_gpu_candidates": [
+        "2"
+      ],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate",
         "exact_native_replay_failed"
       ],
       "reference_compatible": false,
@@ -569,7 +538,8 @@
       "eligibility": false,
       "fallback_action": null,
       "idle_gpu_candidates": [
-        "2"
+        "2",
+        "6"
       ],
       "observed": true,
       "reasons": [
@@ -625,5 +595,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-25T01:25:49.729373+00:00"
+  "timestamp": "2026-09-25T01:27:21.801191+00:00"
 }
