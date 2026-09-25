@@ -187,22 +187,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53154",
-        "name": "v2r-ind-server2-math500-core-016",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53153",
-        "name": "v2r-ind-server2-math500-core-015",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53074",
         "name": "v2r-ind-server1-math500-temporal-v2-015",
         "node": "",
@@ -243,6 +227,22 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "53154",
+        "name": "v2r-ind-server2-math500-core-016",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "53153",
+        "name": "v2r-ind-server2-math500-core-015",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53063",
         "name": "v2r-ind-server1-math500-temporal-v2-004",
         "node": "devbox",
@@ -269,22 +269,6 @@
       {
         "job_id": "53151",
         "name": "v2r-ind-server2-math500-core-013",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53150",
-        "name": "v2r-ind-server2-math500-core-012",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53149",
-        "name": "v2r-ind-server2-math500-core-011",
         "node": "server2",
         "reason": "server2",
         "state": "RUNNING",
@@ -477,22 +461,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53154",
-        "name": "v2r-ind-server2-math500-core-016",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53153",
-        "name": "v2r-ind-server2-math500-core-015",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53074",
         "name": "v2r-ind-server1-math500-temporal-v2-015",
         "node": "",
@@ -535,6 +503,22 @@
     ],
     "running": [
       {
+        "job_id": "53154",
+        "name": "v2r-ind-server2-math500-core-016",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "53153",
+        "name": "v2r-ind-server2-math500-core-015",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53063",
         "name": "v2r-ind-server1-math500-temporal-v2-004",
         "node": "devbox",
@@ -561,22 +545,6 @@
       {
         "job_id": "53151",
         "name": "v2r-ind-server2-math500-core-013",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53150",
-        "name": "v2r-ind-server2-math500-core-012",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53149",
-        "name": "v2r-ind-server2-math500-core-011",
         "node": "server2",
         "reason": "server2",
         "state": "RUNNING",
@@ -649,10 +617,11 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [],
+      "idle_gpu_candidates": [
+        "3"
+      ],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate",
         "no_safe_filesystem"
       ],
       "reference_compatible": true,
@@ -686,5 +655,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-25T00:04:11.792721+00:00"
+  "timestamp": "2026-09-25T00:05:43.873046+00:00"
 }
