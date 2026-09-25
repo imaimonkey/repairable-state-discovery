@@ -51,14 +51,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53155",
-        "name": "v2r-ind-server2-math500-core-017",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53171",
         "name": "v2r-ind-server2-math500-temporal-v2-015",
         "node": "",
@@ -227,6 +219,14 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "53155",
+        "name": "v2r-ind-server2-math500-core-017",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53154",
         "name": "v2r-ind-server2-math500-core-016",
         "node": "server2",
@@ -263,14 +263,6 @@
         "name": "v2r-ind-server1-math500-temporal-v2-003",
         "node": "devbox",
         "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53151",
-        "name": "v2r-ind-server2-math500-core-013",
-        "node": "server2",
-        "reason": "server2",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
       }
@@ -321,14 +313,6 @@
         "name": "v2r-ind-server1-math500-temporal-v2-005",
         "node": "",
         "reason": "(Resources)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53155",
-        "name": "v2r-ind-server2-math500-core-017",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
       },
@@ -503,6 +487,14 @@
     ],
     "running": [
       {
+        "job_id": "53155",
+        "name": "v2r-ind-server2-math500-core-017",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53154",
         "name": "v2r-ind-server2-math500-core-016",
         "node": "server2",
@@ -539,14 +531,6 @@
         "name": "v2r-ind-server1-math500-temporal-v2-003",
         "node": "devbox",
         "reason": "devbox",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53151",
-        "name": "v2r-ind-server2-math500-core-013",
-        "node": "server2",
-        "reason": "server2",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
       }
@@ -654,5 +638,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-25T00:37:59.539682+00:00"
+  "timestamp": "2026-09-25T00:39:32.726377+00:00"
 }
