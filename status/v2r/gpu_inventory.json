@@ -4,16 +4,16 @@
       "gpu_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 2343991, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 34402\nGPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 2219607, VLLM::EngineCore, 43790\nGPU-8a497f13-d58c-bdef-5478-611ea200deae, 46735, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 35246\nGPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee, 3935188, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 25024\nGPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22, 2100915, python, 3472"
+        "stdout": "GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 2343991, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 35038\nGPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 2219607, VLLM::EngineCore, 43790\nGPU-8a497f13-d58c-bdef-5478-611ea200deae, 46735, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 22476\nGPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee, 3935188, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 35054\nGPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22, 2100915, python, 3472"
       },
       "gpus": [
         {
           "index": "0",
-          "memory_free_mib": "14131",
+          "memory_free_mib": "13495",
           "memory_total_mib": "49140",
-          "memory_used_mib": "34412",
+          "memory_used_mib": "35048",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "65",
+          "utilization_percent": "39",
           "uuid": "GPU-2087c567-ec90-0aa2-09c5-c5174daec87a"
         },
         {
@@ -27,20 +27,20 @@
         },
         {
           "index": "2",
-          "memory_free_mib": "13287",
+          "memory_free_mib": "26057",
           "memory_total_mib": "49140",
-          "memory_used_mib": "35256",
+          "memory_used_mib": "22486",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "73",
+          "utilization_percent": "0",
           "uuid": "GPU-8a497f13-d58c-bdef-5478-611ea200deae"
         },
         {
           "index": "3",
-          "memory_free_mib": "23509",
+          "memory_free_mib": "13479",
           "memory_total_mib": "49140",
-          "memory_used_mib": "25034",
+          "memory_used_mib": "35064",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "45",
+          "utilization_percent": "74",
           "uuid": "GPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee"
         },
         {
@@ -92,7 +92,7 @@
       "gpu_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 682070, VLLM::EngineCore, 41354\nGPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 822788, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 13556\nGPU-e8cad71e-960c-b6b8-9152-5f7b146c557e, 1008689, VLLM::EngineCore, 43994\nGPU-ca5070d9-5463-7527-5e0e-a4216548e38b, 1168794, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 5140\nGPU-933bf467-90ac-31b1-24d8-15dc3162537b, 1168794, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 4236\nGPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa, 1168794, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 4236\nGPU-aaac1d4e-ab02-c216-ddd6-2f7f23d332eb, 1168794, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 4236\nGPU-c39e323c-ef2e-9fdd-c848-315171c06345, 2589239, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 33888"
+        "stdout": "GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 682070, VLLM::EngineCore, 41354\nGPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 822788, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 13556\nGPU-e8cad71e-960c-b6b8-9152-5f7b146c557e, 1008689, VLLM::EngineCore, 43998\nGPU-ca5070d9-5463-7527-5e0e-a4216548e38b, 1168794, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 5140\nGPU-933bf467-90ac-31b1-24d8-15dc3162537b, 1168794, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 4236\nGPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa, 1168794, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 4236\nGPU-aaac1d4e-ab02-c216-ddd6-2f7f23d332eb, 1168794, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 4236\nGPU-c39e323c-ef2e-9fdd-c848-315171c06345, 2589239, /mnt/raid5/mindw/RejectionSFT-GPT6/.venv/bin/python, 22476"
       },
       "gpus": [
         {
@@ -101,7 +101,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "41364",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "63",
+          "utilization_percent": "67",
           "uuid": "GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4"
         },
         {
@@ -110,16 +110,16 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "13566",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "36",
+          "utilization_percent": "40",
           "uuid": "GPU-13c8b5a1-b148-ea25-95a4-de1086725ed1"
         },
         {
           "index": "2",
-          "memory_free_mib": "4539",
+          "memory_free_mib": "4535",
           "memory_total_mib": "49140",
-          "memory_used_mib": "44004",
+          "memory_used_mib": "44008",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "100",
+          "utilization_percent": "99",
           "uuid": "GPU-e8cad71e-960c-b6b8-9152-5f7b146c557e"
         },
         {
@@ -128,7 +128,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "5150",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "0",
+          "utilization_percent": "18",
           "uuid": "GPU-ca5070d9-5463-7527-5e0e-a4216548e38b"
         },
         {
@@ -137,7 +137,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "4246",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "0",
+          "utilization_percent": "8",
           "uuid": "GPU-933bf467-90ac-31b1-24d8-15dc3162537b"
         },
         {
@@ -146,7 +146,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "4246",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "0",
+          "utilization_percent": "15",
           "uuid": "GPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa"
         },
         {
@@ -155,16 +155,16 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "4246",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "0",
+          "utilization_percent": "8",
           "uuid": "GPU-aaac1d4e-ab02-c216-ddd6-2f7f23d332eb"
         },
         {
           "index": "7",
-          "memory_free_mib": "14645",
+          "memory_free_mib": "26057",
           "memory_total_mib": "49140",
-          "memory_used_mib": "33898",
+          "memory_used_mib": "22486",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "76",
+          "utilization_percent": "0",
           "uuid": "GPU-c39e323c-ef2e-9fdd-c848-315171c06345"
         }
       ],
@@ -207,7 +207,7 @@
           "memory_total_mib": "143771",
           "memory_used_mib": "115365",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "97",
+          "utilization_percent": "87",
           "uuid": "GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134"
         },
         {
@@ -216,7 +216,7 @@
           "memory_total_mib": "143771",
           "memory_used_mib": "91513",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "97",
+          "utilization_percent": "96",
           "uuid": "GPU-40729417-86d2-9b2e-32a1-a0f5ed143870"
         }
       ],
@@ -232,16 +232,16 @@
       "gpu_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e, 833371, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 11748\nGPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f, 435451, VLLM::Worker, 78616\nGPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8, 822571, VLLM::EngineCore, 88024\nGPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df, 733974, VLLM::Worker, 78616\nGPU-5a338da8-f075-a117-8f2e-aeee88049f4b, 696313, VLLM::Worker, 78616\nGPU-2647a80a-d813-cbd4-46da-d87355fb69f9, 820803, VLLM::EngineCore, 88026"
+        "stdout": "GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e, 833371, /data/leejg/ICLR2027/NAACL2027/opsd_repro/.venv/bin/python, 7586\nGPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f, 435451, VLLM::Worker, 78616\nGPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8, 822571, VLLM::EngineCore, 88024\nGPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df, 733974, VLLM::Worker, 78616\nGPU-5a338da8-f075-a117-8f2e-aeee88049f4b, 696313, VLLM::Worker, 78616\nGPU-2647a80a-d813-cbd4-46da-d87355fb69f9, 820803, VLLM::EngineCore, 88026"
       },
       "gpus": [
         {
           "index": "0",
-          "memory_free_mib": "85496",
+          "memory_free_mib": "89658",
           "memory_total_mib": "97887",
-          "memory_used_mib": "11757",
+          "memory_used_mib": "7595",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "36",
+          "utilization_percent": "37",
           "uuid": "GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e"
         },
         {
@@ -250,7 +250,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "78625",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "93",
+          "utilization_percent": "92",
           "uuid": "GPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f"
         },
         {
@@ -259,7 +259,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "88033",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "98",
+          "utilization_percent": "97",
           "uuid": "GPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8"
         },
         {
@@ -277,7 +277,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "78627",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "93",
+          "utilization_percent": "95",
           "uuid": "GPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df"
         },
         {
@@ -286,7 +286,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "78625",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "94",
+          "utilization_percent": "97",
           "uuid": "GPU-5a338da8-f075-a117-8f2e-aeee88049f4b"
         },
         {
@@ -295,7 +295,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "88035",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "99",
+          "utilization_percent": "96",
           "uuid": "GPU-2647a80a-d813-cbd4-46da-d87355fb69f9"
         },
         {
@@ -317,5 +317,5 @@
       }
     }
   },
-  "timestamp": "2026-09-25T22:06:18.787138+00:00"
+  "timestamp": "2026-09-25T22:07:50.345538+00:00"
 }
