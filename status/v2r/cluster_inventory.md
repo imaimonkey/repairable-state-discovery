@@ -1,6 +1,6 @@
 # V2R cluster inventory
 
-2026-09-25T15:47:22.035683+00:00
+2026-09-25T15:48:53.745889+00:00
 
 Read-only observation; idle candidates still require Slurm allocation, safe immutable execution worktree and measured shard storage gate.
 
@@ -8,47 +8,47 @@ Read-only observation; idle candidates still require Slurm allocation, safe immu
 |---|---|---|---|
 | server1 | True | [] | ['/tmp', '/var/tmp'] |
 
-server1 `/`: 318682189824 available bytes; 82.22% used; 112476527 free inodes.
+server1 `/`: 318680600576 available bytes; 82.22% used; 112476521 free inodes.
 
-server1 `/home`: 318682189824 available bytes; 82.22% used; 112476527 free inodes.
+server1 `/home`: 318680600576 available bytes; 82.22% used; 112476521 free inodes.
 
-server1 `/tmp`: 318682189824 available bytes; 82.22% used; 112476527 free inodes.
+server1 `/tmp`: 318680600576 available bytes; 82.22% used; 112476521 free inodes.
 
-server1 `/var/tmp`: 318682189824 available bytes; 82.22% used; 112476527 free inodes.
+server1 `/var/tmp`: 318680600576 available bytes; 82.22% used; 112476521 free inodes.
 
-server1 `/mnt/raid5`: 363984183296 available bytes; 98.33% used; 337545541 free inodes.
+server1 `/mnt/raid5`: 368526766080 available bytes; 98.31% used; 337545591 free inodes.
 | server2 | True | ['2', '3', '4', '5', '6'] | [] |
 
-server2 `/`: 23109545984 available bytes; 98.71% used; 110407944 free inodes.
+server2 `/`: 23109046272 available bytes; 98.71% used; 110407944 free inodes.
 
-server2 `/home`: 23109545984 available bytes; 98.71% used; 110407944 free inodes.
+server2 `/home`: 23109046272 available bytes; 98.71% used; 110407944 free inodes.
 
-server2 `/tmp`: 23109545984 available bytes; 98.71% used; 110407944 free inodes.
+server2 `/tmp`: 23109046272 available bytes; 98.71% used; 110407944 free inodes.
 
-server2 `/var/tmp`: 23109545984 available bytes; 98.71% used; 110407944 free inodes.
+server2 `/var/tmp`: 23109046272 available bytes; 98.71% used; 110407944 free inodes.
 
-server2 `/mnt/raid5`: 319019991040 available bytes; 97.80% used; 445072121 free inodes.
+server2 `/mnt/raid5`: 318966603776 available bytes; 97.80% used; 445071995 free inodes.
 | server3 | True | [] | [] |
 
-server3 `/`: 84427395072 available bytes; 95.29% used; 114153473 free inodes.
+server3 `/`: 84427124736 available bytes; 95.29% used; 114153471 free inodes.
 
-server3 `/home`: 84427395072 available bytes; 95.29% used; 114153473 free inodes.
+server3 `/home`: 84427124736 available bytes; 95.29% used; 114153471 free inodes.
 
-server3 `/data`: 142243987456 available bytes; 98.03% used; 225806950 free inodes.
+server3 `/data`: 142247063552 available bytes; 98.03% used; 225806923 free inodes.
 
-server3 `/tmp`: 84427395072 available bytes; 95.29% used; 114153473 free inodes.
+server3 `/tmp`: 84427124736 available bytes; 95.29% used; 114153471 free inodes.
 
-server3 `/var/tmp`: 84427395072 available bytes; 95.29% used; 114153473 free inodes.
+server3 `/var/tmp`: 84427124736 available bytes; 95.29% used; 114153471 free inodes.
 | server4 | True | ['3', '5'] | ['/tmp', '/var/tmp'] |
 
-server4 `/`: 105637437440 available bytes; 94.11% used; 114349677 free inodes.
+server4 `/`: 105637412864 available bytes; 94.11% used; 114349677 free inodes.
 
-server4 `/home`: 105637437440 available bytes; 94.11% used; 114349677 free inodes.
+server4 `/home`: 105637412864 available bytes; 94.11% used; 114349677 free inodes.
 
-server4 `/data`: 231327166464 available bytes; 96.80% used; 224943772 free inodes.
+server4 `/data`: 231327498240 available bytes; 96.80% used; 224943746 free inodes.
 
-server4 `/tmp`: 105637437440 available bytes; 94.11% used; 114349677 free inodes.
+server4 `/tmp`: 105637412864 available bytes; 94.11% used; 114349677 free inodes.
 
-server4 `/var/tmp`: 105637437440 available bytes; 94.11% used; 114349677 free inodes.
+server4 `/var/tmp`: 105637412864 available bytes; 94.11% used; 114349677 free inodes.
 
 server1 SSH access failure leaves GPU process/disk/worktree details unobserved. Its Slurm allocations are observed; it is not eligible. Existing jobs and monitor are never cancelled by this tool.
