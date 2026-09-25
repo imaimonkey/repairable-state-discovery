@@ -1,5 +1,5 @@
-2026-09-25T07:16:19.992779+00:00
-HOURS TO DEADLINE: 28.71
+2026-09-25T07:17:51.645068+00:00
+HOURS TO DEADLINE: 28.69
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -14,10 +14,10 @@ MONITOR_DRIFT: Slurm job 53266 exists but legacy monitor state does not mention 
 MONITOR_DRIFT: Slurm job 53267 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53268 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53275 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53171 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53170 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53169 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53168 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53169 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53170 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53171 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53074 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53073 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53072 exists but legacy monitor state does not mention it.
@@ -39,10 +39,10 @@ ALL ACTIVE KIMHJ JOBS
 53267 v2-v2_mbpp_llada PENDING  UNKNOWN_NEEDS_FORENSIC
 53268 v2-gate-dream PENDING  UNKNOWN_NEEDS_FORENSIC
 53275 v2full-math500 PENDING  UNKNOWN_NEEDS_FORENSIC
-53171 v2r-ind-server2-math500-temporal-v2-015 PENDING  KEEP_REFERENCE_CRITICAL
-53170 v2r-ind-server2-math500-temporal-v2-014 PENDING  KEEP_REFERENCE_CRITICAL
-53169 v2r-ind-server2-math500-temporal-v2-013 PENDING  KEEP_REFERENCE_CRITICAL
 53168 v2r-ind-server2-math500-temporal-v2-012 PENDING  KEEP_REFERENCE_CRITICAL
+53169 v2r-ind-server2-math500-temporal-v2-013 PENDING  KEEP_REFERENCE_CRITICAL
+53170 v2r-ind-server2-math500-temporal-v2-014 PENDING  KEEP_REFERENCE_CRITICAL
+53171 v2r-ind-server2-math500-temporal-v2-015 PENDING  KEEP_REFERENCE_CRITICAL
 53074 v2r-ind-server1-math500-temporal-v2-015 PENDING  KEEP_REFERENCE_CRITICAL
 53073 v2r-ind-server1-math500-temporal-v2-014 PENDING  KEEP_REFERENCE_CRITICAL
 53072 v2r-ind-server1-math500-temporal-v2-013 PENDING  KEEP_REFERENCE_CRITICAL
@@ -61,7 +61,7 @@ SERVER1
 observed=True idle_gpu_candidates=[] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER2
-observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
+observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER3
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
@@ -112,10 +112,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3958268 heartbeat=2026-09-25T07:15:47.470273+00:00
+status=RUNNING pid=3958268 heartbeat=2026-09-25T07:16:51.919078+00:00
 
 MONITOR
-heartbeat=2026-09-25T07:16:19.992779+00:00
+heartbeat=2026-09-25T07:17:51.645068+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
