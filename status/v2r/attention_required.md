@@ -1,5 +1,5 @@
-2026-09-25T02:45:16.901749+00:00
-HOURS TO DEADLINE: 33.23
+2026-09-25T02:46:48.864407+00:00
+HOURS TO DEADLINE: 33.20
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -12,8 +12,8 @@ INTEGRITY ALERTS
 MONITOR_DRIFT: Slurm job 53072 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53071 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53070 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53069 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53264 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53069 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53068 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53161 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53162 exists but legacy monitor state does not mention it.
@@ -48,8 +48,8 @@ ALL ACTIVE KIMHJ JOBS
 53072 v2r-ind-server1-math500-temporal-v2-013 PENDING  KEEP_REFERENCE_CRITICAL
 53071 v2r-ind-server1-math500-temporal-v2-012 PENDING  KEEP_REFERENCE_CRITICAL
 53070 v2r-ind-server1-math500-temporal-v2-011 PENDING  KEEP_REFERENCE_CRITICAL
-53069 v2r-ind-server1-math500-temporal-v2-010 PENDING  KEEP_REFERENCE_CRITICAL
 53264 v2-v2_bbh_logical3_llada PENDING  UNKNOWN_NEEDS_FORENSIC
+53069 v2r-ind-server1-math500-temporal-v2-010 PENDING  KEEP_REFERENCE_CRITICAL
 53068 v2r-ind-server1-math500-temporal-v2-009 PENDING  KEEP_REFERENCE_CRITICAL
 53160 v2r-ind-server2-math500-temporal-v2-004 PENDING  KEEP_REFERENCE_CRITICAL
 53161 v2r-ind-server2-math500-temporal-v2-005 PENDING  KEEP_REFERENCE_CRITICAL
@@ -87,7 +87,7 @@ SERVER2
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=[] safe_filesystems=[]
+observed=True idle_gpu_candidates=['3'] safe_filesystems=[]
 
 SERVER4
 observed=True idle_gpu_candidates=['0', '1', '2', '3', '4', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
@@ -135,10 +135,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3958268 heartbeat=2026-09-25T02:45:00.798068+00:00
+status=RUNNING pid=3958268 heartbeat=2026-09-25T02:46:05.472084+00:00
 
 MONITOR
-heartbeat=2026-09-25T02:45:16.901749+00:00
+heartbeat=2026-09-25T02:46:48.864407+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
