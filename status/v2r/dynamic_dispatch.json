@@ -19,22 +19,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53169",
-        "name": "v2r-ind-server2-math500-temporal-v2-013",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53168",
-        "name": "v2r-ind-server2-math500-temporal-v2-012",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53074",
         "name": "v2r-ind-server1-math500-temporal-v2-015",
         "node": "",
@@ -91,6 +75,22 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
+        "job_id": "53169",
+        "name": "v2r-ind-server2-math500-temporal-v2-013",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "53168",
+        "name": "v2r-ind-server2-math500-temporal-v2-012",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53167",
         "name": "v2r-ind-server2-math500-temporal-v2-011",
         "node": "server2",
@@ -101,22 +101,6 @@
       {
         "job_id": "53166",
         "name": "v2r-ind-server2-math500-temporal-v2-010",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53165",
-        "name": "v2r-ind-server2-math500-temporal-v2-009",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53164",
-        "name": "v2r-ind-server2-math500-temporal-v2-008",
         "node": "server2",
         "reason": "server2",
         "state": "RUNNING",
@@ -135,22 +119,6 @@
       {
         "job_id": "53170",
         "name": "v2r-ind-server2-math500-temporal-v2-014",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53169",
-        "name": "v2r-ind-server2-math500-temporal-v2-013",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53168",
-        "name": "v2r-ind-server2-math500-temporal-v2-012",
         "node": "",
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
@@ -215,6 +183,22 @@
     ],
     "running": [
       {
+        "job_id": "53169",
+        "name": "v2r-ind-server2-math500-temporal-v2-013",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "53168",
+        "name": "v2r-ind-server2-math500-temporal-v2-012",
+        "node": "server2",
+        "reason": "server2",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53167",
         "name": "v2r-ind-server2-math500-temporal-v2-011",
         "node": "server2",
@@ -225,22 +209,6 @@
       {
         "job_id": "53166",
         "name": "v2r-ind-server2-math500-temporal-v2-010",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53165",
-        "name": "v2r-ind-server2-math500-temporal-v2-009",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53164",
-        "name": "v2r-ind-server2-math500-temporal-v2-008",
         "node": "server2",
         "reason": "server2",
         "state": "RUNNING",
@@ -297,7 +265,7 @@
       "eligibility": false,
       "fallback_action": null,
       "idle_gpu_candidates": [
-        "0"
+        "6"
       ],
       "observed": true,
       "reasons": [
@@ -348,5 +316,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-25T08:07:32.652120+00:00"
+  "timestamp": "2026-09-25T08:09:05.703462+00:00"
 }
