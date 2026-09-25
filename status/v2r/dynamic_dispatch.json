@@ -3,16 +3,8 @@
   "jobs": {
     "all_reference_jobs": [
       {
-        "job_id": "53168",
-        "name": "v2r-ind-server2-math500-temporal-v2-012",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53169",
-        "name": "v2r-ind-server2-math500-temporal-v2-013",
+        "job_id": "53171",
+        "name": "v2r-ind-server2-math500-temporal-v2-015",
         "node": "",
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
@@ -27,8 +19,16 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53171",
-        "name": "v2r-ind-server2-math500-temporal-v2-015",
+        "job_id": "53169",
+        "name": "v2r-ind-server2-math500-temporal-v2-013",
+        "node": "",
+        "reason": "(QOSMaxGRESPerUser)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "53168",
+        "name": "v2r-ind-server2-math500-temporal-v2-012",
         "node": "",
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
@@ -125,16 +125,8 @@
     ],
     "pending": [
       {
-        "job_id": "53168",
-        "name": "v2r-ind-server2-math500-temporal-v2-012",
-        "node": "",
-        "reason": "(QOSMaxGRESPerUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53169",
-        "name": "v2r-ind-server2-math500-temporal-v2-013",
+        "job_id": "53171",
+        "name": "v2r-ind-server2-math500-temporal-v2-015",
         "node": "",
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
@@ -149,8 +141,16 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53171",
-        "name": "v2r-ind-server2-math500-temporal-v2-015",
+        "job_id": "53169",
+        "name": "v2r-ind-server2-math500-temporal-v2-013",
+        "node": "",
+        "reason": "(QOSMaxGRESPerUser)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
+        "job_id": "53168",
+        "name": "v2r-ind-server2-math500-temporal-v2-012",
         "node": "",
         "reason": "(QOSMaxGRESPerUser)",
         "state": "PENDING",
@@ -274,11 +274,10 @@
       ],
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
-      "idle_gpu_candidates": [
-        "5"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "exact_native_replay_failed"
       ],
       "reference_compatible": false,
@@ -297,10 +296,11 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [],
+      "idle_gpu_candidates": [
+        "0"
+      ],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate",
         "no_safe_filesystem",
         "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
       ],
@@ -348,5 +348,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-25T07:38:20.817069+00:00"
+  "timestamp": "2026-09-25T07:39:52.744260+00:00"
 }
