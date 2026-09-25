@@ -65,14 +65,6 @@
         "reason": "server2",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53170",
-        "name": "v2r-ind-server2-math500-temporal-v2-014",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
       }
     ],
     "pending": [
@@ -141,14 +133,6 @@
         "reason": "server2",
         "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53170",
-        "name": "v2r-ind-server2-math500-temporal-v2-014",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
       }
     ]
   },
@@ -202,6 +186,7 @@
       "fallback_action": null,
       "idle_gpu_candidates": [
         "0",
+        "2",
         "3",
         "5",
         "6"
@@ -255,5 +240,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-25T10:37:56.911462+00:00"
+  "timestamp": "2026-09-25T10:39:28.527946+00:00"
 }
