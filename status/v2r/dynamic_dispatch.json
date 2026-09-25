@@ -3,6 +3,14 @@
   "jobs": {
     "all_reference_jobs": [
       {
+        "job_id": "53071",
+        "name": "v2r-ind-server1-math500-temporal-v2-012",
+        "node": "",
+        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53070",
         "name": "v2r-ind-server1-math500-temporal-v2-011",
         "node": "",
@@ -37,14 +45,6 @@
       {
         "job_id": "53066",
         "name": "v2r-ind-server1-math500-temporal-v2-007",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53065",
-        "name": "v2r-ind-server1-math500-temporal-v2-006",
         "node": "",
         "reason": "(Resources)",
         "state": "PENDING",
@@ -203,11 +203,11 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53071",
-        "name": "v2r-ind-server1-math500-temporal-v2-012",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
+        "job_id": "53065",
+        "name": "v2r-ind-server1-math500-temporal-v2-006",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
         "tres": "gres/gpu:a6000:1"
       },
       {
@@ -245,6 +245,14 @@
     ],
     "pending": [
       {
+        "job_id": "53071",
+        "name": "v2r-ind-server1-math500-temporal-v2-012",
+        "node": "",
+        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
+        "state": "PENDING",
+        "tres": "gres/gpu:a6000:1"
+      },
+      {
         "job_id": "53070",
         "name": "v2r-ind-server1-math500-temporal-v2-011",
         "node": "",
@@ -279,14 +287,6 @@
       {
         "job_id": "53066",
         "name": "v2r-ind-server1-math500-temporal-v2-007",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53065",
-        "name": "v2r-ind-server1-math500-temporal-v2-006",
         "node": "",
         "reason": "(Resources)",
         "state": "PENDING",
@@ -443,17 +443,17 @@
         "reason": "(ReqNodeNotAvail, May be reserved for other job)",
         "state": "PENDING",
         "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53071",
-        "name": "v2r-ind-server1-math500-temporal-v2-012",
-        "node": "",
-        "reason": "(ReqNodeNotAvail, May be reserved for other job)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
       }
     ],
     "running": [
+      {
+        "job_id": "53065",
+        "name": "v2r-ind-server1-math500-temporal-v2-006",
+        "node": "devbox",
+        "reason": "devbox",
+        "state": "RUNNING",
+        "tres": "gres/gpu:a6000:1"
+      },
       {
         "job_id": "53064",
         "name": "v2r-ind-server1-math500-temporal-v2-005",
@@ -514,11 +514,10 @@
       ],
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
-      "idle_gpu_candidates": [
-        "2"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "exact_native_replay_failed"
       ],
       "reference_compatible": false,
@@ -595,5 +594,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-25T01:27:21.801191+00:00"
+  "timestamp": "2026-09-25T01:28:54.013883+00:00"
 }
