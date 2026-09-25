@@ -251,14 +251,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53152",
-        "name": "v2r-ind-server2-math500-core-014",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53062",
         "name": "v2r-ind-server1-math500-temporal-v2-003",
         "node": "devbox",
@@ -519,14 +511,6 @@
         "tres": "gres/gpu:a6000:1"
       },
       {
-        "job_id": "53152",
-        "name": "v2r-ind-server2-math500-core-014",
-        "node": "server2",
-        "reason": "server2",
-        "state": "RUNNING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
         "job_id": "53062",
         "name": "v2r-ind-server1-math500-temporal-v2-003",
         "node": "devbox",
@@ -584,10 +568,11 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [],
+      "idle_gpu_candidates": [
+        "2"
+      ],
       "observed": true,
       "reasons": [
-        "no_idle_gpu_candidate",
         "no_safe_filesystem",
         "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
       ],
@@ -640,5 +625,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-25T01:02:39.573973+00:00"
+  "timestamp": "2026-09-25T01:04:11.657100+00:00"
 }
