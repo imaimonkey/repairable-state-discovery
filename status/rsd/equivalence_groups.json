@@ -1,0 +1,26 @@
+{
+  "phase": "2B.1",
+  "canonical_source_sha": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "groups": {
+    "scientifically_qualified_single_server": {
+      "servers": ["server1"],
+      "qualification": "SCIENTIFIC_EXECUTION_QUALIFIED",
+      "equivalence": "SINGLE_SERVER_ONLY",
+      "storage": "STORAGE_NOT_RESERVED",
+      "poolable": false,
+      "basis": "server1 real-model MATH-500 R0/R1/R2 GPU calibration passed; no cross-server calibration"
+    },
+    "gpu_equivalence_not_tested": {
+      "servers": ["server2", "server3", "server4"],
+      "qualification": "NOT_TESTED_OR_ENV_BLOCKED",
+      "equivalence": "NOT_TESTED",
+      "storage": "STORAGE_NOT_RESERVED",
+      "poolable": false
+    }
+  },
+  "primary_pool": {
+    "status": "NONE_QUALIFIED",
+    "servers": [],
+    "reason": "server1 is local-only; server2/3 GPU equivalence was not measured and server4 lacks a compatible research environment"
+  }
+}

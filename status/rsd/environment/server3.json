@@ -7,10 +7,13 @@
   "worktree_head": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
   "worktree_clean": true,
   "gpu": {"model": "NVIDIA H200 NVL", "count": 4, "driver": "595.71.05", "uuids": ["GPU-4f8edcb9-889c-c054-f48d-990e34fc95ed","GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2","GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134","GPU-40729417-86d2-9b2e-32a1-a0f5ed143870"]},
-  "runtime": {"python": "3.11.14", "python_path": "/data/kimhj/llada-x/.venv/bin/python", "torch": "2.1.2+cu121", "transformers": "4.49.0", "accelerate": "0.34.2", "numpy": "1.26.4", "tokenizers": "0.21.1", "pip_freeze_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "system_python_stack": "torch 2.11.0+cu130; transformers 5.5.4; numpy 2.2.6", "cuda_runtime": "12.1 torch build", "flash_attention": "not independently fingerprinted"},
-  "model": {"id": "GSAI-ML/LLaDA-8B-Instruct", "revision": "default", "tokenizer_revision": "default"},
-  "dataset_cache_identity": "not compared across servers",
-  "local_calibration": {"cpu_exact_replay_and_instrumentation": "PASS 7/7", "gpu_exact_replay": "NOT_RUN: existing GPUs occupied by legacy jobs"},
+  "runtime": {"python": "3.11.14", "python_path": "/data/kimhj/.local/share/uv/python/cpython-3.11.14-linux-x86_64-gnu/bin/python3.11", "torch": "2.1.2+cu121", "torch_cuda": "12.1", "transformers": "4.49.0", "accelerate": "0.34.2", "numpy": "1.26.4", "tokenizers": "0.21.1", "pip_freeze_method": "uv pip freeze --python (venv has no pip module)", "pip_freeze_sha256": "7f56c41d90e80ac7fbe6165b5643dd1ba1293d0e0482e802707bb3c4eeda5717", "system_python_stack": "torch 2.11.0+cu130; transformers 5.5.4; numpy 2.2.6", "cuda_runtime": "12.1 torch build", "flash_attention": "NOT_USED: flash_attn module unavailable", "attention_backend": "PyTorch SDPA flags flash=true mem_efficient=true math=true", "dtype": "bfloat16 in ReferenceSampler", "tf32_matmul": false, "tf32_cudnn": true, "matmul_precision": "highest", "deterministic_algorithms": false},
+  "model": {"id": "GSAI-ML/LLaDA-8B-Instruct", "revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07", "tokenizer_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07", "config_sha256": "5f99fefe855fdb5100bb6cadb57bdb09fae723ad54811f95c00ecacf29d58a6a", "tokenizer_config_sha256": "b9a6102c39a4f42f47f0d63fc6cee58a2381199d90f2a4f39b3f6871f32b4119", "tokenizer_json_sha256": "071eb20fe7bd601550b1b7838ff696d6c93b88f51257f753303d3df23163c381", "cache_root": "/data/kimhj/.cache/huggingface/hub"},
+  "dataset_cache_identity": {"math500": {"source": "HuggingFaceH4/MATH-500", "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be", "split": "test", "row_count": 500, "calibration_content_hash": "464ae4d6bfdccb1ee73c6720c1fbcfaf90c3dc544e3cf5c688daf55aa175bf6a"}, "gsm8k": {"source": "openai/gsm8k", "revision": "740312add88f781978c0658806c59bc2815b9866", "split": "test", "row_count": 1319, "calibration_content_hash": "e9f43cb7dc841e27a7bb51ecaad840f7ef79765d288181a92e8061d7d1c1207d"}},
+  "local_calibration": {"cpu_exact_replay_and_instrumentation": "PASS 7/7", "gpu_exact_replay": "NOT_TESTED_GPU_BUSY"},
+  "scientific_execution_qualification": "NOT_TESTED",
+  "equivalence_group": "NOT_TESTED",
+  "storage_readiness": "STORAGE_NOT_RESERVED",
   "scientific_classification": "AUXILIARY_ONLY",
   "classification_reason": "canonical source and matching venv pass local deterministic gate, but no GPU exact/cross-server calibration and /data lacks storage margin"
 }

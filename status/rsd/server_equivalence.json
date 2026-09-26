@@ -1,13 +1,19 @@
 {
   "phase": "2B",
   "canonical_source_sha": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
-  "calibration_scope": "small deterministic CPU contract gate only; no full MATH/GSM, raw trajectory, confirmatory, temporal, mechanism, or Dream matrix",
+  "calibration_scope": "small deterministic CPU contract gate on server1-3 plus server1 real-model MATH-500 R2 GPU replay/instrumentation; no full MATH/GSM, raw trajectory, confirmatory, temporal, mechanism, or Dream matrix",
   "local_gate": {"server1": "PASS 7/7", "server2": "PASS 7/7", "server3": "PASS 7/7", "server4": "NOT_RUN_MISSING_TORCH_STACK"},
-  "checks": {"token_ids": "PASS in fixture CPU replay", "text_and_answer": "PASS in fixture CPU replay", "correct_flag": "PASS in fixture contract", "nfe_and_schedule": "PASS in fixture contract", "state_identity": "PASS in snapshot restore fixture", "native_vs_instrumented": "PASS in fixture CPU replay", "cross_server_gpu_calibration": "NOT_RUN"},
+  "independent_axes": {
+    "scientific_execution_qualification": {"server1": "SCIENTIFIC_EXECUTION_QUALIFIED", "server2": "NOT_TESTED_GPU_BUSY", "server3": "NOT_TESTED_GPU_BUSY", "server4": "NOT_TESTED_ENV_BLOCKED"},
+    "cross_server_equivalence_group": {"server1": "SINGLE_SERVER_ONLY", "server2": "NOT_TESTED", "server3": "NOT_TESTED", "server4": "NOT_TESTED"},
+    "storage_readiness": {"server1": "STORAGE_NOT_RESERVED", "server2": "STORAGE_NOT_RESERVED", "server3": "STORAGE_NOT_RESERVED", "server4": "STORAGE_NOT_RESERVED"}
+  },
+  "checks": {"token_ids": "PASS in fixture CPU replay", "text_and_answer": "PASS in fixture CPU replay", "correct_flag": "PASS in fixture contract", "nfe_and_schedule": "PASS in fixture contract", "state_identity": "PASS in snapshot restore fixture", "native_vs_instrumented": "PASS in fixture CPU replay", "server1_real_model_gpu_replay": "PASS: MATH-500 32 fixed items x 2 seed scenarios; final tokens/text/answer/correctness/schedule/NFE/RNG/snapshot grid exact", "server1_gpu_instrumentation": "PASS: R2 native replay and instrumentation exact gate", "cross_server_gpu_calibration": "NOT_RUN"},
   "server_classification": {"server1": "AUXILIARY_ONLY", "server2": "AUXILIARY_ONLY", "server3": "AUXILIARY_ONLY", "server4": "UNKNOWN"},
-  "poolability": "NONE_QUALIFIED",
+  "poolability": "SINGLE_SERVER_ONLY",
   "primary_poolable_server": null,
-  "reason": "GPU exact replay and cross-server calibration were intentionally not started because server2 could not allocate a GPU, server3 GPUs were occupied by legacy jobs, server4 lacks the research stack/Blackwell compatibility proof, and storage reservation failed",
+  "qualified_scientific_servers": ["server1"],
+  "reason": "server1 is scientifically qualified for local single-server execution, but cross-server calibration was not run because server2 could not allocate a GPU, server3 GPUs were occupied by legacy jobs, server4 lacks the research stack/Blackwell compatibility proof, and full-run storage reservation failed",
   "server1_exact_replay_forensics": "legacy held temporal jobs 53067, 53069-53074 retained only as forensic snapshot; no exact replay rerun",
   "server2_source_policy": "canonical detached worktree used; legacy source not used"
 }

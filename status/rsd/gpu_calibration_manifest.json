@@ -1,0 +1,52 @@
+{
+  "phase": "2B.1",
+  "canonical_source_sha": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "server": "server1",
+  "hostname": "devbox",
+  "qualification": "SCIENTIFIC_EXECUTION_QUALIFIED",
+  "equivalence": "SINGLE_SERVER_ONLY",
+  "storage_readiness": "STORAGE_NOT_RESERVED",
+  "scope": "small real-model calibration only; no full benchmark or confirmatory/raw execution",
+  "backbone": "llada",
+  "task": "math500",
+  "model_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07",
+  "tokenizer_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07",
+  "dataset_revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+  "calibration_items": 32,
+  "seed_scenarios": [20260923, 20260924],
+  "evidence_files": 64,
+  "observed_evidence_size": "18M",
+  "slurm_job": "53585",
+  "job_name": "rsd-replay-l-s1-r2",
+  "r0": {
+    "status": "PASS",
+    "gate_report": "/home/kimhj/repairable-state-discovery-rsd-exec/status/rsd/gpu_calibration/server1/v2r_reference/llada_math500/R0/gate_report.json",
+    "gate_report_sha256": "f487407a6b89a98d2d43c8148ef3f4cf2572c5a7ad23db48f1756d434e9d5e3c"
+  },
+  "r1": {
+    "status": "PASS",
+    "gate_report": "/home/kimhj/repairable-state-discovery-rsd-exec/status/rsd/gpu_calibration/server1/v2r_reference/llada_math500/R1/gate_report.json",
+    "gate_report_sha256": "2563af87daaf1c3650e70836554cb37a9650c22e964814245281813aa2987453"
+  },
+  "r2": {
+    "status": "PASS",
+    "native_replay_status": "PASS",
+    "gate_report": "/home/kimhj/repairable-state-discovery-rsd-exec/status/rsd/gpu_calibration/server1/v2r_reference/llada_math500/R2/gate_report.json",
+    "gate_report_sha256": "e4e2f1928f0d529d367bf61c2971d4b1998515102f80196f7eaa13fbb546eb76",
+    "checks": {
+      "final_tokens_exact": true,
+      "final_text_exact": true,
+      "answer_exact": true,
+      "correctness_exact": true,
+      "schedule_exact": true,
+      "nfe_exact": true,
+      "rng_exact": true,
+      "snapshot_grid_complete": true
+    },
+    "item_count": 32,
+    "max_gpu_peak_bytes": 17094835200,
+    "mean_seconds_per_base": 66.4559930053947,
+    "full_official_benchmark_reproduction": "NOT_RUN_NOT_REQUIRED_FOR_NONIDENTICAL_PAPER_TASK"
+  },
+  "decision": "server1 may run an approved single-server scientific slice after the independent storage gate is satisfied; cross-server pooling and full raw execution remain blocked"
+}

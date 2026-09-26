@@ -7,10 +7,13 @@
   "worktree_head": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
   "worktree_clean": true,
   "gpu": {"cluster_inventory": "NVIDIA RTX A6000 x8", "driver": "not allocated in probe", "gpu_probe": "FAIL_TO_ALLOCATE: Requested nodes are busy", "uuid": "not observed"},
-  "runtime": {"python": "3.11.14", "python_path": "/home/kimhj/llada-x/.venv/bin/python", "torch": "2.1.2+cu121", "transformers": "4.49.0", "accelerate": "0.34.2", "numpy": "1.26.4", "tokenizers": "0.21.1", "pip_freeze_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "cuda_runtime": "12.1 torch build", "flash_attention": "not independently fingerprinted"},
-  "model": {"id": "GSAI-ML/LLaDA-8B-Instruct", "revision": "default", "tokenizer_revision": "default"},
-  "dataset_cache_identity": "not compared across servers",
-  "local_calibration": {"cpu_exact_replay_and_instrumentation": "PASS 7/7", "gpu_exact_replay": "NOT_RUN: GPU node busy"},
+  "runtime": {"python": "3.11.14", "python_path": "/home/kimhj/.local/share/uv/python/cpython-3.11.14-linux-x86_64-gnu/bin/python3.11", "torch": "2.1.2+cu121", "torch_cuda": "12.1", "transformers": "4.49.0", "accelerate": "0.34.2", "numpy": "1.26.4", "tokenizers": "0.21.1", "pip_freeze_method": "uv pip freeze --python (venv has no pip module)", "pip_freeze_sha256": "0c1b57151782c5c46663be5af265028296795cb10cc14ef43fe6864d680fb9dc", "cuda_runtime": "12.1 torch build", "flash_attention": "NOT_USED: flash_attn module unavailable", "attention_backend": "PyTorch SDPA flags flash=true mem_efficient=true math=true", "dtype": "bfloat16 in ReferenceSampler", "tf32_matmul": false, "tf32_cudnn": true, "matmul_precision": "highest", "deterministic_algorithms": false},
+  "model": {"id": "GSAI-ML/LLaDA-8B-Instruct", "revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07", "tokenizer_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07", "config_sha256": "5f99fefe855fdb5100bb6cadb57bdb09fae723ad54811f95c00ecacf29d58a6a", "tokenizer_config_sha256": "b9a6102c39a4f42f47f0d63fc6cee58a2381199d90f2a4f39b3f6871f32b4119", "tokenizer_json_sha256": "071eb20fe7bd601550b1b7838ff696d6c93b88f51257f753303d3df23163c381", "cache_root": "/home/kimhj/.cache/huggingface/hub"},
+  "dataset_cache_identity": {"math500": {"source": "HuggingFaceH4/MATH-500", "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be", "split": "test", "row_count": 500, "calibration_content_hash": "464ae4d6bfdccb1ee73c6720c1fbcfaf90c3dc544e3cf5c688daf55aa175bf6a"}, "gsm8k": {"source": "openai/gsm8k", "revision": "740312add88f781978c0658806c59bc2815b9866", "split": "test", "row_count": 1319, "calibration_content_hash": "e9f43cb7dc841e27a7bb51ecaad840f7ef79765d288181a92e8061d7d1c1207d"}},
+  "local_calibration": {"cpu_exact_replay_and_instrumentation": "PASS 7/7", "gpu_exact_replay": "NOT_TESTED_GPU_BUSY"},
+  "scientific_execution_qualification": "NOT_TESTED",
+  "equivalence_group": "NOT_TESTED",
+  "storage_readiness": "STORAGE_NOT_RESERVED",
   "scientific_classification": "AUXILIARY_ONLY",
   "classification_reason": "canonical source and matching CPU environment pass locally, but no GPU allocation, GPU UUID, cross-server calibration, or storage reservation"
 }

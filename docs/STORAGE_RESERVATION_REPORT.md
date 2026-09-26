@@ -13,4 +13,6 @@ Extrapolating only the known MATH-500 (500), GSM8K (1319), and three BBH logical
 
 No cleanup candidate was deleted. Candidate metadata, ownership, source SHA, artifact status, references, recoverability, and recommendations are in `status/rsd/storage_status.json`.
 
+The small server1 GPU calibration was stored separately in its canonical calibration worktree and completed at approximately 18 MiB for 64 item evidence files plus the gate report. This calibration artifact is retained as qualification evidence and does not count as a full-run reservation. Full scientific execution remains independently blocked at `STORAGE_NOT_RESERVED`; no large raw or confirmatory execution is authorized.
+
 The Phase 2A runtime safety gate still requires an approved reservation with at least 200 GiB free and 10% inode margin before raw execution. The measured projection above is the empirical planning estimate; it does not override that safety gate. Therefore no server is marked `STORAGE_PASS` in this phase.

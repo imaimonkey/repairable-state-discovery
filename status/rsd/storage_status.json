@@ -16,5 +16,7 @@
     {"path": "/data/kimhj/repairable-state-discovery-v2-exec-20260925/logs", "size": "small relative to outputs", "owner": "kimhj", "type": "operational logs", "source_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da", "artifact_status": "job forensic evidence", "referenced": true, "recoverable": true, "recommendation": "KEEP until legacy disposition is closed"}
   ],
   "deletion_actions": [],
-  "storage_gate": "STORAGE_FAIL"
+  "calibration_storage": {"status": "ALLOWED_SEPARATELY_FROM_FULL_RUN", "estimated_output": "<1GB for one server1 MATH R2 gate; observed 18M for 64 item evidence files plus gate report", "target": "server1 /home/kimhj canonical calibration worktree", "report_sha256": "e4e2f1928f0d529d367bf61c2971d4b1998515102f80196f7eaa13fbb546eb76", "evidence_path": "/home/kimhj/repairable-state-discovery-rsd-exec/status/rsd/gpu_calibration/server1/v2r_reference/llada_math500/R2", "write_test": "not separately required because gate created and updated its output directory", "retention": "retain calibration manifest/evidence; do not pool as full benchmark"},
+  "full_scientific_execution_storage": {"status": "STORAGE_NOT_RESERVED", "runtime_safety_gate": "not passed", "large_raw_execution_allowed": false},
+  "storage_gate": "STORAGE_NOT_RESERVED"
 }

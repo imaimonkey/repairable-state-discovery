@@ -1,39 +1,60 @@
 {
   "phase": "2B",
   "canonical_source_sha": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "fingerprint_artifacts": {
+    "server1": "status/rsd/environment/server1_pip_freeze.txt",
+    "server2": "status/rsd/environment/server2_pip_freeze.txt",
+    "server3": "status/rsd/environment/server3_pip_freeze.txt",
+    "pip_module_status": "pip module absent in selected venvs; uv pip freeze --python captured the full environment"
+  },
   "verification_status_tip": "c7674b997faa3584fdb6600b4d5e59de0a4b8a26",
   "matrix": {
     "server1": {
       "gpu_family": "Ampere RTX A6000",
       "runtime_tuple": "Python 3.11.13 / torch 2.1.2+cu121 / transformers 4.49.0 / accelerate 0.34.2 / numpy 1.26.4 / tokenizers 0.21.1",
-      "pip_freeze_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "local_replay": "LOCAL_REPLAY_PASS",
-      "instrumentation": "INSTRUMENTATION_PASS",
-      "cross_server_gpu_equivalence": "NOT_RUN",
+      "pip_freeze_sha256": "b9702acff055e8bc357ff0e3b43f3593674409836d821d9555512e7afd4fa448",
+      "model_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07",
+      "dataset_revisions": {"math500": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be", "gsm8k": "740312add88f781978c0658806c59bc2815b9866"},
+      "local_replay": "LOCAL_GPU_REPLAY_PASS",
+      "instrumentation": "INSTRUMENTATION_GPU_PASS",
+      "cross_server_gpu_equivalence": "SINGLE_SERVER_ONLY",
       "scientific_differences": ["GPU family differs from server3", "server1 historical exact replay failure remains forensic-only"],
       "classification": "AUXILIARY_ONLY",
-      "poolability_reason": "CPU contract gate passed; no GPU exact/cross-server calibration and no storage reservation"
+      "scientific_execution_qualification": "SCIENTIFIC_EXECUTION_QUALIFIED",
+      "equivalence_group": "SINGLE_SERVER_ONLY",
+      "storage_readiness": "STORAGE_NOT_RESERVED",
+      "poolability_reason": "real-model GPU replay and instrumentation passed locally; cross-server equivalence and full-run storage remain unvalidated"
     },
     "server2": {
       "gpu_family": "Ampere RTX A6000 cluster metadata",
       "runtime_tuple": "Python 3.11.14 / torch 2.1.2+cu121 / transformers 4.49.0 / accelerate 0.34.2 / numpy 1.26.4 / tokenizers 0.21.1",
-      "pip_freeze_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pip_freeze_sha256": "0c1b57151782c5c46663be5af265028296795cb10cc14ef43fe6864d680fb9dc",
+      "model_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07",
+      "dataset_revisions": {"math500": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be", "gsm8k": "740312add88f781978c0658806c59bc2815b9866"},
       "local_replay": "LOCAL_REPLAY_PASS",
       "instrumentation": "INSTRUMENTATION_PASS",
       "cross_server_gpu_equivalence": "NOT_RUN: GPU allocation reported Requested nodes are busy",
       "scientific_differences": ["GPU UUID/driver not observed in allocated probe", "no legacy non-Git source used"],
       "classification": "AUXILIARY_ONLY",
+      "scientific_execution_qualification": "NOT_TESTED_GPU_BUSY",
+      "equivalence_group": "NOT_TESTED",
+      "storage_readiness": "STORAGE_NOT_RESERVED",
       "poolability_reason": "CPU contract gate passed; GPU unavailable for calibration and no storage reservation"
     },
     "server3": {
       "gpu_family": "Hopper H200 NVL",
       "runtime_tuple": "Python 3.11.14 / torch 2.1.2+cu121 / transformers 4.49.0 / accelerate 0.34.2 / numpy 1.26.4 / tokenizers 0.21.1",
-      "pip_freeze_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pip_freeze_sha256": "7f56c41d90e80ac7fbe6165b5643dd1ba1293d0e0482e802707bb3c4eeda5717",
+      "model_revision": "08b83a6feb34df1a6011b80c3c00c7563e963b07",
+      "dataset_revisions": {"math500": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be", "gsm8k": "740312add88f781978c0658806c59bc2815b9866"},
       "local_replay": "LOCAL_REPLAY_PASS",
       "instrumentation": "INSTRUMENTATION_PASS",
       "cross_server_gpu_equivalence": "NOT_RUN: GPUs occupied by legacy jobs",
       "scientific_differences": ["GPU family differs from server1/2", "system Python stack differs; selected research venv was used"],
       "classification": "AUXILIARY_ONLY",
+      "scientific_execution_qualification": "NOT_TESTED_GPU_BUSY",
+      "equivalence_group": "NOT_TESTED",
+      "storage_readiness": "STORAGE_NOT_RESERVED",
       "poolability_reason": "CPU contract gate passed; GPU exact/cross-server calibration and storage reservation absent"
     },
     "server4": {
@@ -45,6 +66,9 @@
       "cross_server_gpu_equivalence": "NOT_RUN",
       "scientific_differences": ["Blackwell/SM120 backend compatibility unknown", "no compatible canonical research environment installed"],
       "classification": "UNKNOWN",
+      "scientific_execution_qualification": "NOT_TESTED_ENV_BLOCKED",
+      "equivalence_group": "NOT_TESTED",
+      "storage_readiness": "STORAGE_NOT_RESERVED",
       "poolability_reason": "Requires dedicated compatible environment and local replay before any primary-pool decision"
     }
   },
@@ -54,6 +78,7 @@
     "auxiliary_only": ["server1", "server2", "server3"],
     "incompatible": [],
     "unknown": ["server4"],
+    "scientifically_qualified_single_server": ["server1"],
     "storage_pass_servers": [],
     "phase_3_allowed": false
   }
