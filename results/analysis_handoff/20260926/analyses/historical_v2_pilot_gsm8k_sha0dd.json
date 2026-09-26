@@ -1,0 +1,61 @@
+{
+  "run_name": "v2_pilot_gsm8k_llada",
+  "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+  "config_sha256": "cf9e63cba0b540f02cae126629f249ed5987db914a7be6a2160d5220d562066e",
+  "trajectory_bank_hash": "c24a7a08edd0e6f92728dda608dd0ea089ee85cd3e25edee2829e06b1a269523",
+  "dataset": {
+    "name": "gsm8k",
+    "path": "openai/gsm8k",
+    "config_name": "main",
+    "split": "test",
+    "limit": 24,
+    "sample_seed": 424242
+  },
+  "model_profile": "llada_8b_fast",
+  "items": 24,
+  "trajectories": 192,
+  "base_pass_at_k": 0.9583333333333334,
+  "prospective_policy_selector": "oof_state_value",
+  "prospective_policy_pass_at_k": 0.9739583333333334,
+  "prospective_net_gain": 0.015625,
+  "policy_extra_nfe_target_for_fresh": 1184,
+  "fresh_sampling_achieved_nfe": 1216,
+  "fresh_sampling_pass_at_k": 0.9583333333333334,
+  "fresh_sampling_gain": 0.0,
+  "probe_branch_rows": 7208,
+  "mechanism_subset_items": [
+    89,
+    136,
+    144,
+    161,
+    374,
+    615,
+    698,
+    929,
+    959,
+    1065,
+    1117,
+    1266
+  ],
+  "temporal_subset_items": [
+    19,
+    85,
+    89,
+    374,
+    400,
+    425,
+    698,
+    872,
+    1065,
+    1117,
+    1206,
+    1314
+  ],
+  "existence": {
+    "failed_items_probed": 14,
+    "transient_correct_rate": 0.07142857142857142,
+    "confirmed_repairable_rate": 0.8571428571428571,
+    "repairable_but_never_correct_rate": 0.7857142857142857
+  },
+  "v1_artifacts_substituted": false
+}

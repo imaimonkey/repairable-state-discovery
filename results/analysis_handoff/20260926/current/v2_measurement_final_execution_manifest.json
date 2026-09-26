@@ -1,0 +1,130 @@
+{
+  "status": "PARTIAL_FROZEN_MATRIX",
+  "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da",
+  "generated_at_utc": "2026-09-26T03:08:28.702093+00:00",
+  "config_hashes": {
+    "repairable_diffusion/configs/v2/runs/full_math500_llada.yaml": "bf8791d6c60ba90933d5c8e0ab14643d3274bd0da0d240538fd9a9c78d373c2e",
+    "repairable_diffusion/configs/v2/runs/full_gsm8k_llada.yaml": "77426661a599d3dce8da8b9348f2e027dfb3b5ef229cf9fca220727ba56b2f09",
+    "repairable_diffusion/configs/v2/runs/full_math500_dream.yaml": "63d397d92a75defedaf476d6090dad15e2d2d7b0fcf56bc339d27dfaf6deb577",
+    "repairable_diffusion/configs/v2/runs/full_gsm8k_dream.yaml": "352ee442a097cb6835cfdf221e625e890be5973bd78c0396b937fe83752ec0db",
+    "repairable_diffusion/configs/v2/runs/full_bbh_logical3_llada.yaml": "c36dbecdd2adec70922139f8b51db45b21c5eb8ca2a046215636725d28bb04f9",
+    "repairable_diffusion/configs/v2/runs/full_bbh_logical5_llada.yaml": "62cc0ead39ac45cfc1a1eff69a8673e3930f164562dd4e590eadd611ccb42637",
+    "repairable_diffusion/configs/v2/runs/full_bbh_logical7_llada.yaml": "c545ee56673123a65ddeaaf247c93f4fb863c7e5e4113a18266a945c9403bc79",
+    "repairable_diffusion/configs/v2/runs/full_mbpp_llada.yaml": "6f442834dc5cbf4e5a5d13a274bf21624c80c06bfd30d67fe6b9fc4f28060edf"
+  },
+  "completed_runs": [
+    "v2_bbh_logical3_llada"
+  ],
+  "missing_runs": [
+    "v2_math500_llada",
+    "v2_gsm8k_llada",
+    "v2_math500_dream",
+    "v2_gsm8k_dream",
+    "v2_bbh_logical5_llada",
+    "v2_bbh_logical7_llada",
+    "v2_mbpp_llada"
+  ],
+  "readiness": {
+    "unit_preflight": {
+      "status": "PASS",
+      "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da",
+      "generated_at_utc": "2026-09-24T16:19:44.820404+00:00",
+      "commands": [
+        "python scripts/audit_v2_design.py --mode execution",
+        "python -m compileall -q repairable_diffusion/src/v2 scripts",
+        "python -m unittest discover -s tests -p test_v2*.py"
+      ]
+    },
+    "backend_validation": null
+  },
+  "jobs": {
+    "jobs": [
+      {
+        "config": "repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
+        "run_name": "v2_math500_llada",
+        "job_id": "53259",
+        "submitted_at_utc": "2026-09-24T19:51:55.044261+00:00",
+        "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da"
+      },
+      {
+        "config": "repairable_diffusion/configs/v2/runs/full_gsm8k_llada.yaml",
+        "run_name": "v2_gsm8k_llada",
+        "job_id": "53260",
+        "submitted_at_utc": "2026-09-24T19:51:55.054896+00:00",
+        "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da"
+      },
+      {
+        "config": "repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
+        "run_name": "v2_math500_llada",
+        "job_id": "53261",
+        "submitted_at_utc": "2026-09-24T19:52:52+00:00",
+        "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da",
+        "submission_note": "resubmitted with explicit bash wrapper after Slurm /bin/sh pipefail infrastructure failure"
+      },
+      {
+        "config": "repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
+        "run_name": "v2_math500_llada",
+        "job_id": "53275",
+        "submitted_at_utc": "2026-09-24T20:02:30+00:00",
+        "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da",
+        "submission_note": "resubmitted with 30-day Slurm wall-clock after confirming 24-hour limit was insufficient for projected full-split runtime"
+      },
+      {
+        "config": "repairable_diffusion/configs/v2/runs/full_gsm8k_llada.yaml",
+        "run_name": "v2_gsm8k_llada",
+        "job_id": "53262",
+        "submitted_at_utc": "2026-09-24T19:52:52+00:00",
+        "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da",
+        "submission_note": "resubmitted with explicit bash wrapper after Slurm /bin/sh pipefail infrastructure failure"
+      },
+      {
+        "config": "repairable_diffusion/configs/v2/runs/full_gsm8k_llada.yaml",
+        "run_name": "v2_gsm8k_llada",
+        "job_id": "53262",
+        "submitted_at_utc": "2026-09-24T19:52:52+00:00",
+        "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da"
+      },
+      {
+        "config": "repairable_diffusion/configs/v2/runs/full_bbh_logical3_llada.yaml",
+        "run_name": "v2_bbh_logical3_llada",
+        "job_id": "53264",
+        "submitted_at_utc": "2026-09-24T19:56:22.167843+00:00",
+        "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da"
+      },
+      {
+        "config": "repairable_diffusion/configs/v2/runs/full_bbh_logical5_llada.yaml",
+        "run_name": "v2_bbh_logical5_llada",
+        "job_id": "53265",
+        "submitted_at_utc": "2026-09-24T19:56:22.178802+00:00",
+        "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da"
+      },
+      {
+        "config": "repairable_diffusion/configs/v2/runs/full_bbh_logical7_llada.yaml",
+        "run_name": "v2_bbh_logical7_llada",
+        "job_id": "53266",
+        "submitted_at_utc": "2026-09-24T19:56:22.190159+00:00",
+        "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da"
+      },
+      {
+        "config": "repairable_diffusion/configs/v2/runs/full_mbpp_llada.yaml",
+        "run_name": "v2_mbpp_llada",
+        "job_id": "53267",
+        "submitted_at_utc": "2026-09-24T19:56:22.198289+00:00",
+        "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da"
+      },
+      {
+        "config": "readiness/backend_validation_dream.json",
+        "run_name": "dream_backend_validation",
+        "job_id": "53268",
+        "submitted_at_utc": "2026-09-24T19:56:33+00:00",
+        "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da",
+        "submission_note": "independent Dream replay gate"
+      }
+    ],
+    "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da",
+    "updated_at_utc": "2026-09-24T20:04:20.098918+00:00"
+  },
+  "infrastructure_only_deviations": [],
+  "v1_results_substituted": false,
+  "claim_guard": "Do not infer claims beyond completed V2 rows; negative/null results are retained."
+}

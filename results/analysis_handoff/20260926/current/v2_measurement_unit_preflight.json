@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da",
+  "generated_at_utc": "2026-09-24T16:19:44.820404+00:00",
+  "commands": [
+    "python scripts/audit_v2_design.py --mode execution",
+    "python -m compileall -q repairable_diffusion/src/v2 scripts",
+    "python -m unittest discover -s tests -p test_v2*.py"
+  ]
+}

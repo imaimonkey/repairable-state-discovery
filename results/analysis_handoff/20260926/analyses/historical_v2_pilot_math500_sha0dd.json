@@ -1,0 +1,60 @@
+{
+  "run_name": "v2_pilot_math500_llada",
+  "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+  "config_sha256": "7dbd7f19e016c5fe282e7fb112d6ee560b40c12e307f1d0371e875ee99593895",
+  "trajectory_bank_hash": "b8632932b61d08e73578a402374bedccb20fdac613251146385741a5e1300406",
+  "dataset": {
+    "name": "math500",
+    "path": "HuggingFaceH4/MATH-500",
+    "split": "test",
+    "limit": 24,
+    "sample_seed": 424242
+  },
+  "model_profile": "llada_8b_fast",
+  "items": 24,
+  "trajectories": 192,
+  "base_pass_at_k": 0.4583333333333333,
+  "prospective_policy_selector": "oof_state_value",
+  "prospective_policy_pass_at_k": 0.5104166666666666,
+  "prospective_net_gain": 0.052083333333333315,
+  "policy_extra_nfe_target_for_fresh": 888,
+  "fresh_sampling_achieved_nfe": 896,
+  "fresh_sampling_pass_at_k": 0.5,
+  "fresh_sampling_gain": 0.041666666666666685,
+  "probe_branch_rows": 6840,
+  "mechanism_subset_items": [
+    32,
+    33,
+    53,
+    60,
+    62,
+    116,
+    148,
+    226,
+    260,
+    362,
+    452,
+    477
+  ],
+  "temporal_subset_items": [
+    32,
+    33,
+    67,
+    116,
+    160,
+    260,
+    323,
+    346,
+    362,
+    419,
+    448,
+    477
+  ],
+  "existence": {
+    "failed_items_probed": 22,
+    "transient_correct_rate": 0.09090909090909091,
+    "confirmed_repairable_rate": 0.36363636363636365,
+    "repairable_but_never_correct_rate": 0.3181818181818182
+  },
+  "v1_artifacts_substituted": false
+}

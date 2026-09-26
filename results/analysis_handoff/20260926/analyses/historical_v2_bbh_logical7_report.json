@@ -1,0 +1,33 @@
+{
+  "run_name": "v2_bbh_logical7_llada",
+  "git_sha": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
+  "config_sha256": "c545ee56673123a65ddeaaf247c93f4fb863c7e5e4113a18266a945c9403bc79",
+  "trajectory_bank_hash": "87c68c55852d3c0a3ca6abe803e75fdff9169bc468185fe0082d3cb5d42490fc",
+  "dataset": {
+    "name": "bbh",
+    "path": "maveriq/bigbenchhard",
+    "config_name": "logical_deduction_seven_objects",
+    "split": "train"
+  },
+  "model_profile": "llada_8b_fast",
+  "items": 250,
+  "trajectories": 2000,
+  "base_pass_at_k": 0.764,
+  "prospective_policy_selector": "oof_state_value",
+  "prospective_policy_pass_at_k": 0.764,
+  "prospective_net_gain": 0.0,
+  "policy_extra_nfe_target_for_fresh": 10408,
+  "fresh_sampling_achieved_nfe": 0,
+  "fresh_sampling_pass_at_k": 0.764,
+  "fresh_sampling_gain": 0.0,
+  "probe_branch_rows": 58896,
+  "mechanism_subset_items": [],
+  "temporal_subset_items": [],
+  "existence": {
+    "failed_items_probed": 177,
+    "transient_correct_rate": 0.011299435028248588,
+    "confirmed_repairable_rate": 0.4689265536723164,
+    "repairable_but_never_correct_rate": 0.4632768361581921
+  },
+  "v1_artifacts_substituted": false
+}

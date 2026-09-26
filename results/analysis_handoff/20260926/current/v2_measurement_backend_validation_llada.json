@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "git_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da",
+  "generated_at_utc": "2026-09-24T16:20:38.951713+00:00",
+  "backends": [
+    "llada"
+  ],
+  "rows": [
+    {
+      "config": "repairable_diffusion/configs/v2/runs/full_math500_llada.yaml",
+      "model_profile": "llada_8b_fast",
+      "backend_type": "rfba_llada_v2",
+      "item_id": 244,
+      "checks": [
+        {
+          "step_index": 1,
+          "next_step_index": 2,
+          "next_state_exact_replay": true,
+          "native_final_exact_replay": true,
+          "same_seed_reproducible": true,
+          "native_nfe": 63,
+          "stochastic_nfe": 63
+        },
+        {
+          "step_index": 32,
+          "next_step_index": 33,
+          "next_state_exact_replay": true,
+          "native_final_exact_replay": true,
+          "same_seed_reproducible": true,
+          "native_nfe": 32,
+          "stochastic_nfe": 32
+        }
+      ],
+      "terminal_intervention_inapplicable": null,
+      "status": "PASS"
+    }
+  ]
+}

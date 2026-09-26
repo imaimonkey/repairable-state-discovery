@@ -1,0 +1,32 @@
+{
+  "run_name": "v2_math500_dream",
+  "git_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+  "config_sha256": "63d397d92a75defedaf476d6090dad15e2d2d7b0fcf56bc339d27dfaf6deb577",
+  "trajectory_bank_hash": "48fa6e5b5a33ecfab51bf281110a40c17d6e86b5bdc8bbf91a2d739c716dc5e4",
+  "dataset": {
+    "name": "math500",
+    "path": "HuggingFaceH4/MATH-500",
+    "split": "test"
+  },
+  "model_profile": "dream_v0_instruct_7b",
+  "items": 500,
+  "trajectories": 4000,
+  "base_pass_at_k": 0.4,
+  "prospective_policy_selector": "oof_state_value",
+  "prospective_policy_pass_at_k": 0.39825,
+  "prospective_net_gain": -0.0017500000000000293,
+  "policy_extra_nfe_target_for_fresh": 12168,
+  "fresh_sampling_achieved_nfe": 0,
+  "fresh_sampling_pass_at_k": 0.4,
+  "fresh_sampling_gain": 0.0,
+  "probe_branch_rows": 106872,
+  "mechanism_subset_items": [],
+  "temporal_subset_items": [],
+  "existence": {
+    "failed_items_probed": 497,
+    "transient_correct_rate": 0.04627766599597585,
+    "confirmed_repairable_rate": 0.2112676056338028,
+    "repairable_but_never_correct_rate": 0.1750503018108652
+  },
+  "v1_artifacts_substituted": false
+}

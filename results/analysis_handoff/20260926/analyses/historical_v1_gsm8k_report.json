@@ -1,0 +1,144 @@
+{
+  "dry_run": false,
+  "runs": [
+    {
+      "run_name": "gsm8k_final_llada8b_fast",
+      "family": "diffusion",
+      "dataset_name": "gsm8k",
+      "model_profile": "llada_8b_fast",
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_llada8b_fast",
+      "report_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_llada8b_fast/report.json",
+      "selection_eval_rows": 4,
+      "sample_accuracy": 0.491875,
+      "item_pass_at_1": 0.49,
+      "item_pass_at_k": 0.71,
+      "predictor_selector": {
+        "selector": "predictor",
+        "failed_trajectory_correction_rate": 0.4311193111931119,
+        "base_item_pass_at_1": 0.49,
+        "base_item_pass_at_k": 0.71,
+        "expected_repaired_item_pass_at_k": 0.8336279296875,
+        "expected_newly_solved_items": 24.7255859375,
+        "upper_bound_newly_solved_items": 30.0,
+        "negative_repair_rate": 0.17875,
+        "num_selected_trajectories": 813,
+        "num_selected_success_trajectories": 200,
+        "repair_branch_count": 4
+      },
+      "oracle_selector": {
+        "selector": "oracle",
+        "failed_trajectory_correction_rate": 0.5513530135301353,
+        "base_item_pass_at_1": 0.49,
+        "base_item_pass_at_k": 0.71,
+        "expected_repaired_item_pass_at_k": 0.8740249633789062,
+        "expected_newly_solved_items": 32.80499267578125,
+        "upper_bound_newly_solved_items": 42.0,
+        "negative_repair_rate": 0.0,
+        "num_selected_trajectories": 813,
+        "num_selected_success_trajectories": 200,
+        "repair_branch_count": 4
+      },
+      "repairability_summary": {
+        "repairable_failed_trajectories": 546,
+        "repairable_failed_rate": 0.6715867158671587,
+        "peak_step_index": 8,
+        "peak_mean_correction_rate": 0.4311193111931119,
+        "earliest_positive_step": 8,
+        "latest_positive_step": 64,
+        "best_step_histogram": [
+          {
+            "step_index": 8,
+            "count": 325
+          },
+          {
+            "step_index": 16,
+            "count": 107
+          },
+          {
+            "step_index": 24,
+            "count": 48
+          },
+          {
+            "step_index": 32,
+            "count": 43
+          },
+          {
+            "step_index": 40,
+            "count": 18
+          },
+          {
+            "step_index": 56,
+            "count": 2
+          },
+          {
+            "step_index": 64,
+            "count": 3
+          }
+        ]
+      },
+      "selector_deltas": {
+        "predictor_gain_over_base_pass_at_k": 0.12362792968750003,
+        "oracle_minus_predictor_expected_pass_at_k": 0.04039703369140624,
+        "oracle_minus_predictor_expected_newly_solved": 8.07940673828125,
+        "predictor_minus_confidence_expected_pass_at_k": 0.026755371093750036,
+        "predictor_minus_random_expected_pass_at_k": 0.011381835937499973
+      }
+    },
+    {
+      "run_name": "gsm8k_final_ar_qwen25_7b",
+      "family": "ar",
+      "dataset_name": "gsm8k",
+      "model_profile": "qwen2_5_7b_instruct",
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_ar_qwen25_7b",
+      "summary_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_ar_qwen25_7b/ar_baseline_summary.json",
+      "pass_at_1": 0.835,
+      "pass_at_k": 0.955
+    },
+    {
+      "run_name": "gsm8k_final_ar_llama31_8b",
+      "family": "ar",
+      "dataset_name": "gsm8k",
+      "model_profile": "llama_3_1_8b_instruct",
+      "run_dir": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_ar_llama31_8b",
+      "summary_path": "/home/kimhj/repairable-state-discovery/repairable_diffusion/outputs/runs/gsm8k_final_ar_llama31_8b/ar_baseline_summary.json",
+      "pass_at_1": 0.775,
+      "pass_at_k": 0.935
+    }
+  ],
+  "summary": {
+    "diffusion_table": [
+      {
+        "run_name": "gsm8k_final_llada8b_fast",
+        "dataset_name": "gsm8k",
+        "model_profile": "llada_8b_fast",
+        "sample_accuracy": 0.491875,
+        "item_pass_at_1": 0.49,
+        "item_pass_at_k": 0.71,
+        "predictor_expected_pass_at_k": 0.8336279296875,
+        "predictor_expected_newly_solved": 24.7255859375,
+        "predictor_negative_repair_rate": 0.17875,
+        "predictor_gain_over_base_pass_at_k": 0.12362792968750003,
+        "oracle_expected_pass_at_k": 0.8740249633789062,
+        "oracle_expected_newly_solved": 32.80499267578125,
+        "peak_step_index": 8,
+        "repairable_failed_rate": 0.6715867158671587
+      }
+    ],
+    "ar_table": [
+      {
+        "run_name": "gsm8k_final_ar_qwen25_7b",
+        "dataset_name": "gsm8k",
+        "model_profile": "qwen2_5_7b_instruct",
+        "pass_at_1": 0.835,
+        "pass_at_k": 0.955
+      },
+      {
+        "run_name": "gsm8k_final_ar_llama31_8b",
+        "dataset_name": "gsm8k",
+        "model_profile": "llama_3_1_8b_instruct",
+        "pass_at_1": 0.775,
+        "pass_at_k": 0.935
+      }
+    ]
+  }
+}

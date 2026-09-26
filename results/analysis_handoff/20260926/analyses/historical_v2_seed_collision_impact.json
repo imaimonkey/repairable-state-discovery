@@ -1,0 +1,301 @@
+{
+  "run_name": "v2_gsm8k_dream",
+  "job_id": "50924",
+  "execution_sha": "8b1361d3d8d60a58e28847ac35af8dfc2b023d2d",
+  "formal_protocol_violation": {
+    "require_disjoint_seed_sets": true,
+    "localization_seed_set_intersection_confirmation_seed_set": true,
+    "interpretation": "The frozen seal gate fails even though the collisions may be unrelated contexts."
+  },
+  "actual_localization_confirmation_state_reuse": {
+    "direct_state_reuse_count": 0,
+    "same_trajectory_different_state_count": 0,
+    "cross_context_or_item_collision_count": 5,
+    "interpretation": "No overlapping seed mapped to the same item/trajectory/checkpoint/branch context."
+  },
+  "affected_confirmation_contexts": 5,
+  "affected_confirmation_rows": 10,
+  "affected_localization_contexts": 5,
+  "affected_localization_rows": 10,
+  "affected_items": [
+    42,
+    343,
+    512,
+    677,
+    758,
+    878,
+    890,
+    996,
+    1212,
+    1269
+  ],
+  "affected_trajectories": [
+    "1212/0",
+    "1269/0",
+    "343/0",
+    "42/0",
+    "512/0",
+    "677/0",
+    "758/2",
+    "878/3",
+    "890/0",
+    "996/0"
+  ],
+  "affected_checkpoints": [
+    16,
+    32,
+    40,
+    48,
+    56
+  ],
+  "affected_operators": [
+    "low_confidence_remask_v2",
+    "matched_stochastic_continuation"
+  ],
+  "operator_pairing": "Two operator rows share each stage seed by construction; replacement must preserve this pairing.",
+  "item_level_impact": [
+    {
+      "item_id": 42,
+      "trajectory_id": 0,
+      "step_index": 16,
+      "classification": [
+        "CROSS_CONTEXT_OR_ITEM_COLLISION"
+      ],
+      "overlap_seed_count": 1,
+      "confirmation_rows": 2,
+      "base_correct": true,
+      "selector_rows_affected": 2,
+      "selectors_affected": [
+        "normalized_quarter",
+        "oracle_localization"
+      ],
+      "oracle_selector_diagnostic": true,
+      "prospective_policy_selector_affected": false,
+      "existence_row_present_for_same_item_trajectory": false,
+      "existence_oracle_step": null,
+      "directly_changes_existence_oracle_context": false,
+      "existence_q_native_confirm_at_oracle": null,
+      "existence_q_repair_confirm_at_oracle": null,
+      "existence_t_last": null,
+      "directly_changes_t_last_context": false,
+      "selector_q_repair_confirm_current": 1.0,
+      "selector_q_repair_success_count_of_8_current": 8,
+      "threshold_sensitive_under_one_branch_flip": false,
+      "base_success_negative_repair_context": true
+    },
+    {
+      "item_id": 343,
+      "trajectory_id": 0,
+      "step_index": 40,
+      "classification": [
+        "CROSS_CONTEXT_OR_ITEM_COLLISION"
+      ],
+      "overlap_seed_count": 1,
+      "confirmation_rows": 2,
+      "base_correct": false,
+      "selector_rows_affected": 1,
+      "selectors_affected": [
+        "random_checkpoint"
+      ],
+      "oracle_selector_diagnostic": false,
+      "prospective_policy_selector_affected": false,
+      "existence_row_present_for_same_item_trajectory": true,
+      "existence_oracle_step": 16,
+      "directly_changes_existence_oracle_context": false,
+      "existence_q_native_confirm_at_oracle": null,
+      "existence_q_repair_confirm_at_oracle": null,
+      "existence_t_last": null,
+      "directly_changes_t_last_context": false,
+      "selector_q_repair_confirm_current": 0.0,
+      "selector_q_repair_success_count_of_8_current": 0,
+      "threshold_sensitive_under_one_branch_flip": false,
+      "base_success_negative_repair_context": false
+    },
+    {
+      "item_id": 996,
+      "trajectory_id": 0,
+      "step_index": 48,
+      "classification": [
+        "CROSS_CONTEXT_OR_ITEM_COLLISION"
+      ],
+      "overlap_seed_count": 1,
+      "confirmation_rows": 2,
+      "base_correct": false,
+      "selector_rows_affected": 1,
+      "selectors_affected": [
+        "normalized_three_quarter"
+      ],
+      "oracle_selector_diagnostic": false,
+      "prospective_policy_selector_affected": false,
+      "existence_row_present_for_same_item_trajectory": true,
+      "existence_oracle_step": 8,
+      "directly_changes_existence_oracle_context": false,
+      "existence_q_native_confirm_at_oracle": null,
+      "existence_q_repair_confirm_at_oracle": null,
+      "existence_t_last": null,
+      "directly_changes_t_last_context": false,
+      "selector_q_repair_confirm_current": 0.0,
+      "selector_q_repair_success_count_of_8_current": 0,
+      "threshold_sensitive_under_one_branch_flip": false,
+      "base_success_negative_repair_context": false
+    },
+    {
+      "item_id": 1212,
+      "trajectory_id": 0,
+      "step_index": 48,
+      "classification": [
+        "CROSS_CONTEXT_OR_ITEM_COLLISION"
+      ],
+      "overlap_seed_count": 1,
+      "confirmation_rows": 2,
+      "base_correct": false,
+      "selector_rows_affected": 1,
+      "selectors_affected": [
+        "normalized_three_quarter"
+      ],
+      "oracle_selector_diagnostic": false,
+      "prospective_policy_selector_affected": false,
+      "existence_row_present_for_same_item_trajectory": true,
+      "existence_oracle_step": 8,
+      "directly_changes_existence_oracle_context": false,
+      "existence_q_native_confirm_at_oracle": null,
+      "existence_q_repair_confirm_at_oracle": null,
+      "existence_t_last": 32,
+      "directly_changes_t_last_context": false,
+      "selector_q_repair_confirm_current": 0.0,
+      "selector_q_repair_success_count_of_8_current": 0,
+      "threshold_sensitive_under_one_branch_flip": false,
+      "base_success_negative_repair_context": false
+    },
+    {
+      "item_id": 1269,
+      "trajectory_id": 0,
+      "step_index": 32,
+      "classification": [
+        "CROSS_CONTEXT_OR_ITEM_COLLISION"
+      ],
+      "overlap_seed_count": 1,
+      "confirmation_rows": 2,
+      "base_correct": false,
+      "selector_rows_affected": 2,
+      "selectors_affected": [
+        "normalized_midpoint",
+        "oof_state_value"
+      ],
+      "oracle_selector_diagnostic": false,
+      "prospective_policy_selector_affected": true,
+      "existence_row_present_for_same_item_trajectory": true,
+      "existence_oracle_step": 16,
+      "directly_changes_existence_oracle_context": false,
+      "existence_q_native_confirm_at_oracle": null,
+      "existence_q_repair_confirm_at_oracle": null,
+      "existence_t_last": 16,
+      "directly_changes_t_last_context": false,
+      "selector_q_repair_confirm_current": 0.125,
+      "selector_q_repair_success_count_of_8_current": 1,
+      "threshold_sensitive_under_one_branch_flip": true,
+      "base_success_negative_repair_context": false
+    }
+  ],
+  "headline_estimator_impact": {
+    "existence_q_native_confirm": {
+      "directly_affected_contexts": 0,
+      "items": []
+    },
+    "existence_q_repair_confirm": {
+      "directly_affected_contexts": 0,
+      "items": []
+    },
+    "confirmed_repairable": {
+      "directly_affected_contexts": 0,
+      "items": []
+    },
+    "repairable_but_never_correct": {
+      "directly_affected_contexts": 0,
+      "items": []
+    },
+    "t_last": {
+      "directly_affected_contexts": 0,
+      "items": [],
+      "note": "Dream temporal subset is empty in this run."
+    },
+    "oracle_localization_confirmation": {
+      "directly_affected_contexts": 0,
+      "items": [],
+      "oracle_selector_diagnostic_rows": 1
+    },
+    "oof_selector_confirmation": {
+      "affected_selector_rows": 7,
+      "items": [
+        1269
+      ]
+    },
+    "prospective_policy": {
+      "potentially_affected_items": [
+        1269
+      ],
+      "note": "No prospective metric was recomputed; item 1269 uses the affected oof_state_value checkpoint."
+    },
+    "base_success_negative_repair": {
+      "affected_contexts": 1,
+      "items": [
+        42
+      ]
+    },
+    "headline_report_metrics": {
+      "recomputed": false,
+      "status": "Do not use 50924 as sealed evidence until protocol review."
+    }
+  },
+  "threshold_sensitivity": {
+    "rule": "For an 8-branch q_R at the affected checkpoint, one branch can change the success count by one; counts 1/8 or 2/8 are threshold-sensitive around 0.25.",
+    "selector_context_threshold_sensitive_items": [
+      1269
+    ],
+    "existence_oracle_context_threshold_sensitive_items": [],
+    "details": [
+      {
+        "item_id": 1269,
+        "trajectory_id": 0,
+        "step_index": 32,
+        "classification": [
+          "CROSS_CONTEXT_OR_ITEM_COLLISION"
+        ],
+        "overlap_seed_count": 1,
+        "confirmation_rows": 2,
+        "base_correct": false,
+        "selector_rows_affected": 2,
+        "selectors_affected": [
+          "normalized_midpoint",
+          "oof_state_value"
+        ],
+        "oracle_selector_diagnostic": false,
+        "prospective_policy_selector_affected": true,
+        "existence_row_present_for_same_item_trajectory": true,
+        "existence_oracle_step": 16,
+        "directly_changes_existence_oracle_context": false,
+        "existence_q_native_confirm_at_oracle": null,
+        "existence_q_repair_confirm_at_oracle": null,
+        "existence_t_last": 16,
+        "directly_changes_t_last_context": false,
+        "selector_q_repair_confirm_current": 0.125,
+        "selector_q_repair_success_count_of_8_current": 1,
+        "threshold_sensitive_under_one_branch_flip": true,
+        "base_success_negative_repair_context": false
+      }
+    ],
+    "outcome_independent": false,
+    "note": "This is a diagnostic sensitivity classification of the existing q values, not an imputed rerun result."
+  },
+  "code_references": {
+    "contracts.py": "8b1361d3:54-82",
+    "run_measurement.py": "8b1361d3:331-343, 460-472",
+    "seal_v2_runs.py": "8b1361d3:69-72"
+  },
+  "source_artifacts": {
+    "probe_branches": "/data/kimhj/repairable-state-discovery-v2-unified-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/probe_branches.jsonl",
+    "existence": "/data/kimhj/repairable-state-discovery-v2-unified-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/existence.csv",
+    "selector_confirmation": "/data/kimhj/repairable-state-discovery-v2-unified-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/selector_confirmation.csv",
+    "report": "/data/kimhj/repairable-state-discovery-v2-unified-8b1361d/repairable_diffusion/outputs/v2_measurement/v2_gsm8k_dream/report.json"
+  }
+}
