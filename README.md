@@ -14,6 +14,10 @@ Failed diffusion reasoning trajectories can contain **repairable intermediate st
 
 This project should be framed as a **measurement and localization protocol**. Local repair is used primarily as an operational probe for measuring recoverability of intermediate states.
 
+## Generation status
+
+The numeric sections below describe historical V1/V2 artifacts and are not Generation 3 confirmatory evidence. The active source-faithful confirmatory design is `rsd_ref_v3`, documented in [RSD_REF_V3 scientific contract](docs/rsd_ref_v3_scientific_contract.md), [task specification](docs/RSD_REF_V3_TASK_SPEC.md), and [execution handoff](docs/RSD_REF_V3_EXECUTION.md). Its full execution remains blocked until the independent server1 storage gate is satisfied.
+
 ## Contributions
 
 1. We define state-level repairability for diffusion reasoning trajectories.

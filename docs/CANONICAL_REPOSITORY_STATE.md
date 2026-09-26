@@ -1,6 +1,8 @@
 # Canonical Repository State
 
-Status: Phase 2A source build. No new GPU job or raw trajectory execution is authorized by this branch.
+Status: Phase 2A source-build baseline plus RSD Generation 3 design handoff. No new GPU job or raw trajectory execution is authorized by this branch.
+
+This file records the Phase 2A canonical runtime baseline. The active Generation 3 authority is separated under `docs/rsd_ref_v3_scientific_contract.md`, `repairable_diffusion/configs/rsd_ref_v3/`, and `status/rsd_ref_v3/`; the prior V2 contract remains authoritative only for the frozen V2 generation.
 
 ## Source identity
 
@@ -18,7 +20,7 @@ The preferred source is the frozen execution SHA bound to sealed reference evide
 
 The canonical runtime retains the V2R schema, seed registry/collision checks, source-pinned reference sources, native sampler, reference gates, scientific execution semantics, deterministic planning, atomic/single-writer artifacts, strict merge, and sealing code under `repairable_diffusion/src/v2r/`.
 
-The frozen V2 contract remains authoritative. No dataset, operator, branch count, selector, evaluator, or scientific claim boundary was changed in Phase 2A.
+The frozen V2 contract remains authoritative for V2. No dataset, operator, branch count, selector, evaluator, or scientific claim boundary was changed in Phase 2A. Generation 3 does not reinterpret those artifacts and uses its own source-of-truth hierarchy.
 
 ## Historical state separation
 
