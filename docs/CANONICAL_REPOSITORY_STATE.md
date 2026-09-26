@@ -10,6 +10,7 @@ Status: Phase 2A source build. No new GPU job or raw trajectory execution is aut
 | Historical clean ancestor | `0dd161c8cf4bf3e7dbe4042234a0954950ce870e` |
 | Phase 1 reconciliation input | `d8b07b09850ba208920a299193886bf9001cf093` |
 | Phase 2A branch | `codex/repairable-state-canonical-reset` |
+| Phase 2A runtime commit | `227cbcc99c7edfac83de7f34c452db7defd5bdcb` |
 
 The preferred source is the frozen execution SHA bound to sealed reference evidence. The historical ancestor is retained for comparison; its descendants are not re-cherry-picked onto the preferred base.
 
