@@ -1,0 +1,194 @@
+version: rsd_ref_v3_confirmatory_recoverability
+generation: 3
+generation_id: rsd_ref_v3
+status: frozen_execution_design
+artifact_namespace: rsd_ref_v3
+canonical_source_parent: 227cbcc99c7edfac83de7f34c452db7defd5bdcb
+design_seed: 314159265
+pilot_results_observed: true
+pilot_use: planning_only
+confirmatory_results_observed: false
+
+claim_boundary:
+  primary: >-
+    Under source-faithful reference diffusion decoding, ultimately failed trajectories can contain
+    intermediate states from which a controlled local intervention recovers the correct answer.
+    Final failure is an endpoint observation and does not imply universal intermediate irrecoverability.
+  prohibit_without_separate_evidence:
+    - universal irrecoverability point
+    - monotonic temporal decay
+    - causal reasoning recovery
+    - reliable prospective localization
+    - decoding superiority
+    - efficiency superiority
+
+source_recipes:
+  llada: results/v2r_reference/reference_recipes/llada.json
+  dream: results/v2r_reference/reference_recipes/dream.json
+  source_loading: verified_pinned_bytes_only
+
+models:
+  llada:
+    id: GSAI-ML/LLaDA-8B-Instruct
+    revision: 08b83a6feb34df1a6011b80c3c00c7563e963b07
+    tokenizer_revision: 08b83a6feb34df1a6011b80c3c00c7563e963b07
+    source_repository_revision: 9182493720ed723ef8031210d85959364e51cbe0
+  dream:
+    id: Dream-org/Dream-v0-Instruct-7B
+    revision: 05334cb9faaf763692dcf9d8737c642be2b2a6ae
+    tokenizer_revision: 05334cb9faaf763692dcf9d8737c642be2b2a6ae
+    source_repository_revision: 31f94a60d187e3fd481fee3bbc2c732eb94a879c
+
+tasks:
+  llada_math:
+    backbone: llada
+    population: source_native_opencompass_math
+    dataset:
+      source: opencompass/math archive
+      archive_sha256: cf44a0c065f23dbb96e3239115758f7442b725776f3dedfa4473821a1c98fe03
+      split: test
+      count: 5000
+      config_name: null
+      calibration_bridge: HuggingFaceH4/MATH-500@6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be
+      bridge_is_confirmatory_population: false
+    prompt:
+      source_path: opencompass/opencompass/configs/datasets/math/math_0shot_gen_11c4b5.py
+      few_shot: 0
+      chat_template: true
+      add_generation_prompt: true
+    evaluator:
+      source_path: opencompass/opencompass/datasets/math.py
+      id: OpenCompass_MATHEvaluator_v2
+      answer_extraction: math_postprocess_v2
+      reported_comparison: DIRECTLY_COMPARABLE_TO_PINNED_OPENCOMPASS_MATH
+      reported_metric: 42.7
+    generation:
+      steps: 512
+      gen_length: 512
+      block_length: 64
+      temperature: 0.0
+      cfg_scale: 0.0
+      remasking: low_confidence
+      logits_eos_inf: false
+      confidence_eos_eot_inf: false
+  llada_gsm8k:
+    backbone: llada
+    population: source_native_opencompass_gsm8k
+    dataset:
+      source: opencompass/gsm8k archive
+      archive_sha256: 5e90449bd5ed9c728dd32fc0c36a21c2cb02fd1fe38cb00fcf5672fcf3dc9378
+      split: test
+      count: 1319
+      config_name: main
+      calibration_bridge: openai/gsm8k@740312add88f781978c0658806c59bc2815b9866
+      bridge_is_confirmatory_population: false
+    prompt:
+      source_path: opencompass/opencompass/configs/datasets/gsm8k/gsm8k_gen_1d7fe4.py
+      few_shot: 4
+      chat_template: true
+      add_generation_prompt: true
+    evaluator:
+      source_path: opencompass/opencompass/datasets/gsm8k.py
+      id: OpenCompass_Gsm8kEvaluator
+      answer_extraction: gsm8k_postprocess+gsm8k_dataset_postprocess
+      reported_comparison: PENDING_FULL_REPRODUCTION_AND_DATA_IDENTITY
+      reported_metric: 78.9
+    generation:
+      steps: 256
+      gen_length: 256
+      block_length: 8
+      temperature: 0.0
+      cfg_scale: 0.0
+      remasking: low_confidence
+      logits_eos_inf: false
+      confidence_eos_eot_inf: false
+  dream_math:
+    backbone: dream
+    population: source_native_dream_math
+    recipe_reference: results/v2r_reference/reference_recipes/dream.json
+    status: secondary_replication
+  dream_gsm8k:
+    backbone: dream
+    population: source_native_dream_gsm8k
+    recipe_reference: results/v2r_reference/reference_recipes/dream.json
+    status: secondary_replication
+
+base_generation:
+  trajectories_per_item: 1
+  trajectory_id: 0
+  source_native: true
+  outcome_denominator: reference_trajectory_accuracy_pass_at_1
+  checkpoint_grid: [0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875]
+
+branches:
+  localization_count: 4
+  confirmation_count: 8
+  require_disjoint_seed_sets: true
+  deterministic_temperature_zero_policy: exact_confirmation_not_independent_bernoulli
+  stochastic_estimator_policy: report_only_when_decoder_regime_is_non_degenerate
+
+selection:
+  failed_pool_definition: base_trajectory_final_correctness_false
+  outcome_independent: true
+  key: SHA256(generation|design_seed|backbone|task|purpose|item_id|trajectory_id)
+  selection_manifest_namespace: status/rsd_ref_v3/subsets
+  shortage_policy: NEEDS_REVIEW_NO_SILENT_SUBSTITUTION
+
+sample_targets:
+  core_failed_trajectories_per_task: 256
+  temporal_failed_trajectories_per_task: 128
+  mechanism_failed_trajectories_per_task: 128
+  successful_harm_trajectories_per_task: 128
+
+operators:
+  primary:
+    - exact_native_replay
+    - native_continuation_qC
+    - low_confidence_remask_v2_qR
+    - matched_count_random_position_remask
+  mechanism:
+    - CoRe-snapshot
+    - fresh_sampling_compute_control
+  low_confidence_remask_v2:
+    active_block_only: true
+    remask_fraction: 0.25
+    min_remask_positions: 4
+    schedule_mode: phase_faithful
+  random_position_remask:
+    matched_modified_position_count: true
+
+statistics:
+  unit: item_trajectory
+  confidence_intervals: [wilson, exact_binomial]
+  paired_control_difference: true
+  item_level_bootstrap: true
+  grouped_oof_key: item_id
+  pilot_confirmatory_pooling: false
+  report_nfe: true
+
+readiness:
+  required:
+    - canonical_source_config_sha_match
+    - server1_scientific_execution_qualified
+    - storage_ready
+    - confirmatory_protocol_frozen
+  cross_server_equivalence_required_for: multi_server_pooling_only
+  full_execution_allowed_in_phase: 3B_only
+
+provenance:
+  required:
+    - generation_id
+    - execution_git_sha
+    - config_sha256
+    - model_revision
+    - dataset_id
+    - dataset_revision_or_archive_sha256
+    - split
+    - source_recipe_sha256
+    - base_bank_sha256
+    - subset_manifest_sha256
+    - design_seed
+    - evaluator_id
+    - operator_id
+    - server_id
+    - storage_reservation_id
