@@ -1,0 +1,25 @@
+server,path,kind,head_sha,branch,tracking,dirty_or_untracked,source_family,confidence,notes
+server1,/home/kimhj/repairable-state-discovery-v2-exec,worktree,0dd161c8cf4bf3e7dbe4042234a0954950ce870e,(detached),unknown,untracked results/v2_measurement,V2 baseline,high,execution checkout
+server1,/home/kimhj/repairable-state-discovery-v2-unified-8b1361d,worktree,8b1361d3d8d60a58e28847ac35af8dfc2b023d2d,(detached),unknown,clean,V2 unified,high,source comparison checkout
+server1,/home/kimhj/repairable-state-discovery-v2-seal-ops-0dd-20260923,worktree,unknown,unknown,unknown,unknown,sealing ops,low,inventory path only
+server2,/home/kimhj/repairable-state-discovery,directory,unknown,not-a-git,none,unknown,legacy or V1,medium,exact identity unresolved
+server2,/home/kimhj/repairable-state-discovery-v2-exec,worktree,0dd161c8cf4bf3e7dbe4042234a0954950ce870e,(detached),unknown,untracked results/v2_measurement,V2 baseline,high,execution checkout
+server2,/home/kimhj/repairable-state-discovery-v2-unified-8b1361d,directory,unknown,unknown,unknown,unknown,V2 unified,low,path inventory only
+server2,/home/kimhj/repairable-state-discovery-v2-seal-ops-0dd-20260923,directory,unknown,unknown,unknown,unknown,sealing ops,low,path inventory only
+server3,/data/kimhj/repairable-state-discovery,worktree,14a721d9bb563e1ea9289778f6e70c0a230e6e21,main,origin/main,dirty and untracked,legacy plus overlays,high,behind origin/main by 25
+server3,/data/kimhj/repairable-state-discovery-50924-artifact-ops-20260923,worktree,7a6c479c9c308bc74461515c22ef1e906d3c2872,codex/v2-gsm8k-dream-50924-provenance-20260923,origin/codex/iclr2027-analysis-bundle-20260923,clean,artifact/provenance,high,behind upstream by 2
+server3,/data/kimhj/repairable-state-discovery-iclr-2027,worktree,0dd161c8cf4bf3e7dbe4042234a0954950ce870e,(detached),unknown,dirty and untracked,paper/deadline,high,archive-only checkout
+server3,/data/kimhj/repairable-state-discovery-live-monitor-20260923,worktree,dynamic,codex/iclr2027-live-monitor-20260923,remote branch,dynamic monitor-controlled,monitoring,high,do not edit
+server3,/data/kimhj/repairable-state-discovery-provenance-fix-20260923,worktree,435e24ea1729b11a15c6ae7b8cb1bfc4f79ca6fc,fix/v2-stable-execution-provenance,none,clean,V2 provenance,high,source candidate
+server3,/data/kimhj/repairable-state-discovery-reference,directory,none,not-a-git,none,not applicable,reference scratch,high,do not modify
+server3,/data/kimhj/repairable-state-discovery-reference-20260923,worktree,dynamic,codex/iclr2027-reference-live-20260923,remote branch,dirty and untracked,dynamic V2R reference,high,live scientific/operational checkout
+server3,/data/kimhj/repairable-state-discovery-reference-paper-20260923,worktree,69669e8cd4b810b5c601ed38e4cf13a9a37ff282,codex/reference-primary-paper-20260923,none,dirty pdf_audit.json,paper/evidence,high,archive-only
+server3,/data/kimhj/repairable-state-discovery-seed-forensic-20260923,worktree,e1b56311ed6c0e46d751e67ef2c2916fbbb53ee4,codex/v2-seed-collision-forensic-20260923,none,clean,forensic artifact,high,retain audit
+server3,/data/kimhj/repairable-state-discovery-status-20260923,worktree,c41d6b10ed0c041581cae4f84a41b4ad783ebe00,codex/iclr2027-analysis-bundle-20260923,none,clean,status/artifact bundle,high,archive from source core
+server3,/data/kimhj/repairable-state-discovery-v2-exec,worktree,43d8a6e1ca5075b03c63313e467359b83b00434c,codex/current-job-status-20260921,none,clean,status/handoff,high,archive from source core
+server3,/data/kimhj/repairable-state-discovery-v2-exec-20260925,worktree,926495e78f9558ee2c0a606ef9f9f641cacb78da,(detached),unknown,dirty and untracked,active measurement,high,do not edit
+server3,/data/kimhj/repairable-state-discovery-v2-unified-8b1361d,worktree,8b1361d3d8d60a58e28847ac35af8dfc2b023d2d,(detached),unknown,clean,V2 unified,high,source comparison checkout
+server4,/data/kimhj/repairable-state-discovery,worktree,f45569d7d4b74674d0679851fedf27193ca0e266,codex/status-20260917,unknown,dirty and untracked,legacy plus status,high,legacy overlay
+server4,/data/kimhj/repairable-state-discovery-v2-exec,worktree,0dd161c8cf4bf3e7dbe4042234a0954950ce870e,(detached),unknown,untracked results/v2_measurement,V2 baseline,high,execution checkout
+server4,/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d,worktree,15f40e052329261885c757664273f25bede2b074,codex/dream-math500-compact-artifacts-20260922,unknown,untracked V2 results,Dream hotfix,high,compare before reuse
+server4,/data/kimhj/repairable-state-discovery-v2-unified-8b1361d,worktree,8b1361d3d8d60a58e28847ac35af8dfc2b023d2d,(detached),unknown,clean,V2 unified,high,source comparison checkout
