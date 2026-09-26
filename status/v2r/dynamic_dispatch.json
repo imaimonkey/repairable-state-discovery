@@ -99,14 +99,10 @@
       ],
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
-      "idle_gpu_candidates": [
-        "2",
-        "3",
-        "5",
-        "7"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "exact_native_replay_failed;_reference_torch_2_1_2_is_sm120_incompatible"
       ],
       "reference_compatible": false,
@@ -116,5 +112,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-26T17:44:20.064508+00:00"
+  "timestamp": "2026-09-26T17:47:23.058194+00:00"
 }
