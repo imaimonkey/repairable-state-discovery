@@ -153,6 +153,8 @@ def require_runtime_readiness() -> dict[str, Any]:
     if storage.get("status") != "STORAGE_READY" or storage.get("execution_allowed") is not True:
         raise ContractError("STORAGE_NOT_READY: storage reservation is not approved")
     gate = readiness.get("single_server_primary_gate", {})
+    if gate.get("canonical_source_config_sha_match") is not True:
+        raise ContractError("CANONICAL_SOURCE_CONFIG_SHA_MISMATCH")
     if readiness.get("server1", {}).get("scientific_execution_qualification") != "SCIENTIFIC_EXECUTION_QUALIFIED":
         raise ContractError("SERVER_QUALIFICATION_MISSING")
     if readiness.get("protocol", {}).get("design_freeze") != "FROZEN":
