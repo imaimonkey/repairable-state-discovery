@@ -1,10 +1,21 @@
-# AGENTS.md — Repairable State Discovery V2
+# AGENTS.md — Repairable State Discovery Generations
 
-This repository contains two scientific generations. **V1 is historical/exploratory and frozen. V2 is the final-paper path.**
+This repository contains three scientific generations. **V1 is historical/exploratory and frozen. V2 is a frozen prior-paper generation. RSD Generation 3 (`rsd_ref_v3`) is the active confirmatory generation.** Generations are isolated by source-of-truth documents, configuration namespaces, output namespaces, manifests, and provenance.
 
 All execution agents (including Codex) must obey this file before launching jobs. **Codex is execution-only for this project: it must not edit, commit, or push repository code. Code changes are made by the research owner through the designated coding assistant before handoff.**
 
 ## 1. Source-of-truth order
+
+For RSD Generation 3 (`rsd_ref_v3`), use this authority order and do not mix it with the V2 hierarchy:
+
+1. `AGENTS.md`
+2. `docs/rsd_ref_v3_scientific_contract.md`
+3. `repairable_diffusion/configs/rsd_ref_v3/measurement_contract.yaml`
+4. `docs/RSD_REF_V3_EXECUTION.md`
+5. frozen `repairable_diffusion/configs/rsd_ref_v3/runs/` configs and pinned source recipes
+6. `scripts/audit_rsd_ref_v3.py`
+
+For the frozen prior V2 generation, use the hierarchy below.
 
 1. `docs/v2_scientific_contract.md`
 2. `repairable_diffusion/configs/v2/measurement_contract.yaml`
@@ -35,9 +46,9 @@ Do **not** redirect the project toward:
 
 Negative, null, or inconsistent results must be retained.
 
-## 3. V1 isolation
+## 3. Generation isolation
 
-Never overwrite, rename, reinterpret, or reuse V1 outputs as V2 evidence.
+Never overwrite, rename, reinterpret, or reuse V1 or V2 outputs as RSD Generation 3 evidence. Existing V2 is `FROZEN_HISTORICAL_GENERATION` for this branch of work; its outputs, configs, manifests, and claims are not Generation 3 denominators.
 
 V2 writes only to:
 
@@ -46,6 +57,17 @@ V2 writes only to:
 - `paper/v2_generated/` until final promotion
 
 A V2 run name must start with `v2_`. If an artifact fingerprint differs, fail closed; never force cache reuse.
+
+RSD Generation 3 writes only to:
+
+- `repairable_diffusion/configs/rsd_ref_v3/`
+- `outputs/rsd_ref_v3/`
+- `results/rsd_ref_v3/`
+- `status/rsd_ref_v3/`
+
+A Generation 3 run name must start with `rsd_ref_v3_`. A Generation 3 artifact must reject stale V1/V2 namespaces and mismatched fingerprints; never force cache reuse.
+
+Generation 3 uses one source-native reference trajectory per item for the base bank. Counterfactual branches are not base pass@k and must not be silently pooled with the base denominator.
 
 ## 4. Frozen execution matrix
 
@@ -136,6 +158,21 @@ python scripts/audit_v2_design.py --mode dream
 
 If any command fails, stop the affected tier and report it. Codex does not fix repository code.
 
+For RSD Generation 3, the designated coding assistant must freeze and audit the new generation before handoff. Codex may execute only after all of these are true:
+
+```bash
+python scripts/audit_rsd_ref_v3.py --mode design
+```
+
+```text
+canonical source/config SHA match
+server1 scientific qualification PASS
+storage READY
+protocol freeze PASS
+```
+
+Cross-server equivalence is required only when multi-server shard pooling is selected. A single-server primary execution may proceed without it.
+
 ## 9. Job execution
 
 After the primary gate passes:
@@ -174,7 +211,7 @@ Codex may **execute** without asking:
 - submitting, monitoring, resuming, and collecting jobs without changing scientific fingerprints;
 - logging the exact failure and infrastructure context.
 
-Codex must **not** modify repository code, YAMLs, tests, contracts, or documentation; must not commit; and must not push. This includes deterministic bug fixes and path-portability code changes.
+Codex must **not** modify scientific code, YAMLs, tests, contracts, or documentation after a generation is handed off for execution; must not commit; and must not push. This includes deterministic bug fixes and path-portability code changes. The designated coding assistant may create or revise a new generation before handoff, after which the execution-only boundary applies again.
 
 If execution exposes a code bug, path-portability issue that requires a code edit, replay mismatch, evaluator problem, or scientific-gate failure, Codex must stop the affected tier and report the exact traceback/log/state. The research owner will patch and push the repository, after which Codex restarts the relevant gates from the new SHA.
 
@@ -210,3 +247,5 @@ Codex execution is complete only when `results/v2_measurement/` contains:
 - `final_execution_manifest.json` recording git SHA, config hashes, job IDs, and infrastructure-only deviations.
 
 Do not draft stronger claims than these artifacts support.
+
+For RSD Generation 3, the required pre-execution handoff is defined in `docs/RSD_REF_V3_EXECUTION.md` and `status/rsd_ref_v3/design_freeze.json`. Generation 3 confirmatory execution is not authorized merely because V2 artifacts exist.
