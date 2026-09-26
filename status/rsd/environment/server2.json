@@ -1,0 +1,16 @@
+{
+  "phase": "2B",
+  "server": "server2",
+  "hostname": "server2",
+  "canonical_source_sha": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "detached_worktree": "/home/kimhj/repairable-state-discovery-rsd-exec",
+  "worktree_head": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "worktree_clean": true,
+  "gpu": {"cluster_inventory": "NVIDIA RTX A6000 x8", "driver": "not allocated in probe", "gpu_probe": "FAIL_TO_ALLOCATE: Requested nodes are busy", "uuid": "not observed"},
+  "runtime": {"python": "3.11.14", "python_path": "/home/kimhj/llada-x/.venv/bin/python", "torch": "2.1.2+cu121", "transformers": "4.49.0", "accelerate": "0.34.2", "numpy": "1.26.4", "tokenizers": "0.21.1", "pip_freeze_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "cuda_runtime": "12.1 torch build", "flash_attention": "not independently fingerprinted"},
+  "model": {"id": "GSAI-ML/LLaDA-8B-Instruct", "revision": "default", "tokenizer_revision": "default"},
+  "dataset_cache_identity": "not compared across servers",
+  "local_calibration": {"cpu_exact_replay_and_instrumentation": "PASS 7/7", "gpu_exact_replay": "NOT_RUN: GPU node busy"},
+  "scientific_classification": "AUXILIARY_ONLY",
+  "classification_reason": "canonical source and matching CPU environment pass locally, but no GPU allocation, GPU UUID, cross-server calibration, or storage reservation"
+}

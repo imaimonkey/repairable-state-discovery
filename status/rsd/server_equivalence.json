@@ -1,0 +1,13 @@
+{
+  "phase": "2B",
+  "canonical_source_sha": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "calibration_scope": "small deterministic CPU contract gate only; no full MATH/GSM, raw trajectory, confirmatory, temporal, mechanism, or Dream matrix",
+  "local_gate": {"server1": "PASS 7/7", "server2": "PASS 7/7", "server3": "PASS 7/7", "server4": "NOT_RUN_MISSING_TORCH_STACK"},
+  "checks": {"token_ids": "PASS in fixture CPU replay", "text_and_answer": "PASS in fixture CPU replay", "correct_flag": "PASS in fixture contract", "nfe_and_schedule": "PASS in fixture contract", "state_identity": "PASS in snapshot restore fixture", "native_vs_instrumented": "PASS in fixture CPU replay", "cross_server_gpu_calibration": "NOT_RUN"},
+  "server_classification": {"server1": "AUXILIARY_ONLY", "server2": "AUXILIARY_ONLY", "server3": "AUXILIARY_ONLY", "server4": "UNKNOWN"},
+  "poolability": "NONE_QUALIFIED",
+  "primary_poolable_server": null,
+  "reason": "GPU exact replay and cross-server calibration were intentionally not started because server2 could not allocate a GPU, server3 GPUs were occupied by legacy jobs, server4 lacks the research stack/Blackwell compatibility proof, and storage reservation failed",
+  "server1_exact_replay_forensics": "legacy held temporal jobs 53067, 53069-53074 retained only as forensic snapshot; no exact replay rerun",
+  "server2_source_policy": "canonical detached worktree used; legacy source not used"
+}

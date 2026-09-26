@@ -1,0 +1,16 @@
+{
+  "phase": "2B",
+  "server": "server4",
+  "hostname": "server4",
+  "canonical_source_sha": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "detached_worktree": "/data/kimhj/repairable-state-discovery-rsd-exec",
+  "worktree_head": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "worktree_clean": true,
+  "gpu": {"model": "NVIDIA RTX PRO 6000 Blackwell Server Edition", "count": 1, "driver": "595.71.05", "uuid": "GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e", "memory_mib": 97887, "architecture": "Blackwell; SM120 compatibility not validated"},
+  "runtime": {"python": "3.12.3", "python_path": "/usr/bin/python3", "torch": "missing", "transformers": "missing", "accelerate": "missing", "numpy": "missing", "tokenizers": "missing", "pip_freeze_sha256": "not_available", "cuda_runtime": "unknown", "flash_attention": "unknown"},
+  "model": {"id": "GSAI-ML/LLaDA-8B-Instruct", "revision": "default", "tokenizer_revision": "default"},
+  "dataset_cache_identity": "not compared across servers",
+  "local_calibration": {"cpu_exact_replay_and_instrumentation": "NOT_RUN: required torch stack missing", "gpu_exact_replay": "NOT_RUN: environment incompatible/unknown"},
+  "scientific_classification": "UNKNOWN",
+  "classification_reason": "Blackwell/SM120 and missing research Python stack require a dedicated compatibility environment and calibration before use"
+}

@@ -1,0 +1,16 @@
+{
+  "phase": "2B",
+  "server": "server3",
+  "hostname": "ubuntu",
+  "canonical_source_sha": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "detached_worktree": "/data/kimhj/repairable-state-discovery-rsd-exec",
+  "worktree_head": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "worktree_clean": true,
+  "gpu": {"model": "NVIDIA H200 NVL", "count": 4, "driver": "595.71.05", "uuids": ["GPU-4f8edcb9-889c-c054-f48d-990e34fc95ed","GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2","GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134","GPU-40729417-86d2-9b2e-32a1-a0f5ed143870"]},
+  "runtime": {"python": "3.11.14", "python_path": "/data/kimhj/llada-x/.venv/bin/python", "torch": "2.1.2+cu121", "transformers": "4.49.0", "accelerate": "0.34.2", "numpy": "1.26.4", "tokenizers": "0.21.1", "pip_freeze_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "system_python_stack": "torch 2.11.0+cu130; transformers 5.5.4; numpy 2.2.6", "cuda_runtime": "12.1 torch build", "flash_attention": "not independently fingerprinted"},
+  "model": {"id": "GSAI-ML/LLaDA-8B-Instruct", "revision": "default", "tokenizer_revision": "default"},
+  "dataset_cache_identity": "not compared across servers",
+  "local_calibration": {"cpu_exact_replay_and_instrumentation": "PASS 7/7", "gpu_exact_replay": "NOT_RUN: existing GPUs occupied by legacy jobs"},
+  "scientific_classification": "AUXILIARY_ONLY",
+  "classification_reason": "canonical source and matching venv pass local deterministic gate, but no GPU exact/cross-server calibration and /data lacks storage margin"
+}

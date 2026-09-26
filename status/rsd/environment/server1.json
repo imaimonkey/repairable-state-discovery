@@ -1,0 +1,16 @@
+{
+  "phase": "2B",
+  "server": "server1",
+  "hostname": "devbox",
+  "canonical_source_sha": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "detached_worktree": "/home/kimhj/repairable-state-discovery-rsd-exec",
+  "worktree_head": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "worktree_clean": true,
+  "gpu": {"model": "NVIDIA RTX A6000", "count": 8, "driver": "595.71.05", "uuids": ["GPU-2087c567-ec90-0aa2-09c5-c5174daec87a","GPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85","GPU-8a497f13-d58c-bdef-5478-611ea200deae","GPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee","GPU-d623a715-ed10-696d-07ec-50b7614c4272","GPU-08613291-f9aa-4b3b-8ee3-b4a48f542f22","GPU-8b402bc3-f797-6774-24e2-d1c920adadfb","GPU-9edcc6a0-bc56-e743-e1d7-05815ef24483"]},
+  "runtime": {"python": "3.11.13", "python_path": "/home/kimhj/llada8b_basic/.venv/bin/python", "torch": "2.1.2+cu121", "transformers": "4.49.0", "accelerate": "0.34.2", "numpy": "1.26.4", "tokenizers": "0.21.1", "pip_freeze_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "cuda_runtime": "12.1 torch build", "flash_attention": "not independently fingerprinted"},
+  "model": {"id": "GSAI-ML/LLaDA-8B-Instruct", "revision": "default", "tokenizer_revision": "default", "source_manifest": "legacy run manifest; no model cache deletion performed"},
+  "dataset_cache_identity": "not compared across servers",
+  "local_calibration": {"cpu_exact_replay_and_instrumentation": "PASS 7/7", "gpu_exact_replay": "NOT_RUN", "server1_temporal_forensics": "held legacy jobs; no rerun"},
+  "scientific_classification": "AUXILIARY_ONLY",
+  "classification_reason": "canonical source and runtime contract pass locally, but GPU exact/cross-server calibration and storage reservation are absent"
+}

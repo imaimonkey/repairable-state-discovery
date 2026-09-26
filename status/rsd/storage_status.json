@@ -1,0 +1,20 @@
+{
+  "phase": "2B",
+  "measured_at": "2026-09-26T21:28:55+09:00",
+  "measurement_method": "df -h, df -i, findmnt/du probes; no deletion or broad recursive cleanup",
+  "observed_project_artifacts": {"legacy_v2_execution_root": "~2.0G", "v2r_reference_root": "606M", "known_pilot_math24_plus_gsm24": "~48M", "largest_legacy_trajectory": "1,184,352,831 bytes (GSM8K)", "largest_observed_bbh_run": "264,097,041 bytes (250 items)"},
+  "projection": {"basis": "largest observed 250-item BBH run, 1,056,388 bytes/item upper bound including its current trajectory/probe/report artifacts", "known_matrix_items": {"math500": 500, "gsm8k": 1319, "bbh_logical3_5_7": 750}, "known_matrix_one_copy": "~2.71GB decimal; excludes MBPP, Dream, model caches, and any new raw trajectory format", "three_copy_working_high_water": "~8.13GB decimal (bank + counterfactual/temp working copies)", "recommended_reservation": "at least 15GB above current usage for this measured matrix; increase after MBPP/Dream/cache measurement", "blind_200GiB_assumption_used": false},
+  "servers": {
+    "server1": {"hostname": "devbox", "candidate_filesystems": [{"mount": "/", "free": "297G", "use": "83%", "inodes_free_percent": 95, "reservation": "NOT_RESERVED"}, {"mount": "/mnt/raid5", "free": "204G", "use": "99%", "inodes_free_percent": 95, "reservation": "NOT_RESERVED"}], "storage_status": "FAIL_NO_APPROVED_RESERVATION_AND_99_PERCENT_MOUNT"},
+    "server2": {"hostname": "server2", "candidate_filesystems": [{"mount": "/", "free": "19G", "use": "99%", "inodes_free_percent": 94, "reservation": "NOT_RESERVED"}, {"mount": "/mnt/raid5", "free": "224G", "use": "99%", "inodes_free_percent": 94, "reservation": "NOT_RESERVED"}], "storage_status": "FAIL_NO_APPROVED_RESERVATION_AND_99_PERCENT_MOUNT"},
+    "server3": {"hostname": "ubuntu", "candidate_filesystems": [{"mount": "/", "free": "77G", "use": "96%", "inodes_free_percent": 97, "reservation": "NOT_RESERVED"}, {"mount": "/data", "free": "115G", "use": "99%", "inodes_free_percent": 96, "reservation": "NOT_RESERVED"}], "storage_status": "FAIL_DATA_MARGIN"},
+    "server4": {"hostname": "server4", "candidate_filesystems": [{"mount": "/", "free": "99G", "use": "95%", "inodes_free_percent": 97, "reservation": "NOT_RESERVED"}, {"mount": "/data", "free": "83G", "use": "99%", "inodes_free_percent": 95, "reservation": "NOT_RESERVED"}], "storage_status": "FAIL_DATA_MARGIN"}
+  },
+  "cleanup_candidates": [
+    {"path": "/data/kimhj/repairable-state-discovery-v2-exec-20260925/repairable_diffusion/outputs/v2_measurement", "size": "~2.0G", "owner": "kimhj", "type": "legacy scientific artifacts", "source_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da", "artifact_status": "partial/sealed mix; active job dependency", "referenced": true, "recoverable": true, "recommendation": "KEEP; never delete in Phase 2B"},
+    {"path": "/var/tmp/kimhj-v2r-reference", "size": "606M", "owner": "kimhj", "type": "reference source and artifacts", "source_sha": "reference worktree; exact SHA not read from absent server1 allocation path", "artifact_status": "sealed/reference and forensic logs", "referenced": true, "recoverable": true, "recommendation": "KEEP; archive only after explicit review"},
+    {"path": "/data/kimhj/repairable-state-discovery-v2-exec-20260925/logs", "size": "small relative to outputs", "owner": "kimhj", "type": "operational logs", "source_sha": "926495e78f9558ee2c0a606ef9f9f641cacb78da", "artifact_status": "job forensic evidence", "referenced": true, "recoverable": true, "recommendation": "KEEP until legacy disposition is closed"}
+  ],
+  "deletion_actions": [],
+  "storage_gate": "STORAGE_FAIL"
+}

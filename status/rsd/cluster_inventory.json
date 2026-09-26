@@ -1,0 +1,15 @@
+{
+  "phase": "2B",
+  "captured_at": "2026-09-26T21:30:26+09:00",
+  "canonical_source_sha": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "servers": {
+    "server1": {"hostname": "devbox", "worktree": "/home/kimhj/repairable-state-discovery-rsd-exec", "head": "227cbcc99c7edfac83de7f34c452db7defd5bdcb", "clean": true, "gpu": "8x RTX A6000", "deployment": "SUCCESS"},
+    "server2": {"hostname": "server2", "worktree": "/home/kimhj/repairable-state-discovery-rsd-exec", "head": "227cbcc99c7edfac83de7f34c452db7defd5bdcb", "clean": true, "gpu": "cluster metadata RTX A6000 x8; single-GPU probe busy", "deployment": "SUCCESS"},
+    "server3": {"hostname": "ubuntu", "worktree": "/data/kimhj/repairable-state-discovery-rsd-exec", "head": "227cbcc99c7edfac83de7f34c452db7defd5bdcb", "clean": true, "gpu": "4x H200 NVL", "deployment": "SUCCESS"},
+    "server4": {"hostname": "server4", "worktree": "/data/kimhj/repairable-state-discovery-rsd-exec", "head": "227cbcc99c7edfac83de7f34c452db7defd5bdcb", "clean": true, "gpu": "1x RTX PRO 6000 Blackwell Server Edition", "deployment": "SUCCESS"}
+  },
+  "neutral_namespace": {"new_job_names": "rsd-*", "new_service_names": ["rsd-monitor", "rsd-orchestrator", "rsd-watchdog"], "conference_names_in_new_jobs": false},
+  "scientific_jobs_submitted_by_phase2b": 0,
+  "old_worktrees_reset": false,
+  "old_artifacts_deleted": false
+}
