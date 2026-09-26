@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -151,6 +152,24 @@ def audit_runtime_state(errors: list[str]) -> dict[str, Any] | None:
     gate = readiness_payload.get("single_server_primary_gate", {})
     check(errors, gate.get("confirmatory_protocol_frozen") is True, "confirmatory protocol is not frozen")
     check(errors, readiness_payload.get("confirmatory_results_observed") is False, "readiness records confirmatory outcomes")
+    if storage_payload.get("status") == "STORAGE_READY":
+        approved = storage_payload.get("approved_output_root")
+        check(errors, isinstance(approved, str) and "rsd_ref_v3" in Path(approved).parts, "approved output root must use rsd_ref_v3 namespace")
+        if isinstance(approved, str):
+            location = Path(approved)
+            try:
+                location.mkdir(parents=True, exist_ok=True)
+                stat = os.statvfs(location)
+                available = stat.f_bavail * stat.f_frsize
+                total = stat.f_blocks * stat.f_frsize
+                used_fraction = 1.0 - (available / total if total else 0.0)
+                inode_fraction = stat.f_favail / stat.f_files if stat.f_files else 0.0
+                check(errors, used_fraction < 0.95, "live filesystem use must remain below 95 percent")
+                check(errors, inode_fraction >= 0.10, "live free inode fraction must remain at least 10 percent")
+                minimum = int(storage_payload.get("minimum_free_after_run_bytes", 200 * 1024**3))
+                check(errors, available >= minimum, "live free bytes are below the reserved post-run minimum")
+            except OSError as exc:
+                errors.append(f"cannot inspect approved output filesystem: {exc}")
     return {"readiness": readiness_payload, "storage": storage_payload}
 
 
