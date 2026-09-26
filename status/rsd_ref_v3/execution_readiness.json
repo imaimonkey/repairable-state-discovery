@@ -1,0 +1,32 @@
+{
+  "generation_id": "rsd_ref_v3",
+  "status": "BLOCKED_BEFORE_EXECUTION",
+  "phase": "3A",
+  "canonical_source_parent": "227cbcc99c7edfac83de7f34c452db7defd5bdcb",
+  "server1": {
+    "scientific_execution_qualification": "SCIENTIFIC_EXECUTION_QUALIFIED",
+    "cross_server_equivalence": "SINGLE_SERVER_ONLY",
+    "storage": "STORAGE_NOT_RESERVED"
+  },
+  "protocol": {
+    "contract": "FROZEN",
+    "task_spec": "FROZEN",
+    "sample_size_plan": "FROZEN_RESOURCE_ONLY",
+    "subset_policy": "FROZEN_BEFORE_CONFIRMATORY_OUTCOMES",
+    "design_freeze": "PENDING_MANIFEST_HASH"
+  },
+  "single_server_primary_gate": {
+    "canonical_source_config_sha_match": "PENDING_EXECUTION_CHECK",
+    "server_scientific_qualification": true,
+    "storage_ready": false,
+    "confirmatory_protocol_frozen": true,
+    "execution_allowed": false
+  },
+  "multi_server_pooling_gate": {
+    "cross_server_equivalence_required": true,
+    "status": "NOT_SELECTED_AND_NOT_TESTED"
+  },
+  "full_reference_bank_started": false,
+  "confirmatory_results_observed": false,
+  "blockers": ["STORAGE_NOT_RESERVED"]
+}

@@ -1,0 +1,52 @@
+{
+  "generation_id": "rsd_ref_v3",
+  "status": "STORAGE_NOT_RESERVED",
+  "execution_allowed": false,
+  "server": "server1",
+  "candidate_filesystems": [
+    {
+      "mount": "/",
+      "observed_free_bytes_approx": 297000000000,
+      "observed_use_fraction": 0.83,
+      "inode_margin_observed": true,
+      "approved_output_root": null,
+      "eligible": "PENDING_OWNERSHIP_QUOTA_PERSISTENCE_RETENTION_REVIEW"
+    },
+    {
+      "mount": "/mnt/raid5",
+      "observed_free_bytes_approx": 204000000000,
+      "observed_use_fraction": 0.99,
+      "approved_output_root": null,
+      "eligible": false,
+      "reason": "filesystem_use_at_or_above_95_percent"
+    }
+  ],
+  "requirements": {
+    "minimum_free_bytes": 214748364800,
+    "minimum_inode_free_fraction": 0.10,
+    "maximum_filesystem_use_fraction": 0.95,
+    "approved_retention_policy": true,
+    "safety_factor": 1.25,
+    "temporary_merge_and_seal_included": true,
+    "retention_copy_included": true,
+    "reservation_formula": "max(200GiB, 3 * projected_max_single_shard_raw_bytes)"
+  },
+  "matrix_projection": {
+    "must_be_measured_from": "8-16 item source-native server1 timing/artifact pilot",
+    "components": ["base_bank", "core_branches", "temporal_branches", "mechanism_branches", "temporary_merge_seal", "retention_copy"],
+    "projected_bytes": null,
+    "reserved_bytes": null,
+    "expected_high_water_bytes": null,
+    "minimum_free_after_run_bytes": null
+  },
+  "retention": {
+    "policy_status": "PENDING_APPROVAL",
+    "archive_destination": null,
+    "retention_window": null
+  },
+  "blockers": [
+    "approved_output_root_missing",
+    "projected_matrix_bytes_not_measured",
+    "retention_policy_not_approved"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "generation_id": "rsd_ref_v3",
+  "status": "FROZEN_BEFORE_CONFIRMATORY_OUTCOMES",
+  "design_seed": 314159265,
+  "base_bank": "one source-native trajectory per item",
+  "failed_pool_definition": "base final correctness == false",
+  "selection_key": "SHA256(generation|design_seed|backbone|task|purpose|item_id|trajectory_id)",
+  "repairability_outcome_used_for_selection": false,
+  "pilot_items_excluded_when_known": true,
+  "calibration_population_excluded": "HuggingFaceH4/MATH-500",
+  "purposes": {
+    "core": {"target": 256, "minimum": 128, "unit": "failed trajectory"},
+    "temporal": {"target": 128, "minimum": 64, "unit": "failed trajectory"},
+    "mechanism": {"target": 128, "minimum": 64, "unit": "failed trajectory"},
+    "successful_harm": {"target": 128, "minimum": 64, "unit": "source-native correct trajectory"}
+  },
+  "shortage_policy": "NEEDS_REVIEW_NO_SILENT_SUBSTITUTION",
+  "item_ids": null,
+  "selection_sha256": null
+}
