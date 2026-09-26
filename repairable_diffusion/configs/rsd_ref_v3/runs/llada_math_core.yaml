@@ -1,0 +1,15 @@
+generation_id: rsd_ref_v3
+run_name: rsd_ref_v3_llada_math_core
+stage: core
+execution_enabled: false_until_readiness
+base_run: rsd_ref_v3_llada_math_reference
+task: llada_math
+subset_manifest: status/rsd_ref_v3/subsets/llada_math_core.json
+subset_rule: failed_pool_hash_ranked_before_repairability_outcomes
+target_failed_trajectories: 256
+minimum_failed_trajectories: 128
+operators: [exact_native_replay, native_continuation_qC, low_confidence_remask_v2_qR, matched_count_random_position_remask]
+checkpoint_grid: [0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875]
+B_loc: 4
+B_eval: 8
+storage_gate: STORAGE_READY_REQUIRED

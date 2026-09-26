@@ -1,0 +1,29 @@
+generation_id: rsd_ref_v3
+run_name: rsd_ref_v3_dream_gsm8k_reference
+stage: secondary_replication
+execution_enabled: false_until_readiness
+paths:
+  outputs_root: outputs/rsd_ref_v3
+  results_root: results/rsd_ref_v3
+  status_root: status/rsd_ref_v3
+  run_root: outputs/rsd_ref_v3/dream_gsm8k_reference
+backend:
+  type: v2r_reference_dream
+  source_recipe: results/v2r_reference/reference_recipes/dream.json
+  model_id: Dream-org/Dream-v0-Instruct-7B
+  model_revision: 05334cb9faaf763692dcf9d8737c642be2b2a6ae
+  tokenizer_revision: 05334cb9faaf763692dcf9d8737c642be2b2a6ae
+dataset:
+  task: dream_gsm8k
+  population: source_native_dream_gsm8k
+  split: test
+  count: 1319
+  limit: null
+  secondary: true
+generation:
+  source_native_recipe: pinned_dream_recipe
+  one_trajectory_per_item: true
+selection:
+  mode: full_source_native_split
+  failed_pool_after_base: true
+storage_gate: STORAGE_READY_REQUIRED

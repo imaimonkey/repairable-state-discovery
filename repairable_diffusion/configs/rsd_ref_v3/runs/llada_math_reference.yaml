@@ -1,0 +1,38 @@
+generation_id: rsd_ref_v3
+run_name: rsd_ref_v3_llada_math_reference
+stage: base
+execution_enabled: false_until_readiness
+paths:
+  outputs_root: outputs/rsd_ref_v3
+  results_root: results/rsd_ref_v3
+  status_root: status/rsd_ref_v3
+  run_root: outputs/rsd_ref_v3/llada_math_reference
+backend:
+  type: v2r_reference_llada
+  source_recipe: results/v2r_reference/reference_recipes/llada.json
+  model_id: GSAI-ML/LLaDA-8B-Instruct
+  model_revision: 08b83a6feb34df1a6011b80c3c00c7563e963b07
+  tokenizer_revision: 08b83a6feb34df1a6011b80c3c00c7563e963b07
+dataset:
+  task: llada_math
+  population: source_native_opencompass_math
+  source_archive_sha256: cf44a0c065f23dbb96e3239115758f7442b725776f3dedfa4473821a1c98fe03
+  split: test
+  count: 5000
+  limit: null
+  calibration_bridge_forbidden: true
+generation:
+  trajectories_per_item: 1
+  trajectory_id: 0
+  steps: 512
+  gen_length: 512
+  block_length: 64
+  temperature: 0.0
+  cfg_scale: 0.0
+  remasking: low_confidence
+  source_native_prompt: true
+selection:
+  mode: full_source_native_split
+  failed_pool_after_base: true
+  subset_manifest: null
+storage_gate: STORAGE_READY_REQUIRED
