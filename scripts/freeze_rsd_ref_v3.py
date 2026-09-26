@@ -20,6 +20,7 @@ FINGERPRINT_FILES = [
     "docs/RSD_REF_V3_EXECUTION.md",
     "repairable_diffusion/configs/rsd_ref_v3/measurement_contract.yaml",
     "repairable_diffusion/src/rsd_ref_v3/__init__.py",
+    "repairable_diffusion/src/rsd_ref_v3/runtime.py",
     "repairable_diffusion/src/rsd_ref_v3/task_adapters.py",
     "repairable_diffusion/src/rsd_ref_v3/runner.py",
     "repairable_diffusion/src/v2r/schema.py",
@@ -30,6 +31,8 @@ FINGERPRINT_FILES = [
     "scripts/run_rsd_ref_v3.py",
     "scripts/submit_rsd_ref_v3.py",
     "status/rsd_ref_v3/subsets/selection_policy.json",
+    "status/rsd_ref_v3/runtime_templates/storage_plan.template.json",
+    "status/rsd_ref_v3/runtime_templates/execution_readiness.template.json",
     "tests/test_rsd_ref_v3_contract.py",
     "tests/test_rsd_ref_v3_runner.py",
 ]

@@ -31,15 +31,19 @@ from repairable_diffusion.src.v2r.artifacts import (
 from repairable_diffusion.src.v2r.planning import make_plan
 from repairable_diffusion.src.v2r.schema import ContractError, canonical_hash, file_hash
 from repairable_diffusion.src.v2r.science import execute_base, execute_probe, runtime
+from repairable_diffusion.src.rsd_ref_v3.runtime import (
+    logical_run_root,
+    readiness_path,
+    resolve_logical_artifact,
+    runtime_location,
+    storage_plan_path,
+)
 
 
 ROOT = Path(__file__).resolve().parents[3]
 CONFIG_ROOT = ROOT / "repairable_diffusion/configs/rsd_ref_v3/runs"
 CONTRACT = ROOT / "repairable_diffusion/configs/rsd_ref_v3/measurement_contract.yaml"
 DESIGN_FREEZE = ROOT / "status/rsd_ref_v3/design_freeze.json"
-READINESS = ROOT / "status/rsd_ref_v3/execution_readiness.json"
-STORAGE = ROOT / "status/rsd_ref_v3/storage_plan.json"
-MATERIALIZED_SUBSETS = ROOT / "results/rsd_ref_v3/subsets"
 FORBIDDEN_IDENTIFIERS = ("iclr", "naacl", "acl", "emnlp", "conference", "submission")
 
 STAGE_CONFIG_SUFFIX = {
@@ -148,8 +152,15 @@ def _filesystem_gate(approved_root: Path, minimum_free: int, minimum_inode_fract
 
 
 def require_runtime_readiness() -> dict[str, Any]:
-    storage = _json(STORAGE)
-    readiness = _json(READINESS)
+    storage = _json(storage_plan_path())
+    readiness = _json(readiness_path())
+    expected_sha = readiness.get("expected_execution_git_sha")
+    if not isinstance(expected_sha, str) or expected_sha != current_git_sha():
+        raise ContractError("EXECUTION_GIT_SHA_MISMATCH")
+    expected_freeze = readiness.get("design_freeze_sha256")
+    actual_freeze = design_freeze_sha()
+    if not isinstance(expected_freeze, str) or expected_freeze != actual_freeze:
+        raise ContractError("DESIGN_FREEZE_SHA256_MISMATCH")
     if storage.get("status") != "STORAGE_READY" or storage.get("execution_allowed") is not True:
         raise ContractError("STORAGE_NOT_READY: storage reservation is not approved")
     gate = readiness.get("single_server_primary_gate", {})
@@ -168,9 +179,9 @@ def require_runtime_readiness() -> dict[str, Any]:
         raise ContractError("STORAGE_RESERVATION_METADATA_MISSING")
     if not isinstance(reserved_bytes, int) or reserved_bytes < 200 * 1024**3:
         raise ContractError("STORAGE_RESERVATION_TOO_SMALL")
-    if not str(approved_root).endswith("/rsd_ref_v3") and "rsd_ref_v3" not in Path(approved_root).parts:
+    if not str(approved_root).startswith("/") or "rsd_ref_v3" not in Path(approved_root).resolve(strict=False).parts:
         raise ContractError("APPROVED_OUTPUT_ROOT_NAMESPACE_MISMATCH")
-    live = _filesystem_gate(Path(approved_root), int(storage.get("minimum_free_after_run_bytes", 200 * 1024**3)), 0.10)
+    live = _filesystem_gate(Path(approved_root).resolve(strict=False), int(storage.get("minimum_free_after_run_bytes", 200 * 1024**3)), 0.10)
     return {"storage": storage, "readiness": readiness, "live_filesystem": live}
 
 
@@ -194,12 +205,14 @@ def _dataset_payload(task: str, config: Mapping[str, Any], rows: list[dict[str, 
     }
 
 
-def _storage_reservation_id() -> str:
-    return _json(STORAGE).get("reservation_id", "PENDING_STORAGE_RESERVATION")
+def resolve_run_root(config: Mapping[str, Any], storage: Mapping[str, Any]) -> dict[str, Any]:
+    """Resolve a config's frozen logical run root below approved storage."""
+    return runtime_location(logical_run_root(config), storage)
 
 
 def _base_plan(task: str, config_path_value: Path, config: dict[str, Any], rows: list[dict[str, Any]],
-               recipe: dict[str, Any], recipe_task: str, freeze_sha: str, timing: float) -> dict[str, Any]:
+               recipe: dict[str, Any], recipe_task: str, freeze_sha: str, timing: float,
+               location: Mapping[str, Any], storage: Mapping[str, Any]) -> dict[str, Any]:
     model = {
         "id": config["backend"]["model_id"],
         "revision": config["backend"]["model_revision"],
@@ -215,7 +228,13 @@ def _base_plan(task: str, config_path_value: Path, config: dict[str, Any], rows:
         "design_freeze_sha256": freeze_sha,
         "generation_id": "rsd_ref_v3",
         "artifact_namespace": "rsd_ref_v3",
-        "storage_reservation_id": _storage_reservation_id(),
+        "storage_reservation_id": storage.get("reservation_id", "PENDING_STORAGE_RESERVATION"),
+        "logical_run_root": location["logical_path"],
+        "physical_run_root": location["physical_path"],
+        "approved_output_root": location["approved_output_root"],
+        "filesystem_device": location["filesystem_device"],
+        "filesystem_mount": location["filesystem_mount"],
+        "filesystem_device_or_mount": location["filesystem_device_or_mount"],
         "server_id": os.environ.get("RSD_SERVER_ID", socket.gethostname()),
         "model": model,
         "dataset": dataset,
@@ -241,14 +260,14 @@ def _base_plan(task: str, config_path_value: Path, config: dict[str, Any], rows:
     return make_plan(spec)
 
 
-def _materialized_subset(config: Mapping[str, Any]) -> tuple[Path, dict[str, Any]]:
+def _materialized_subset(config: Mapping[str, Any], storage: Mapping[str, Any]) -> tuple[Path, dict[str, Any]]:
     frozen_path = ROOT / config["subset_manifest"]
     if not frozen_path.is_file():
         raise ContractError(f"Missing predeclared subset: {frozen_path}")
     frozen = _json(frozen_path)
     if isinstance(frozen.get("item_ids"), list):
         return frozen_path, frozen
-    runtime_path = MATERIALIZED_SUBSETS / frozen_path.name
+    runtime_path = resolve_logical_artifact(f"results/rsd_ref_v3/subsets/{frozen_path.name}", storage)
     if not runtime_path.is_file():
         raise ContractError(f"Subset is not materialized after base-bank sealing: {runtime_path}")
     runtime = _json(runtime_path)
@@ -284,7 +303,8 @@ def _trajectory_index(base_root: Path, item_ids: list[str]) -> dict[str, dict[st
 
 def _deep_plan(task: str, stage: str, config_path_value: Path, config: dict[str, Any],
                rows: list[dict[str, Any]], recipe: dict[str, Any], freeze_sha: str,
-               subset_path: Path, subset: dict[str, Any], base_root: Path, timing: float) -> dict[str, Any]:
+               subset_path: Path, subset: dict[str, Any], base_root: Path, timing: float,
+               location: Mapping[str, Any], storage: Mapping[str, Any]) -> dict[str, Any]:
     item_ids = sorted(str(value) for value in subset.get("item_ids", []))
     if not item_ids:
         raise ContractError("Materialized subset has no item IDs")
@@ -329,7 +349,13 @@ def _deep_plan(task: str, stage: str, config_path_value: Path, config: dict[str,
         "namespace": "rsd_ref_v3", "run_id": config["run_name"], "stage": internal,
         "execution_git_sha": current_git_sha(), "design_sha256": freeze_sha,
         "design_freeze_sha256": freeze_sha, "generation_id": "rsd_ref_v3",
-        "artifact_namespace": "rsd_ref_v3", "storage_reservation_id": _storage_reservation_id(),
+        "artifact_namespace": "rsd_ref_v3", "storage_reservation_id": storage.get("reservation_id", "PENDING_STORAGE_RESERVATION"),
+        "logical_run_root": location["logical_path"],
+        "physical_run_root": location["physical_path"],
+        "approved_output_root": location["approved_output_root"],
+        "filesystem_device": location["filesystem_device"],
+        "filesystem_mount": location["filesystem_mount"],
+        "filesystem_device_or_mount": location["filesystem_device_or_mount"],
         "server_id": os.environ.get("RSD_SERVER_ID", socket.gethostname()), "model": model,
         "dataset": dataset, "recipe": recipe, "config": manifest_config,
         "runtime_paths": {"source_cache": os.environ.get("RSD_SOURCE_CACHE", "/var/tmp/repairable-state-discovery/upstream"),
@@ -349,12 +375,13 @@ def _rows_from_base(base_root: Path) -> list[dict[str, Any]]:
     return list(aggregate.get("items", []))
 
 
-def materialize_subsets(task: str, config: Mapping[str, Any], base_root: Path) -> list[Path]:
+def materialize_subsets(task: str, config: Mapping[str, Any], base_root: Path, output_root: Path) -> list[Path]:
     rows = _rows_from_base(base_root)
     if not rows:
         raise ContractError("Base bank has no rows")
     bank_sha = canonical_hash(rows)
     outputs: list[Path] = []
+    output_root.mkdir(parents=True, exist_ok=True)
     for purpose in ("core", "temporal", "mechanism", "successful_harm"):
         path = ROOT / f"status/rsd_ref_v3/subsets/{task}_{purpose}.json"
         frozen = _json(path)
@@ -375,7 +402,7 @@ def materialize_subsets(task: str, config: Mapping[str, Any], base_root: Path) -
             "failed_pool_count": sum(not bool(row["result"].get("correct")) for row in rows),
             "successful_pool_count": sum(bool(row["result"].get("correct")) for row in rows),
         }
-        output = MATERIALIZED_SUBSETS / path.name
+        output = output_root / path.name
         atomic_json(output, payload)
         outputs.append(output)
     return outputs
@@ -549,6 +576,7 @@ def dry_run_summary(task: str, stage: str, source_stage: str = "reference") -> d
             "config": str(path.relative_to(ROOT)), "config_sha256": _sha256(path),
             "design_freeze_sha256": freeze_sha, "execution_allowed": False,
             "required_stage_dependency": "sealed_base_bank" if stage in DEEP_STAGES else ("completed_shards" if stage == "aggregate" else "merged_aggregate" if stage == "seal" else "none"),
+            "logical_run_root": logical_run_root(config), "physical_run_root": "PENDING_STORAGE_READY",
             "output_namespace": "outputs/rsd_ref_v3", "storage_gate": config.get("storage_gate", "not_applicable")}
 
 
@@ -562,7 +590,8 @@ def run_stage(task: str, stage: str, *, dry_run: bool = False, shard: int | None
     readiness = require_runtime_readiness()
     if stage in {"aggregate", "seal"}:
         path, config = load_run_config(task, source_stage)
-        run_root = ROOT / config.get("paths", {}).get("run_root", f"outputs/rsd_ref_v3/{config['run_name']}")
+        location = resolve_run_root(config, readiness["storage"])
+        run_root = Path(location["physical_path"])
         manifest = _json(run_root / "run_manifest.json")
         if gates_path is None or not gates_path.is_file():
             raise ContractError("A frozen R0/R1/R2 gate report bundle is required")
@@ -584,22 +613,26 @@ def run_stage(task: str, stage: str, *, dry_run: bool = False, shard: int | None
     source_cache = Path(os.environ.get("RSD_SOURCE_CACHE", "/var/tmp/repairable-state-discovery/upstream"))
     from repairable_diffusion.src.rsd_ref_v3.task_adapters import load_source_task
     recipe, sources, rows = load_source_task(task, source_cache)
+    location = resolve_run_root(config, readiness["storage"])
     if stage == "reference":
-        manifest = _base_plan(task, path, config, rows, recipe, "math500" if task == "llada_math" else "gsm8k", freeze_sha, seconds_per_item)
+        manifest = _base_plan(task, path, config, rows, recipe, "math500" if task == "llada_math" else "gsm8k", freeze_sha, seconds_per_item,
+                              location, readiness["storage"])
         executor = execute_reference_item
     else:
-        subset_path, subset = _materialized_subset(config)
+        subset_path, subset = _materialized_subset(config, readiness["storage"])
         base_config_path, base_config = load_run_config(task, "reference")
-        base_root = ROOT / base_config["paths"]["run_root"]
+        base_location = resolve_run_root(base_config, readiness["storage"])
+        base_root = Path(base_location["physical_path"])
         manifest = _deep_plan(task, stage, path, {**config, "generation": base_config["generation"],
                             "model_id": base_config["backend"]["model_id"],
                             "model_revision": base_config["backend"]["model_revision"],
                             "population": base_config["dataset"]["population"],
                             "source_archive_sha256": base_config["dataset"]["source_archive_sha256"]},
-                            rows, recipe, freeze_sha, subset_path, subset, base_root, seconds_per_item)
+                            rows, recipe, freeze_sha, subset_path, subset, base_root, seconds_per_item,
+                            location, readiness["storage"])
         executor = {"core": execute_core_item, "temporal": execute_temporal_item,
                     "mechanism": execute_mechanism_item, "successful-harm": execute_successful_harm_item}[stage]
-    run_root = ROOT / config.get("paths", {}).get("run_root", f"outputs/rsd_ref_v3/{config['run_name']}")
+    run_root = Path(location["physical_path"])
     run_root.mkdir(parents=True, exist_ok=True)
     atomic_json(run_root / "run_manifest.json", manifest)
     selected_shards = [shard] if shard is not None else list(range(len(manifest["shards"])))
@@ -614,11 +647,18 @@ def run_stage(task: str, stage: str, *, dry_run: bool = False, shard: int | None
 
 def materialize_task_subsets(task: str, *, dry_run: bool = False) -> dict[str, Any]:
     _, config = load_run_config(task, "reference")
-    base_root = ROOT / config["paths"]["run_root"]
     if dry_run:
-        return {"status": "DRY_RUN_ONLY", "task": task, "base_run": str(base_root),
+        return {"status": "DRY_RUN_ONLY", "task": task, "base_run": logical_run_root(config),
+                "logical_output_root": "results/rsd_ref_v3/subsets", "physical_output_root": "PENDING_STORAGE_READY",
                 "output_namespace": "results/rsd_ref_v3/subsets", "execution_allowed": False}
     assert_clean_checkout()
-    require_runtime_readiness()
-    outputs = materialize_subsets(task, config, base_root)
-    return {"status": "SUBSETS_FROZEN", "task": task, "outputs": [str(p.relative_to(ROOT)) for p in outputs]}
+    readiness = require_runtime_readiness()
+    base_location = resolve_run_root(config, readiness["storage"])
+    output_location = runtime_location("results/rsd_ref_v3/subsets", readiness["storage"])
+    outputs = materialize_subsets(task, config, Path(base_location["physical_path"]), Path(output_location["physical_path"]))
+    return {"status": "SUBSETS_FROZEN", "task": task, "outputs": [str(p) for p in outputs],
+            "logical_output_root": output_location["logical_path"],
+            "physical_output_root": output_location["physical_path"],
+            "approved_output_root": output_location["approved_output_root"],
+            "filesystem_device": output_location["filesystem_device"],
+            "filesystem_mount": output_location["filesystem_mount"]}

@@ -12,6 +12,12 @@ from pathlib import Path
 from typing import Any
 
 from repairable_diffusion.src.utils.io import load_yaml
+from repairable_diffusion.src.rsd_ref_v3.runtime import (
+    approved_root_is_valid,
+    filesystem_identity,
+    readiness_path,
+    storage_plan_path,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,6 +33,7 @@ FREEZE_INPUTS = [
     "docs/RSD_REF_V3_EXECUTION.md",
     "repairable_diffusion/configs/rsd_ref_v3/measurement_contract.yaml",
     "repairable_diffusion/src/rsd_ref_v3/__init__.py",
+    "repairable_diffusion/src/rsd_ref_v3/runtime.py",
     "repairable_diffusion/src/rsd_ref_v3/task_adapters.py",
     "repairable_diffusion/src/rsd_ref_v3/runner.py",
     "repairable_diffusion/src/v2r/schema.py",
@@ -37,6 +44,8 @@ FREEZE_INPUTS = [
     "scripts/run_rsd_ref_v3.py",
     "scripts/submit_rsd_ref_v3.py",
     "status/rsd_ref_v3/subsets/selection_policy.json",
+    "status/rsd_ref_v3/runtime_templates/storage_plan.template.json",
+    "status/rsd_ref_v3/runtime_templates/execution_readiness.template.json",
     "tests/test_rsd_ref_v3_contract.py",
     "tests/test_rsd_ref_v3_runner.py",
 ]
@@ -135,14 +144,16 @@ def audit_subsets(errors: list[str]) -> None:
 
 
 def audit_runtime_state(errors: list[str]) -> dict[str, Any] | None:
-    readiness = ROOT / "status/rsd_ref_v3/execution_readiness.json"
-    storage = ROOT / "status/rsd_ref_v3/storage_plan.json"
+    readiness = readiness_path()
+    storage = storage_plan_path()
     check(errors, readiness.is_file(), "missing execution readiness")
     check(errors, storage.is_file(), "missing storage plan")
     readiness_payload = None
     storage_payload = None
     if readiness.is_file():
         readiness_payload = json.loads(readiness.read_text(encoding="utf-8"))
+        check(errors, readiness_payload.get("expected_execution_git_sha") == git_sha(), "runtime expected execution SHA differs from current HEAD")
+        check(errors, readiness_payload.get("design_freeze_sha256") == sha256(MANIFEST), "runtime design freeze SHA differs from design manifest")
         check(errors, readiness_payload.get("server1", {}).get("scientific_execution_qualification") == "SCIENTIFIC_EXECUTION_QUALIFIED", "server1 qualification not encoded")
         check(errors, readiness_payload.get("single_server_primary_gate", {}).get("confirmatory_protocol_frozen") is True, "protocol freeze gate not encoded")
     if storage.is_file():
@@ -154,11 +165,12 @@ def audit_runtime_state(errors: list[str]) -> dict[str, Any] | None:
     check(errors, readiness_payload.get("confirmatory_results_observed") is False, "readiness records confirmatory outcomes")
     if storage_payload.get("status") == "STORAGE_READY":
         approved = storage_payload.get("approved_output_root")
-        check(errors, isinstance(approved, str) and "rsd_ref_v3" in Path(approved).parts, "approved output root must use rsd_ref_v3 namespace")
+        check(errors, isinstance(approved, str) and approved_root_is_valid(approved), "approved output root must use rsd_ref_v3 namespace")
         if isinstance(approved, str):
-            location = Path(approved)
             try:
-                location.mkdir(parents=True, exist_ok=True)
+                location = Path(approved).resolve(strict=False)
+                check(errors, location.is_dir(), "approved output root must already exist; audit will not create it")
+                filesystem_identity(location)
                 stat = os.statvfs(location)
                 available = stat.f_bavail * stat.f_frsize
                 total = stat.f_blocks * stat.f_frsize
@@ -207,6 +219,10 @@ def main() -> None:
             errors.append("readiness mode requires storage_plan.execution_allowed=true")
         if not storage.get("approved_output_root") or not storage.get("reservation_id"):
             errors.append("readiness mode requires approved storage reservation metadata")
+        if (runtime_state or {}).get("readiness", {}).get("expected_execution_git_sha") != git_sha():
+            errors.append("readiness mode requires expected_execution_git_sha=current HEAD")
+        if (runtime_state or {}).get("readiness", {}).get("design_freeze_sha256") != sha256(MANIFEST):
+            errors.append("readiness mode requires design_freeze_sha256=current design freeze")
         gate = (runtime_state or {}).get("readiness", {}).get("single_server_primary_gate", {})
         if gate.get("canonical_source_config_sha_match") is not True:
             errors.append("readiness mode requires canonical_source_config_sha_match=true")

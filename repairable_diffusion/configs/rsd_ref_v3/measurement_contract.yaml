@@ -199,9 +199,13 @@ provenance:
 execution:
   runner: scripts/run_rsd_ref_v3.py
   submitter: scripts/submit_rsd_ref_v3.py
+  runtime_state_root:
+    environment_variable: RSD_RUNTIME_STATE_ROOT
+    default: /var/tmp/kimhj-rsd-ref-v3/runtime
+  approved_output_root_policy: all_runtime_artifacts_resolve_below_storage_plan_approved_output_root
   immutable_design_fingerprint_excludes:
-    - status/rsd_ref_v3/storage_plan.json
-    - status/rsd_ref_v3/execution_readiness.json
+    - external_runtime_state_storage_plan.json
+    - external_runtime_state_execution_readiness.json
     - Slurm job IDs
     - live filesystem and GPU health
   stage_order:
@@ -225,3 +229,8 @@ execution:
     - subset_manifest_sha256
     - server_id
     - storage_reservation_id
+    - logical_run_root
+    - physical_run_root
+    - approved_output_root
+    - filesystem_device
+    - filesystem_mount

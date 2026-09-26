@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
 from repairable_diffusion.src.rsd_ref_v3 import runner
+from repairable_diffusion.src.rsd_ref_v3.runtime import runtime_location
 from repairable_diffusion.src.v2r.planning import make_plan
 from repairable_diffusion.src.v2r.schema import ContractError
 
@@ -30,9 +32,9 @@ class RSDRefV3RunnerTests(unittest.TestCase):
             frozen = root / "status" / "subset.json"
             frozen.parent.mkdir(parents=True)
             frozen.write_text(json.dumps({"item_ids": None}), encoding="utf-8")
-            with patch.object(runner, "ROOT", root), patch.object(runner, "MATERIALIZED_SUBSETS", root / "results"):
+            with patch.object(runner, "ROOT", root):
                 with self.assertRaises(ContractError):
-                    runner._materialized_subset({"subset_manifest": "status/subset.json"})
+                    runner._materialized_subset({"subset_manifest": "status/subset.json"}, {"approved_output_root": str(root / "approved" / "rsd_ref_v3")})
 
     def test_subset_materialization_is_outcome_stratified_and_hash_ranked(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -45,18 +47,106 @@ class RSDRefV3RunnerTests(unittest.TestCase):
                     "item_ids": None,
                 }), encoding="utf-8")
             rows = [{"item_id": str(i), "result": {"correct": i % 2 == 0}} for i in range(4)]
-            with patch.object(runner, "ROOT", root), patch.object(runner, "MATERIALIZED_SUBSETS", root / "results"), patch.object(runner, "_rows_from_base", return_value=rows):
-                outputs = runner.materialize_subsets("llada_math", {}, root / "base")
+            approved = root / "approved" / "rsd_ref_v3"
+            with patch.object(runner, "ROOT", root), patch.object(runner, "_rows_from_base", return_value=rows):
+                outputs = runner.materialize_subsets("llada_math", {}, root / "base", approved / "subsets")
                 self.assertEqual(len(outputs), 4)
                 first = json.loads(outputs[-1].read_text(encoding="utf-8"))
-                runner.materialize_subsets("llada_math", {}, root / "base")
+                runner.materialize_subsets("llada_math", {}, root / "base", approved / "subsets")
                 second = json.loads(outputs[-1].read_text(encoding="utf-8"))
             self.assertEqual(first, second)
             self.assertEqual(first["item_ids"], ["0"] if first["purpose"] == "successful_harm" else first["item_ids"])
+            self.assertFalse((root / "results").exists())
+
+    def test_logical_outputs_resolve_below_approved_root_not_repo_root(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            approved = root / "storage" / "rsd_ref_v3"
+            location = runtime_location("outputs/rsd_ref_v3/llada_math_reference", {"approved_output_root": str(approved)})
+            self.assertEqual(location["physical_path"], str(approved / "llada_math_reference"))
+            self.assertTrue(Path(location["physical_path"]).is_relative_to(approved))
+            self.assertNotEqual(location["physical_path"], str(root / "outputs/rsd_ref_v3/llada_math_reference"))
+
+    def test_logical_path_and_symlink_escape_are_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            approved = root / "storage" / "rsd_ref_v3"
+            outside = root / "outside"
+            outside.mkdir()
+            (approved / "subsets").mkdir(parents=True)
+            (approved / "subsets" / "escape").symlink_to(outside, target_is_directory=True)
+            with self.assertRaises(ContractError):
+                runtime_location("results/rsd_ref_v3/subsets/escape/file.json", {"approved_output_root": str(approved)})
+            with self.assertRaises(ContractError):
+                runtime_location("results/rsd_ref_v3/../outside/file.json", {"approved_output_root": str(approved)})
+
+    def test_aggregate_seal_and_subset_names_share_approved_namespace(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            approved = Path(temp) / "storage" / "rsd_ref_v3"
+            storage = {"approved_output_root": str(approved)}
+            aggregate = runtime_location("outputs/rsd_ref_v3/llada_math_reference", storage)
+            seal = runtime_location("outputs/rsd_ref_v3/llada_math_reference/sealed", storage)
+            subset = runtime_location("results/rsd_ref_v3/subsets", storage)
+            self.assertTrue(Path(aggregate["physical_path"]).is_relative_to(approved))
+            self.assertTrue(Path(seal["physical_path"]).is_relative_to(approved))
+            self.assertTrue(Path(subset["physical_path"]).is_relative_to(approved))
+            self.assertEqual(aggregate["approved_output_root"], seal["approved_output_root"])
+            self.assertEqual(aggregate["filesystem_device"], subset["filesystem_device"])
+
+    def test_runtime_state_sha_mismatch_is_fail_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            state = Path(temp)
+            (state / "storage_plan.json").write_text(json.dumps({"status": "STORAGE_READY", "execution_allowed": True}), encoding="utf-8")
+            (state / "execution_readiness.json").write_text(json.dumps({
+                "expected_execution_git_sha": "0" * 40,
+                "design_freeze_sha256": "0" * 64,
+            }), encoding="utf-8")
+            with patch.dict(os.environ, {"RSD_RUNTIME_STATE_ROOT": str(state)}):
+                with self.assertRaisesRegex(ContractError, "EXECUTION_GIT_SHA_MISMATCH"):
+                    runner.require_runtime_readiness()
+
+    def test_storage_ready_with_unapproved_physical_root_is_fail_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            state = Path(temp)
+            (state / "storage_plan.json").write_text(json.dumps({
+                "status": "STORAGE_READY", "execution_allowed": True,
+                "approved_output_root": str(state / "wrong-root"), "reservation_id": "r1",
+                "reserved_bytes": 200 * 1024**3,
+            }), encoding="utf-8")
+            (state / "execution_readiness.json").write_text(json.dumps({
+                "expected_execution_git_sha": runner.current_git_sha(),
+                "design_freeze_sha256": "f" * 64,
+                "server1": {"scientific_execution_qualification": "SCIENTIFIC_EXECUTION_QUALIFIED"},
+                "protocol": {"design_freeze": "FROZEN"},
+                "single_server_primary_gate": {
+                    "canonical_source_config_sha_match": True,
+                    "storage_ready": True,
+                    "execution_allowed": True,
+                },
+            }), encoding="utf-8")
+            with patch.dict(os.environ, {"RSD_RUNTIME_STATE_ROOT": str(state)}), patch.object(runner, "design_freeze_sha", return_value="f" * 64):
+                with self.assertRaisesRegex(ContractError, "APPROVED_OUTPUT_ROOT_NAMESPACE_MISMATCH"):
+                    runner.require_runtime_readiness()
+
+    def test_external_runtime_state_does_not_change_design_freeze_hash(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            state = Path(temp) / "runtime.json"
+            with patch.object(runner, "design_freeze_sha", return_value="f" * 64) as freeze:
+                before = freeze()
+                state.write_text(json.dumps({"status": "STORAGE_NOT_RESERVED"}), encoding="utf-8")
+                state.write_text(json.dumps({"status": "STORAGE_READY", "reservation_id": "changed"}), encoding="utf-8")
+                self.assertEqual(before, freeze())
 
     def test_storage_readiness_is_fail_closed(self) -> None:
-        with self.assertRaisesRegex(ContractError, "STORAGE_NOT_READY"):
-            runner.require_runtime_readiness()
+        with tempfile.TemporaryDirectory() as temp:
+            state = Path(temp)
+            (state / "storage_plan.json").write_text(json.dumps({"status": "STORAGE_NOT_RESERVED", "execution_allowed": False}), encoding="utf-8")
+            (state / "execution_readiness.json").write_text(json.dumps({
+                "expected_execution_git_sha": runner.current_git_sha(), "design_freeze_sha256": "f" * 64,
+            }), encoding="utf-8")
+            with patch.dict(os.environ, {"RSD_RUNTIME_STATE_ROOT": str(state)}), patch.object(runner, "design_freeze_sha", return_value="f" * 64):
+                with self.assertRaisesRegex(ContractError, "STORAGE_NOT_READY"):
+                    runner.require_runtime_readiness()
 
     def test_tracked_dirty_checkout_is_fail_closed(self) -> None:
         result = type("Result", (), {"returncode": 0, "stdout": " M tracked.py\n"})()

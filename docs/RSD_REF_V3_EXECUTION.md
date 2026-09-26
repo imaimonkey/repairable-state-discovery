@@ -11,9 +11,14 @@ This document is the execution boundary for `rsd_ref_v3`. The designated coding 
 - Server1 qualification evidence: `b1e8ab7e3b7c4b9f93995e437da3615bff910390`.
 - Server1: `SCIENTIFIC_EXECUTION_QUALIFIED`, `SINGLE_SERVER_ONLY`, `STORAGE_NOT_RESERVED`.
 - Immutable design freeze: `status/rsd_ref_v3/design_freeze.json`.
-- Mutable runtime readiness: `status/rsd_ref_v3/execution_readiness.json` and
-  `status/rsd_ref_v3/storage_plan.json`. These runtime files are deliberately
-  excluded from the scientific design fingerprint.
+- Runtime policy templates: `status/rsd_ref_v3/runtime_templates/`.
+- Mutable runtime readiness and storage reservation: `$RSD_RUNTIME_STATE_ROOT`
+  (default `/var/tmp/kimhj-rsd-ref-v3/runtime`). These external JSON files are
+  deliberately excluded from the scientific design fingerprint and may be
+  updated by the execution-only workflow without a tracked source commit.
+- All runtime artifacts use frozen logical namespaces such as
+  `outputs/rsd_ref_v3/<run>` and `results/rsd_ref_v3/subsets`, but are written
+  only below the approved physical `storage_plan.approved_output_root`.
 
 ## Pre-execution checks
 
@@ -26,7 +31,8 @@ git diff --check
 
 The design audit must pass before any source-native bank or confirmatory subset
 is created. It remains valid when runtime storage changes. Readiness is
-expected to fail while `storage_plan.json` is `STORAGE_NOT_RESERVED`.
+expected to fail while the external `storage_plan.json` is
+`STORAGE_NOT_RESERVED`.
 
 The executable entry points are:
 
@@ -45,10 +51,12 @@ Non-dry-run stages fail closed unless the design fingerprint, clean checkout,
 storage reservation, live filesystem gate, and frozen R0/R1/R2 evidence all
 match.
 
-Before a single-server run, record all of the following in `status/rsd_ref_v3/storage_plan.json` and the execution manifest:
+Before a single-server run, record all of the following in the external
+`$RSD_RUNTIME_STATE_ROOT/storage_plan.json` and the execution manifest:
 
 ```text
 approved_output_root
+reservation_id
 reserved_bytes
 expected_high_water_bytes
 minimum_free_after_run_bytes
@@ -58,6 +66,10 @@ archive destination
 ```
 
 The path must be below 95% filesystem use, retain at least 10% free inodes, and satisfy `max(200 GiB, 3 × projected maximum single-shard raw output)` after including merge/seal and retention-copy high water. No automatic use of `/mnt/raid5` is allowed while it is at 99% use.
+
+`execution_readiness.json` must record both `expected_execution_git_sha` and
+the SHA-256 of `design_freeze.json`. The runner and readiness audit compare
+both values to the current checkout and fail closed on mismatch.
 
 ## Execution order
 

@@ -195,6 +195,13 @@ health/free-space checks, and protocol freeze. `--mode readiness` is the only
 gate that may authorize execution; design freeze remains valid when storage
 status later changes from `STORAGE_NOT_RESERVED` to `STORAGE_READY`.
 
+Generation 3 runtime JSON is not tracked under `status/rsd_ref_v3/`. The
+tracked files under `status/rsd_ref_v3/runtime_templates/` are fail-closed
+templates only. The mutable copies are read from `$RSD_RUNTIME_STATE_ROOT`,
+defaulting to `/var/tmp/kimhj-rsd-ref-v3/runtime`; the runner, audit, and
+submitter use the same root. Runtime-state changes must not dirty the design
+checkout or alter the design-freeze fingerprint.
+
 Cross-server equivalence is required only when multi-server shard pooling is selected. A single-server primary execution may proceed without it.
 
 ## 10. Job execution by generation
@@ -248,6 +255,11 @@ The fixed execution order is: full source-native reference bank, base seal,
 failed/successful pool materialization, subset-manifest seal, core/temporal/
 mechanism/successful-harm execution, aggregate, then compact seal. A deep
 stage may not manufacture item IDs before its sealed base bank exists.
+
+All Generation 3 run, aggregate, seal, and subset writes are resolved from
+their frozen logical namespace below the approved physical storage root. The
+execution manifest records logical root, physical root, approved root,
+reservation id, filesystem device, and filesystem mount.
 
 ## 11. Codex execution-only boundary
 

@@ -23,7 +23,10 @@ The following claims are not pre-registered as positive outcomes and must not be
 - Server1 runtime qualification evidence: `b1e8ab7e3b7c4b9f93995e437da3615bff910390`.
 - The server1 MATH-500 R0/R1/R2 calibration is runtime/replay qualification only. It is not a Generation 3 confirmatory result or denominator.
 - Existing pilot and legacy results are planning, compute, debugging, or historical evidence only; no confirmatory estimate may pool them.
-- Generation 3 artifacts may be written only under `outputs/rsd_ref_v3/`, `results/rsd_ref_v3/`, and `status/rsd_ref_v3/`.
+- Generation 3 logical artifacts use only `outputs/rsd_ref_v3/`,
+  `results/rsd_ref_v3/`, and tracked design metadata under
+  `status/rsd_ref_v3/`; runtime writes are physically redirected below the
+  approved root recorded in the external storage plan.
 
 ## Reference populations and baselines
 

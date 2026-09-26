@@ -5,6 +5,7 @@ import json
 import unittest
 from pathlib import Path
 
+from repairable_diffusion.src.rsd_ref_v3 import runner
 from repairable_diffusion.src.rsd_ref_v3.task_adapters import task_definition
 from repairable_diffusion.src.utils.io import load_yaml
 
@@ -53,12 +54,14 @@ class RSDRefV3ContractTests(unittest.TestCase):
         self.assertNotEqual(key("core"), key("temporal"))
 
     def test_readiness_is_fail_closed_before_storage(self) -> None:
-        readiness = json.loads((ROOT / "status/rsd_ref_v3/execution_readiness.json").read_text(encoding="utf-8"))
-        storage = json.loads((ROOT / "status/rsd_ref_v3/storage_plan.json").read_text(encoding="utf-8"))
+        readiness = json.loads(runner.readiness_path().read_text(encoding="utf-8"))
+        storage = json.loads(runner.storage_plan_path().read_text(encoding="utf-8"))
         self.assertEqual(readiness["server1"]["scientific_execution_qualification"], "SCIENTIFIC_EXECUTION_QUALIFIED")
         self.assertFalse(readiness["single_server_primary_gate"]["execution_allowed"])
         self.assertEqual(storage["status"], "STORAGE_NOT_RESERVED")
         self.assertFalse(storage["execution_allowed"])
+        self.assertIn("expected_execution_git_sha", readiness)
+        self.assertIn("design_freeze_sha256", readiness)
 
 
 if __name__ == "__main__":
