@@ -6,11 +6,13 @@ This inventory separates source/code, scientific artifacts, operational state, a
 
 | Root/family | State | Classification | Action |
 |---|---|---|---|
-| `origin/main` `0dd161c…` | clean V2 baseline | canonical starting candidate | use as immutable base for a clean build |
+| `origin/main` `0dd161c…` | clean V2 ancestor | historical source anchor | retain as immutable ancestor; not the preferred scientific base |
+| reference execution `78fe5d7c…` | frozen execution SHA with sealed reference evidence | preferred canonical scientific source candidate | start Phase 2 from this SHA; archive/deadline state must be separated |
 | `fix/v2-stable-execution-provenance` `435e24e…` | clean branch | scientific/provenance and bug-fix candidate | preserve commits; port after tests |
 | V2 unified `8b1361d…` and Dream hotfix `15f40e…` | clean source checkouts with separate result overlays | backend/protocol variant | compare hashes and behavior; do not merge blindly |
-| V2R source family around `45c295f…`/`78fe5d7…` | live reference checkout is mutable | source-pinned gates, sampler, seed/artifact/shard machinery | extract generic scientific core into clean build |
-| legacy `f45569d…` and server2 non-Git directory | dirty/unknown identity | V1/legacy | preserve as legacy; never use as canonical V2 source |
+| V2R source family around `78fe5d7…` | execution SHA is frozen; live development checkout is mutable | source-pinned gates, sampler, seed/artifact/shard machinery | use frozen SHA for evidence; extract generic core into clean build |
+| legacy `f45569d…` and server2 non-Git directory | server2 fingerprinted; two older unmatched files | `LEGACY_EXPERIMENT_ONLY` | preserve as legacy; never use as canonical V2 source |
+| `926495e…` and live monitor heads | large operational/status deltas over the scientific source | `OPERATIONAL_STATUS_LINEAGE` / `UNCOMMITTED_OVERLAY` | archive history; do not count as scientific source families |
 
 ## Scientific artifacts
 
@@ -43,3 +45,4 @@ The following are preserved but excluded from the canonical scientific source: p
 - A trajectory bank without a final report is `INCOMPLETE`, even if the job is RUNNING or the bank file exists.
 - A `SEALED` artifact is not automatically canonical source; it is an immutable evidence product tied to its recorded source identity.
 - Nearly full filesystems make opportunistic copying unsafe. The canonical build should reference existing manifests and use small metadata, not duplicate raw outputs.
+- A Phase 2 primary pool is invalid until an approved output filesystem has `max(200 GiB, 3 × projected maximum single-shard raw output)` reserved free, at least 10% inode margin, and a documented retention/archive policy. Current 95–99% utilization fails this gate.

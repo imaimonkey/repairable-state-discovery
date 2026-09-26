@@ -22,7 +22,7 @@ The following are the relevant observed checkouts. A path marked `dynamic` is be
 | server1 `/home/kimhj/repairable-state-discovery-v2-exec` | `0dd161c8cf4bf3e7dbe4042234a0954950ce870e`, detached | untracked `results/v2_measurement/` | V2 execution baseline; preserve outputs |
 | server1 `/home/kimhj/repairable-state-discovery-v2-unified-8b1361d` | `8b1361d3d8d60a58e28847ac35af8dfc2b023d2d`, detached | clean at probe | V2 unified/Dream boundary variant; preserve, compare before reuse |
 | server1 `/home/kimhj/repairable-state-discovery-v2-seal-ops-0dd-20260923` | not captured | not captured | sealing operations checkout; inspect only if needed |
-| server2 `/home/kimhj/repairable-state-discovery` | not a Git repository | 9 directories observed | legacy/source copy; exact source identity unresolved |
+| server2 `/home/kimhj/repairable-state-discovery` | not a Git repository | 9 directories observed; 77 source-like files fingerprinted | legacy source copy; identity resolved as older `LEGACY_EXPERIMENT_ONLY` variant |
 | server2 `/home/kimhj/repairable-state-discovery-v2-exec` | `0dd161c8cf4bf3e7dbe4042234a0954950ce870e`, detached | untracked `results/v2_measurement/` | V2 execution baseline; preserve outputs |
 | server2 `/home/kimhj/repairable-state-discovery-v2-unified-8b1361d` | not independently re-read | not captured | unified variant directory; preserve |
 | server2 `/home/kimhj/repairable-state-discovery-v2-seal-ops-0dd-20260923` | not captured | not captured | sealing operations checkout |
@@ -44,22 +44,56 @@ The following are the relevant observed checkouts. A path marked `dynamic` is be
 | server4 `/data/kimhj/repairable-state-discovery-v2-dream-hotfix-8b1361d` | `15f40e052329261885c757664273f25bede2b074`, `codex/dream-math500-compact-artifacts-20260922` | untracked V2 results | Dream/MATH-500 hotfix; preserve and compare |
 | server4 `/data/kimhj/repairable-state-discovery-v2-unified-8b1361d` | `8b1361d3d8d60a58e28847ac35af8dfc2b023d2d`, detached | clean | unified V2 source comparison |
 
-## 3. Source identity evidence
+## 3. Source identity taxonomy
 
-The tracked source hashes establish at least these distinct committed source families:
+The earlier “six source families” count mixed scientific code, operational history, paper artifacts, and uncommitted state. The corrected taxonomy is:
 
-1. Legacy/V1 `f45569d…` (plus an unidentifiable non-Git server2 copy).
-2. V2 baseline `0dd161c…` (`v2/backends.py` hash `5d445d…`, validator `82717e…`).
-3. V2 boundary/provenance `435e24e…` (`v2/backends.py` `c460ac…`, validator `5e6674…`, provenance changes).
-4. V2 unified/Dream `8b1361d…` and server4 hotfix `15f40e…` (same key V2 hash family, different commit ancestry/packaging).
-5. Active measurement overlay `926495e…` with uncommitted submission and result state.
-6. V2R reference execution pinned at `78fe5d7…`, with a separate dynamic development/status checkout.
+### Scientific code lineage
 
-Thus the defensible answer is **six committed source families plus uncommitted overlays**. The exact count of all physical copies is larger; the server2 non-Git copy prevents an exact whole-filesystem count without changing it into a Git checkout.
+1. `V1 legacy`: `f45569d…` and the older server2 non-Git variant.
+2. `V2 historical ancestor`: `0dd161c8…` (`v2/backends.py` `5d445d…`, validator `82717e…`).
+3. `V2 provenance/boundary`: `435e24e…` (`v2/backends.py` `c460ac…`, validator `5e6674…`, provenance changes).
+4. `V2R canonical scientific candidate`: `78fe5d7c…`, exactly 18 commits ahead of `0dd161c8…`, with source-pinned recipes, R0/R1/R2 gates, schema/science/seeds, sampler, shard/artifact infrastructure, and tests.
 
-## 4. Runtime and operational state
+### Operational/status lineage
+
+- `926495e…` is exactly 1,470 commits ahead of `0dd161c…`; the observed delta is dominated by status, monitoring, independent dispatch, and operational history. It is not a separate scientific method lineage.
+- The live monitor and reference-live branches are dynamic operational/status overlays. Their historical evidence is retained, but their moving heads are not source anchors.
+
+### Paper/artifact lineage
+
+Paper branches, submission bundles, PDF audits, sealed evidence indexes, and historical result bundles are derived artifacts. They retain source SHA links but are not executable scientific source.
+
+### Uncommitted overlays
+
+Dirty worktrees, generated configs, active result directories, and live monitor files are operational overlays. They must not be promoted into the canonical source without a manifest and review.
+
+## 4. Server2 non-Git fingerprint result
+
+`reconciliation/SERVER2_SOURCE_FINGERPRINT.csv` contains 77 source/config-like files from `/home/kimhj/repairable-state-discovery`, including relative path, size, mtime, and SHA-256. Results:
+
+- 73 files match one or more known candidate worktrees exactly.
+- Two files have no exact match: `repairable_diffusion/src/run_protocol.py` and `scripts/run_protocol_repairability_final.sh`.
+- Read-only server2 diffs against its own V2 checkout show that both are older legacy variants: they lack the V2 path normalization and use the older AR payload shape. They do not add a server2-only scientific fix.
+- The remaining apparent non-match was the CSV header, not a source file.
+
+Therefore the server2 ambiguity is resolved as **older legacy source, no canonical-only scientific change found**. No Git conversion or source modification was performed.
+
+## 5. Runtime and operational state
 
 - server3 currently has LLaDA/VLLM processes on all four H200 GPUs and multiple existing monitors/orchestrators/watchdogs.
 - Active tmux/process names still contain historical deadline/project labels. They are operational state, not canonical scientific source.
 - V2R reference outputs are under `/var/tmp/kimhj-v2r-reference` (approximately 606M observed); independent dispatch metadata is under `/var/tmp/kimhj-v2r-independent` (approximately 88K observed).
 - No existing process, job, worktree, or artifact was stopped, reset, overwritten, or deleted by this reconciliation.
+
+## 6. Phase 2 storage prerequisite
+
+No node currently has an approved primary-output reservation. Before any new primary trajectory execution, the execution plan must record for each selected server:
+
+- approved output filesystem and owner;
+- reserved free space of at least `max(200 GiB, 3 × projected maximum single-shard raw output)`;
+- at least 10% free inode margin;
+- projected shard output size, log size, and retention window;
+- a verified cleanup/archive plan that does not target sealed or unclassified scientific artifacts.
+
+The observed 95–99% filesystem utilization means Phase 2/3 execution remains storage-blocked until this reservation is explicitly approved.
