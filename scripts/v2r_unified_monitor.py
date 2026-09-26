@@ -1,115 +1,125 @@
 #!/usr/bin/env python3
-"""Read-only reconciliation monitor for Slurm, V2R, legacy state, and paper readiness.
-
-This process never submits or cancels jobs.  The reference orchestrator is the
-single execution authority; this monitor only observes and writes durable
-status for recovery after either process restarts.
-"""
+"""Read-only neutral observation of scheduler, GPU, filesystem, and artifacts."""
 from __future__ import annotations
-import argparse, datetime as dt, hashlib, json, os, subprocess, time
+
+import argparse
+import datetime as dt
+import hashlib
+import json
+import os
+import time
 from pathlib import Path
 
 from v2r_inventory import atomic_json, collect
 
-ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'status/v2r'
-LEGACY=Path('/data/kimhj/repairable-state-discovery-live-monitor-20260923')
-DEADLINE=dt.datetime.fromisoformat('2026-09-26T20:59:00+09:00')
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "status" / "reset"
 
-def read(path, default=None):
-    try: return json.loads(Path(path).read_text())
-    except (FileNotFoundError, json.JSONDecodeError, OSError): return default
 
-def command(args):
+def read(path: Path, default=None):
     try:
-        p=subprocess.run(args,text=True,capture_output=True,timeout=20)
-        return {'returncode':p.returncode,'stdout':p.stdout,'stderr':p.stderr}
-    except Exception as e: return {'returncode':-1,'stdout':'','stderr':str(e)}
+        return json.loads(path.read_text())
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return default
 
-def legacy_snapshot():
-    panes=command(['tmux','list-panes','-t','iclr2027-live-monitor','-F','#{session_name}|#{pane_pid}|#{pane_current_command}'])
-    return {
-        'session':'iclr2027-live-monitor',
-        'tmux':panes,
-        'branch':command(['git','-C',str(LEGACY),'branch','--show-current']),
-        'head':command(['git','-C',str(LEGACY),'rev-parse','HEAD']),
-        'worktree':str(LEGACY),
-        'status_files':sorted(str(p.relative_to(LEGACY)) for p in (LEGACY/'status').rglob('*') if p.is_file())[:500],
-    }
 
-def reconcile():
-    now=dt.datetime.now(dt.timezone.utc)
-    inventory=collect(OUT)
-    jobs=read(OUT/'job_inventory.json',{})
-    old_current=read(LEGACY/'status/live/current_status.json',{}) or {}
-    old_health=read(LEGACY/'status/live/monitor_health.json',{}) or {}
-    queue=read(OUT/'orchestrator_queue.json',{'tasks':[]}) or {'tasks':[]}
-    orchestrator=read(OUT/'orchestrator_health.json',{}) or {}
-    paper=read(OUT/'paper_readiness.json',{}) or {}
-    old_text=json.dumps(old_current,sort_keys=True)
-    drift=[]
-    for job in jobs.get('active_or_pending',[]):
-        jid=str(job.get('job_id'))
-        if jid and jid not in old_text:
-            drift.append({'type':'MONITOR_DRIFT','message':f'Slurm job {jid} exists but legacy monitor state does not mention it.','job_id':jid})
-    # Preserve the already confirmed historical miss as a durable integrity fact.
-    cancel=read(OUT/'legacy_reset/49256_forensic_snapshot_20260923/cancellation_record.json',{}) or {}
-    if cancel and not any(x.get('job_id')=='49256' for x in jobs.get('active_or_pending',[])):
-        drift.append({'type':'MONITOR_DRIFT_HISTORICAL','message':'Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.','job_id':'49256'})
-    drift_unique={json.dumps(x,sort_keys=True):x for x in drift}
-    drift=list(drift_unique.values())
-    digest=hashlib.sha256(json.dumps(drift,sort_keys=True).encode()).hexdigest()
-    previous=read(OUT/'monitor_last_drift.json',{}) or {}
-    if drift and previous.get('digest')!=digest:
-        with (OUT/'event_history.jsonl').open('a') as f:
-            for item in drift: f.write(json.dumps({'timestamp':now.isoformat(),'event':'INTEGRITY_ALERT',**item},sort_keys=True)+'\n')
-    atomic_json(OUT/'monitor_last_drift.json',{'timestamp':now.isoformat(),'digest':digest,'alerts':drift})
-    servers=inventory.get('servers',{})
-    atomic_json(OUT/'gpu_inventory.json',{'timestamp':now.isoformat(),'servers':{k:{'node':v.get('node'),'observed':v.get('observed'),'gpus':v.get('gpus',[]),'gpu_processes':v.get('gpu_processes',{}),'slurm_node':v.get('slurm_node')} for k,v in servers.items()}})
-    unified={
-        'schema_version':'v2r.unified_monitor.1','timestamp':now.isoformat(),
-        'source_of_truth':['Slurm scheduler','actual GPU/process observation','filesystem observation'],
-        'legacy_monitor':legacy_snapshot(),
-        'legacy_monitor_health':old_health,
-        'slurm_jobs':jobs,
-        'inventory_summary':inventory.get('job_inventory_summary',{}),
-        'servers':servers,
-        'orchestrator':orchestrator,
-        'queue':queue,
-        'paper':paper,
-        'integrity_alerts':drift,
+def reconcile() -> dict:
+    now = dt.datetime.now(dt.timezone.utc)
+    inventory = collect(OUT)
+    jobs = read(OUT / "job_inventory.json", {}) or {}
+    queue = read(OUT / "orchestrator_queue.json", {"tasks": []}) or {"tasks": []}
+    orchestrator = read(OUT / "orchestrator_health.json", {}) or {}
+    previous = read(OUT / "canonical_status.json", {}) or {}
+    previous_ids = set(previous.get("active_tasks", []))
+    observed_ids = {str(job.get("job_id")) for job in jobs.get("active_or_pending", [])}
+    drift = []
+    for job in jobs.get("active_or_pending", []):
+        job_id = str(job.get("job_id"))
+        if previous_ids and job_id not in previous_ids:
+            drift.append({"type": "MONITOR_DRIFT", "message": f"Scheduler job {job_id} is not in the previous canonical status snapshot.", "job_id": job_id})
+    missing = sorted(previous_ids - observed_ids) if previous_ids else []
+    if missing:
+        drift.append({"type": "MONITOR_DRIFT", "message": "Previously active task is absent from the current scheduler listing.", "job_ids": missing})
+    digest = hashlib.sha256(json.dumps(drift, sort_keys=True).encode()).hexdigest()
+    old_drift = read(OUT / "monitor_last_drift.json", {}) or {}
+    if drift and old_drift.get("digest") != digest:
+        with (OUT / "event_history.jsonl").open("a") as handle:
+            for item in drift:
+                handle.write(json.dumps({"timestamp": now.isoformat(), "event": "MONITOR_DRIFT", **item}, sort_keys=True) + "\n")
+    atomic_json(OUT / "monitor_last_drift.json", {"timestamp": now.isoformat(), "digest": digest, "alerts": drift})
+
+    servers = inventory.get("servers", {})
+    atomic_json(OUT / "gpu_inventory.json", {
+        "timestamp": now.isoformat(),
+        "servers": {
+            key: {
+                "node": value.get("node"),
+                "observed": value.get("observed"),
+                "gpus": value.get("gpus", []),
+                "gpu_processes": value.get("gpu_processes", {}),
+                "slurm_node": value.get("slurm_node"),
+            }
+            for key, value in servers.items()
+        },
+    })
+    unified = {
+        "schema_version": "rsd.monitor.1",
+        "timestamp": now.isoformat(),
+        "source_of_truth": ["Slurm scheduler", "GPU/process observation", "filesystem observation", "artifact manifests"],
+        "slurm_jobs": jobs,
+        "inventory_summary": inventory.get("job_inventory_summary", {}),
+        "servers": servers,
+        "orchestrator": orchestrator,
+        "queue": queue,
+        "integrity_alerts": drift,
+        "execution_allowed": bool(queue.get("execution_authorized")),
     }
-    atomic_json(OUT/'unified_status.json',unified)
-    health={'schema_version':'v2r.monitor_health.1','status':'RUNNING','timestamp':now.isoformat(),'pid':os.getpid(),'tmux':'iclr2027-unified-monitor','poll_interval_seconds':90,'last_successful_cycle':now.isoformat(),'legacy_monitor_preserved':True,'legacy_monitor_health':old_health,'integrity_alert_count':len(drift)}
-    atomic_json(OUT/'monitor_health.json',health)
-    hours=(DEADLINE-now.astimezone(DEADLINE.tzinfo)).total_seconds()/3600
-    lines=[now.isoformat(),f'HOURS TO DEADLINE: {hours:.2f}','CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION','','OVERALL GOAL','reference baseline → instrumentation equivalence → repairability → full paper','','NEW EVENTS', 'Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.']
-    if drift:
-        lines += ['','INTEGRITY ALERTS']+[f"{x['type']}: {x['message']}" for x in drift]
-    else: lines += ['','INTEGRITY ALERTS','None in current active-job reconciliation.']
-    lines += ['','ALL ACTIVE KIMHJ JOBS']
-    active=jobs.get('active_or_pending',[])
-    lines += [f"{j.get('job_id')} {j.get('job_name')} {j.get('state')} {j.get('node_list')} {j.get('classification')}" for j in active] or ['None']
-    for name,s in servers.items():
-        lines += ['',name.upper(),f"observed={s.get('observed')} idle_gpu_candidates={s.get('idle_gpu_candidates')} safe_filesystems={s.get('safe_filesystem_candidates')}"]
-    lines += ['','LEGACY V2','See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.','','REFERENCE GATES']
-    gates=read(OUT/'gate_status.json',{}) or {}
-    for key,val in sorted(gates.items()): lines.append(f"{key}: "+', '.join(f'{k}={v.get("status")}' for k,v in val.items()))
-    lines += ['','REFERENCE PRIMARY']
-    current=read(OUT/'current_status.json',{}) or {}
-    for key,val in (current.get('primary_evidence') or {}).items(): lines.append(f'{key}: {val}')
-    lines += ['','ACTIVE SHARDS']+[f"{t.get('id')}: {t.get('status')} job={t.get('job_id')}" for t in queue.get('tasks',[])]
-    lines += ['','PAPER',f"status={paper.get('status')}",f"technical_pdf_audit={paper.get('technical_pdf_audit',{}).get('status')}",'','ORCHESTRATOR',f"status={orchestrator.get('status')} pid={orchestrator.get('pid')} heartbeat={orchestrator.get('timestamp')}",'','MONITOR',f"heartbeat={now.isoformat()}",'','CURRENT P0','Repair LLaDA R1 evidence inventory, rerun valid R0→R1→R2 on a final immutable SHA, then LLaDA MATH base.','','NEXT AUTONOMOUS ACTIONS','Reconcile actual Slurm jobs every 90 seconds; keep only FREE_SAFE GPUs for reference shards; unlock downstream work only after sealed gates.','','TRUE USER-REQUIRED BLOCKERS','None currently.']
-    (OUT/'attention_required.md').write_text('\n'.join(lines)+'\n')
+    atomic_json(OUT / "unified_status.json", unified)
+    atomic_json(OUT / "monitor_health.json", {
+        "schema_version": "rsd.monitor_health.1",
+        "status": "RUNNING",
+        "timestamp": now.isoformat(),
+        "pid": os.getpid(),
+        "service": "rsd-monitor",
+        "poll_interval_seconds": 90,
+        "scheduler_authoritative": True,
+        "execution_authority": "rsd-orchestrator",
+        "integrity_alert_count": len(drift),
+    })
+    lines = [
+        now.isoformat(),
+        "RUNTIME MODE: NEUTRAL SCIENTIFIC OBSERVATION",
+        "SOURCE OF TRUTH: SLURM SCHEDULER",
+        "EXECUTION AUTHORITY: rsd-orchestrator",
+        "",
+        "MONITOR DRIFT",
+    ]
+    lines += [f"{item['type']}: {item['message']}" for item in drift] or ["None in current reconciliation."]
+    lines += ["", "ACTIVE USER JOBS"]
+    active = jobs.get("active_or_pending", [])
+    lines += [f"{job.get('job_id')} {job.get('job_name')} {job.get('state')} {job.get('node_list')} {job.get('classification')}" for job in active] or ["None"]
+    for name, server in servers.items():
+        lines += ["", name.upper(), f"observed={server.get('observed')} idle_gpu_candidates={server.get('idle_gpu_candidates')} safe_filesystems={server.get('safe_filesystem_candidates')}"]
+    lines += ["", "STORAGE GATE", "Raw scientific execution is disabled until an approved filesystem reservation and inode margin are recorded."]
+    lines += ["", "ORCHESTRATOR", f"status={orchestrator.get('status')} service={orchestrator.get('service')} heartbeat={orchestrator.get('timestamp')}"]
+    (OUT / "attention_required.md").write_text("\n".join(lines) + "\n")
     return unified
 
-def main():
-    ap=argparse.ArgumentParser(); ap.add_argument('--once',action='store_true'); ap.add_argument('--interval',type=int,default=90); a=ap.parse_args()
-    while True:
-        try: reconcile()
-        except Exception as e:
-            atomic_json(OUT/'monitor_health.json',{'schema_version':'v2r.monitor_health.1','status':'DEGRADED_RETRY','timestamp':dt.datetime.now(dt.timezone.utc).isoformat(),'pid':os.getpid(),'error':str(e)})
-        if a.once: break
-        time.sleep(max(30,a.interval))
 
-if __name__=='__main__': main()
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--once", action="store_true")
+    parser.add_argument("--interval", type=int, default=90)
+    args = parser.parse_args()
+    while True:
+        try:
+            reconcile()
+        except Exception as error:
+            atomic_json(OUT / "monitor_health.json", {"status": "DEGRADED_RETRY", "timestamp": dt.datetime.now(dt.timezone.utc).isoformat(), "pid": os.getpid(), "error": str(error)})
+        if args.once:
+            break
+        time.sleep(max(30, args.interval))
+
+
+if __name__ == "__main__":
+    main()

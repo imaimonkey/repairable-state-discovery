@@ -7,6 +7,8 @@ ROOT = Path(__file__).resolve().parents[1]
 HOSTS = {'server1': 'kimhj@10.0.12.120', 'server2': 'kimhj@10.0.12.121', 'server3': None, 'server4': 'kimhj@10.0.12.163'}
 NODES = {'server1': 'devbox', 'server2': 'server2', 'server3': 'ubuntu', 'server4': 'server4'}
 HISTORICAL_JOBS = ['50668','50669','50738','50752','50753','50754','50923','50924','49256']
+FORENSIC_HELD_JOBS = {'53067','53069','53070','53071','53072','53073','53074'}
+LEGACY_MEASUREMENT_JOBS = {'53262','53266','53267','53268','53275'}
 # Absolute values use statvfs available bytes (unprivileged reserve excluded).
 PROBE = r'''
 import csv,glob,io,json,os,socket,subprocess
@@ -92,10 +94,12 @@ def discover_kimhj_jobs():
         stat=run(['sstat','-j',jid+'.batch','--format=JobID,MaxRSS,AveRSS,AveCPU,MaxDiskRead,MaxDiskWrite'],timeout=20)
         meta['sstat']=stat
         low=(name+' '+(meta.get('command') or '')+' '+(meta.get('workdir') or '')).lower()
-        if jid.startswith('526') or 'v2r-' in name or 'v2r_reference' in low:
-            cls='KEEP_REFERENCE_CRITICAL'
+        if jid in FORENSIC_HELD_JOBS:
+            cls='HOLD_FOR_FORENSIC'
+        elif jid in LEGACY_MEASUREMENT_JOBS:
+            cls='LEGACY_RUNNING_FORENSIC' if state == 'RUNNING' else 'LEGACY_PENDING'
         elif jid in HISTORICAL_JOBS or any(k in low for k in ('full_diffusion','v2-50752','v2_50752','repair_bm_')):
-            cls='CANCEL_LEGACY_FOR_REFERENCE_REALLOCATION'
+            cls='HISTORICAL_LEGACY'
         elif user=='kimhj':
             cls='UNKNOWN_NEEDS_FORENSIC'
         else:
@@ -112,21 +116,21 @@ def collect(output):
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         servers=dict(pool.map(inspect,HOSTS))
     job_inventory=discover_kimhj_jobs()
-    inventory={'schema_version':'v2r.inventory.2','timestamp':now,'critical_usage_fraction':0.95,'minimum_safety_margin_bytes':50*1024**3,'servers':servers,
+    inventory={'schema_version':'rsd.inventory.3','timestamp':now,'critical_usage_fraction':0.95,'minimum_safety_margin_bytes':200*1024**3,'minimum_inode_free_fraction':0.10,'servers':servers,
       'slurm_jobs':run(['squeue','-h','-o','%i|%u|%T|%M|%l|%D|%N|%b|%j']),
       'job_inventory_summary':{'active_or_pending_count':len(job_inventory['active_or_pending']),
-                               'classifications':{c:sum(x['classification']==c for x in job_inventory['active_or_pending']) for c in ['KEEP_REFERENCE_CRITICAL','KEEP_UNRELATED','CANCEL_LEGACY_FOR_REFERENCE_REALLOCATION','UNKNOWN_NEEDS_FORENSIC']}},
+                               'classifications':{c:sum(x['classification']==c for x in job_inventory['active_or_pending']) for c in ['HOLD_FOR_FORENSIC','LEGACY_RUNNING_FORENSIC','LEGACY_PENDING','HISTORICAL_LEGACY','KEEP_UNRELATED','UNKNOWN_NEEDS_FORENSIC']}},
       'historical_jobs':run(['sacct','-n','-P','-j',','.join(HISTORICAL_JOBS),'--format=JobID,State,Elapsed,Timelimit,NodeList,AllocTRES,ExitCode']),
       'protected_monitor':run(['tmux','list-panes','-a','-F','#{session_name}|#{pane_pid}|#{pane_current_command}'])}
     for s in servers.values():
         processes=s.get('gpu_processes',{}).get('stdout','')
         # Candidate is not an allocation. Submit must additionally obtain exclusive Slurm GRES.
         s['idle_gpu_candidates']=[g['index'] for g in s.get('gpus',[]) if int(g['memory_used_mib'])<128 and int(g['utilization_percent'])==0 and g['uuid'] not in processes]
-        s['safe_filesystem_candidates']=[f['path'] for f in s.get('filesystems',[]) if f['usage_fraction']<0.95 and f['available_bytes']>=50*1024**3 and f['inodes_free']>10000 and f['writable']]
+        s['safe_filesystem_candidates']=[f['path'] for f in s.get('filesystems',[]) if f['usage_fraction']<0.95 and f['available_bytes']>=200*1024**3 and f['inodes_total'] and f['inodes_free']/f['inodes_total']>=0.10 and f['writable']]
         s['new_scientific_jobs_eligible']=bool(s['observed'] and s['idle_gpu_candidates'] and s['safe_filesystem_candidates'])
     atomic_json(output/'cluster_inventory.json',inventory)
     atomic_json(output/'job_inventory.json',job_inventory)
-    lines=['# V2R cluster inventory','',now,'','Read-only observation; idle candidates still require Slurm allocation, safe immutable execution worktree and measured shard storage gate.','', '| Server | Observed | Idle GPU candidates | Writable safe filesystem candidates |','|---|---|---|---|']
+    lines=['# RSD cluster inventory','',now,'','Read-only observation; idle candidates still require Slurm allocation, safe immutable execution worktree and measured shard storage gate.','', '| Server | Observed | Idle GPU candidates | Writable safe filesystem candidates |','|---|---|---|---|']
     for name,s in servers.items():
         lines.append(f"| {name} | {s['observed']} | {s['idle_gpu_candidates']} | {s['safe_filesystem_candidates']} |")
         for f in s.get('filesystems',[]):lines.append(f"\n{name} `{f['path']}`: {f['available_bytes']} available bytes; {f['usage_fraction']:.2%} used; {f['inodes_free']} free inodes.")
