@@ -1,6 +1,6 @@
 # ICLR 2027 V2R dynamic dispatch
 
-Updated: `2026-09-26T12:33:10.601491+00:00`; next inventory interval: `90s`.
+Updated: `2026-09-26T12:34:42.111263+00:00`; next inventory interval: `90s`.
 
 This is a read-only placement decision. It does not cancel, preempt, or delete jobs/artifacts.
 
@@ -11,6 +11,6 @@ This is a read-only placement decision. It does not cancel, preempt, or delete j
 | server3 | True | [] | [] | True | False | no_idle_gpu_candidate, no_safe_filesystem |
 | server4 | True | ['0', '3', '5', '7'] | ['/tmp', '/var/tmp'] | False | False | exact_native_replay_failed;_reference_torch_2_1_2_is_sm120_incompatible |
 
-**Next batch:** `WAIT_WITH_INTERVAL_REPLAN` — No server currently passes the combined observation, storage, GPU, and reference-runtime gates.
+**Next batch:** `NO_REFERENCE_SHARD_PENDING` — No pending reference shard was observed.
 
-Running reference jobs: `0`; pending/configuring: `7`.
+Running reference jobs: `0`; pending/configuring: `0`.

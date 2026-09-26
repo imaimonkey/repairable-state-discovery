@@ -1,128 +1,14 @@
 {
   "interval_seconds": 90,
   "jobs": {
-    "all_reference_jobs": [
-      {
-        "job_id": "53074",
-        "name": "v2r-ind-server1-math500-temporal-v2-015",
-        "node": "",
-        "reason": "(JobHeldUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53073",
-        "name": "v2r-ind-server1-math500-temporal-v2-014",
-        "node": "",
-        "reason": "(JobHeldUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53072",
-        "name": "v2r-ind-server1-math500-temporal-v2-013",
-        "node": "",
-        "reason": "(JobHeldUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53071",
-        "name": "v2r-ind-server1-math500-temporal-v2-012",
-        "node": "",
-        "reason": "(JobHeldUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53070",
-        "name": "v2r-ind-server1-math500-temporal-v2-011",
-        "node": "",
-        "reason": "(JobHeldUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53069",
-        "name": "v2r-ind-server1-math500-temporal-v2-010",
-        "node": "",
-        "reason": "(job requeued in held state)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53067",
-        "name": "v2r-ind-server1-math500-temporal-v2-008",
-        "node": "",
-        "reason": "(job requeued in held state)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      }
-    ],
-    "pending": [
-      {
-        "job_id": "53074",
-        "name": "v2r-ind-server1-math500-temporal-v2-015",
-        "node": "",
-        "reason": "(JobHeldUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53073",
-        "name": "v2r-ind-server1-math500-temporal-v2-014",
-        "node": "",
-        "reason": "(JobHeldUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53072",
-        "name": "v2r-ind-server1-math500-temporal-v2-013",
-        "node": "",
-        "reason": "(JobHeldUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53071",
-        "name": "v2r-ind-server1-math500-temporal-v2-012",
-        "node": "",
-        "reason": "(JobHeldUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53070",
-        "name": "v2r-ind-server1-math500-temporal-v2-011",
-        "node": "",
-        "reason": "(JobHeldUser)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53069",
-        "name": "v2r-ind-server1-math500-temporal-v2-010",
-        "node": "",
-        "reason": "(job requeued in held state)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      },
-      {
-        "job_id": "53067",
-        "name": "v2r-ind-server1-math500-temporal-v2-008",
-        "node": "",
-        "reason": "(job requeued in held state)",
-        "state": "PENDING",
-        "tres": "gres/gpu:a6000:1"
-      }
-    ],
+    "all_reference_jobs": [],
+    "pending": [],
     "running": []
   },
   "next_batch": {
-    "action": "WAIT_WITH_INTERVAL_REPLAN",
+    "action": "NO_REFERENCE_SHARD_PENDING",
     "eligible_servers": [],
-    "rationale": "No server currently passes the combined observation, storage, GPU, and reference-runtime gates."
+    "rationale": "No pending reference shard was observed."
   },
   "policy": {
     "all_servers_observed": true,
@@ -230,5 +116,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-26T12:33:10.601491+00:00"
+  "timestamp": "2026-09-26T12:34:42.111263+00:00"
 }
