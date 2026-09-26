@@ -1,5 +1,5 @@
-2026-09-26T11:36:46.282904+00:00
-HOURS TO DEADLINE: 0.37
+2026-09-26T11:38:17.802277+00:00
+HOURS TO DEADLINE: 0.35
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -12,7 +12,6 @@ INTEGRITY ALERTS
 MONITOR_DRIFT: Slurm job 53267 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53268 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53275 exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53547 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53074 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53073 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53072 exists but legacy monitor state does not mention it.
@@ -28,7 +27,6 @@ ALL ACTIVE KIMHJ JOBS
 53267 v2-v2_mbpp_llada PENDING  UNKNOWN_NEEDS_FORENSIC
 53268 v2-gate-dream PENDING  UNKNOWN_NEEDS_FORENSIC
 53275 v2full-math500 PENDING  UNKNOWN_NEEDS_FORENSIC
-53547 rsd-recon-fp-s2 PENDING  UNKNOWN_NEEDS_FORENSIC
 53074 v2r-ind-server1-math500-temporal-v2-015 PENDING  KEEP_REFERENCE_CRITICAL
 53073 v2r-ind-server1-math500-temporal-v2-014 PENDING  KEEP_REFERENCE_CRITICAL
 53072 v2r-ind-server1-math500-temporal-v2-013 PENDING  KEEP_REFERENCE_CRITICAL
@@ -94,10 +92,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=3958268 heartbeat=2026-09-26T11:36:06.478584+00:00
+status=RUNNING pid=3958268 heartbeat=2026-09-26T11:38:15.679631+00:00
 
 MONITOR
-heartbeat=2026-09-26T11:36:46.282904+00:00
+heartbeat=2026-09-26T11:38:17.802277+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
