@@ -8,8 +8,12 @@ import json
 import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 from repairable_diffusion.src.utils.io import load_yaml
 from repairable_diffusion.src.rsd_ref_v3.runtime import (
@@ -19,8 +23,6 @@ from repairable_diffusion.src.rsd_ref_v3.runtime import (
     storage_plan_path,
 )
 
-
-ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / "repairable_diffusion/configs/rsd_ref_v3/measurement_contract.yaml"
 MANIFEST = ROOT / "status/rsd_ref_v3/design_freeze.json"
 CONFIG_ROOT = ROOT / "repairable_diffusion/configs/rsd_ref_v3/runs"
