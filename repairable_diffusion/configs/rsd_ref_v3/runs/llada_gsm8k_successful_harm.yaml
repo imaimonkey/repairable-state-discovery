@@ -1,0 +1,14 @@
+generation_id: rsd_ref_v3
+run_name: rsd_ref_v3_llada_gsm8k_successful_harm
+stage: successful-harm
+execution_enabled: false_until_readiness
+base_run: rsd_ref_v3_llada_gsm8k_reference
+task: llada_gsm8k
+subset_manifest: status/rsd_ref_v3/subsets/llada_gsm8k_successful_harm.json
+subset_rule: successful_pool_hash_ranked_with_purpose_successful_harm
+target_successful_trajectories: 128
+minimum_successful_trajectories: 64
+operators: [low_confidence_remask_v2_qR, matched_count_random_position_remask, fresh_sampling_compute_control]
+checkpoint_grid: [0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875]
+B_eval: 8
+storage_gate: STORAGE_READY_REQUIRED

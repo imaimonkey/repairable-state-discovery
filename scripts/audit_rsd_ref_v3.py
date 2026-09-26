@@ -27,15 +27,25 @@ FREEZE_INPUTS = [
     "repairable_diffusion/configs/rsd_ref_v3/measurement_contract.yaml",
     "repairable_diffusion/src/rsd_ref_v3/__init__.py",
     "repairable_diffusion/src/rsd_ref_v3/task_adapters.py",
+    "repairable_diffusion/src/rsd_ref_v3/runner.py",
+    "repairable_diffusion/src/v2r/schema.py",
+    "repairable_diffusion/src/v2r/planning.py",
+    "repairable_diffusion/src/v2r/artifacts.py",
+    "repairable_diffusion/src/v2r/science.py",
     "scripts/audit_rsd_ref_v3.py",
+    "scripts/run_rsd_ref_v3.py",
+    "scripts/submit_rsd_ref_v3.py",
     "status/rsd_ref_v3/subsets/selection_policy.json",
-    "status/rsd_ref_v3/storage_plan.json",
-    "status/rsd_ref_v3/execution_readiness.json",
     "tests/test_rsd_ref_v3_contract.py",
+    "tests/test_rsd_ref_v3_runner.py",
 ]
 FREEZE_INPUTS += [
     str(path.relative_to(ROOT))
     for path in sorted((ROOT / "repairable_diffusion/configs/rsd_ref_v3/runs").glob("*.yaml"))
+]
+FREEZE_INPUTS += [
+    str(path.relative_to(ROOT))
+    for path in sorted((ROOT / "status/rsd_ref_v3/subsets").glob("llada_*.json"))
 ]
 EXPECTED_LLaDA_MODEL = "08b83a6feb34df1a6011b80c3c00c7563e963b07"
 EXPECTED_MATH_ARCHIVE = "cf44a0c065f23dbb96e3239115758f7442b725776f3dedfa4473821a1c98fe03"
@@ -80,6 +90,8 @@ def audit_contract(errors: list[str]) -> dict[str, Any] | None:
     check(errors, gsm.get("dataset", {}).get("count") == 1319, "LLaDA GSM8K count mismatch")
     check(errors, gsm.get("dataset", {}).get("archive_sha256") == EXPECTED_GSM_ARCHIVE, "GSM archive hash mismatch")
     check(errors, cfg.get("models", {}).get("llada", {}).get("revision") == EXPECTED_LLaDA_MODEL, "LLaDA model revision is not pinned")
+    targets = cfg.get("sample_targets", {})
+    check(errors, targets.get("successful_harm_trajectories_per_task") == 128, "successful-harm target is not frozen at 128")
     return cfg
 
 
@@ -114,27 +126,32 @@ def audit_subsets(errors: list[str]) -> None:
         check(errors, payload.get("repairability_outcome_used_for_selection") is False, "subset policy leaks repairability outcomes")
         check(errors, payload.get("design_seed") == 314159265, "subset design seed mismatch")
     subset_paths = sorted((ROOT / "status/rsd_ref_v3/subsets").glob("llada_*.json"))
-    check(errors, len(subset_paths) == 6, "expected six predeclared LLaDA subset specs")
+    check(errors, len(subset_paths) == 8, "expected eight predeclared LLaDA subset specs")
     for path in subset_paths:
         payload = json.loads(path.read_text(encoding="utf-8"))
         check(errors, payload.get("status") == "PREDECLARED_AWAITING_BASE_BANK", f"subset not predeclared: {path.name}")
         check(errors, payload.get("item_ids") is None, f"subset outcome IDs already materialized: {path.name}")
 
 
-def audit_state(errors: list[str]) -> None:
+def audit_runtime_state(errors: list[str]) -> dict[str, Any] | None:
     readiness = ROOT / "status/rsd_ref_v3/execution_readiness.json"
     storage = ROOT / "status/rsd_ref_v3/storage_plan.json"
     check(errors, readiness.is_file(), "missing execution readiness")
     check(errors, storage.is_file(), "missing storage plan")
+    readiness_payload = None
+    storage_payload = None
     if readiness.is_file():
-        payload = json.loads(readiness.read_text(encoding="utf-8"))
-        check(errors, payload.get("server1", {}).get("scientific_execution_qualification") == "SCIENTIFIC_EXECUTION_QUALIFIED", "server1 qualification not encoded")
-        check(errors, payload.get("single_server_primary_gate", {}).get("confirmatory_protocol_frozen") is True, "protocol freeze gate not encoded")
-        check(errors, payload.get("single_server_primary_gate", {}).get("execution_allowed") is False, "execution must remain disabled")
+        readiness_payload = json.loads(readiness.read_text(encoding="utf-8"))
+        check(errors, readiness_payload.get("server1", {}).get("scientific_execution_qualification") == "SCIENTIFIC_EXECUTION_QUALIFIED", "server1 qualification not encoded")
+        check(errors, readiness_payload.get("single_server_primary_gate", {}).get("confirmatory_protocol_frozen") is True, "protocol freeze gate not encoded")
     if storage.is_file():
-        payload = json.loads(storage.read_text(encoding="utf-8"))
-        check(errors, payload.get("status") == "STORAGE_NOT_RESERVED", "storage must remain fail-closed before reservation")
-        check(errors, payload.get("execution_allowed") is False, "storage plan must block execution")
+        storage_payload = json.loads(storage.read_text(encoding="utf-8"))
+    if readiness_payload is None or storage_payload is None:
+        return None
+    gate = readiness_payload.get("single_server_primary_gate", {})
+    check(errors, gate.get("confirmatory_protocol_frozen") is True, "confirmatory protocol is not frozen")
+    check(errors, readiness_payload.get("confirmatory_results_observed") is False, "readiness records confirmatory outcomes")
+    return {"readiness": readiness_payload, "storage": storage_payload}
 
 
 def audit_freeze(errors: list[str]) -> None:
@@ -160,12 +177,22 @@ def main() -> None:
     audit_contract(errors)
     audit_configs(errors)
     audit_subsets(errors)
-    audit_state(errors)
     audit_freeze(errors)
+    runtime_state = None
     if args.mode == "readiness":
-        storage = json.loads((ROOT / "status/rsd_ref_v3/storage_plan.json").read_text(encoding="utf-8"))
+        runtime_state = audit_runtime_state(errors)
+        storage = runtime_state["storage"] if runtime_state else {}
         if storage.get("status") != "STORAGE_READY":
             errors.append("readiness mode requires storage_plan.status=STORAGE_READY")
+        if storage.get("execution_allowed") is not True:
+            errors.append("readiness mode requires storage_plan.execution_allowed=true")
+        if not storage.get("approved_output_root") or not storage.get("reservation_id"):
+            errors.append("readiness mode requires approved storage reservation metadata")
+        gate = (runtime_state or {}).get("readiness", {}).get("single_server_primary_gate", {})
+        if gate.get("canonical_source_config_sha_match") is not True:
+            errors.append("readiness mode requires canonical_source_config_sha_match=true")
+        if gate.get("storage_ready") is not True or gate.get("execution_allowed") is not True:
+            errors.append("readiness mode requires open single-server execution gate")
     print(f"mode: {args.mode}")
     print(f"git_sha: {git_sha()}")
     if errors:
@@ -173,7 +200,10 @@ def main() -> None:
         for error in errors:
             print(f"- {error}")
         raise SystemExit(1)
-    print("\nRSD_REF_V3 DESIGN READY; FULL EXECUTION BLOCKED UNTIL STORAGE_READY")
+    if args.mode == "design":
+        print("\nRSD_REF_V3 DESIGN READY; READINESS IS MUTABLE AND EXECUTION REMAINS GATED")
+    else:
+        print("\nRSD_REF_V3 READINESS READY; EXECUTION GATE OPEN")
 
 
 if __name__ == "__main__":

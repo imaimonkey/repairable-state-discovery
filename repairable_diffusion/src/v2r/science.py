@@ -16,7 +16,7 @@ def runtime(manifest):
  key=canonical_hash([manifest['model'],manifest['dataset'],manifest['recipe']])
  if key not in _CACHE:
   recipe=manifest['recipe'];task=manifest['dataset']['task'];paths=manifest['runtime_paths']
-  rows=load_records(recipe,task,'bridge',Path(paths['source_cache']))
+  rows=load_records(recipe,task,manifest['dataset'].get('source_mode','bridge'),Path(paths['source_cache']))
   if canonical_hash(rows)!=manifest['dataset']['content_sha256']:raise ContractError('Dataset content differs from frozen bank contract')
   sampler=ReferenceSampler(recipe,task,Path(paths['source_cache']),Path(paths['model_cache']))
   _CACHE[key]=(sampler,{str(r['item_id']):r for r in rows})
@@ -48,6 +48,9 @@ def execute_probe(manifest,item_id,item_output_dir,seed_records):
  states={int(k):v for k,v in trajectory['snapshots'].items() if int(k)<v['total_steps']}
  expected=[r['step'] for r in trajectory['checkpoint_mapping']]
  if sorted(states)!=sorted(expected):raise ContractError('Missing reference checkpoint')
+ operator_names=manifest.get('operator_names',{})
+ q_c_name=operator_names.get('qC','matched_continuation')
+ q_r_name=operator_names.get('qR','canonical_repair')
  lookup={(r['context']['purpose'],r['context']['checkpoint'],r['context']['branch'],r['context']['operator']):r for r in seed_records}
  consumed=set();rows=[];native=[];observations=[];start=time.perf_counter()
  for step in sorted(states):
@@ -61,17 +64,17 @@ def execute_probe(manifest,item_id,item_output_dir,seed_records):
  def branches(step,purpose,count):
   snap=states[step];positions=canonical_positions(snap,manifest['config'])
   for branch in range(count):
-   for operator in ['matched_continuation','canonical_repair']:
-    rec=lookup[(purpose,step,branch,operator)]
-    modified=positions if operator=='canonical_repair' else []
-    outcome=sampler.continue_llada(item,snap,seed=rec['seed'],modified_positions=modified)
-    if outcome['mask_count']:raise ContractError('Counterfactual continuation left masked tokens')
-    consumed.add(rec['context_id'])
-    rows.append({'step':step,'normalized_progress':step/snap['total_steps'],'purpose':purpose,'branch':branch,'operator':operator,'seed_context_id':rec['context_id'],'rng_group_id':rec['group_id'],'seed':rec['seed'],'correct':outcome['correct'],'answer':outcome['answer'],'final_tokens_sha256':canonical_hash(outcome['final_token_ids']),'nfe':outcome['nfe'],'seconds':outcome['seconds'],'modified_positions':modified,'applicable':bool(positions) if operator=='canonical_repair' else True})
+   for operator in [q_c_name,q_r_name]:
+     rec=lookup[(purpose,step,branch,operator)]
+     modified=positions if operator==q_r_name else []
+     outcome=sampler.continue_llada(item,snap,seed=rec['seed'],modified_positions=modified)
+     if outcome['mask_count']:raise ContractError('Counterfactual continuation left masked tokens')
+     consumed.add(rec['context_id'])
+     rows.append({'step':step,'normalized_progress':step/snap['total_steps'],'purpose':purpose,'branch':branch,'operator':operator,'seed_context_id':rec['context_id'],'rng_group_id':rec['group_id'],'seed':rec['seed'],'correct':outcome['correct'],'answer':outcome['answer'],'final_tokens_sha256':canonical_hash(outcome['final_token_ids']),'nfe':outcome['nfe'],'seconds':outcome['seconds'],'modified_positions':modified,'applicable':bool(positions) if operator==q_r_name else True})
  def summarize(step,purpose):
   selected=[r for r in rows if r['step']==step and r['purpose']==purpose]
-  estimates={op:sum(r['correct'] for r in selected if r['operator']==op)/sum(r['operator']==op for r in selected) for op in ['matched_continuation','canonical_repair']}
-  return {'step':step,'normalized_progress':step/trajectory['snapshots'][str(step)]['total_steps'],'q_C':estimates['matched_continuation'],'q_R':estimates['canonical_repair'],'Delta_R':estimates['canonical_repair']-estimates['matched_continuation']}
+  estimates={op:sum(r['correct'] for r in selected if r['operator']==op)/sum(r['operator']==op for r in selected) for op in [q_c_name,q_r_name]}
+  return {'step':step,'normalized_progress':step/trajectory['snapshots'][str(step)]['total_steps'],'q_C':estimates[q_c_name],'q_R':estimates[q_r_name],'Delta_R':estimates[q_r_name]-estimates[q_c_name]}
  if manifest['stage']=='r3_core':
   for step in sorted(states):branches(step,'localization',4)
   localized=[summarize(step,'localization') for step in sorted(states)]

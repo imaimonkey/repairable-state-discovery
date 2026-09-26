@@ -192,3 +192,33 @@ provenance:
     - operator_id
     - server_id
     - storage_reservation_id
+
+execution:
+  runner: scripts/run_rsd_ref_v3.py
+  submitter: scripts/submit_rsd_ref_v3.py
+  immutable_design_fingerprint_excludes:
+    - status/rsd_ref_v3/storage_plan.json
+    - status/rsd_ref_v3/execution_readiness.json
+    - Slurm job IDs
+    - live filesystem and GPU health
+  stage_order:
+    - reference
+    - aggregate
+    - materialize-subsets
+    - core
+    - temporal
+    - mechanism
+    - successful-harm
+    - aggregate
+    - seal
+  required_runtime_provenance:
+    - generation_id
+    - execution_git_sha
+    - config_sha256
+    - model_revision
+    - dataset_archive_sha256
+    - source_recipe_sha256
+    - design_freeze_sha256
+    - subset_manifest_sha256
+    - server_id
+    - storage_reservation_id

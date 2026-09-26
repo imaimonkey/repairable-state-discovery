@@ -21,15 +21,25 @@ FINGERPRINT_FILES = [
     "repairable_diffusion/configs/rsd_ref_v3/measurement_contract.yaml",
     "repairable_diffusion/src/rsd_ref_v3/__init__.py",
     "repairable_diffusion/src/rsd_ref_v3/task_adapters.py",
+    "repairable_diffusion/src/rsd_ref_v3/runner.py",
+    "repairable_diffusion/src/v2r/schema.py",
+    "repairable_diffusion/src/v2r/planning.py",
+    "repairable_diffusion/src/v2r/artifacts.py",
+    "repairable_diffusion/src/v2r/science.py",
     "scripts/audit_rsd_ref_v3.py",
+    "scripts/run_rsd_ref_v3.py",
+    "scripts/submit_rsd_ref_v3.py",
     "status/rsd_ref_v3/subsets/selection_policy.json",
-    "status/rsd_ref_v3/storage_plan.json",
-    "status/rsd_ref_v3/execution_readiness.json",
     "tests/test_rsd_ref_v3_contract.py",
+    "tests/test_rsd_ref_v3_runner.py",
 ]
 FINGERPRINT_FILES += [
     str(path.relative_to(ROOT))
     for path in sorted((ROOT / "repairable_diffusion/configs/rsd_ref_v3/runs").glob("*.yaml"))
+]
+FINGERPRINT_FILES += [
+    str(path.relative_to(ROOT))
+    for path in sorted((ROOT / "status/rsd_ref_v3/subsets").glob("llada_*.json"))
 ]
 
 

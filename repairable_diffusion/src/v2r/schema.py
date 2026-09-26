@@ -9,10 +9,12 @@ from pathlib import Path
 from typing import Any, Mapping
 
 NAMESPACE = "v2r_reference"
+GENERATION3_NAMESPACE = "rsd_ref_v3"
+SUPPORTED_NAMESPACES = frozenset({NAMESPACE, GENERATION3_NAMESPACE})
 SCHEMA_VERSION = "v2r.1"
 FORBIDDEN_METRICS = frozenset({"base_pass_at_k", "failed_items_probed"})
-STAGES = frozenset({"r0_smoke", "r0_full", "r1_bridge", "r2_equivalence", "base", "r3_core", "mechanism", "temporal", "localization", "fresh_control"})
-SCIENTIFIC_STAGES = frozenset({"base", "r3_core", "mechanism", "temporal", "localization", "fresh_control"})
+STAGES = frozenset({"r0_smoke", "r0_full", "r1_bridge", "r2_equivalence", "base", "r3_core", "mechanism", "temporal", "localization", "fresh_control", "successful_harm"})
+SCIENTIFIC_STAGES = frozenset({"base", "r3_core", "mechanism", "temporal", "localization", "fresh_control", "successful_harm"})
 DEEP_STAGES = SCIENTIFIC_STAGES - {"base"}
 CHECKPOINT_GRID = [0.125, 0.250, 0.375, 0.500, 0.625, 0.750, 0.875]
 
@@ -72,8 +74,8 @@ def fingerprint_payload(manifest: Mapping[str, Any]) -> dict[str, Any]:
 
 def validate_manifest(manifest: Mapping[str, Any]) -> None:
     validate_metric_names(manifest)
-    if manifest.get("schema_version") != SCHEMA_VERSION or manifest.get("namespace") != NAMESPACE:
-        raise ContractError("This is not a V2R manifest")
+    if manifest.get("schema_version") != SCHEMA_VERSION or manifest.get("namespace") not in SUPPORTED_NAMESPACES:
+        raise ContractError("Unsupported V2R/Generation 3 execution manifest namespace")
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", str(manifest.get("run_id", ""))):
         raise ContractError("Unsafe run_id")
     if manifest.get("stage") not in STAGES:
@@ -119,18 +121,22 @@ def validate_manifest(manifest: Mapping[str, Any]) -> None:
     if any(row["context"]["stage"] != manifest["stage"] for row in contexts):
         raise ContractError("Seed registry contains the wrong execution stage")
     if manifest["stage"] in DEEP_STAGES:
-        subset = manifest.get("failed_pool_freeze")
+        subset_key = "successful_pool_freeze" if manifest["stage"] == "successful_harm" else "failed_pool_freeze"
+        subset = manifest.get(subset_key)
         if not isinstance(subset, dict) or subset.get("status") != "FROZEN":
-            raise ContractError("Scientific probing requires a frozen trajectory-bank subset")
+            raise ContractError(f"Scientific probing requires a frozen {subset_key} subset")
         require_hash(subset.get("bank_sha256"), "bank_sha256")
         if subset.get("item_ids") != items:
             raise ContractError("Subset differs from the frozen failed pool")
         if manifest["config"].get("checkpoint_grid") != CHECKPOINT_GRID:
             raise ContractError("Reference probing requires the frozen normalized checkpoint grid")
-        if manifest["config"].get("B_loc") != 4 or manifest["config"].get("B_eval") != 8:
-            raise ContractError("Branch counts must be frozen at B_loc=4 and B_eval=8")
-        if manifest["config"].get("tau_confirm") != 0.25:
-            raise ContractError("Confirmation threshold must be 0.25")
+        if manifest["stage"] in {"r3_core", "temporal"}:
+            if manifest["config"].get("B_loc") != 4 or manifest["config"].get("B_eval") != 8:
+                raise ContractError("Branch counts must be frozen at B_loc=4 and B_eval=8")
+            if manifest["config"].get("tau_confirm") != 0.25:
+                raise ContractError("Confirmation threshold must be 0.25")
+        elif manifest["config"].get("B_eval") != 8:
+            raise ContractError("Mechanism and harm stages require B_eval=8")
 
 
 def probability(value: Any, name: str) -> float:

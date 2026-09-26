@@ -72,10 +72,16 @@ def writer_lock(path: Path) -> Iterator[None]:
             fcntl.flock(handle, fcntl.LOCK_UN)
 
 
-def assert_namespace(path: str | Path) -> Path:
+def assert_namespace(path: str | Path, namespace: str = "v2r_reference") -> Path:
     path = Path(path).resolve()
-    if "v2r_reference" not in path.parts or "v2_measurement" in path.parts:
-        raise ContractError("V2R outputs must be inside their own v2r_reference namespace")
+    if namespace == "v2r_reference":
+        valid = "v2r_reference" in path.parts and "v2_measurement" not in path.parts
+    elif namespace == "rsd_ref_v3":
+        valid = "rsd_ref_v3" in path.parts and "v2_measurement" not in path.parts and "v2r_reference" not in path.parts
+    else:
+        valid = False
+    if not valid:
+        raise ContractError(f"Outputs must be isolated inside the {namespace} namespace")
     return path
 
 
@@ -175,8 +181,10 @@ def _validate_result(manifest: Mapping[str, Any], item_id: str, result: Mapping[
             raise ContractError("A base trajectory requires an explicit boolean correctness result")
     if manifest["stage"] in SCIENTIFIC_STAGES and result.get("evidence_kind") != "reference_scientific":
         raise ContractError("Scientific outputs require reference_scientific evidence")
-    if manifest["stage"] in DEEP_STAGES and result.get("bank_sha256") != manifest["failed_pool_freeze"]["bank_sha256"]:
-        raise ContractError("Repairability result does not refer to the frozen reference trajectory bank")
+    if manifest["stage"] in DEEP_STAGES:
+        subset_key = "successful_pool_freeze" if manifest["stage"] == "successful_harm" else "failed_pool_freeze"
+        if result.get("bank_sha256") != manifest[subset_key]["bank_sha256"]:
+            raise ContractError("Repairability result does not refer to the frozen reference trajectory bank")
 
 
 def validate_completed_item(path: Path, manifest: Mapping[str, Any], item_id: str) -> dict[str, Any]:
@@ -195,7 +203,7 @@ def run_worker(manifest: Mapping[str, Any], shard_id: int, run_dir: str | Path,
                executor: Callable[..., Mapping[str, Any]], *, gates: Mapping[str, Mapping[str, Any]]) -> dict[str, Any]:
     validate_manifest(manifest)
     validate_gate_chain(manifest, gates)
-    run_dir = assert_namespace(run_dir)
+    run_dir = assert_namespace(run_dir, manifest["namespace"])
     if isinstance(shard_id, bool) or not isinstance(shard_id, int) or not 0 <= shard_id < len(manifest["shards"]):
         raise ContractError("Unknown shard")
     spec = manifest["shards"][shard_id]
@@ -289,7 +297,7 @@ def merge_run(manifest: Mapping[str, Any], run_dir: str | Path, *, gates: Mappin
     """
     validate_manifest(manifest)
     validate_gate_chain(manifest, gates)
-    run_dir = assert_namespace(run_dir)
+    run_dir = assert_namespace(run_dir, manifest["namespace"])
     expected_ids = set(range(len(manifest["shards"])))
     if shard_locations is None:
         roots = {index: run_dir / "shards" / f"shard-{index:03d}" for index in expected_ids}
@@ -354,7 +362,8 @@ def seal_run(manifest: Mapping[str, Any], run_dir: str | Path, bundle_dir: str |
     if manifest["stage"] not in SCIENTIFIC_STAGES:
         raise ContractError("Gate/smoke runs cannot be sealed as primary scientific evidence")
     validate_gate_chain(manifest, gates)
-    run_dir, bundle_dir = assert_namespace(run_dir), assert_namespace(bundle_dir)
+    run_dir = assert_namespace(run_dir, manifest["namespace"])
+    bundle_dir = assert_namespace(bundle_dir, manifest["namespace"])
     merged = run_dir / "aggregate"
     marker = read_json(merged / "MERGED.json")
     if marker.get("binding") != manifest_binding(manifest) or marker.get("status") != "MERGED_VALID":

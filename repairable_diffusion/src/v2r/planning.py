@@ -5,7 +5,8 @@ import math
 from datetime import datetime
 from typing import Any, Iterable, Mapping
 
-from .schema import ContractError, NAMESPACE, SCHEMA_VERSION, canonical_hash, fingerprint_payload, validate_manifest
+from .schema import (ContractError, NAMESPACE, SCHEMA_VERSION, SUPPORTED_NAMESPACES,
+                     canonical_hash, fingerprint_payload, validate_manifest)
 from .seeds import build_seed_registry, enumerate_contexts
 
 
@@ -122,7 +123,10 @@ def make_plan(spec: Mapping[str, Any]) -> dict[str, Any]:
     for reserved in ("run_fingerprint", "seed_registry", "seed_registry_sha256", "shards", "assignment_sha256"):
         if reserved in spec:
             raise ContractError(f"Derived plan field supplied by caller: {reserved}")
-    manifest.update(schema_version=SCHEMA_VERSION, namespace=NAMESPACE)
+    namespace = spec.get("namespace", NAMESPACE)
+    if namespace not in SUPPORTED_NAMESPACES:
+        raise ContractError(f"Unsupported execution namespace: {namespace}")
+    manifest.update(schema_version=SCHEMA_VERSION, namespace=namespace)
     manifest["item_ids"] = sorted(spec["item_ids"])
     for name in ("model", "dataset", "recipe", "config"):
         manifest[f"{name}_sha256"] = canonical_hash(spec[name])

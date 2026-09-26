@@ -69,7 +69,11 @@ A Generation 3 run name must start with `rsd_ref_v3_`. A Generation 3 artifact m
 
 Generation 3 uses one source-native reference trajectory per item for the base bank. Counterfactual branches are not base pass@k and must not be silently pooled with the base denominator.
 
-## 4. Frozen execution matrix
+## 4. V2-only frozen execution matrix
+
+The matrix in this section applies **only to the frozen V2 generation**. It is
+not a requirement for RSD Generation 3 and must not be used to override the
+Generation 3 contract.
 
 Deep anchor:
 
@@ -93,7 +97,23 @@ Backbone transfer:
 
 Do not substitute another dataset because it is easier or looks better without explicit human approval.
 
-## 5. Frozen operator semantics
+## 5. RSD Generation 3-only scientific matrix
+
+Generation 3 (`rsd_ref_v3`) has a separate source-native primary matrix:
+
+- LLaDA-8B-Instruct × OpenCompass-native MATH test archive, 5,000 items;
+- LLaDA-8B-Instruct × OpenCompass-native GSM8K test archive, 1,319 items;
+- Dream MATH/GSM are secondary replication tasks and never fill a LLaDA cell;
+- MATH-500 is a calibration bridge only and is never a confirmatory denominator;
+- the base bank has exactly one source-native reference trajectory per item;
+- deep stages are materialized only after the full base bank is sealed and the
+  outcome-independent hash-ranked subset is frozen.
+
+Generation 3 task identity, prompts, evaluators, recipes, operators, targets,
+and provenance are defined by the Generation 3 source-of-truth documents named
+in section 1. Its artifacts must remain under the `rsd_ref_v3` namespace.
+
+## 6. Shared operator semantics
 
 `native_continuation` is an **exact replay/fidelity control**, not the estimator of `q_C`.
 
@@ -109,7 +129,7 @@ For LLaDA, a local intervention is scoped to the **currently active block/phase*
 
 `fresh_sampling_compute_control` means actually decoded fresh samples. The V1 analytic extra-sampling proxy is appendix/history only.
 
-## 6. Statistical boundary
+## 7. Shared statistical boundary
 
 - Localization uses `B_loc` branches.
 - Confirmation uses disjoint `B_eval` seeds.
@@ -120,7 +140,7 @@ For LLaDA, a local intervention is scoped to the **currently active block/phase*
 - Retrospective probe strata may sample one failed and one successful trajectory per item, but **prospective deployment may not use that outcome-selected set**. Prospective policy evaluation is frozen to `probe.policy_trajectory_ids: [0]` for every item regardless of final correctness; all other base trajectories stay unchanged.
 - Item pass@k uses branch-level simulation when raw branch outcomes exist; do not multiply marginal trajectory probabilities.
 
-## 7. No result-contingent redesign
+## 8. Shared no-result-contingent redesign rule
 
 After the two frozen pilot runs complete, they are used only to verify execution correctness and resource feasibility.
 
@@ -138,7 +158,9 @@ Do not alter any of the following because the observed effect is weak or inconve
 
 A change to one of these requires explicit human approval and a new contract version.
 
-## 8. Mandatory gate order
+## 9. Mandatory gate order by generation
+
+### V2-only gates
 
 Before primary LLaDA submission:
 
@@ -158,22 +180,26 @@ python scripts/audit_v2_design.py --mode dream
 
 If any command fails, stop the affected tier and report it. Codex does not fix repository code.
 
-For RSD Generation 3, the designated coding assistant must freeze and audit the new generation before handoff. Codex may execute only after all of these are true:
+### RSD Generation 3 gates
+
+The designated coding assistant must freeze and audit the new generation before
+handoff. The design audit is independent of mutable storage/runtime state:
 
 ```bash
 python scripts/audit_rsd_ref_v3.py --mode design
 ```
 
-```text
-canonical source/config SHA match
-server1 scientific qualification PASS
-storage READY
-protocol freeze PASS
-```
+The readiness audit additionally requires the exact canonical execution SHA,
+server1 scientific qualification, approved storage reservation, live runtime
+health/free-space checks, and protocol freeze. `--mode readiness` is the only
+gate that may authorize execution; design freeze remains valid when storage
+status later changes from `STORAGE_NOT_RESERVED` to `STORAGE_READY`.
 
 Cross-server equivalence is required only when multi-server shard pooling is selected. A single-server primary execution may proceed without it.
 
-## 9. Job execution
+## 10. Job execution by generation
+
+### V2-only job execution
 
 After the primary gate passes:
 
@@ -201,7 +227,29 @@ bash scripts/run_v2_suite.sh full-local
 
 Use `--dry-run` before Slurm submission when adapting cluster flags. Changing Slurm partition/time/memory is allowed; changing scientific config is not.
 
-## 10. Codex execution-only boundary
+### RSD Generation 3 job execution
+
+Generation 3 uses the explicit runner and neutral job namespace. These commands
+are executable entry points, but all non-dry-run stages fail closed until the
+readiness audit passes:
+
+```bash
+python scripts/run_rsd_ref_v3.py --stage reference --task llada_math --dry-run
+python scripts/run_rsd_ref_v3.py --stage reference --task llada_gsm8k --dry-run
+python scripts/run_rsd_ref_v3.py --stage materialize-subsets --dry-run
+python scripts/run_rsd_ref_v3.py --stage core --task llada_math --dry-run
+python scripts/run_rsd_ref_v3.py --stage temporal --task llada_math --dry-run
+python scripts/run_rsd_ref_v3.py --stage mechanism --task llada_math --dry-run
+python scripts/run_rsd_ref_v3.py --stage successful-harm --task llada_math --dry-run
+python scripts/submit_rsd_ref_v3.py --stage reference --task llada_math --dry-run
+```
+
+The fixed execution order is: full source-native reference bank, base seal,
+failed/successful pool materialization, subset-manifest seal, core/temporal/
+mechanism/successful-harm execution, aggregate, then compact seal. A deep
+stage may not manufacture item IDs before its sealed base bank exists.
+
+## 11. Codex execution-only boundary
 
 Codex may **execute** without asking:
 
@@ -216,7 +264,7 @@ Codex must **not** modify scientific code, YAMLs, tests, contracts, or documenta
 If execution exposes a code bug, path-portability issue that requires a code edit, replay mismatch, evaluator problem, or scientific-gate failure, Codex must stop the affected tier and report the exact traceback/log/state. The research owner will patch and push the repository, after which Codex restarts the relevant gates from the new SHA.
 
 Infrastructure choices that do not modify tracked files (environment variables, Slurm flags, cache locations, node-local clean clones) remain allowed.
-## 11. Stop conditions
+## 12. Stop conditions
 
 Stop and report instead of improvising if:
 
@@ -228,7 +276,7 @@ Stop and report instead of improvising if:
 - CoRe-snapshot cannot preserve the documented context-brittleness scoring semantics;
 - full submission would require changing a scientific parameter.
 
-## 12. Required final deliverables
+## 13. Required final deliverables
 
 Codex execution is complete only when `results/v2_measurement/` contains:
 
@@ -248,4 +296,9 @@ Codex execution is complete only when `results/v2_measurement/` contains:
 
 Do not draft stronger claims than these artifacts support.
 
-For RSD Generation 3, the required pre-execution handoff is defined in `docs/RSD_REF_V3_EXECUTION.md` and `status/rsd_ref_v3/design_freeze.json`. Generation 3 confirmatory execution is not authorized merely because V2 artifacts exist.
+The V2 deliverables above apply only to the frozen V2 generation.
+
+For RSD Generation 3, the required pre-execution handoff is defined in
+`docs/RSD_REF_V3_EXECUTION.md`, `status/rsd_ref_v3/design_freeze.json`, and
+the runtime readiness files. Generation 3 confirmatory execution is not
+authorized merely because V2 artifacts exist.
