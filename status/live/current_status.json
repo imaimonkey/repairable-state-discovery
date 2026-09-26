@@ -1,9 +1,9 @@
 {
   "schema": "iclr2027_live_status_v1",
-  "generated_at_kst": "2026-09-26T22:08:36+09:00",
+  "generated_at_kst": "2026-09-26T22:38:53+09:00",
   "collector_hostname": "ubuntu",
   "monitor_branch": "codex/iclr2027-live-monitor-20260923",
-  "monitor_commit": "88ea32ab57e61ca27fa95b6f70e4537a9980c829",
+  "monitor_commit": "558a1aa5dff9e3354c2ed40841bb052c99a451ee",
   "baseline_analysis_bundle_commit": "c41d6b10ed0c041581cae4f84a41b4ad783ebe00",
   "observation_sources": [
     "squeue",
@@ -163,7 +163,9 @@
       "integrity_alerts": [],
       "liveness": {
         "processes": [],
-        "gpu_compute_apps": []
+        "gpu_compute_apps": [
+          "79073, /home/kimhj/llada8b_basic/.venv/bin/python, 16942 MiB"
+        ]
       },
       "sstat": {
         "ok": true,
@@ -173,7 +175,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-26T21:38:19+09:00"
+        "last_snapshot": "2026-09-26T22:08:36+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -318,7 +320,9 @@
       "integrity_alerts": [],
       "liveness": {
         "processes": [],
-        "gpu_compute_apps": []
+        "gpu_compute_apps": [
+          "79073, /home/kimhj/llada8b_basic/.venv/bin/python, 16942 MiB"
+        ]
       },
       "sstat": {
         "ok": true,
@@ -328,7 +332,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-26T21:38:19+09:00"
+        "last_snapshot": "2026-09-26T22:08:36+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -576,7 +580,9 @@
       "integrity_alerts": [],
       "liveness": {
         "processes": [],
-        "gpu_compute_apps": []
+        "gpu_compute_apps": [
+          "79073, /home/kimhj/llada8b_basic/.venv/bin/python, 16942 MiB"
+        ]
       },
       "sstat": {
         "ok": true,
@@ -586,7 +592,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-26T21:38:19+09:00"
+        "last_snapshot": "2026-09-26T22:08:36+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -742,7 +748,7 @@
         "processes": [],
         "gpu_compute_apps": [
           "3978768, python, 11188 MiB",
-          "3825025, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 20960 MiB",
+          "3825025, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 13412 MiB",
           "1320207, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 9206 MiB",
           "1320207, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17934 MiB",
           "1320207, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17934 MiB",
@@ -757,7 +763,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-26T21:38:19+09:00"
+        "last_snapshot": "2026-09-26T22:08:36+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1007,7 +1013,7 @@
         "processes": [],
         "gpu_compute_apps": [
           "3978768, python, 11188 MiB",
-          "3825025, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 20960 MiB",
+          "3825025, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 13412 MiB",
           "1320207, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 9206 MiB",
           "1320207, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17934 MiB",
           "1320207, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17934 MiB",
@@ -1022,7 +1028,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-26T21:38:19+09:00"
+        "last_snapshot": "2026-09-26T22:08:36+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1272,7 +1278,7 @@
         "processes": [],
         "gpu_compute_apps": [
           "3978768, python, 11188 MiB",
-          "3825025, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 20960 MiB",
+          "3825025, /mnt/raid5/ryujh/grpo_opd_projection/.venv/bin/python3, 13412 MiB",
           "1320207, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 9206 MiB",
           "1320207, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17934 MiB",
           "1320207, /mnt/raid5/kimjh/BPR_main_table_runtime_20260701/.venv/bin/python, 17934 MiB",
@@ -1287,7 +1293,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-26T21:38:19+09:00"
+        "last_snapshot": "2026-09-26T22:08:36+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1553,7 +1559,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-26T21:38:19+09:00"
+        "last_snapshot": "2026-09-26T22:08:36+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1775,7 +1781,7 @@
       "source_available": true,
       "source_error": null,
       "baseline": {
-        "last_snapshot": "2026-09-26T21:38:19+09:00"
+        "last_snapshot": "2026-09-26T22:08:36+09:00"
       },
       "velocity": {
         "30m": 0,
@@ -1839,7 +1845,7 @@
       "RESULT_INTEGRATION.md": false
     },
     "build": {
-      "checked_at_kst": "2026-09-26T22:08:36+09:00",
+      "checked_at_kst": "2026-09-26T22:38:53+09:00",
       "paper_head": "0dd161c8cf4bf3e7dbe4042234a0954950ce870e",
       "performed": false,
       "build_pass": null,
@@ -1852,7 +1858,7 @@
     "local": [
       "Filesystem     1024-blocks       Used  Available Capacity Mounted on",
       "/dev/nvme0n1p2  1843726932 1669293612   80703376      96% /",
-      "/dev/nvme1n1p1  7441182592 5750107808 1315985224      82% /data"
+      "/dev/nvme1n1p1  7441182592 5750177296 1315915736      82% /data"
     ],
     "10.0.12.120": {
       "available": false,
@@ -1864,8 +1870,8 @@
     },
     "10.0.12.163": [
       "Filesystem     1024-blocks       Used Available Capacity Mounted on",
-      "/dev/nvme1n1p2  1843726932 1646580060 103416928      95% /",
-      "/dev/nvme0n1p1  7441182592 6662275632 403817400      95% /data"
+      "/dev/nvme1n1p2  1843726932 1646580632 103416356      95% /",
+      "/dev/nvme0n1p1  7441182592 6664184680 401908352      95% /data"
     ]
   },
   "forensic_50752": {
@@ -1999,9 +2005,9 @@
     }
   },
   "readiness": {
-    "generated_at_kst": "2026-09-26T22:08:36+09:00",
+    "generated_at_kst": "2026-09-26T22:38:53+09:00",
     "deadline_kst": "2026-09-26T20:59:00+09:00",
-    "hours_remaining": -1.16,
+    "hours_remaining": -1.66,
     "experiment": {
       "sealed_rows": 4,
       "running_rows": 0,
