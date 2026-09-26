@@ -1,5 +1,5 @@
-2026-09-26T22:45:34.320044+00:00
-HOURS TO DEADLINE: -10.78
+2026-09-26T22:47:05.678969+00:00
+HOURS TO DEADLINE: -10.80
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -22,7 +22,7 @@ SERVER2
 observed=True idle_gpu_candidates=['2', '7'] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=[] safe_filesystems=[]
+observed=True idle_gpu_candidates=['2'] safe_filesystems=[]
 
 SERVER4
 observed=True idle_gpu_candidates=['2', '3', '5', '7'] safe_filesystems=['/tmp', '/var/tmp']
@@ -70,10 +70,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1517733 heartbeat=2026-09-26T22:43:53.014555+00:00
+status=RUNNING pid=1519711 heartbeat=2026-09-26T22:45:53.052254+00:00
 
 MONITOR
-heartbeat=2026-09-26T22:45:34.320044+00:00
+heartbeat=2026-09-26T22:47:05.678969+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
