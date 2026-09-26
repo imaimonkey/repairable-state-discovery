@@ -407,6 +407,54 @@ def _random_positions(snapshot: Mapping[str, Any], target: list[int], seed: int)
     return sorted(random.Random(seed).sample(eligible, min(len(target), len(eligible))))
 
 
+def _core_snapshot_positions(sampler: Any, snapshot: Mapping[str, Any], target: list[int]) -> list[int]:
+    """Apply the pinned V2 CoRe-snapshot position rule to a native snapshot."""
+    import torch
+    import torch.nn.functional as functional
+
+    prompt_len = int(snapshot["prompt_len"])
+    block_length = int(sampler.generation["block_length"])
+    steps = int(sampler.generation["steps"])
+    gen_length = int(sampler.generation["gen_length"])
+    steps_per_block = steps // (gen_length // block_length)
+    if int(snapshot["step_in_block"]) >= steps_per_block:
+        return []
+    start = prompt_len + int(snapshot["block_index"]) * block_length
+    end = start + block_length
+    mask_id = int(sampler.generation["mask_id"])
+    device = next(sampler.model.parameters()).device
+    tokens = torch.tensor(snapshot["full_token_ids"], dtype=torch.long, device=device).unsqueeze(0)
+    with torch.no_grad():
+        logits = sampler.model(tokens).logits
+        probabilities = functional.softmax(logits.to(torch.float32), dim=-1)
+    committed = [absolute for absolute in range(start, end) if int(tokens[0, absolute].item()) != mask_id]
+    if not committed:
+        return []
+    top2, _ = probabilities[0, committed].topk(2, dim=-1)
+    margins = top2[:, 0] - top2[:, 1]
+    candidate_count = min(32, len(committed))
+    _, candidate_indices = torch.topk(-margins, k=candidate_count)
+    verify_absolute = [committed[int(index)] for index in candidate_indices.detach().cpu().tolist()]
+    verified_tokens = tokens.clone()
+    verified_tokens[0, verify_absolute] = mask_id
+    with torch.no_grad():
+        verified_logits = sampler.model(verified_tokens).logits
+        verified_probabilities = functional.softmax(verified_logits.to(torch.float32), dim=-1)
+    original_tokens = tokens[0, verify_absolute]
+    original_probability = verified_probabilities[0, verify_absolute].gather(-1, original_tokens.unsqueeze(-1)).squeeze(-1)
+    replacement = torch.argmax(verified_logits[0, verify_absolute], dim=-1)
+    replacement_probability = verified_probabilities[0, verify_absolute].gather(-1, replacement.unsqueeze(-1)).squeeze(-1)
+    valid = (replacement != original_tokens) & (replacement_probability >= 0.30)
+    valid_indices = torch.where(valid)[0]
+    if valid_indices.numel() == 0 or not target:
+        return []
+    log_probability = torch.log(original_probability + 1e-10)
+    desired = min(len(target), int(valid_indices.numel()))
+    _, selected = torch.topk(-log_probability[valid_indices], k=desired)
+    selected_indices = valid_indices[selected]
+    return sorted(verify_absolute[int(index)] - prompt_len for index in selected_indices.detach().cpu().tolist())
+
+
 def _load_selected_trajectory(manifest: Mapping[str, Any], item_id: str) -> tuple[Any, dict[str, Any], dict[str, Any]]:
     sampler, items = runtime(manifest)
     source = manifest["trajectory_index"][item_id]
@@ -435,10 +483,11 @@ def _control_result(sampler: Any, item: dict[str, Any], snapshot: dict[str, Any]
         return {"correct": outcome["correct"], "answer": outcome["final_answer"], "nfe": outcome["nfe"],
                 "seconds": outcome["seconds"], "modified_positions": [], "mask_count": outcome["mask_count"]}
     if operator == CORE:
-        confidences = [float(value) for value in snapshot["token_confidences"] if value is not None]
-        score = (sum(1.0 - value for value in confidences) / len(confidences)) if confidences else None
-        return {"correct": None, "answer": None, "nfe": 0, "seconds": 0.0, "modified_positions": [],
-                "mask_count": 0, "core_score": score, "core_source_repository": "UCF-CRCV/CoRe",
+        modified = _core_snapshot_positions(sampler, snapshot, target)
+        outcome = sampler.continue_llada(item, snapshot, seed=record["seed"], modified_positions=modified)
+        return {"correct": outcome["correct"], "answer": outcome["answer"], "nfe": outcome["nfe"],
+                "seconds": outcome["seconds"], "modified_positions": modified,
+                "mask_count": outcome["mask_count"], "core_source_repository": "UCF-CRCV/CoRe",
                 "core_source_revision": "524e01e11a8751afb67b81a2c930f938faf9a70e", "label": "CoRe-snapshot"}
     raise ContractError(f"Unsupported Generation 3 mechanism operator: {operator}")
 
