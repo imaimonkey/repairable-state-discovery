@@ -13,7 +13,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "17000",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "100",
+          "utilization_percent": "99",
           "uuid": "GPU-2087c567-ec90-0aa2-09c5-c5174daec87a"
         },
         {
@@ -146,7 +146,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "17944",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "0",
+          "utilization_percent": "95",
           "uuid": "GPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa"
         },
         {
@@ -225,7 +225,7 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=ubuntu Arch=x86_64 CoresPerSocket=24  CPUAlloc=20 CPUEfctv=96 CPUTot=96 CPULoad=3.84 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:h200:4 NodeAddr=ubuntu NodeHostName=ubuntu Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=180224 FreeMem=70432 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:20:30 SlurmdStartTime=2026-09-27T15:40:58 LastBusyTime=2026-09-17T12:34:36 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=96,mem=500G,billing=96,gres/gpu=4 AllocTRES=cpu=20,mem=176G,gres/gpu=3 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=ubuntu Arch=x86_64 CoresPerSocket=24  CPUAlloc=20 CPUEfctv=96 CPUTot=96 CPULoad=3.89 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:h200:4 NodeAddr=ubuntu NodeHostName=ubuntu Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=180224 FreeMem=69954 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:20:30 SlurmdStartTime=2026-09-27T15:40:58 LastBusyTime=2026-09-17T12:34:36 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=96,mem=500G,billing=96,gres/gpu=4 AllocTRES=cpu=20,mem=176G,gres/gpu=3 CurrentWatts=0 AveWatts=0\n"
       }
     },
     "server4": {
@@ -241,7 +241,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "13151",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "61",
+          "utilization_percent": "62",
           "uuid": "GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e"
         },
         {
@@ -250,7 +250,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "78625",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "93",
+          "utilization_percent": "88",
           "uuid": "GPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f"
         },
         {
@@ -286,7 +286,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "13151",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "68",
+          "utilization_percent": "62",
           "uuid": "GPU-5a338da8-f075-a117-8f2e-aeee88049f4b"
         },
         {
@@ -313,9 +313,9 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=server4 Arch=x86_64 CoresPerSocket=32  CPUAlloc=40 CPUEfctv=128 CPUTot=128 CPULoad=9.18 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:rtx_pro_6000:8(S:0-1) NodeAddr=server4 NodeHostName=server4 Version=26.05.0 OS=Linux 6.8.0-124-generic #124-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 13:00:45 UTC 2026  RealMemory=512000 AllocMem=299008 FreeMem=3104 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-06-26T10:55:08 SlurmdStartTime=2026-09-12T06:05:32 LastBusyTime=2026-09-25T11:40:47 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=500G,billing=128,gres/gpu=8 AllocTRES=cpu=40,mem=292G,gres/gpu=6 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=server4 Arch=x86_64 CoresPerSocket=32  CPUAlloc=40 CPUEfctv=128 CPUTot=128 CPULoad=9.02 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:rtx_pro_6000:8(S:0-1) NodeAddr=server4 NodeHostName=server4 Version=26.05.0 OS=Linux 6.8.0-124-generic #124-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 13:00:45 UTC 2026  RealMemory=512000 AllocMem=299008 FreeMem=3536 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-06-26T10:55:08 SlurmdStartTime=2026-09-12T06:05:32 LastBusyTime=2026-09-25T11:40:47 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=500G,billing=128,gres/gpu=8 AllocTRES=cpu=40,mem=292G,gres/gpu=6 CurrentWatts=0 AveWatts=0\n"
       }
     }
   },
-  "timestamp": "2026-09-27T12:25:08.035443+00:00"
+  "timestamp": "2026-09-27T12:26:39.490126+00:00"
 }
