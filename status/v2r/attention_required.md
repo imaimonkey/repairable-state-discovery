@@ -1,5 +1,5 @@
-2026-09-27T15:03:51.926134+00:00
-HOURS TO DEADLINE: -27.08
+2026-09-27T15:05:23.526190+00:00
+HOURS TO DEADLINE: -27.11
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -10,7 +10,6 @@ Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestra
 
 INTEGRITY ALERTS
 MONITOR_DRIFT: Slurm job 53883_[4-7%8] exists but legacy monitor state does not mention it.
-MONITOR_DRIFT: Slurm job 53905 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53883_3 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53883_0 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53883_1 exists but legacy monitor state does not mention it.
@@ -19,7 +18,6 @@ MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was c
 
 ALL ACTIVE KIMHJ JOBS
 53883_[4-7%8] llada-gsm8k-full PENDING  UNKNOWN_NEEDS_FORENSIC
-53905 rsd-gate-gsm PENDING  UNKNOWN_NEEDS_FORENSIC
 53883_3 llada-gsm8k-full RUNNING devbox UNKNOWN_NEEDS_FORENSIC
 53883_0 llada-gsm8k-full RUNNING devbox UNKNOWN_NEEDS_FORENSIC
 53883_1 llada-gsm8k-full RUNNING devbox UNKNOWN_NEEDS_FORENSIC
@@ -80,10 +78,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2665259 heartbeat=2026-09-27T15:02:00.301528+00:00
+status=DEGRADED_RETRY pid=2667601 heartbeat=2026-09-27T15:04:45.430863+00:00
 
 MONITOR
-heartbeat=2026-09-27T15:03:51.926134+00:00
+heartbeat=2026-09-27T15:05:23.526190+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
