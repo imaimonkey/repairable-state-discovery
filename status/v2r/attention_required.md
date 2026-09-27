@@ -1,5 +1,5 @@
-2026-09-27T05:04:50.588372+00:00
-HOURS TO DEADLINE: -17.10
+2026-09-27T05:07:53.379142+00:00
+HOURS TO DEADLINE: -17.15
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -16,7 +16,7 @@ ALL ACTIVE KIMHJ JOBS
 53262 v2full-gsm8k RUNNING ubuntu UNKNOWN_NEEDS_FORENSIC
 
 SERVER1
-observed=True idle_gpu_candidates=['0', '1', '2', '3', '4', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['0', '2', '3', '4', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER2
 observed=True idle_gpu_candidates=[] safe_filesystems=[]
@@ -70,10 +70,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1901007 heartbeat=2026-09-27T05:03:55.805506+00:00
+status=RUNNING pid=1903139 heartbeat=2026-09-27T05:05:55.818901+00:00
 
 MONITOR
-heartbeat=2026-09-27T05:04:50.588372+00:00
+heartbeat=2026-09-27T05:07:53.379142+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
