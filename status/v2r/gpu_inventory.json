@@ -4,7 +4,7 @@
       "gpu_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 2599231, VLLM::EngineCore, 43726\nGPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 3034771, VLLM::EngineCore, 45048\nGPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee, 2765453, /home/kimhj/llada8b_basic/.venv/bin/python, 21258"
+        "stdout": "GPU-2087c567-ec90-0aa2-09c5-c5174daec87a, 2599231, VLLM::EngineCore, 43726\nGPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85, 3062808, VLLM::EngineCore, 44004\nGPU-e3f0bff5-fdfd-b411-a133-d04104e5cfee, 2765453, /home/kimhj/llada8b_basic/.venv/bin/python, 21258"
       },
       "gpus": [
         {
@@ -18,11 +18,11 @@
         },
         {
           "index": "1",
-          "memory_free_mib": "3485",
+          "memory_free_mib": "4527",
           "memory_total_mib": "49140",
-          "memory_used_mib": "45058",
+          "memory_used_mib": "44016",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "100",
+          "utilization_percent": "45",
           "uuid": "GPU-5d6a1f79-0105-d49c-d8de-40c9438d6d85"
         },
         {
@@ -128,7 +128,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "9216",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "13",
+          "utilization_percent": "0",
           "uuid": "GPU-ca5070d9-5463-7527-5e0e-a4216548e38b"
         },
         {
@@ -137,7 +137,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "17964",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "8",
+          "utilization_percent": "0",
           "uuid": "GPU-933bf467-90ac-31b1-24d8-15dc3162537b"
         },
         {
@@ -146,7 +146,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "17944",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "8",
+          "utilization_percent": "0",
           "uuid": "GPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa"
         },
         {
@@ -155,7 +155,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "17944",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "7",
+          "utilization_percent": "0",
           "uuid": "GPU-aaac1d4e-ab02-c216-ddd6-2f7f23d332eb"
         },
         {
@@ -216,7 +216,7 @@
           "memory_total_mib": "143771",
           "memory_used_mib": "115401",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "98",
+          "utilization_percent": "96",
           "uuid": "GPU-40729417-86d2-9b2e-32a1-a0f5ed143870"
         }
       ],
@@ -232,7 +232,7 @@
       "gpu_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "GPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f, 4006549, VLLM::Worker, 78616\nGPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8, 3394333, VLLM::Worker, 63910\nGPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df, 4041088, VLLM::Worker, 78614\nGPU-2647a80a-d813-cbd4-46da-d87355fb69f9, 4028876, VLLM::EngineCore, 91462"
+        "stdout": "GPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f, 4006549, VLLM::Worker, 78616\nGPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8, 3394333, VLLM::Worker, 63910\nGPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df, 4041088, VLLM::Worker, 78614\nGPU-2647a80a-d813-cbd4-46da-d87355fb69f9, 4028876, VLLM::EngineCore, 91464"
       },
       "gpus": [
         {
@@ -250,7 +250,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "78625",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "96",
+          "utilization_percent": "94",
           "uuid": "GPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f"
         },
         {
@@ -277,7 +277,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "78623",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "83",
+          "utilization_percent": "52",
           "uuid": "GPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df"
         },
         {
@@ -291,9 +291,9 @@
         },
         {
           "index": "6",
-          "memory_free_mib": "5780",
+          "memory_free_mib": "5778",
           "memory_total_mib": "97887",
-          "memory_used_mib": "91473",
+          "memory_used_mib": "91475",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
           "utilization_percent": "100",
           "uuid": "GPU-2647a80a-d813-cbd4-46da-d87355fb69f9"
@@ -317,5 +317,5 @@
       }
     }
   },
-  "timestamp": "2026-09-27T09:57:19.217942+00:00"
+  "timestamp": "2026-09-27T09:58:50.557389+00:00"
 }
