@@ -14,6 +14,93 @@ from repairable_diffusion.src.v2r.schema import ContractError
 
 
 class RSDRefV3RunnerTests(unittest.TestCase):
+    @staticmethod
+    def _location(root: Path, name: str) -> dict[str, object]:
+        approved = root / "approved" / "rsd_ref_v3"
+        return runner.runtime_location(f"outputs/rsd_ref_v3/{name}", {"approved_output_root": str(approved)})
+
+    def test_reference_plans_read_the_frozen_seed_for_both_tasks(self) -> None:
+        for task in ("llada_math", "llada_gsm8k"):
+            path, config = runner.load_run_config(task, "reference")
+            recipe, recipe_task = runner._recipe(task)
+            with tempfile.TemporaryDirectory() as temp:
+                manifest = runner._base_plan(
+                    task, path, config, [{"item_id": f"{task}-fixture"}], recipe,
+                    recipe_task, "f" * 64, 1.0, self._location(Path(temp), "reference"),
+                    {"reservation_id": "fixture"},
+                )
+            self.assertEqual(manifest["design_seed"], 314159265)
+            self.assertEqual(manifest["seed_registry"]["design_seed"], 314159265)
+
+    def test_core_and_temporal_plans_read_the_frozen_seed_for_both_tasks(self) -> None:
+        for task in ("llada_math", "llada_gsm8k"):
+            _, base_config = runner.load_run_config(task, "reference")
+            recipe, recipe_task = runner._recipe(task)
+            for stage in ("core", "temporal"):
+                path, config = runner.load_run_config(task, stage)
+                merged = {
+                    **config,
+                    "generation": base_config["generation"],
+                    "model_id": base_config["backend"]["model_id"],
+                    "model_revision": base_config["backend"]["model_revision"],
+                    "population": base_config["dataset"]["population"],
+                    "source_archive_sha256": base_config["dataset"]["source_archive_sha256"],
+                }
+                with tempfile.TemporaryDirectory() as temp:
+                    root = Path(temp)
+                    subset_path = root / "subset.json"
+                    subset = {"item_ids": [f"{task}-fixture"], "bank_sha256": "b" * 64,
+                              "selection_sha256": "c" * 64}
+                    subset_path.write_text(json.dumps(subset), encoding="utf-8")
+                    with patch.object(runner, "_trajectory_index", return_value={
+                        f"{task}-fixture": {"path": "/tmp/fixture", "sha256": "d" * 64}
+                    }):
+                        manifest = runner._deep_plan(
+                            task, stage, path, merged, [{"item_id": f"{task}-fixture"}], recipe,
+                            "f" * 64, subset_path, subset, root / "base", 1.0,
+                            self._location(root, stage), {"reservation_id": "fixture"},
+                        )
+                self.assertEqual(manifest["design_seed"], 314159265)
+                self.assertEqual(manifest["seed_registry"]["design_seed"], 314159265)
+
+    def test_all_deep_plan_bridges_pass_the_frozen_seed_to_make_plan(self) -> None:
+        for task in ("llada_math", "llada_gsm8k"):
+            _, base_config = runner.load_run_config(task, "reference")
+            recipe, recipe_task = runner._recipe(task)
+            for stage in ("core", "temporal", "mechanism", "successful-harm"):
+                path, config = runner.load_run_config(task, stage)
+                merged = {
+                    **config,
+                    "generation": base_config["generation"],
+                    "model_id": base_config["backend"]["model_id"],
+                    "model_revision": base_config["backend"]["model_revision"],
+                    "population": base_config["dataset"]["population"],
+                    "source_archive_sha256": base_config["dataset"]["source_archive_sha256"],
+                }
+                with tempfile.TemporaryDirectory() as temp:
+                    root = Path(temp)
+                    subset_path = root / "subset.json"
+                    subset = {"item_ids": [f"{task}-fixture"], "bank_sha256": "b" * 64,
+                              "selection_sha256": "c" * 64}
+                    subset_path.write_text(json.dumps(subset), encoding="utf-8")
+                    with patch.object(runner, "_trajectory_index", return_value={
+                        f"{task}-fixture": {"path": "/tmp/fixture", "sha256": "d" * 64}
+                    }), patch.object(runner, "make_plan", side_effect=lambda spec: spec):
+                        spec = runner._deep_plan(
+                            task, stage, path, merged, [{"item_id": f"{task}-fixture"}], recipe,
+                            "f" * 64, subset_path, subset, root / "base", 1.0,
+                            self._location(root, stage), {"reservation_id": "fixture"},
+                        )
+                self.assertEqual(spec["design_seed"], 314159265)
+
+    def test_invalid_frozen_design_seed_fails_closed(self) -> None:
+        for invalid in (None, True, -1, "314159265"):
+            with self.subTest(invalid=invalid), patch.object(
+                runner, "load_yaml", return_value={"design_seed": invalid}
+            ):
+                with self.assertRaisesRegex(ContractError, "INVALID_DESIGN_SEED_IN_MEASUREMENT_CONTRACT"):
+                    runner._design_seed()
+
     def test_all_public_stages_resolve_to_generation3_configs(self) -> None:
         for stage in ("reference", "core", "temporal", "mechanism", "successful-harm"):
             path, config = runner.load_run_config("llada_math", stage)

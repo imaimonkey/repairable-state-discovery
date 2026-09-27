@@ -70,6 +70,22 @@ def _json(path: Path) -> dict[str, Any]:
     return value
 
 
+def _design_seed() -> int:
+    """Return the frozen global seed from the measurement contract.
+
+    Run YAMLs describe task recipes, while the measurement contract owns the
+    cross-task design identity.  Keep this bridge explicit and fail closed so
+    a missing or malformed seed cannot silently change the seed registry.
+    """
+    contract = load_yaml(CONTRACT)
+    if not isinstance(contract, Mapping):
+        raise ContractError("INVALID_MEASUREMENT_CONTRACT")
+    seed = contract.get("design_seed")
+    if type(seed) is not int or seed < 0:
+        raise ContractError("INVALID_DESIGN_SEED_IN_MEASUREMENT_CONTRACT")
+    return seed
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -226,6 +242,7 @@ def _base_plan(task: str, config_path_value: Path, config: dict[str, Any], rows:
         "execution_git_sha": current_git_sha(),
         "design_sha256": freeze_sha,
         "design_freeze_sha256": freeze_sha,
+        "design_seed": _design_seed(),
         "generation_id": "rsd_ref_v3",
         "artifact_namespace": "rsd_ref_v3",
         "storage_reservation_id": storage.get("reservation_id", "PENDING_STORAGE_RESERVATION"),
@@ -348,7 +365,8 @@ def _deep_plan(task: str, stage: str, config_path_value: Path, config: dict[str,
     spec = {
         "namespace": "rsd_ref_v3", "run_id": config["run_name"], "stage": internal,
         "execution_git_sha": current_git_sha(), "design_sha256": freeze_sha,
-        "design_freeze_sha256": freeze_sha, "generation_id": "rsd_ref_v3",
+        "design_freeze_sha256": freeze_sha, "design_seed": _design_seed(),
+        "generation_id": "rsd_ref_v3",
         "artifact_namespace": "rsd_ref_v3", "storage_reservation_id": storage.get("reservation_id", "PENDING_STORAGE_RESERVATION"),
         "logical_run_root": location["logical_path"],
         "physical_run_root": location["physical_path"],
