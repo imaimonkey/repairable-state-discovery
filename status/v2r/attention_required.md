@@ -1,5 +1,5 @@
-2026-09-27T11:15:03.371151+00:00
-HOURS TO DEADLINE: -23.27
+2026-09-27T11:16:34.711321+00:00
+HOURS TO DEADLINE: -23.29
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,10 +9,14 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
+MONITOR_DRIFT: Slurm job 53812_0 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53814_0 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53262 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
+53812_0 dlm-smoke RUNNING ubuntu UNKNOWN_NEEDS_FORENSIC
+53814_0 dlm-smoke RUNNING server4 UNKNOWN_NEEDS_FORENSIC
 53262 v2full-gsm8k RUNNING ubuntu UNKNOWN_NEEDS_FORENSIC
 
 SERVER1
@@ -70,10 +74,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2348501 heartbeat=2026-09-27T11:13:58.546400+00:00
+status=RUNNING pid=2350796 heartbeat=2026-09-27T11:15:58.565884+00:00
 
 MONITOR
-heartbeat=2026-09-27T11:15:03.371151+00:00
+heartbeat=2026-09-27T11:16:34.711321+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
