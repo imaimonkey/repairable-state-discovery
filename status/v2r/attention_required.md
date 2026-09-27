@@ -1,5 +1,5 @@
-2026-09-27T15:13:01.647865+00:00
-HOURS TO DEADLINE: -27.23
+2026-09-27T15:14:33.113087+00:00
+HOURS TO DEADLINE: -27.26
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -9,7 +9,10 @@ NEW EVENTS
 Unified monitor reconciled scheduler, GPU, filesystem, legacy monitor, orchestrator, artifacts, and paper state.
 
 INTEGRITY ALERTS
-MONITOR_DRIFT: Slurm job 53883_[4-7%8] exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53922_5 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53922_6 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53922_7 exists but legacy monitor state does not mention it.
+MONITOR_DRIFT: Slurm job 53922_4 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53883_3 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53883_0 exists but legacy monitor state does not mention it.
 MONITOR_DRIFT: Slurm job 53883_1 exists but legacy monitor state does not mention it.
@@ -17,7 +20,10 @@ MONITOR_DRIFT: Slurm job 53883_2 exists but legacy monitor state does not mentio
 MONITOR_DRIFT_HISTORICAL: Legacy monitor missed active job 49256 before it was cancelled; scheduler discovery is authoritative.
 
 ALL ACTIVE KIMHJ JOBS
-53883_[4-7%8] llada-gsm8k-full PENDING  UNKNOWN_NEEDS_FORENSIC
+53922_5 llada-gsm8k-full-s2 RUNNING server2 UNKNOWN_NEEDS_FORENSIC
+53922_6 llada-gsm8k-full-s2 RUNNING server2 UNKNOWN_NEEDS_FORENSIC
+53922_7 llada-gsm8k-full-s2 RUNNING server2 UNKNOWN_NEEDS_FORENSIC
+53922_4 llada-gsm8k-full-s2 RUNNING server2 UNKNOWN_NEEDS_FORENSIC
 53883_3 llada-gsm8k-full RUNNING devbox UNKNOWN_NEEDS_FORENSIC
 53883_0 llada-gsm8k-full RUNNING devbox UNKNOWN_NEEDS_FORENSIC
 53883_1 llada-gsm8k-full RUNNING devbox UNKNOWN_NEEDS_FORENSIC
@@ -27,7 +33,7 @@ SERVER1
 observed=True idle_gpu_candidates=['1', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER2
-observed=True idle_gpu_candidates=['0', '2', '3', '4', '5', '6', '7'] safe_filesystems=[]
+observed=True idle_gpu_candidates=['5', '6', '7'] safe_filesystems=[]
 
 SERVER3
 observed=True idle_gpu_candidates=['0', '1', '2'] safe_filesystems=[]
@@ -78,10 +84,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=DEGRADED_RETRY pid=2678488 heartbeat=2026-09-27T15:12:45.389656+00:00
+status=RUNNING pid=2680831 heartbeat=2026-09-27T15:14:00.355032+00:00
 
 MONITOR
-heartbeat=2026-09-27T15:13:01.647865+00:00
+heartbeat=2026-09-27T15:14:33.113087+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
