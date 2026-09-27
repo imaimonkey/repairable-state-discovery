@@ -1,7 +1,7 @@
 {
   "monitor_health": {
     "integrity_alert_count": 6,
-    "last_successful_cycle": "2026-09-27T15:11:30.217027+00:00",
+    "last_successful_cycle": "2026-09-27T15:13:01.647865+00:00",
     "legacy_monitor_health": {
       "consecutive_cycle_failures": 0,
       "last_cycle_events": 0,
@@ -26,24 +26,20 @@
     "poll_interval_seconds": 90,
     "schema_version": "v2r.monitor_health.1",
     "status": "RUNNING",
-    "timestamp": "2026-09-27T15:11:30.217027+00:00",
+    "timestamp": "2026-09-27T15:13:01.647865+00:00",
     "tmux": "iclr2027-unified-monitor"
   },
   "monitor_session_alive": true,
   "orchestrator_health": {
-    "event_poll_seconds": 60,
-    "inventory_cycle_seconds": 1800,
-    "last_error": null,
-    "next_poll": "2026-09-27T15:11:00.582500+00:00",
-    "pid": 2675376,
-    "status": "RUNNING",
-    "timestamp": "2026-09-27T15:10:00.582500+00:00",
-    "tmux": "iclr2027-reference-orchestrator"
+    "error": "Command '['git', 'push', 'origin', 'codex/iclr2027-reference-live-20260923']' timed out after 45 seconds",
+    "pid": 2678488,
+    "status": "DEGRADED_RETRY",
+    "timestamp": "2026-09-27T15:12:45.389656+00:00"
   },
   "orchestrator_session_alive": true,
   "pid": 2758149,
   "schema_version": "v2r.watchdog_health.1",
   "status": "RUNNING",
-  "timestamp": "2026-09-27T15:11:59.373745+00:00",
+  "timestamp": "2026-09-27T15:13:59.389622+00:00",
   "tmux": "iclr2027-reference-watchdog"
 }
