@@ -1,5 +1,5 @@
-2026-09-27T00:27:36.229452+00:00
-HOURS TO DEADLINE: -12.48
+2026-09-27T00:29:07.575893+00:00
+HOURS TO DEADLINE: -12.50
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -19,13 +19,13 @@ SERVER1
 observed=True idle_gpu_candidates=['1', '2', '3', '4', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER2
-observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
+observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=['2', '3'] safe_filesystems=[]
+observed=True idle_gpu_candidates=['3'] safe_filesystems=[]
 
 SERVER4
-observed=True idle_gpu_candidates=['3', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['2', '3', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -70,10 +70,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=1615578 heartbeat=2026-09-27T00:25:53.764778+00:00
+status=RUNNING pid=1617605 heartbeat=2026-09-27T00:27:53.778290+00:00
 
 MONITOR
-heartbeat=2026-09-27T00:27:36.229452+00:00
+heartbeat=2026-09-27T00:29:07.575893+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.

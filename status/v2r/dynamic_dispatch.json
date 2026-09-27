@@ -32,7 +32,6 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
-        "0",
         "1",
         "2",
         "3",
@@ -61,11 +60,10 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [
-        "7"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "no_safe_filesystem",
         "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
       ],
@@ -80,7 +78,6 @@
       "eligibility": false,
       "fallback_action": null,
       "idle_gpu_candidates": [
-        "2",
         "3"
       ],
       "observed": true,
@@ -103,6 +100,7 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
+        "2",
         "3",
         "6",
         "7"
@@ -118,5 +116,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-27T00:26:48.916127+00:00"
+  "timestamp": "2026-09-27T00:29:51.835303+00:00"
 }
