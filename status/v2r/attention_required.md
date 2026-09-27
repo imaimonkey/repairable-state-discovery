@@ -1,5 +1,5 @@
-2026-09-27T14:08:54.665742+00:00
-HOURS TO DEADLINE: -26.17
+2026-09-27T14:11:57.716911+00:00
+HOURS TO DEADLINE: -26.22
 CURRENT MODE: AUTONOMOUS REFERENCE-PRIMARY EXECUTION
 
 OVERALL GOAL
@@ -28,16 +28,16 @@ ALL ACTIVE KIMHJ JOBS
 53262 v2full-gsm8k RUNNING ubuntu UNKNOWN_NEEDS_FORENSIC
 
 SERVER1
-observed=True idle_gpu_candidates=['1', '5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['5', '6', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 SERVER2
-observed=True idle_gpu_candidates=['7'] safe_filesystems=[]
+observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER3
-observed=True idle_gpu_candidates=['2'] safe_filesystems=[]
+observed=True idle_gpu_candidates=[] safe_filesystems=[]
 
 SERVER4
-observed=True idle_gpu_candidates=['0', '3', '7'] safe_filesystems=['/tmp', '/var/tmp']
+observed=True idle_gpu_candidates=['3', '5', '7'] safe_filesystems=['/tmp', '/var/tmp']
 
 LEGACY V2
 See legacy monitor and legacy_reset snapshots; old evidence is not reference-primary evidence.
@@ -82,10 +82,10 @@ status=REFERENCE_EVIDENCE_SEALED_AUTHOR_REVIEW_PENDING
 technical_pdf_audit=PASS
 
 ORCHESTRATOR
-status=RUNNING pid=2590673 heartbeat=2026-09-27T14:07:59.889952+00:00
+status=RUNNING pid=2593297 heartbeat=2026-09-27T14:09:59.971797+00:00
 
 MONITOR
-heartbeat=2026-09-27T14:08:54.665742+00:00
+heartbeat=2026-09-27T14:11:57.716911+00:00
 
 CURRENT P0
 Import sealed LLaDA evidence, build the PDF, and close author review.
