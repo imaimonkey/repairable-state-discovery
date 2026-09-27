@@ -32,6 +32,7 @@
       "eligibility": false,
       "fallback_action": "CPU_ONLY_OR_COMPACT_ANALYSIS",
       "idle_gpu_candidates": [
+        "1",
         "2",
         "3",
         "4",
@@ -76,11 +77,10 @@
       ],
       "eligibility": false,
       "fallback_action": null,
-      "idle_gpu_candidates": [
-        "0"
-      ],
+      "idle_gpu_candidates": [],
       "observed": true,
       "reasons": [
+        "no_idle_gpu_candidate",
         "no_safe_filesystem"
       ],
       "reference_compatible": true,
@@ -116,5 +116,5 @@
       ]
     }
   },
-  "timestamp": "2026-09-27T01:44:34.382305+00:00"
+  "timestamp": "2026-09-27T01:47:37.510932+00:00"
 }
