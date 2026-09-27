@@ -1,6 +1,6 @@
 # V2R cluster inventory
 
-2026-09-27T09:52:45.166381+00:00
+2026-09-27T09:55:47.872921+00:00
 
 Read-only observation; idle candidates still require Slurm allocation, safe immutable execution worktree, exact reference replay compatibility, and measured shard storage gate.
 
@@ -8,47 +8,47 @@ Read-only observation; idle candidates still require Slurm allocation, safe immu
 |---|---|---|---|---|
 | server1 | True | ['2', '4', '5', '6', '7'] | ['/tmp', '/var/tmp'] | reference_compatible=False |
 
-server1 `/`: 314442600448 available bytes; 82.46% used; 112440732 free inodes.
+server1 `/`: 314441822208 available bytes; 82.46% used; 112440732 free inodes.
 
-server1 `/home`: 314442600448 available bytes; 82.46% used; 112440732 free inodes.
+server1 `/home`: 314441822208 available bytes; 82.46% used; 112440732 free inodes.
 
-server1 `/tmp`: 314442600448 available bytes; 82.46% used; 112440732 free inodes.
+server1 `/tmp`: 314441822208 available bytes; 82.46% used; 112440732 free inodes.
 
-server1 `/var/tmp`: 314442600448 available bytes; 82.46% used; 112440732 free inodes.
+server1 `/var/tmp`: 314441822208 available bytes; 82.46% used; 112440732 free inodes.
 
-server1 `/mnt/raid5`: 635434786816 available bytes; 97.09% used; 337424414 free inodes.
+server1 `/mnt/raid5`: 635429498880 available bytes; 97.09% used; 337424414 free inodes.
 | server2 | True | ['1', '2', '7'] | [] | reference_compatible=False |
 
-server2 `/`: 16514641920 available bytes; 99.08% used; 110356891 free inodes.
+server2 `/`: 16515289088 available bytes; 99.08% used; 110356901 free inodes.
 
-server2 `/home`: 16514641920 available bytes; 99.08% used; 110356891 free inodes.
+server2 `/home`: 16515289088 available bytes; 99.08% used; 110356901 free inodes.
 
-server2 `/tmp`: 16514641920 available bytes; 99.08% used; 110356891 free inodes.
+server2 `/tmp`: 16515289088 available bytes; 99.08% used; 110356901 free inodes.
 
-server2 `/var/tmp`: 16514641920 available bytes; 99.08% used; 110356891 free inodes.
+server2 `/var/tmp`: 16515289088 available bytes; 99.08% used; 110356901 free inodes.
 
-server2 `/mnt/raid5`: 572944625664 available bytes; 96.04% used; 444740860 free inodes.
+server2 `/mnt/raid5`: 572844040192 available bytes; 96.04% used; 444740733 free inodes.
 | server3 | True | ['0'] | [] | reference_compatible=True |
 
-server3 `/`: 78549995520 available bytes; 95.62% used; 114062908 free inodes.
+server3 `/`: 78546587648 available bytes; 95.62% used; 114062835 free inodes.
 
-server3 `/home`: 78549995520 available bytes; 95.62% used; 114062908 free inodes.
+server3 `/home`: 78546587648 available bytes; 95.62% used; 114062835 free inodes.
 
-server3 `/data`: 1332324896768 available bytes; 81.59% used; 225761807 free inodes.
+server3 `/data`: 1332321320960 available bytes; 81.59% used; 225761728 free inodes.
 
-server3 `/tmp`: 78549995520 available bytes; 95.62% used; 114062908 free inodes.
+server3 `/tmp`: 78546587648 available bytes; 95.62% used; 114062835 free inodes.
 
-server3 `/var/tmp`: 78549995520 available bytes; 95.62% used; 114062908 free inodes.
+server3 `/var/tmp`: 78546587648 available bytes; 95.62% used; 114062835 free inodes.
 | server4 | True | ['0', '3', '5', '7'] | ['/tmp', '/var/tmp'] | reference_compatible=False |
 
-server4 `/`: 111049785344 available bytes; 93.80% used; 114372850 free inodes.
+server4 `/`: 111049687040 available bytes; 93.80% used; 114372850 free inodes.
 
-server4 `/home`: 111049785344 available bytes; 93.80% used; 114372850 free inodes.
+server4 `/home`: 111049687040 available bytes; 93.80% used; 114372850 free inodes.
 
-server4 `/data`: 364008837120 available bytes; 94.97% used; 224767153 free inodes.
+server4 `/data`: 364015890432 available bytes; 94.97% used; 224767147 free inodes.
 
-server4 `/tmp`: 111049785344 available bytes; 93.80% used; 114372850 free inodes.
+server4 `/tmp`: 111049687040 available bytes; 93.80% used; 114372850 free inodes.
 
-server4 `/var/tmp`: 111049785344 available bytes; 93.80% used; 114372850 free inodes.
+server4 `/var/tmp`: 111049687040 available bytes; 93.80% used; 114372850 free inodes.
 
 server1 SSH access failure leaves GPU process/disk/worktree details unobserved. Its Slurm allocations are observed; it is not eligible. Existing jobs and monitor are never cancelled by this tool.
