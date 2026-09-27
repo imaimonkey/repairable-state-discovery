@@ -26,58 +26,58 @@
       "cpu_count": 128,
       "filesystems": [
         {
-          "available_bytes": 314429911040,
+          "available_bytes": 314431111168,
           "device": 66306,
-          "inodes_free": 112440708,
+          "inodes_free": 112440710,
           "inodes_total": 117178368,
           "path": "/",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.8245906506835768,
-          "used_bytes": 1478119415808,
+          "usage_fraction": 0.8245899811745251,
+          "used_bytes": 1478118215680,
           "writable": false
         },
         {
-          "available_bytes": 314429911040,
+          "available_bytes": 314431111168,
           "device": 66306,
-          "inodes_free": 112440708,
+          "inodes_free": 112440710,
           "inodes_total": 117178368,
           "path": "/home",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.8245906506835768,
-          "used_bytes": 1478119415808,
+          "usage_fraction": 0.8245899811745251,
+          "used_bytes": 1478118215680,
           "writable": false
         },
         {
-          "available_bytes": 314429911040,
+          "available_bytes": 314431111168,
           "device": 66306,
-          "inodes_free": 112440708,
+          "inodes_free": 112440710,
           "inodes_total": 117178368,
           "path": "/tmp",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.8245906506835768,
-          "used_bytes": 1478119415808,
+          "usage_fraction": 0.8245899811745251,
+          "used_bytes": 1478118215680,
           "writable": true
         },
         {
-          "available_bytes": 314429911040,
+          "available_bytes": 314431111168,
           "device": 66306,
-          "inodes_free": 112440708,
+          "inodes_free": 112440710,
           "inodes_total": 117178368,
           "path": "/var/tmp",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.8245906506835768,
-          "used_bytes": 1478119415808,
+          "usage_fraction": 0.8245899811745251,
+          "used_bytes": 1478118215680,
           "writable": true
         },
         {
-          "available_bytes": 635410915328,
+          "available_bytes": 635410276352,
           "device": 2304,
-          "inodes_free": 337424414,
+          "inodes_free": 337424412,
           "inodes_total": 351625216,
           "path": "/mnt/raid5",
           "total_bytes": 22951322238976,
-          "usage_fraction": 0.9708515079880297,
-          "used_bytes": 21163689877504,
+          "usage_fraction": 0.9708515373000645,
+          "used_bytes": 21163690516480,
           "writable": true
         }
       ],
@@ -176,21 +176,22 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     1622979940352 40045793280 127080058880   288911360 1455854088192 1574135336960\nSwap:     8589930496   431587328  8158343168"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     1622979940352 39793430528 127333953536   288915456 1455852556288 1574387785728\nSwap:     8589930496   431587328  8158343168"
       },
       "mounts": {
         "returncode": 0,
         "stderr": "",
         "stdout": "{\n   \"filesystems\": [\n      {\n         \"target\": \"/\",\n         \"source\": \"/dev/nvme0n1p2\",\n         \"fstype\": \"ext4\",\n         \"children\": [\n            {\n               \"target\": \"/sys\",\n               \"source\": \"sysfs\",\n               \"fstype\": \"sysfs\",\n               \"children\": [\n                  {\n                     \"target\": \"/sys/kernel/security\",\n                     \"source\": \"securityfs\",\n                     \"fstype\": \"securityfs\"\n                  },{\n                     \"target\": \"/sys/fs/cgroup\",\n                     \"source\": \"cgroup2\",\n                     \"fstype\": \"cgroup2\"\n                  },{\n                     \"target\": \"/sys/fs/pstore\",\n                     \"source\": \"pstore\",\n                     \"fstype\": \"pstore\"\n                  },{\n                     \"target\": \"/sys/firmware/efi/efivars\",\n                     \"source\": \"efivarfs\",\n                     \"fstype\": \"efivarfs\"\n                  },{\n                     \"target\": \"/sys/fs/bpf\",\n                     \"source\": \"bpf\",\n                     \"fstype\": \"bpf\"\n                  },{\n                     \"target\": \"/sys/kernel/debug\",\n                     \"source\": \"debugfs\",\n                     \"fstype\": \"debugfs\"\n                  },{\n                     \"target\": \"/sys/kernel/tracing\",\n                     \"source\": \"tracefs\",\n                     \"fstype\": \"tracefs\"\n                  },{\n                     \"target\": \"/sys/fs/fuse/connections\",\n                     \"source\": \"fusectl\",\n                     \"fstype\": \"fusectl\"\n                  },{\n                     \"target\": \"/sys/kernel/config\",\n                     \"source\": \"configfs\",\n                     \"fstype\": \"configfs\"\n                  }\n               ]\n            },{\n               \"target\": \"/proc\",\n               \"source\": \"proc\",\n               \"fstype\": \"proc\",\n               \"children\": [\n                  {\n                     \"target\": \"/proc/sys/fs/binfmt_misc\",\n                     \"source\": \"systemd-1\",\n                     \"fstype\": \"autofs\",\n                     \"children\": [\n                        {\n                           \"target\": \"/proc/sys/fs/binfmt_misc\",\n                           \"source\": \"binfmt_misc\",\n                           \"fstype\": \"binfmt_misc\"\n                        }\n                     ]\n                  },{\n                     \"target\": \"/proc/fs/nfsd\",\n                     \"source\": \"nfsd\",\n                     \"fstype\": \"nfsd\"\n                  }\n               ]\n            },{\n               \"target\": \"/dev\",\n               \"source\": \"udev\",\n               \"fstype\": \"devtmpfs\",\n               \"children\": [\n                  {\n                     \"target\": \"/dev/pts\",\n                     \"source\": \"devpts\",\n                     \"fstype\": \"devpts\"\n                  },{\n                     \"target\": \"/dev/shm\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/dev/hugepages\",\n                     \"source\": \"hugetlbfs\",\n                     \"fstype\": \"hugetlbfs\"\n                  },{\n                     \"target\": \"/dev/mqueue\",\n                     \"source\": \"mqueue\",\n                     \"fstype\": \"mqueue\"\n                  }\n               ]\n            },{\n               \"target\": \"/run\",\n               \"source\": \"tmpfs\",\n               \"fstype\": \"tmpfs\",\n               \"children\": [\n                  {\n                     \"target\": \"/run/lock\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/credentials/systemd-sysusers.service\",\n                     \"source\": \"none\",\n                     \"fstype\": \"ramfs\"\n                  },{\n                     \"target\": \"/run/user/1013\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1031\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1028\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1019\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1023\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/rpc_pipefs\",\n                     \"source\": \"sunrpc\",\n                     \"fstype\": \"rpc_pipefs\"\n                  },{\n                     \"target\": \"/run/user/1011\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/snapd/ns\",\n                     \"source\": \"tmpfs[/snapd/ns]\",\n                     \"fstype\": \"tmpfs\",\n                     \"children\": [\n                        {\n                           \"target\": \"/run/snapd/ns/lxd.mnt\",\n                           \"source\": \"nsfs[mnt:[4026542147]]\",\n                           \"fstype\": \"nsfs\"\n                        },{\n                           \"target\": \"/run/snapd/ns/mesa-2404.mnt\",\n                           \"source\": \"nsfs[mnt:[4026542141]]\",\n                           \"fstype\": \"nsfs\"\n                        },{\n                           \"target\": \"/run/snapd/ns/firefox.mnt\",\n                           \"source\": \"nsfs[mnt:[4026542145]]\",\n                           \"fstype\": \"nsfs\"\n                        }\n                     ]\n                  },{\n                     \"target\": \"/run/user/1025\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1002\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1016\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1012\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1021\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1026\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1003\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1027\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1015\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1008\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1006\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1007\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1009\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  }\n               ]\n            },{\n               \"target\": \"/home/mindw/gdrive\",\n               \"source\": \"gdrive:Server/Server1\",\n               \"fstype\": \"fuse.rclone\"\n            },{\n               \"target\": \"/snap/core22/2437\",\n               \"source\": \"/dev/loop23\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/bare/5\",\n               \"source\": \"/dev/loop2\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/core22/2955\",\n               \"source\": \"/dev/loop3\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/core20/2866\",\n               \"source\": \"/dev/loop4\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/core24/2124\",\n               \"source\": \"/dev/loop6\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/astral-uv/1749\",\n               \"source\": \"/dev/loop7\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/core24/1643\",\n               \"source\": \"/dev/loop8\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/snapd/27710\",\n               \"source\": \"/dev/loop18\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/gnome-42-2204/247\",\n               \"source\": \"/dev/loop11\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/gnome-46-2404/153\",\n               \"source\": \"/dev/loop12\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/gtk-common-themes/1535\",\n               \"source\": \"/dev/loop13\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/gnome-46-2404/164\",\n               \"source\": \"/dev/loop15\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/mesa-2404/1165\",\n               \"source\": \"/dev/loop16\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/boot/efi\",\n               \"source\": \"/dev/nvme0n1p1\",\n               \"fstype\": \"vfat\"\n            },{\n               \"target\": \"/mnt/raid5\",\n               \"source\": \"/dev/md0\",\n               \"fstype\": \"ext4\",\n               \"children\": [\n                  {\n                     \"target\": \"/mnt/raid5/leesh/.gdrive\",\n                     \"source\": \"gdrive:\",\n                     \"fstype\": \"fuse.rclone\"\n                  }\n               ]\n            },{\n               \"target\": \"/home/kimjh\",\n               \"source\": \"/dev/md0[/kimjh]\",\n               \"fstype\": \"ext4\"\n            },{\n               \"target\": \"/home/chunmei\",\n               \"source\": \"/dev/md0[/chunmei]\",\n               \"fstype\": \"ext4\"\n            },{\n               \"target\": \"/snap/mesa-2404/1839\",\n               \"source\": \"/dev/loop14\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/core20/2922\",\n               \"source\": \"/dev/loop5\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/firefox/8929\",\n               \"source\": \"/dev/loop0\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/gnome-42-2204/263\",\n               \"source\": \"/dev/loop9\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/astral-uv/1682\",\n               \"source\": \"/dev/loop1\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/lxd/40575\",\n               \"source\": \"/dev/loop22\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/lxd/40911\",\n               \"source\": \"/dev/loop19\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/firefox/8969\",\n               \"source\": \"/dev/loop20\",\n               \"fstype\": \"squashfs\"\n            },{\n               \"target\": \"/snap/snapd/27738\",\n               \"source\": \"/dev/loop10\",\n               \"fstype\": \"squashfs\"\n            }\n         ]\n      }\n   ]\n}"
       },
-      "new_scientific_jobs_eligible": true,
+      "new_scientific_jobs_eligible": false,
       "node": "devbox",
       "observed": true,
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n 579454       1 119-12:13:38 systemd\n 579455  579454 119-12:13:38 (sd-pam)\n 580533       1 119-12:13:29 code-8761a5560c\n2118230  579454 53-08:36:01 dbus-daemon\n2118262  579454 53-08:36:01 at-spi-bus-laun\n2765443 2765355    03:37:17 sshd\n2765453 2765443    03:37:16 python\n3141901 3141852       00:02 sshd\n3141912 3141901       00:02 python\n3142050 3142002       00:01 sshd\n3142051 3142050       00:01 python3\n3142081 3142051       00:00 ps"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n 579454       1 119-12:15:24 systemd\n 579455  579454 119-12:15:24 (sd-pam)\n 580533       1 119-12:15:15 code-8761a5560c\n2118230  579454 53-08:37:47 dbus-daemon\n2118262  579454 53-08:37:47 at-spi-bus-laun\n2765443 2765355    03:39:03 sshd\n2765453 2765443    03:39:02 python\n3144873 3144816       00:00 sshd\n3144874 3144873       00:00 python3\n3144886 3144874       00:00 ps"
       },
+      "reference_execution_compatible": false,
       "repos": [
         {
           "head": {
@@ -243,70 +244,66 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=devbox Arch=x86_64 CoresPerSocket=32  CPUAlloc=6 CPUEfctv=128 CPUTot=128 CPULoad=2.28 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=devbox NodeHostName=devbox Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=1536000 AllocMem=40960 FreeMem=121414 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:44:53 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-27T09:24:03 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=1500G,billing=128,gres/gpu=8 AllocTRES=cpu=6,mem=40G,gres/gpu=2 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=devbox Arch=x86_64 CoresPerSocket=32  CPUAlloc=6 CPUEfctv=128 CPUTot=128 CPULoad=2.36 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=devbox NodeHostName=devbox Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=1536000 AllocMem=40960 FreeMem=121411 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:44:53 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-27T09:24:03 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=1500G,billing=128,gres/gpu=8 AllocTRES=cpu=6,mem=40G,gres/gpu=2 CurrentWatts=0 AveWatts=0\n"
       },
-      "ssh_host": "kimhj@10.0.12.120",
-      "strict_reference_exclusion_reasons": [
-        "exact_native_replay_failed"
-      ],
-      "strict_reference_jobs_eligible": false
+      "ssh_host": "kimhj@10.0.12.120"
     },
     "server2": {
       "cpu_count": 64,
       "filesystems": [
         {
-          "available_bytes": 16497971200,
+          "available_bytes": 16499027968,
           "device": 2050,
-          "inodes_free": 110355942,
+          "inodes_free": 110355940,
           "inodes_total": 117178368,
           "path": "/",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.9907963641764828,
-          "used_bytes": 1776051355648,
+          "usage_fraction": 0.990795774642915,
+          "used_bytes": 1776050298880,
           "writable": false
         },
         {
-          "available_bytes": 16497971200,
+          "available_bytes": 16499027968,
           "device": 2050,
-          "inodes_free": 110355942,
+          "inodes_free": 110355940,
           "inodes_total": 117178368,
           "path": "/home",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.9907963641764828,
-          "used_bytes": 1776051355648,
+          "usage_fraction": 0.990795774642915,
+          "used_bytes": 1776050298880,
           "writable": false
         },
         {
-          "available_bytes": 16497971200,
+          "available_bytes": 16499027968,
           "device": 2050,
-          "inodes_free": 110355942,
+          "inodes_free": 110355940,
           "inodes_total": 117178368,
           "path": "/tmp",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.9907963641764828,
-          "used_bytes": 1776051355648,
+          "usage_fraction": 0.990795774642915,
+          "used_bytes": 1776050298880,
           "writable": true
         },
         {
-          "available_bytes": 16497971200,
+          "available_bytes": 16499027968,
           "device": 2050,
-          "inodes_free": 110355942,
+          "inodes_free": 110355940,
           "inodes_total": 117178368,
           "path": "/var/tmp",
           "total_bytes": 1888558305280,
-          "usage_fraction": 0.9907963641764828,
-          "used_bytes": 1776051355648,
+          "usage_fraction": 0.990795774642915,
+          "used_bytes": 1776050298880,
           "writable": true
         },
         {
-          "available_bytes": 571333939200,
+          "available_bytes": 571284246528,
           "device": 2304,
-          "inodes_free": 444738426,
+          "inodes_free": 444738253,
           "inodes_total": 468836352,
           "path": "/mnt/raid5",
           "total_bytes": 15240493973504,
-          "usage_fraction": 0.9605223543961445,
-          "used_bytes": 13901006811136,
+          "usage_fraction": 0.9605257880267408,
+          "used_bytes": 13901056503808,
           "writable": true
         }
       ],
@@ -318,7 +315,7 @@
       "gpu_query": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "0, NVIDIA RTX A6000, GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 49140, 45672, 2871, 100\n1, NVIDIA RTX A6000, GPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 49140, 1, 48541, 0\n2, NVIDIA RTX A6000, GPU-e8cad71e-960c-b6b8-9152-5f7b146c557e, 49140, 1, 48541, 0\n3, NVIDIA RTX A6000, GPU-ca5070d9-5463-7527-5e0e-a4216548e38b, 49140, 9216, 39327, 0\n4, NVIDIA RTX A6000, GPU-933bf467-90ac-31b1-24d8-15dc3162537b, 49140, 17964, 30579, 0\n5, NVIDIA RTX A6000, GPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa, 49140, 17944, 30599, 0\n6, NVIDIA RTX A6000, GPU-aaac1d4e-ab02-c216-ddd6-2f7f23d332eb, 49140, 17944, 30599, 0\n7, NVIDIA RTX A6000, GPU-c39e323c-ef2e-9fdd-c848-315171c06345, 49140, 1, 48541, 0"
+        "stdout": "0, NVIDIA RTX A6000, GPU-082b7d54-802a-f871-fa47-b4ca54dd38f4, 49140, 45672, 2871, 100\n1, NVIDIA RTX A6000, GPU-13c8b5a1-b148-ea25-95a4-de1086725ed1, 49140, 1, 48541, 0\n2, NVIDIA RTX A6000, GPU-e8cad71e-960c-b6b8-9152-5f7b146c557e, 49140, 1, 48541, 0\n3, NVIDIA RTX A6000, GPU-ca5070d9-5463-7527-5e0e-a4216548e38b, 49140, 9216, 39327, 10\n4, NVIDIA RTX A6000, GPU-933bf467-90ac-31b1-24d8-15dc3162537b, 49140, 17964, 30579, 11\n5, NVIDIA RTX A6000, GPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa, 49140, 17944, 30599, 9\n6, NVIDIA RTX A6000, GPU-aaac1d4e-ab02-c216-ddd6-2f7f23d332eb, 49140, 17944, 30599, 10\n7, NVIDIA RTX A6000, GPU-c39e323c-ef2e-9fdd-c848-315171c06345, 49140, 1, 48541, 0"
       },
       "gpus": [
         {
@@ -354,7 +351,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "9216",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "0",
+          "utilization_percent": "10",
           "uuid": "GPU-ca5070d9-5463-7527-5e0e-a4216548e38b"
         },
         {
@@ -363,7 +360,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "17964",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "0",
+          "utilization_percent": "11",
           "uuid": "GPU-933bf467-90ac-31b1-24d8-15dc3162537b"
         },
         {
@@ -372,7 +369,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "17944",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "0",
+          "utilization_percent": "9",
           "uuid": "GPU-3b1293ac-6a10-b95e-3be7-4595c1f6fbfa"
         },
         {
@@ -381,7 +378,7 @@
           "memory_total_mib": "49140",
           "memory_used_mib": "17944",
           "name": "NVIDIA RTX A6000",
-          "utilization_percent": "0",
+          "utilization_percent": "10",
           "uuid": "GPU-aaac1d4e-ab02-c216-ddd6-2f7f23d332eb"
         },
         {
@@ -403,7 +400,7 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540813615104 161191436288 112301420544  6559436800 267320758272 369819639808\nSwap:     8589930496  8509984768    79945728"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540813615104 161282301952 112157704192  6559436800 267373608960 369728733184\nSwap:     8589930496  8509984768    79945728"
       },
       "mounts": {
         "returncode": 0,
@@ -416,8 +413,9 @@
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n 681187       1 68-04:09:42 systemd\n 681188  681187 68-04:09:42 (sd-pam)\n 683308       1 68-04:09:10 code-8a7abeba6e\n2142014 2141954       00:01 sshd\n2142015 2142014       00:01 python3\n2142038 2142015       00:00 ps"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n 681187       1 68-04:11:28 systemd\n 681188  681187 68-04:11:28 (sd-pam)\n 683308       1 68-04:10:56 code-8a7abeba6e\n2145402 2145303       00:01 sshd\n2145403 2145402       00:00 python3\n2145421 2145403       00:00 ps"
       },
+      "reference_execution_compatible": false,
       "repos": [
         {
           "path": "/home/kimhj/repairable-state-discovery",
@@ -457,83 +455,78 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=server2 Arch=x86_64 CoresPerSocket=32  CPUAlloc=16 CPUEfctv=64 CPUTot=64 CPULoad=11.17 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=server2 NodeHostName=server2 Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=114688 FreeMem=107180 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-07-21T01:32:02 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-15T08:24:29 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=64,mem=500G,billing=64,gres/gpu=8 AllocTRES=cpu=16,mem=112G,gres/gpu=5 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=server2 Arch=x86_64 CoresPerSocket=32  CPUAlloc=16 CPUEfctv=64 CPUTot=64 CPULoad=11.81 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:a6000:8 NodeAddr=server2 NodeHostName=server2 Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=114688 FreeMem=107110 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-07-21T01:32:02 SlurmdStartTime=2026-09-08T19:54:34 LastBusyTime=2026-09-15T08:24:29 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=64,mem=500G,billing=64,gres/gpu=8 AllocTRES=cpu=16,mem=112G,gres/gpu=5 CurrentWatts=0 AveWatts=0\n"
       },
-      "ssh_host": "kimhj@10.0.12.121",
-      "strict_reference_exclusion_reasons": [
-        "no_safe_filesystem",
-        "exact_native_replay_failed;_safe_scratch_is_non_authoritative"
-      ],
-      "strict_reference_jobs_eligible": false
+      "ssh_host": "kimhj@10.0.12.121"
     },
     "server3": {
       "cpu_count": 96,
       "filesystems": [
         {
-          "available_bytes": 78544334848,
+          "available_bytes": 78544056320,
           "device": 66306,
-          "inodes_free": 114062823,
+          "inodes_free": 114062821,
           "inodes_total": 117145600,
           "path": "/",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9561693805612425,
-          "used_bytes": 1713452580864,
+          "usage_fraction": 0.9561695359900814,
+          "used_bytes": 1713452859392,
           "writable": false
         },
         {
-          "available_bytes": 78544334848,
+          "available_bytes": 78544056320,
           "device": 66306,
-          "inodes_free": 114062823,
+          "inodes_free": 114062821,
           "inodes_total": 117145600,
           "path": "/home",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9561693805612425,
-          "used_bytes": 1713452580864,
+          "usage_fraction": 0.9561695359900814,
+          "used_bytes": 1713452859392,
           "writable": false
         },
         {
-          "available_bytes": 1332059394048,
+          "available_bytes": 1332056674304,
           "device": 66308,
-          "inodes_free": 225760722,
+          "inodes_free": 225760703,
           "inodes_total": 234422272,
           "path": "/data",
           "total_bytes": 7619770974208,
-          "usage_fraction": 0.8159040298353094,
-          "used_bytes": 5903619870720,
+          "usage_fraction": 0.815904405714878,
+          "used_bytes": 5903622590464,
           "writable": false
         },
         {
-          "available_bytes": 78544334848,
+          "available_bytes": 78544056320,
           "device": 66306,
-          "inodes_free": 114062823,
+          "inodes_free": 114062821,
           "inodes_total": 117145600,
           "path": "/tmp",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9561693805612425,
-          "used_bytes": 1713452580864,
+          "usage_fraction": 0.9561695359900814,
+          "used_bytes": 1713452859392,
           "writable": true
         },
         {
-          "available_bytes": 78544334848,
+          "available_bytes": 78544056320,
           "device": 66306,
-          "inodes_free": 114062823,
+          "inodes_free": 114062821,
           "inodes_total": 117145600,
           "path": "/var/tmp",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9561693805612425,
-          "used_bytes": 1713452580864,
+          "usage_fraction": 0.9561695359900814,
+          "used_bytes": 1713452859392,
           "writable": true
         }
       ],
       "gpu_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2, 746402, /data/kimhj/llada-x/.venv/bin/python, 31172\nGPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134, 2312425, VLLM::EngineCore, 130274\nGPU-40729417-86d2-9b2e-32a1-a0f5ed143870, 2309873, VLLM::Worker, 115386"
+        "stdout": "GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2, 746402, /data/kimhj/llada-x/.venv/bin/python, 31172\nGPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134, 2312425, VLLM::EngineCore, 133456\nGPU-40729417-86d2-9b2e-32a1-a0f5ed143870, 2309873, VLLM::Worker, 115386"
       },
       "gpu_query": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "0, NVIDIA H200 NVL, GPU-4f8edcb9-889c-c054-f48d-990e34fc95ed, 143771, 0, 143158, 0\n1, NVIDIA H200 NVL, GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2, 143771, 31181, 111978, 100\n2, NVIDIA H200 NVL, GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134, 143771, 130285, 12874, 0\n3, NVIDIA H200 NVL, GPU-40729417-86d2-9b2e-32a1-a0f5ed143870, 143771, 115397, 27762, 95"
+        "stdout": "0, NVIDIA H200 NVL, GPU-4f8edcb9-889c-c054-f48d-990e34fc95ed, 143771, 0, 143158, 0\n1, NVIDIA H200 NVL, GPU-5cb14486-1a67-72be-830b-a7fb227fe6d2, 143771, 31181, 111978, 100\n2, NVIDIA H200 NVL, GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134, 143771, 133467, 9692, 100\n3, NVIDIA H200 NVL, GPU-40729417-86d2-9b2e-32a1-a0f5ed143870, 143771, 115397, 27762, 95"
       },
       "gpus": [
         {
@@ -556,11 +549,11 @@
         },
         {
           "index": "2",
-          "memory_free_mib": "12874",
+          "memory_free_mib": "9692",
           "memory_total_mib": "143771",
-          "memory_used_mib": "130285",
+          "memory_used_mib": "133467",
           "name": "NVIDIA H200 NVL",
-          "utilization_percent": "0",
+          "utilization_percent": "100",
           "uuid": "GPU-e7e6d82e-0b7d-7f56-985b-91adc65cd134"
         },
         {
@@ -580,7 +573,7 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540546285568 28100501504 75296919552  4270563328 437148864512 504648613888\nSwap:     8589930496  7912923136   677007360"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540546285568 28343705600 75050278912  4270559232 437152301056 504405250048\nSwap:     8589930496  7912923136   677007360"
       },
       "mounts": {
         "returncode": 0,
@@ -593,8 +586,9 @@
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n 746401  746392  2-14:43:29 slurm_script\n 746402  746401  2-14:43:29 python\n 746486  746402  2-14:43:23 python\n 746488  746402  2-14:43:23 python\n 746490  746402  2-14:43:23 python\n 746492  746402  2-14:43:23 python\n 746494  746402  2-14:43:23 python\n 746496  746402  2-14:43:23 python\n 746498  746402  2-14:43:23 python\n 746500  746402  2-14:43:23 python\n 824787       1  2-13:53:22 bash\n 966182       1    17:56:37 sh\n 966186  966182    17:56:37 MainThread\n 966269 1030430    17:56:36 sh\n 966275  966269    17:56:36 MainThread\n 966313  966275    17:56:36 MainThread\n 966350  966186    17:56:36 MainThread\n 966591  966313    17:56:33 MainThread\n 976708       1  7-04:50:24 systemd\n 976709  976708  7-04:50:24 (sd-pam)\n 978131       1    17:50:28 sh\n 978159  978131    17:50:28 code-04c0d99f4f\n 978385  966350    17:50:27 bash\n1030430       1  7-03:42:52 code-645f29cc31\n1164483       1  4-03:50:29 tmux: server\n1164484 1164483  4-03:50:29 bash\n1353960 1164483    13:48:16 python3\n1633674 1164483  3-05:11:59 bash\n1653827 1633674  3-05:05:59 python3\n1967194 1967132    04:39:31 sshd\n1967196 1967194    04:39:31 bash\n1967239 3273100    04:39:31 MainThread\n1967251 3273100    04:39:31 MainThread\n1967648 1967239    04:39:20 codex\n1968017 1967875    04:39:19 sshd\n1968036 1968017    04:39:19 bash\n1968065 1968036    04:39:19 code-7debcd0e2a\n1968242 1968065    04:39:19 sh\n1970149 1967648    04:38:32 codex-code-mode\n2050244 1967648    03:37:16 ssh\n2282595 1164484       25:31 sleep\n2308905  978131       02:28 sleep\n2309448 2758149       01:54 tmux: client <defunct>\n2309968 2309822       01:35 sshd\n2309969 2309968       01:35 sh\n2309987 2309969       01:35 code-04c0d99f4f\n2310103 2309969       01:35 sleep\n2310109  966186       01:35 MainThread\n2310184  966186       01:34 MainThread\n2310308 2310109       01:33 codex\n2312077 3284713       00:48 sleep\n2312434 1967196       00:31 sleep\n2312482  824787       00:30 sleep\n2312770 1968036       00:19 sleep\n2312937 2310308       00:08 codex-code-mode\n2312998 1353960       00:03 python3\n2313023 2312998       00:02 ssh\n2313076 2548944       00:00 python3\n2313081 2313076       00:00 python3\n2313082 2313076       00:00 ssh\n2313083 2313076       00:00 ssh\n2313084 2313076       00:00 ssh\n2313122 2313081       00:00 ps\n2497502 1164483  3-19:05:28 python\n2548944 1164483  3-01:47:39 python3\n2758149 1164483  3-17:48:25 python\n3273090       1  1-07:56:13 sh\n3273100 3273090  1-07:56:13 MainThread\n3273173 3273100  1-07:56:12 MainThread\n3273250 3273173  1-07:56:10 MainThread\n3273717 3273100  1-07:56:07 MainThread\n3274014 3273717  1-07:56:07 bash\n3284713       1  1-07:49:51 bash"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n 746401  746392  2-14:45:16 slurm_script\n 746402  746401  2-14:45:16 python\n 746486  746402  2-14:45:10 python\n 746488  746402  2-14:45:10 python\n 746490  746402  2-14:45:10 python\n 746492  746402  2-14:45:10 python\n 746494  746402  2-14:45:10 python\n 746496  746402  2-14:45:10 python\n 746498  746402  2-14:45:10 python\n 746500  746402  2-14:45:10 python\n 824787       1  2-13:55:09 bash\n 966182       1    17:58:24 sh\n 966186  966182    17:58:24 MainThread\n 966269 1030430    17:58:23 sh\n 966275  966269    17:58:23 MainThread\n 966313  966275    17:58:23 MainThread\n 966350  966186    17:58:23 MainThread\n 966591  966313    17:58:20 MainThread\n 976708       1  7-04:52:11 systemd\n 976709  976708  7-04:52:11 (sd-pam)\n 978385  966350    17:52:14 bash\n1030430       1  7-03:44:39 code-645f29cc31\n1164483       1  4-03:52:16 tmux: server\n1164484 1164483  4-03:52:16 bash\n1353960 1164483    13:50:03 python3\n1633674 1164483  3-05:13:46 bash\n1653827 1633674  3-05:07:46 python3\n1967194 1967132    04:41:18 sshd\n1967196 1967194    04:41:18 bash\n1967239 3273100    04:41:18 MainThread\n1967251 3273100    04:41:18 MainThread\n1967648 1967239    04:41:07 codex\n1968017 1967875    04:41:06 sshd\n1968036 1968017    04:41:06 bash\n1968065 1968036    04:41:06 code-7debcd0e2a\n1968242 1968065    04:41:06 sh\n1970149 1967648    04:40:19 codex-code-mode\n2050244 1967648    03:39:03 ssh\n2282595 1164484       27:18 sleep\n2309968 2309822       03:22 sshd\n2309969 2309968       03:22 sh\n2309987 2309969       03:22 code-04c0d99f4f\n2310109  966186       03:22 MainThread\n2310184  966186       03:21 MainThread\n2310308 2310109       03:20 codex\n2312434 1967196       02:18 sleep\n2312770 1968036       02:06 sleep\n2312937 2310308       01:55 codex-code-mode\n2314710 3284713       00:35 sleep\n2314925 2309969       00:22 sleep\n2315064  824787       00:16 sleep\n2315430 2497502       00:01 python3\n2315432 2497502       00:01 ssh\n2315433 2497502       00:01 ssh\n2315434 2497502       00:01 ssh\n2315468 2315430       00:00 ps\n2497502 1164483  3-19:07:15 python\n2548944 1164483  3-01:49:26 python3\n2758149 1164483  3-17:50:12 python\n3273090       1  1-07:58:00 sh\n3273100 3273090  1-07:58:00 MainThread\n3273173 3273100  1-07:57:59 MainThread\n3273250 3273173  1-07:57:57 MainThread\n3273717 3273100  1-07:57:54 MainThread\n3274014 3273717  1-07:57:54 bash\n3284713       1  1-07:51:38 bash"
       },
+      "reference_execution_compatible": true,
       "repos": [
         {
           "head": {
@@ -607,7 +601,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -621,7 +615,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -635,7 +629,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -646,14 +640,14 @@
           "head": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "71d4b13f069a4eb688126c6dc368bd5ae23aa417"
+            "stdout": "c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4"
           },
           "path": "/home/kimhj/repairable-state-discovery-reference-20260923",
           "realpath": "/data/kimhj/repairable-state-discovery-reference-20260923",
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -667,7 +661,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -695,7 +689,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -709,7 +703,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -723,7 +717,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -737,7 +731,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -748,14 +742,14 @@
           "head": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "71d4b13f069a4eb688126c6dc368bd5ae23aa417"
+            "stdout": "c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4"
           },
           "path": "/data/kimhj/repairable-state-discovery-reference-20260923",
           "realpath": "/data/kimhj/repairable-state-discovery-reference-20260923",
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -769,7 +763,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         },
         {
@@ -797,7 +791,7 @@
           "worktrees": {
             "returncode": 0,
             "stderr": "",
-            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD 71d4b13f069a4eb688126c6dc368bd5ae23aa417\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
+            "stdout": "worktree /data/kimhj/repairable-state-discovery\nHEAD 14a721d9bb563e1ea9289778f6e70c0a230e6e21\nbranch refs/heads/main\n\nworktree /data/kimhj/repairable-state-canonical-reset\nHEAD e3e1fb623a9d41daf85bb009e95a822b9224c46e\nbranch refs/heads/codex/rsd-ref-v3\n\nworktree /data/kimhj/repairable-state-discovery-iclr-2027\nHEAD 0dd161c8cf4bf3e7dbe4042234a0954950ce870e\ndetached\n\nworktree /data/kimhj/repairable-state-discovery-live-monitor-20260923\nHEAD 64f8c4be827d415d1484ab83daf10abf4fdd9e91\nbranch refs/heads/codex/iclr2027-live-monitor-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-20260923\nHEAD c18dd2ef3d0e84be77058aa8d9e63bec5f0700a4\nbranch refs/heads/codex/iclr2027-reference-live-20260923\n\nworktree /data/kimhj/repairable-state-discovery-reference-paper-20260923\nHEAD 69669e8cd4b810b5c601ed38e4cf13a9a37ff282\nbranch refs/heads/codex/reference-primary-paper-20260923\n\nworktree /data/kimhj/repairable-state-discovery-v2-exec-20260925\nHEAD 926495e78f9558ee2c0a606ef9f9f641cacb78da\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-45c295f\nHEAD 45c295fbb53bbc1a11b99cd648038cc75f081213\ndetached\n\nworktree /var/tmp/kimhj-v2r-reference/execution/gates-78fe5d7\nHEAD 78fe5d7c1829b67d1bb1416b7205edfa647bb2fa\ndetached"
           }
         }
       ],
@@ -806,70 +800,66 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=ubuntu Arch=x86_64 CoresPerSocket=24  CPUAlloc=20 CPUEfctv=96 CPUTot=96 CPULoad=3.74 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:h200:4 NodeAddr=ubuntu NodeHostName=ubuntu Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=180224 FreeMem=69912 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:20:31 SlurmdStartTime=2026-09-27T15:40:58 LastBusyTime=2026-09-17T12:34:36 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=96,mem=500G,billing=96,gres/gpu=4 AllocTRES=cpu=20,mem=176G,gres/gpu=3 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=ubuntu Arch=x86_64 CoresPerSocket=24  CPUAlloc=20 CPUEfctv=96 CPUTot=96 CPULoad=3.66 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:h200:4 NodeAddr=ubuntu NodeHostName=ubuntu Version=26.05.0 OS=Linux 5.15.0-179-generic #189-Ubuntu SMP Tue May 5 18:20:56 UTC 2026  RealMemory=512000 AllocMem=180224 FreeMem=71733 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-05-30T22:20:31 SlurmdStartTime=2026-09-27T15:40:58 LastBusyTime=2026-09-17T12:34:36 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=96,mem=500G,billing=96,gres/gpu=4 AllocTRES=cpu=20,mem=176G,gres/gpu=3 CurrentWatts=0 AveWatts=0\n"
       },
-      "ssh_host": null,
-      "strict_reference_exclusion_reasons": [
-        "no_safe_filesystem"
-      ],
-      "strict_reference_jobs_eligible": false
+      "ssh_host": null
     },
     "server4": {
       "cpu_count": 128,
       "filesystems": [
         {
-          "available_bytes": 111031513088,
+          "available_bytes": 111031455744,
           "device": 66308,
           "inodes_free": 114372822,
           "inodes_total": 117145600,
           "path": "/",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9380403436442943,
-          "used_bytes": 1680965402624,
+          "usage_fraction": 0.9380403756443494,
+          "used_bytes": 1680965459968,
           "writable": false
         },
         {
-          "available_bytes": 111031513088,
+          "available_bytes": 111031455744,
           "device": 66308,
           "inodes_free": 114372822,
           "inodes_total": 117145600,
           "path": "/home",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9380403436442943,
-          "used_bytes": 1680965402624,
+          "usage_fraction": 0.9380403756443494,
+          "used_bytes": 1680965459968,
           "writable": false
         },
         {
-          "available_bytes": 363228815360,
+          "available_bytes": 363161137152,
           "device": 66305,
-          "inodes_free": 224766858,
+          "inodes_free": 224766854,
           "inodes_total": 234422272,
           "path": "/data",
           "total_bytes": 7619770974208,
-          "usage_fraction": 0.9498003156208658,
-          "used_bytes": 6872450449408,
+          "usage_fraction": 0.9498096690216348,
+          "used_bytes": 6872518127616,
           "writable": false
         },
         {
-          "available_bytes": 111031513088,
+          "available_bytes": 111031455744,
           "device": 66308,
           "inodes_free": 114372822,
           "inodes_total": 117145600,
           "path": "/tmp",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9380403436442943,
-          "used_bytes": 1680965402624,
+          "usage_fraction": 0.9380403756443494,
+          "used_bytes": 1680965459968,
           "writable": true
         },
         {
-          "available_bytes": 111031513088,
+          "available_bytes": 111031455744,
           "device": 66308,
           "inodes_free": 114372822,
           "inodes_total": 117145600,
           "path": "/var/tmp",
           "total_bytes": 1887976378368,
-          "usage_fraction": 0.9380403436442943,
-          "used_bytes": 1680965402624,
+          "usage_fraction": 0.9380403756443494,
+          "used_bytes": 1680965459968,
           "writable": true
         }
       ],
@@ -881,7 +871,7 @@
       "gpu_query": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "0, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e, 97887, 13149, 84104, 59\n1, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f, 97887, 78625, 18628, 50\n2, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8, 97887, 63921, 33332, 15\n3, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-99df2304-fad0-5a27-29dd-4d1a3dd498c8, 97887, 0, 97252, 0\n4, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df, 97887, 78623, 18630, 93\n5, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-5a338da8-f075-a117-8f2e-aeee88049f4b, 97887, 13149, 84104, 73\n6, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-2647a80a-d813-cbd4-46da-d87355fb69f9, 97887, 91461, 5792, 100\n7, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-e79472b8-9d53-acea-a1b7-5564b1ef9919, 97887, 0, 97252, 0"
+        "stdout": "0, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e, 97887, 13149, 84104, 67\n1, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f, 97887, 78625, 18628, 33\n2, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-531d6bc7-edaf-5bf3-6ea2-a701a3c783f8, 97887, 63921, 33332, 15\n3, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-99df2304-fad0-5a27-29dd-4d1a3dd498c8, 97887, 0, 97252, 0\n4, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df, 97887, 78623, 18630, 94\n5, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-5a338da8-f075-a117-8f2e-aeee88049f4b, 97887, 13149, 84104, 64\n6, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-2647a80a-d813-cbd4-46da-d87355fb69f9, 97887, 91461, 5792, 100\n7, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-e79472b8-9d53-acea-a1b7-5564b1ef9919, 97887, 0, 97252, 0"
       },
       "gpus": [
         {
@@ -890,7 +880,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "13149",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "59",
+          "utilization_percent": "67",
           "uuid": "GPU-0ffd768f-4f83-00ac-281f-0499cfa3eb5e"
         },
         {
@@ -899,7 +889,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "78625",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "50",
+          "utilization_percent": "33",
           "uuid": "GPU-410e473e-d7a3-f1c7-f26c-fc13202ad72f"
         },
         {
@@ -926,7 +916,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "78623",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "93",
+          "utilization_percent": "94",
           "uuid": "GPU-013c1b8c-b4da-7a55-08bc-b94fed04b6df"
         },
         {
@@ -935,7 +925,7 @@
           "memory_total_mib": "97887",
           "memory_used_mib": "13149",
           "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
-          "utilization_percent": "73",
+          "utilization_percent": "64",
           "uuid": "GPU-5a338da8-f075-a117-8f2e-aeee88049f4b"
         },
         {
@@ -965,21 +955,22 @@
       "memory": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540487856128 60831719424 18371395584  3023130624 469713342464 479656136704\nSwap:    68719472640  3155693568 65563779072"
+        "stdout": "total        used        free      shared  buff/cache   available\nMem:     540487856128 60969046016 18165698560  3023130624 469781712896 479518810112\nSwap:    68719472640  3155693568 65563779072"
       },
       "mounts": {
         "returncode": 0,
         "stderr": "",
         "stdout": "{\n   \"filesystems\": [\n      {\n         \"target\": \"/\",\n         \"source\": \"/dev/nvme1n1p2\",\n         \"fstype\": \"ext4\",\n         \"children\": [\n            {\n               \"target\": \"/sys\",\n               \"source\": \"sysfs\",\n               \"fstype\": \"sysfs\",\n               \"children\": [\n                  {\n                     \"target\": \"/sys/firmware/efi/efivars\",\n                     \"source\": \"efivarfs\",\n                     \"fstype\": \"efivarfs\"\n                  },{\n                     \"target\": \"/sys/kernel/security\",\n                     \"source\": \"securityfs\",\n                     \"fstype\": \"securityfs\"\n                  },{\n                     \"target\": \"/sys/fs/cgroup\",\n                     \"source\": \"cgroup2\",\n                     \"fstype\": \"cgroup2\"\n                  },{\n                     \"target\": \"/sys/fs/pstore\",\n                     \"source\": \"pstore\",\n                     \"fstype\": \"pstore\"\n                  },{\n                     \"target\": \"/sys/fs/bpf\",\n                     \"source\": \"bpf\",\n                     \"fstype\": \"bpf\"\n                  },{\n                     \"target\": \"/sys/kernel/debug\",\n                     \"source\": \"debugfs\",\n                     \"fstype\": \"debugfs\"\n                  },{\n                     \"target\": \"/sys/kernel/tracing\",\n                     \"source\": \"tracefs\",\n                     \"fstype\": \"tracefs\"\n                  },{\n                     \"target\": \"/sys/fs/fuse/connections\",\n                     \"source\": \"fusectl\",\n                     \"fstype\": \"fusectl\"\n                  },{\n                     \"target\": \"/sys/kernel/config\",\n                     \"source\": \"configfs\",\n                     \"fstype\": \"configfs\"\n                  }\n               ]\n            },{\n               \"target\": \"/proc\",\n               \"source\": \"proc\",\n               \"fstype\": \"proc\",\n               \"children\": [\n                  {\n                     \"target\": \"/proc/sys/fs/binfmt_misc\",\n                     \"source\": \"systemd-1\",\n                     \"fstype\": \"autofs\",\n                     \"children\": [\n                        {\n                           \"target\": \"/proc/sys/fs/binfmt_misc\",\n                           \"source\": \"binfmt_misc\",\n                           \"fstype\": \"binfmt_misc\"\n                        }\n                     ]\n                  }\n               ]\n            },{\n               \"target\": \"/dev\",\n               \"source\": \"udev\",\n               \"fstype\": \"devtmpfs\",\n               \"children\": [\n                  {\n                     \"target\": \"/dev/pts\",\n                     \"source\": \"devpts\",\n                     \"fstype\": \"devpts\"\n                  },{\n                     \"target\": \"/dev/shm\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/dev/hugepages\",\n                     \"source\": \"hugetlbfs\",\n                     \"fstype\": \"hugetlbfs\"\n                  },{\n                     \"target\": \"/dev/mqueue\",\n                     \"source\": \"mqueue\",\n                     \"fstype\": \"mqueue\"\n                  }\n               ]\n            },{\n               \"target\": \"/run\",\n               \"source\": \"tmpfs\",\n               \"fstype\": \"tmpfs\",\n               \"children\": [\n                  {\n                     \"target\": \"/run/lock\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1002\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1021\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1015\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1003\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1029\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1023\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1028\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1027\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1031\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1006\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1009\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1019\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1007\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1011\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1016\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1025\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  },{\n                     \"target\": \"/run/user/1008\",\n                     \"source\": \"tmpfs\",\n                     \"fstype\": \"tmpfs\"\n                  }\n               ]\n            },{\n               \"target\": \"/boot/efi\",\n               \"source\": \"/dev/nvme1n1p1\",\n               \"fstype\": \"vfat\"\n            },{\n               \"target\": \"/data\",\n               \"source\": \"/dev/nvme0n1p1\",\n               \"fstype\": \"ext4\",\n               \"children\": [\n                  {\n                     \"target\": \"/data/leesh/.gdrive\",\n                     \"source\": \"gdrive:\",\n                     \"fstype\": \"fuse.rclone\"\n                  },{\n                     \"target\": \"/data/mindw/gdrive\",\n                     \"source\": \"gdrive:Server/Server4\",\n                     \"fstype\": \"fuse.rclone\"\n                  }\n               ]\n            }\n         ]\n      }\n   ]\n}"
       },
-      "new_scientific_jobs_eligible": true,
+      "new_scientific_jobs_eligible": false,
       "node": "server4",
       "observed": true,
       "own_processes": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "PID    PPID     ELAPSED COMMAND\n4173203       1       00:01 systemd\n4173204 4173203       00:01 (sd-pam)\n4173294 4173199       00:00 sshd\n4173295 4173294       00:00 python3\n4173309 4173295       00:00 ps"
+        "stdout": "PID    PPID     ELAPSED COMMAND\n4176292       1       00:00 systemd\n4176293 4176292       00:00 (sd-pam)\n4176350 4176288       00:00 sshd\n4176351 4176350       00:00 python3\n4176365 4176351       00:00 ps"
       },
+      "reference_execution_compatible": false,
       "repos": [
         {
           "head": {
@@ -1046,19 +1037,15 @@
       "slurm_node": {
         "returncode": 0,
         "stderr": "",
-        "stdout": "NodeName=server4 Arch=x86_64 CoresPerSocket=32  CPUAlloc=40 CPUEfctv=128 CPUTot=128 CPULoad=9.29 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:rtx_pro_6000:8(S:0-1) NodeAddr=server4 NodeHostName=server4 Version=26.05.0 OS=Linux 6.8.0-124-generic #124-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 13:00:45 UTC 2026  RealMemory=512000 AllocMem=299008 FreeMem=18003 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-06-26T10:55:08 SlurmdStartTime=2026-09-12T06:05:32 LastBusyTime=2026-09-25T11:40:47 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=500G,billing=128,gres/gpu=8 AllocTRES=cpu=40,mem=292G,gres/gpu=6 CurrentWatts=0 AveWatts=0\n"
+        "stdout": "NodeName=server4 Arch=x86_64 CoresPerSocket=32  CPUAlloc=40 CPUEfctv=128 CPUTot=128 CPULoad=9.33 AvailableFeatures=(null) ActiveFeatures=(null) Gres=gpu:rtx_pro_6000:8(S:0-1) NodeAddr=server4 NodeHostName=server4 Version=26.05.0 OS=Linux 6.8.0-124-generic #124-Ubuntu SMP PREEMPT_DYNAMIC Tue May 26 13:00:45 UTC 2026  RealMemory=512000 AllocMem=299008 FreeMem=17549 Sockets=2 Boards=1 State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=gpu  BootTime=2026-06-26T10:55:08 SlurmdStartTime=2026-09-12T06:05:32 LastBusyTime=2026-09-25T11:40:47 ResumeAfterTime=None SuspendTime=INFINITE CfgTRES=cpu=128,mem=500G,billing=128,gres/gpu=8 AllocTRES=cpu=40,mem=292G,gres/gpu=6 CurrentWatts=0 AveWatts=0\n"
       },
-      "ssh_host": "kimhj@10.0.12.163",
-      "strict_reference_exclusion_reasons": [
-        "exact_native_replay_failed;_reference_torch_2_1_2_is_sm120_incompatible"
-      ],
-      "strict_reference_jobs_eligible": false
+      "ssh_host": "kimhj@10.0.12.163"
     }
   },
   "slurm_jobs": {
     "returncode": 0,
     "stderr": "",
-    "stdout": "53757|parkyr|PENDING|0:00|30:00|1||N/A|cipher-s4-mechanism-report\n53727|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot17_jsd100_hmmt26\n53726|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot17_jsd100_hmmt25\n53725|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot17_jsd100_aime25\n53724|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot17_jsd100_aime26\n53723|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot17_jsd100_train\n53687|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53686|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53685|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53684|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53683|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53680|leejg|PENDING|0:00|30:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53678|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53677|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53676|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53675|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53674|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53673|leejg|PENDING|0:00|30:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53659|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_full_Disagreement_CoT\n53658|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_full_Majority_CoT\n53657|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_full_GT_reviewed_answer\n53652|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_recover_eval_aime26_StudentHint_TeacherHint\n53367|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_D_no_candidate_hmmt26\n53366|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_D_no_candidate_hmmt25\n53361|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_B_tentative_hmmt26\n53360|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_B_tentative_hmmt25\n52985|leejg|PENDING|0:00|45:00|1||N/A|ot_same_hint_report\n52984|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_same_hint_eval16_s1\n52983|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_same_hint_eval16_s0\n53313|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_reeval_hmmt26_OPSD_OT_matched8\n53310|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_reeval_hmmt25_OPSD_OT_matched8\n53307|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_reeval_aime25_OPSD_OT_matched8\n53304|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_reeval_aime26_OPSD_OT_matched8\n53651|leejg|RUNNING|2:25|12:00:00|1|ubuntu|gres/gpu:h200:1|ot14b_recover_eval_aime25_StudentHint_TeacherHint\n53792|mindw|RUNNING|11:25|2:30:00|1|server4|gres/gpu:1|Branch-Selection-Opus5.5-Qwen3.5-9B-Chain-D-s20of25\n53771|mindw|RUNNING|28:26|2:30:00|1|ubuntu|gres/gpu:1|Branch-Selection-Opus5.5-Qwen3.5-9B-Chain-D-s19of25\n53755|parkyr|RUNNING|38:45|1-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|cipher-s4-mechanism-0\n53756|parkyr|RUNNING|38:45|1-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|cipher-s4-mechanism-1\n53746|mindw|RUNNING|1:04:27|6:00:00|1|devbox|gres/gpu:1|Branch-Selection-Opus5.5-Qwen3.5-9B-Chain-D-s18of25\n53359|leejg|RUNNING|1:26:54|2-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|ot4b_eval_B_tentative_aime25\n53365|leejg|RUNNING|1:47:18|2-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|ot4b_eval_D_no_candidate_aime25\n53722|mindw|RUNNING|3:03:29|6:00:00|1|server2|gres/gpu:1|Branch-Selection-Opus5.5-Qwen3.5-9B-Chain-D-s13of25\n53704|mindw|RUNNING|5:15:18|10:00:00|1|devbox|gres/gpu:a6000:1|Branch-Selection-GPT6-Qwen3.5-9B-ladder-s1-budget32k-s1-r008\n53688|leejg|RUNNING|7:42:38|2-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|local_policy_swap\n53476|kimjh|RUNNING|1-13:10:05|7-00:00:00|1|server2|gres/gpu:a6000:4|agentmem-v35-s2-g4\n53262|kimhj|RUNNING|2-14:43:30|30-00:00:00|1|ubuntu|gres/gpu:1|v2full-gsm8k\n"
+    "stdout": "53757|parkyr|PENDING|0:00|30:00|1||N/A|cipher-s4-mechanism-report\n53727|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot17_jsd100_hmmt26\n53726|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot17_jsd100_hmmt25\n53725|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot17_jsd100_aime25\n53724|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot17_jsd100_aime26\n53723|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot17_jsd100_train\n53687|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53686|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53685|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53684|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53683|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53680|leejg|PENDING|0:00|30:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53678|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53677|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53676|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53675|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53674|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53673|leejg|PENDING|0:00|30:00|1||gres/gpu:h200:1|ot14b_bd_serial_20260927\n53659|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_full_Disagreement_CoT\n53658|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_full_Majority_CoT\n53657|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_full_GT_reviewed_answer\n53652|leejg|PENDING|0:00|12:00:00|1||gres/gpu:h200:1|ot14b_recover_eval_aime26_StudentHint_TeacherHint\n53367|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_D_no_candidate_hmmt26\n53366|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_D_no_candidate_hmmt25\n53361|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_B_tentative_hmmt26\n53360|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_eval_B_tentative_hmmt25\n52985|leejg|PENDING|0:00|45:00|1||N/A|ot_same_hint_report\n52984|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_same_hint_eval16_s1\n52983|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot_same_hint_eval16_s0\n53313|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_reeval_hmmt26_OPSD_OT_matched8\n53310|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_reeval_hmmt25_OPSD_OT_matched8\n53307|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_reeval_aime25_OPSD_OT_matched8\n53304|leejg|PENDING|0:00|2-00:00:00|1||gres/gpu:rtx_pro_6000:1|ot4b_reeval_aime26_OPSD_OT_matched8\n53651|leejg|RUNNING|4:11|12:00:00|1|ubuntu|gres/gpu:h200:1|ot14b_recover_eval_aime25_StudentHint_TeacherHint\n53792|mindw|RUNNING|13:11|2:30:00|1|server4|gres/gpu:1|Branch-Selection-Opus5.5-Qwen3.5-9B-Chain-D-s20of25\n53771|mindw|RUNNING|30:12|2:30:00|1|ubuntu|gres/gpu:1|Branch-Selection-Opus5.5-Qwen3.5-9B-Chain-D-s19of25\n53755|parkyr|RUNNING|40:31|1-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|cipher-s4-mechanism-0\n53756|parkyr|RUNNING|40:31|1-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|cipher-s4-mechanism-1\n53746|mindw|RUNNING|1:06:13|6:00:00|1|devbox|gres/gpu:1|Branch-Selection-Opus5.5-Qwen3.5-9B-Chain-D-s18of25\n53359|leejg|RUNNING|1:28:40|2-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|ot4b_eval_B_tentative_aime25\n53365|leejg|RUNNING|1:49:04|2-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|ot4b_eval_D_no_candidate_aime25\n53722|mindw|RUNNING|3:05:15|6:00:00|1|server2|gres/gpu:1|Branch-Selection-Opus5.5-Qwen3.5-9B-Chain-D-s13of25\n53704|mindw|RUNNING|5:17:04|10:00:00|1|devbox|gres/gpu:a6000:1|Branch-Selection-GPT6-Qwen3.5-9B-ladder-s1-budget32k-s1-r008\n53688|leejg|RUNNING|7:44:24|2-00:00:00|1|server4|gres/gpu:rtx_pro_6000:1|local_policy_swap\n53476|kimjh|RUNNING|1-13:11:51|7-00:00:00|1|server2|gres/gpu:a6000:4|agentmem-v35-s2-g4\n53262|kimhj|RUNNING|2-14:45:16|30-00:00:00|1|ubuntu|gres/gpu:1|v2full-gsm8k\n"
   },
-  "timestamp": "2026-09-27T10:45:51.113494+00:00"
+  "timestamp": "2026-09-27T10:47:37.410147+00:00"
 }
